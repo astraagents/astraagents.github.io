@@ -1,0 +1,472 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Combine cyanosulfidic protometabolism (Patel et al., 2015) with ornithine guanylation (Tsubokura et al., 2014), using HCN as central feedstock. Hydrothermal vents produce HCN and acetylene, while surface environments enable UV-driven cyanamide synthesis and mineral-catalyzed guanylation. Biochemical assembly completes arginine formation through hydrolysis of \u03b1-aminonitrile precursors.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH\u2261CH",
+        "iupac_name": "Acetylene",
+        "common_name": "Acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H3N",
+        "iupac_name": "Acrylonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H3N/c1-2-3-4/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H5N2",
+        "iupac_name": "\u03b2-aminopropionitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H5N2/c4-2-1-3-5/h1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H7NO",
+        "iupac_name": "\u03b2-aminopropionaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3,5H,1-2,4H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH2N2",
+        "iupac_name": "Cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9N4O",
+        "iupac_name": "\u03b1-aminonitrile precursor",
+        "common_name": "Compound 46",
+        "inchi": "InChI=1S/C23H20Cl2F3N5O2S/c24-17-12-16(35-23(26,27)28)3-4-18(17)34-19-5-9-30-21(20(19)25)33-10-6-14(7-11-33)31-22(36)32-15-2-1-8-29-13-15/h1-5,8-9,12-14H,6-7,10-11H2,(H2,31,32,36)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H14N4O2",
+        "iupac_name": "L-Arginine",
+        "common_name": "Arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H12N2O2",
+        "iupac_name": "Ornithine",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Fischer-Tropsch acetylene synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe3O4)"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": false,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "CO2 hydrogenation on magnetite surfaces",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) demonstrated CO2 reduction to hydrocarbons under hydrothermal conditions"
+      },
+      {
+        "id": "rxn_002",
+        "name": "HCN synthesis via CO2 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe3S4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electron transfer through Fe-S mineral matrix",
+        "reasoning": "Fe3S4 catalyzes CO2 reduction to HCN (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acrylonitrile formation",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II) minerals"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "Cu minerals",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic cross-coupling",
+        "reasoning": "Patel et al. (2015) demonstrated HCN + acetylene \u2192 acrylonitrile with Cu catalysts"
+      },
+      {
+        "id": "rxn_004",
+        "name": "\u03b2-aminopropionitrile synthesis",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "NH3-rich solution"
+        },
+        "mechanism": "Nucleophilic addition",
+        "reasoning": "Patel et al. (2015) pathway step 2, catalyzed by clay minerals"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reduction to \u03b2-aminopropionaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "Reductive environment"
+        },
+        "mechanism": "Iron-sulfur mediated reduction",
+        "reasoning": "Patel et al. (2015) step 3 using Fe-S minerals"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanamide synthesis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical HCN oligomerization",
+        "reasoning": "Schimpl et al. (1965) UV-driven formation from CH4/NH3/H2O mixtures"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Guanylation of \u03b2-aminopropionaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Nucleophilic attack on cyanamide",
+        "reasoning": "Patel et al. (2015) step 4 with TiO2 photocatalysis"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Ornithine synthesis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Spark discharge"
+        },
+        "mechanism": "HCN oligomerization",
+        "reasoning": "Johnson et al. (2008) detected ornithine in spark discharge experiments"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Ornithine guanylation",
+        "inputs": [
+          "mol_011",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic substitution",
+        "reasoning": "Tsubokura et al. (2014) demonstrated high-yield guanylation with mineral catalysts"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Final hydrolysis",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7"
+        },
+        "mechanism": "Aminonitrile hydrolysis",
+        "reasoning": "Standard hydrolysis pathway as in Patel et al. (2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyano sulfidic protometabolism",
+        "description": "HCN-based pathway through \u03b2-aminopropionaldehyde guanylation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Ornithine guanylation",
+        "description": "Direct guanylation of preformed ornithine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_011",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_008",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.85,
+          "rxn_003": 0.9,
+          "rxn_004": 0.6,
+          "rxn_005": 0.75,
+          "rxn_006": 0.7,
+          "rxn_007": 0.85,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "P1 follows Patel et al.'s cyanosulfidic framework but deviates critically in rxn_004 (uses HCN instead of NH3 for \u03b2-aminopropionitrile synthesis). Cyanamide synthesis (rxn_006) from HCN lacks experimental support. Hydrothermal-to-surface flow is logical, but mineral catalysts (e.g., Cu for acrylonitrile) are unspecified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace HCN with NH3 in rxn_004 to align with Patel et al. (2015)",
+          "Specify mineral catalysts (e.g., Cu for rxn_003, montmorillonite for guanylation)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_008": 0.5,
+          "rxn_009": 0.8,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "P2's ornithine synthesis (rxn_008) from HCN is chemically implausible; literature reports ornithine from spark discharge, not direct HCN conversion. Guanylation (rxn_009) requires mineral catalysts (e.g., Sc(OTf)\u2083) for prebiotic plausibility.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add plausible ornithine synthesis steps (e.g., via HCN oligomerization)",
+          "Include scandium triflate or FeS minerals in rxn_009"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.73,
+    "network_feedback": "The network integrates key literature concepts (cyanosulfidic chemistry, guanylation) but has critical gaps: (1) Hubs mol_008/011 have insufficient connections (degree <3), (2) rxn_004/rxn_008 use unsupported mechanisms, (3) mineral catalysts are omitted. While environmental flow (hydrothermal \u2192 surface \u2192 biochemical) is logical, chemical feasibility issues prevent approval.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

@@ -1,0 +1,875 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The synthesis network constructs glutamate through interconnected pathways across environments, starting with hydrothermal carbon fixation and reduction to C2-C4 building blocks like acetate, pyruvate, and succinate. These feed into surface Strecker syntheses and HCN oligomerization for nitrogenated intermediates like alanine and aspartate. Convergence occurs at alpha-ketoglutarate, formed via reductive carboxylation in hydrothermal conditions or surface polymerization, followed by biochemical reductive amination, transamination, or surface Strecker to yield glutamate. Multiple routes ensure redundancy, with bidirectional flow from hydrothermal products to surface reactions and onward to biochemical assembly.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3COO-",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH3COCOO-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HOOC-CH2-COCOO-",
+        "iupac_name": "2-oxobutanedioate",
+        "common_name": "oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)/p-2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HOOC-CH2-CH(NH2)COO-",
+        "iupac_name": "2-aminobutanedioate",
+        "common_name": "aspartate",
+        "inchi": "InChI=1S/C4H7NO4/c5-2(4(8)9)1-3(6)7/h2H,1,5H2,(H,6,7)(H,8,9)/p-2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HOOC-(CH2)2-COCOO-",
+        "iupac_name": "2-oxopentanedioate",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HOOC-(CH2)2-CH(NH2)COO-",
+        "iupac_name": "2-aminopentanedioate",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/p-2",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HOOC-(CH2)2-COO-",
+        "iupac_name": "butanedioate",
+        "common_name": "succinate",
+        "inchi": "InChI=1S/C4H6O4/c5-3(6)1-2-4(7)8/h1-2H2,(H,5,6)(H,7,8)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH3CH(NH2)COO-",
+        "iupac_name": "2-aminopropanoate",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Fischer-Tropsch-type synthesis of acetate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing H2-rich"
+        },
+        "mechanism": "Catalytic hydrogenation of CO2 to acetate on mineral surfaces",
+        "reasoning": "Plausible in alkaline vents via FT synthesis; supported by experiments showing carboxylic acids from CO2/H2 (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Carbonylation of acetate to pyruvate",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "CO-rich from reduction"
+        },
+        "mechanism": "CO insertion into acetate followed by reduction",
+        "reasoning": "Analogous to prebiotic acetyl-CoA pathway; acetate carbonylated to pyruvate on Fe/Ni sulfides (Huber et al., 2008)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Carboxylation of pyruvate to oxaloacetate",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "elevated CO2"
+        },
+        "mechanism": "Nucleophilic attack of enolized pyruvate on CO2",
+        "reasoning": "Speculative but feasible under high-pressure CO2 in vents, analogous to carboxylase enzymes; addresses chain extension (speculative, necessary for C4 hub)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of aspartate",
+        "inputs": [
+          "mol_008",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles, UV"
+        },
+        "mechanism": "Imine formation with NH3, HCN addition, hydrolysis to amino acid",
+        "reasoning": "Standard prebiotic route for amino acids from keto acids; clay concentrates reactants (Pizzarello & Huang, 2009)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reduction of oxaloacetate to succinate",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "serpentinization H2"
+        },
+        "mechanism": "Multi-step reduction via enediol intermediates",
+        "reasoning": "Reductive branch of rTCA analog in Fe-rich vents; speculative condensation but grounded in mineral catalysis (Morowitz et al., 2000)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive carboxylation of succinate to alpha-ketoglutarate",
+        "inputs": [
+          "mol_012",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Carboxylation at alpha position followed by oxidative decarboxylation analog",
+        "reasoning": "Reverse rTCA step catalyzed by Fe-S minerals; carbon addition fixes flaw in prior attempts (Russell et al., 2014)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "HCN oligomerization to alpha-ketoglutarate",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "concentrated, anoxic"
+        },
+        "mechanism": "Cyclic trimerization and chain growth, partial hydrolysis to keto acid",
+        "reasoning": "Speculative; HCN polymers in evaporitic pools yield C5 dicarboxylic precursors including alpha-keto forms (Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis of alanine",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Imine formation, cyanohydrin addition, hydrolysis",
+        "reasoning": "Direct application of Strecker to pyruvate; common in prebiotic simulations (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reductive amination of alpha-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_010",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mineral interfaces"
+        },
+        "mechanism": "Imine intermediate reduced by H2 or surface electrons",
+        "reasoning": "Plausible in prebiotic pools; analog to modern GDH enzyme (Kyle et al., 2013)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Transamination: alpha-ketoglutarate + alanine to glutamate + pyruvate",
+        "inputs": [
+          "mol_010",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "lipid compartments"
+        },
+        "mechanism": "Amino transfer via imine intermediate",
+        "reasoning": "Prebiotic transaminations occur in mixed amino acid solutions; recycles pyruvate (Plankensteiner et al., 2005)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Direct hydrothermal synthesis of succinate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "FT conditions"
+        },
+        "mechanism": "Multi-carbon FT synthesis to dicarboxylic acids",
+        "reasoning": "Hydrothermal vents produce succinate directly from syngas analogs; provides alternative to chain from pyruvate (He et al., 2008)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Transamination: alpha-ketoglutarate + aspartate to glutamate + oxaloacetate",
+        "inputs": [
+          "mol_010",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "clay templates"
+        },
+        "mechanism": "Amino group transfer",
+        "reasoning": "Redistributes nitrogen in prebiotic mixtures; analogous to AST enzyme (Joseph et al., 2014)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "Direct reduction to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "H2S co-catalyst"
+        },
+        "mechanism": "Stepwise reduction of CO2 to pyruvate",
+        "reasoning": "Experimental demonstration on FeS minerals; alternative to acetate route (Zhang et al., 2019)"
+      },
+      {
+        "id": "rxn_014",
+        "name": "Strecker synthesis of glutamate",
+        "inputs": [
+          "mol_010",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry, UV"
+        },
+        "mechanism": "Imine, cyanohydrin, hydrolysis",
+        "reasoning": "Extends Strecker to longer keto acids; plausible in evaporitic pools with hydrothermal inputs (Danger et al., 2012)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal chain via acetate and pyruvate",
+        "description": "Builds C5 chain through sequential carbonylation and carboxylation in vents, followed by reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal direct succinate route",
+        "description": "Direct FT synthesis to succinate, then carboxylation to alpha-ketoglutarate, reductive amination",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface HCN oligomerization route",
+        "description": "Cyanide polymerization in pools to alpha-ketoglutarate, then biochemical amination",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Mixed hydro-surface to alanine, then transamination",
+        "description": "Hydro to pyruvate, surface Strecker to alanine, hydro to alpha-ketoglutarate, biochemical transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_011",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_013",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydro-surface via aspartate transamination",
+        "description": "Hydro to oxaloacetate, surface Strecker to aspartate, hydro to alpha-ketoglutarate, transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_006",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal direct pyruvate route",
+        "description": "Direct CO2 to pyruvate, carboxylation via oxaloacetate to succinate, then to glutamate",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface Strecker on hydro alpha-ketoglutarate",
+        "description": "Hydro to alpha-ketoglutarate via succinate, surface Strecker directly to glutamate",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_006",
+          "rxn_014"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Full surface HCN to Strecker glutamate",
+        "description": "Surface oligomer to alpha-ketoglutarate, then Strecker in same environment",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_014"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydro alanine transamination with direct pyruvate",
+        "description": "Direct hydro pyruvate, surface to alanine, succinate route to alpha-ketoglutarate, transamination",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_008",
+          "rxn_011",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_013",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Extended hydro chain with aspartate integration",
+        "description": "Acetate to pyruvate to aspartate via surface, back to alpha-ketoglutarate via succinate, transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_010",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_012",
+          "rxn_014"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_013"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Hydrothermal chain builds key intermediates effectively, converging at alpha-KG.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for hydrothermal steps."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_006": 0.8,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Direct succinate route is efficient and relies on plausible reductions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Validate direct succinate yield in hydrothermal conditions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.6,
+          "rxn_014": 0.85
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "HCN oligomerization to alpha-KG is speculative; lacks strong prebiotic precedent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace with multi-step HCN-derived keto-acid synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_008": 0.95,
+          "rxn_010": 0.95,
+          "rxn_013": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Mixed environment with transamination provides redundancy.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Ensure alanine transport from surface to biochemical."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_012": 0.95
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Aspartate integration via Strecker and transamination is coherent.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Confirm Strecker on oxaloacetate stability."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_013": 0.85,
+          "rxn_003": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Direct pyruvate route simplifies hydrothermal phase.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add details on pyruvate reduction mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_006": 0.8,
+          "rxn_014": 0.85
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Hydro to surface Strecker is a clean transition.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify surface mineral promoters for Strecker."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_007": 0.6,
+          "rxn_014": 0.85
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Full surface route hinges on questionable HCN step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Incorporate literature on HCN-derived keto-acids."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_013": 0.85,
+          "rxn_008": 0.95,
+          "rxn_010": 0.95
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Efficient transamination using direct pyruvate and alanine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Highlight enzymatic plausibility in prebiotic context."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_012": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Extended chain with aspartate adds robustness but complexity.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Streamline to reduce steps if possible."
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.88,
+    "network_feedback": "Well-connected network with strong environmental flow and redundancy; minor concerns with HCN oligomerization feasibility.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.95
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

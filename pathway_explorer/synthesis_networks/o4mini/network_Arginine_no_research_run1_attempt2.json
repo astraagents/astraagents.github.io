@@ -1,0 +1,889 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Integrate hydrothermal CO\u2082 fixation to \u03b1-ketoglutarate with parallel surface formose-derived pyruvate routes, convergent amination to glutamate, transamination to ornithine, and multiple guanidination pathways to arginine via both reductive amination and Strecker/urea chemistries.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H3O2-",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H3O3-",
+        "iupac_name": "pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O5-",
+        "iupac_name": "2-oxoglutarate",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO4",
+        "iupac_name": "glutamic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H12N2O2",
+        "iupac_name": "2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H14N4O2",
+        "iupac_name": "arginine",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H6O3",
+        "iupac_name": "glyceraldehyde",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH4N2O",
+        "iupac_name": "carbamide",
+        "common_name": "urea",
+        "inchi": "InChI=1S/CH4N2O/c2-1(3)4/h(H4,2,3,4)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11 alkaline vent"
+        },
+        "mechanism": "Mineral-catalyzed electron transfer reduces CO2 to formate",
+        "reasoning": "Analogous to Huber & W\u00e4chtersh\u00e4user (1997) demonstrating FeS-catalyzed CO2 reduction"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to acetate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type conditions"
+        },
+        "mechanism": "FTT-type hydrogenation of formate to acetate",
+        "reasoning": "Fe3O4-catalyzed Fischer\u2013Tropsch\u2013type synthesis under hydrothermal conditions"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetate carboxylation to pyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "sequential carboxylation"
+        },
+        "mechanism": "Surface-catalyzed carboxylation and reduction yielding pyruvate",
+        "reasoning": "Pyrite surfaces promote CO2 addition to acetate under vent conditions"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Pyruvate extension to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "multi-carboxylation"
+        },
+        "mechanism": "Sequential carboxylations on Fe\u2013S clusters build \u03b1-KG",
+        "reasoning": "Greigite analog of acetyl\u2013CoA pathway extended to 2-oxoglutarate"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formose reaction to glyceraldehyde",
+        "inputs": [
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet\u2013dry cycles"
+        },
+        "mechanism": "Aldol condensation of formaldehyde yielding glyceraldehyde",
+        "reasoning": "Surface formose reaction stabilized by borate minerals (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Photocatalytic oxidation of glyceraldehyde to pyruvate",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "TiO2-mediated photochemical oxidation",
+        "reasoning": "UV-assisted oxidation of sugars on TiO2 (Ranjan & Sasselov, 2016)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "reductive amination"
+        },
+        "mechanism": "Mineral-catalyzed imine formation and hydrogenation",
+        "reasoning": "FeS clusters promote NH3 addition to keto acids (Huber & W\u00e4chtersh\u00e4user, 1998)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Surface Strecker/hydrolysis to glutamate",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "HCN addition + hydrolysis"
+        },
+        "mechanism": "Cyanosulfidic addition of HCN to \u03b1-keto acid followed by hydrolysis",
+        "reasoning": "Surface cyanosulfidic pathways yield amino acids (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Transamination of glutamate to ornithine",
+        "inputs": [
+          "mol_008",
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "nonenzymatic transamination"
+        },
+        "mechanism": "Amino group transfer forming a diamino acid",
+        "reasoning": "Nonenzymatic transamination facilitated by metal ions on mineral surfaces"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination of ornithine to arginine",
+        "inputs": [
+          "mol_009",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "reductive amination"
+        },
+        "mechanism": "Mineral-catalyzed reductive amination extending to guanidine formation",
+        "reasoning": "Extension of FeS-catalyzed amination to diamino acids under vent conditions"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Urea condensation with ornithine to arginine",
+        "inputs": [
+          "mol_009",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "carbamate condensation"
+        },
+        "mechanism": "Urea reacts with amine forming guanidino moiety",
+        "reasoning": "Montmorillonite-facilitated carbamate condensation yields guanidine derivatives"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Direct Strecker synthesis of arginine",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "HCN addition + hydrolysis"
+        },
+        "mechanism": "Cyanosulfidic addition on \u03b1-keto acid with ammonia",
+        "reasoning": "Surface Strecker routes can yield basic amino acids (Sutherland, 2016)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Fully hydrothermal arginine synthesis",
+        "description": "CO\u2082 fixation to \u03b1-KG, reductive amination to glutamate, transamination to ornithine, and hydrothermal guanidination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal core with surface urea guanidination",
+        "description": "Hydrothermal \u03b1-KG and ornithine formation followed by surface urea condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal \u03b1-KG to arginine via direct Strecker",
+        "description": "Hydrothermal \u03b1-KG formation then surface Strecker to arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Mixed amination via surface Strecker glutamate",
+        "description": "Hydrothermal CO\u2082 fixation, surface Strecker to glutamate, transamination and hydrothermal guanidination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface Strecker glutamate with urea route",
+        "description": "Surface Strecker to glutamate then transamination and surface urea condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formose-derived pyruvate to hydrothermal arginine",
+        "description": "Surface formose to glyceraldehyde\u2192pyruvate, hydrothermal \u03b1-KG and reductive amination steps",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface\u2013hydrothermal with urea guanidination",
+        "description": "Formose-derived pyruvate leads to \u03b1-KG then glutamate/ornithine and surface urea condensation",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formose to direct Strecker arginine",
+        "description": "Surface glyceraldehyde to pyruvate and \u03b1-KG then direct Strecker to arginine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Mixed hydrothermal-surface arginine via Strecker glutamate",
+        "description": "Formose route to pyruvate, hydrothermal \u03b1-KG, surface Strecker glutamate then hydrothermal guanidination",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Formose and Strecker glutamate with urea",
+        "description": "Surface formose and Strecker amination yield glutamate followed by ornithine and urea condensation",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_008",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.82,
+        "feedback": "A largely coherent hydrothermal route with strong core chemistry, though the one biochemical transamination step and the high\u2010pressure carboxylation could be better contextualized with catalysts.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify mineral or catalytic conditions for the hydrothermal carboxylation (rxn_004)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Combines hydrothermal core with a surface-driven urea guanidination. Urea condensation (rxn_011) is moderate in plausibility.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Consider alternative guanidination mechanisms or catalysts to improve rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_012": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.63,
+        "feedback": "Direct Strecker on \u03b1-ketoglutarate to arginine (rxn_012) is chemically implausible as written and bypasses key intermediates.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Break down rxn_012 into stepwise Strecker then guanidination via ornithine"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Strong mixed hydrothermal-surface route using surface Strecker for glutamate. Very coherent and plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail the photocatalyst or mineral surface for rxn_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Surface Strecker expansion with urea-based guanidination is coherent. Urea chemistry remains moderate in plausibility.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Explore mineral-facilitated urea condensation to boost rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_004": 0.75,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Leverages formose-derived pyruvate feeding into hydrothermal synthesis well. Early surface steps could be more detailed.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for formose reaction (rxn_005)"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_004": 0.75,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.82,
+        "feedback": "Mixed surface\u2013hydrothermal route with urea guanidination is coherent but urea step is moderate.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Enhance urea condensation step with specific catalysts"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_012": 0.4,
+          "rxn_???": 0.0
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Too few steps and direct Strecker conversion (rxn_012) is implausible. The missing step (rxn_???) breaks continuity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_???"
+        ],
+        "suggestions": [
+          "Expand pathway to include \u03b1-ketoglutarate and ornithine intermediates"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.88,
+          "rxn_003": 0.8,
+          "rxn_004": 0.75,
+          "rxn_008": 0.8,
+          "rxn_012": 0.4
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Combines hydrothermal core with direct Strecker arginine but skips ornithine. rxn_012 is too speculative.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Include transamination to ornithine before guanidination"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_011": 0.7,
+          "rxn_???": 0.0
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.72,
+        "feedback": "The pathway omits \u03b1-ketoglutarate formation before Strecker (rxn_008) and has an undefined step (rxn_???).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_???"
+        ],
+        "suggestions": [
+          "Add missing steps for \u03b1-ketoglutarate synthesis and clarify all reaction nodes"
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.79,
+    "network_feedback": "The network is well-connected with strong hub quality and multiple convergent routes to arginine. Key hydrothermal and surface linkages are plausible, though some direct Strecker steps and urea condensations need more mechanistic detail and catalysts specified.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

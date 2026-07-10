@@ -1,0 +1,459 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate hydrothermal reductive amination and surface Strecker synthesis, connected through pyruvate and HCN hubs, with mineral-catalyzed CO\u2082 fixation and environmental cross-feeding.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCOO\u207b",
+        "iupac_name": "Formate",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "2-Hydroxyacetaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2082O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2083H\u2085N\u2082O",
+        "iupac_name": "2-Amino-2-hydroxypropanenitrile",
+        "common_name": "Alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c1-3(5,6)2-4/h6H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "L-Alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electron transfer from Fe\u2083S\u2084 catalyzes CO\u2082 hydrogenation",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) demonstrated Fe-S mineral catalysis of CO\u2082 reduction under hydrothermal conditions"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate synthesis",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeNiS clusters"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeNiS",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation on mineral surfaces",
+        "reasoning": "Analogous to acetyl-CoA pathway (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to alanine",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 reacts with \u03b1-keto acid via mineral-mediated electron transfer",
+        "reasoning": "Demonstrated in Fe-S systems (Huber & W\u00e4chtersh\u00e4user, 2003)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Borate-stabilized sugar formation from formaldehyde",
+        "reasoning": "Benner et al. (2012) showed borate-mediated stabilization of carbohydrates"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of aminonitrile",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Clay-catalyzed condensation of aldehyde, ammonia, and HCN",
+        "reasoning": "Sutherland (2009) cyanosulfidic model with mineral templating"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminonitrile hydrolysis to alanine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH cycling"
+        },
+        "mechanism": "Hydrolytic conversion under prebiotic pool conditions",
+        "reasoning": "Standard Strecker pathway completion (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Nitrogen fixation to ammonia",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe\u2070)"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "Fe\u2070",
+          "aqueous": true
+        },
+        "mechanism": "Fe-mediated N\u2082 reduction under hydrothermal conditions",
+        "reasoning": "Experimental evidence from Brandes et al. (1998)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "UV-driven formaldehyde synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082 (anatase)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic CO\u2082 reduction on mineral surfaces",
+        "reasoning": "TiO\u2082 photocatalysis shown by Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "HCN synthesis via cyanosulfidic chemistry",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Stibnite (Sb\u2082S\u2083)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Sulfide mineral-mediated HCN formation from NH\u2083 and CH\u2084",
+        "reasoning": "Powell-Sutherland pathway (Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 alanine via Fe-S catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker synthesis",
+        "description": "CO\u2082 \u2192 formaldehyde \u2192 glycolaldehyde \u2192 aminonitrile \u2192 alanine",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hybrid nitrogen network",
+        "description": "N\u2082 \u2192 NH\u2083 feeding both hydrothermal and surface pathways",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.7,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal pathway relies on problematic NH\u2083 synthesis (rxn_007) and lacks mineral catalysts. Pyruvate synthesis (rxn_002) requires more mechanistic justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace H\u2082 \u2192 NH\u2083 (rxn_007) with N\u2082-based nitrogen fixation",
+          "Specify mineral catalysts (e.g., FeS) for hydrothermal reactions"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 0.7,
+          "rxn_006": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Strecker pathway is conceptually valid but HCN synthesis (rxn_009) lacks chemical plausibility. Surface formaldehyde production (rxn_008) needs UV-intensity justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Revise HCN synthesis using cyanosulfidic intermediates",
+          "Clarify mineral surfaces for formose reaction (rxn_004)"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.4
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.4,
+        "feedback": "Single-step nitrogen network is chemically invalid (H\u2082 \u2192 NH\u2083 without N\u2082 input). No meaningful pathway to target.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace with N\u2082 reduction pathway using hydrothermal vents"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.72,
+    "network_feedback": "Network integrates valid prebiotic strategies but has critical flaws: 1) Invalid NH\u2083/HCN synthesis, 2) Under-specified mineral catalysis, 3) Hub connectivity below requirements. Strengthen environmental transitions and reaction mechanisms.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

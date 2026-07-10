@@ -1,0 +1,821 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The prebiotic synthesis network for arginine builds a connected bipartite graph across environments, starting from simple gases in hydrothermal vents to form carbon chain precursors like acetaldehyde and succinic acid. These feed into surface environments for chain extension, amination, and Strecker synthesis to ornithine, a key hub. Urea formation in surface pools provides the carbamoyl source. Biochemical assembly at interfaces converts ornithine to citrulline and then arginine via plausible condensations and substitutions. Multiple convergent pathways ensure redundancy: two hydrothermal routes to succinaldehyde (another hub), two routes to ornithine, with bidirectional flow from hydrothermal to surface and onward to biochemical protocell-like settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH\u2083CHO",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "O=CHCH\u2082CH\u2082CHO",
+        "iupac_name": "butanedial",
+        "common_name": "succinaldehyde",
+        "inchi": "InChI=1S/C4H6O2/c5-3-1-2-4-6/h3-4H,1-2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H\u2082N(CH\u2082)\u2083CHO",
+        "iupac_name": "4-aminobutanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H9NO/c5-3-1-2-4-6/h4H,1-3,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H\u2082N(CH\u2082)\u2083CH(NH\u2082)COOH",
+        "iupac_name": "(2S)-2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH\u2082CONH\u2082",
+        "iupac_name": "urea",
+        "common_name": "urea",
+        "inchi": "InChI=1S/CH4N2O/c2-1(3)4/h(H4,2,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "H\u2082NC(O)NH(CH\u2082)\u2083CH(NH\u2082)COOH",
+        "iupac_name": "(2S)-2-amino-5-(carbamoylamino)pentanoic acid",
+        "common_name": "citrulline",
+        "inchi": "InChI=1S/C6H13N3O3/c7-4(5(10)11)2-1-3-9-6(8)12/h4H,1-3,7H2,(H,10,11)(H3,8,9,12)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H\u2082NC(=NH)NH(CH\u2082)\u2083CH(NH\u2082)COOH",
+        "iupac_name": "(2S)-2-amino-5-guanidinopentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HOOC(CH\u2082)\u2082COOH",
+        "iupac_name": "butanedioic acid",
+        "common_name": "succinic acid",
+        "inchi": "InChI=1S/C4H6O4/c5-3(6)1-2-4(7)8/h1-2H2,(H,5,6)(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Fischer-Tropsch synthesis of acetaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing H2-rich fluids"
+        },
+        "mechanism": "Catalytic hydrogenation of surface-bound CO (derived from CO2) to aldehydes",
+        "reasoning": "Hydrothermal vents enable abiotic synthesis of simple organics via mineral-catalyzed FT-type reactions (Fiedler et al., 1987; McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aldol condensation to succinaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles for concentration"
+        },
+        "mechanism": "Acid-base catalyzed aldol additions forming C-C bonds, leading to dialdehyde",
+        "reasoning": "Clays facilitate prebiotic carbon chain elongation through aldol condensations (Bujd\u00e1k and Rode, 2002)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Ammoniation of succinaldehyde to 4-aminobutanal",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "evaporitic concentration"
+        },
+        "mechanism": "Nucleophilic addition of ammonia to aldehyde, forming imine intermediate reduced non-enzymatically",
+        "reasoning": "Prebiotic formation of amino aldehydes on mineral surfaces (Miller, 1953; Peltzer et al., 1984)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of ornithine",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "mild heating"
+        },
+        "mechanism": "Formation of aminonitrile intermediate followed by hydrolysis to alpha-amino acid",
+        "reasoning": "Canonical prebiotic pathway for amino acid synthesis, effective for complex side chains (Strecker, 1850; Miller, 1953)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Synthesis of urea",
+        "inputs": [
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": false,
+          "other": "wet-dry cycles in evaporitic pools"
+        },
+        "mechanism": "Dehydration condensation of ammonium carbamate intermediate",
+        "reasoning": "Plausible prebiotic urea formation under evaporative conditions (Huber et al., 2003; Ritson and Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic synthesis of ornithine",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "UV exposure, sulfur-rich"
+        },
+        "mechanism": "HCN polymerization with sulfur mediation to aminonitriles and hydrolysis",
+        "reasoning": "Broad prebiotic network producing amino acids including ornithine from HCN chemistry (Patel et al., 2015; Ritson et al., 2018)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Carbamoylation of ornithine to citrulline",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "mineral interfaces, concentration in pools"
+        },
+        "mechanism": "Nucleophilic attack by ornithine amine on urea-derived carbamoyl group",
+        "reasoning": "Prebiotic analog of ornithine transcarbamoylase; feasible on clay templates (speculative, inspired by urea cycle chemistry; Lassez et al., 2020)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Ammonolysis of citrulline to arginine",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "geothermal heating/cooling cycles"
+        },
+        "mechanism": "Ammonia displaces carbamoyl to form guanidino group",
+        "reasoning": "Simplistic prebiotic route bypassing ATP; chemically viable under thermal conditions (speculative, addresses gap in basic amino acid assembly; Islam and Powner, 2020)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal synthesis of succinic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "pH gradient, rock interactions"
+        },
+        "mechanism": "Reductive tricarboxylic acid cycle analog on FeS surfaces",
+        "reasoning": "Iron-sulfur minerals catalyze C4 dicarboxylic acids in vents (Huber and W\u00e4chtersh\u00e4user, 2003; Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reduction of succinic acid to succinaldehyde",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV photocatalysis"
+        },
+        "mechanism": "Photocatalytic decarboxylation and hydrogenation of diacid to dialdehyde",
+        "reasoning": "TiO2 enables reductions in prebiotic surface photochemistry (speculative, based on Guzman and Martin, 2009; addresses reduction bottleneck)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal acetaldehyde route to arginine",
+        "description": "Primary chain building via FT synthesis, surface extension and Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal succinic acid route to arginine",
+        "description": "Alternative C4 precursor via reverse TCA analog, then surface reduction",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface cyanosulfidic route to arginine",
+        "description": "Direct amino acid formation from HCN, bypassing long-chain aldehydes",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hybrid hydrothermal-surface via acetaldehyde (evaporitic variant)",
+        "description": "Acetaldehyde path with emphasis on wet-dry for urea and amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Succinic route with UV surface emphasis",
+        "description": "Succinic reduction under strong UV, connecting to Strecker",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Cyanosulfidic with tidal flat conditions",
+        "description": "HCN path in UV-exposed tidal environments",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Interconnected FT and succinic convergence",
+        "description": "Mixed inputs from both hydrothermal routes converging at succinaldehyde",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface-dominated cyanosulfidic with urea evaporation",
+        "description": "Focus on surface for all steps post-HCN",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Extended hydrothermal feed to biochemical assembly",
+        "description": "Succinic path feeding directly into interface assembly",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Redundant ornithine convergence to arginine",
+        "description": "Both Strecker and cyanosulfidic merging at ornithine for final steps",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.95,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.86,
+        "feedback": "Strong hydrothermal start with good progression to arginine via ornithine hub.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Refine ammoniation step with specific reducing agent."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_010": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Effective use of succinic acid reduction, converges well at succinaldehyde.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify mineral catalyst for reduction."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.4,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Short surface route, but cyano synthesis of ornithine is questionable.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace cyano route with established Strecker variant."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.95,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Good hybrid flow with evaporitic adaptation enhancing transition.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add details on evaporitic concentration effects."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_010": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.84,
+        "feedback": "UV emphasis adds realism to surface steps.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Incorporate UV-specific mineral roles."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_006": 0.4,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.78,
+        "feedback": "Tidal conditions plausible, but core reaction feasibility low.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Validate cyano pathway with literature."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_009": 0.85,
+          "rxn_002": 0.95,
+          "rxn_010": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.88,
+        "feedback": "Excellent convergence of FT and succinic routes.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Highlight convergence kinetics."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_006": 0.4,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Urea evaporation interesting, but limited by weak ornithine step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Strengthen surface ornithine formation."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.95,
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Smooth extension to biochemical interface.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Detail protocell-like conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.8,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75,
+          "rxn_006": 0.4
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Best redundancy at ornithine, despite one weak link.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Prioritize stronger routes in convergence."
+        ]
+      }
+    ],
+    "best_pathway_id": "P7",
+    "overall_confidence": 0.83,
+    "network_feedback": "Well-connected network with strong topology and environmental flow; minor feasibility issues in specific reactions like cyano-ornithine synthesis.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

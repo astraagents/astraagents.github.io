@@ -1,0 +1,401 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Convergent synthesis via Strecker (surface) and reductive amination (hydrothermal) pathways, with proto-biochemical transamination. Hubs: pyruvate, acetaldehyde, alanine aminonitrile. Environmental interconnection through mineral-catalyzed reactions and precursor exchange.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH\u2083COCOO\u207b",
+        "iupac_name": "Pyruvate",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH\u2083CHO",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2083H\u2085N\u2082",
+        "iupac_name": "2-Aminopropionitrile",
+        "common_name": "Alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "L-Alanine",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2084H\u2085NO",
+        "iupac_name": "Pyridoxal",
+        "common_name": null,
+        "inchi": "InChI=1S/C8H9NO3/c1-5-8(12)7(4-11)6(3-10)2-9-5/h2,4,10,12H,3H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate synthesis via CO\u2082 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 hydrogenation on Fe-S mineral surfaces",
+        "reasoning": "Barge et al. (2019) demonstrated pyruvate formation under alkaline hydrothermal conditions with mixed Fe(II)/Fe(III) minerals"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate",
+        "inputs": [
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mixed Fe(II)/Fe(III) oxyhydroxides"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "ambient",
+          "catalyst": "FeO(OH)",
+          "aqueous": true,
+          "other": "pH 10"
+        },
+        "mechanism": "NH3 incorporation via mineral-mediated electron transfer",
+        "reasoning": "Barge et al. (2019) reported 70% alanine yield at pH 10 with Fe(II)/Fe(III) = 1:1"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetaldehyde formation via UV photocatalysis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic CO\u2082 reduction",
+        "reasoning": "Diederich et al. (2023) demonstrated acetaldehyde formation in surface environments with metal catalysts"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of alanine aminonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Imine formation followed by cyanide addition",
+        "reasoning": "Green et al. (2023) showed efficient aminonitrile formation in formamide systems with thermal cycling"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "370K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": true,
+          "other": "Dehydration-rehydration cycles"
+        },
+        "mechanism": "Clay-catalyzed nitrile hydrolysis",
+        "reasoning": "Ruiz-Bermejo et al. (2013) demonstrated nitrile-to-amino acid conversion under prebiotic conditions"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyridoxal-mediated transamination",
+        "inputs": [
+          "mol_003",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Ni\u2070"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "Nickel",
+          "aqueous": true,
+          "other": "pH 11"
+        },
+        "mechanism": "Schiff base formation and amino group transfer",
+        "reasoning": "Schlikker et al. (2024) showed 4.4\u00d7 increased alanine yield with pyridoxal/Ni\u2070 at 80\u00b0C"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Native metal-catalyzed reductive amination",
+        "inputs": [
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pd nanoparticles"
+        ],
+        "conditions": {
+          "temperature": "295K",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "Pd",
+          "aqueous": true,
+          "other": "pH 7-8"
+        },
+        "mechanism": "H\u2082-activated amination on metal surfaces",
+        "reasoning": "Kaur et al. (2024) reported 44% alanine yield over Pd catalysts at mild conditions"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Reductive Amination",
+        "description": "CO\u2082 \u2192 Pyruvate \u2192 Alanine via Fe minerals",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker Synthesis",
+        "description": "CO\u2082 \u2192 Acetaldehyde \u2192 Aminonitrile \u2192 Alanine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Proto-Enzymatic Transamination",
+        "description": "Pyruvate + Pyridoxal \u2192 Alanine via Ni catalysis",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_005"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.9,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal reductive amination aligns with Barge et al. (2019) and Kaur et al. (2024), but pyruvate synthesis (rxn_001) lacks explicit mineral catalysts (e.g., Fe/Ni phases) required for CO\u2082 reduction. Native metal catalysis (rxn_007) is well-supported.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Specify Fe/Ni catalysts for rxn_001 to match hydrothermal mineralogy."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Strecker synthesis (rxn_004) and hydrolysis (rxn_005) are chemically sound and align with Diederich et al. (2023). Acetaldehyde formation (rxn_003) needs UV/mineral catalyst details but is plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Clarify UV photocatalysis mechanism or mineral agents for rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Transamination (rxn_006) requires pyridoxal (mol_009), which lacks a synthesis pathway. Schlikker et al. (2024) shows pyridoxal\u2019s feasibility, but its absence in the network weakens coherence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add pyridoxal synthesis steps (e.g., from simpler aldehydes/amines)."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network integrates key literature-supported routes (Strecker, reductive amination) with minor gaps. Hubs pyruvate (mol_003) and acetaldehyde (mol_004) are well-connected, though mol_005 (aminonitrile) has limited branching. Environmental transitions (hydrothermal \u2194 surface) are logical but require explicit mineral catalysts (e.g., Fe/Ni for hydrothermal steps). Racemic alanine synthesis is addressed, but L-enantioenrichment mechanisms are missing.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,434 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "L-threonine",
+    "overall_strategy": "Integration of cyanosulfidic homologation, prebiotic sugar pathway, and Mg.porphin photocatalysis to address threonine's stereochemical complexity through mineral-mediated reactions and environmental gradients",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H6O3",
+        "iupac_name": "Glyceraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H8O4",
+        "iupac_name": "Erythrose",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H7NO3S",
+        "iupac_name": "Threonine thioester",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-amino-3-hydroxybutanoic acid",
+        "common_name": "L-threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H3N",
+        "iupac_name": "Propyne nitrile",
+        "common_name": "Cyanoacetylene",
+        "inchi": "InChI=1S/C3HN/c1-2-3-4/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "UV-driven cyanide homologation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_004",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)-Cu(II) minerals",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu/Fe sulfides",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox cycling creates C-C bonds via HCN oligomerization",
+        "reasoning": "Sutherland et al. cyanosulfidic homologation produces threonine precursor as inevitable byproduct (Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker precursor formation",
+        "inputs": [
+          "mol_003",
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320K",
+          "pressure": "1 atm",
+          "catalyst": "clay surface",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aminonitrile formation via three-component condensation",
+        "reasoning": "Montmorillonite catalyzes Strecker-type synthesis (Sutherland, 2017)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Aldol condensation",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "NH3",
+          "aqueous": true,
+          "other": "pH 5.2"
+        },
+        "mechanism": "Formaldehyde-glycolaldehyde condensation to tetrose",
+        "reasoning": "Prebiotic sugar pathway requires ammonia-catalyzed aldol (Sutherland, 2019)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Thioester formation",
+        "inputs": [
+          "mol_007",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "thiol catalysts"
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": "HS\u2212 ions",
+          "aqueous": true,
+          "other": "redox cycling"
+        },
+        "mechanism": "Imine-hemithioacetal adduct rearrangement",
+        "reasoning": "Thiol-mediated activation enables peptide formation (Sutherland, 2020)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Thioester hydrolysis",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "spontaneous"
+        },
+        "mechanism": "Hydrolytic release of free amino acid",
+        "reasoning": "High-energy thioesters favor peptide bond synthesis (Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Mg.porphin photocatalysis",
+        "inputs": [
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Mg.porphin"
+        ],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": "porphyrin matrix",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Stereocontrolled cyclization via charge-transfer complexes",
+        "reasoning": "Porphyrin geometry enables (2S,3R) configuration (Aylward, 2021)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Glyceraldehyde isomerization",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)2",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Keto-enol tautomerization",
+        "reasoning": "Borate stabilizes carbohydrate intermediates (Sutherland, 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic homologation",
+        "description": "UV-driven HCN oligomerization to threonine precursor",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Prebiotic sugar pathway",
+        "description": "Aldol condensation to tetrose followed by thioester activation",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Photocatalytic stereosynthesis",
+        "description": "Mg.porphin-mediated formation of L-threonine",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_003",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.8,
+          "rxn_005": 0.6
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "Cyanosulfidic homologation aligns with literature (e.g., Sutherland's UV-driven HCN homologation), but rxn_001 lacks explicit Cu(I)/Cu(II) photoredox cycling mentioned in research. Thioester hydrolysis (rxn_005) is plausible biochemical conditions but lacks mineral context.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify Cu catalysts in rxn_001",
+          "Add mineral/thermal context to rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_004": 0.8,
+          "rxn_005": 0.6
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.8,
+        "feedback": "Aldol condensation (rxn_003) and thioester formation (rxn_004) align with prebiotic sugar pathway literature. Missing \u03b2-dehydration step before thioester formation and unclear stereochemical control.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Add \u03b2-dehydration step post-aldol condensation",
+          "Clarify stereochemical control via mineral surfaces"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.4
+        },
+        "chemical_feasibility": 0.3,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.4,
+        "feedback": "Mg.porphin photocatalysis (rxn_006) references literature but uses undefined mol_013 and lacks aziridine/cyclization steps. No stereochemical justification provided.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Define mol_013",
+          "Add Mg.porphin binding/cyclization steps from literature"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network partially aligns with literature (e.g., cyanosulfidic homologation, thioesters) but has critical gaps: undefined molecules (mol_013, mol_014), missing mineral catalysts (Cu, Fe-S), and incomplete stereochemical control. P2 (sugar pathway) is strongest but requires refinement.",
+    "approved": false,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.6
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

@@ -1,0 +1,625 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Integrate hydrothermal Strecker synthesis, surface photochemical Strecker, and reductive amination of imidazolepyruvate to produce histidine via convergent aminonitrile and \u03b1-ketoacid hubs, leveraging diverse mineral catalysts across Deep\u2010Sea Vents and Evaporitic Pools",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C6H6N2O",
+        "iupac_name": "4-(1H-imidazol-4-yl)ethanal",
+        "common_name": "imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H5N2O3",
+        "iupac_name": "2-oxo-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "imidazolepyruvate",
+        "inchi": "InChI=1S/C6H6N2O3/c7-4-6(1-2-8-3-4)5(9)10/h3,7H,1-2H2,(H,9,10)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C7H7N3",
+        "iupac_name": "2-cyano-3-(1H-imidazol-4-yl)propan-1-amine",
+        "common_name": "imidazole-4-yl-methyl aminonitrile",
+        "inchi": "InChI=1S/C7H7N3/c8-5-6(9)7-3-1-2-10-4-7/h1-4H,5,9H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(2S)-2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker synthesis of imidazole aminonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "373-423 K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH 7-10"
+        },
+        "mechanism": "Nucleophilic addition of NH3 and HCN to aldehyde yielding aminonitrile",
+        "reasoning": "Strecker synthesis of imidazole-4-acetaldehyde under hydrothermal conditions (Levine et al., 2008; Sources 21332, 985)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Greigite-catalyzed hydrothermal hydrolysis of aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "373-423 K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Base-catalyzed hydration of nitrile to carboxylic acid",
+        "reasoning": "Hydrolysis of aminonitriles on FeS surfaces in vent systems (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Greigite-catalyzed reductive amination of imidazolepyruvate",
+        "inputs": [
+          "mol_010",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400 K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "H2-rich environment"
+        },
+        "mechanism": "Reductive amination of \u03b1-ketoacid by NH3 and H2",
+        "reasoning": "Analogous to pyruvate reductive amination on FeS minerals (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Photochemical Strecker synthesis on TiO2",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350 K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "UV-activated Strecker reaction forming aminonitrile",
+        "reasoning": "TiO2-mediated photochemical Strecker synthesis of amino nitriles (Sutherland et al., 2009; Source 9371)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Montmorillonite-catalyzed hydrolysis of aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "333 K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Clay-catalyzed nitrile hydration to amino acid",
+        "reasoning": "Montmorillonite-catalyzed hydrolysis of aminonitriles under wet-dry cycles (Hodgson & Ferris, 1997)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Magnetite-catalyzed reductive amination of imidazolepyruvate",
+        "inputs": [
+          "mol_010",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450 K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "H2-rich environment"
+        },
+        "mechanism": "FTT-assisted reductive amination on Fe3O4 surfaces",
+        "reasoning": "Magnetite-catalyzed Fischer\u2013Tropsch type and reductive amination reactions (Medjoubi et al., 2015; Source 19315)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Phosphate mineral-catalyzed hydrolysis of aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "350 K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "evaporitic pool"
+        },
+        "mechanism": "Phosphate-mediated hydration of nitrile to amino acid",
+        "reasoning": "Phosphate mineral surfaces catalyze nitrile hydration in evaporitic settings (Pasek & Kee, 2011)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Pyrite-catalyzed hydrothermal hydrolysis of aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "373-423 K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Base-catalyzed hydration of nitrile to amino acid",
+        "reasoning": "Pyrite surfaces catalyze nitrile hydrolysis in hydrothermal systems (Kim & Orgel, 1995)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Strecker and greigite hydrolysis",
+        "description": "Hydrothermal Strecker synthesis of aminonitrile on pyrite followed by greigite-catalyzed hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Pyrite Strecker and montmorillonite hydrolysis",
+        "description": "Strecker on pyrite then surface montmorillonite hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Pyrite Strecker and phosphate hydrolysis",
+        "description": "Strecker on pyrite then evaporitic phosphate mineral hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Pyrite Strecker and pyrite hydrolysis",
+        "description": "Dual hydrothermal route: Strecker and hydrolysis both on pyrite",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Photochemical Strecker and greigite hydrolysis",
+        "description": "UV-driven Strecker on TiO2 followed by greigite hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Photochemical Strecker and montmorillonite hydrolysis",
+        "description": "UV Strecker on TiO2 then montmorillonite hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Photochemical Strecker and phosphate hydrolysis",
+        "description": "UV Strecker then evaporitic phosphate hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Photochemical Strecker and pyrite hydrolysis",
+        "description": "UV Strecker followed by pyrite-mediated hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Greigite-catalyzed reductive amination",
+        "description": "Direct hydrothermal reductive amination of imidazolepyruvate on greigite",
+        "reaction_sequence": [
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Magnetite-catalyzed reductive amination",
+        "description": "Direct hydrothermal reductive amination of imidazolepyruvate on magnetite",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_006",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Hydrothermal two\u2010step pathway is well\u2010supported by literature for Strecker synthesis and mineral\u2010catalyzed hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface Strecker followed by montmorillonite hydrolysis is plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface phosphate\u2010catalyzed hydrolysis is reasonable though yields may be lower.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Consistent hydrothermal pathway with pyrite as catalyst in both steps.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Cross\u2010environment route is plausible; photochemical Strecker feeding hydrothermal hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface\u2010only route is coherent and feasible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface photochemical Strecker plus phosphate hydrolysis is realistic.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Photochemical then pyrite hydrolysis is chemically sound.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Single\u2010step hydrothermal reductive amination of imidazolepyruvate is highly efficient.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Magnetite\u2010catalyzed reductive amination is plausible but less documented specifically for histidine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.92,
+    "network_feedback": "The network is well\u2010connected, chemically sound, and leverages multiple plausible prebiotic routes. Minor improvements could include explicit specification of catalysts in strecker steps for clarity.",
+    "approved": true,
+    "hub_quality": 1.0,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

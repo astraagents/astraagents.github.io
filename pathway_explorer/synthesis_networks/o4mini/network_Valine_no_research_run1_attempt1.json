@@ -1,0 +1,851 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integration of hydrothermal CO\u2082 reduction and acetyl-like carbon fixation to form acetate and pyruvate, feeding into surface aldol condensations and photochemical decarboxylation to generate \u03b1-ketoisovalerate and isobutyraldehyde hubs, which converge via reductive amination and Strecker chemistry across surface and biochemical environments to produce valine through ten distinct, convergent pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCOO\u2212",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H3O2\u2212",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H3O3\u2212",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H7O4\u2212",
+        "iupac_name": "2-hydroxy-2-methyl-3-oxobutanoate",
+        "common_name": "2-acetolactate",
+        "inchi": "InChI=1S/C5H8O4/c1-3(6)5(2,9)4(7)8/h9H,1-2H3,(H,7,8)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H7O3\u2212",
+        "iupac_name": "3-methyl-2-oxobutanoate",
+        "common_name": "\u03b1-ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H8N2",
+        "iupac_name": "2-amino-3-methylbutyronitrile",
+        "common_name": "valine aminonitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Metal-sulfide catalyzed CO2 reduction",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetate Formation via Fischer-Tropsch",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Fischer-Tropsch-type carbon chain growth",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1998)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Pyruvate Synthesis via Reductive Carbon Fixation",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Acetyl-like carbon assimilation",
+        "reasoning": "Analog of acetyl-CoA pathway (Martin & Russell, 2007)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aldol Condensation to 2-Acetolactate",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "Mineral-catalyzed aldol on clay (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Dehydration to \u03b1-Ketoisovalerate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Dehydration and decarboxylation",
+        "reasoning": "Phosphate-mediated dehydration of \u03b1-hydroxy acids (Weber, 1981)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive Amination to Valine",
+        "inputs": [
+          "mol_008",
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mineral interface"
+        },
+        "mechanism": "Reductive amination",
+        "reasoning": "Prebiotic analog of enzymatic transamination"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Fischer-Tropsch Synthesis of Isobutyraldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Chain growth and reduction",
+        "reasoning": "Branched aldehydes from F-T on magnetite (Simoneit, 2004)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker Synthesis of Valine Aminonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_011",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Strecker condensation",
+        "reasoning": "Montmorillonite-catalyzed Strecker reaction (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrolysis of Valine Aminonitrile",
+        "inputs": [
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Nitrile hydrolysis",
+        "reasoning": "Spontaneous hydrolysis under mild heating"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Surface Reductive Amination of \u03b1-Ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Reductive amination",
+        "reasoning": "FeS catalyzes reductive amination (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Photocatalytic Decarboxylation of Pyruvate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photodecarboxylation",
+        "reasoning": "UV-driven decarboxylation of \u03b1-keto acids (van Roekel et al., 2000)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "Pyruvate Condensation to \u03b1-Ketoisovalerate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Decarboxylative condensation",
+        "reasoning": "Prebiotic \u03b1-ketoacid formation on FeS (Russell & Martin, 2004)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Metabolic Analog",
+        "description": "Sequential hydrothermal CO\u2082 reduction and acetyl pathway to valine via surface aldol and biochemical amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct Fischer-Tropsch Strecker",
+        "description": "Hydrothermal Fischer-Tropsch to isobutyraldehyde followed by Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hybrid Pyruvate-Decarboxylation Route",
+        "description": "Hydrothermal pyruvate synthesis then surface photocatalytic decarboxylation and reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_012",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Minimal Photodecarboxylation",
+        "description": "Direct pyruvate condensation on mineral then Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_012",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface-Only Aldol and Transamination",
+        "description": "Surface-driven condensation to \u03b1-ketoisovalerate followed by reductive amination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Strecker and Surface Amination",
+        "description": "Fischer-Tropsch isobutyraldehyde to aminonitrile and surface reductive amination",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal Pyruvate Condensation",
+        "description": "Hydrothermal condensation of pyruvate to \u03b1-ketoisovalerate then biochemical amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_013",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal Direct Transamination",
+        "description": "FeS-mediated condensation and surface transamination to valine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_013",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Mixed Hydrothermal-Surface Amine",
+        "description": "Hydrothermal pyruvate formation and surface aldol to \u03b1-ketoisovalerate then transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Photodecarboxylation Transamination",
+        "description": "Surface photocatalytic decarboxylation of pyruvate then direct transamination on pyrite",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_012",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_008",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_012",
+          "rxn_013"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_013"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_005": 0.8,
+          "rxn_006": 0.85,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.892,
+        "feedback": "Strong metabolic analog pathway, but the final reductive amination step under abiotic conditions may need specific catalysts or enzymatic analogs.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Investigate mineral\u2010mediated or photochemical reductive amination alternatives for rxn_007."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "A concise Fischer\u2013Tropsch to Strecker route with high plausibility. Consider including specific surface minerals to catalyze the Strecker reaction.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify clay or metal catalyst for rxn_009 to improve yield and align with experimental studies."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_012": 0.8,
+          "rxn_009": 0.9,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.908,
+        "feedback": "Good hybrid route leveraging photocatalytic decarboxylation. Ensure early\u2010Earth photocatalyst stability and UV flux compatibility.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Characterize plausible mineral photocatalysts for rxn_012 under UV irradiation."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_012": 0.8,
+          "rxn_009": 0.9,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "A minimal four\u2010step route with clear environmental transitions. Reliable and efficient if pyruvate supply is maintained.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail hydrothermal vent conditions to sustain continuous pyruvate production for rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_005": 0.8,
+          "rxn_006": 0.85,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.796,
+        "feedback": "Surface\u2010only strategy is innovative, but nonenzymatic reductive amination (rxn_011) is a bottleneck.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Explore metal\u2010cyanide or photoactivated pathways to facilitate nonenzymatic amination in rxn_011."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.748,
+        "feedback": "Combining Strecker and surface amination lacks clarity on sequence and compatibility.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Clarify pathway sequence and assess if both nitrile and amine pathways can proceed under same surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_013": 0.5,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Novel hydrothermal condensation (rxn_013) is speculative without experimental precedent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Replace rxn_013 with a proven aldol mechanism or provide literature support for the condensation step."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_013": 0.5,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.82,
+        "feedback": "Direct transamination (rxn_011) under prebiotic conditions is uncertain and rxn_013 needs mechanistic clarity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_013",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Provide catalytic context for both condensation and amination, or consider alternative routes."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_005": 0.8,
+          "rxn_006": 0.85,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.892,
+        "feedback": "Robust mixed hydrothermal\u2010surface approach; final surface amination (rxn_011) remains the main challenge.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Investigate photoredox or metal\u2010ion catalysts to boost the yield of rxn_011."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_012": 0.8,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Integration of photodecarboxylation with transamination is promising but underdefined in coupling strategy.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Define conditions where rxn_012 output can seamlessly feed into nonenzymatic amination for rxn_011."
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.85,
+    "network_feedback": "The network is well\u2010connected with multiple viable routes to valine. Hub intermediates are properly leveraged, and environmental transitions are coherent. Some surface and hydrothermal condensation steps lack detailed catalytic context.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

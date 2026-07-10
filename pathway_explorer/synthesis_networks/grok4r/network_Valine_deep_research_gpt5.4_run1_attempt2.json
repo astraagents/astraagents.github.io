@@ -1,0 +1,776 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "The synthesis network for valine integrates three primary literature-supported routes: Strecker synthesis from isobutyraldehyde in surface environments, cyanosulfidic photochemistry from small sugars like glyceraldehyde in UV-exposed surface pools, and reductive amination of \u03b1-ketoisovalerate in hydrothermal vents. Precursors such as isobutyraldehyde and \u03b1-ketoisovalerate are connected via speculative but justified extensions from HCN homologation and hydrothermal reductions, addressing the branched precursor gap. Environmental interconnections include H2 from hydrothermal serpentinization feeding surface reductions and surface aminonitriles transported to biochemical pools for hydrolysis. The network features convergent pathways at hubs like HCN, glyceraldehyde, and \u03b1-ketoisovalerate, ensuring redundancy and prebiotic plausibility under anoxic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen gas",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H6O3",
+        "iupac_name": "(2R,3R)-2,3,4-trihydroxybutanal",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6O",
+        "iupac_name": "propan-2-one",
+        "common_name": "acetone",
+        "inchi": "InChI=1S/C3H6O/c1-3(2)4/h1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H8O3",
+        "iupac_name": "3-methyl-2-oxobutanoic acid",
+        "common_name": "\u03b1-ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H10N2",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": "valinonitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H11NO2",
+        "iupac_name": "(2S)-2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose reaction to glyceraldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldol condensation of formaldehyde to glycolaldehyde, then to glyceraldehyde via repeated additions.",
+        "reasoning": "Formose reaction produces sugars like glyceraldehyde from HCHO; borate stabilizes intermediates (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Photochemical conversion of glyceraldehyde to acetone",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu2S"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Cu2S",
+          "aqueous": "true",
+          "other": "UV irradiation (254 nm)"
+        },
+        "mechanism": "UV-driven dehydration and reduction of glyceraldehyde/dihydroxyacetone to acetone using H2S as reductant.",
+        "reasoning": "In cyanosulfidic pathway, glyceraldehyde decays to acetone via photoredox with H2S and Cu catalyst (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanohydrin formation and homologation to isobutyraldehyde precursor",
+        "inputs": [
+          "mol_007",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu2S"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Cu2S",
+          "aqueous": "true",
+          "other": "UV irradiation, sequential dark/photochemical steps"
+        },
+        "mechanism": "Acetone + HCN \u2192 cyanohydrin, then H2S addition to hydroxythioamide, photoreduction to thioamide, HCN trapping to aldehyde equivalent yielding branched isobutyraldehyde.",
+        "reasoning": "Cyanosulfidic homologation builds branched aldehydes like isobutyraldehyde from acetone/HCN/H2S under UV with Cu sulfide (Patel et al., 2015); speculative extension for branch but grounded in observed intermediates."
+      },
+      {
+        "id": "rxn_004",
+        "name": "CO2 reduction to formate, then to \u03b1-ketoisovalerate via hydrothermal homologation",
+        "inputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite",
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high (50-100 bar)",
+          "catalyst": "mackinawite, NiS",
+          "aqueous": "true",
+          "other": "alkaline pH 9-11"
+        },
+        "mechanism": "CO2 + H2 reduction on FeS to formate/acetate, homologation to pyruvate analogs, then branched via Ni-catalyzed aldol to \u03b1-ketoisovalerate.",
+        "reasoning": "Hydrothermal reduction on Fe/Ni sulfides produces keto acids; extension to branched \u03b1-ketoisovalerate analogous to pyruvate synthesis (Kaur et al., 2024); addresses precursor gap with mineral catalysis."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis to valinonitrile",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "neutral pH, concentrated HCN/NH3"
+        },
+        "mechanism": "Isobutyraldehyde + NH3 \u2192 imine, CN- addition to aminonitrile.",
+        "reasoning": "Canonical Strecker from isobutyraldehyde + NH3 + HCN yields valinonitrile; clay concentrates reactants (Miller & Schlesinger, 1993; Powner et al., 2019)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic aminonitrile formation",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu2S"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Cu2S",
+          "aqueous": "true",
+          "other": "UV irradiation, phosphate buffer"
+        },
+        "mechanism": "Cyanohydrin intermediate + NH3 \u2192 \u03b1-aminonitrile (compound 27 equivalent).",
+        "reasoning": "In cyanosulfidic pathway, NH3 addition to cyanohydrin 26 yields valine aminonitrile in 42% yield (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of \u03b1-ketoisovalerate to valine",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "NiS",
+          "pentlandite"
+        ],
+        "conditions": {
+          "temperature": "295K (22\u00b0C)",
+          "pressure": "5 bar H2",
+          "catalyst": "NiS",
+          "aqueous": "true",
+          "other": "pH 8, 72 h, NH4HCO3 buffer"
+        },
+        "mechanism": "H2 hydrogenation of keto acid with NH3 on Ni catalyst to amino acid.",
+        "reasoning": "Ni-catalyzed reductive amination of \u03b1-ketoisovalerate + H2 + NH3 yields valine at 10-50% (Kaur et al., 2024); uses hydrothermal H2 and Ni sulfides."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of valinonitrile to valine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "wet-dry cycles or mild heating"
+        },
+        "mechanism": "Water-catalyzed hydrolysis of nitrile to carboxylic acid.",
+        "reasoning": "Standard hydrolysis step post-Strecker or cyanosulfidic to yield amino acid from aminonitrile (Miller & Schlesinger, 1993; Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Spark discharge synthesis of valine precursors",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_012",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-1200K (spark)",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "false",
+          "other": "electric discharge, reducing atmosphere"
+        },
+        "mechanism": "Spark on gas mixture produces aldehydes and keto acids via radical chemistry.",
+        "reasoning": "Miller-Urey spark experiments produce isobutyraldehyde and ketoisovalerate as valine precursors (Johnson et al., 2009; Miller & Schlesinger, 1993)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Oxidation of isobutyraldehyde to \u03b1-ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "pH gradient"
+        },
+        "mechanism": "Enzymatic-like oxidation on FeS surface using H2 as mediator to keto acid.",
+        "reasoning": "Speculative connection addressing precursor gap; greigite catalyzes CO2 reductions and analog oxidations for keto acids (Huber & W\u00e4chtersh\u00e4user, 1997; extension from Kaur et al., 2024)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Strecker via formose-isobutyraldehyde",
+        "description": "Surface formose to glyceraldehyde, homologation to isobutyraldehyde, Strecker to valinonitrile, hydrolysis to valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic direct from glyceraldehyde",
+        "description": "Surface formose to glyceraldehyde, to acetone, cyanosulfidic to aminonitrile, hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Reductive amination from hydrothermal keto acid",
+        "description": "Hydrothermal CO2 reduction to \u03b1-ketoisovalerate, reductive amination to valine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Spark to Strecker",
+        "description": "Surface spark produces isobutyraldehyde, Strecker to valinonitrile, hydrolysis.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Spark to reductive amination",
+        "description": "Surface spark to \u03b1-ketoisovalerate, hydrothermal reductive amination (environmental flow).",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Cyanosulfidic via spark acetone",
+        "description": "Spark implies small carbonyls to glyceraldehyde equivalent, cyanosulfidic to valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal oxidation bridge to reductive amination",
+        "description": "Surface isobutyraldehyde flows to hydrothermal oxidation to keto acid, then amination.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Full cyanosulfidic from HCN",
+        "description": "HCN as hub, formose integration, full homologation to valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal to surface Strecker",
+        "description": "Hydrothermal H2 aids surface reduction, but direct: keto acid to aldehyde speculative reverse, then Strecker.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_010",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Integrated spark-cyanosulfidic",
+        "description": "Spark produces HCN/HCHO, cyanosulfidic pathway to valine.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_009",
+      "mol_001"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_005": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Well-aligned with Strecker synthesis via formose-derived isobutyraldehyde; supported by literature on formose and Strecker routes.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for formose reaction to enhance prebiotic relevance."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.85,
+          "rxn_006": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct cyanosulfidic from glyceraldehyde matches Patel et al. (2015) photochemical homologation; strong literature support.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include UV intensity and Cu sulfide catalysts explicitly."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Reductive amination aligns with Kaur et al. (2024); rxn_004 speculative for branched product but feasible in vents.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Justify branched homologation from CO2/H2 with mineral catalysis references."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_005": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Spark discharge to Strecker precursors supported by Miller-Urey experiments (Johnson et al., 2009).",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Note low yields for valine in spark mixtures."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Spark to reductive amination; good convergence but requires transport from surface to hydrothermal.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail precursor transport mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_002": 0.85,
+          "rxn_006": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Cyanosulfidic via spark acetone; integrates multiple literature routes effectively.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify acetone role from spark products."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_010": 0.3,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal oxidation bridge flawed; rxn_010 chemically implausible (H2 for oxidation?).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Replace rxn_010 with plausible homologation or cyanohydrin route to keto acid."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_006": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Full cyanosulfidic from HCN; excellent alignment with Patel et al. multi-step yields.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add sequential dark/UV steps as per literature."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_010": 0.3,
+          "rxn_005": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal to surface Strecker; hindered by implausible rxn_010 and environmental shift.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Revise bridge reaction; specify transport of keto acid to surface."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_006": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Integrated spark-cyanosulfidic; robust with literature support for both.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Emphasize H2S role in convergence."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "Strong integration of literature-supported routes (Strecker, cyanosulfidic, reductive amination, spark); good topology and convergence, but speculative branched precursor formation and rxn_010 error reduce feasibility slightly. Addresses key challenges like precursor gaps.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

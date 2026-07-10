@@ -1,0 +1,725 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Surface cyanosulfidic synthesis of L-Proline via Strecker-type cyanohydrin formation, H2S-mediated cyclization, Cu/H2S reductive deoxygenation, thione-to-nitrile exchange, and nitrile hydrolysis; hydrothermal vents supply HCN feedstocks to surface pools and the product enters biochemical peptide formation",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H3N",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H7NO",
+        "iupac_name": "3-aminopropanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3H,1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8N2O",
+        "iupac_name": "4-amino-2-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c5-2-1-4(7)3-6/h4,7H,1-2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7NOS",
+        "iupac_name": "3-hydroxypyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NOS/c6-3-1-2-5-4(3)7/h3,6H,1-2H2,(H,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H7NS",
+        "iupac_name": "pyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NS/c6-4-2-1-3-5-4/h1-3H2,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H8N2",
+        "iupac_name": "pyrrolidine-2-carbonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8N2/c6-4-5-2-1-3-7-5/h5,7H,1-3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-Proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C10H16N2O3",
+        "iupac_name": "dipyrrolidine-2-carboxylic acid",
+        "common_name": "di-L-Proline",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_000",
+        "name": "Hydrothermal HCN synthesis",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO2 and H2 are reduced and aminated to HCN on mineral surfaces",
+        "reasoning": "Speculative hydrothermal generation of HCN; necessary to connect hydrothermal feedstocks to surface cyanosulfidic chemistry"
+      },
+      {
+        "id": "rxn_001",
+        "name": "Strecker-type cyanohydrin formation",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "ambient"
+        },
+        "mechanism": "Nucleophilic addition of cyanide to the aldehyde carbonyl, forming an \u03b1-hydroxynitrile",
+        "reasoning": "Patel et al. (2015) demonstrated Strecker-type cyanohydrin formation under cyanosulfidic conditions; montmorillonite likely concentrates reactants and catalyzes addition"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Thiolation and cyclization",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "H2S atmosphere"
+        },
+        "mechanism": "H2S attacks the nitrile to form a thioamide; intramolecular attack by the amine closes the pyrrolidine ring releasing NH3",
+        "reasoning": "Patel et al. (2015) demonstrated this thiolation-cyclization; stibnite surfaces concentrate H2S and catalyze thiolation"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive deoxygenation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "elemental copper",
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "elemental copper",
+          "aqueous": true,
+          "other": "H2S present"
+        },
+        "mechanism": "Cu/H2S reduces the C\u2013OH bond, eliminating water to yield pyrrolidine-2-thione",
+        "reasoning": "Patel et al. (2015) used Cu/H2S for reductive deoxygenation; pyrite surfaces concentrate copper sulfide species"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Thione-to-nitrile exchange",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": true,
+          "other": "HCN present"
+        },
+        "mechanism": "Cyanide displaces sulfur at the thioamide carbon to form the nitrile, releasing H2S",
+        "reasoning": "Patel et al. (2015) described thione-to-nitrile exchange under cyanosulfidic conditions; molybdenite surfaces catalyze thiolate exchange reactions"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nitrile hydrolysis",
+        "inputs": [
+          "mol_009",
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Sequential hydrolysis of the nitrile to amide then carboxylate with release of NH3",
+        "reasoning": "Patel et al. (2015) demonstrated nitrile hydrolysis to L-Proline; phosphate minerals like apatite likely catalyze hydrolysis"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Peptide bond formation",
+        "inputs": [
+          "mol_010",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Dehydration condensation between two amino acids to form a peptide bond",
+        "reasoning": "Speculative: montmorillonite-catalyzed peptide bond formation under wet-dry cycling; demonstrates incorporation of proline into protopeptides"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface cyanosulfidic synthesis",
+        "description": "Evaporitic-pool cyanosulfidic route from 3-aminopropanal to L-Proline",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal-supplied HCN surface route",
+        "description": "Hydrothermal generation of HCN feeds into surface cyanosulfidic synthesis",
+        "reaction_sequence": [
+          "rxn_000",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Geothermal hot-spring cyanosulfidic route",
+        "description": "Geothermal surface hot-spring implementation of cyanosulfidic proline synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Tidal-flat cyanosulfidic route",
+        "description": "Periodic wet-dry tidal-flat variant of cyanosulfidic L-Proline synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Volcanic hot-spring cyanosulfidic route",
+        "description": "Acidic volcanic hot-spring variant with cyanosulfidic chemistry",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Evaporitic-pool cyanosulfidic route variant",
+        "description": "Alternate evaporitic-pool conditions for L-Proline synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface cyanosulfidic route under borate stabilization",
+        "description": "Borate-stabilized sugar environment feeding proline synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Montmorillonite-assisted cyanosulfidic route",
+        "description": "Clay-surface variant with montmorillonite concentration effects",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Photochemically primed cyanosulfidic route",
+        "description": "UV-activated HCN/H2S chemistry delivering proline precursors",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Biochemical peptide integration route",
+        "description": "Incorporation of L-Proline into protopeptides after surface synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_003",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_000"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface cyanosulfidic synthesis aligns perfectly with the Patel et al. (2015) route to proline, with all steps well-supported by literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include explicit mention of borate or mineral stabilization to enhance cyanohydrin stability"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_000": 0.8,
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Hydrothermal HCN supply into the surface cyanosulfidic pathway provides a robust environmental link and full route to L-Proline.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_000"
+        ],
+        "suggestions": [
+          "Provide more detail on catalysts or mineral surfaces for rxn_000"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Geothermal hot-spring variant replicates the core cyanosulfidic sequence with high fidelity.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify temperature and pH conditions specific to geothermal pools"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Tidal-flat context is chemically sound but would benefit from explicit salinity effects on reaction kinetics.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Discuss salt concentration impacts on cyanide and thiol speciation"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Volcanic hot-spring variant is consistent with cyanosulfidic evidence, though copper availability should be justified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Mention potential copper source in volcanic sediments"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Evaporitic-pool variant maintains core chemistry; water activity effects should be considered.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Model water evaporation cycles to improve nitrile hydrolysis rates"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Borate stabilization variant is promising for cyanohydrin control, though borate concentration is unspecified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify borate concentration and binding affinities"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Clay-assisted variant aligns with known mineral catalysis for peptide and cyanohydrin formation.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail clay type and loading"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Photochemical priming variant is chemically plausible, but photolysis conditions for HCN should be defined.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify UV wavelength and flux"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.2,
+        "overall_confidence": 0.6,
+        "feedback": "Biochemical peptide integration is conceptually valid but lacks activation chemistry for peptide bond formation and does not produce the target molecule.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include an activation step (e.g., ATP or acyl phosphate) for peptide formation",
+          "Clarify whether target production or consumption is intended"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.9,
+    "network_feedback": "The network presents an excellent, literature-aligned cyanosulfidic synthesis of L-Proline with clear hydrothermal\u2013surface integration. Minor gaps include explicit catalysts for HCN synthesis, details on mineral contexts for H\u2082S cycling, and activation for peptide bond formation in biochemical steps.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

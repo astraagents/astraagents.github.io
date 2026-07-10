@@ -1,0 +1,409 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Integration of cyanosulfidic Strecker synthesis, hydrothermal reductive amination, and meteorite-supported hydantoin pathways using mineral catalysts and UV photochemistry to address threonine's synthesis-stability paradox",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H6O2",
+        "iupac_name": "2-Hydroxypropanal",
+        "common_name": "Lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-Amino-3-hydroxybutyronitrile",
+        "common_name": "Threonine aminonitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(5,2-6)8/h3,7H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-Amino-3-hydroxybutanoic acid",
+        "common_name": "L-Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H6N2O2",
+        "iupac_name": "5-(1-Hydroxyethyl)hydantoin",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H6N2O3/c1-2(7)3-4(9)6(5)8/h2-3,7H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7NO4",
+        "iupac_name": "2-Oxo-3-hydroxybutanoic acid",
+        "common_name": "\u03b1-Keto-\u03b2-hydroxybutyrate",
+        "inchi": "InChI=1S/C4H6O4/c5-2(6)1-3(7)4(8)9/h2-3,7H,1H2,(H,5,6)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "UV-driven acetaldehyde cyanohydrin formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I) cyanide complexes",
+          "H\u2082S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox cycling converts HCN to lactaldehyde via cyanohydrin intermediate",
+        "reasoning": "Ritson & Sutherland (2013) demonstrated 19% lactaldehyde yield from acetaldehyde cyanohydrin under UV with H\u2082S reductant"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis of threonine aminonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": "Clay minerals",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Lactaldehyde reacts with NH\u2083 and HCN to form aminonitrile via imine intermediate",
+        "reasoning": "Patel et al. (2015) cyanosulfidic framework produces threonine aminonitrile as inevitable by-product"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal reductive amination",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe/Ni)S precipitates"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Ni-Fe-S minerals",
+          "aqueous": true,
+          "other": "CO-rich environment"
+        },
+        "mechanism": "Fe/Ni-catalyzed CO-dependent reductive amination of \u03b1-keto-\u03b2-hydroxybutyrate",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (2006) demonstrated analogous \u03b1-amino acid synthesis on Ni-Fe precipitates"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Bucherer-Bergs hydantoin formation",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "Ammonium carbonate",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Three-component condensation forming hydantoin intermediate",
+        "reasoning": "Pulletikurti et al. (2022) demonstrated hydantoin pathway for amino acid synthesis"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydantoin hydrolysis to threonine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Mild alkaline conditions"
+        },
+        "mechanism": "Hydrolytic ring-opening of hydantoin to amino acid",
+        "reasoning": "Lerner & Cooper (2005) detected hydantoins in meteorites with hydrolysis potential"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Spark discharge synthesis",
+        "inputs": [],
+        "outputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS\u2082"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Pyrite",
+          "aqueous": false,
+          "other": "Electric discharge in CH\u2084/NH\u2083/H\u2082S"
+        },
+        "mechanism": "Plasma-driven formation of HCN and aldehydes",
+        "reasoning": "Miller et al. (1972) detected threonine in spark discharge experiments with H\u2082S"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formose reaction initiation",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "HCN oligomerization to glycolaldehyde via formose-like chemistry",
+        "reasoning": "Patel et al. (2015) cyanosulfidic network produces sugar precursors"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Hydrolytic conversion of aminonitrile to amino acid",
+        "reasoning": "Standard Strecker synthesis completion as per Ritson & Sutherland (2013)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "CyanoSulfidic Strecker",
+        "description": "UV-driven HCN chemistry through lactaldehyde to threonine aminonitrile",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Reductive Amination",
+        "description": "Fe/Ni-catalyzed synthesis from \u03b1-keto acid precursor",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Bucherer-Bergs Hydantoin",
+        "description": "Three-component condensation followed by hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "CyanoSulfidic Strecker pathway aligns strongly with Ritson-Sutherland experiments. UV-driven acetaldehyde cyanohydrin formation (rxn_001) and Strecker synthesis (rxn_002) are well-supported. Hydrolysis (rxn_008) is chemically valid. Missing explicit mineral catalysts (e.g., Cu) in reaction descriptions lowers environmental progression score.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify Cu(I) cyanide catalysts for rxn_001/rxn_002 as per Patel et al. (2015)",
+          "Clarify environmental transitions (e.g., UV-exposed surface pools)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.7
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.65,
+        "feedback": "Hydrothermal reductive amination (rxn_003) lacks a defined route to \u03b1-keto-\u03b2-hydroxybutyrate (mol_007). While Fe\u00b2\u207a/Ni catalysis (Kaur et al., 2024) is plausible, the absence of keto acid formation steps creates a critical gap. Environmental justification for hydrothermal \u2192 biochemical transition is weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add keto acid synthesis step (e.g., CO\u2082 fixation or oxidation of lactaldehyde)",
+          "Specify Ni/Fe-S mineral catalysts and H\u2082 conditions"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Bucherer-Bergs pathway (rxn_004 \u2192 rxn_005) aligns with Pulletikurti et al. (2022). Hydantoin hydrolysis (rxn_005) is valid. Surface-to-biochemical transition is logical. Missing ammonium carbonate in hydantoin formation (rxn_004) lowers feasibility.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Include NH\u2083/CO\u2082 in rxn_004 reactants for authentic Bucherer-Bergs conditions",
+          "Specify meteoritic mineral context (e.g., phyllosilicates)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates key literature-supported mechanisms (Strecker, Bucherer-Bergs) but has critical gaps: (1) Missing \u03b1-keto-\u03b2-hydroxybutyrate synthesis undermines P2; (2) Mineral catalysts (Cu, Fe-S, Ni) under-specified; (3) Environmental transitions need explicit justification. Hub molecules (lactaldehyde, aminonitrile) are well-connected. Approved due to P1/P3 viability.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

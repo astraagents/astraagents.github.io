@@ -1,0 +1,369 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integration of Strecker synthesis (Surface), cyanosulfidic photochemistry (Surface), and reductive amination (Hydrothermal) pathways to valine, leveraging mineral catalysts and environmental gradients. Key hubs include isobutyraldehyde, valinonitrile, and \u03b1-ketoisovalerate.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H6O3",
+        "iupac_name": "Glyceraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H6O",
+        "iupac_name": "Acetone",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O/c1-3(2)4/h1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O",
+        "iupac_name": "Isobutyraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H9N",
+        "iupac_name": "Valinonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9N/c1-4(2)5(3)6/h4H,1-3H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8O3",
+        "iupac_name": "\u03b1-Ketoisovalerate",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H11NO2",
+        "iupac_name": "Valine",
+        "common_name": "Valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose Reaction to Glyceraldehyde",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite",
+          "Borate Minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Borate Minerals",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Aldol condensation of formaldehyde catalyzed by borate-stabilized intermediates",
+        "reasoning": "Formose reaction produces C3 sugars under prebiotic conditions (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetone Formation via Cyanosulfidic Photochemistry",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082",
+          "CuS"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "CuS",
+          "aqueous": true,
+          "other": "UV 254 nm, H\u2082S"
+        },
+        "mechanism": "Photoredox reduction of glyceraldehyde to acetone via thioamide intermediates",
+        "reasoning": "Cyanosulfidic pathway generates branched aldehydes (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker Synthesis of Valinonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite",
+          "Phosphate Minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Diamidophosphate",
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Isobutyraldehyde + NH\u2083 + HCN \u2192 valinonitrile via imine formation",
+        "reasoning": "DAP enables neutral pH Strecker synthesis (Powner et al., 2019; Miller & Schlesinger, 1993)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Valinonitrile Hydrolysis to Valine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis",
+        "reasoning": "Clay surfaces concentrate reactants for hydrolysis (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive Amination of \u03b1-Ketoisovalerate",
+        "inputs": [
+          "mol_002",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite",
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "Ni/Fe sulfides",
+          "aqueous": true,
+          "other": "pH 8"
+        },
+        "mechanism": "H\u2082-driven reduction of \u03b1-keto acid with NH\u2083",
+        "reasoning": "Ni catalysts enable amino acid synthesis from keto acids (Kaur et al., 2024)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Acetone Cyanohydrin Formation",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuS"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "CuS",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "HCN addition to acetone followed by photoreduction",
+        "reasoning": "Cyanosulfidic pathway builds branched nitriles (Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Strecker Pathway",
+        "description": "Isobutyraldehyde \u2192 valinonitrile \u2192 valine via clay-catalyzed condensation",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic Photoredox Pathway",
+        "description": "Glyceraldehyde \u2192 acetone \u2192 valinonitrile via UV/H\u2082S chemistry",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal Reductive Amination",
+        "description": "\u03b1-Ketoisovalerate + H\u2082 \u2192 valine via Ni/Fe catalysis",
+        "reaction_sequence": [
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Strecker pathway is chemically sound and literature-supported. However, isobutyraldehyde (mol_005) synthesis is missing in the network, weakening precursor availability.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add reactions to generate isobutyraldehyde (e.g., from acetone or HCN homologation) to complete the pathway."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.5,
+          "rxn_002": 0.7,
+          "rxn_006": 0.8,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Cyanosulfidic pathway misrepresents the Formose reaction (rxn_001: HCN \u2192 glyceraldehyde is invalid). Acetone formation (rxn_002) lacks intermediates (e.g., dihydroxyacetone). Cyanohydrin steps (rxn_006) are plausible but require H\u2082S/Cu catalysts not specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Replace rxn_001 with HCN homologation steps (e.g., via glycolaldehyde) and specify H\u2082S/Cu catalysts for photoredox steps."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.4,
+        "feedback": "Reductive amination (rxn_005) is valid but \u03b1-ketoisovalerate (mol_007) is not synthesized in the network. Hydrothermal-to-surface flow is absent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Add reactions to produce \u03b1-ketoisovalerate (e.g., from valinonitrile oxidation or ketoacid precursors)."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network integrates plausible pathways but has critical gaps: (1) Missing synthesis of isobutyraldehyde (P1/P2) and \u03b1-ketoisovalerate (P3); (2) Invalid Formose reaction (rxn_001); (3) Hub molecules mol_005/mol_007 lack sufficient connections. Strengthen topology and precursor generation.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.5
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,809 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Combine Shen\u2013Or\u00f3 sugar\u2013formamidine cyclization and Strecker hydrolysis with Sutherland\u2019s cyanosulfidic imidazole chemistry across hydrothermal and surface settings to create redundant, convergent routes to L-histidine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH4N2",
+        "iupac_name": "formamidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O4",
+        "iupac_name": "D-erythrose",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6N2O",
+        "iupac_name": "imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H5N3",
+        "iupac_name": "imidazole-4-aminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(S)-2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "L-histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH2N2",
+        "iupac_name": "cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H5N3",
+        "iupac_name": "2-aminoimidazole",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H5N3/c4-3-5-1-2-6-3/h1-2H,(H3,4,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Surface formamidine synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "condensation of HCN and NH\u2083",
+        "reasoning": "Formation of formamidine from HCN and NH\u2083 (Shen, Or\u00f3 & Miller, 1999)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formose reaction to erythrose",
+        "inputs": [
+          "mol_004",
+          "mol_004",
+          "mol_004",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "base-catalyzed aldol polymerization",
+        "reasoning": "Breslow (1959) formose reaction yields C\u2084 sugars"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Shen\u2013Or\u00f3 imidazole cyclization",
+        "inputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Amadori rearrangement"
+        },
+        "mechanism": "Amadori-type rearrangement and cyclization",
+        "reasoning": "Shen, Or\u00f3 & Miller (1999)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis on imidazole acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "imine formation then cyanide addition",
+        "reasoning": "Shen, Or\u00f3 & Miller (1999)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nitrile hydrolysis to histidine",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "acid/base\u2010catalyzed nitrile hydrolysis",
+        "reasoning": "Shen, Or\u00f3 & Miller (1999)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Surface 2-aminoimidazole formation",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "pH 5\u20137, UV irradiation"
+        },
+        "mechanism": "phosphate\u2010catalyzed cyclization of glycolaldehyde and cyanamide",
+        "reasoning": "Sutherland (2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyanosulfidic to Shen\u2013Or\u00f3 link",
+        "inputs": [
+          "mol_011",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "cycloaddition and rearrangement to imidazole acetaldehyde",
+        "reasoning": "Speculative linking reaction to Shen\u2013Or\u00f3 pathway"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Surface cyanamide synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photochemistry"
+        },
+        "mechanism": "photochemical dehydrogenation",
+        "reasoning": "Formation of cyanamide in cyanosulfidic network (Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal formamidine synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": ">100 MPa",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9\u201311"
+        },
+        "mechanism": "condensation",
+        "reasoning": "Speculative hydrothermal formation of formamidine"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrothermal glycolaldehyde formation",
+        "inputs": [
+          "mol_004",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch\u2010type"
+        },
+        "mechanism": "CO\u2082\u2010derived aldehyde synthesis",
+        "reasoning": "Shock et al. (1992)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface Shen\u2013Or\u00f3 route",
+        "description": "Complete Shen\u2013Or\u00f3 sugar\u2013formamidine to histidine in surface pools",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal all\u2013abiotic Shen\u2013Or\u00f3",
+        "description": "All steps in hydrothermal vents using greigite and magnetite",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hybrid surface formamidine, hydrothermal formose",
+        "description": "Surface formation of formamidine then hydrothermal erythrose to histidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hybrid hydrothermal formamidine, surface formose",
+        "description": "Hydrothermal formamidine then surface formose cyclization to histidine",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface cyanosulfidic imidazole route",
+        "description": "Surface glycolaldehyde + cyanamide to 2-aminoimidazole then Strecker",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Mixed hydrothermal glycolaldehyde, surface cyanosulfidic",
+        "description": "Hydrothermal glycolaldehyde plus surface cyanamide to histidine",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_008",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Mixed hydrothermal formamidine, cyanosulfidic",
+        "description": "Hydrothermal formamidine with surface cyanosulfidic imidazole to histidine",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Mixed surface formamidine, cyanosulfidic",
+        "description": "Surface formamidine plus cyanosulfidic imidazole to histidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Mixed surface formose & cyanosulfidic",
+        "description": "Surface formose plus cyanosulfidic imidazole to histidine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hybrid hydrothermal formose & surface Shen\u2013Or\u00f3",
+        "description": "Hydrothermal erythrose plus surface sugar\u2013amidino cyclization to histidine",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_006",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "A classic Shen\u2013Or\u00f3 route entirely on the surface. Chemically sound and coherent, though formose selectivity and formamidine stability remain concerns.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate clay mineral catalysts to improve erythrose yield",
+          "Address formamidine hydrolysis with pH control or evaporitic cycles"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_010": 0.6,
+          "rxn_002": 0.7,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.35,
+        "feedback": "Attempts an all-hydrothermal Shen\u2013Or\u00f3, but lacks a hydrothermal formose reaction to erythrose. Pathway uses surface reaction (rxn_002) out of context.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Introduce a hydrothermal formose analog or relocate rxn_002 to surface stage",
+          "Specify mineral catalysts (Fe\u2013S clusters) to drive sugar condensation at high T"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_010": 0.6,
+          "rxn_002": 0.7,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.57,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.45,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.35,
+        "feedback": "Hybrid formamidine surface and formose hydrothermal is mismatched: no hydrothermal route to erythrose.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Either move formose back to surface or add a hydrothermal sugar-forming mechanism",
+          "Clarify conditions for rxn_010 to produce higher sugars"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_002": 0.7,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Strong hybrid route with hydrothermal formamidine feeding a surface Shen\u2013Or\u00f3 sequence. Environmentally justified and literature-aligned.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail Fe\u2013S mineral involvement in hydrothermal step",
+          "Consider wet\u2013dry cycles to concentrate reactants on surface"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_008": 0.9,
+          "rxn_010": 0.6,
+          "rxn_006": 0.9,
+          "rxn_007": 0.4,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.4,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.45,
+        "feedback": "Intended as a surface cyanosulfidic route but uses hydrothermal glycolaldehyde and a questionable 2-AI to imidazole-4-acetaldehyde step (rxn_007).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Clarify or replace rxn_007 with literature-supported cyclization",
+          "Keep all cyanosulfidic steps in a UV-driven surface context"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.6,
+          "rxn_008": 0.9,
+          "rxn_006": 0.9,
+          "rxn_007": 0.4,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.55,
+        "feedback": "Mixes hydrothermal glycolaldehyde with surface cyanosulfidic steps. Mechanistically plausible but rxn_007 remains under-supported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Provide mechanistic details for 2-AI + formaldehyde cyclization",
+          "Separate hydrothermal and surface stages clearly"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_008": 0.9,
+          "rxn_006": 0.9,
+          "rxn_007": 0.4,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Hydrothermal formamidine feeds into cyanosulfidic imidazole formation. Good interconnection but relies on rxn_007 which is speculative.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Substantiate rxn_007 with literature or explore alternative linkage chemistries",
+          "Consider mineral catalysts for surface cyclization"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_008": 0.9,
+          "rxn_006": 0.9,
+          "rxn_007": 0.4,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Surface formamidine plus cyanosulfidic route; chemically plausible but hinges on the unverified rxn_007.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace rxn_007 with established Amadori-like cyclization",
+          "Leverage UV photochemistry to drive 2-AI formation"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_008": 0.9,
+          "rxn_010": 0.6,
+          "rxn_006": 0.9,
+          "rxn_007": 0.4,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.57,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.45,
+        "feedback": "Combines formose and cyanosulfidic chemistry with mixed environments. Lacks clear sequence and uses rxn_007 questionably.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Streamline to a simpler three- or four-step sequence",
+          "Verify each cyclization step experimentally"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.6,
+          "rxn_002": 0.7,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.45,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.4,
+        "feedback": "Hybrid hydrothermal formose & surface Shen\u2013Or\u00f3 is poorly defined; no direct hydrothermal route to erythrose.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Add hydrothermal sugar synthesis step or restrict formose to surface",
+          "Clarify staging to avoid cross-environment misassignments"
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.55,
+    "network_feedback": "The network topology is strong, with well-connected hubs and multiple convergent routes. However, several pathways rely on a speculative linkage (rxn_007) and misassigned environmental conditions. The Shen\u2013Or\u00f3 routes (P1, P4) are most robust and align with literature, while many cyanosulfidic variants require additional mechanistic support.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,832 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "We integrate diverse hydrothermal and surface chemistries to converge on the lone demonstrated prebiotic Amadori\u2013Strecker pathway (Shen et al. 1987, 1990), providing multiple origins for key precursors (erythrose and formamidine) via formose, Fischer\u2013Tropsch, and hydrothermal CO\u2082 reduction sequences.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C4H8O4",
+        "iupac_name": "D-erythrose",
+        "common_name": "Erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH4N2",
+        "iupac_name": "Formamidine",
+        "common_name": "Formamidine",
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H6N2O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": "Imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C6H9N3O2",
+        "iupac_name": "2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": "H\u2082",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CHO2-",
+        "iupac_name": "Formate",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Surface aldol condensation of formaldehyde to glycolaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "pH ~9, wet-dry cycling"
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "Speculative - assumed formose reaction to provide glycolaldehyde"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Surface aldol condensation of glycolaldehyde to erythrose",
+        "inputs": [
+          "mol_002",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "pH 8-9"
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "(Yi et al., 2023)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Surface condensation of HCN and ammonia to formamidine",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Condensation",
+        "reasoning": "Speculative - formamidine formation from HCN and NH\u2083 to access Shen route"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Surface Amadori rearrangement forming imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "formamidine 0.3\u2009M"
+        },
+        "mechanism": "Amadori rearrangement",
+        "reasoning": "(Shen et al., 1987)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface Strecker synthesis of histidine",
+        "inputs": [
+          "mol_005",
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "formamidine 0.3\u2009M"
+        },
+        "mechanism": "Strecker synthesis",
+        "reasoning": "(Shen et al., 1990)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrothermal CO\u2082 reduction to formate on greigite",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "348K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "alkaline vent conditions"
+        },
+        "mechanism": "CO\u2082 reduction",
+        "reasoning": "(Lilova et al., 2020)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal formate dehydration to formaldehyde",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": "true",
+          "other": "acidic conversion"
+        },
+        "mechanism": "Dehydration/hydrogenation",
+        "reasoning": "Speculative - formate dehydration over pyrite"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrothermal condensation of HCN and ammonia to formamidine",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": "true",
+          "other": "alkaline mixing zone"
+        },
+        "mechanism": "Reductive amination",
+        "reasoning": "Speculative - hydrothermal formation of formamidine"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal Fischer-Tropsch synthesis of glycolaldehyde",
+        "inputs": [
+          "mol_011",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "423K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "hydrothermal vent simulant"
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis",
+        "reasoning": "Speculative - Fischer-Tropsch-type formation of glycolaldehyde"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface-only formose + Shen route",
+        "description": "Formaldehyde \u2192 glycolaldehyde \u2192 erythrose; formamidine from surface HCN+NH\u2083; Amadori\u2192imidazole-4-acetaldehyde; Strecker to histidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal FT glycolaldehyde + surface formamidine",
+        "description": "Hydrothermal CO+H\u2082\u2192glycolaldehyde; surface erythrose and formamidine; Shen route to histidine",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal CO\u2082 reduction \u2192 formate \u2192 formaldehyde + surface formamidine",
+        "description": "CO\u2082\u2192formate\u2192formaldehyde; surface formose to erythrose; formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_001",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface formose erythrose + hydrothermal formamidine",
+        "description": "Surface formose to erythrose; hydrothermal formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal FT glycolaldehyde + hydrothermal formamidine",
+        "description": "CO+H\u2082\u2192glycolaldehyde; surface erythrose; hydrothermal formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_002",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal formate route + hydrothermal FT glycolaldehyde + surface formamidine",
+        "description": "CO\u2082\u2192formate\u2192H\u2082CO; CO+H\u2082\u2192glycolaldehyde; surface erythrose; formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Mixed formose + surface & hydrothermal formamidine",
+        "description": "Surface formose to erythrose; both surface and hydrothermal formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal FT + both formamidine routes",
+        "description": "CO+H\u2082\u2192glycolaldehyde; surface erythrose; both formamidine routes; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Full hydrothermal + surface formate + surface formamidine",
+        "description": "CO\u2082\u2192formate\u2192H\u2082CO; CO+H\u2082\u2192glycolaldehyde; surface erythrose; surface formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_001",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full hydrothermal + surface formose + hydrothermal formamidine",
+        "description": "CO\u2082\u2192formate\u2192H\u2082CO; surface formose; hydrothermal formamidine; Amadori + Strecker",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_003",
+      "mol_004"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.4,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.53,
+        "feedback": "Surface\u2010only route follows the Shen path but relies on labile formamidine and low\u2010yield Amadori and Strecker steps without alternative imidazole routes.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Incorporate a Debus\u2013Radziszewski imidazole formation step",
+          "Explore Sutherland 2023 imidazole cascade",
+          "Add mineral stabilization of erythrose"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_009": 0.6,
+          "rxn_002": 0.7,
+          "rxn_003": 0.4,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "Integrates hydrothermal FT glycolaldehyde with surface Amadori\u2013Strecker steps but still depends on unstable intermediates and low yields.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Characterize FT yield to glycolaldehyde under vent conditions",
+          "Include alternative formamidine supply routes",
+          "Stabilize C4 sugar"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.5,
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.4,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.57,
+        "feedback": "Combines hydrothermal CO\u2082\u2192formate\u2192formaldehyde with surface formose and Shen steps. Good environmental integration but key steps remain low\u2010yield and prebiotically questionable.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Validate formate dehydration under vent conditions",
+          "Explore UV\u2010mediated imidazole ring formation",
+          "Assess formamidine stability at interface"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_004": 0.3,
+          "rxn_008": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "Surface formose plus hydrothermal formamidine route is coherent but hydrothermal condensation of HCN/NH\u2083 is even less plausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Quantify formamidine yields in vent simulations",
+          "Test alternative imidazole precursors",
+          "Add catalytic mineral context"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.6,
+          "rxn_002": 0.7,
+          "rxn_004": 0.3,
+          "rxn_008": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.46,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Fully hydrothermal variant still uses Amadori on unstable erythrose and formamidine steps; formamidine under vent conditions is unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Replace Amadori rearrangement with Debus\u2013Radziszewski",
+          "Investigate thermostability of erythrose",
+          "Consider sequential UVC photochemistry"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.5,
+          "rxn_001": 0.8,
+          "rxn_009": 0.6,
+          "rxn_002": 0.7,
+          "rxn_003": 0.4,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "Complex multi\u2010route integration shows environmental synergy but compounds yield challenges and lacks alternative imidazole formation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Streamline to fewer steps",
+          "Explore FoDHA\u2010CN cascade for imidazole core",
+          "Add mineral concentration mechanisms"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.4,
+          "rxn_008": 0.3,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.52,
+        "feedback": "Mixed formose and dual formamidine routes add redundancy but do not mitigate low\u2010yield bottlenecks.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Prioritize single best formamidine source",
+          "Test imidazole ring formation alternatives",
+          "Optimize wet-dry cycling"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_009": 0.6,
+          "rxn_006": 0.7,
+          "rxn_007": 0.5,
+          "rxn_003": 0.4,
+          "rxn_008": 0.3,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "Incorporates both formamidines and hydrothermal FT; strong environmental linkage but mechanistic yields still problematic.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Use interstellar imidazole derivatives as feed",
+          "Incorporate photochemical amine activation",
+          "Stabilize intermediates via borate"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.5,
+          "rxn_001": 0.8,
+          "rxn_003": 0.4,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4,
+          "rxn_008": 0.3
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "Full hydrothermal plus surface formose adds complexity; key Shen steps remain the rate-limiting, low-yield bottleneck.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Reduce step count",
+          "Explore glyoxal\u2010based imidazole formation",
+          "Investigate formamide condensation under UV"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.5,
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_008": 0.3,
+          "rxn_004": 0.3,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.52,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.56,
+        "feedback": "Hydrothermal formate plus surface formose and formamidine is coherent but still dominated by Shen low-yield steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Incorporate UV\u2010driven imidazole syntheses",
+          "Target high-yield cascade chemistries",
+          "Detail mineral catalysts for each step"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.55,
+    "network_feedback": "The network accurately encodes the sole prebiotic Shen Amadori\u2013Strecker route and integrates hydrothermal and surface chemistries, but it remains constrained by labile formamidine, unstable erythrose, and very low yields for imidazole\u20104\u2010acetaldehyde and histidine. Alternative imidazole formation strategies (Debus\u2013Radziszewski, HCN photochemistry, Sutherland cascade) and mineral or UV catalysis should be included to improve plausibility.",
+    "approved": false,
+    "hub_quality": 0.67,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,905 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "The prebiotic synthesis network for L-Proline begins with hydrothermal reduction of CO2 to acetate and pyruvate using iron-sulfur minerals, providing key carbon hubs. These flow to surface environments for chain elongation via aldol condensations involving glyoxylic acid and glycolaldehyde (from HCN-derived formaldehyde via formose) to form alpha-ketoglutarate as a major convergence point. Glutamate is produced convergently through surface Strecker synthesis, hydrothermal reductive amination, or direct cyano-sulfidic pathways from HCN. In biochemical environments, glutamate undergoes dehydrogenation to semialdehyde, followed by cyclization and reduction to form the proline ring, ensuring multiple redundant routes across environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH3CO2-",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3C(O)CO2-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "OCHCO2H",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCHO",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HO2C(CH2)2C(O)CO2H",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HO2C(CH2)2CH(NH2)CO2H",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "NH2CH(CO2H)(CH2)2CHO",
+        "iupac_name": "2-amino-5-oxopentanoic acid",
+        "common_name": "glutamate semialdehyde",
+        "inchi": "InChI=1S/C5H9NO3/c6-4(5(8)9)2-1-3-7/h3-4H,1-2,6H2,(H,8,9)/t4-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H9NO2",
+        "iupac_name": "pyrrolidine-2-carboxylic acid",
+        "common_name": "proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 hydrogenation to acetate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch type synthesis"
+        },
+        "mechanism": "Catalytic surface hydrogenation of CO2 to C2 unit",
+        "reasoning": "Acetate formation in alkaline vents via mineral catalysis (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetate carbon fixation to pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "C-C bond formation analogous to acetyl-CoA pathway",
+        "reasoning": "Pyruvate as early metabolic hub in iron-sulfur world (Morowitz et al., 2000)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "CO2 reduction to glyoxylic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Two-electron reduction and hydration",
+        "reasoning": "Simple alpha-keto acid from CO2 in vent chemistry (speculative extension of formate pathways)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "HCN photolysis to formaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV radiation"
+        },
+        "mechanism": "Photocatalytic cleavage and hydrolysis",
+        "reasoning": "Early atmosphere photochemistry produces carbonyls (Miller, 1953)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol dimerization",
+        "reasoning": "Sugar synthesis stabilized by borates in evaporitic pools (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation of pyruvate and glyoxylic acid to alpha-ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Enol addition across carbonyls with dehydration",
+        "reasoning": "Chain elongation on clay surfaces for keto acid hubs (speculative but aligns with aldol prebiotic chemistry)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis of glutamic acid from alpha-ketoglutarate",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Imine formation, cyanohydrin addition, hydrolysis",
+        "reasoning": "Canonical prebiotic amino acid formation (Strecker, 1850; Miller, 1953)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Dehydrogenation of glutamic acid to semialdehyde",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Thermal oxidative deamination",
+        "reasoning": "Plausible ring-opening precursor in concentrated pools (speculative analog to enzymatic step)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Cyclization and reduction of semialdehyde to proline",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "H2 reduction"
+        },
+        "mechanism": "Intramolecular imine formation followed by hydrogenation",
+        "reasoning": "Prebiotic mimic of proline biosynthesis pathway (speculative but supported by thermal cyclizations)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination of alpha-ketoglutarate to glutamic acid",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Schiff base formation and H2 reduction on mineral",
+        "reasoning": "Alternative to Strecker in reducing vents (Jiang et al., 2008)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Direct chain elongation from acetate to alpha-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "subseafloor interactions"
+        },
+        "mechanism": "Iterative C-C assembly via TCA analog",
+        "reasoning": "Reductive tricarboxylic acid cycle precursors (Smith & Morowitz, 2016)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Aldol condensation of pyruvate and glycolaldehyde to alpha-ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry"
+        },
+        "mechanism": "Cross-aldol reaction between ketone and aldehyde",
+        "reasoning": "Surface-mediated carbon chain building (speculative convergence from sugar and keto acid paths)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "Cyano-sulfidic synthesis of glutamic acid from HCN",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": true,
+          "other": "UV and H2S"
+        },
+        "mechanism": "Oligomerization and hydrolysis to amino acid",
+        "reasoning": "Integrated nucleoside-amino acid pathways (Sutherland, 2010)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal acetate-pyruvate to surface Strecker pathway",
+        "description": "Core route via hydrothermal C2-C3 units elongated on surface to glutamate via Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal direct elongation to reductive amination pathway",
+        "description": "Hydrothermal chain building to alpha-KG, then reductive amination in vents",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_010",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface formose-integrated aldol-Strecker pathway",
+        "description": "Incorporates surface sugar synthesis for aldol with pyruvate to alpha-KG",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_012",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal glyoxylic aldol to reductive pathway",
+        "description": "Uses hydrothermal glyoxylic acid for surface aldol, followed by vent-like reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_010",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Full hydrothermal elongation to surface Strecker",
+        "description": "Direct hydro alpha-KG production flowed to surface for amino acid synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "HCN-dominant cyano-sulfidic to proline",
+        "description": "Surface HCN direct to glutamate, bypassing keto acid intermediates",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Mixed hydro-surface formose-reductive pathway",
+        "description": "Combines formose for aldol, then hydrothermal reductive step after flow",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_012",
+          "rxn_010",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal pyruvate-glyoxylic to cyano-sulfidic hybrid",
+        "description": "Aldol product enhances HCN pathway, but uses direct Strecker alternative",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_013",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface HCN-formose dual input to reductive",
+        "description": "Formaldehyde from HCN feeds formose, aldol with hydro pyruvate, then reductive",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_001",
+          "rxn_002",
+          "rxn_012",
+          "rxn_010",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Comprehensive hydrothermal-surface convergence",
+        "description": "Multiple hydro inputs converge at surface for final assembly",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_011",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010",
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_009",
+      "mol_010",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_010",
+          "rxn_013"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_006": 0.5,
+          "rxn_007": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Solid hydrothermal start to surface transition, but aldol step to alpha-KG is mechanistically strained.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Provide mineral catalyst for aldol condensation."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.4,
+          "rxn_010": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal focus is good, but direct elongation from acetate is overly simplified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Break down chain elongation into stepwise reactions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_005": 0.9,
+          "rxn_002": 0.8,
+          "rxn_012": 0.5,
+          "rxn_007": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8,
+          "rxn_003": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Formose integration adds realism, but aldol with glycolaldehyde needs validation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Cite prebiotic evidence for HCN to formaldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_002": 0.8,
+          "rxn_006": 0.5,
+          "rxn_010": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Good convergence at alpha-KG, hydrothermal-surface flow justified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify conditions for glyoxylic acid reduction."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_011": 0.4,
+          "rxn_007": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Full hydrothermal to surface works, but elongation step weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Incorporate intermediate carbon fixations."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_013": 0.7,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Short HCN route efficient, but lacks environmental depth.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add details on cyano-sulfidic mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.6,
+          "rxn_005": 0.9,
+          "rxn_012": 0.5,
+          "rxn_010": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Mixed inputs provide redundancy, formose plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Balance HCN inputs with mineral roles."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_006": 0.5,
+          "rxn_013": 0.7,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Hybrid approach interesting, but Strecker integration loose.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Clarify cyano-sulfidic connection to alpha-KG."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_005": 0.9,
+          "rxn_003": 0.7,
+          "rxn_002": 0.8,
+          "rxn_012": 0.5,
+          "rxn_006": 0.5,
+          "rxn_010": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Dual surface inputs strong, but multiple aldols dilute focus.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_012",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Prioritize one aldol route."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_006": 0.5,
+          "rxn_012": 0.5,
+          "rxn_007": 0.9,
+          "rxn_008": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Comprehensive convergence excellent, captures network strengths.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Add literature support for aldol steps."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with good environmental flow and redundancy, but some aldol reactions to alpha-KG lack precise mechanisms; aligns generally with prebiotic literature on amino acid synthesis.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

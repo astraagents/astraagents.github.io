@@ -1,0 +1,620 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "L-Threonine",
+    "overall_strategy": "Combine cyanosulfidic aminonitrile chemistry in surface environments with hydrothermal aldol condensation of prebiotic amino acids to generate L-threonine via two terminal routes. Multiple upstream routes supply key hub intermediates (L-alanine, formaldehyde, 2-amino-3-hydroxybutanenitrile) from simple feedstocks across interconnected hydrothermal and surface settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2-hydroxy-3-cyanopropoxy)ethane",
+        "common_name": "cyanohydrin intermediate",
+        "inchi": "InChI=1S/C5H9NO2/c1-4(7)2-5(8)3-6/h4-5,7-8H,2H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "aminonitrile intermediate",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2R,3R)-2-amino-3-hydroxybutanoic acid",
+        "common_name": "L-threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3-/m1/s1",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H3O3-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2NOH",
+        "iupac_name": "hydroxylamine",
+        "common_name": null,
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanohydrin formation from lactaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Nucleophilic addition of CN\u207b to the aldehyde carbonyl forming a cyanohydrin",
+        "reasoning": "Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminonitrile formation via Strecker amination",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet\u2013dry cycles"
+        },
+        "mechanism": "Ammonia displaces the hydroxyl to yield the aminonitrile and water",
+        "reasoning": "Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Nitrile hydrolysis to L-threonine",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "Stepwise hydration of the nitrile to amide then carboxylic acid, releasing ammonia",
+        "reasoning": "Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation of L-alanine with formaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "vent-like conditions"
+        },
+        "mechanism": "\u03b1-Carbon of alanine attacks formaldehyde, forming a new C\u2013C bond and a \u03b2-hydroxyl group",
+        "reasoning": "Aubrey et al. (2008)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive amination of pyruvate to L-alanine",
+        "inputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite",
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": "true",
+          "other": "pH 9\u201311"
+        },
+        "mechanism": "Nucleophilic addition of hydroxylamine to pyruvate followed by reduction to alanine",
+        "reasoning": "Muchowska et al. (2019)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of L-alanine",
+        "inputs": [
+          "mol_012",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet\u2013dry cycles"
+        },
+        "mechanism": "Aldehyde, cyanide and ammonia react to form alanine and water via Strecker chemistry",
+        "reasoning": "Patel et al. (2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic threonine synthesis in evaporitic pools",
+        "description": "Three\u2010step surface cyanosulfidic route under evaporitic conditions",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic threonine synthesis in volcanic hot springs",
+        "description": "Same cyanosulfidic sequence in an acidic volcanic spring environment",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic threonine synthesis in tidal flats",
+        "description": "Wet\u2013dry driven cyanosulfidic sequence in tidal flats with UV exposure",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal aldol route in alkaline vents",
+        "description": "Aldol condensation of alanine with formaldehyde in alkaline hydrothermal vents",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal aldol route in black smokers",
+        "description": "Aldol condensation under acidic black smoker conditions",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal aldol route in subseafloor settings",
+        "description": "Aldol condensation in subseafloor hydrothermal systems",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Alanine-fed hydrothermal route",
+        "description": "Pyruvate reductive amination to alanine then aldol condensation",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface Strecker-fed hydrothermal route",
+        "description": "Alanine from Strecker synthesis followed by hydrothermal aldol",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface Strecker only route",
+        "description": "Direct alanine production by Strecker and direct aldol to threonine",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Reductive aminaton-only hydrothermal route",
+        "description": "Alanine from reductive amination then direct aldol to threonine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Well\u2010established three\u2010step surface route with strong literature support.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "No major issues; pathway aligns closely with Patel et al. 2015 cyanosulfidic route."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Equivalent to P1 but in volcanic hot springs; chemically sound.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Suitable for evaporitic pool scenario; no changes needed."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Identical cyanosulfidic sequence in a different niche, consistent with literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Appropriate for tidal flat environment; fully feasible."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Single\u2010step hydrothermal aldol is well supported by Aubrey et al. 2008.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include notes on formaldehyde supply in alkaline vent fluids."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Hydrothermal pathway replicable across vent types.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify mineral surfaces in black smoker context."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Mechanism consistent with known submarine hydrothermal chemistry.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify pressure\u2010temperature window for subseafloor settings."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Robust two\u2010step hydrothermal route linking pyruvate amination to aldol.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail kinetics of alanine transport between settings."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_006": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Good integration of surface Strecker alanine feed into hydrothermal aldol.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Ensure formaldehyde availability in hydrothermal zone is quantified."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_006": 0.9,
+          "rxn_003": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.63,
+        "feedback": "Route is underspecified; two\u2010step Strecker-only route cannot deliver threonine directly.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Define the correct second reaction step to form threonine or revert to the three\u2010step Strecker sequence."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.84,
+        "feedback": "Mechanistically sound but duplicates P7; consolidate to streamline network.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consolidate duplicate of P7 to avoid redundancy."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.88,
+    "network_feedback": "The network is well\u2010connected, aligns closely with key literature (Patel et al. 2015; Aubrey et al. 2008), and provides multiple robust routes to L-threonine across surface and hydrothermal environments. Minor issues include an underspecified two-step surface route (P9) and duplicate pathway (P10).",
+    "approved": true,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

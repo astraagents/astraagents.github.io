@@ -1,0 +1,811 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "A convergent synthesis combining hydrothermal CO2/H2 reduction (greigite, magnetite) and surface formose chemistry (borate, montmorillonite) to build C1\u2013C4 precursors (formate, formaldehyde, glycolaldehyde, acetate), followed by hydrothermal reductive carboxylations to pyruvate and \u03b1-ketoglutarate, reductive amination to glutamate, cyclization and reduction to L-proline.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCOO\u2013",
+        "iupac_name": "Formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H3O2\u2013",
+        "iupac_name": "Acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H3O3\u2013",
+        "iupac_name": "Pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxoglutarate",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H9NO4",
+        "iupac_name": "Glutamic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H7NO3",
+        "iupac_name": "1-Pyrroline-5-carboxylic acid",
+        "common_name": "\u03941-pyrroline-5-carboxylate",
+        "inchi": "InChI=1S/C5H7NO2/c7-5(8)4-2-1-3-6-4/h3-4H,1-2H2,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H9NO2",
+        "iupac_name": "Proline",
+        "common_name": "L-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Heterogeneous electron transfer on Fe\u2013S surfaces",
+        "reasoning": "Widely demonstrated CO2 reduction on greigite analogues (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Sequential hydrogenation of carboxylate",
+        "reasoning": "Fischer\u2013Tropsch-type hydrogenation on Fe3O4 (Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals",
+          "Ca(OH)2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "wet\u2013dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol autocondensation",
+        "reasoning": "Borate-stabilized formose under wet\u2013dry conditions (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glycolaldehyde carboxylation to pyruvate",
+        "inputs": [
+          "mol_007",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Reductive carboxylation of C2 to C3 keto acid",
+        "reasoning": "Analogous to pyruvate synthesis on Fe\u2013S surfaces (Cleaves et al., 2009)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Acetate carboxylation to pyruvate",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Fischer\u2013Tropsch-type homologation",
+        "reasoning": "Extended FT yields C3 compounds from acetate (Huber et al., 2003)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyruvate carboxylation to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_009",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeNiS"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeNiS",
+          "aqueous": true,
+          "other": "pH 9"
+        },
+        "mechanism": "Reductive carboxylation via metal sulfide centers",
+        "reasoning": "Demonstrated for succinate/rTCA analogs (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Imine formation and hydrogenation",
+        "reasoning": "Reductive amination on FeS surfaces (Yamaguchi et al., 2014)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyclization to \u03941-pyrroline-5-carboxylate",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "mild dehydration"
+        },
+        "mechanism": "Intramolecular lactamization",
+        "reasoning": "Clay-catalyzed cyclization of glutamate under wet\u2013dry (Deamer & Weber, 2010)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reduction to L-proline",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Hydrogenation of imine ring",
+        "reasoning": "Imine reduction on FeS minerals (Milner-White & Russell, 2005)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Formate\u2192Formaldehyde\u2192Glycolaldehyde\u2192Glycolaldehyde carboxylation path",
+        "description": "Hydrothermal C1 reduction then surface formose and FeS carboxylation to pyruvate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Formate\u2192Formaldehyde\u2192Glycolaldehyde\u2192Acetate carboxylation path",
+        "description": "C1 reduction\u2009\u2192\u2009formose\u2009\u2192\u2009acetate FT homologation\u2009\u2192\u2009pyruvate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct acetate route",
+        "description": "Hydrothermal FT forms acetate then sequential carboxylations",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Glycolaldehyde homologation route",
+        "description": "Surface C2 builds to C3 then central metabolism",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Mixed carboxylation route",
+        "description": "Acetate and glycolaldehyde both carboxylate to merge at pyruvate",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Short hydrothermal route",
+        "description": "Acetate\u2192pyruvate\u2192\u03b1-ketoglutarate sequence",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hybrid formose-FT route",
+        "description": "C1\u2192C2\u2192FT acetate complement",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Focused \u03b1-ketoglutarate amination",
+        "description": "Emphasizes late amination and ring closure",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface-to-biochemical tandem",
+        "description": "Formose-driven glycolaldehyde upgrade into TCA analog",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Minimal cyclization route",
+        "description": "Glutamate cyclization and reduction",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.7,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Well\u2010defined, fully connected convergent path with realistic hydrothermal and surface steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Incorporate mineral or protoenzyme catalysts for reductive amination and imine reduction"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.6,
+        "feedback": "Missing defined conversion from glycolaldehyde to acetate; pathway logic incomplete.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add explicit reaction for C2 oxidation to acetate",
+          "Clarify catalyst and conditions"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.3,
+        "feedback": "Lacks key steps to reach L\u2010proline; acetate origin and cyclization missing.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Define surface/formose steps to produce acetate",
+          "Include amination and cyclization steps"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.5,
+        "feedback": "Homologation to pyruvate is clear, but no progression to proline.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Extend pathway with amination and cyclization",
+          "Ensure convergence to L\u2010proline"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.5,
+        "feedback": "Mixed carboxylation generates \u03b1KG but stops short of L\u2010proline.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Include glutamate cyclization and reduction",
+          "Validate reductive amination conditions"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.7,
+          "rxn_006": 0.6,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.5,
+        "feedback": "A short hydrothermal route but missing amination and cyclization.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add \u03b1\u2010ketoglutarate amination and \u03941\u2010pyrroline cyclization steps"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.7,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Hybrid route is coherent but redundant with P1; consider streamlining.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Reduce redundant steps",
+          "Optimize surface-to-hydrothermal transitions"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_006": 0.6,
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.65,
+        "feedback": "Focused amination is efficient but omits pyruvate generation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Integrate upstream pyruvate synthesis",
+          "Clarify catalyst for reductive amination"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7,
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.65,
+        "feedback": "Environmental leaps are abrupt; missing carboxylation steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Smooth hydrothermal-surface integration",
+          "Add pyruvate-to-\u03b1KG carboxylation"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.6,
+        "feedback": "Minimal but skips key C\u2013C formation and amination.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Incorporate initial carbon\u2010chain building",
+          "Specify missing surface processes"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.68,
+    "network_feedback": "The network is well-connected with plausible core hydrothermal and surface conversions, but many pathways omit critical steps. Reductive amination and final reductions need stronger catalysts or protoenzymes, and several routes require explicit C\u2013C bond-forming definitions.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

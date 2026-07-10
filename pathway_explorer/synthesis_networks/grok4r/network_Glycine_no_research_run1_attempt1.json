@@ -1,0 +1,793 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "The synthesis network for glycine integrates hydrothermal reduction of CO2 and H2 to key C1/C2 precursors like formate, CO, and glyoxylic acid, surface-based Strecker chemistry using cyanohydrins and amination on mineral surfaces, and biochemical hydrolysis for final product formation. Interconnections occur via shared hubs such as formaldehyde (from multiple reductions) and glyoxylic acid (from direct fixation or carbonylation), enabling convergent, redundant pathways across environments while adhering to anoxic, UV-exposed prebiotic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH2O2",
+        "iupac_name": "formic acid",
+        "common_name": "formic acid",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H3NO",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface adsorption of CO2 and stepwise hydrogenation on Fe-S clusters",
+        "reasoning": "Greigite catalyzes CO2 reduction in alkaline vents, producing formate as a key C1 hub (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Photocatalytic reduction of formate to formaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV excitation of TiO2 generates electrons for reducing formate to aldehyde",
+        "reasoning": "TiO2 photocatalysis enables C1 reductions in UV-irradiated surface pools under anoxic conditions (Guzman & Martin, 2009)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanohydrin formation from formaldehyde and HCN",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of cyanide to carbonyl, catalyzed by clay surfaces",
+        "reasoning": "Montmorillonite concentrates reactants for Strecker pathway initiation in evaporitic pools (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Amination of glycolonitrile to aminoacetonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic displacement of hydroxy by ammonia on clay-templated intermediate",
+        "reasoning": "Clay catalysis facilitates amination in the Strecker synthesis for prebiotic amino acids (Lambert, 2008)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of aminoacetonitrile to glycine",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal activation in pools"
+        },
+        "mechanism": "Nitrile hydrolysis to amide then carboxylic acid under mild heating",
+        "reasoning": "Plausible in concentrated prebiotic pools connecting surface products to biomolecules (Miller, 1953; prebiotic adaptation)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Direct reduction of CO2 to glyoxylic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "C-C coupling and multi-electron reduction on iron oxide surfaces",
+        "reasoning": "Magnetite enables abiotic carbon fixation to alpha-keto acids in vents (Martin et al., 2008)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of glyoxylic acid to glycine",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Schiff base formation followed by hydrogenation on sulfide surface",
+        "reasoning": "Pyrite acts as electron donor for amination, mimicking early metabolism (Guzman & Martin, 2009)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Fischer-Tropsch hydrogenation of CO to formaldehyde",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing H2-rich fluid"
+        },
+        "mechanism": "Catalytic hydrogenation and chain initiation on metal surface",
+        "reasoning": "Abiotic FT synthesis produces aldehydes in hydrothermal systems (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reverse water-gas shift reaction to CO",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron"
+        ],
+        "conditions": {
+          "temperature": "500-600K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "serpentinization-driven"
+        },
+        "mechanism": "Reductive conversion of CO2 to CO facilitated by Fe0",
+        "reasoning": "Iron-rich rocks in vents promote CO formation under reducing conditions (Sleep et al., 2004)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Carbonylation of formate to glyoxylic acid",
+        "inputs": [
+          "mol_007",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "H2-rich"
+        },
+        "mechanism": "CO insertion into activated formate on Fe-S cluster",
+        "reasoning": "Greigite catalyzes C-C bond formation analogous to acetyl-CoA pathway (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-to-Surface Strecker via Formate",
+        "description": "CO2 reduced to formate in vents, exported to surface for conversion to HCHO, followed by full Strecker to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Fischer-Tropsch to Surface Strecker",
+        "description": "CO generated and hydrogenated to HCHO in vents, then surface Strecker synthesis.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct Hydrothermal Carbon Fixation and Amination",
+        "description": "CO2 directly fixed to glyoxylic acid, then reductively aminated to glycine in vents.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal Formate-Carbonylation to Glyoxylic Acid",
+        "description": "Parallel production of formate and CO, coupled to glyoxylate, then amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Integrated Hydrothermal C1 to C2 Hub via FT and Carbonylation",
+        "description": "CO from vents used in both FT for HCHO and carbonylation for glyoxylate, converging at glycine via mixed routes.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formate-Dependent Hydrothermal Glyoxylate Synthesis",
+        "description": "Formate from CO2 reduction carbonylated using vent CO to glyoxylate, then to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Full Hydrothermal Redox Chain to Strecker",
+        "description": "CO2 to CO to HCHO in vents, full transfer to surface Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Dual Hydrothermal Fixation to Convergent Amination",
+        "description": "Parallel direct and carbonylation routes to glyoxylate, unified amination.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_001",
+          "rxn_009",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "CO-Driven Hydrothermal-to-Surface via Multiple Hubs",
+        "description": "CO enables both HCHO and glyoxylate, with surface Strecker as primary.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_008",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Comprehensive Inter-Environment Convergence",
+        "description": "Formate from vents supports both surface HCHO reduction and hydrothermal carbonylation, leading to glycine via Strecker or amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 1.0,
+          "rxn_004": 0.9,
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Clear progression from hydrothermal formate to surface Strecker synthesis, well-integrated.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify prebiotic hydrolysis conditions for rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_009": 0.95,
+          "rxn_008": 0.7,
+          "rxn_003": 1.0,
+          "rxn_004": 0.9,
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Fischer-Tropsch route provides alternative C1 input, but FT specificity to formaldehyde is moderate.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Enhance FT conditions for oxygenate selectivity"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Shortest hydrothermal route, efficient but direct CO2 to glyoxylic acid step needs validation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add intermediate steps or catalysts for rxn_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.95,
+          "rxn_010": 0.8,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.89,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.89,
+        "feedback": "Carbonylation pathway builds C2 from C1 hubs effectively in hydrothermal setting.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Confirm CO availability from RWGS"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.95,
+          "rxn_008": 0.7,
+          "rxn_010": 0.8,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Integrates multiple hydrothermal routes to glyoxylic hub, showing redundancy.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Optimize FT for better yield"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.8,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Formate-dependent C2 synthesis is straightforward and chemically sound.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include mineral catalysts for carbonylation"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 1.0,
+          "rxn_004": 0.9,
+          "rxn_005": 0.7,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Full chain with RWGS integration, but longer path increases complexity.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Shorten by combining steps"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_006": 0.6,
+          "rxn_001": 0.9,
+          "rxn_010": 0.8,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Dual fixation routes converge well on amination.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Validate direct fixation"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_009": 0.95,
+          "rxn_008": 0.7,
+          "rxn_002": 0.8,
+          "rxn_003": 1.0,
+          "rxn_004": 0.9,
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "CO-driven multi-hub path shows good interconnection.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Improve FT and hydrolysis plausibility"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.6,
+          "rxn_008": 0.7,
+          "rxn_003": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "Comprehensive convergence across environments, robust design.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Refine direct reduction step"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.87,
+    "network_feedback": "Strongly connected network with multiple convergent pathways to glycine, chemically feasible in prebiotic contexts, minor issues with specific reductions.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

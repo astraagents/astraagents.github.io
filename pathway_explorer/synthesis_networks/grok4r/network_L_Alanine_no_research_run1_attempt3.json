@@ -1,0 +1,825 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "The network constructs L-Alanine through interconnected prebiotic pathways: hydrothermal reduction of CO2 and CO to acetate and pyruvate as central hubs, followed by either direct reductive amination or decarboxylation to acetaldehyde, which converges into surface Strecker synthesis. Acetate, pyruvate, and acetaldehyde serve as hubs with multiple incoming routes for redundancy. Environmental flow includes hydrothermal production of C2/C3 intermediates feeding surface Strecker and biochemical decarboxylation/hydrolysis, ensuring multiple routes to the target under anoxic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O2",
+        "iupac_name": "formic acid",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O2",
+        "iupac_name": "acetic acid",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "CO",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine nitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed hydrogenation of CO2 to formate on Fe-S clusters.",
+        "reasoning": "Plausible in alkaline vents via serpentinization-derived H2; supported by greigite catalysis in iron-sulfur world hypothesis (Huber & W\u00e4chtersh\u00e4user, 1997)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate carbonylation to acetate",
+        "inputs": [
+          "mol_005",
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Formate reacts with CO and H2 on mineral surface to form acetyl group, yielding acetate.",
+        "reasoning": "Analogous to Wood-Ljungdahl pathway; mackinawite facilitates CO insertion (Huber et al., 2008)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetate carboxylation to pyruvate",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Reductive carboxylation of acetate with CO2 and H2 on mineral surface to form pyruvate.",
+        "reasoning": "Extension of reductive TCA cycle analogs in vents; greigite mimics ferredoxin clusters (Martin et al., 2008)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Fischer-Tropsch synthesis to acetaldehyde",
+        "inputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "metal surfaces"
+        },
+        "mechanism": "Catalytic hydrogenation of CO to aldehydes via surface Fischer-Tropsch-type reactions.",
+        "reasoning": "Magnetite in vents promotes hydrocarbon and aldehyde formation from syngas (CO + H2) (Huber & W\u00e4chtersh\u00e4user, 1999)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis to aminopropanenitrile",
+        "inputs": [
+          "mol_008",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Acetaldehyde condenses with NH3 and HCN to form alpha-aminonitrile on clay surfaces.",
+        "reasoning": "Classic prebiotic route for amino acid precursors; clays concentrate and catalyze (Powner et al., 2009)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of aminopropanenitrile to L-alanine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal hydrolysis, wet-dry cycles"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid, yielding amino acid.",
+        "reasoning": "Plausible in prebiotic pools; stereoselectivity towards L-alanine via mineral chirality or UV asymmetry (Blackmond, 2004)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of pyruvate to L-alanine",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "H2 as reductant"
+        },
+        "mechanism": "Pyruvate + NH3 forms imine, reduced by H2 on mineral surface to alanine.",
+        "reasoning": "Surface-catalyzed reductive amination; pyrite provides electrons; L-selectivity possible via chiral surfaces (Guzman & Martin, 2009)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Decarboxylation of pyruvate to acetaldehyde",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "thermal, dry conditions"
+        },
+        "mechanism": "Thermal decarboxylation of alpha-keto acid to aldehyde + CO2.",
+        "reasoning": "Plausible in geothermal pools; connects hydrothermal products to surface chemistry (Weber, 2002)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Photocatalytic reduction of acetate to acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV-driven reduction on TiO2 surface decarboxylates/reduces acetate to aldehyde using H2.",
+        "reasoning": "TiO2 photocatalysis under prebiotic UV; bridges hydrothermal acetate to surface intermediates (Zhang & Martin, 2006)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "CO2 reduction to CO",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "reducing metal"
+        },
+        "mechanism": "Direct reduction of CO2 to CO by metallic iron.",
+        "reasoning": "Fe0 in subseafloor provides strong reductant for CO production (Vance et al., 2016)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Direct reductive carboxylation to pyruvate",
+        "inputs": [
+          "mol_010",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO + CO2 + H2 form activated acetyl, carboxylated to pyruvate on Fe-S surface.",
+        "reasoning": "Greigite catalyzes C1 + C1 to C3 via acetyl-CoA pathway analog; avoids oversimplified direct CO2 to pyruvate (Coduvio et al., 2019)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal direct carboxylation to reductive amination",
+        "description": "CO2 reduced to CO, then directly to pyruvate via rxn_011, followed by reductive amination.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal multi-step to pyruvate via acetate amination",
+        "description": "Full chain from CO2 to formate to acetate to pyruvate, then amination.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Fischer-Tropsch to surface Strecker",
+        "description": "CO2 to CO to acetaldehyde via F-T, then Strecker synthesis and hydrolysis.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Pyruvate decarboxylation to Strecker",
+        "description": "Direct CO2 to pyruvate, decarboxylate to acetaldehyde, then Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Acetate photocatalytic reduction to Strecker",
+        "description": "CO2 to acetate via formate, reduce to acetaldehyde, then Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Full hydrothermal to pyruvate decarboxylation to Strecker",
+        "description": "CO2 to acetate to pyruvate, decarboxylate, then surface Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Direct CO to pyruvate amination",
+        "description": "CO from CO2, direct to pyruvate, then reductive amination.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "F-T acetaldehyde via acetate path",
+        "description": "Indirect F-T via acetate reduction, but using F-T branch for acetaldehyde to Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Convergent acetate to pyruvate to decarb Strecker",
+        "description": "Acetate from chain, to pyruvate, decarb to acetaldehyde, Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Dual convergence at pyruvate to amination",
+        "description": "Pyruvate from acetate path and direct, converging to amination (shared rxn_007).",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_011",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_010": 0.9,
+          "rxn_011": 0.75,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Direct hydrothermal route via CO and pyruvate is coherent, but reductive amination stereoselectivity for L-alanine needs justification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Specify catalyst for reductive amination to ensure chirality."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Multi-step build-up to pyruvate is robust with redundancy, strong hydrothermal focus.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add mineral catalysts for carboxylation steps."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_010": 0.9,
+          "rxn_004": 0.7,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.87,
+        "feedback": "Clear hydro to surface to bio flow, but FT to acetaldehyde is less direct.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Cite specific FT variants for aldehyde production."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_010": 0.9,
+          "rxn_011": 0.75,
+          "rxn_008": 0.6,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Decarboxylation step is plausible but challenging prebiotically; good convergence.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Explore thermal or mineral-catalyzed decarboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_009": 0.65,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.84,
+        "feedback": "Photocatalytic step from acetate adds surface realism, but reduction mechanism vague.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Detail photocatalyst like TiO2 for reduction."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_008": 0.6,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.85,
+        "feedback": "Longer route with good environmental transitions, but decarboxylation weakens it.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Shorten by direct acetaldehyde routes."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.9,
+          "rxn_011": 0.75,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Efficient direct route, similar to P1, strong hydrothermal coherence.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Enhance amination with specific reductants."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_004": 0.7,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.86,
+        "feedback": "Converges FT with acetate path, but redundant with P3.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Clarify FT selectivity."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_008": 0.6,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.85,
+        "feedback": "Strong convergence at pyruvate and acetaldehyde, good redundancy.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Address chirality in Strecker path."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_011": 0.75,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Dual convergence at pyruvate emphasizes hub strength, all hydrothermal.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Include literature for multi-route convergence."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with robust hubs and convergent pathways; chemically sound overall, with minor issues in specific reductions and stereoselectivity. Strong environmental flow from hydrothermal to biochemical stages.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

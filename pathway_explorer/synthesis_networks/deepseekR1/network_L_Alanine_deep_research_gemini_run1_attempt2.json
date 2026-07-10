@@ -1,0 +1,378 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrated network combining hydrothermal reductive amination of pyruvate, surface Strecker synthesis, and cyanosulfidic homologation pathways with mineral-mediated environmental interconnection",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O",
+        "iupac_name": "Acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H5N2",
+        "iupac_name": "2-Aminopropanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H7NO2",
+        "iupac_name": "L-Alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate synthesis via CO2 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe3S4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Stepwise CO2 hydrogenation through formate intermediate",
+        "reasoning": "Greigite-catalyzed CO2 reduction mimics ancient metabolic pathways (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Green rust (Fe\u00b2\u207a/Fe\u00b3\u207a hydroxide)"
+        ],
+        "conditions": {
+          "temperature": "343-373K",
+          "pressure": "High",
+          "catalyst": "Green rust",
+          "aqueous": true,
+          "other": "pH 9-11, Fe\u00b2\u207a/Fe\u00b3\u207a = 1:1"
+        },
+        "mechanism": "Surface-mediated electron transfer amination",
+        "reasoning": "Green rust provides redox gradient for NH3 activation (Barge et al., 2019)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of aminonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Imine formation \u2192 cyanide addition",
+        "reasoning": "Clay-catalyzed three-component condensation (Miller, 1953)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "Spontaneous hydrolysis in prebiotic pools (Miller, 1953)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanosulfidic homologation",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuS",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "CuS/TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "HCN oligomerization via photoredox cycling",
+        "reasoning": "UV-driven homologation with Cu catalysis (Sutherland et al., 2013)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation to acetaldehyde",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Borate",
+          "aqueous": true,
+          "other": "Evaporative concentration"
+        },
+        "mechanism": "Sugar-phosphate mediated cleavage",
+        "reasoning": "Borate-stabilized glycolaldehyde rearrangement (Sutherland et al., 2013)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core pathway",
+        "description": "CO2 \u2192 Pyruvate \u2192 Alanine via iron-catalyzed reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Classical Strecker pathway",
+        "description": "Acetaldehyde + NH3 + HCN \u2192 Aminonitrile \u2192 Alanine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic homologation pathway",
+        "description": "HCN \u2192 Glycolaldehyde \u2192 Acetaldehyde \u2192 Alanine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.775,
+        "feedback": "Hydrothermal pathway lacks explicit mineral catalysts (e.g., green rust) critical for pyruvate synthesis and reductive amination. Steps are chemically plausible but require environmental specificity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify iron oxyhydroxide catalysts for hydrothermal steps",
+          "Clarify CO\u2082 reduction mechanism"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Strecker pathway aligns well with literature, but biochemical hydrolysis (rxn_004) should specify mineral catalysis (e.g., clays) for prebiotic plausibility.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace 'Biochemical' environment with 'Surface' for hydrolysis",
+          "Add montmorillonite as a hydrolysis catalyst"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.4,
+          "rxn_006": 0.3
+        },
+        "chemical_feasibility": 0.35,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.4,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.39,
+        "feedback": "Cyanosulfidic homologation pathway is incomplete: rxn_005 lacks H\u2082S/UV/Cu agents, rxn_006 (Aldol) is chemically invalid. No clear route to alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add H\u2082S and Cu catalysts to rxn_005",
+          "Revise rxn_006 to align with cyanosulfidic homologation steps"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.65,
+    "network_feedback": "Network integrates key pathways but has critical gaps: (1) Underspecified mineral catalysis in hydrothermal/surface steps, (2) Chemically flawed cyanosulfidic pathway, (3) Hub molecules lack sufficient connectivity. Strecker pathway (P2) is viable but requires environmental adjustments.",
+    "approved": false,
+    "hub_quality": 0.5,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

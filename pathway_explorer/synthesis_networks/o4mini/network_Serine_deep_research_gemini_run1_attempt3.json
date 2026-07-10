@@ -1,0 +1,861 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrate hydrothermal Fischer\u2013Tropsch formaldehyde production, surface photoredox cyanosulfidic formose and Strecker chemistry, and computational formaldimine coupling to create 10 redundant routes to serine across hydrothermal, surface, and biochemical contexts.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2NH",
+        "iupac_name": "methanimine",
+        "common_name": "formaldimine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6O3",
+        "iupac_name": "glyceraldehyde",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine nitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH5NO",
+        "iupac_name": "aminomethanol",
+        "common_name": null,
+        "inchi": "InChI=1S/CH5NO/c2-1-3/h3H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "PSO3^3-",
+        "iupac_name": "thiophosphate",
+        "common_name": null,
+        "inchi": "InChI=1S/H3O3PS/c1-4(2,3)5/h(H3,1,2,3,5)/p-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "C2H3NO2",
+        "iupac_name": "2-hydroxyiminopropanenitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C3H5NO",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "glycine nitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_002",
+        "name": "Fischer\u2013Tropsch formaldehyde synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "FT-type CO hydrogenation"
+        },
+        "mechanism": "Surface-mediated Fischer\u2013Tropsch CO hydrogenation to formaldehyde",
+        "reasoning": "(Barge et al., 2022)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Photoredox HCN reduction to formaldimine",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox reduction of HCN to CH2NH",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formaldimine hydrolysis to formaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Hydrolysis of imine to aldehyde and ammonia",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formose reaction: formaldehyde to glycolaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals",
+          "Ca(OH)2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "alkaline conditions"
+        },
+        "mechanism": "Base-catalyzed aldol condensation of formaldehyde",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation to glyceraldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Mineral-catalyzed aldol condensation",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis of serine nitrile",
+        "inputs": [
+          "mol_009",
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Strecker-type \u03b1-aminonitrile synthesis",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of serine nitrile to serine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "340K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": false,
+          "other": "dry heat"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis",
+        "reasoning": "(Green et al., 2023)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reductive amination of formaldehyde to aminomethanol",
+        "inputs": [
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Mineral-catalyzed reductive amination",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Dehydration of aminomethanol to formaldimine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Mineral-catalyzed dehydration",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "RTIP-mediated coupling to serine nitrile",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "spark discharge / UV"
+        },
+        "mechanism": "C\u2013C coupling via activated imine and aldehyde",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_014",
+        "name": "Photoredox homologation of HCN to glycolonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox homologation of HCN",
+        "reasoning": "(Ritson & Sutherland, 2023)"
+      },
+      {
+        "id": "rxn_015",
+        "name": "Hydrolysis of glycolonitrile to glycolaldehyde",
+        "inputs": [
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Nitrile hydrolysis to sugar",
+        "reasoning": "(Ritson & Sutherland, 2023)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal FT\u2013Strecker route",
+        "description": "Hydrothermal formaldehyde from magnetite feeds formose and Strecker to serine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface photoredox\u2013Strecker route",
+        "description": "HCN photoreduction to CH2NH hydrolysed then through formose and Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "RTIP direct coupling route",
+        "description": "Hydrothermal reductive amination to formaldimine coupled with glyceraldehyde",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hybrid hydrothermal\u2013RTIP route",
+        "description": "FT formaldehyde to aminomethanol then RTIP coupling to serine nitrile",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface aldol\u2013RTIP route",
+        "description": "Aldol condensation then formaldimine coupling to serine nitrile",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Photoredox formose\u2013RTIP route",
+        "description": "Methanimine hydrolysis then direct RTIP coupling bypassing Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "FT\u2013RTIP route",
+        "description": "Hydrothermal FT formaldehyde then RTIP coupling",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyanosulfidic glycolonitrile\u2013Strecker route",
+        "description": "Thiophosphate-mediated HCN homologation to glycolonitrile then sugar hydrolysis into Strecker",
+        "reaction_sequence": [
+          "rxn_014",
+          "rxn_015",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glycolonitrile\u2013RTIP route",
+        "description": "Glycolonitrile hydrolysis to glycolaldehyde then formaldimine coupling",
+        "reaction_sequence": [
+          "rxn_014",
+          "rxn_015",
+          "rxn_006",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct surface RTIP bypass",
+        "description": "Formose from ambient formaldehyde then RTIP coupling to serine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_006",
+      "mol_008",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.85,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "A classic and robust FT\u2013Strecker sequence with clear hydrothermal\u2192surface progression. All steps are well\u2010supported by literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.85,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.84,
+        "feedback": "A fully surface\u2010driven photoredox route; plausible and aligns with Sutherland's cyanosulfidic model.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consider minor integration of hydrothermal feedstock delivery for enhanced realism."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_009": 0.75,
+          "rxn_010": 0.7,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.67,
+        "feedback": "RTIP coupling step (rxn_011) is underspecified due to missing glyceraldehyde input; sequence is incomplete.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add a glyceraldehyde formation step before RTIP coupling or adjust pathway to include formose reactions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_009": 0.75,
+          "rxn_010": 0.7,
+          "rxn_005": 0.85,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.78,
+        "feedback": "Hybrid hydrothermal\u2192surface route is promising but RTIP coupling (rxn_011) again lacks clear C3 partner.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Ensure intermediate C3 sugar availability or re-order formose and RTIP steps."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_006": 0.85,
+          "rxn_010": 0.7,
+          "rxn_011": 0.6,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Surface aldol + RTIP route ties formose to computational coupling; plausible but RTIP conditions need detail.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify energy flux and catalyst for RTIP dehydration and coupling."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.85,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "Good integration of photoredox formose with RTIP coupling; steps are plausible under surface UV conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Clarify RTIP energy requirements and specify any mineral co-catalysts."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_005": 0.85,
+          "rxn_009": 0.75,
+          "rxn_010": 0.7,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8,
+        "feedback": "FT feedstock into RTIP coupling is attractive, but aminomethanol dehydration step and RTIP require more context.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Include wet-dry cycling or mineral acid to drive aminomethanol dehydration."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_014": 0.9,
+          "rxn_015": 0.9,
+          "rxn_006": 0.85,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.89,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Excellent cyanosulfidic glycolonitrile\u2192Strecker route; aligns strongly with recent thiophosphate\u2010mediated UV studies.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_014": 0.9,
+          "rxn_015": 0.9,
+          "rxn_006": 0.85,
+          "rxn_011": 0.6,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Strong glycolonitrile feed into RTIP coupling; mechanistically sound but RTIP step needs more detail.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Provide data on RTIP barrier under UV/thermal conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_011": 0.6,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Concise surface RTIP bypass but misses formaldehyde homologation to give C2 backbone prior to RTIP.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add a formose step (e.g., rxn_005) before RTIP coupling."
+        ]
+      }
+    ],
+    "best_pathway_id": "P8",
+    "overall_confidence": 0.84,
+    "network_feedback": "The network is well\u2010connected with multiple validated routes to serine, integrating hydrothermal Fischer\u2013Tropsch, surface photoredox, Strecker, and computational RTIP chemistry. Minor gaps exist in some RTIP\u2010based sequences regarding intermediate sourcing and energy requirements. Overall, the design aligns strongly with current literature on cyanosulfidic and formaldimine pathways.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

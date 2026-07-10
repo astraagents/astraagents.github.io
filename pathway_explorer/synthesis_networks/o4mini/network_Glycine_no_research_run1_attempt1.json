@@ -1,0 +1,791 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "Combine hydrothermal CO2 reduction to central keto acids (pyruvate, glyoxylate) with surface Strecker and photochemical routes to generate glycine nitrile, followed by hydrolysis in biochemical settings. This convergent network provides multiple redundant pathways from simple gases and organics to glycine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "molecular hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H3O3-",
+        "iupac_name": "pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H1O3-",
+        "iupac_name": "glyoxylate",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H3N2",
+        "iupac_name": "2-aminonitrile",
+        "common_name": "glycine nitrile",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline vent pH>9"
+        },
+        "mechanism": "electrochemical two-electron reduction of CO2 on Fe-S mineral",
+        "reasoning": "Mineral-catalyzed CO2 fixation to formate in alkaline vents"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type"
+        },
+        "mechanism": "surface-mediated C1 hydrogenation on iron oxide",
+        "reasoning": "FT-type conversion of formate to formaldehyde on magnetite"
+      },
+      {
+        "id": "rxn_003",
+        "name": "CO2 hydrogenation to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "multi-electron C\u2013C bond formation"
+        },
+        "mechanism": "coupled reductive carbonylation on Fe minerals",
+        "reasoning": "Analog of acetyl-CoA pathway yielding \u03b1-keto acid"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Pyruvate decarboxylation to glyoxylate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "thermal decarboxylation"
+        },
+        "mechanism": "surface-catalyzed C\u2013C bond cleavage",
+        "reasoning": "Mineral-mediated decarboxylation producing glyoxylate"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive amination of glyoxylate to glycine",
+        "inputs": [
+          "mol_008",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH gradient-driven"
+        },
+        "mechanism": "imine formation on Fe-S followed by reduction",
+        "reasoning": "Prebiotic analog of \u03b1-keto acid amination"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of glycine nitrile",
+        "inputs": [
+          "mol_004",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "imine formation and cyanation on clay",
+        "reasoning": "Classic surface Strecker for amino nitriles"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of glycine nitrile to glycine",
+        "inputs": [
+          "mol_010",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acid/base catalyzed"
+        },
+        "mechanism": "nitrile hydrolysis",
+        "reasoning": "Spontaneous aqueous conversion of aminonitrile to amino acid"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reductive amination of pyruvate to alanine",
+        "inputs": [
+          "mol_007",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient-driven"
+        },
+        "mechanism": "imine reduction on Fe-S cluster",
+        "reasoning": "Prebiotic synthesis of alanine from \u03b1-keto acid"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Transamination yielding glycine",
+        "inputs": [
+          "mol_009",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "enzyme-free"
+        },
+        "mechanism": "amine transfer between amino acid and keto acid",
+        "reasoning": "Nonenzymatic transamination linking alanine and glycine"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Surface Strecker of glycine nitrile from glyoxylate",
+        "inputs": [
+          "mol_008",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "imine formation followed by cyanation on clay",
+        "reasoning": "Alternate Strecker route using glyoxylate hub"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Photochemical glycine synthesis from HCN and ammonia",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "photo-driven radical coupling",
+        "reasoning": "Surface photochemistry enables direct amino acid formation"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal glycine via glyoxylate",
+        "description": "CO2 reductive conversion to pyruvate, decarboxylation to glyoxylate, reductive amination to glycine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker from formaldehyde",
+        "description": "Formate hydrogenation to formaldehyde, Strecker synthesis of glycine nitrile, hydrolysis to glycine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Photochemical direct glycine",
+        "description": "TiO2-mediated UV coupling of HCN and ammonia to glycine",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hybrid glyoxylate Strecker",
+        "description": "Pyruvate decarboxylation to glyoxylate, surface Strecker to nitrile, hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Alanine-mediated transamination",
+        "description": "CO2 hydrogenation to pyruvate, reductive amination to alanine, transamination with glyoxylate to glycine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formate-driven Strecker",
+        "description": "CO2 reduction to formate, hydrogenation to formaldehyde, Strecker nitrile synthesis and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formate to glycine photochemistry",
+        "description": "Formate reduction to formaldehyde, then photochemical coupling to glycine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Extended glyoxylate hybrid route",
+        "description": "CO2 to pyruvate, decarboxylation to glyoxylate, Strecker then hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Alanine plus photochemical route",
+        "description": "CO2 to pyruvate, amination to alanine, photochemical conversion to glycine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct glyoxylate nitrile hydrolysis",
+        "description": "Surface Strecker of glyoxylate to glycine nitrile, hydrolysis",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.5,
+          "rxn_004": 0.4,
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Hydrothermal decarboxylation to glyoxylate (rxn_004) is chemically suspect; need alternative route to glyoxylate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Propose a more plausible non\u2010enzymatic route for glyoxylate formation or use a different intermediate."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.75,
+          "rxn_006": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Solid surface Strecker route from formaldehyde; conditions well matched across stages.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail mineral catalysts for rxn_006 to strengthen plausibility."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Direct photochemical glycine formation is conceptually simple but mechanistically weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Include photosensitizers or catalytic surfaces to boost yield in rxn_011."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.4,
+          "rxn_010": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.7,
+        "feedback": "Reliant on questionable decarboxylation and glyoxylate-based Strecker.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace rxn_004 with a validated glyoxylate synthesis and validate rxn_010 conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.5,
+          "rxn_008": 0.8,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Alanine transamination route is promising but source of glyoxylate needs clarity.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify glyoxylate provision step or integrate earlier hydrothermal decarboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.75,
+          "rxn_006": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Robust four\u2010step formate-driven Strecker pathway with balanced conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Characterize mineral surfaces for rxn_001\u2013rxn_002 coupling."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.75,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Integrates formate chemistry with photochemical glycine but lacks hydrolysis step clarity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add transition conditions or catalysts for rxn_011 and consider aqueous post\u2010processing."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.5,
+          "rxn_004": 0.4,
+          "rxn_010": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Extended hybrid route suffers from weak glyoxylate steps (rxn_004) and ambiguous Strecker (rxn_010).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Refine earlier glyoxylate synthesis and validate Strecker mechanism for oxo\u2010acid."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.8,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Combines biochemical transamination with photochemistry in reverse order; environment flow is inconsistent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Reorder steps to preserve environmental logic or consolidate to single setting."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Concise glyoxylate\u2010nitrile hydrolysis route; moderately plausible but needs better Strecker detail.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide mineral or photochemical catalysts to enhance rxn_010."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.72,
+    "network_feedback": "The network is well\u2010connected with multiple convergent routes to glycine. Some hydrothermal steps (notably rxn_004) and glyoxylate Strecker reactions need mechanistic refinement. Overall strategy is sound with high redundancy.",
+    "approved": true,
+    "hub_quality": 1.0,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

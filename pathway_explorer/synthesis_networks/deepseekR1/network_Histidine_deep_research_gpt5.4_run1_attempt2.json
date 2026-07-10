@@ -1,0 +1,380 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "A convergent network combining hydrothermal HCN/erythrose synthesis with surface-mediated imidazole-4-acetaldehyde formation via Shen pathway, followed by mineral-catalyzed Strecker synthesis under neutral pH using phosphorylated chemistry",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHNO",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C4H8O4",
+        "iupac_name": "Erythrose",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH5N3",
+        "iupac_name": "Formamidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C5H6N2O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H6N2O2",
+        "iupac_name": "Diamidophosphate",
+        "common_name": null,
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C6H9N3O2",
+        "iupac_name": "L-Histidine",
+        "common_name": "Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8N2O2",
+        "iupac_name": "Imidazole-4-ethanol",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8N2O/c8-2-1-5-3-6-4-7-5/h3-4,8H,1-2H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "HCN synthesis via hydrothermal reduction",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrite (FeS\u2082)"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": true,
+          "other": "CO\u2082/N\u2082 atmosphere"
+        },
+        "mechanism": "CO\u2082 reduction with H\u2082 over iron sulfide surfaces",
+        "reasoning": "Pyrite-catalyzed CO\u2082 reduction produces HCN through N\u2082 fixation (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formamidine synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "HCN trimerization with ammonia activation",
+        "reasoning": "FeS-mediated HCN oligomerization produces formamidine precursors (Shen et al., 1987)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Erythrose formation via formose reaction",
+        "inputs": [
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "HCN photoredox cycling with clay templating",
+        "reasoning": "Clay-catalyzed formose reaction produces tetroses (Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Imidazole-4-acetaldehyde synthesis",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 6, 12h reaction"
+        },
+        "mechanism": "Erythrose-formamidine condensation with borate stabilization",
+        "reasoning": "Shen pathway with borate-mediated sugar stabilization (Shen et al., 1987)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Phosphorylated Strecker synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Apatite"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "Diamidophosphate",
+          "aqueous": true,
+          "other": "pH 7"
+        },
+        "mechanism": "Neutral pH Strecker-type reaction with phosphate activation",
+        "reasoning": "Modified Strecker chemistry enables histidine formation at neutral pH (Ashe et al., 2019)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Imidazole-4-acetaldehyde oxidation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Pyrite (FeS\u2082)"
+        ],
+        "conditions": {
+          "temperature": "330-350K",
+          "pressure": "1 atm",
+          "catalyst": "Fe\u00b3\u207a",
+          "aqueous": true,
+          "other": "pH 6"
+        },
+        "mechanism": "Iron-mediated alcohol oxidation",
+        "reasoning": "Pyrite surfaces enable redox cycling for aldehyde formation (Shen et al., 1987; Madrigal-Trejo et al., 2021)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Imidazole-4-ethanol formation",
+        "inputs": [
+          "mol_002",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Zinc hydroxide"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "1 atm",
+          "catalyst": "Zn(OH)\u2082",
+          "aqueous": true,
+          "other": "24h reaction"
+        },
+        "mechanism": "Carbohydrate-ammonia condensation",
+        "reasoning": "Zinc hydroxide catalyzes imidazole alcohol formation (Or\u00f3 et al., 1984)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Primary Shen pathway",
+        "description": "Erythrose + formamidine \u2192 imidazole-4-acetaldehyde \u2192 histidine via phosphorylated Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Alternative imidazole oxidation pathway",
+        "description": "Erythrose \u2192 imidazole-4-ethanol \u2192 oxidation to aldehyde \u2192 histidine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_006",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_004"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_004",
+      "mol_002"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Primary Shen pathway aligns well with literature, including imidazole-4-acetaldehyde synthesis and phosphorylated Strecker chemistry. Conditions for hydrothermal HCN synthesis (rxn_001) and formamidine formation (rxn_002) are plausible but require concentration mechanisms. Mineral catalysis in Strecker step (rxn_005) is supported by Ashe et al. (2019).",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Clarify formamidine synthesis conditions under dilute HCN/NH3",
+          "Specify mineral catalysts for oxidation steps (e.g., Fe/S in rxn_006)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_006": 0.7,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "Alternative oxidation route (rxn_006) lacks explicit mineral/oxidant specification as required by Shen's mechanism. Imidazole-4-ethanol formation (rxn_007) from erythrose+NH3 has no direct literature support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add mineral catalysts (e.g., Zn(OH)\u2082) for imidazole-ethanol formation",
+          "Validate oxidation mechanism with experimental evidence"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network successfully integrates Shen's imidazole-4-acetaldehyde pathway with modern phosphorylated Strecker chemistry. Key strengths: Convergent design, environmental staging, and literature-aligned core reactions. Weaknesses: Under-specified mineral catalysis in oxidation steps and incomplete validation of alternative pathway. Hubs (HCN, erythrose, imidazole-4-acetaldehyde) are well-connected.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

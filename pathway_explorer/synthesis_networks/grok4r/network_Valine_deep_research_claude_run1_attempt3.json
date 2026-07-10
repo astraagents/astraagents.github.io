@@ -1,0 +1,762 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "The synthesis network centers on the Strecker synthesis as the primary route to valine, addressing the isobutyraldehyde bottleneck through convergent pathways from spark discharge and hydrothermal Fischer-Tropsch-type (FTT) synthesis followed by surface aldol diversification on NiS catalysts, as supported by literature. An alternative reductive amination pathway from \u03b1-ketoisovalerate, formed via condensation of hydrothermal pyruvate and surface acetaldehyde, provides metabolic congruence. Environmental interconnection flows from hydrothermal reduction products (pyruvate, formate) to surface photochemistry and condensation, culminating in biochemical assembly, with hubs at isobutyraldehyde, \u03b1-ketoisovalerate, and the \u03b1-aminonitrile intermediate ensuring redundancy and multiple routes to the target.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH\u2084",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCOO\u207b",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH\u2083CHO",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2083C(O)COOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "(CH\u2083)\u2082CHCHO",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "(CH\u2083)\u2082CHC(O)COOH",
+        "iupac_name": "3-methyl-2-oxobutanoic acid",
+        "common_name": "\u03b1-ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "(CH\u2083)\u2082CHCH(NH\u2082)CN",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": "\u03b1-aminonitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "(CH\u2083)\u2082CHCH(NH\u2082)COOH",
+        "iupac_name": "2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, alkaline vents"
+        },
+        "mechanism": "Surface-catalyzed reduction of CO\u2082 by H\u2082 on Fe\u2083S\u2084 mineral, forming HCOO\u207b via electron transfer from mineral lattice.",
+        "reasoning": "Established in alkaline hydrothermal vents; provides reducing power for early organics (Huber & W\u00e4chtersh\u00e4user, 1997, Science)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate synthesis via CO\u2082 fixation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "subseafloor hydrothermal, moderate pH"
+        },
+        "mechanism": "Fischer-Tropsch-type hydrogenation of CO\u2082 on Fe\u2083O\u2084 surfaces, yielding pyruvate as a key \u03b1-keto acid intermediate.",
+        "reasoning": "Mineral-catalyzed carbon fixation in hydrothermal systems produces pyruvate plausibly under prebiotic conditions (Amend & Shock, 1998, Science)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Spark discharge synthesis of aldehydes",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_002",
+          "H\u2082O"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "electric discharge in reducing atmosphere, post-dissolution concentration on clay"
+        },
+        "mechanism": "Radical recombination in spark discharge generates linear and branched aldehydes; montmorillonite concentrates products for subsequent reactions.",
+        "reasoning": "Miller-Urey experiments produce acetaldehyde and trace isobutyraldehyde via radical processes, confirmed in reanalyses (Johnson et al., 2008, Science; Parker et al., 2011, PNAS)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol diversification to isobutyraldehyde",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "NiS",
+          "aqueous": true,
+          "other": "evaporitic pools, wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol condensation of acetaldehyde leads to branched C\u2084 aldehydes including isobutyraldehyde, with NiS enhancing selectivity.",
+        "reasoning": "NiS-catalyzed acetylene chemistry produces acetaldehyde, which undergoes aldol to higher branched aldehydes (Preiner et al., 2023, Nature Communications); addresses branching bottleneck despite poor selectivity."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Condensation of pyruvate and acetaldehyde to \u03b1-ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prebiotic pools, non-enzymatic analog to acetolactate synthase"
+        },
+        "mechanism": "Nucleophilic addition of acetaldehyde enolate to pyruvate carbonyl, followed by oxidation to form the branched keto acid.",
+        "reasoning": "Parallels biological valine biosynthesis; prebiotic via non-enzymatic Krebs cycle analogs (Muchowska et al., 2019, Nature)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker imine formation and cyanohydrin addition",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH ~9, aqueous solution"
+        },
+        "mechanism": "Imine formation from aldehyde and NH\u2083, followed by nucleophilic addition of HCN to yield the \u03b1-aminonitrile.",
+        "reasoning": "Core Strecker mechanism, experimentally validated for valine precursor (Keefe et al., 1995, Nature; Devergne et al., 2021, Journal of Physical Chemistry Letters)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of \u03b1-aminonitrile to valine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles in pools, half-life <1000 years at 0\u00b0C accelerating at higher T"
+        },
+        "mechanism": "Nitrile hydrolysis via amide intermediate to carboxylic acid, irreversible under aqueous conditions.",
+        "reasoning": "Standard Strecker completion step; yields racemic valine (Miller, 1998; Green et al., 2021, JACS)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reductive amination of \u03b1-ketoisovalerate to valine",
+        "inputs": [
+          "mol_010",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH 8-9, H\u2082S-coupled reduction"
+        },
+        "mechanism": "Imine formation followed by reduction using H\u2082 and FeS/H\u2082S as electron donor, yielding amino acid.",
+        "reasoning": "Demonstrated for keto acids including valine analog on iron-sulfur minerals (Huber & W\u00e4chtersh\u00e4user, 2003, Tetrahedron Letters; Barge et al., 2019, PNAS; Kaur et al., 2024, Chem)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formate to acetaldehyde via FTT extension",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Hydrogenation and homologation of formate/CO intermediates on magnetite to acetaldehyde.",
+        "reasoning": "FTT in vents generates aldehydes from reduced carbon species like formate (McCollom et al., 1999, Origins of Life and Evolution of Biospheres)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct spark discharge to Strecker",
+        "description": "Surface spark generates isobutyraldehyde directly, followed by Strecker in pools.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal FTT to surface aldol to Strecker",
+        "description": "Formate from hydro reduction extended to acetaldehyde, then surface aldol branching to isobutyraldehyde for Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Pyruvate-acetaldehyde condensation to reductive amination",
+        "description": "Hydrothermal pyruvate condenses with surface acetaldehyde from spark, then hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Full hydrothermal to surface Strecker via FTT acetaldehyde",
+        "description": "Hydro FTT to acetaldehyde, surface aldol to isobutyraldehyde, then Strecker.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Spark acetaldehyde to hydro condensation to reductive amination",
+        "description": "Surface spark acetaldehyde transported to biochemical condensation with hydro pyruvate, then back to hydro amination.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_002",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formate-spark hybrid to Strecker",
+        "description": "Hydro formate to acetaldehyde, combined with spark isobutyraldehyde for Strecker convergence.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Pyruvate direct to reductive amination variant",
+        "description": "Hydro pyruvate to ketoisovalerate via implicit acetaldehyde from FTT, then amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface-dominant spark to biochemical Strecker",
+        "description": "Spark generates precursors, Strecker in biochemical pools.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydro-surface interconnection to reductive amination",
+        "description": "Pyruvate from hydro, acetaldehyde from surface FTT extension, condensation and amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_001",
+          "rxn_009",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Aldol-focused branching from mixed sources",
+        "description": "Acetaldehyde from spark and FTT, aldol to isobutyraldehyde, then Strecker.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_001",
+          "rxn_009",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_009",
+      "mol_010",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct spark to Strecker pathway is well-supported by Miller-Urey experiments, but lacks hydrothermal input.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate mineral catalysts for aldol selectivity."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.8,
+          "rxn_004": 0.85,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Strong hydrothermal to surface flow, addresses isobutyraldehyde bottleneck via FTT and aldol, aligns with Preiner et al.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify NiS catalyst in rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.95,
+          "rxn_005": 0.9,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Reductive amination route congruent with biological pathways, supported by Barge et al. and Kaur et al.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Justify biochemical environment for rxn_005."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.8,
+          "rxn_003": 0.95,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Hybrid hydrothermal-surface Strecker via FTT acetaldehyde, good interconnection.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add HCN source detail."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_005": 0.9,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Spark to condensation to reductive amination, but environmental shift to hydrothermal for rxn_008 needs justification.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify transition from surface to hydrothermal."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_009": 0.8,
+          "rxn_003": 0.95,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Formate-spark hybrid effective for aldehyde production.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Enhance FTT details in rxn_009."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_005": 0.9,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Pyruvate direct to reductive amination variant, but pyruvate synthesis in rxn_002 is less direct.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Support rxn_002 with literature on hydrothermal pyruvate."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.75,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Surface-dominant, aligns with Miller experiments, but limited environmental diversity.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral agents for surface rxns."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.95,
+          "rxn_005": 0.9,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Hydro-surface to reductive amination, good flow.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify catalysts for interconnections."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.95,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0,
+          "rxn_007": 1.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Aldol-focused with mixed sources, addresses branching challenge well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify branching selectivity."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.9,
+    "network_feedback": "Excellent network with strong alignment to literature on Strecker and reductive amination routes, effectively addresses isobutyraldehyde bottleneck via convergent hydrothermal-surface pathways. Minor issues in some reaction specifics, but overall chemically sound and topologically robust.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.95
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": null
+}

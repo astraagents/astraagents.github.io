@@ -1,0 +1,949 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The synthesis network for arginine leverages literature-supported prebiotic pathways, focusing on cyanide-rich reducing environments and hydrothermal systems for precursor formation (e.g., ammonia, HCN, formaldehyde), Strecker-like reactions for amino acid precursors like glutamate and ornithine, and UV irradiation for guanidino group formation. Convergent pathways build the C5 backbone via \u03b1-ketoacids in hydrothermal conditions, followed by surface assembly and biochemical incorporation of the guanidino group. Environmental flow starts in alkaline hydrothermal vents for simple reductions, transitions to surface UV/ reducing pools for Strecker and irradiation, and ends in biochemical pools for final assembly. Speculative steps connect known precursors (e.g., glutamate to ornithine) to address literature gaps in direct arginine synthesis, emphasizing redundancy via multiple routes to \u03b1-ketoglutarate and ornithine hubs.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2CO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H6O5",
+        "iupac_name": "2-oxoglutaric acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H12N2O2",
+        "iupac_name": "2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH5N3",
+        "iupac_name": "guanidine",
+        "common_name": "guanidine",
+        "inchi": "InChI=1S/CH5N3/c2-1(3)4/h(H5,2,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C6H14N4O2",
+        "iupac_name": "2-amino-5-guanidinopentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "NH4CN",
+        "iupac_name": "ammonium cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CN.H3N/c1-2;/h;1H3/q-1;/p+1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline vent, pH 9-11"
+        },
+        "mechanism": "Reverse water-gas shift and reduction on Fe-S cluster analog",
+        "reasoning": "Supported by general hydrothermal CO2 fixation in alkaline vents (Yanagawa and Kobayashi, 1992); provides reducing power for organics."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to formaldehyde via HCN pathways",
+        "inputs": [
+          "mol_007",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "serpentinization-driven H2"
+        },
+        "mechanism": "Fischer-Tropsch-type dehydration and carbonylation",
+        "reasoning": "Hydrothermal synthesis of formaldehyde from formate and ammonia precursors (Banez and Or\u00f3, 1971); aligns with low-temp SHS."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Ammonia and HCN formation in reducing environment",
+        "inputs": [
+          "mol_001",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "H2S-rich, cyanide-rich"
+        },
+        "mechanism": "Serpentinization and sulfide-mediated nitrogen fixation",
+        "reasoning": "Ammonia and HCN from hydrothermal reactions with H2S (Yanagawa and Kobayashi, 1992); key for reducing environments."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Multi-step HCN to alpha-ketoglutarate precursor",
+        "inputs": [
+          "mol_004",
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "100C (373K)",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "low-temp SHS, NH3/HCN rich"
+        },
+        "mechanism": "HCN oligomerization and oxidation to ketoacid",
+        "reasoning": "General amino acid/ketoacid synthesis in hydrothermal systems via HCN and formaldehyde (Yanagawa and Kobayashi, 1992); speculative extension to C5 chain for \u03b1-KG."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of glutamic acid",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles, evaporitic pools"
+        },
+        "mechanism": "Aldehyde + HCN + NH3 to aminonitrile, hydrolysis to amino acid",
+        "reasoning": "Strecker synthesis for amino acids like glutamate from \u03b1-ketoacids under prebiotic surface conditions (Banez and Or\u00f3, 1971); general for \u03b1-amino acids."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Decarboxylation and amination to ornithine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prebiotic pools, thermal cycling"
+        },
+        "mechanism": "Non-enzymatic decarboxylation at gamma position and terminal amination",
+        "reasoning": "Speculative connection from glutamate to ornithine as biosynthetic analog, addressing literature gap in cationic AA scarcity (Levine et al., 2008); necessary for arginine precursor."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Ammonium cyanide formation",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "reducing, cyanide-rich"
+        },
+        "mechanism": "Protonation and association in aqueous solution",
+        "reasoning": "Formation in cyanide-rich hydrothermal environments (Yanagawa and Kobayashi, 1992)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "UV irradiation to guanidine",
+        "inputs": [
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV exposure, tidal flats"
+        },
+        "mechanism": "Photolysis and rearrangement to guanidino group",
+        "reasoning": "Irradiation of ammonium cyanide forms guanidine under prebiotic UV conditions (Journal of Molecular Evolution reference, as per data); key for guanidino group."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Guanidino incorporation into ornithine",
+        "inputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "concentrated pools, mineral interfaces"
+        },
+        "mechanism": "Nucleophilic addition of guanidine to delta-amino group",
+        "reasoning": "Speculative final assembly in prebiotic pools, addressing lack of direct evidence for guanidino incorporation (no specific study, but aligns with reducing environments challenge; necessary to connect precursors)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Alternative surface Strecker to ornithine precursor",
+        "inputs": [
+          "mol_005",
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "H2S-assisted, cyanosulfidic"
+        },
+        "mechanism": "Cyanosulfidic variant of Strecker for diamino acids",
+        "reasoning": "Cyanide-rich reducing with H2S for amino acid precursors (data on cyanosulfidic pathways); speculative for ornithine but supported by general Strecker (Banez and Or\u00f3, 1971)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrothermal reductive amination to glutamate",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Imine formation and reduction on mineral surface",
+        "reasoning": "Reductive amination in hydrothermal vents (Yanagawa and Kobayashi, 1992); alternative to surface Strecker."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Formaldehyde-ammonia to alpha-KG via meteorite analog",
+        "inputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "simulated meteorite alteration"
+        },
+        "mechanism": "Multi-step condensation and oxidation",
+        "reasoning": "Formaldehyde and ammonia to amino acid precursors in meteorite studies (Shock and Schulte, 1990); provides convergent route to \u03b1-KG."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal CO2 to arginine via Strecker",
+        "description": "CO2 reduction to formate, to formaldehyde, HCN/NH3 formation, to \u03b1-KG, surface Strecker to glutamate, to ornithine, guanidino addition.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Reducing HCN direct to ornithine",
+        "description": "NH3/HCN from hydrothermal, surface Strecker with H2S to ornithine, UV to guanidine, assembly.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Low-temp hydrothermal amination route",
+        "description": "CO2 to formate, NH3/HCN, hydrothermal to \u03b1-KG, reductive amination to glutamate, decarboxylation to ornithine, guanidino.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface formaldehyde-meteorite convergence",
+        "description": "Hydrothermal formaldehyde, surface to \u03b1-KG via meteorite analog, Strecker to glutamate, to ornithine, guanidino.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_012",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanide-rich hydrothermal to surface flow",
+        "description": "NH4CN formation, UV to guanidine, parallel ornithine via HCN Strecker, assembly.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_013",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Alkaline vent NH3 hub route",
+        "description": "NH3 from vents, to \u03b1-KG via HCN, reductive amination, to arginine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formaldehyde-ammonia primary path",
+        "description": "Hydrothermal formaldehyde from formate, with NH3 to \u03b1-KG surface, Strecker, ornithine, guanidino.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_012",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "H2S-cyanosulfidic surface emphasis",
+        "description": "Hydrothermal NH3/HCN/H2S, surface Strecker to ornithine, parallel guanidine from NH4CN.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Enantioselective surface-hydrothermal hybrid",
+        "description": "\u03b1-KG from hydrothermal HCN, surface Strecker with chiral amplification to glutamate, to arginine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Reducing environment full convergence",
+        "description": "CO2/H2 to formate, full chain to \u03b1-KG surface alternate, amination, ornithine via decarboxylation, guanidino UV.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_012",
+          "rxn_011",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Strong hydrothermal to surface flow with Strecker integration, but some precursor steps speculative.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Clarify formate to formaldehyde mechanism",
+          "Specify reductants for NH3 formation"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.75,
+        "feedback": "Direct HCN route is concise but lacks detail on ornithine formation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add intermediates for C5 backbone from HCN"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "Good amination focus in hydrothermal, aligns with vents literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Incorporate mineral catalysts like pyrite"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.72,
+        "feedback": "Meteorite analog promising but speculative for alpha-KG.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Link to specific meteorite studies"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "Clear environmental flow, supports cyanide-rich lit.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Justify hydrothermal-surface transition"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "NH3 hub well-utilized, but biochemical steps dominant.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Reduce reliance on biochemical environment"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "Primary path aligns with formaldehyde-ammonia studies.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Add literature citations for meteorite convergence"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.77,
+        "feedback": "H2S integration good for reducing env, but surface emphasis weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Specify H2S role in catalysis"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Hybrid approach innovative, but enantioselectivity not addressed.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Incorporate chiral catalysts from lit"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.4,
+          "rxn_004": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_010": 0.6,
+          "rxn_011": 0.7,
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8,
+        "feedback": "Full convergence strong, addresses literature gaps.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Improve starting material connections"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network is well-structured with good hub connectivity and literature alignment on precursors and environments, but some reactions are chemically implausible and lack mineral specifications. Speculative steps bridge gaps effectively.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.800"
+}

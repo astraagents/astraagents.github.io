@@ -1,0 +1,440 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Combines hydrothermal CO\u2082 fixation to pyruvate, surface Strecker synthesis of ornithine precursors, and UV-driven guanidine formation, with biochemical assembly via transamination and guanidination on mineral surfaces",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOOH",
+        "iupac_name": "Formic acid",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "Alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "Glutamic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2085H\u2081\u2082N\u2082O\u2082",
+        "iupac_name": "Ornithine",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2085N\u2083",
+        "iupac_name": "Guanidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH5N3/c2-1(3)4/h(H5,2,3,4)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2086H\u2081\u2084N\u2084O\u2082",
+        "iupac_name": "Arginine",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH\u2083NO",
+        "iupac_name": "Formamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 hydrogenation",
+        "reasoning": "Greigite-mediated CO\u2082 reduction forms formate (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis",
+        "reasoning": "Magnetite catalyzes formate condensation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to alanine",
+        "inputs": [
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true
+        },
+        "mechanism": "Mineral-catalyzed amination",
+        "reasoning": "FeS surfaces enable NH\u2083 incorporation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "HCN oligomerization",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photochemical oligomerization",
+        "reasoning": "TiO\u2082 photocatalyzes HCN polymerization (B\u00e9naz & Or\u00f3, 1971)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Guanidine formation",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical cyclization",
+        "reasoning": "UV-driven guanidine synthesis from formamide (Levine et al., 2008)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Transamination to glutamate",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Non-enzymatic transamination",
+        "reasoning": "Clay-mediated amino acid interconversion (Bada & Miller, 1987)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Ornithine synthesis",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true
+        },
+        "mechanism": "Thermal decarboxylation",
+        "reasoning": "Speculative step to connect glutamate to ornithine"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Arginine assembly",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Guanidination of ornithine",
+        "reasoning": "Clay-catalyzed guanidino group transfer (speculative but necessary)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core metabolism",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 alanine \u2192 glutamate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface guanidine synthesis",
+        "description": "HCN \u2192 formamide \u2192 guanidine",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Biochemical assembly",
+        "description": "Glutamate \u2192 ornithine + guanidine \u2192 arginine",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_003": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal CO\u2082 fixation to pyruvate (rxn_002) lacks clear intermediates for C1\u2192C3 conversion. Reductive amination (rxn_003) plausibly forms alanine but omits required co-reactants (e.g., ammonia). Pathway connectivity is logical but lacks mineral catalysts (e.g., pyrite) noted in literature.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., pyrite) for rxn_001\u2013rxn_003",
+          "Add intermediates for pyruvate synthesis (e.g., glyoxylate)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.6,
+        "feedback": "HCN oligomerization (rxn_004) is plausible, but guanidine formation from formamide (rxn_005) lacks experimental support. Literature suggests ammonium cyanide irradiation as a more viable route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Replace rxn_005 with UV-driven guanidine synthesis from ammonium cyanide"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.6,
+          "rxn_008": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.6,
+        "feedback": "Transamination (rxn_006) and ornithine synthesis (rxn_007) lack prebiotic evidence. Arginine assembly (rxn_008) via direct guanidination is chemically unsupported; biological pathways require multi-step processes.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Add urea cycle-like intermediates for ornithine\u2192arginine",
+          "Use mineral-catalyzed guanidination (e.g., montmorillonite)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network integrates plausible environmental transitions (hydrothermal\u2192Surface\u2192Biochemical) but suffers from underdeveloped hubs (degrees <3), unsupported reactions (e.g., formamide\u2192guanidine), and missing literature-aligned steps (e.g., mineral catalysis). Target achievement is chemically invalid due to non-viable final assembly step.",
+    "approved": false,
+    "hub_quality": 0.5,
+    "convergence_quality": 0.6
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

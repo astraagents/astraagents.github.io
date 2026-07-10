@@ -1,0 +1,763 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integrate multiple prebiotic routes to glutamate via direct reductive amination in hydrothermal settings, photochemical oxidation of \u03b1-hydroxyglutarate to \u03b1-ketoglutarate, cyanohydrin/hydrolysis cycling, neutral-pH phosphoro-Strecker, Bucherer\u2013Bergs hydantoin pathways, ZnS photochemistry, and spark-discharge Strecker chemistry, achieving redundancy and environmental integration.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H8O5",
+        "iupac_name": "2-hydroxyglutarate",
+        "common_name": "\u03b1-hydroxyglutarate",
+        "inchi": "InChI=1S/C5H8O5/c6-3(5(9)10)1-2-4(7)8/h3,6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioate",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H7NO5",
+        "iupac_name": "2-oxopentanedioate cyanohydrin",
+        "common_name": "\u03b1-ketoglutarate cyanohydrin",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H6O3",
+        "iupac_name": "4-oxobutanoic acid",
+        "common_name": "succinic semialdehyde",
+        "inchi": "InChI=1S/C4H6O3/c5-3-1-2-4(6)7/h3H,1-2H2,(H,6,7)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "PO3(NH2)2",
+        "iupac_name": "phosphorodiamidate",
+        "common_name": "diamidophosphate",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H7N2O6P",
+        "iupac_name": "N-phosphoro-2-aminopentanedioic acid nitrile",
+        "common_name": "N-phosphoro-glutamate aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C7H8N2O3",
+        "iupac_name": "5-carboxyethylimidazolidine-2,4-dione",
+        "common_name": "5-carboxyethyl hydantoin",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioate",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/p-2",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H8O5",
+        "iupac_name": "2-hydroxy-2-oxopentanedioate",
+        "common_name": "hydroxyketoglutarate",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "HS\u2212/UV oxidation of \u03b1-hydroxyglutarate",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "UV irradiation (254 nm)"
+        },
+        "mechanism": "Photoredox oxidation of \u03b1-hydroxy acid to \u03b1-keto acid",
+        "reasoning": "(Ritson, 2021)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanohydrin formation of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH ~6.5"
+        },
+        "mechanism": "Nucleophilic addition of HCN to the keto group",
+        "reasoning": "(Ritson, 2021)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrolysis of \u03b1-ketoglutarate cyanohydrin",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic hydrolysis, pH ~6.5"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis back to \u03b1-keto acid",
+        "reasoning": "(Ritson, 2021)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "H\u2082-driven reductive amination on metal",
+        "inputs": [
+          "mol_006",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron"
+        ],
+        "conditions": {
+          "temperature": "295K",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "pH ~8"
+        },
+        "mechanism": "Imine formation followed by hydride transfer from H\u2082 on metal surfaces",
+        "reasoning": "(Kaur et al., 2024)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "FeS_PERM geoelectrochemical amination",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH ~9.6, 48 h"
+        },
+        "mechanism": "Electrochemically driven reductive amination at FeS\u2013Fe\u2070 interfaces",
+        "reasoning": "(Kitadai et al., 2019)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "ZnS-driven photochemical amination",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "ZnS",
+          "aqueous": true,
+          "other": "UV lamp 500 W, pH ~9"
+        },
+        "mechanism": "Semiconductor photoexcitation drives imine reduction",
+        "reasoning": "(Wang et al., 2012)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Phosphoro-Strecker aminonitrile synthesis",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "DAP-enabled imine formation and cyanide addition",
+        "reasoning": "(Ashe et al., 2019)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Acidic hydrolysis of phosphoro-aminonitrile",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Hydrolysis of nitrile to amine",
+        "reasoning": "(Ashe et al., 2019)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Bucherer\u2013Bergs hydantoin formation",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "295K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH ~8.5, 21 days"
+        },
+        "mechanism": "Hydantoin cyclization from \u03b1-ketoacid, cyanide and DAP",
+        "reasoning": "(Pulletikurti et al., 2022)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydantoin hydrolysis to glutamate",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "heating 7 days"
+        },
+        "mechanism": "Thermal ring opening and hydrolysis of hydantoin",
+        "reasoning": "(Pulletikurti et al., 2022)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Spark-discharge Strecker synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_014",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "electric discharge"
+        },
+        "mechanism": "HCN and aldehyde generation followed by Strecker chemistry",
+        "reasoning": "(Parker et al., 2011)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Metal-catalyzed H\u2082 reductive amination",
+        "description": "Direct amination of \u03b1-ketoglutarate to glutamate under H\u2082 and metal surfaces",
+        "reaction_sequence": [
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "FeS_PERM geoelectrochemical amination",
+        "description": "Hydrothermal electrochemical conversion of \u03b1-ketoglutarate to glutamate",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "ZnS photochemical amination",
+        "description": "UV-driven semiconductor catalysis of \u03b1-ketoglutarate to glutamate",
+        "reaction_sequence": [
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Neutral-pH phosphoro-Strecker route",
+        "description": "Phosphoro-Strecker synthesis of aminonitrile followed by acid hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Bucherer\u2013Bergs hydantoin pathway",
+        "description": "Hydantoin-mediated conversion of \u03b1-ketoglutarate to glutamate",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Photoredox plus H\u2082 amination",
+        "description": "Oxidize \u03b1-hydroxyglutarate to \u03b1-ketoglutarate then reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Photoredox plus hydantoin route",
+        "description": "UV generation of \u03b1-ketoglutarate then Bucherer\u2013Bergs hydantoin chemistry",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Photoredox plus ZnS photochemistry",
+        "description": "Surface UV oxidation of \u03b1-hydroxyglutarate then ZnS-driven amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Spark-discharge Strecker synthesis",
+        "description": "Electric discharge generation of HCN/aldehyde and direct glutamate formation",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Photoredox plus phosphoro-Strecker",
+        "description": "UV oxidation of \u03b1-hydroxyglutarate then neutral-pH phosphoro-Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_004",
+      "mol_002"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Direct H\u2082-driven reductive amination is well supported by experimental data; high confidence.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify catalyst choice to optimize glutamate selectivity over hydroxyketoglutarate."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.97,
+        "feedback": "Geoelectrochemical FeS_PERM amination aligns excellently with literature, with near\u2010quantitative yields.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "None, pathway is robust."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "ZnS photochemical amination is chemically plausible but low yielding; still a valid surface\u2010photochemical route.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Characterize ZnS preparation and hole scavenger conditions to improve yield."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.95,
+          "rxn_007": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Neutral\u2010pH phosphoro\u2010Strecker route is high\u2010yielding and well grounded; hydrolysis step should be clarified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Clarify yields and mechanism of the acidic hydrolysis step to ensure full conversion to glutamate."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_008": 0.95,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Bucherer\u2013Bergs hydantoin pathway is literature\u2010supported but limited by moderate hydrolysis yields.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Optimize hydrolysis conditions or extend heating time to boost glutamate yield."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_003": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.94,
+        "feedback": "Sequential surface photoredox oxidation then hydrothermal amination is coherent and fully plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Improve photoredox efficiency to increase \u03b1-ketoglutarate yield."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_008": 0.95,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Combining photoredox provisioning with hydantoin chemistry is sound, though overall yield may be limited.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Assess cumulative yields and consider wet\u2013dry cycling to enhance hydantoin hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Surface\u2010only photoredox plus ZnS route is coherent but yield\u2010limited at both steps.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Integrate hole scavenger optimization and photon\u2010flux control to raise efficiencies."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Spark\u2010discharge Strecker synthesis is historically validated but suffers from low, uncontrolled yields.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide evidence of reproducibility and yield quantification; consider pre\u2010concentration steps."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_006": 0.95,
+          "rxn_007": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Combining photoredox provisioning with phosphoro\u2010Strecker is innovative and well aligned with literature, but hydrolysis details need clarity.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Detail pH transitions and hydrolysis kinetics for the phosphoro\u2010aminonitrile step."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.93,
+    "network_feedback": "The network is comprehensive, well\u2010connected, and aligns closely with experimental prebiotic studies. All key literature routes are represented, and environmental staging is coherent. Minor clarifications on hydrolysis steps and yield optimization would further strengthen the design.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

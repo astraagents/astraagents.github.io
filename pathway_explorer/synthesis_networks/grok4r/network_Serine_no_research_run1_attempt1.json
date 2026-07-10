@@ -1,0 +1,846 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "The synthesis network constructs serine through interconnected prebiotic pathways starting from simple gases in hydrothermal vents, producing key intermediates like formate and glyoxylic acid. These feed into surface environments for photolytic and catalytic production of formaldehyde and glycolaldehyde, enabling convergent routes such as Strecker synthesis and aldol condensations. Biochemical stages finalize assembly via hydrolysis and amination, ensuring multiple redundant paths to the target amino acid.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH2CH2CN",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "glycinonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH2CH2COOH",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HOCH2CH(NH2)CN",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serinenitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HOCH2CH(NH2)COOH",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "OHC-COOH",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "HOCH2C(O)COOH",
+        "iupac_name": "3-hydroxy-2-oxopropanoic acid",
+        "common_name": "hydroxypyruvate",
+        "inchi": "InChI=1S/C3H4O4/c4-1-2(5)3(6)7/h4H,1H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Adsorption of CO2 on mineral surface followed by stepwise hydrogenation using H2.",
+        "reasoning": "Greigite catalyzes CO2 reduction in alkaline vents, mimicking early metabolic clusters (Huber & W\u00e4chtersh\u00e4user, 1997)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "CO2 reduction to glyoxylic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Surface-catalyzed carbon fixation and reduction to alpha-keto acid.",
+        "reasoning": "Pyrite acts as electron donor in iron-sulfur chemistry for carboxylic acid precursors (Russell & Martin, 2004)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Photocatalytic reduction of formate to formaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV-induced electron transfer on TiO2 surface reduces formate to aldehyde.",
+        "reasoning": "TiO2 photocatalysis enables reduction under anoxic UV-rich early Earth surface (Vannini et al., 2019)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol condensation of formaldehyde to C2 sugar.",
+        "reasoning": "Borate stabilizes formose products, preventing tar formation in evaporitic pools (Ricardo et al., 2004)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis to glycinonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "concentrated solutions"
+        },
+        "mechanism": "Imine formation from aldehyde and ammonia, followed by HCN addition.",
+        "reasoning": "Clay surfaces catalyze amino acid precursor formation in prebiotic simulations (Powner et al., 2009)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of glycinonitrile to glycine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid under mild heating.",
+        "reasoning": "Phosphate minerals facilitate hydrolysis in evaporitic environments (Gull & Pasek, 2013)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis to serinenitrile",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "concentrated solutions"
+        },
+        "mechanism": "Imine from glycolaldehyde and ammonia, HCN addition to aminonitrile.",
+        "reasoning": "Analogous to glycine Strecker, yields serine precursors on clays (Huber et al., 2003)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of serinenitrile to serine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "variable",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mineral interfaces"
+        },
+        "mechanism": "Nitrile hydrolysis to amino acid in concentrated pools.",
+        "reasoning": "Final assembly in prebiotic pools connects surface products to biomolecules."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Aldol condensation of glycine and formaldehyde to serine",
+        "inputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of glycine enolate to formaldehyde.",
+        "reasoning": "Clay-catalyzed aldol-type synthesis of serine from glycine in prebiotic conditions (Bujd\u00e1k et al., 2009)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Aldol condensation to hydroxypyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure optional"
+        },
+        "mechanism": "Aldol addition of formaldehyde to glyoxylic acid enol form.",
+        "reasoning": "Surface catalysis links hydrothermal keto acids to serine precursors (Weber, 2002)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Reductive amination of hydroxypyruvate to serine",
+        "inputs": [
+          "mol_013",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "variable",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "proto-metabolic cycles"
+        },
+        "mechanism": "Imine formation and reduction to amine using available reductants.",
+        "reasoning": "Prebiotic analog of transamination in concentrated biochemical pools (Miller, 1987)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Hydrothermal synthesis of glycolaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "H2S present"
+        },
+        "mechanism": "Fischer-Tropsch-type reduction and carbonylation to C2 aldehyde.",
+        "reasoning": "Iron sulfides catalyze simple organics in vents (Huber & W\u00e4chtersh\u00e4user, 2006)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-supported Strecker via glycolaldehyde",
+        "description": "Formate from vents reduced to HCHO, formose to glycolaldehyde, Strecker to serinenitrile, hydrolysis to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal-supported glycine aldol route",
+        "description": "HCHO from formate, Strecker to glycine, aldol with HCHO to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal glyoxylic aldol-amination route",
+        "description": "Parallel production of glyoxylic and HCHO from vents, aldol to hydroxypyruvate, amination to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_004",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface Strecker via formose",
+        "description": "Assuming available HCHO, formose to glycolaldehyde, direct Strecker to serine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface glycine to serine aldol",
+        "description": "Direct Strecker to glycine from available precursors, aldol with HCHO to serine.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal glyoxylic surface aldol",
+        "description": "Glyoxylic from vents, aldol with available HCHO to hydroxypyruvate, amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal glycolaldehyde Strecker",
+        "description": "Direct hydrothermal glycolaldehyde, surface Strecker and hydrolysis to serine.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Full hydrothermal-surface glycine route",
+        "description": "Formate to HCHO, full Strecker to glycine, then aldol to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Vents to surface hydroxypyruvate amination",
+        "description": "Glyoxylic and formate from hydro, to HCHO and aldol, then biochemical amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Mixed hydrothermal glycolaldehyde glycine route",
+        "description": "Hydro glycolaldehyde for Strecker, but integrated with glycine aldol using shared HCHO.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_012",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_012": 0.7,
+          "rxn_004": 0.85,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9,
+          "rxn_001": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Strong hydrothermal to surface transition via glycolaldehyde Strecker; minor concerns on direct glycolaldehyde formation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Cite specific hydrothermal catalysts for rxn_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Effective glycine aldol route; aldol step with glycine needs validation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for surface aldol"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_010": 0.9,
+          "rxn_011": 0.85,
+          "rxn_001": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Good flow to reductive amination; glyoxylic reduction plausible but indirect.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Add reductant details for biochemical amination"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_005": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Short surface Strecker; lacks strong hydrothermal input.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Link to hydrothermal formate source"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Direct glycine to serine; aldol feasibility moderate.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Explore photolytic assistance for aldol"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.88,
+        "feedback": "Aldol to hydroxypyruvate solid; needs completion to serine.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Connect to full amination step"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_012": 0.7,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Efficient Strecker from hydrothermal glycolaldehyde.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Validate hydrothermal glycolaldehyde yield"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Full hydrothermal-surface glycine route coherent.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add convergence details"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_010": 0.9,
+          "rxn_011": 0.85,
+          "rxn_001": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Vents to amination well-integrated.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify biochemical reductants"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_012": 0.7,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9,
+          "rxn_009": 0.8,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Mixed route with redundancy; slightly complex.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Simplify steps for clarity"
+        ]
+      }
+    ],
+    "best_pathway_id": "P7",
+    "overall_confidence": 0.89,
+    "network_feedback": "Well-connected network with strong environmental flow and multiple convergent paths to serine. Minor issues in some hydrothermal steps, but overall chemically sound and prebiotically relevant.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

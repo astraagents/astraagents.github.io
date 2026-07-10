@@ -1,0 +1,759 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "The synthesis network integrates Strecker and Phosphoro-Strecker reactions in surface environments for direct serine formation from glycolaldehyde and HCN/NH3, hydrothermal CO2 reduction to precursors like formate and pyruvate for transamination routes, and biochemical non-enzymatic assembly via hydroxymethylation of glycine, ensuring convergence at hubs like formaldehyde, glycolaldehyde, and glycine across environments with bidirectional flow from hydrothermal products to surface processing.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Surface-catalyzed reduction of CO2 by H2 on Fe-S clusters, forming formate via electron transfer.",
+        "reasoning": "Based on iron-sulfur world chemistry in alkaline vents; supported by (Huber & W\u00e4chtersh\u00e4user, 1997) and sources (2656, 2582) for hydrothermal amino acid precursors."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to formaldehyde via oxidation/reduction balance",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic dehydrogenation of formate to formaldehyde under UV light on TiO2 surfaces.",
+        "reasoning": "Connects hydrothermal formate to surface chemistry; UV-driven as per sources (21187) and photochemical reactions in Miller-Urey reassessments (21548); speculative link but necessary for interconnection."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Aldol condensation to glycolaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Formose-like reaction where formaldehyde dimerizes to glycolaldehyde, stabilized by borates.",
+        "reasoning": "Prebiotic sugar synthesis via formose reaction; supported by sources (10209, 9327) for glycolaldehyde as serine precursor in Strecker pathways."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of glycine",
+        "inputs": [
+          "mol_005",
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Formaldehyde reacts with HCN to form aminonitrile, then with NH3 and hydrolysis to glycine on clay surfaces.",
+        "reasoning": "Classic Strecker reaction for glycine; evidenced in Miller-Urey experiments (Miller, 1953; sources 15634, 6942) and surface catalysis (13556)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of serine aminonitrile",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Glycolaldehyde + HCN forms cyanohydrin, amination with NH3 yields serine aminonitrile.",
+        "reasoning": "Strecker pathway specific for serine using glycolaldehyde; supported by sources (15634, 985, 6942) and prebiotic amino acid synthesis experiments."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of serine aminonitrile to serine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Aqueous hydrolysis of the nitrile group to carboxylic acid, facilitated by concentration in pools.",
+        "reasoning": "Standard step in Strecker synthesis; aligns with heterotrophic models (sources 6943, 6942) and experimental demonstrations (15225)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Pyruvate synthesis via CO2 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "Multi-carbon chain formation from CO2/H2 on mineral surfaces, yielding pyruvate as C3 keto acid.",
+        "reasoning": "Hydrothermal Fischer-Tropsch synthesis; supported by sources (9400, 9983) and Keefe et al. (1995) for CO2 reduction to amino acid precursors."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Non-enzymatic transamination to glyoxylate",
+        "inputs": [
+          "mol_011",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298-303K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate buffer",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Transamination exchanges amino group from glycine to pyruvate derivative, but simplified to produce glyoxylate; reverse for glycine.",
+        "reasoning": "Non-enzymatic transamination in phosphate buffers; evidenced by sources (1024, 6940) linking prebiotic to biotic pathways, addressing evolutionary transition."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydroxymethylation of glycine to serine",
+        "inputs": [
+          "mol_008",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles, UV"
+        },
+        "mechanism": "Formaldehyde adds to glycine alpha carbon under dehydration conditions on clay, forming serine.",
+        "reasoning": "Prebiotic hydroxymethylation route; supported by sources (23036, 9983) for glyoxylate/glycine intermediates and surface catalysis (512, 502)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Phosphoro-Strecker to serine aminonitrile",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "neutral pH, DAP"
+        },
+        "mechanism": "Diamidophosphate activates HCN addition to aldehyde, forming N-phosphoroaminonitrile from glycolaldehyde and NH3.",
+        "reasoning": "Selective Phosphoro-Strecker variant; directly from sources (21192) for prebiotic amino acid synthesis avoiding byproducts."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal formate to surface Strecker serine",
+        "description": "CO2 reduction in vents provides formate, converted to formaldehyde on surface for Strecker to serine via glycolaldehyde.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct surface Strecker from assumed HCHO",
+        "description": "Atmospheric formaldehyde undergoes formose to glycolaldehyde, then Strecker with HCN/NH3 to serine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface glycine Strecker then hydroxymethylation",
+        "description": "Glycine from formaldehyde Strecker, then reacts with additional formaldehyde on clay to serine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal pyruvate transamination route",
+        "description": "Pyruvate from vents, transaminates with glycine to glyoxylate intermediates leading to serine assembly.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Phosphoro-Strecker surface variant",
+        "description": "Phosphate-catalyzed Strecker using glycolaldehyde for selective serine formation.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal to surface glycine via glyoxylate",
+        "description": "Glyoxylate from transamination, reduced/amined to glycine, then to serine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "UV-assisted surface from hydrothermal formate",
+        "description": "Formate to HCHO via UV on TiO2, then direct Strecker for glycine and hydroxymethylation.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Wet-dry cycling serine from glycolaldehyde",
+        "description": "Glycolaldehyde from formose, wet-dry promotes Strecker and hydrolysis.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Biochemical assembly from hydrothermal pyruvate",
+        "description": "Pyruvate feeds into transamination network with surface glycine for serine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Convergent Phosphoro-Strecker with hydrothermal HCN",
+        "description": "HCN from vents (assumed), with surface glycolaldehyde for phosphate-assisted serine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_004"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.6,
+          "rxn_003": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Strong hydrothermal to surface flow, but formate to formaldehyde step is mechanistically challenging without specified catalysts.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify catalysts like UV or minerals for rxn_002."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_009": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Direct surface Strecker is literature-supported, but assumes HCHO availability without clear sourcing.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Link to hydrothermal HCHO production for better interconnection."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Glycine hydroxymethylation aligns with literature, simple and coherent on surface.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral catalysts like montmorillonite for surface reaction."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_007": 0.5,
+          "rxn_008": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Pyruvate direct from CO2 is oversimplified; transamination step unclear for non-enzymatic serine formation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Break rxn_007 into multi-step CO2 reduction; clarify transamination product."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_010": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Phosphoro-Strecker is highly selective and literature-backed for prebiotic conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify DAP or phosphate involvement explicitly."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.6,
+          "rxn_004": 0.95,
+          "rxn_008": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Involves glyoxylate, a key intermediate, but transamination loop with glycine is redundant.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Refine glyoxylate role to direct serine path."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.6,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "UV-assisted aligns with surface chemistry, but formate to HCHO needs UV specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Incorporate UV explicitly in rxn_002 conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Wet-dry cycling for serine from glycolaldehyde is plausible per literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add wet-dry cycle details to rxn_005."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.5,
+          "rxn_008": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Biochemical assembly from pyruvate has issues with direct hydrothermal pyruvate synthesis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Use multi-step pyruvate formation; specify non-enzymatic conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Convergent Phosphoro-Strecker with HCN hub is strong and aligns with literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Link HCN sourcing to hydrothermal processes."
+        ]
+      }
+    ],
+    "best_pathway_id": "P5",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with strong literature alignment to Strecker and hydrothermal routes; minor issues in direct multi-carbon formations and some reaction simplifications, but overall viable prebiotic synthesis.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

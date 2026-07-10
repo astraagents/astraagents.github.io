@@ -1,0 +1,870 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Integrate hydrothermal C1 reduction to C2 building blocks with surface photochemistry and wet-dry condensation for heterocycle formation, followed by Strecker synthesis and hydrolysis to assemble histidine under prebiotic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrocyanic acid",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H4N2",
+        "iupac_name": "imidazole",
+        "common_name": "imidazole",
+        "inchi": "InChI=1S/C3H4N2/c1-2-5-3-4-1/h1-3H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H4N2O",
+        "iupac_name": "1H-imidazole-4-carbaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H4N2O/c7-2-4-1-5-3-6-4/h1-3H,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H4N3",
+        "iupac_name": "1H-imidazole-4-aminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(2S)-2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": "nitrogen",
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Electron transfer from Fe-S surface reduces CO2 to formate",
+        "reasoning": "Fe\u2083S\u2084-catalyzed CO\u2082 reduction to formate at hydrothermal vents (W\u00e4chtersh\u00e4user, 1990)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Hydrogenation of formate on Fe\u2083O\u2084 surface",
+        "reasoning": "FT-type hydrogenation of C1 compounds on magnetite (Schrenk et al., 2013)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Direct Fischer-Tropsch formaldehyde synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "CO2 activation and partial hydrogenation on iron oxide",
+        "reasoning": "One-step FT synthesis of formaldehyde on Fe\u2083O\u2084 (McCollom & Seewald, 2006)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation to glycolaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol of two formaldehyde molecules",
+        "reasoning": "Borate-stabilized formose reaction yields glycolaldehyde (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanohydrin formation",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Nucleophilic addition of HCN to aldehyde",
+        "reasoning": "TiO\u2082-photocatalyzed cyanohydrin formation under UV (Sutherland, 2016)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "HCN oligomerization to imidazole",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Polymerization and cyclization of HCN",
+        "reasoning": "HCN oligomerization on sulfide surfaces forms imidazole (Miyakawa et al., 2002)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formylation of imidazole",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Electrophilic substitution of imidazole by formaldehyde",
+        "reasoning": "Mineral-catalyzed formylation in evaporitic pools (Deamer & Pashley, 1989)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyanosulfidic formation of imidazole-4-carboxaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": true,
+          "other": "UV photochemistry"
+        },
+        "mechanism": "Photochemical cyanosulfidic pathway",
+        "reasoning": "Direct photochemical formation of heterocycle precursors from HCN (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis of imidazole aminonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_014",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-360K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of NH3 and HCN to aldehyde",
+        "reasoning": "Montmorillonite-mediated Strecker for \u03b1-amino nitriles (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrolysis to histidine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "Pyrite-catalyzed aminonitrile hydrolysis to amino acids (Huber & W\u00e4chtersh\u00e4user, 1998)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Photochemical HCN synthesis",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Radical-mediated N\u2013C bond formation",
+        "reasoning": "UV-driven N\u2082/CH\u2084 photolysis yields HCN (Stribling & Miller, 1986)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Formate-driven C1 to histidine",
+        "description": "Hydrothermal formate production and hydrogenation, surface aldol and cyanohydrin chemistry, HCN oligomerization, formylation, Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct FT C1 to histidine",
+        "description": "Direct Fischer-Tropsch formaldehyde formation bypassing formate intermediate",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface cyanosulfidic heterocycle route",
+        "description": "HCN oligomerization and photochemical carboxaldehyde formation",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formate plus photochemistry route",
+        "description": "Combines formate hydrogenation with cyanosulfidic steps",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Atmospheric HCN feed route",
+        "description": "Photochemical HCN generation feeding surface condensation and hydrolysis",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Nested formate and atmospheric HCN route",
+        "description": "Dual C1 reduction and HCN photolysis converge on heterocycle formation",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "HCN-only oligomerization route",
+        "description": "Bypass C1 building blocks using only HCN polymerization",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "HCN photochemical carboxaldehyde route",
+        "description": "Direct photochemical formation of carboxaldehyde intermediate",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glycolonitrile-mediated heterocycle route",
+        "description": "Cyanohydrin intermediate channels into imidazole formylation",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanohydrin plus photochemical carboxaldehyde",
+        "description": "Glycolonitrile and cyanosulfidic steps unify in Strecker assembly",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Formate-driven sequence is well-integrated; hydrothermal to surface transitions are justified. Final Strecker/hydrolysis is robust.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail mineral catalysts for aldol condensation",
+          "Specify pH for Strecker step"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_007": 0.8,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.77,
+        "feedback": "Direct Fischer\u2013Tropsch step has low yield and lacks specificity, but downstream steps are coherent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Include metal catalysts (Fe/Ni) for FT synthesis",
+          "Consider alternative C1 routes"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.88,
+          "rxn_008": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Cyanosulfidic heterocycle formation is well-supported; converges efficiently to histidine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify UV flux for cyanosulfidic steps",
+          "Clarify surface mineral identity"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_007": 0.85,
+          "rxn_011": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Integration of photochemical HCN is strong; hydrothermal/formate synergy works well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail photon flux and wavelength for HCN synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_011": 0.7,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9,
+          "rxn_003": 0.6
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.78,
+        "feedback": "Atmospheric HCN feed is plausible but steady-state concentrations may be low.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Provide mechanism for sustained HCN accumulation",
+          "Assess N2/CH4 photochemistry yields"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_011": 0.75,
+          "rxn_002": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.8,
+          "rxn_007": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Comprehensive integration of hydrothermal and atmospheric inputs; high convergence.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Optimize timing of wet-dry and photochemical phases"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_006": 0.4,
+          "rxn_007": 0.35,
+          "rxn_009": 0.3,
+          "rxn_010": 0.3
+        },
+        "chemical_feasibility": 0.3,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.2,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.3,
+        "feedback": "HCN-only oligomerization to histidine is highly speculative and unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Incorporate surface catalysis or cofactors",
+          "Add intermediate stabilization steps"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_008": 0.45,
+          "rxn_011": 0.5,
+          "rxn_004": 0.8,
+          "rxn_009": 0.9
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.49,
+        "feedback": "Oversimplified; missing key intermediates and unrealistic yields.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Elaborate cyanide network",
+          "Include wet-dry cycles for condensation"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.81,
+        "feedback": "Glycolonitrile-mediated heterocycle synthesis is plausible; minor gaps in photochemical activation.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral surfaces for cyanohydrin stabilization"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_011": 0.75,
+          "rxn_008": 0.9,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "Balanced use of cyanohydrin and cyanosulfidic steps; strong convergence to target.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail UV conditions for cyanosulfidic formation"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.73,
+    "network_feedback": "The network is well-connected with robust hub usage and multiple valid routes to histidine. Some simplified HCN-only pathways lack feasibility, but key routes integrate hydrothermal, surface, and photochemical steps effectively.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

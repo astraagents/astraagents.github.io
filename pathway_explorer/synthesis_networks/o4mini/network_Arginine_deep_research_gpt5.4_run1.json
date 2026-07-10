@@ -1,0 +1,852 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Implement the detailed Patel et al. cyanosulfidic homologation pathway under surface photochemical conditions with auxiliary in situ cyanamide generation routes and final alkaline hydrolysis in a biochemical setting; integrate multiple surface sources for cyanamide (HCN photolysis, urea decomposition, ammonium carbamate rearrangement) and atmospheric HCN supply to create ten environmental pathway variants converging on arginine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H2",
+        "iupac_name": "acetylene",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H3N",
+        "iupac_name": "acrylonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H3N/c1-2-3-4/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H5N2",
+        "iupac_name": "3-aminopropanenitrile",
+        "common_name": "\u03b2-aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c4-2-1-3-5/h1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2N2",
+        "iupac_name": "cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7N3O",
+        "iupac_name": "cyclic guanidinium hemiaminal",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H10N4",
+        "iupac_name": "\u03b1-aminonitrile precursor (compound 46)",
+        "common_name": "compound 46",
+        "inchi": "InChI=1S/C23H20Cl2F3N5O2S/c24-17-12-16(35-23(26,27)28)3-4-18(17)34-19-5-9-30-21(20(19)25)33-10-6-14(7-11-33)31-22(36)32-15-2-1-8-29-13-15/h1-5,8-9,12-14H,6-7,10-11H2,(H2,31,32,36)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H14N4O2",
+        "iupac_name": "(2S)-2-amino-5-guanidinopentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH4N2O",
+        "iupac_name": "carbonyl diamide",
+        "common_name": "urea",
+        "inchi": "InChI=1S/CH4N2O/c2-1(3)4/h(H4,2,3,4)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Photoredox coupling of HCN and acetylene to acrylonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "covellite (CuS)",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "covellite (CuS)",
+          "aqueous": true,
+          "other": "UV light ~300 nm"
+        },
+        "mechanism": "Cu(I)/Cu(II)-mediated photoredox coupling",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Ammonia Michael addition to acrylonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral to slightly basic pH"
+        },
+        "mechanism": "Michael addition of NH3 to the nitrile",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Photochemical synthesis of cyanamide from HCN",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV light ~300 nm"
+        },
+        "mechanism": "HCN polymerization and sulfur-mediated oxidation",
+        "reasoning": "(Patel et al., 2015) speculative but consistent with cyanosulfidic network"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Guanidinylation to cyclic guanidinium hemiaminal",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite (MoS2)",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "MoS2",
+          "aqueous": true,
+          "other": "UV light"
+        },
+        "mechanism": "Reductive amination followed by cyanamide addition",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Kiliani\u2013Fischer homologation to \u03b1-aminonitrile precursor",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite (MoS2)",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "MoS2",
+          "aqueous": true,
+          "other": "UV light"
+        },
+        "mechanism": "HCN-driven homologation and cyclization",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Alkaline hydrolysis of \u03b1-aminonitrile to arginine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH ~11, wet-dry cycling"
+        },
+        "mechanism": "Basic hydrolysis of nitrile to carboxylic acid",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Carbamoylation of ammonia to urea",
+        "inputs": [
+          "mol_004",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "320-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "dry heat"
+        },
+        "mechanism": "Ammonia and CO2 dehydration to urea",
+        "reasoning": "Speculative based on ammonium carbamate dehydration (Frenkel-Pinter et al., 2019)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Thermal decomposition of urea to cyanamide",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": false,
+          "other": "drying cycle"
+        },
+        "mechanism": "Dehydration of urea",
+        "reasoning": "(Frenkel-Pinter et al., 2019)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV-promoted rearrangement of ammonium carbamate to cyanamide",
+        "inputs": [
+          "mol_011",
+          "mol_013",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV light"
+        },
+        "mechanism": "Photochemical carbamate rearrangement",
+        "reasoning": "Speculative but enables cyanamide supply"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Atmospheric photochemical production of HCN",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV light ~200\u2013254 nm"
+        },
+        "mechanism": "Photochemical dissociation of CH4 and N2",
+        "reasoning": "(Miller, 1986)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Standard cyanosulfidic route via HCN photolysis",
+        "description": "HCN from atmospheric photochemistry drives the full homologation sequence in an evaporitic pool",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Urea-mediated cyanamide route",
+        "description": "In tidal flats, ammonia and CO2 form urea which decomposes to cyanamide to feed homologation",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Ammonium carbamate rearrangement route",
+        "description": "UV-promoted conversion of carbamate yields cyanamide for guanidinylation",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Dual photolysis route",
+        "description": "Combination of direct HCN photolysis and carbamate rearrangement for cyanamide supply",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_009",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Mixed urea and photolysis route",
+        "description": "Surface hydrolysis sequence with alternating urea and direct cyanamide generation",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Thermal\u2013photolysis hybrid route",
+        "description": "Urea decomposition followed by HCN photolysis to maximize cyanamide yield",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Sequential carbamate deck route",
+        "description": "Ammonium carbamate and urea both supply cyanamide in wet\u2013dry cycling",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Enhanced urea\u2013carbamate route",
+        "description": "Consecutive urea formation and carbamate rearrangement generate cyanamide pulses",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_009",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Photolysis-prioritized route",
+        "description": "Early HCN photolysis feeds guanidinylation with minimal urea involvement",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Carbamate-prioritized route",
+        "description": "Initial carbamate rearrangement followed by urea-mediated cyanamide for network robustness",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_009",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_006",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_001",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Standard cyanosulfidic route closely follows Patel et al. with strong literature support. Photochemical and Strecker-like steps are well aligned, yielding arginine efficiently.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include explicit mention of mineral catalysts (e.g., Cu, Zn, FeS) for surface steps"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "The urea-mediated cyanamide generation adds realistic wet\u2013dry cycling chemistry. Thermal decomposition of urea is plausible under prebiotic heating.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Better define heating regime for urea decomposition"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_009": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Ammonium carbamate rearrangement is a viable cyanamide source though less well documented. Path remains coherent.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include experimental precedent for UV-promoted carbamate rearrangement"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_003": 0.8,
+          "rxn_009": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Dual photolysis leverages two HCN photochemical sources; overall credible but demands high UV flux.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Assess UV flux availability in pond environments"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_007": 0.9,
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.82,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Combining urea and HCN photolysis routes increases robustness; minor complexity added.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify timing of reagent pulses to avoid side reactions"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_008": 0.9,
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Thermal\u2013photolysis hybrid offers flexibility but may require well-controlled heating and UV overlap.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Provide temperature ranges for thermal steps"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_009": 0.8,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_004": 0.85,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.82,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Sequential carbamate deck route is chemically plausible and offers redundancy in cyanamide sources.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Discuss potential competition between carbamate and urea pathways"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.8,
+          "rxn_004": 0.85,
+          "rxn_006": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Enhanced urea\u2013carbamate route maximizes cyanamide yield; coherent with surface conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Evaluate wet\u2013dry cycling to concentrate carbamate"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0,
+          "rxn_002": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Photolysis-prioritized route streamlines UV-driven steps; effective but UV-demanding.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Model UV attenuation by dissolved organics"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_009": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Carbamate-prioritized route validly sources cyanamide early; matches ammonia-rich pond scenarios.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify local CO\u2082 pressure for carbamate formation"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.9,
+    "network_feedback": "The network is well-constructed, highly connected, and aligns closely with Patel et al.\u2019s cyanosulfidic homologation pathway. Chemical steps are plausible and the multiple cyanamide sourcing strategies enhance robustness. The absence of explicit hydrothermal reactions and mineral catalysts is a minor gap\u2014incorporating FeS or clay surfaces could strengthen realism.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 2,
+  "notes": null
+}

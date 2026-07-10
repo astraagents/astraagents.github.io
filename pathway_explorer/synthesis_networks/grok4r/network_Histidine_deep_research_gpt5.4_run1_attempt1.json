@@ -1,0 +1,851 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "The network integrates hydrothermal reduction of CO2 to formate as a carbon source interconnection, surface photochemistry and cyanosulfidic chemistry for generating sugars and formamidine from HCN, formose-like reactions for tetrose synthesis, Shen et al. condensation pathways to imidazole precursors, oxidative conversion of alcohol intermediates, and Strecker assembly at biochemical interfaces. A discharge pathway provides an alternative energy-driven route. Multiple convergent pathways ensure redundancy, with hubs at glycolaldehyde, erythrose, and imidazole-4-acetaldehyde.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O2",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H8O4",
+        "iupac_name": "2,3,4-trihydroxybutanal",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH4N2",
+        "iupac_name": "formimidamide",
+        "common_name": "formamidine",
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-(1H-imidazol-5-yl)acetaldehyde",
+        "common_name": "imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H8N2O",
+        "iupac_name": "2-(1H-imidazol-5-yl)ethanol",
+        "common_name": "imidazole-4-ethanol",
+        "inchi": "InChI=1S/C5H8N2O/c8-2-1-5-3-6-4-7-5/h3-4,8H,1-2H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C6H9N3O2",
+        "iupac_name": "2-amino-3-(1H-imidazol-5-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_014",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed hydrogenation of CO2",
+        "reasoning": "Speculative for histidine network to provide interconnecting carbon source; based on iron-sulfur catalysis of CO2 reduction (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate conversion to formaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic dehydrogenation and rearrangement",
+        "reasoning": "Speculative; proposed to link hydrothermal products to surface formose chemistry necessary for sugar precursors"
+      },
+      {
+        "id": "rxn_003",
+        "name": "HCN photoredox to glycolaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical disproportionation and homologation",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formaldehyde to glycolaldehyde via formose initiation",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldol-type self-condensation",
+        "reasoning": "Prebiotic formose reaction with borate stabilization for sugar synthesis (general prebiotic chemistry)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Glycolaldehyde to erythrose via formose network",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Sequential aldol condensations and isomerizations",
+        "reasoning": "Speculative exact step; based on formose reaction producing tetroses (consistent with Ritson & Sutherland, 2012 upstream)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "HCN photoredox to erythrose",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical homologation to tetroses",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formamidine synthesis from HCN and ammonia",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "concentration on clay"
+        },
+        "mechanism": "Nucleophilic addition and tautomerization",
+        "reasoning": "(Shen et al., 1987, citing intermediates in HCN-NH3 chemistry)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Erythrose and formamidine to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 6, 12 hours"
+        },
+        "mechanism": "Condensation, cyclization, and dehydration",
+        "reasoning": "(Shen et al., 1987, yield 1.6% at pH 6)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Erythrose, formaldehyde, and ammonia to imidazole-4-ethanol",
+        "inputs": [
+          "mol_008",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 6"
+        },
+        "mechanism": "Multi-component condensation",
+        "reasoning": "(Shen et al., 1987, yield 5.4%)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Dehydrogenation of imidazole-4-ethanol to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "oxidative conditions"
+        },
+        "mechanism": "Surface-catalyzed dehydrogenation",
+        "reasoning": "Speculative; addresses gap in oxidation step, suggested by Shen et al. (1987) using sulfur or ferric ions, with pyrite as prebiotic analog"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Strecker synthesis to histidine",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 9-10"
+        },
+        "mechanism": "Imine formation, cyanide addition, hydrolysis to amino acid",
+        "reasoning": "(Shen et al., 1990, yield 3.5% relative to erythrose)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Spark discharge synthesis of histidine",
+        "inputs": [
+          "mol_014",
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "1.5 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "spark discharge ~45 kV, pH decreasing to 8"
+        },
+        "mechanism": "Plasma-induced amination and carbon fixation in complex mixtures",
+        "reasoning": "(Turse et al., 2013, detected in day 2-4 samples)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-surface formose to histidine via formamidine",
+        "description": "Hydrothermal formate feeds surface formaldehyde for formose to erythrose, then Shen direct aldehyde route",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "HCN photochemistry to erythrose via glycolaldehyde, then formamidine route",
+        "description": "Surface UV from HCN to sugars, direct to erythrose hub",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct HCN photochemistry to erythrose, formamidine route",
+        "description": "Bypasses smaller sugars, direct tetrose from HCN",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal-surface formose to histidine via ethanol intermediate",
+        "description": "Uses alcohol precursor with dehydrogenation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "HCN to glycolaldehyde to erythrose via ethanol route",
+        "description": "Photochemical sugars with alternative imidazole formation",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Direct HCN to erythrose via ethanol with HCN-derived formaldehyde",
+        "description": "Converges at aldehyde hub using cyanosulfidic HCHO",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_013",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cyano-sulfidic HCHO to formose erythrose, formamidine route",
+        "description": "Alternative HCHO source from HCN homologation",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyano-sulfidic HCHO to erythrose via ethanol",
+        "description": "Homologation to HCHO, then ethanol path",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_004",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Spark discharge direct synthesis",
+        "description": "Energy-driven route from reducing gases, speculative but demonstrated",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Mixed hydro-cyano to erythrose via formamidine",
+        "description": "Combines hydro H2 with surface HCN photochemistry",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Strong alignment with Shen pathway via formamidine; formate to formaldehyde step plausible but requires clarification on mechanism.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify catalyst for formate oxidation to formaldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "HCN photochemistry to sugars aligns with Ritson/Sutherland; good convergence at erythrose.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral catalysts for photoredox steps."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Direct HCN to erythrose is speculative but supported by literature; shortest efficient path.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Validate direct photoredox yield for erythrose."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Ethanol intermediate aligns with Shen's imidazole-4-ethanol; dehydrogenation needs oxidant specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Propose ferric ion or sulfur for dehydrogenation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Converges via glycolaldehyde to ethanol route; good redundancy.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Incorporate mineral redox for oxidation step."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_004": 0.85,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Uses HCN-derived formaldehyde; aligns with cyanosulfidic chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Clarify formaldehyde source integration."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Cyano-sulfidic HCHO to formose; strong literature support from Patel et al.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Enhance with sulfidic agents."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_004": 0.85,
+          "rxn_005": 0.9,
+          "rxn_009": 0.9,
+          "rxn_010": 0.8,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Similar to P7 but via ethanol; dehydrogenation remains a weak point.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Address oxidation mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_012": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Direct discharge aligns with Turse et al., but lacks mechanistic detail and selectivity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Deconvolute mechanism; treat as supplementary."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95,
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Mixed hydro-cyano path; excellent interconnection.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify transition from hydrothermal to surface."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.9,
+    "network_feedback": "Excellent network with strong literature alignment to Shen et al. and supporting prebiotic routes; good topology, hubs, and convergence; minor issues in some conversions like formate to formaldehyde and dehydrogenation.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

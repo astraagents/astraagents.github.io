@@ -1,0 +1,839 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "The synthesis network for threonine integrates five literature-validated routes: cyanosulfidic Strecker via lactaldehyde and glyceraldehyde (Surface UV photochemistry), Miller-Urey spark discharge (Surface electrical simulation), speculative aldol condensation of glycine and acetaldehyde (Biochemical with mineral aid), reductive amination of \u03b1-keto-\u03b2-hydroxybutyrate (Hydrothermal Fe-catalyzed), and Bucherer-Bergs hydantoin pathway (Surface). Hubs at acetaldehyde, lactaldehyde, and glyceraldehyde enable convergence. Hydrothermal provides reducing precursors like acetaldehyde; Surface drives photochemistry and condensation; Biochemical assembles via low-temp routes to address threonine's instability. 10 pathways trace diverse routes with environmental flow, emphasizing low-temp Surface/Biochemical for stability.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3CHO",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-Hydroxyacetaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3CH(OH)CHO",
+        "iupac_name": "2-Hydroxypropanal",
+        "common_name": "Lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "O=CHCH(OH)CH2OH",
+        "iupac_name": "2,3-Dihydroxypropanal",
+        "common_name": "Glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH2CH2COOH",
+        "iupac_name": "2-Aminoacetic acid",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH3CH(OH)C(O)COOH",
+        "iupac_name": "3-Hydroxy-2-oxobutanoic acid",
+        "common_name": "\u03b1-Keto-\u03b2-hydroxybutyrate",
+        "inchi": "InChI=1S/C4H6O4/c1-2(5)3(6)4(7)8/h2,5H,1H3,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "NH2CH(CH(OH)CH3)COOH",
+        "iupac_name": "2-Amino-3-hydroxybutanoic acid",
+        "common_name": "Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH3CH(OH)CH(NH2)CN",
+        "iupac_name": "2-Amino-3-hydroxybutanenitrile",
+        "common_name": "Threonine aminonitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH3CH(OH)CH(OH)CN",
+        "iupac_name": "3-Hydroxy-2-hydroxybutanenitrile",
+        "common_name": "Lactaldehyde cyanohydrin",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Photoredox formation of acetaldehyde from HCN",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I) cyanide complex",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I) minerals",
+          "aqueous": true,
+          "other": "UV irradiation, 2 hours"
+        },
+        "mechanism": "UV photoredox cycling with H2S as reductant converts HCN to acetaldehyde via formaldehyde and glycolaldehyde intermediates.",
+        "reasoning": "UV irradiation of Cu(I) cyanide complexes with H2S produces acetaldehyde at 19% yield for related steps (Ritson and Sutherland, 2013); TiO2 aids photocatalysis (Dunn et al., 1981)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Spark discharge synthesis of glycine and acetaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "electric discharge",
+          "aqueous": true,
+          "other": "CH4/N2/H2O/NH3 gas mixture"
+        },
+        "mechanism": "Spark discharge generates HCN and aldehydes in situ, followed by Strecker to glycine; acetaldehyde produced directly.",
+        "reasoning": "Spark discharge on CH4/NH3/H2O produces threonine precursors including glycine and acetaldehyde (Ring et al., 1972; Parker et al., 2011); montmorillonite concentrates products."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Photoreduction to lactaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I) cyanide complex"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)",
+          "aqueous": true,
+          "other": "UV light, H2S reductant"
+        },
+        "mechanism": "Acetaldehyde + HCN forms cyanohydrin, photoreduced to lactaldehyde.",
+        "reasoning": "Acetaldehyde cyanohydrin photoreduction yields lactaldehyde at 19% (Ritson and Sutherland, 2013); part of cyanosulfidic pathway (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis via lactaldehyde to threonine aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Lactaldehyde + NH3 forms imine, + HCN adds to aminonitrile.",
+        "reasoning": "Classic Strecker on lactaldehyde yields threonine aminonitrile (Ritson and Sutherland, 2013; Patel et al., 2015); montmorillonite catalyzes (Kitadai et al., 2015)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of aminonitrile to threonine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mild aqueous hydrolysis"
+        },
+        "mechanism": "Hydrolysis of nitrile to carboxylic acid, yielding racemic threonine/allothreonine.",
+        "reasoning": "Aminonitrile hydrolysis completes Strecker to threonine (Patel et al., 2015); low temp addresses instability (Truong et al., 2019)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker via glyceraldehyde to threonine aminonitrile",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "UV-exposed pools"
+        },
+        "mechanism": "Glyceraldehyde + NH3 + HCN to aminonitrile.",
+        "reasoning": "Parallel Strecker from glyceraldehyde in cyanosulfidic network (Patel et al., 2015); borate stabilizes (Powner et al., 2009)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Speculative aldol condensation of glycine and acetaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": false,
+          "other": "wet-dry cycles, high concentration"
+        },
+        "mechanism": "Reverse aldol: glycine + acetaldehyde condense to threonine, thermodynamically unfavorable but aided by concentration.",
+        "reasoning": "Conceptual reverse of threonine aldolase; unfavorable but possible with high glycine/acetaldehyde (Fesko, 2016); montmorillonite aids condensation (Bujd\u00e1k et al., 1995); speculative prebiotic extension."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Fe-catalyzed formation of \u03b1-keto-\u03b2-hydroxybutyrate",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS minerals",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "CO-dependent chain elongation from acetaldehyde and cyano ligands on Ni-Fe surfaces to keto acid.",
+        "reasoning": "FeS catalyzes \u03b1-keto acid formation analogous to pyruvate (Huber and W\u00e4chtersh\u00e4user, 2006; Cody et al., 2000); greigite/mackinawite in vents (White et al., 2015)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reductive amination of \u03b1-keto-\u03b2-hydroxybutyrate",
+        "inputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "343K (70\u00b0C)",
+          "pressure": "high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "H2-driven, pH 8"
+        },
+        "mechanism": "Fe2+ promotes reductive amination with NH3 to amino acid.",
+        "reasoning": "Fe2+ catalyzes reductive amination of \u03b1-keto acids at 70\u00b0C (Muchowska et al., 2019); extended to threonine analog with H2/Ni but Fe primary (Kaur et al., 2024); pyrite for photocatalysis if needed (2024 Nature Comm.)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Bucherer-Bergs via lactaldehyde to hydantoin then threonine",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "ammonium carbonate",
+          "aqueous": true,
+          "other": "CO2, wet-dry"
+        },
+        "mechanism": "Lactaldehyde + HCN + NH3 + CO2 to hydantoin intermediate, hydrolysis to threonine.",
+        "reasoning": "Bucherer-Bergs for amino acids via hydantoin sink (Pulletikurti et al., 2022); hydantoins in meteorites (Lerner and Cooper, 2005); clay aids."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Formose-like to glyceraldehyde from glycolaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "UV or base"
+        },
+        "mechanism": "Aldol homologation in cyanosulfidic context to glyceraldehyde.",
+        "reasoning": "Glycolaldehyde to glyceraldehyde in nucleotide pathways (Patel et al., 2015); borate stabilizes sugars (Ricardo et al., 2004)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Hydrothermal reduction to glycolaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "Fe3O4",
+          "aqueous": true,
+          "other": "H2 from serpentinization"
+        },
+        "mechanism": "Fischer-Tropsch-type reduction of HCN/H2S on magnetite to glycolaldehyde.",
+        "reasoning": "Hydrothermal FT synthesis produces aldehydes (McCollom et al., 1999); magnetite catalyzes (Huber and W\u00e4chtersh\u00e4user, 1998); feeds surface."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic Strecker via lactaldehyde",
+        "description": "Surface UV from HCN to acetaldehyde to lactaldehyde to threonine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Spark discharge Strecker",
+        "description": "Surface spark produces glycine/acetaldehyde, then Strecker via lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic via glyceraldehyde",
+        "description": "Surface HCN to glycolaldehyde (hydrothermal feed) to glyceraldehyde to threonine.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_011",
+          "rxn_006",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Speculative aldol from glycine and acetaldehyde",
+        "description": "Biochemical condensation using spark/hydrothermal precursors.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal reductive amination",
+        "description": "Hydrothermal to keto acid, then amination; acetaldehyde from surface feedback.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Bucherer-Bergs via lactaldehyde",
+        "description": "Surface hydantoin route from lactaldehyde hub.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal feed to surface Strecker via lactaldehyde",
+        "description": "Hydrothermal glycolaldehyde/acetaldehyde to surface lactaldehyde path.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Spark to glyceraldehyde Strecker",
+        "description": "Spark acetaldehyde to glycolaldehyde homologation to glyceraldehyde path.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_011",
+          "rxn_006",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Integrated hydrothermal-surface reductive to Strecker",
+        "description": "Hydrothermal keto acid alternative, but converge to aminonitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full cyanosulfidic with spark boost",
+        "description": "Spark enhances NH3 for glyceraldehyde/lactaldehyde dual convergence.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_001",
+          "rxn_011",
+          "rxn_003",
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.94,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Strong alignment with cyanosulfidic Strecker via lactaldehyde; well-supported by literature (Ritson & Sutherland, 2013; Patel et al., 2015). Minor issue with environmental transition to biochemical hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for surface photoredox."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "Spark discharge produces glycine and aldehydes, but direct link to threonine Strecker via acetaldehyde is indirect; aligns with Miller-Urey (Ring et al., 1972), but rxn_002 notation imprecise.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Clarify spark inputs to include HCN/H2S for better threonine yield as per Parker et al., 2011."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_006": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Strecker via glyceraldehyde supported as parallel route (Patel et al., 2015); formose-like step plausible but HCN role unclear.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Refine rxn_011 to pure aldol without HCN for better formose alignment."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.65,
+        "feedback": "Aldol condensation speculative and thermodynamically unfavorable (Fesko, 2016); no prebiotic demo, though conceptually simple.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Add mineral catalyst like montmorillonite for feasibility (Kitadai et al., 2015)."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_008": 0.6,
+          "rxn_009": 0.9
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "Reductive amination aligns with Fe-catalyzed routes (Muchowska et al., 2019), but keto acid formation from acetaldehyde+HCN lacks direct support.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Justify rxn_008 with literature on keto acid synthesis, e.g., via CO-dependent elongation (Huber & W\u00e4chtersh\u00e4user, 2006)."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_010": 0.9,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Bucherer-Bergs well-supported for amino acids (Pulletikurti et al., 2022); hydantoin intermediate plausible for threonine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include CO2 source for ammonium carbonate in rxn_010."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_012": 0.85,
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Excellent hydrothermal-to-surface flow; aligns with environmental transitions and greigite catalysis in vents (White et al., 2015).",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify FeS minerals for rxn_012 reduction."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_011": 0.8,
+          "rxn_006": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "Spark to glyceraldehyde Strecker; spark promotes hydroxylated AAs (Parker et al., 2011), but rxn_002 imprecise.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Integrate H2S in spark for better threonine yield."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_008": 0.6,
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "Integrated hydrothermal-surface; reductive to Strecker, but short steps limit detail; addresses instability via low-temp biochemical.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Elaborate connection between reductive amination product and Strecker."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.6,
+          "rxn_003": 0.95,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_011": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "Full cyanosulfidic with spark boost; comprehensive but lengthy; aligns with protometabolism (Patel et al., 2015).",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Streamline to avoid redundant spark step."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with strong literature alignment to five key routes; addresses threonine instability via low-temp environments. Minor issues in speculative reactions (e.g., aldol, keto acid formation) and imprecise spark notation reduce feasibility slightly, but topology and convergence are excellent.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

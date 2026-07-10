@@ -1,0 +1,812 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The network constructs arginine from simple prebiotic precursors like HCN, NH3, and H2CO through hydrothermal reduction to alpha-keto acids, surface Strecker synthesis and cyanosulfidic reactions for amino acid precursors like glutamate and ornithine, and biochemical assembly incorporating the guanidino group via irradiation-derived guanidine addition. This follows literature on general amino acid synthesis in hydrothermal vents and surface environments, with speculative connections for arginine-specific steps due to limited direct evidence (Yanagawa and Kobayashi, 1992; Banez and Or\u00f3, 1971). Multiple pathways converge at hubs like alpha-ketoglutarate and ornithine, enabling redundancy across environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2CO",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "Hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH4CN",
+        "iupac_name": "Ammonium cyanide",
+        "common_name": "Ammonium cyanide",
+        "inchi": "InChI=1S/CN.H3N/c1-2;/h;1H3/q-1;/p+1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "H2N-C(=NH)-NH2",
+        "iupac_name": "Guanidine",
+        "common_name": "Guanidine",
+        "inchi": "InChI=1S/CH5N3/c2-1(3)4/h(H5,2,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "Alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO4",
+        "iupac_name": "(2S)-2-Aminopentanedioic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H12N2O2",
+        "iupac_name": "(2S)-2,5-Diaminopentanoic acid",
+        "common_name": "Ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H14N4O2",
+        "iupac_name": "(2S)-2-Amino-5-(diaminomethylideneamino)pentanoic acid",
+        "common_name": "Arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Cyanamide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-Hydroxypropanoic acid",
+        "common_name": "Lactate",
+        "inchi": "InChI=1S/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formation of ammonium cyanide from HCN and NH3",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Acid-base reaction concentrating HCN with NH3 on clay surfaces",
+        "reasoning": "Ammonia and HCN are precursors in surface environments; montmorillonite concentrates reactants (Banez and Or\u00f3, 1971). Speculative for arginine path but aligns with general amino acid precursors."
+      },
+      {
+        "id": "rxn_002",
+        "name": "UV irradiation of ammonium cyanide to guanidine",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "false",
+          "other": "UV exposure"
+        },
+        "mechanism": "Photolysis leading to rearrangement and formation of guanidino group",
+        "reasoning": "Irradiation of ammonium cyanide forms guanidine, key for guanidino group (Journal of Molecular Evolution study, cited in data). TiO2 photocatalysis enhances UV reactions in surface settings."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal reduction to alpha-ketoglutarate analog",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Reductive condensation of formaldehyde and ammonia with H2S on mineral surfaces forming keto acid chain",
+        "reasoning": "Hydrothermal systems synthesize alpha-keto acids from simple precursors (Yanagawa and Kobayashi, 1992). Greigite catalyzes CO2/H2 reductions, extended to keto acids; speculative for specific chain length."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of glutamate from alpha-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "evaporitic pools"
+        },
+        "mechanism": "Addition of HCN to imine from keto acid and NH3, followed by hydrolysis to amino acid",
+        "reasoning": "Strecker synthesis forms amino acids like glutamate from keto acids (Levine et al., 2008). Clay catalysis concentrates reactants; pathway plausible for cationic precursors despite scarcity debate."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Decarboxylation and transamination to ornithine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "null",
+          "aqueous": "true",
+          "other": "mineral interfaces"
+        },
+        "mechanism": "Non-enzymatic decarboxylation of glutamate side chain followed by amination",
+        "reasoning": "Biosynthetic precursor ornithine from glutamate via decarboxylation; prebiotic analog via thermal transamination (Shock and Schulte, 1990). Speculative but connects hydrothermal products to assembly."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Guanidino group incorporation into ornithine to arginine",
+        "inputs": [
+          "mol_009",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "template-directed on clay"
+        },
+        "mechanism": "Nucleophilic addition of guanidine to ornithine delta-amino group",
+        "reasoning": "Ornithine is immediate precursor to arginine; guanidino addition plausible in prebiotic pools (data on histidine-arginine link). Clay promotes ligation; addresses scarcity challenge via surface feed."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Alternative hydrothermal amination to glutamate",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": "true",
+          "other": "reducing conditions"
+        },
+        "mechanism": "Reductive amination on mineral surface",
+        "reasoning": "Pyrite catalyzes amination in vents (Yanagawa and Kobayashi, 1992). Provides convergence to glutamate from hydrothermal route, interconnecting environments."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyanosulfidic formation of guanidine precursor",
+        "inputs": [
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": "true",
+          "other": "UV"
+        },
+        "mechanism": "HCN + H2S oligomerization to guanidino compounds",
+        "reasoning": "Cyanosulfidic pathways form nucleotide/amino precursors (data on cyanide-rich environments). Alternative to irradiation; speculative for guanidine but literature-supported mechanism."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reduction to lactate intermediate",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "Fischer-Tropsch type"
+        },
+        "mechanism": "Hydrogenation of formaldehyde derivatives",
+        "reasoning": "Magnetite catalyzes reductions to hydroxy acids (Huber & Wachtershauser, 1997, general). Links to keto acid formation; speculative bridge to alpha-ketoglutarate."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Oxidation to alpha-ketoglutarate from lactate path",
+        "inputs": [
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "null",
+          "aqueous": "true",
+          "other": "geothermal cycling"
+        },
+        "mechanism": "Coupling and oxidation in proto-metabolic cycle",
+        "reasoning": "Reductive TCA analogs form keto acids (data on hydrothermal thermodynamics). Converges pathways; addresses gap in chain extension."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal keto acid to surface Strecker",
+        "description": "Alpha-ketoglutarate from hydrothermal reduction, then Strecker to glutamate, decarboxylation to ornithine, guanidino addition",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface guanidine via irradiation",
+        "description": "Ammonium cyanide from surface, UV to guanidine, parallel hydrothermal to ornithine, then assembly",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal amination direct",
+        "description": "Keto acid to glutamate via hydrothermal, then to ornithine and arginine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Cyanosulfidic guanidine",
+        "description": "Surface HCN/H2S to guanidine, hydrothermal precursors to ornithine",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Lactate reduction route",
+        "description": "Hydrothermal to lactate, oxidation to keto acid, then Strecker path",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Dual surface guanidine with hydrothermal amination",
+        "description": "Irradiation guanidine parallel to hydrothermal glutamate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cyanosulfidic with lactate",
+        "description": "Surface guanidine from sulfidic, hydrothermal lactate to keto to ornithine",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_012",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formaldehyde direct hydrothermal",
+        "description": "H2CO/NH3 hydrothermal to glutamate variant",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_004",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Ammonium cyanide with Strecker",
+        "description": "Surface ammonium to guanidine, Strecker ornithine path",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Reducing vent full chain",
+        "description": "Integrated hydrothermal reduction and surface assembly",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5,
+          "rxn_002": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "Pathway relies on standard Strecker for glutamate but speculative decarboxylation and guanidino addition; aligns with hydrothermal to surface flow but lacks mineral specifics.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for hydrothermal steps; provide evidence for prebiotic ornithine formation."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.72,
+        "feedback": "Guanidine via UV irradiation supported by literature, but integration with amino acid chain is weak; surface-heavy without strong hydrothermal input.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Link to hydrothermal precursors more explicitly; address guanidino incorporation challenges."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_007": 0.8,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5,
+          "rxn_002": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.78,
+        "feedback": "Direct hydrothermal amination plausible per literature, good environmental flow, but biochemical steps not prebiotic-justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Incorporate mineral agents like pyrite for amination; explore non-enzymatic alternatives for decarboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.7,
+          "rxn_002": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.72,
+        "feedback": "Cyanosulfidic route for guanidine aligns with reducing environments, but connection to ornithine unclear.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Clarify cyanosulfidic products; add literature citations for HCN-H2S reactions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.6,
+          "rxn_010": 0.4,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Lactate route to alpha-KG illogical; oxidation step not chemically sound for prebiotic context.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Revise lactate integration; use established C5 building pathways."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_007": 0.8,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.8,
+        "feedback": "Combines surface guanidine with hydrothermal amination effectively; good convergence at glutamate.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Justify biochemical steps with prebiotic analogs; add mineral catalysis details."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_008": 0.7,
+          "rxn_009": 0.6,
+          "rxn_010": 0.4,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Cyanosulfidic with lactate has feasibility issues in carbon chain building.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Replace lactate path with direct C5 synthesis; align with hydrothermal literature."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_001": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "Formaldehyde hydrothermal path aligns with Banez and Or\u00f3, but C5 formation speculative.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Detail multi-carbon assembly; cite specific formaldehyde oligomerization studies."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_005": 0.6,
+          "rxn_004": 0.9,
+          "rxn_002": 0.8,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.72,
+        "feedback": "Ammonium cyanide to Strecker good, but ornithine step weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Strengthen links to alpha-KG hub; address cationic amino acid scarcity."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_007": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.6,
+          "rxn_006": 0.5,
+          "rxn_008": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Full reducing vent chain shows strong environmental progression and convergence; aligns with Yanagawa and Kobayashi hydrothermal studies.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Provide prebiotic mechanism for guanidino addition; include low-temp vent conditions."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.75,
+    "network_feedback": "The network demonstrates good topology with hubs and convergence, aligning partially with literature on general amino acid synthesis via hydrothermal and Strecker routes. However, arginine-specific steps like guanidino incorporation lack direct prebiotic evidence, and some reactions (e.g., lactate to alpha-KG) are chemically dubious. Environmental flow is present but minerals not specified. Speculative biochemical steps reduce feasibility.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,831 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Combine hydrothermal CO2 fixation to keto acids with surface photochemical and Strecker chemistries, converging through aminonitrile intermediates and direct reductive amination to yield L-Alanine via multiple redundant pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3COO-",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H3O3-",
+        "iupac_name": "pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H4N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "C2H3NO",
+        "iupac_name": "2-oxoethanenitrile",
+        "common_name": "glyconitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C3H6O3",
+        "iupac_name": "dihydroxyacetone",
+        "common_name": "dihydroxyacetone",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h4-5H,1-2H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Mineral\u2010catalyzed reductive activation of CO2",
+        "reasoning": "(Huber & Wachtershauser, 1998)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Fischer\u2010Tropsch hydrogenation to acetate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2010Tropsch\u2010type"
+        },
+        "mechanism": "Hydrogenation of formate to acetate",
+        "reasoning": "(McCollom et al., 2007)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate synthesis from CO2 and H2",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "\u0394pH across vent"
+        },
+        "mechanism": "Fe\u2013S mineral\u2010catalyzed CO2 reduction to keto acid",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of pyruvate to L-Alanine",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectite"
+        ],
+        "conditions": {
+          "temperature": "423K",
+          "pressure": "high",
+          "catalyst": "Al-rich smectite",
+          "aqueous": true,
+          "other": "pH 10, 31 days"
+        },
+        "mechanism": "Mineral\u2010mediated reductive amination",
+        "reasoning": "(Yamagata et al., 1991)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of alanine aminonitrile",
+        "inputs": [
+          "mol_010",
+          "mol_011",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "HCN addition to imine (Strecker)",
+        "reasoning": "(Sanchez et al., 1967)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of alanine aminonitrile to L-Alanine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": false,
+          "other": "dry heat"
+        },
+        "mechanism": "Nitrile hydrolysis",
+        "reasoning": "(Fox & Nakashima, 1994)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "Ca(OH)2"
+        },
+        "mechanism": "Base\u2010catalyzed aldol condensation",
+        "reasoning": "(Breslow, 1959)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Photochemical deoxygenation of glycolaldehyde",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "UV\u2010driven photoreduction",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Cyanosulfidic formation of glyconitrile",
+        "inputs": [
+          "mol_011",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical cyanosulfidic synthesis",
+        "reasoning": "(Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Imine formation to alanine aminonitrile",
+        "inputs": [
+          "mol_014",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "Imine condensation with HCN",
+        "reasoning": "(Sutherland & Horsfall, 2014)"
+      },
+      {
+        "id": "rxn_014",
+        "name": "Reductive amination of dihydroxyacetone",
+        "inputs": [
+          "mol_015",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "Al-rich smectite",
+          "aqueous": true,
+          "other": "pH ~9"
+        },
+        "mechanism": "Mineral\u2010catalyzed reductive amination",
+        "reasoning": "(Pizzarello et al., 2006)"
+      },
+      {
+        "id": "rxn_016",
+        "name": "Hydrogenolysis of acetate to acetaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "hydrogenolysis"
+        },
+        "mechanism": "Mineral\u2010mediated decarbonylation",
+        "reasoning": "(McCollom et al., 2007)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal keto\u2010acid reductive amination",
+        "description": "Direct reduction of CO2 to pyruvate followed by amination",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal DHA amination",
+        "description": "Direct amination of dihydroxyacetone under hydrothermal conditions",
+        "reaction_sequence": [
+          "rxn_014"
+        ],
+        "key_intermediates": [
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface Strecker hydrolysis",
+        "description": "Acetaldehyde Strecker reaction and nitrile hydrolysis on minerals",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formose\u2010Strecker surface route",
+        "description": "Formose reaction to glycolaldehyde then photoreduction to acetaldehyde, Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanosulfidic aminonitrile route",
+        "description": "HCN and H2S photochemistry to glyconitrile then imine formation and hydrolysis",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hybrid hydrothermal\u2013surface Strecker",
+        "description": "Hydrothermal pyruvate production, acetate conversion to acetaldehyde then Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_016",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Full hydrothermal formate\u2010acetate route",
+        "description": "CO2\u2192formate\u2192acetate\u2192acetaldehyde\u2192aminonitrile\u2192Alanine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_016",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal cyanosulfidic cascade",
+        "description": "CO2\u2192formate\u2192acetate\u2192acetaldehyde\u2192glyconitrile\u2192aminonitrile\u2192Alanine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_016",
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface sugar\u2013hydrogenolysis Strecker",
+        "description": "Formaldehyde\u2192glycolaldehyde\u2192acetaldehyde\u2192Strecker\u2192hydrolysis",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_016",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Photochemical glyconitrile fusion",
+        "description": "Acetaldehyde photochemistry to glyconitrile then aminonitrile and hydrolysis",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_014"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_010",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_016"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Direct hydrothermal reductive amination is coherent but the one\u2010step pyruvate synthesis (rxn_003) is oversimplified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Provide stepwise mechanism and catalysts for pyruvate synthesis from CO2",
+          "Specify mineral catalysts in hydrothermal reactions"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_014": 0.2
+        },
+        "chemical_feasibility": 0.2,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.2,
+        "overall_confidence": 0.35,
+        "feedback": "Reductive amination of dihydroxyacetone does not yield alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Correct the precursor or reaction; dihydroxyacetone amination produces 2\u2010amino\u20101,3\u2010propanediol, not alanine"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Classic Strecker followed by hydrolysis is chemically sound and well\u2010supported.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include pH and catalyst details to refine environmental context"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Formose photochemical Strecker route is coherent and literature\u2010aligned.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add specific mineral catalysts (e.g., Ca(OH)2) for the formose reaction",
+          "Describe photochemical conditions (light wavelength, catalysts)"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Cyanosulfidic aminonitrile cascade is plausible and supported by literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail H2S concentrations and pH for cyanosulfidic formation"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.8,
+          "rxn_016": 0.7,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Hybrid route effectively links hydrothermal feedstock to surface Strecker.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify catalysts for Fischer\u2010Tropsch steps",
+          "Clarify hydrothermal\u2010surface transition"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.8,
+          "rxn_016": 0.7,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.78,
+        "feedback": "Full hydrothermal\u2010surface switch is moderately coherent but environment switching needs justification.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add continuous hydrothermal flow; reduce environment switching",
+          "Incorporate surface step justification"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.8,
+          "rxn_016": 0.7,
+          "rxn_009": 0.85,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.3,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.6,
+        "feedback": "Mixing hydrothermal and surface cyanosulfidic steps is incoherent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Reassign cyanosulfidic steps to surface environment",
+          "Streamline environment progression"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Surface sugar\u2010hydrogenolysis Strecker pathway is robust.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.85,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.71,
+        "feedback": "Photochemical glyconitrile fusion lacks a clear mechanism.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Define photochemical mechanism and conditions",
+          "Outline intermediate coupling mechanisms"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.76,
+    "network_feedback": "The network presents multiple literature\u2010aligned routes (e.g., Strecker, cyanosulfidic, hybrid), with strong topology and environmental transitions. Some hydrothermal steps are oversimplified and lack catalytic context. Inclusion of mineral catalysts and mechanistic detail would strengthen feasibility.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

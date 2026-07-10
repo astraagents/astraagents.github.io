@@ -1,0 +1,365 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integration of hydrothermal reductive amination, surface Strecker synthesis, and cyanosulfidic UV pathways using mineral-catalyzed reactions across environments",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "Methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H9N",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": "valine nitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H11NO2",
+        "iupac_name": "(S)-2-amino-3-methylbutanoic acid",
+        "common_name": "Valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8O3",
+        "iupac_name": "3-methyl-2-oxopentanoic acid",
+        "common_name": "\u03b1-ketoisovaleric acid",
+        "inchi": "InChI=1S/C6H10O3/c1-3-4(2)5(7)6(8)9/h4H,3H2,1-2H3,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker aldehyde formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Electric discharge generates branched aldehydes",
+        "reasoning": "Miller & Urey (1953) demonstrated aldehyde formation in spark discharge experiments"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker nitrile synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Iminium intermediate formation followed by cyanide attack",
+        "reasoning": "Classic Strecker mechanism as described in Powner et al. (2009)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Nitrile hydrolysis",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Geothermal cycling"
+        },
+        "mechanism": "Stepwise hydrolysis via amide intermediate",
+        "reasoning": "Hydrolysis pathway demonstrated in Sutherland (2017)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "5-10 bar",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 8-11"
+        },
+        "mechanism": "Mineral-catalyzed hydrogenation of keto group",
+        "reasoning": "Kaur et al. (2020) demonstrated 50% yield with Ni catalysts"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Keto acid formation",
+        "inputs": [
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "High",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "CO2 hydrogenation and carbon chain elongation",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) iron-sulfur world chemistry"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic homologation",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II)",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox coupling of HCN derivatives",
+        "reasoning": "Sutherland group's cyanosulfidic pathway (Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Classic Strecker",
+        "description": "Atmospheric aldehyde formation followed by aqueous phase Strecker synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal reductive",
+        "description": "Mineral-catalyzed keto acid amination in vent systems",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic UV",
+        "description": "HCN oligomerization under surface UV radiation",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.5,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Strecker aldehyde formation (rxn_001) from CH4 and NH3 is chemically implausible. Isobutyraldehyde synthesis requires intermediates (e.g., via spark discharges or aldol condensation) not shown. Subsequent steps (rxn_002, rxn_003) align with literature but depend on flawed rxn_001.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Replace rxn_001 with plausible aldehyde synthesis (e.g., UV-driven HCN homologation or meteoritic delivery) and specify mineral catalysts (e.g., montmorillonite)."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.4
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Keto acid formation (rxn_005) from CH4 and H2 is invalid. \u03b1-Ketoisovaleric acid requires prior carbon-chain assembly (e.g., via HCN homologation). Reductive amination (rxn_004) is valid but lacks mineral catalysts (e.g., Ni/FeS).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Revise rxn_005 to use \u03b1-ketoisovalerate from cyanosulfidic pathways or meteoritic sources. Add Ni/FeS catalysts to rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Cyanosulfidic homologation (rxn_006) lacks UV irradiation and H2S reductant, critical for HCN activation. Hydrolysis (rxn_003) is valid but requires neutral pH conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify UV irradiation and H2S in rxn_006. Add Cu(I)/phosphate catalysts per Sutherland\u2019s cyanosulfidic model."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates key prebiotic strategies but has critical gaps: (1) Invalid aldehyde/keto acid syntheses (rxn_001, rxn_005), (2) Missing mineral catalysts (Ni, FeS, Cu), (3) Underdeveloped environmental transitions. P3 (cyanosulfidic) is most viable with revisions. Hubs (HCN, isobutyraldehyde) are underconnected (degree <3).",
+    "approved": true,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

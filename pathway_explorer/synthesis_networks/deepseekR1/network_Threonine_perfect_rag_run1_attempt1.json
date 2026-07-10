@@ -1,0 +1,419 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "L-Threonine",
+    "overall_strategy": "Combines cyanosulfidic surface chemistry (Patel et al. 2015) with hydrothermal aldol condensation (Aubrey et al. 2008) to form threonine through multiple environmental pathways. Key hubs connect hydrothermal CO2 fixation products with surface nitrile chemistry.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "Lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C5H9NO2",
+        "iupac_name": "2,3-dihydroxy-4-cyanobutane",
+        "common_name": "Cyanohydrin intermediate",
+        "inchi": "InChI=1S/C5H9NO2/c1-4(7)2-5(8)3-6/h4-5,7-8H,2H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-amino-3-hydroxybutanoic acid",
+        "common_name": "L-Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H7NO2",
+        "iupac_name": "L-alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanohydrin formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Nucleophilic cyanide addition to lactaldehyde carbonyl",
+        "reasoning": "Patel et al. (2015) cyanosulfidic pathway step 1"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminonitrile formation",
+        "inputs": [
+          "mol_003",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true
+        },
+        "mechanism": "Strecker-type amination with NH3",
+        "reasoning": "Patel et al. (2015) cyanosulfidic pathway step 2"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Nitrile hydrolysis to threonine",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true
+        },
+        "mechanism": "Stepwise nitrile hydration to carboxylic acid",
+        "reasoning": "Patel et al. (2015) cyanosulfidic pathway step 3"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true
+        },
+        "mechanism": "Alpha-carbon attack on formaldehyde carbonyl",
+        "reasoning": "Aubrey et al. (2008) hydrothermal aldol pathway"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Alanine synthesis",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe\u2070"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true
+        },
+        "mechanism": "Reductive amination of pyruvate",
+        "reasoning": "Muchowska et al. (2019) iron-catalyzed amination"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyruvate synthesis",
+        "inputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "CO\u2082 hydrogenation via Fischer-Tropsch",
+        "reasoning": "Hydrothermal carbon fixation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formaldehyde synthesis",
+        "inputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "CO\u2082 reduction via Fischer-Tropsch",
+        "reasoning": "Hydrothermal C1 synthesis (McCollom et al., 1999)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic surface pathway",
+        "description": "Three-step nitrile hydrolysis via lactaldehyde cyanohydrin",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal aldol pathway",
+        "description": "Alanine-formaldehyde condensation at vents",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal carbon fixation",
+        "description": "CO\u2082 to pyruvate/formaldehyde via Fischer-Tropsch",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "P1 aligns closely with Patel et al. (2015) cyanosulfidic pathway. All steps are chemically sound and literature-supported. Environmental progression is surface-only but justified. Target achieved via nitrile hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "P2 follows Aubrey et al. (2008) aldol condensation. Alanine synthesis (rxn_005) lacks explicit mineral catalysts (Fe\u00b2\u207a) but is plausible. Aldol step (rxn_004) is valid. Target achieved.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify Fe\u00b2\u207a catalysis for alanine synthesis per Muchowska et al. (2019)"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.6,
+        "feedback": "P3 (CO\u2082 \u2192 pyruvate/formaldehyde) lacks mechanistic detail. rxn_006 (CO\u2082 + H\u2082 \u2192 pyruvate) is oversimplified; no literature support for direct synthesis. Formaldehyde production (rxn_007) is plausible via Fischer-Tropsch but requires mineral catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add intermediate steps for pyruvate synthesis (e.g., reductive carboxylation)",
+          "Specify Fe/Ni catalysts for rxn_007"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates validated pathways (P1/P2) but has topology flaws. Hub molecules (mol_004, mol_006, mol_007) have degree \u22653 only if P3 is functional. Environmental interconnection (hydrothermal \u2194 surface) is implied but underdeveloped. P3 requires revision. Overall strategy is sound for P1/P2.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

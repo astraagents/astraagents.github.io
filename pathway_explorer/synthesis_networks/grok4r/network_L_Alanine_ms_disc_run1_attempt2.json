@@ -1,0 +1,774 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "The synthesis network for L-Alanine integrates multiple prebiotic pathways grounded in literature, including Strecker synthesis, reductive amination, and hydrothermal formose-ammonia reactions. Hydrothermal environments produce key precursors like pyruvate and acetaldehyde via mineral-catalyzed reductions, which feed into surface Strecker and UV-driven pathways for \u03b1-aminonitrile formation and hydrolysis. Biochemical transamination provides a final assembly route. Convergent hubs at pyruvate, acetaldehyde, and \u03b1-aminopropionitrile enable redundancy across environments, with Al-rich smectites and montmorillonite as key catalysts. All pathways produce racemic mixtures, with L-selectivity unresolved but potentially amplified in interconnected settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH3CHO",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH3COCOO-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3CH(NH2)CN",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "\u03b1-aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCONH2",
+        "iupac_name": "formamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH2(OH)CHO",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CHOCOO-",
+        "iupac_name": "oxoacetate",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "(NH2)2HPO4",
+        "iupac_name": "diamidophosphate",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Formate",
+        "inputs": [],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "CO2 hydrogenation on Fe-S cluster analog",
+        "reasoning": "Greigite catalyzes CO2 reduction to formate in alkaline vents (Huber & W\u00e4chtersh\u00e4user, 1997); supports hydrothermal precursor formation (Kobayashi et al., 1990)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to Acetaldehyde via Fischer-Tropsch",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "H2, CO"
+        },
+        "mechanism": "Surface-catalyzed hydrogenation and carbon chain growth",
+        "reasoning": "Magnetite enables Fischer-Tropsch synthesis of aldehydes from formate/CO2 (McCollom et al., 1999); precursor for Strecker (Schlesinger and Miller, 1983)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate Formation from Glyoxylate",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "Fe2+-catalyzed aldol"
+        },
+        "mechanism": "Aldol condensation with reductant",
+        "reasoning": "FeS minerals catalyze pyruvate from glyoxylate in hydrothermal settings (Zhang and Martin, 2006); key for reductive amination (Pizzarello and Shock, 2010)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker Synthesis to \u03b1-Aminopropionitrile",
+        "inputs": [
+          "mol_003",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles, UV"
+        },
+        "mechanism": "Imine formation followed by cyanohydrin addition",
+        "reasoning": "Montmorillonite concentrates reactants for Strecker; yields alanine precursors (Miller, 1953; Schlesinger and Miller, 1983)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of \u03b1-Aminopropionitrile to Alanine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH neutral"
+        },
+        "mechanism": "Acid/base hydrolysis of nitrile to carboxylic acid",
+        "reasoning": "Surface catalysis hydrolyzes aminonitriles to amino acids (Pizzarello and Shock, 2010); part of Strecker pathway (Kobayashi et al., 1990)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive Amination of Pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectite"
+        ],
+        "conditions": {
+          "temperature": "343-423K",
+          "pressure": "high",
+          "catalyst": "Al-rich smectite",
+          "aqueous": true,
+          "other": "pH 10, reducing atmosphere"
+        },
+        "mechanism": "Imine reduction with H2 or Fe2+",
+        "reasoning": "Al-rich smectites enhance alanine via reductive amination in vents (~60 \u00b5M yield) (Yamanaka et al., 2014; source 13450)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Formose Reaction to Glycolaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "alkaline, wet-dry"
+        },
+        "mechanism": "Aldol polymerization of formaldehyde",
+        "reasoning": "Borate stabilizes sugars in formose; precursor for ammonia reactions (Ricardo et al., 2004; source 13497)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cannizzaro Pathway: Formamide Formation",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photochemistry"
+        },
+        "mechanism": "Disproportionation to formate, then amination",
+        "reasoning": "UV on TiO2 drives formamide from formaldehyde/ammonia (Cleaves et al., 2008; source 5960)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formamide to Alanine via Acetaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298-303K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "phosphate buffer, pH 7"
+        },
+        "mechanism": "Carbamyl anion addition to aldehyde",
+        "reasoning": "Non-enzymatic addition in prebiotic pools (Miller, 1953; source 5960)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Phosphoro-Strecker Variant",
+        "inputs": [
+          "mol_003",
+          "mol_002",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "DAP-mediated aminonitrile formation",
+        "reasoning": "Selective phosphoro-Strecker avoids byproducts (Powner et al., 2018; source 21192)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Transamination in Pools",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298-303K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "25-30\u00b0C, phosphate buffer"
+        },
+        "mechanism": "Non-enzymatic transamination",
+        "reasoning": "Mimics biological pathway prebiotically (Wang et al., 2019; source 1024)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Glyoxylate to Pyruvate via Fe2+ Catalysis",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "inert atmosphere, pH variable"
+        },
+        "mechanism": "Redox and aldol reactions",
+        "reasoning": "Fe2+ on pyrite catalyzes pyruvate formation (Morowitz et al., 2000; source 9400)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Strecker via Acetaldehyde",
+        "description": "CO2 to formate to acetaldehyde, then surface Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct Hydrothermal Reductive Amination",
+        "description": "Glyoxylate to pyruvate, reductive amination",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface UV Strecker",
+        "description": "Acetaldehyde (from hydrothermal) + HCN + NH3 under UV",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Cannizzaro Non-Strecker Route",
+        "description": "Formaldehyde to formamide to alanine via acetaldehyde",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_002",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Phosphoro-Strecker on Surface",
+        "description": "Selective variant with DAP",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal Formose-Ammonia",
+        "description": "Formaldehyde to glycolaldehyde, then ammonia reaction (speculative link to alanine)",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Biochemical Transamination from Pyruvate",
+        "description": "Hydrothermal pyruvate to alanine via pools",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyanosulfidic-Inspired Surface Route",
+        "description": "HCN polymerization to aminonitriles (adapted for alanine)",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Reducing Atmosphere Spark Synthesis",
+        "description": "Gas mixture to acetaldehyde intermediates, Strecker",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Interconnected Hydrothermal-Surface Transamination",
+        "description": "Pyruvate from vents to surface pools for transamination",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_010",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_001": 0.85
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.88,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Strong alignment with Strecker literature; hydrothermal precursor formation plausible but Fischer-Tropsch step slightly stretched.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for rxn_002"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Reductive amination aligns with literature; hydrothermal conditions appropriate with Fe2+ catalysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add reductant details for amination"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "UV-driven Strecker well-supported; surface conditions realistic.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include UV energy source specifics"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_009": 0.88,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.82,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Cannizzaro pathway matches meteoritic chemistry; biochemical step justified but transition needs clarity.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify non-Strecker mechanism details"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_010": 0.95,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.94,
+        "feedback": "Phosphoro-Strecker variant highly aligned with DAP literature; selective and plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Note pH neutrality advantage"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_007": 0.9,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.85,
+        "feedback": "Formose-ammonia route supported but yields low per literature; surface conditions fit.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Address competitive amide formation"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_011": 0.92
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.88,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.93,
+        "feedback": "Transamination from pyruvate aligns with evolutionary transition; biochemical stage appropriate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Discuss prebiotic plausibility of transaminases"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_002": 0.85
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.87,
+        "feedback": "Cyanosulfidic-inspired route plausible with HCN; surface conditions match literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate sulfur agents if applicable"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.82,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.85,
+        "feedback": "Reducing atmosphere spark synthesis supported by Miller-Urey; good yields noted.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Refine Fischer-Tropsch to spark discharge"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_006": 0.85,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.92,
+        "overall_confidence": 0.92,
+        "feedback": "Interconnected hydrothermal-surface flow excellent; justifies transitions well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify transport mechanisms between environments"
+        ]
+      }
+    ],
+    "best_pathway_id": "P5",
+    "overall_confidence": 0.91,
+    "network_feedback": "Excellent network with strong literature alignment across Strecker, reductive amination, and hydrothermal routes. Hubs and convergence enhance redundancy; addresses racemic challenge. Minor issues in some precursor steps but overall chemically sound and interconnected.",
+    "approved": true,
+    "hub_quality": 0.95,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 2,
+  "notes": null
+}

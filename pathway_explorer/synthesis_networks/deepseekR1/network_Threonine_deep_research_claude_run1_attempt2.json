@@ -1,0 +1,439 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Convergent synthesis through cyanosulfidic Strecker pathways (Surface) and hydrothermal reductive amination (Hydrothermal), connected via shared intermediates (lactaldehyde, \u03b1-keto acids) with rapid peptide incorporation (Biochemical) to counter instability",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CH3CHO",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H6O2",
+        "iupac_name": "2-Hydroxypropanal",
+        "common_name": "Lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-Amino-3-hydroxybutyronitrile",
+        "common_name": "Threonine aminonitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(5,2-6)8/h3,7H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-Amino-3-hydroxybutanoic acid",
+        "common_name": "L-Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxo-3-hydroxybutanoic acid",
+        "common_name": "\u03b1-Keto-\u03b2-hydroxybutyrate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H4O3",
+        "iupac_name": "Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H5NO2",
+        "iupac_name": "Glycine",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Acetaldehyde cyanohydrin formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I) cyanide complexes"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu minerals",
+          "aqueous": true,
+          "other": "UV irradiation (254 nm)"
+        },
+        "mechanism": "UV-driven photoredox cycling with H\u2082S as reductant",
+        "reasoning": "Ritson & Sutherland (2013) demonstrated 19% lactaldehyde yield via acetaldehyde cyanohydrin photoreduction"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis of threonine aminonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_009",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": "Clay minerals",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Imine formation followed by HCN addition",
+        "reasoning": "Patel et al. (2015) cyanosulfidic pathway produces aminonitrile as inevitable by-product"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal pyruvate decarboxylation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High (hydrothermal)",
+          "catalyst": "Fe/Ni-S minerals",
+          "aqueous": true,
+          "other": "CO\u2082/H\u2082 gradient"
+        },
+        "mechanism": "Mineral-catalyzed decarboxylation",
+        "reasoning": "Cody et al. (2000) demonstrated FeS-mediated pyruvate synthesis from CO"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of \u03b1-keto-\u03b2-hydroxybutyrate",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "H\u2082 as reductant"
+        },
+        "mechanism": "Fe\u00b2\u207a-mediated NH3 incorporation",
+        "reasoning": "Muchowska et al. (2019) demonstrated Fe\u00b2\u207a-catalyzed reductive amination at 70\u00b0C"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminonitrile hydrolysis to threonine",
+        "inputs": [
+          "mol_004",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Aqueous hydrolysis",
+        "reasoning": "Standard Strecker hydrolysis pathway (Ritson & Sutherland 2013)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glycine-acetaldehyde aldol condensation",
+        "inputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330-350K",
+          "pressure": "1 atm",
+          "catalyst": "Clay minerals",
+          "aqueous": false,
+          "other": "Dry heating"
+        },
+        "mechanism": "Retro-aldol reverse reaction",
+        "reasoning": "Koga & Naraoka (2022) demonstrated aldehyde-ammonia chemistry producing C\u2084 hydroxy amino acids"
+      },
+      {
+        "id": "rxn_007",
+        "name": "CO\u2082 reduction to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "High",
+          "catalyst": "Fe/Ni-S minerals",
+          "aqueous": true,
+          "other": "H\u2082/CO\u2082 gradient"
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (2006) demonstrated CO-dependent \u03b1-keto acid formation on Fe/Ni"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Pyruvate hydroxylation",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe\u2083O\u2084)"
+        ],
+        "conditions": {
+          "temperature": "370-420K",
+          "pressure": "High",
+          "catalyst": "Fe\u00b3\u207a oxides",
+          "aqueous": true,
+          "other": "Oxidative conditions"
+        },
+        "mechanism": "Radical-mediated hydroxylation",
+        "reasoning": "Analogous to modern P450 hydroxylation (White et al. 2015 hydrothermal oxidation studies)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "CyanoSulfidic Strecker Pathway",
+        "description": "HCN \u2192 acetaldehyde cyanohydrin \u2192 lactaldehyde \u2192 aminonitrile \u2192 threonine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Reductive Amination",
+        "description": "CO\u2082 \u2192 pyruvate \u2192 \u03b1-keto-\u03b2-hydroxybutyrate \u2192 threonine",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Aldol Retro-Biosynthesis",
+        "description": "Glycine + acetaldehyde \u2192 threonine via clay-catalyzed condensation",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_003",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.8,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "P1 aligns with the cyanosulfidic Strecker pathway but skips the cyanohydrin reduction step (lactaldehyde formation requires UV photoreduction, not direct HCN + acetaldehyde). Hydrolysis of aminonitrile (rxn_005) is valid. Missing mineral catalysts (e.g., Cu) noted in literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Add cyanohydrin intermediate step for lactaldehyde synthesis",
+          "Specify Cu/H2S catalysts for Strecker steps"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.7,
+          "rxn_007": 0.75,
+          "rxn_008": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.72,
+        "feedback": "Reductive amination (rxn_004) lacks specified Fe/Ni catalysts critical for feasibility. Pyruvate hydroxylation (rxn_008) mechanism is unclear. CO\u2082 reduction (rxn_007) needs mineral agents (e.g., FeS).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Include Fe\u00b2\u207a/Ni catalysts for reductive amination",
+          "Clarify pyruvate hydroxylation conditions"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.55,
+        "feedback": "Aldol condensation (rxn_006) is thermodynamically unfavorable and lacks experimental support. No catalytic mechanism provided.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace with hydantoin pathway (Bucherer-Bergs) or add catalytic minerals"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "The network integrates key literature-supported routes (Strecker, reductive amination) but has critical gaps: (1) Missing mineral catalysts (Cu, Fe/Ni) in surface/hydrothermal steps; (2) Lactaldehyde synthesis oversimplified; (3) Aldol pathway is unfeasible. Hubs (mol_002, mol_003, mol_006) are connected but lack environmental specificity. Convergent pathways exist but require mechanistic refinement.",
+    "approved": false,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.75
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

@@ -1,0 +1,416 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Combines hydrothermal synthesis of \u03b1-ketoacids with surface-based Strecker chemistry and biochemical transamination, leveraging mineral catalysts and environmental gradients",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2084H\u2088O",
+        "iupac_name": "Isobutyraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2085H\u2088O\u2083",
+        "iupac_name": "2-Ketoisovaleric acid",
+        "common_name": "2-ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2085H\u2081\u2081NO\u2082",
+        "iupac_name": "Valine",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2082H\u2084O",
+        "iupac_name": "Acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2085NO",
+        "iupac_name": "\u03b1-Aminoisobutyronitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H5N2O/c1-3(2,4)5-6/h4H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO\u2082 hydrogenation via Fischer-Tropsch-type synthesis",
+        "reasoning": "Magnetite catalyzes CO\u2082 reduction to pyruvate (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aldol condensation to isobutyraldehyde",
+        "inputs": [
+          "mol_009",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Clay-catalyzed aldol condensation",
+        "reasoning": "Montmorillonite promotes aldehyde oligomerization (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of \u03b1-aminoisobutyronitrile",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Aldehyde + NH3 + HCN \u2192 \u03b1-aminonitrile",
+        "reasoning": "Classic Strecker mechanism (Friedmann & Miller, 1969)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrolysis to valine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "evaporative concentration"
+        },
+        "mechanism": "\u03b1-Aminonitrile hydrolysis",
+        "reasoning": "Final step in Strecker synthesis (Keefe et al., 1995)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Oxidative ketoacid formation",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic oxidation",
+        "reasoning": "TiO\u2082-mediated UV oxidation (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive amination to valine",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "NH3-rich conditions"
+        },
+        "mechanism": "Fe-S mineral catalyzed amination",
+        "reasoning": "Greigite mimics modern dehydrogenase activity (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Transamination pathway",
+        "inputs": [
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "protocell membranes"
+        },
+        "mechanism": "Amino group transfer",
+        "reasoning": "Emergent transamination in concentrated pools (Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal ketoacid route",
+        "description": "CO\u2082 \u2192 pyruvate \u2192 transamination \u2192 valine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker route",
+        "description": "Aldehyde condensation \u2192 Strecker synthesis \u2192 hydrolysis",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Photochemical ketoacid route",
+        "description": "Aldehyde oxidation \u2192 reductive amination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_001) lacks explicit mineral catalysts. Oxidative ketoacid formation (rxn_005) from isobutyraldehyde is mechanistically unclear. Reductive amination (rxn_006) is valid but requires reducing agents not specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for hydrothermal steps",
+          "Clarify oxidation mechanism for rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Strecker synthesis (rxn_003/rxn_004) aligns with literature, but aldol condensation (rxn_002) to isobutyraldehyde from acetaldehyde is stereochemically questionable. Surface conditions need mineral catalyst specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Validate isobutyraldehyde formation mechanism",
+          "Add montmorillonite as a surface catalyst"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.4
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.6,
+        "feedback": "Transamination (rxn_007) is biochemically implausible without enzymes. Photochemical steps are unspecified. Oxidative step (rxn_005) lacks justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace transamination with abiotic amination",
+          "Specify UV/mineral catalysts for photochemical steps"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates key literature concepts (Strecker, hydrothermal, \u03b1-ketoacids) but has critical gaps: (1) Transamination (rxn_007) is non-prebiological, (2) Mineral catalysts unspecified, (3) Questionable aldol/oxidation steps. Strengthen environmental transitions and reaction mechanisms.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

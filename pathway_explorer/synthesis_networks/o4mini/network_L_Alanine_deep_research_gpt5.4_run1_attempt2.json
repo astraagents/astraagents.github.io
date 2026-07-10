@@ -1,0 +1,808 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate high-yield hydrothermal reductive amination with parallel surface Strecker/aminonitrile modules, interconnecting vent- and surface-derived hubs (pyruvate, acetaldehyde, HCN) and culminating in enantioselective photolysis to enrich the L-enantiomer.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "DL-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO2",
+        "iupac_name": "(S)-2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH3NO",
+        "iupac_name": "formamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_014",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C4H6N2O",
+        "iupac_name": "N-formyl-2-aminopropanenitrile",
+        "common_name": "N-formylalanine aminonitrile",
+        "inchi": "InChI=1S/C4H6N2O/c1-3(2-5)4(6)7/h3H,2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Reductive amination of pyruvate on pyrite",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "H2S/H2 gas mixture"
+        },
+        "mechanism": "Schiff base formation on mineral surface followed by reduction",
+        "reasoning": "Novikov & Copley (2013) demonstrated pyruvate reductive amination on sulfide minerals under vent-like H2S/H2 conditions."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate on mackinawite",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "H2S/H2 gas mixture"
+        },
+        "mechanism": "Mineral-catalyzed Schiff base reduction",
+        "reasoning": "Novikov & Copley (2013) observed variable alanine yields with different sulfide minerals, including FeS (mackinawite)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "N-formylation of alanine aminonitrile in formamide",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "staged heating"
+        },
+        "mechanism": "Formamide-mediated N-formylation under dry heating",
+        "reasoning": "Green et al. (2023) report efficient formation of N-formyl-Ala-CN from aminonitriles under staged heating in formamide."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrolysis of alanine aminonitrile on phosphate minerals",
+        "inputs": [
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "Ruiz-Bermejo et al. (2013) and earlier Strecker work highlight phosphate minerals accelerating aminonitrile hydrolysis."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of N-formylalanine aminonitrile on phosphate minerals",
+        "inputs": [
+          "mol_015",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Concomitant nitrile and amide hydrolysis",
+        "reasoning": "Speculative hydrolysis of N-formyl-Ala-CN to release alanine, filling the network gap (Ruiz-Bermejo et al.,2013)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Fischer-Tropsch-type synthesis of acetaldehyde on magnetite",
+        "inputs": [
+          "mol_012",
+          "mol_013",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "~350 bar H2"
+        },
+        "mechanism": "Surface-catalyzed carbon coupling and hydrogenation",
+        "reasoning": "Diederich et al. (2023) show C2 substrates on NiS analogs produce acetaldehyde; magnetite acts similarly in FT-type reactions."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Spark discharge production of HCN and acetaldehyde",
+        "inputs": [
+          "mol_014",
+          "mol_003",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_005",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "electric discharge"
+        },
+        "mechanism": "Gas-phase radicals captured in aqueous phase",
+        "reasoning": "Miller (1953) and Johnson et al. (2008) report HCN and acetaldehyde formation in spark-discharge systems."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Photolysis of formamide to HCN",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "UV-driven cleavage of formamide",
+        "reasoning": "Green et al. (2023) and earlier photochemical studies report HCN release from formamide under UV on TiO2."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis of alanine aminonitrile on montmorillonite",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Imine formation followed by cyanide addition",
+        "reasoning": "Ruiz-Bermejo et al. (2013) demonstrate prebiotic Strecker synthesis of amino nitriles on clay surfaces."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Enantioselective photolysis of DL-Alanine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "circularly polarized light"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "CPL exposure"
+        },
+        "mechanism": "Selective photolytic destruction of D-enantiomer",
+        "reasoning": "Mu\u00f1oz Caro et al. (2002) show CPL can induce ~4% ee in alanine films under far-UV."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Pyrite-catalyzed vent reductive amination",
+        "description": "Pyruvate undergoes reductive amination on pyrite to give DL-alanine, then enantioenrichment by CPL.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Mackinawite-catalyzed vent reductive amination",
+        "description": "Pyruvate is aminated on mackinawite to DL-alanine, followed by selective photolysis.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "FT-type surface Strecker via C2 substrates",
+        "description": "Acetylene/CO produce acetaldehyde on magnetite; formamide photolysis yields HCN; Strecker and hydrolysis yield DL-alanine, then L-",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Spark-discharge Strecker route",
+        "description": "Spark discharge generates HCN and acetaldehyde; surface Strecker and hydrolysis produce DL-alanine, then CPL selection.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Preformed Strecker hydrolysis pathway",
+        "description": "Exogenous HCN and acetaldehyde feed direct Strecker on clay then hydrolysis to DL-alanine and enantioenrichment.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Aminonitrile N-formylation loop",
+        "description": "Strecker aminonitrile is N-formylated then hydrolyzed to DL-alanine followed by CPL-based L-enrichment.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formamide-driven aminonitrile formylation",
+        "description": "Formamide photolysis yields HCN; Strecker forms aminonitrile, N-formylation and hydrolysis deliver DL-alanine then L-",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Spark-induced formamide loop",
+        "description": "HCN from spark and formamide combine in Strecker, followed by N-formylation, hydrolysis and enantioselective photolysis.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Magnetite-Strecker formylation hybrid",
+        "description": "FT-type acetaldehyde and formamide-derived HCN drive Strecker, followed by formylation, hydrolysis and L-enrichment.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009",
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Minimal Strecker\u2013formamide pathway",
+        "description": "Direct formylation of Strecker-derived aminonitrile, hydrolysis and final CPL selection to yield L-alanine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_015"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.81,
+        "feedback": "Concise hydrothermal route to alanine with direct photolysis. Lacks intermediate surface module before enantioselective photolysis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Incorporate a surface-based refinement or concentration step prior to photolysis to bolster context integration."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.81,
+        "feedback": "Mackinawite variant mirrors P1 in feasibility and coherence. Equally effective but duplicates strategy.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add a transient mineral\u2010surface concentration or wet\u2013dry cycling step to improve integration before photolysis."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_007": 0.9,
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Strong FT\u2010type hydrothermal feed into Strecker and hydrolysis modules with photolysis finish. Excellent environmental flow.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Explore higher\u2010yield hydrothermal acetaldehyde sources or alternate catalysts to offset the low yield in FTT synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_007": 0.9,
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.86,
+        "feedback": "Spark\u2010discharge Strecker route is streamlined and literature\u2010aligned. Photolytic step remains the weak link.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Incorporate controlled acid or wet\u2013dry cycling to accelerate aminonitrile hydrolysis and maintain material throughput."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.845,
+        "feedback": "Minimal Strecker\u2010hydrolysis\u2010photolysis sequence is coherent but omits HCN generation step.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add an upstream HCN/aldehyde generation module (e.g., rxn_007 or rxn_008) to complete the prebiotic sequence."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.8,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.825,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.86,
+        "feedback": "Formylation loop stabilizes aminonitrile but adds complexity. Hydrolysis on phosphate is plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Optimize hydrolysis conditions (e.g., wet\u2013dry cycles or mineral acid catalysis) to improve conversion rates."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.8,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8675,
+        "feedback": "Formamide\u2010driven formylation integrates HCN photolysis well. Must balance UV flux to avoid side\u2010reactions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Ensure stable formamide reservoirs and controlled thermal regimes to maximize N-formylation yields."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_007": 0.9,
+          "rxn_009": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.8,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.86,
+        "feedback": "Spark\u2010induced formamide loop is robust, leveraging discharge for feedstock. Might be resource\u2010intensive.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Consider continuous formamide recycling or localized concentration to sustain loop efficiency."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_008": 0.8,
+          "rxn_009": 0.9,
+          "rxn_003": 0.9,
+          "rxn_005": 0.8,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8675,
+        "feedback": "Hybrid magnetite\u2010Strecker with formylation elegantly spans hydrothermal and surface regimes. Path length may reduce net throughput.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Streamline HCN supply\u2014consider direct cyanide reservoirs\u2014or boost photolysis yields through wavelength tuning."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8575,
+        "feedback": "Minimal three\u2010step Strecker/hydrolysis/photolysis sequence is clean but relies on preformed HCN and acetaldehyde.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Introduce an upstream source of HCN and aldehyde (e.g., spark or photolysis module) for full prebiotic completeness."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.88,
+    "network_feedback": "Overall the network is well connected and aligned with prebiotic literature, integrating hydrothermal reductive amination and surface Strecker/formylation modules. Key improvements include explicit pyruvate sourcing, enhanced HCN generation, and strategies to boost enantioselective photolysis. Minor topology gaps (pyruvate as a hub) and low photolysis ee are the main areas for refinement.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

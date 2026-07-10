@@ -1,0 +1,412 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrate UV-driven cyanometallate chemistry, bisulfite-stabilized Strecker synthesis, and formamide-mediated N-formylaminonitrile pathways to produce serine through multiple environmentally plausible routes with mineral-mediated concentration and protection.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O3S",
+        "iupac_name": "Glycolaldehyde bisulfite adduct",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H5N2O",
+        "iupac_name": "Serine aminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H5N2O2",
+        "iupac_name": "N-Formylserine nitrile",
+        "common_name": "FoSer-CN",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO3",
+        "iupac_name": "Serine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH3NO",
+        "iupac_name": "Formamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal HCN synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "Reducing conditions"
+        },
+        "mechanism": "CO\u2082 hydrogenation on iron-sulfur surfaces",
+        "reasoning": "FeS-mediated CO\u2082 reduction to HCN (Schulte & Shock, 1995)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Bisulfite-Strecker synthesis",
+        "inputs": [
+          "mol_002",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Bisulfite minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Bisulfite",
+          "aqueous": true,
+          "other": "Alkaline pH"
+        },
+        "mechanism": "Glycolaldehyde bisulfite adduct reacts with NH\u2083 and HCN via imine formation",
+        "reasoning": "Stabilized Strecker synthesis (Ritson & Sutherland, 2018)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "UV cyanometallate glycolaldehyde synthesis",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuCN"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN",
+          "aqueous": true,
+          "other": "UV 254 nm irradiation"
+        },
+        "mechanism": "Photoredox cycling produces glycolaldehyde from HCN",
+        "reasoning": "UV-driven cyanometallate chemistry (Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formamide N-formylserine nitrile formation",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "Borate",
+          "aqueous": false,
+          "other": "Formamide solvent"
+        },
+        "mechanism": "Glycolaldehyde reacts with HCN in formamide to form FoSer-CN",
+        "reasoning": "Formamide-mediated protection chemistry (Green et al., 2023)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrothermal glycolaldehyde synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO\u2082 reduction via Fischer-Tropsch-type synthesis",
+        "reasoning": "Greigite-catalyzed carbon fixation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminonitrile hydrolysis to serine",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Clay-catalyzed hydrolysis of aminonitrile",
+        "reasoning": "Mineral-mediated amino acid formation (Kloprogge et al., 2022)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "FoSer-CN hydrolysis",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": true,
+          "other": "Alkaline conditions"
+        },
+        "mechanism": "Formylated nitrile hydrolysis with deformylation",
+        "reasoning": "Protected intermediate processing (Green et al., 2023)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Bisulfite-Strecker pathway",
+        "description": "Hydrothermal HCN combines with surface-stabilized glycolaldehyde via bisulfite-mediated Strecker synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "UV cyanometallate pathway",
+        "description": "UV-driven HCN conversion to glycolaldehyde feeds into surface Strecker chemistry",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formamide protection pathway",
+        "description": "Formamide-mediated synthesis of protected nitrile followed by clay-catalyzed hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_004",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Bisulfite-Strecker pathway aligns well with literature (Ritson & Sutherland 2018). Hydrothermal HCN synthesis (rxn_001) needs mineral catalysts for full plausibility. Hydrolysis steps (rxn_006) are chemically valid.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., Fe-S minerals) for hydrothermal HCN synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "UV cyanometallate step (rxn_003) is plausible, but rxn_004 lacks formamide (CH3NO) as a reactant, conflicting with literature (Green et al. 2023). FoSer-CN formation requires formamide-mediated conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Include formamide (mol_010) in rxn_004 to align with formamide-mediated chemistry."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.5,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.6,
+        "feedback": "Formamide protection pathway is incomplete: rxn_004 does not use formamide (mol_010), invalidating the pathway\u2019s environmental logic.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Redesign rxn_004 to include formamide as a solvent/reactant."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates key literature-supported routes (bisulfite-Strecker, UV cyanometallate) but has critical gaps: (1) mol_004 (serine aminonitrile) is under-connected (degree=2), violating hub criteria; (2) Formamide-mediated steps lack formamide; (3) Hydrothermal glycolaldehyde synthesis (rxn_005) lacks experimental support. Improve mineral specifications, reactant completeness, and hub connectivity.",
+    "approved": false,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

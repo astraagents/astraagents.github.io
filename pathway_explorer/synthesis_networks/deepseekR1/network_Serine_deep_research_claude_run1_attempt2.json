@@ -1,0 +1,436 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Synthesize serine through Strecker, cyanosulfidic, impact, and photochemical pathways, leveraging glycolaldehyde as a key hub. Connect hydrothermal CO\u2082 reduction to surface formose/cyanid sulfidic chemistry, with environmental transitions mediated by mineral catalysts.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H\u2082CO",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H\u2082S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2083H\u2086N\u2082O",
+        "iupac_name": "2-Amino-3-hydroxypropanenitrile",
+        "common_name": "Serinonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2087NO\u2083",
+        "iupac_name": "Serine",
+        "common_name": "Serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H\u2082O",
+        "iupac_name": "Water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "N\u2082",
+        "iupac_name": "Nitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "CO\u2082 hydrogenation on magnetite surfaces via Fischer-T chemistry",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1998)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formose reaction",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ca(OH)\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)\u2082",
+          "aqueous": true,
+          "other": "alkaline conditions"
+        },
+        "mechanism": "Formaldehyde condensation catalyzed by calcium hydroxide",
+        "reasoning": "Breslow (1959)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanosulfidic glycolaldehyde synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite",
+          "Cu catalysts"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II) photoredox",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "HCN/H\u2082S reductive homologation via Kiliani-Fischer chemistry",
+        "reasoning": "Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of serinonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay surface",
+          "aqueous": true,
+          "other": "mildly basic"
+        },
+        "mechanism": "Imine formation followed by HCN addition",
+        "reasoning": "Miller & Van Trump (1981)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Serinonitrile hydrolysis",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "aqueous hydrolysis",
+          "aqueous": true,
+          "other": "geologically rapid"
+        },
+        "mechanism": "Irreversible nitrile hydrolysis to amino acid",
+        "reasoning": "Magrino et al. (2021)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Impact-induced serine synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_012",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "meteorite components (Fe/Ni/Mg\u2082SiO\u2084)"
+        ],
+        "conditions": {
+          "temperature": ">1000K (shock heating)",
+          "pressure": "high",
+          "catalyst": "impact shock",
+          "aqueous": false,
+          "other": "oceanic impact simulation"
+        },
+        "mechanism": "Radical recombination during impact plume cooling",
+        "reasoning": "Furukawa et al. (2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "UV photochemical synthesis",
+        "inputs": [
+          "mol_011",
+          "mol_001",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "10K (ice matrix)",
+          "pressure": "vacuum",
+          "catalyst": "UV photocatalysis",
+          "aqueous": false,
+          "other": "interstellar ice analog"
+        },
+        "mechanism": "Radical-mediated synthesis in ice matrix",
+        "reasoning": "Mu\u00f1oz Caro et al. (2002)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-surface Strecker pathway",
+        "description": "CO\u2082 \u2192 formaldehyde (hydrothermal) \u2192 glycolaldehyde (surface formose) \u2192 serinonitrile \u2192 serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic network pathway",
+        "description": "HCN/H\u2082S \u2192 glycolaldehyde (cyanid sulfidic) \u2192 serinonitrile \u2192 serine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Impact synthesis pathway",
+        "description": "Direct serine formation via meteorite impact chemistry",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": []
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "Strecker pathway (P1) aligns well with literature, but CO\u2082\u2192H\u2082CO (rxn_001) lacks explicit mineral catalysts (e.g., FeS) required for hydrothermal reduction. Formose reaction (rxn_002) needs Ca\u00b2\u207a/Mg\u00b2\u207a specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify FeS or Ni-Fe catalysts for rxn_001",
+          "Add Ca(OH)\u2082 as a catalyst for rxn_002"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Cyanosulfidic pathway (P2) oversimplifies glycolaldehyde synthesis (rxn_003). Literature requires UV + Cu(I/II)-S photoredox cycling, not direct HCN+H\u2082S\u2192C\u2082H\u2084O\u2082. Strecker steps (rxn_004/rxn_005) are valid.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Revise rxn_003 to include Cu catalysts and UV irradiation",
+          "Add HCN homologation steps per Patel et al. (2015)"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.4
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.4,
+        "feedback": "Impact synthesis (P3) is chemically invalid as written (CO\u2082+N\u2082+H\u2082O\u2192serine). Literature requires Fe/Ni catalysts, shock pressures, and intermediates like HCN/formamide.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_006 with Fe/Ni-catalyzed impact shock steps",
+          "Add HCN and formamide as intermediates"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network has valid Strecker core (P1) but underdeveloped alternatives. Issues: (1) Hub mol_005 (glycolaldehyde) has degree=2 (needs \u22653), (2) Impact/photochemical pathways lack intermediates, (3) Mineral catalysts (FeS, Cu, clays) missing from reaction specs. Strengths: Convergent serinonitrile hydrolysis and environmental transitions align with prebiotic chemistry.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

@@ -1,0 +1,412 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integrated network combining hydrothermal reductive amination, surface Strecker synthesis, and cyanosulfidic UV-driven chemistry to produce valine through multiple geochemical pathways",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H9N",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": "valine nitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H10N2O",
+        "iupac_name": "2-amino-3-methylbutanamide",
+        "common_name": "valine amide",
+        "inchi": "InChI=1S/C5H12N2O/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H2,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H11NO2",
+        "iupac_name": "(S)-2-amino-3-methylbutanoic acid",
+        "common_name": "Valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H8O3",
+        "iupac_name": "3-methyl-2-oxopentanoic acid",
+        "common_name": "\u03b1-ketoisovaleric acid",
+        "inchi": "InChI=1S/C6H10O3/c1-3-4(2)5(7)6(8)9/h4H,3H2,1-2H3,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Spark discharge aldehyde formation",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "Electric discharge in volcanic plume"
+        },
+        "mechanism": "Plasma-driven radical recombination of CH4 and H2O",
+        "reasoning": "Miller-Urey experiments show spark discharges produce branched aldehydes (Miller et al. 1953)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis of valine nitrile",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + NH3 \u2192 imine \u2192 cyanide addition",
+        "reasoning": "Classic Strecker pathway for BCAA synthesis (Miller 1953, Sutherland 2010)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Nitrile hydrolysis to amide",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Stepwise hydrolysis via amide intermediate",
+        "reasoning": "Phosphate-catalyzed nitrile conversion (Powner 2009)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Amide hydrolysis to valine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "struvite",
+          "aqueous": true,
+          "other": "Evaporative concentration"
+        },
+        "mechanism": "Final hydrolysis to \u03b1-amino acid",
+        "reasoning": "Mineral-mediated peptide bond cleavage (Ferris 1996)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Fischer-Tropsch keto acid synthesis",
+        "inputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "High",
+          "catalyst": "magnetite",
+          "aqueous": false,
+          "other": "Supercritical CO2"
+        },
+        "mechanism": "CO hydrogenation on mineral surfaces",
+        "reasoning": "Magnetite-catalyzed chain growth (McCollom 1999)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive amination to valine",
+        "inputs": [
+          "mol_008",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "Ni"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni nanoparticles",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "NH3 + H2 + \u03b1-keto acid \u2192 amino acid",
+        "reasoning": "Nickel-catalyzed reductive amination (Kaur 2021)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyanosulfidic nitrile synthesis",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II)",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "HCN homologation with H2S reductant",
+        "reasoning": "UV-driven photoredox cycling (Sutherland 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "Magnetite-catalyzed keto acid formation followed by Ni-mediated reductive amination",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker pathway",
+        "description": "Spark discharge aldehyde \u2192 Strecker nitrile \u2192 phosphate-catalyzed hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic photoredox pathway",
+        "description": "UV-driven HCN homologation to valine nitrile with Cu catalysis",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_005": 0.75,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal reductive amination pathway is chemically valid but lacks explicit mineral catalysts (e.g., Ni/FeS) required for high yields. Fischer-Tropsch synthesis (rxn_005) needs justification for keto acid selectivity.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify Ni/FeS catalysts in rxn_005/rxn_006",
+          "Clarify CO/H2 activation mechanisms for keto acid synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Strecker pathway aligns well with literature, including volcanic H2S-enhanced aldehyde formation. Full hydrolysis sequence demonstrated.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral surface adsorption steps (e.g., montmorillonite) to concentrate aldehydes"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.7,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Cyanosulfidic pathway omits UV photoredox activation and Cu catalysts critical for HCN/H2S reactivity. Direct nitrile synthesis (rxn_007) is underspecified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add UV radiation and Cu(I) catalysts to rxn_007",
+          "Include phosphate buffering for pH control"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.83,
+    "network_feedback": "Network integrates key literature-supported pathways (Strecker/hydrothermal) but under-specifies catalysts and environmental transitions. Hub molecule mol_005 (degree=3) is well-utilized, but mol_004/mol_008 need expanded connectivity. Convergent pathways at valine nitrile/amide are logical.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.85
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.830"
+}

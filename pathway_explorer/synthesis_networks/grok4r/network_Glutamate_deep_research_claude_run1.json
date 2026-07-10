@@ -1,0 +1,808 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The synthesis network leverages protometabolic pathways for \u03b1-ketoglutarate formation from CO\u2082 via iron-catalyzed reductions and TCA-like cycles, followed by transamination or reductive amination to glutamate, interconnected with surface Strecker and HCN oligomerization routes. Hydrothermal environments produce pyruvate and formate using FeS minerals, surface environments handle Strecker synthesis on clays and UV photocatalysis on pyrite, and biochemical assembly completes amination. Multiple convergent pathways ensure robustness, addressing one-pot challenges through environmental separation.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "H\u2082S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCOO\u207b",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH\u2083COCOOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCOCOOH",
+        "iupac_name": "oxoethanoic acid",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "HOOC-CH\u2082-CH\u2082-COCOOH",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "NH\u2082CH\u2082COOH",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH\u2082=CHCHO",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HOOC-CH\u2082-CH\u2082-CH(NH\u2082)COOH",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "NH\u2082CH\u2082CN",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "Fe\u00b2\u207a",
+        "iupac_name": "iron(2+)",
+        "common_name": "ferrous ion",
+        "inchi": "InChI=1S/Fe/q+2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "40-80K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "anoxic, alkaline pH 9-11"
+        },
+        "mechanism": "Electrochemical reduction on FeS surface using H\u2082 as reductant, forming Fe\u2084S\u2084 clusters analogous to ferredoxins.",
+        "reasoning": "Demonstrated in alkaline vents; catalyzes CO\u2082 to formate (Preiner et al., 2020, Nature Ecology & Evolution; Roldan et al., 2015)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate and acetate to pyruvate via acetyl-CoA pathway analog",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "30-100\u00b0C",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "anoxic"
+        },
+        "mechanism": "Reduction and carbonylation on mineral surface to form pyruvate.",
+        "reasoning": "Fe\u2070 reduces CO\u2082 to pyruvate intermediates in aqueous solution (Varma et al., 2018, Nature Ecology & Evolution)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate and glyoxylate to \u03b1-ketoglutarate via Fe\u00b2\u207a-promoted TCA",
+        "inputs": [
+          "mol_007",
+          "mol_008",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "high",
+          "catalyst": "Fe\u00b2\u207a on magnetite",
+          "aqueous": true,
+          "other": "anoxic, 3 hours"
+        },
+        "mechanism": "Aldol condensation and reduction steps in protometabolic network.",
+        "reasoning": "Fe\u00b2\u207a promotes synthesis of \u03b1-ketoglutarate from pyruvate and glyoxylate (Muchowska et al., 2019, Nature)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Metal-free glyoxylate-pyruvate to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 4.5, wet-dry cycles"
+        },
+        "mechanism": "Aldol chemistry and Cannizzaro-type reductions on clay surface.",
+        "reasoning": "Metal-free pathway produces \u03b1-ketoglutarate (Stubbs et al., 2020, Nature Chemistry)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Transamination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "AlK(SO\u2084)\u2082",
+          "aqueous": true,
+          "other": "pH 5, 4 hours"
+        },
+        "mechanism": "Nitrogen transfer from glycine to \u03b1-ketoglutarate forming glutamate and glyoxylate.",
+        "reasoning": "Achieves 44% yield via transamination (Stubbs et al., 2020, Nature Chemistry)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive amination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "NADH",
+          "aqueous": true,
+          "other": "pH >7"
+        },
+        "mechanism": "Hydride transfer from NADH to imine intermediate formed with NH\u2083.",
+        "reasoning": "33% yield using NADH as hydride donor (Nogal et al., 2024, Organic Chemistry Frontiers)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "HCN oligomerization to aminoacetonitrile and hydrolysis precursors",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "pH 9.2, >0.01 M HCN"
+        },
+        "mechanism": "Polymerization of HCN followed by hydrolysis to amino acid precursors.",
+        "reasoning": "Oligomers hydrolyze to glutamic acid among products (Ferris et al., 1978, Journal of Molecular Evolution; Moser and Matthews, 1968)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of aminoacetonitrile to glutamate",
+        "inputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "hydrolysis"
+        },
+        "mechanism": "Hydrolytic cleavage of nitrile to carboxylic acid with ammonia incorporation.",
+        "reasoning": "Part of HCN pathway leading to glutamate (Ferris et al., 1978)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Acrolein formation via cyano-sulfidic chemistry",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photoredox cycling with H\u2082S to form acrylonitrile-like, leading to acrolein.",
+        "reasoning": "Cyanosulfidic network produces acrolein precursors (Patel et al., 2015, Nature Chemistry; Kuroda and Kobayashi, 2024)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Strecker synthesis from acrolein to glutamate",
+        "inputs": [
+          "mol_011",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Michael addition of HCN to acrolein, then Strecker with NH\u2083 and HCN, hydrolysis to amino acid.",
+        "reasoning": "Acrolein as key precursor in Strecker for glutamate (Van Trump and Miller, 1972; Parker et al., 2011, PNAS)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "H\u2082-driven reductive amination on Ni catalyst",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "22\u00b0C",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "Ni on pyrite",
+          "aqueous": true,
+          "other": "pH 8"
+        },
+        "mechanism": "Hydrogenation of imine on metal surface.",
+        "reasoning": "H\u2082-driven reductive amination of \u03b1-ketoglutarate (Kaur et al., 2024, Chem)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "FeS/H\u2082S reductive amination",
+        "inputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "100\u00b0C",
+          "pressure": "high",
+          "catalyst": "FeS/H\u2082S",
+          "aqueous": true,
+          "other": "alkaline"
+        },
+        "mechanism": "Surface-catalyzed reduction using H\u2082S as reductant.",
+        "reasoning": "Reductive amination of \u03b1-keto acids on FeS (Hafenbradl et al., 1995, Tetrahedron Letters; Barge et al., 2019, PNAS)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Protometabolic Fe\u00b2\u207a route",
+        "description": "Hydrothermal CO\u2082 fixation to \u03b1-KG then transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Metal-free surface TCA route",
+        "description": "Surface aldol to \u03b1-KG then reductive amination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "HCN oligomerization route",
+        "description": "Surface polymerization and hydrolysis",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Strecker via acrolein",
+        "description": "Surface cyano-sulfidic to acrolein then Strecker",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "H\u2082-Ni reductive amination hydrothermal",
+        "description": "Hydrothermal protometabolic to \u03b1-KG then H\u2082 amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "FeS reductive amination",
+        "description": "Hydrothermal to \u03b1-KG then FeS amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cross-environment protometabolic",
+        "description": "Hydrothermal pyruvate to surface \u03b1-KG then biochemical transamination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyanosulfidic-Strecker hybrid",
+        "description": "Surface HCN/H\u2082S to acrolein integrated with Strecker",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_013",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Extended HCN to glutamate via oligomers",
+        "description": "Surface HCN polymerization directly to glutamate precursors",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Pyruvate-glyoxylate surface to reductive amination",
+        "description": "Surface formation of \u03b1-KG then H\u2082 amination",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_009",
+      "mol_004"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.95,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Strong alignment with Fe\u00b2\u207a-promoted protometabolic TCA cycle from literature (Muchowska et al., 2019); all steps in hydrothermal environment with mineral catalysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify exact FeS mineral for rxn_012 to enhance detail."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Aligns with metal-free TCA route (Stubbs et al., 2020); assumes pyruvate availability on surface, which may require prior hydrothermal transfer.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify pyruvate sourcing for surface initiation."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.4
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.55,
+        "feedback": "HCN oligomerization valid (Ferris et al., 1978), but aminoacetonitrile hydrolysis yields glycine, not glutamate; lacks chain extension mechanism.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Incorporate longer HCN oligomers or specify C5 aminonitrile intermediate."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.82,
+        "feedback": "Strecker via acrolein aligns with literature (Parker et al., 2011); HCN + H2S to acrolein is approximate for cyano-sulfidic chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Cite specific mechanism for acrolein formation or use acrylonitrile alternative."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.95,
+          "rxn_011": 0.92
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "H\u2082-Ni reductive amination matches Kaur et al. (2024); robust hydrothermal pathway.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add pressure/temperature details for Ni catalysis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.95,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "FeS/H\u2082S amination supported by Hafenbradl et al. (1995); excellent mineral catalysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify FeS phase (e.g., mackinawite)."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.95,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Cross-environment flow justified; transamination (Stubbs et al., 2020) bridges hydro to bio.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail transition mechanism (e.g., mineral transport)."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_010": 0.9,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.83,
+        "feedback": "Hybrid cyano-sulfidic-Strecker aligns with Patel et al. (2015) and Kuroda (2024); minor acrolein issue.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Refine cyano-sulfidic step for acrolein precursor."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.4
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.55,
+        "feedback": "Similar to P3; oligomerization promising but direct link to glutamate unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Extend to C5 oligomers with hydrolysis details."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.82,
+        "feedback": "Surface TCA to hydro amination; addresses separation of steps per Kaur et al. (2024) challenge.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Justify \u03b1-KG transfer from surface to hydrothermal."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.87,
+    "network_feedback": "Well-connected network with strong literature alignment to protometabolic and Strecker routes; environmental separation mitigates one-pot issues. Minor flaws in HCN oligomerization path reduce feasibility slightly.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.95
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.870"
+}

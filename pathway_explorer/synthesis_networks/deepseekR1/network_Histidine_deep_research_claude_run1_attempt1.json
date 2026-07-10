@@ -1,0 +1,382 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Combining the only demonstrated Shen route (erythrose + formamidine \u2192 imidazole-4-acetaldehyde \u2192 histidine) with supporting pathways for imidazole synthesis and precursor generation across hydrothermal and surface environments, while acknowledging key prebiotic challenges through network topology.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH\u2082O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C\u2084H\u2088O\u2084",
+        "iupac_name": "D-Erythrose",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH\u2084N\u2082",
+        "iupac_name": "Formamidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2085H\u2086N\u2082O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2086H\u2089N\u2083O\u2082",
+        "iupac_name": "Histidine",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2082H\u2082O\u2082",
+        "iupac_name": "Glyoxal",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H2O2/c3-1-2-4/h1-2H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2084N\u2082",
+        "iupac_name": "Imidazole",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H4N2/c1-2-5-3-4-1/h1-3H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose Reaction: Glycolaldehyde Formation",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "pH 8-9 with borate stabilization"
+        },
+        "mechanism": "Aldol condensation catalyzed by clay surfaces",
+        "reasoning": "Formose reaction produces glycolaldehyde from formaldehyde (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Erythrose Synthesis",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Colemanite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Glycolaldehyde self-condensation stabilized by borate",
+        "reasoning": "Borate minerals stabilize pentose sugars (Yi et al., 2023)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formamidine Synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "HCN + NH\u2083 condensation under UV catalysis",
+        "reasoning": "Photocatalytic formation of formamidine analogs (Saladino et al., 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Amadori Rearrangement",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Ulexite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Schiff base formation followed by redox isomerization",
+        "reasoning": "Sole demonstrated imidazole-4-acetaldehyde synthesis (Shen et al., 1987, 1990)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker Synthesis of Histidine",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Pyrite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "FeS\u2082",
+          "aqueous": true,
+          "other": "pH 6-7 interface"
+        },
+        "mechanism": "Classical Strecker amino acid synthesis",
+        "reasoning": "Final step in Shen pathway (Shen et al., 1990); pyrite catalyzes enantioselection (Nature Communications, 2024)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Debus-Radziszewski Imidazole Synthesis",
+        "inputs": [
+          "mol_009",
+          "mol_001",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Ambient light"
+        },
+        "mechanism": "Three-component condensation",
+        "reasoning": "Prebiotic imidazole formation (Or\u00f3 et al., 1984)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal CO\u2082 Reduction to Formate",
+        "inputs": [
+          "CO\u2082",
+          "H\u2082"
+        ],
+        "outputs": [
+          "HCOO\u207b"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO\u2082 hydrogenation on Fe-S minerals",
+        "reasoning": "Foundational hydrothermal chemistry (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Shen Histidine Pathway",
+        "description": "Primary demonstrated route via erythrose and formamidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Alternative Imidazole Synthesis",
+        "description": "Debus-Radziszewski route to imidazole",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.5,
+          "rxn_004": 0.6,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "The Shen pathway (P1) replicates the only known route to histidine but suffers from prebiotic implausibility: formamidine instability (rxn_003) and low erythrose availability (rxn_002) are critical weaknesses. The Amadori rearrangement (rxn_004) and Strecker synthesis (rxn_005) are chemically valid but depend on unrealistic precursor concentrations. No mineral catalysts are specified for key steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Incorporate borate minerals to stabilize erythrose (rxn_002)",
+          "Replace formamidine with a more plausible nitrogen source (rxn_003)",
+          "Add mineral catalysts (e.g., pyrite) to rxn_004 to improve Amadori rearrangement yield"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.6,
+        "feedback": "The Debus-Radziszewski imidazole synthesis (rxn_006) is prebiotically robust but disconnected from histidine production. Imidazole (mol_010) does not feed into the target pathway, making this a dead end.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Connect imidazole (mol_010) to histidine via functionalization steps (e.g., C4 aldehyde addition)",
+          "Integrate with Sutherland's FoDHA-CN chemistry for imidazole diversification"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.65,
+    "network_feedback": "The network partially aligns with literature but fails to address key prebiotic challenges: (1) Formamidine instability and erythrose scarcity undermine the Shen pathway; (2) Hydrothermal reactions (rxn_007) are isolated; (3) Alternative imidazole synthesis (P2) is disconnected from the target. While chemically valid in parts, the topology lacks convergent flow and realistic environmental transitions. Hub molecules (mol_003, mol_005) have insufficient connectivity (degree <3).",
+    "approved": false,
+    "hub_quality": 0.5,
+    "convergence_quality": 0.4
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,380 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Combines hydrothermal carbon fixation, surface Strecker chemistry, and biochemical assembly. Key hubs: HCN (hydrothermal/surface), imidazole-4-acetaldehyde (Strecker), and pyruvate (metabolic bridge). Uses mineral-catalyzed reactions in all environments with convergent pathways through aminonitriles.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C5H6N2O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H5NO2",
+        "iupac_name": "Alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H7N3O2",
+        "iupac_name": "L-Histidine",
+        "common_name": "Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "Aminomalononitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H3N3/c4-1-3(6)2-5/h3H,6H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H5N3O",
+        "iupac_name": "Imidazolepyruvate",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H2NCH2CN",
+        "iupac_name": "Aminonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal HCN synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "FeS-catalyzed HCN oligomerization",
+        "reasoning": "HCN polymerization in hydrothermal systems (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis of imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + HCN + NH3 \u2192 aminonitrile \u2192 hydrolysis",
+        "reasoning": "Strecker pathway for histidine precursors (Levine et al., 2008)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "CO\u2082 hydrogenation to pyruvate",
+        "reasoning": "Magnetite-catalyzed carbon fixation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Transamination to histidine",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "clay surfaces"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "\u03b1-ketoacid + amino acid exchange",
+        "reasoning": "Proto-metabolic transamination (Muchowska et al., 2017)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface HCN photogeneration",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photochemical HCN synthesis",
+        "reasoning": "UV-driven cyanosulfidic chemistry (Sutherland, 2016)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Imidazole ring formation",
+        "inputs": [
+          "mol_001",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "evaporative concentration"
+        },
+        "mechanism": "HCN/formaldehyde cyclization",
+        "reasoning": "Cyanosulfidic precursor assembly (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal alanine synthesis",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "380-420K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "NH3-rich fluid"
+        },
+        "mechanism": "Reductive amination",
+        "reasoning": "Fe-S mineral catalyzed amination (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core pathway",
+        "description": "CO\u2082 \u2192 pyruvate \u2192 alanine \u2192 histidine via transamination",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker pathway",
+        "description": "HCN + formaldehyde \u2192 imidazole-4-acetaldehyde \u2192 histidine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_002",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_001",
+          "mol_003"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_003"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_001",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.6,
+          "rxn_003": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_003) lacks explicit mineral catalysts and literature support. HCN synthesis (rxn_001) logic is unclear (formaldehyde + HCN \u2192 aminomalononitrile contradicts typical HCN formation pathways). Alanine synthesis (rxn_007) is plausible but disconnected from histidine production.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Revise rxn_001 to reflect HCN generation from NH3/CO/water",
+          "Specify mineral catalysts (e.g., FeS) for hydrothermal steps",
+          "Connect alanine to histidine synthesis more directly"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_005": 0.8,
+          "rxn_006": 0.75,
+          "rxn_004": 0.6
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.78,
+        "feedback": "Strecker synthesis (rxn_002) and imidazole formation (rxn_006) align with literature, but transamination (rxn_004) lacks prebiotic plausibility. Surface HCN generation (rxn_005) needs UV/mineral details. Imidazole-4-acetaldehyde hub usage is strong.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace enzymatic transamination with abiotic amination (e.g., using NH3/FeS)",
+          "Clarify mineral catalysts for imidazole ring formation",
+          "Add UV exposure details for rxn_005"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.78,
+    "network_feedback": "Network shows valid environmental flow (hydrothermal \u2192 surface \u2192 biochemical) and uses key intermediates (HCN, imidazole-4-acetaldehyde). However, critical gaps exist: 1) Enzymatic transamination step (rxn_004) is not prebiotically viable, 2) Hydrothermal HCN/pyruvate synthesis lacks mechanistic detail, 3) Mineral catalysts underspecified. Strengthen chemical plausibility of final steps and add mineral specifics to meet approval threshold.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

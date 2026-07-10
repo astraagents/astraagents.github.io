@@ -1,0 +1,815 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "The synthesis network for glycine integrates hydrothermal reduction of CO2 to formaldehyde and formate, surface Strecker synthesis and cyanosulfidic protometabolism involving HCN and ammonia, with convergence at key hubs like formaldehyde, HCN, and glyoxylate. Multiple pathways ensure redundancy across environments, with hydrothermal products feeding surface reactions and leading to biochemical assembly, grounded in literature on prebiotic conditions including mineral catalysis by Al-rich smectites and FeS.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "Carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "Hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "Hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH2(OH)CN",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "Glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "NH2CH2CN",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "Aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HOCH2COOH",
+        "iupac_name": "2-hydroxyacetic acid",
+        "common_name": "Glycolic acid",
+        "inchi": "InChI=1S/C2H4O3/c3-1-2(4)5/h3H,1H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CHO-COOH",
+        "iupac_name": "oxoacetic acid",
+        "common_name": "Glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "NH2CH2COOH",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Formate",
+        "inputs": [
+          "mol_002",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Reverse water-gas shift and hydrogenation on Fe-S cluster analog",
+        "reasoning": "CO2 reduction on greigite surfaces produces formate as a key early organic; supported by experiments in alkaline vents (Huber & W\u00e4chtersh\u00e4user, 1997; source 6942)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to Formaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "Dehydration and reduction via Fischer-Tropsch synthesis",
+        "reasoning": "Magnetite catalyzes conversion of formate/CO2 to aldehydes like formaldehyde under hydrothermal conditions (McCollom et al., 1999; source 13439)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formaldehyde + HCN to Glycolonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure, wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of HCN to formaldehyde",
+        "reasoning": "Cyanohydrin formation as intermediate in Strecker; clay concentrates reactants (Powner et al., 2009; sources 6942, 11365)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glycolonitrile + NH3 to Aminoacetonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photochemistry, neutral pH"
+        },
+        "mechanism": "Imine formation and cyanohydrin amination",
+        "reasoning": "Strecker intermediate aminonitriles form via ammonia addition; UV-driven on TiO2 (Miller, 1953; sources 10835, 21189)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminoacetonitrile Hydrolysis to Glycine",
+        "inputs": [
+          "mol_010",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "alkaline pH, wet-dry"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid",
+        "reasoning": "Hydrolysis of aminonitriles yields glycine; energy barriers addressed by cycles (Powner et al., 2010; sources 6942, 10797)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "HCN + H2S Photochemistry to Precursors",
+        "inputs": [
+          "mol_005",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Powell-Sutherland cyanosulfidic pathway to alpha-ketoacids",
+        "reasoning": "Cyanosulfidic protometabolism produces glyoxylate from HCN/H2S; photochemical (Xu et al., 2018; sources 21196, 21195)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Glyoxylate Reductive Amination to Glycine",
+        "inputs": [
+          "mol_012",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH 8.3-10.5"
+        },
+        "mechanism": "Reductive amination on iron sulfide",
+        "reasoning": "FeS catalyzes reductive amination of glyoxylate to glycine; hydrothermal (Huber et al., 2007; source 1025)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Formaldehyde Oxidation to Glycolic Acid",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectites"
+        ],
+        "conditions": {
+          "temperature": "175-250C",
+          "pressure": "high",
+          "catalyst": "Al-rich smectites",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Oxidation via formose intermediates",
+        "reasoning": "Hydrothermal oxidation of formaldehyde to glycolic acid; Al-smectites enhance (Pietre et al., 2011; sources 13449, 13450)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Glycolic Acid Amination to Glycine",
+        "inputs": [
+          "mol_011",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "concentrated pools"
+        },
+        "mechanism": "Nucleophilic substitution of OH by NH2",
+        "reasoning": "Amination of glycolic acid in prebiotic pools; connects hydrothermal to biochemical (sources 2618, 23036)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Glyoxylate from Formaldehyde + Ammonia",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "colemanite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Oxidation and amination via formose",
+        "reasoning": "Formaldehyde and ammonia form glyoxylate in cyanosulfidic networks; borates stabilize (Sutherland, 2016; sources 9376, 6944)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Direct Strecker: HCHO + HCN + NH3 to Glycine",
+        "inputs": [
+          "mol_006",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "room temp",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "One-pot imine-cyanide addition and hydrolysis",
+        "reasoning": "Classic Strecker synthesis under prebiotic aqueous conditions; yields glycine (Miller, 1953; sources 6942, 11365, 6985)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "UV Ice Analog to Glycine",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "40-120K",
+          "pressure": "low",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV irradiation <200 nm"
+        },
+        "mechanism": "Radical addition in interstellar ice",
+        "reasoning": "UV irradiation of ices produces glycine; simulates extraterrestrial (Holtom et al., 2004; sources 13534, 1273)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal CO2 to Formaldehyde to Strecker Glycine",
+        "description": "CO2 reduction to HCHO in vents, then surface Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Direct Strecker Synthesis",
+        "description": "One-pot Strecker from prebiotic HCHO, HCN, NH3",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic via Glyoxylate",
+        "description": "HCN/H2S to glyoxylate, then reductive amination",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal Formaldehyde to Glycolic Acid Amination",
+        "description": "HCHO oxidation to glycolic, then amination in pools",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Strecker via Aminonitrile Hydrolysis",
+        "description": "Stepwise Strecker with hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface Glyoxylate from Formose-like",
+        "description": "HCHO + NH3 to glyoxylate, then to glycine",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal Reductive Amination of Glyoxylate",
+        "description": "Cross-environment: surface glyoxylate to hydrothermal amination",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "UV-Driven Interstellar to Surface Glycine",
+        "description": "Ice analog UV to glycine, then surface integration",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal Formate Pathway to HCHO Strecker",
+        "description": "Formate intermediate to HCHO, then Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanosulfidic with Hydrothermal Input",
+        "description": "Hydro HCHO to cyanosulfidic glyoxylate to glycine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_010",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.9,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Strong hydrothermal to surface flow via Strecker, aligns with literature on CO2 reduction and aminonitrile hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Refine formate to formaldehyde step with specific catalysts."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_011": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Direct Strecker is well-supported by literature, simple and efficient on surface.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral catalysis details for surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_007": 0.9,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanosulfidic pathway aligns with protometabolism literature, but glyoxylate formation needs clarification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Specify photochemical conditions for HCN + H2S."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_008": 0.6,
+          "rxn_009": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal to biochemical, but oxidation and amination steps are less feasible without oxidants/reductants.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Incorporate oxidants for glycolic acid formation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic Strecker via hydrolysis, strong literature support for intermediates.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Ensure hydrolysis conditions match prebiotic aqueous settings."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Formose-like to glyoxylate, but direct HCHO + NH3 to glyoxylate is atypical.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Link to formose reaction intermediates."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_010": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Reductive amination of glyoxylate in hydrothermal, aligns with mineral catalysis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add FeS catalysis for reduction."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "UV ice analog supported by interstellar simulations, but less tied to Earth surface.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify ice composition and UV wavelength."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Extended hydrothermal formate path to Strecker, good redundancy.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Validate multi-step reduction."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_003": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanosulfidic with hydrothermal input, addresses literature challenges in separation.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Emphasize mineral agents like FeS."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with strong literature alignment to Strecker, cyanosulfidic, and hydrothermal routes. Minor issues in some reaction mechanisms, but overall chemically sound and environmentally coherent.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

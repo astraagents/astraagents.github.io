@@ -1,0 +1,413 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integration of hydrothermal carbon fixation, surface Strecker/aldol chemistry, and biochemical transamination to synthesize glutamate through \u03b1-ketoglutarate hubs with environmental cross-feeding",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "Alanine",
+        "common_name": "Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO4",
+        "iupac_name": "Glutamic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electrochemical reduction via Fe-S mineral-mediated electron transfer",
+        "reasoning": "Greigite surfaces catalyze multi-electron CO\u2082 reduction (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formose reaction initiation",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Colemanite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Borate-stabilized aldol condensation",
+        "reasoning": "Borate minerals template sugar formation (Benner et al., 2012)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate synthesis via FT",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe\u2083O\u2084)"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": false,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Surface-mediated chain growth on iron oxide",
+        "reasoning": "Magnetite catalyzes CO/H\u2082 polymerization (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive carboxylation to \u03b1-KG",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Stepwise CO\u2082 fixation via Fe-S mineral redox cycling",
+        "reasoning": "FeS-mediated carbon chain growth (Varma et al., 2018)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of alanine",
+        "inputs": [
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Clay surface",
+          "aqueous": true,
+          "other": "HCN presence"
+        },
+        "mechanism": "Aminonitrile formation and hydrolysis",
+        "reasoning": "Clay-catalyzed amino acid synthesis (Parker et al., 2014)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Transamination to glutamate",
+        "inputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Clay surfaces"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Mineral-mediated amino group transfer",
+        "reasoning": "Non-enzymatic transamination demonstrated on clays (Guzman & Martin, 2020)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Aldol condensation to \u03b1-KG",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082 (anatase)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic carbon chain elongation",
+        "reasoning": "TiO\u2082 enables UV-driven aldol reactions (Sutherland, 2016)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal carbon fixation",
+        "description": "CO\u2082 \u2192 Formaldehyde \u2192 Pyruvate \u2192 \u03b1-KG via mineral catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface photochemical route",
+        "description": "Formaldehyde \u2192 Glycolaldehyde \u2192 \u03b1-KG via UV/aldol",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Transamination network",
+        "description": "Alanine + \u03b1-KG \u2192 Glutamate via clay-mediated transfer",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_003": 0.7,
+          "rxn_004": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal steps (rxn_001, rxn_003, rxn_004) show plausible carbon fixation but lack explicit mineral catalysts. Pyruvate synthesis (rxn_003) and reductive carboxylation (rxn_004) require stronger prebiotic justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify Fe/S minerals for Fischer-Tropsch-type reactions",
+          "Clarify reductant source for \u03b1-KG synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_005": 0.6,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Strecker synthesis (rxn_005) lacks cyanide input. Aldol condensation to \u03b1-KG (rxn_007) is chemically speculative. Surface mineral catalysis not specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add HCN as a reactant for Strecker synthesis",
+          "Propose clay/phosphate catalysts for aldol steps"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.6,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.6,
+        "feedback": "Transamination (rxn_006) lacks prebiotically plausible cofactors. Depends on problematic upstream reactions (rxn_005).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include pyridoxal-like minerals for transamination",
+          "Consider abiotic amine transfer mechanisms"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.72,
+    "network_feedback": "Network shows logical environmental progression but has critical gaps: 1) Missing cyanide in Strecker synthesis, 2) Enzymatic-like transamination without prebiotic support, 3) Under-specified mineral catalysis. Hubs are well-connected but key reactions need stronger chemical justification.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

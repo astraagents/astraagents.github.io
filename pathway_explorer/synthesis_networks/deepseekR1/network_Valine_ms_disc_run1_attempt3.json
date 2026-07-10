@@ -1,0 +1,348 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integration of Strecker synthesis in surface environments with hydrothermal \u03b1-ketoacid production and reductive amination, leveraging mineral catalysts and environmental cross-feeding",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O",
+        "iupac_name": "Isobutyraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H8O3",
+        "iupac_name": "2-Ketoisovaleric acid",
+        "common_name": "2-ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H11NO2",
+        "iupac_name": "Valine",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe3S4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO2 hydrogenation via Fe-S mineral catalysis",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) demonstrated Fe-S mediated CO2 reduction to pyruvate"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis of valine precursor",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "\u03b1-Aminonitrile formation followed by hydrolysis",
+        "reasoning": "Friedmann & Miller (1969) showed Strecker synthesis under prebiotic conditions"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination of 2-ketoisovalerate",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Magnetite (Fe3O4)"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "Magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "NH3-dependent reduction of \u03b1-ketoacid",
+        "reasoning": "Patel et al. (2015) cyanosulfidic pathways show ketoacid amination"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Isobutyraldehyde formation via formose",
+        "inputs": [
+          "mol_009",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Borate",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Aldol condensation of glycolaldehyde",
+        "reasoning": "Formose reaction stabilization by borates (Benner et al. 2012)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrothermal glycolaldehyde synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe3O4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch type"
+        },
+        "mechanism": "CO2 hydrogenation to C2 sugars",
+        "reasoning": "Magnetite-catalyzed FT synthesis (McCollom et al. 1999)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Ketoacid formation from pyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV photocatalysis"
+        },
+        "mechanism": "Aldol condensation and oxidation",
+        "reasoning": "Photochemical carbon chain elongation (Sutherland 2017)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core pathway",
+        "description": "CO2 \u2192 Pyruvate \u2192 Ketoacid \u2192 Valine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker pathway",
+        "description": "Formose \u2192 Isobutyraldehyde \u2192 Ketoacid \u2192 Valine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_005": 0.7,
+          "rxn_004": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal pyruvate (rxn_001) and glycolaldehyde (rxn_005) syntheses lack explicit mineral catalysts, reducing chemical plausibility. Isobutyraldehyde formation (rxn_004) via formose is chemically ambiguous. Pathway does not directly produce valine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify Fe-S or montmorillonite catalysts for hydrothermal steps",
+          "Replace formose-based rxn_004 with Strecker-consistent aldehyde synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.75,
+          "rxn_006": 0.6,
+          "rxn_003": 0.85
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Strecker synthesis (rxn_002) misapplied to produce ketoacid instead of aminonitrile. Ketoacid formation (rxn_006) mechanism unclear. Reductive amination (rxn_003) is valid but requires H2 activation via minerals. Pathway achieves target through literature-aligned final step.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Revise rxn_002 to produce aminonitrile intermediate",
+          "Clarify rxn_006 as transamination or \u03b1-ketoacid elongation",
+          "Add FeS catalysts for reductive amination"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.78,
+    "network_feedback": "Network integrates key literature elements (Strecker, hydrothermal, reductive amination) but has critical gaps: 1) Strecker mechanism misapplied, 2) Missing mineral catalysts in reactions, 3) Unclear ketoacid formation steps. Improved by specifying catalysts and revising reaction mechanisms.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

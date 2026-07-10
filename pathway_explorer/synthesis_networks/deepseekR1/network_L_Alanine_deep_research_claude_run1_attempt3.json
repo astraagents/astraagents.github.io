@@ -1,0 +1,543 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Convergent network integrating hydrothermal CO\u2082 fixation, surface Strecker/cyanosulfidic chemistry, and biochemical assembly, with acetaldehyde/pyruvate/HCN as central hubs. Combines eight literature-validated pathways with mineral-catalyzed environmental transitions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3CHO",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H5NO2",
+        "iupac_name": "2-Aminopropionitrile",
+        "common_name": "\u03b1-APN",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H6N2O2",
+        "iupac_name": "5-Methylhydantoin",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H6N2O2/c1-2-3(7)6-4(8)5-2/h2H,1H3,(H2,5,6,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H8N2O3",
+        "iupac_name": "N-Carbamoyl-L-alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O3/c1-2(3(7)8)6-4(5)9/h2H,1H3,(H,7,8)(H3,5,6,9)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO2",
+        "iupac_name": "L-Alanine",
+        "common_name": "Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker synthesis of \u03b1-APN",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Acetaldehyde forms imine with ammonia, followed by HCN addition",
+        "reasoning": "Miller (1955); Patel et al. (2015) cyanosulfidic variant"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 reduction via Fe-S mineral catalysis",
+        "reasoning": "Beyazay et al. (2023); Russell vent chemistry"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to alanine",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": true,
+          "other": "1:1 Fe(II):Fe(III)"
+        },
+        "mechanism": "NH3 nucleophilic attack on keto carbon with Fe-mediated H\u2082 activation",
+        "reasoning": "Barge et al. (2019) PNAS; Kaur et al. (2024) Ni catalysis"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Bucherer-Bergs hydantoin formation",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "80\u00b0C dry-heat phases"
+        },
+        "mechanism": "Pyruvate reacts with HCN/NH3 to form hydantoin via carbamoylation",
+        "reasoning": "Pulletikurti et al. (2022) Nature Chemistry"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydantoin hydrolysis to alanine",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 5-7"
+        },
+        "mechanism": "Stepwise hydrolysis of N-carbamoyl intermediate",
+        "reasoning": "Pulletikurti et al. (2022) hydrolysis kinetics"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic \u03b1-APN synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "anatase",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox cycling with H\u2082S as reductant",
+        "reasoning": "Patel et al. (2015) Nature Chemistry; Ritson & Sutherland (2013)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "\u03b1-APN hydrolysis to alanine",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Sequential hydrolysis of nitrile and imine groups",
+        "reasoning": "Miller & Van Trump (1981) hydrolysis pathways"
+      },
+      {
+        "id": "rxn_008",
+        "name": "HCN oligomerization to amino acids",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "263K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "Eutectic freezing"
+        },
+        "mechanism": "Polymerization followed by alkaline hydrolysis",
+        "reasoning": "Ferris et al. (1978); Miyakawa et al. (2002) ice chemistry"
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV ice photolysis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "12K",
+          "pressure": "low",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "CH3OH:NH3 ice matrix"
+        },
+        "mechanism": "Radical recombination in interstellar ice analogs",
+        "reasoning": "Bernstein et al. (2002) Nature; Mu\u00f1oz Caro et al. (2002)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Fischer-Tropsch acetaldehyde synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": true,
+          "other": "CO/H\u2082 feedstock"
+        },
+        "mechanism": "Surface-mediated CO hydrogenation",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (2006) Science"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO\u2082 \u2192 pyruvate \u2192 alanine via Fe-S mineral catalysis",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Classic Strecker synthesis",
+        "description": "Acetaldehyde + NH3 + HCN \u2192 \u03b1-APN \u2192 alanine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic photoredox",
+        "description": "UV-driven synthesis of \u03b1-APN from acetaldehyde",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Bucherer-Bergs hydantoin route",
+        "description": "Pyruvate \u2192 5-methylhydantoin \u2192 N-carbamoyl \u2192 alanine",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "HCN oligomer hydrolysis",
+        "description": "Polymerization of HCN followed by hydrolysis",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_001"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_001"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_001",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006",
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_002) lacks explicit mineral catalysts (Fe/Ni) as per literature, but reductive amination (rxn_003) is well-supported. Pathway coherence is maintained via environmental transitions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify Fe/Ni catalysts for rxn_002 to align with hydrothermal CO\u2082 reduction mechanisms"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Classic Strecker synthesis (rxn_001) and hydrolysis (rxn_007) are chemically sound and literature-aligned. Surface-to-biochemical progression is logical.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanosulfidic \u03b1-APN synthesis (rxn_006) aligns with Patel et al. (2015), but UV/phosphate conditions should be specified. Hydrolysis step (rxn_007) is valid.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Clarify photoredox conditions (Cu cycling, UV) for rxn_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Bucherer-Bergs hydantoin formation (rxn_004) and hydrolysis (rxn_005) are literature-supported. Temperature conditions for hydrolysis (80\u00b0C) should be noted.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add temperature annotation to rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_008": 0.6
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.6,
+        "feedback": "HCN oligomerization (rxn_008) is plausible but lacks specificity (polymerization/hydrolysis steps). Yield concerns from literature.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Include HCN concentration/ice eutectic conditions for oligomerization"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates key literature routes (Strecker, Bucherer-Bergs, cyanosulfidic) with valid environmental transitions. Issues: (1) Hydrothermal rxn_002/rxn_010 need mineral catalysts specified; (2) HCN oligomerization (P5) is underdeveloped. Hub molecules (HCN, acetaldehyde, pyruvate) are well-connected. Approved due to strong alignment with prebiotic chemistry literature.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

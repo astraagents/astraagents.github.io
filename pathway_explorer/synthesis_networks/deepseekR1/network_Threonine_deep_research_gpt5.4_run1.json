@@ -1,0 +1,396 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Convergent synthesis through lactaldehyde-centered pathways combining UV photoredox chemistry, spark discharge synthesis, and HCN oligomerization across hydrothermal and surface environments",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "Methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H3NO",
+        "iupac_name": "Glycolonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H6O2",
+        "iupac_name": "Lactaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H7N3",
+        "iupac_name": "Aminomalononitrile",
+        "common_name": "AMN",
+        "inchi": "InChI=1S/C3H3N3/c4-1-3(6)2-5/h3H,6H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7N3O",
+        "iupac_name": "Threonine aminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H9NO3",
+        "iupac_name": "Threonine",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Spark discharge HCN synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "electric discharge",
+          "aqueous": true,
+          "other": "CH4/NH3/H2S/CO2 gas mixture"
+        },
+        "mechanism": "Radical recombination in electric discharge",
+        "reasoning": "Parker et al. (2011) demonstrated threonine formation in spark-discharge experiments with reduced gases"
+      },
+      {
+        "id": "rxn_002",
+        "name": "UV photoredox lactaldehyde synthesis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuCN",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN",
+          "aqueous": true,
+          "other": "254 nm UV irradiation"
+        },
+        "mechanism": "Photoredox reduction of acetaldehyde cyanohydrin",
+        "reasoning": "Ritson & Sutherland (2013) achieved 19% lactaldehyde yield via cyanosulfidic photoredox"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker aminonitrile formation",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Imine formation followed by cyanide addition",
+        "reasoning": "Kyushu University meteoritic analysis (2013) describes lactaldehyde-based Strecker synthesis"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Geothermal cycling"
+        },
+        "mechanism": "Acid-catalyzed hydrolysis",
+        "reasoning": "Thanassi (1975) demonstrated amino acid formation from aminonitrile hydrolysis"
+      },
+      {
+        "id": "rxn_005",
+        "name": "HCN oligomerization to AMN",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Evaporative concentration"
+        },
+        "mechanism": "HCN trimerization",
+        "reasoning": "Thanassi (1975) identified AMN as key HCN oligomer for amino acid synthesis"
+      },
+      {
+        "id": "rxn_006",
+        "name": "AMN-aldehyde condensation",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Electrophilic addition followed by hydrolysis",
+        "reasoning": "Thanassi (1975) reported threonine formation from AMN-aldehyde reactions"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal HCN generation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "High",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "Redox gradient"
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis",
+        "reasoning": "Andersson & Holm (2000) demonstrated hydrothermal CN\u207b generation"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "UV Photoredox-Strecker",
+        "description": "Cyanosulfidic photoredox synthesis of lactaldehyde followed by Strecker assembly",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "HCN Oligomer",
+        "description": "AMN-mediated synthesis through HCN oligomerization",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal-Surface Hybrid",
+        "description": "Hydrothermal HCN feeds surface Strecker chemistry",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "P1 relies on rxn_002 (glycolonitrile \u2192 lactaldehyde), which misaligns with literature: lactaldehyde synthesis requires acetaldehyde cyanohydrin, not glycolonitrile. Missing glycolonitrile formation step breaks coherence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Replace rxn_002 with acetaldehyde cyanohydrin \u2192 lactaldehyde (UV photoredox) and add glycolonitrile synthesis (e.g., formaldehyde + HCN)."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_006": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "P2 (HCN oligomerization \u2192 AMN + lactaldehyde) aligns with Thanassi\u2019s AMN-aldehyde chemistry. Missing mineral catalysts (e.g., CuCN) and lactaldehyde sourcing lowers environmental progression score.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral agents (e.g., CuCN) for AMN-aldehyde condensation and clarify lactaldehyde\u2019s environmental source."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "P3 integrates hydrothermal HCN generation but lacks justification for HCN transport to surface environments. Hydrothermal conditions (mineral buffers, temperature) are unspecified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add mineral catalysts (e.g., pyrite-pyrrhotite) to rxn_007 and detail HCN transport mechanisms (e.g., vent plumes to surface pools)."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network aligns with literature\u2019s lactaldehyde-centered strategy but has critical gaps: (1) Missing glycolonitrile synthesis, (2) Incorrect lactaldehyde precursor in P1, (3) Underspecified mineral catalysts. Hubs mol_003 (HCN) and mol_005 (lactaldehyde) are well-connected, but mol_006 (AMN) has insufficient connections. Approved via P2/P3 pathways.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.800"
+}

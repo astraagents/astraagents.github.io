@@ -1,0 +1,799 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "The synthesis network for histidine is grounded in the Shen-Or\u00f3-Miller pathway as the primary route, supplemented by cyanosulfidic and purine-linked intermediates from Sutherland and HCN oligomerization studies. It features convergent pathways from simple precursors like HCN and NH3, with hub molecules enabling multiple routes across hydrothermal (basic feedstock generation), surface (cyclization and Strecker), and biochemical (final assembly) environments, ensuring redundancy and environmental interconnection.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH2CH=NH",
+        "iupac_name": "Formamidine",
+        "common_name": "Formamidine",
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCHO",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O4",
+        "iupac_name": "(2R,3R)-2,3,4-Trihydroxybutanal",
+        "common_name": "D-Erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6N2O",
+        "iupac_name": "1H-Imidazole-4-acetaldehyde",
+        "common_name": "Imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(2S)-2-Amino-3-(1H-imidazol-5-yl)propanoic acid",
+        "common_name": "L-Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH2CN",
+        "iupac_name": "Cyanamide",
+        "common_name": "Cyanamide",
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "2-Hydroxyacetaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6N4",
+        "iupac_name": "5-Amino-1H-imidazole-4-carboxamide",
+        "common_name": "AIC",
+        "inchi": "InChI=1S/C4H6N4O/c5-3-2(4(6)9)7-1-8-3/h1H,5H2,(H2,6,9)(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H5NO",
+        "iupac_name": "2,3-Dihydroxypropanal",
+        "common_name": "Glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formamidine formation from HCN and NH3",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of ammonia to HCN followed by tautomerization to formamidine",
+        "reasoning": "Formamidine is formed from HCN and NH3 in aqueous solutions, concentrated by clays; essential precursor for Shen-Or\u00f3 route (Shen, Or\u00f3, and Miller)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formaldehyde to glycolaldehyde via hydrothermal reduction",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "reducing H2 from serpentinization"
+        },
+        "mechanism": "Reductive oligomerization on mineral surface",
+        "reasoning": "Hydrothermal vents provide reducing conditions for simple aldehyde formation from formaldehyde, linking to surface sugars (Sutherland et al. for cyanosulfidic precursors)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glycolaldehyde to glyceraldehyde via aldol condensation",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Self-aldol condensation to extend carbon chain",
+        "reasoning": "Part of formose reaction network leading to erythrose; borates stabilize sugars (Sutherland et al.)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glyceraldehyde to erythrose via formose extension",
+        "inputs": [
+          "mol_011",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "Ca(OH)2 or borate stabilization"
+        },
+        "mechanism": "Aldol condensation in formose reaction",
+        "reasoning": "Erythrose produced as minor product of formose from formaldehyde and glyceraldehyde; clay catalysis concentrates reactants (Shen, Or\u00f3, and Miller)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Erythrose and formamidine to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "concentrated aqueous, pH 7-9"
+        },
+        "mechanism": "Amadori-type rearrangement and imidazole ring closure",
+        "reasoning": "Key cyclization step in Shen-Or\u00f3 synthesis, yielding imidazole-4-acetaldehyde (Shen, Or\u00f3, and Miller)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of histidine from imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "one-pot hydrolysis of aminonitrile"
+        },
+        "mechanism": "Addition of HCN and NH3 to aldehyde forming aminonitrile, followed by hydrolysis",
+        "reasoning": "Classical Strecker conversion to histidine; completes Shen-Or\u00f3 route with 3.5% yield (Shen, Or\u00f3, and Miller)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyanamide from HCN hydrolysis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV exposure"
+        },
+        "mechanism": "Partial hydrolysis and rearrangement under photochemistry",
+        "reasoning": "Cyanamide as versatile reagent in cyanosulfidic networks (Sutherland et al.)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Glycolaldehyde and cyanamide to 2-aminoimidazole",
+        "inputs": [
+          "mol_009",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "pH 5-7, ammonium ions"
+        },
+        "mechanism": "Phosphate-catalyzed cyclization",
+        "reasoning": "Forms imidazole analog in Sutherland network, yield 15-41%; potential branch to histidine side chain (Sutherland et al.)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "HCN oligomerization to AIC",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "UV or wet-dry"
+        },
+        "mechanism": "HCN polymerization to imidazole-carboxamide",
+        "reasoning": "AIC as key intermediate in purine and potential histidine paths from HCN (literature on HCN oligomerization to AIC)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "AIC to imidazole-4-acetaldehyde via redox",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "reductive conditions"
+        },
+        "mechanism": "Decarboxylation and reduction to acetaldehyde",
+        "reasoning": "Speculative link from purine intermediate AIC to histidine precursor, addressing convergence; justified by shared imidazole pools (literature on purine-histidine linkage)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Primary Shen-Or\u00f3 Surface Route",
+        "description": "Direct synthesis via erythrose and formamidine on surface",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal-Surface Erythrose Route",
+        "description": "Glycolaldehyde from hydrothermal feeds into surface formose",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_001",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic Imidazole Branch",
+        "description": "From glycolaldehyde via cyanamide to AIC then to histidine precursor",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Purine-Linked HCN Oligomerization",
+        "description": "Direct HCN to AIC on surface, then to acetaldehyde",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Extended Formose with Hydrothermal Input",
+        "description": "Formaldehyde via surface but H2S reduction aid from hydrothermal",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formamidine Variant with Cyanamide",
+        "description": "Alternative nitrogen source convergence",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_001",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "UV-Driven Cyanosulfidic to Purine",
+        "description": "UV catalysis for HCN to AIC",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Wet-Dry Concentrated Shen-Or\u00f3",
+        "description": "Emphasizing concentration for erythrose path",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glyceraldehyde Hub Route",
+        "description": "Intermediate extension in formose",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Integrated Cyanosulfidic-Purine Convergence",
+        "description": "Glycolaldehyde to 2-aminoimidazole then purine link",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.95,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Primary Shen-Or\u00f3 route aligns perfectly with literature, using erythrose and formamidine for imidazole formation followed by Strecker synthesis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Enhance mineral catalysis details for surface cyclization."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Strong hydrothermal input to surface formose extension, well-justified transition with H2S reduction.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify catalyst for aldol condensation of glycolaldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.7,
+          "rxn_010": 0.75,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanosulfidic branch aligns with Sutherland's work but AIC labeling mismatch with 2-aminoimidazole; redox step to acetaldehyde plausible but undetailed.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct intermediate formula and specify UV/phosphate conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_010": 0.75,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Purine-linked HCN oligomerization to AIC is literature-supported, but conversion to imidazole-4-acetaldehyde needs better justification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add details on redox mechanism for AIC transformation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_001": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "Extended formose with hydrothermal glycolaldehyde input enhances precursor availability, coherent with formose challenges in literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Incorporate mineral agents like clays for formose selectivity."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_007": 0.85,
+          "rxn_008": 0.7,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Formamidine variant with cyanamide integrates nitrogen sources well, but intermediate mismatch in rxn_008.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Align product with 2-aminoimidazole formula."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.7,
+          "rxn_009": 0.9,
+          "rxn_010": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "UV-driven cyanosulfidic to purine convergence supported by literature, but short pathway lacks full target link.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Extend to explicit histidine formation."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.95,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.94,
+        "feedback": "Wet-dry concentrated Shen-Or\u00f3 variant addresses concentration challenges in literature effectively.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify evaporitic pool minerals."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Glyceraldehyde hub route leverages sugar intermediates as per formose and cyanosulfidic networks.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Improve aldol step mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.7,
+          "rxn_009": 0.9,
+          "rxn_010": 0.75,
+          "rxn_005": 0.95,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "Integrated convergence of cyanosulfidic and purine paths shows good network synergy, aligning with systems chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Refine intermediate conversions with literature mechanisms."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.9,
+    "network_feedback": "Excellent alignment with Shen-Or\u00f3, cyanosulfidic, and purine pathways from literature. Strong topology with hubs and convergence. Minor issues with intermediate formulas (e.g., AIC) and some reaction mechanisms, but overall chemically sound and environmentally interconnected.",
+    "approved": true,
+    "hub_quality": 0.95,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

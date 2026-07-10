@@ -1,0 +1,391 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Synthesize arginine through convergent pathways combining hydrothermal carbon fixation, surface Strecker synthesis of ornithine precursors, and UV-driven guanidino group formation from ammonium cyanide. Key hubs: pyruvate, ammonium cyanide, and guanidine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO\u207b",
+        "iupac_name": "Formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "Alanine",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2084N\u2082",
+        "iupac_name": "Ammonium cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CN.H3N/c1-2;/h;1H3/q-1;/p+1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH\u2085N\u2083",
+        "iupac_name": "Guanidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH5N3/c2-1(3)4/h(H5,2,3,4)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2085H\u2081\u2082N\u2082O\u2082",
+        "iupac_name": "Ornithine",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C\u2086H\u2081\u2084N\u2084O\u2082",
+        "iupac_name": "Arginine",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 hydrogenation on Fe\u2083S\u2084 clusters",
+        "reasoning": "Greigite-catalyzed CO\u2082 reduction (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation",
+        "reasoning": "Magnetite-mediated carbon fixation (Nitschke et al., 2013)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to alanine",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "\u03b1-keto acid amination",
+        "reasoning": "Fe-S mineral catalysis (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Ammonium cyanide formation",
+        "inputs": [
+          "mol_005",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 + HCN \u2192 NH\u2084CN",
+        "reasoning": "Clay-mediated concentration (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Guanidine synthesis",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical rearrangement",
+        "reasoning": "UV-driven guanidine formation (Levine et al., 2008)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Ornithine Strecker synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + NH\u2083 + HCN \u2192 \u03b1-aminonitrile \u2192 ornithine",
+        "reasoning": "Clay-catalyzed Strecker variant (Pascal et al., 2005)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Arginine assembly",
+        "inputs": [
+          "mol_010",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true
+        },
+        "mechanism": "Guanidino group transfer",
+        "reasoning": "Speculative prebiotic transamidination (postulated)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal carbon fixation \u2192 ornithine \u2192 arginine",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 alanine \u2192 ornithine (via Strecker) + guanidine \u2192 arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface guanidine \u2192 arginine",
+        "description": "HCN + NH\u2083 \u2192 ammonium cyanide \u2192 guanidine (UV) + ornithine \u2192 arginine",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_008",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_006": 0.6,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Pathway P1 has plausible hydrothermal steps (CO\u2082 \u2192 formate \u2192 pyruvate \u2192 alanine) but struggles with the Strecker synthesis of ornithine (rxn_006: pyruvate is not a standard Strecker aldehyde) and the biochemical assembly step (rxn_007: guanidine + ornithine \u2192 arginine lacks prebiotic justification).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace pyruvate with an aldehyde in rxn_006 for Strecker synthesis",
+          "Specify a plausible prebiotic mechanism for guanidino group transfer in rxn_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 0.9,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Pathway P2 has strong guanidine synthesis (rxn_004 \u2192 rxn_005) but shares the invalid arginine assembly step (rxn_007). Surface-to-biochemical transition lacks environmental justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add mineral catalysts (e.g., pyrite) to surface reactions",
+          "Clarify environmental conditions for biochemical assembly step"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "The network has convergent pathways and plausible hydrothermal-surface flow but suffers from: (1) Weak hub connectivity (mol_008/mol_009 have degree <3), (2) Unjustified biochemical step for arginine assembly, (3) Missing mineral catalysts in environmental transitions. Literature alignment is partial (guanidine synthesis supported, but Strecker ornithine and arginine assembly lack evidence).",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

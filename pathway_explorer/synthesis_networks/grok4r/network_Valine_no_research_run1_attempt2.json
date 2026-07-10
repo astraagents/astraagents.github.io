@@ -1,0 +1,937 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "The synthesis network constructs valine through convergent pathways emphasizing hydrothermal Fischer-Tropsch-type reductions to build the branched isobutyraldehyde hub from CO, interconnected with surface photochemistry for alternative branching, and biochemical final assembly via Strecker hydrolysis or reductive amination of the keto acid analog. This ensures redundancy across environments, with hydrothermal providing reducing conditions for carbon chain assembly, surface enabling cyanide-based additions, and biochemical completing polymerization-prone steps, addressing prebiotic constraints like anoxia and UV exposure.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6O",
+        "iupac_name": "propanal",
+        "common_name": "propanal",
+        "inchi": "InChI=1S/C3H6O/c1-2-3-4/h3H,2H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H10N2",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H8O3",
+        "iupac_name": "2-oxo-3-methylbutanoic acid",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH3NO",
+        "iupac_name": "formamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Reverse water-gas shift",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Mineral surface-mediated reduction of CO2 to CO using H2",
+        "reasoning": "Common in alkaline hydrothermal vents for CO production (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Fischer-Tropsch synthesis to acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Catalytic hydrogenation of CO to form C2 aldehyde",
+        "reasoning": "Magnetite enables FT-type synthesis of aldehydes in vents (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Fischer-Tropsch synthesis to propanal",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Catalytic hydrogenation of CO to form C3 aldehyde",
+        "reasoning": "FT reactions produce chain-extended aldehydes (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Fischer-Tropsch synthesis to isobutyraldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Catalytic hydrogenation with branching to C4 iso-aldehyde",
+        "reasoning": "Branched hydrocarbons and oxygenates form in prebiotic FT catalysis (e.g., via surface rearrangements)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Photocatalytic hydration of HCN",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV-induced addition of water to HCN forming formamide",
+        "reasoning": "TiO2 photocatalysis drives HCN conversion in UV-exposed pools (Cleaves et al., 2008)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Thermal decomposition of formamide",
+        "inputs": [
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Clay-catalyzed elimination to formaldehyde and ammonia",
+        "reasoning": "Wet-dry cycling on clays promotes formamide breakdown (Hudson et al., 2011)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "concentrated organics"
+        },
+        "mechanism": "Imine formation from aldehyde and ammonia, followed by HCN addition to aminonitrile",
+        "reasoning": "Canonical prebiotic route for alpha-amino acids on clay surfaces (Pizzarello & Shock, 2010)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Nitrile hydrolysis to amino acid",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles or mineral interfaces"
+        },
+        "mechanism": "Hydrolysis of nitrile through amide to carboxylic acid",
+        "reasoning": "Plausible in prebiotic pools with thermal or mineral assistance (Miller, 1953 extensions)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reductive carboxylation to alpha-keto acid",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "H2-rich"
+        },
+        "mechanism": "Surface-catalyzed addition of CO2 to aldehyde with H2 reduction to keto acid",
+        "reasoning": "Analogous to pyruvate formation; speculative extension for branched chains (Zhang & Martin, 2008)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination to amino acid",
+        "inputs": [
+          "mol_012",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "mineral interfaces"
+        },
+        "mechanism": "Schiff base formation and reduction to amine",
+        "reasoning": "Prebiotic analog on FeS minerals (Huber et al., 2003)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "UV photochemical branching from acetaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "strong UV radiation"
+        },
+        "mechanism": "Photolytic radical generation and recombination to form branched aldehyde",
+        "reasoning": "Speculative but addresses need for specific carbon skeleton via UV radical chemistry without ozone layer"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Multi-carbon fixation and reduction on Fe-S cluster analog",
+        "reasoning": "Greigite catalyzes CO2 reduction to pyruvate (Guzman & Martin, 2009)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "Decarboxylation of pyruvate",
+        "inputs": [
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal"
+        },
+        "mechanism": "Thermal beta-decarboxylation to aldehyde",
+        "reasoning": "Occurs in geothermal prebiotic settings (Morowitz et al., 2000)"
+      },
+      {
+        "id": "rxn_014",
+        "name": "Chain growth from propanal to isobutyraldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "FT-type elongation with iso-branching",
+        "reasoning": "Extends chains with branching in catalytic synthesis (speculative for specificity)"
+      },
+      {
+        "id": "rxn_015",
+        "name": "Chain growth from acetaldehyde to propanal",
+        "inputs": [
+          "mol_006",
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "C1 addition via CO insertion and hydrogenation",
+        "reasoning": "Stepwise chain building in FT chemistry (McCollom et al., 1999)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct hydrothermal FT to Strecker",
+        "description": "Hydrothermal CO production and direct branching to isobutyraldehyde, followed by surface Strecker and biochemical hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal acetaldehyde to surface photochemical branching to Strecker",
+        "description": "Builds acetaldehyde in vents, transfers to surface for UV branching, then Strecker assembly",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Pyruvate decarboxylation route to Strecker",
+        "description": "Hydrothermal pyruvate formation, decarboxylation to acetaldehyde, surface branching, Strecker",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_013",
+          "rxn_011",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct hydrothermal to reductive amination via keto acid",
+        "description": "FT to isobutyraldehyde, then reductive carboxylation to keto acid, biochemical amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Acetaldehyde photochemical to keto acid amination",
+        "description": "Hydro acetaldehyde via surface UV to isobutyraldehyde, carboxylation, amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Pyruvate to branched keto amination",
+        "description": "Pyruvate to acetaldehyde, branching, carboxylation to keto, reductive amination",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_013",
+          "rxn_011",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Propanal chain growth to Strecker",
+        "description": "Hydro propanal formation, chain extension to isobutyraldehyde, surface Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_014",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Stepwise chain building to Strecker",
+        "description": "Acetaldehyde to propanal, then to isobutyraldehyde, full Strecker route",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_015",
+          "rxn_014",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Stepwise chain to keto amination",
+        "description": "Extended chain via acetaldehyde and propanal to branched aldehyde, then keto route",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_015",
+          "rxn_014",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Pyruvate-integrated chain to reductive amination",
+        "description": "Pyruvate-derived acetaldehyde builds chain to propanal and branched, then keto amination",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_013",
+          "rxn_015",
+          "rxn_014",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_014"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_011",
+          "rxn_014"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_013"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_015"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_004": 0.7,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Direct pathway leverages standard FT and Strecker, but branched FT step is less direct.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify catalyst for branched aldehyde in FT."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_011": 0.5,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Photochemical branching from acetaldehyde to isobutyraldehyde lacks clear mechanism.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Provide detailed photochemical mechanism for C2 to C4 branching."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_012": 0.3,
+          "rxn_013": 0.8,
+          "rxn_011": 0.5,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.65,
+        "feedback": "Pyruvate synthesis is unrealistic; branching after decarboxylation unclear.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Replace pyruvate formation with plausible prebiotic route."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_004": 0.7,
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Reductive carboxylation plausible but needs reducing agent details.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Cite prebiotic evidence for reductive carboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_011": 0.5,
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.7,
+        "feedback": "Relies on questionable photochemical branching.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Develop alternative branching route."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_012": 0.3,
+          "rxn_013": 0.8,
+          "rxn_011": 0.5,
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.6,
+        "feedback": "Pyruvate route undermines feasibility; branching integration weak.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Avoid direct pyruvate synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.8,
+          "rxn_014": 0.6,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.82,
+        "feedback": "Chain growth to branched aldehyde reasonable but not optimal.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Clarify branching mechanism in chain growth."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_015": 0.8,
+          "rxn_014": 0.6,
+          "rxn_007": 0.95,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Stepwise building provides redundancy, minor branching issue.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Enhance stepwise FT with mineral catalysts."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_015": 0.8,
+          "rxn_014": 0.6,
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Similar to P8 but via keto acid; carboxylation plausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_014",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Validate chain growth to keto acid transition."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_012": 0.3,
+          "rxn_013": 0.8,
+          "rxn_002": 0.8,
+          "rxn_015": 0.8,
+          "rxn_014": 0.6,
+          "rxn_009": 0.7,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.7,
+        "feedback": "Pyruvate integration complicates; overall less coherent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Simplify by removing pyruvate dependency."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network is well-connected with convergent pathways and good environmental flow, but suffers from implausible steps like pyruvate synthesis from CO2/H2 and unclear photochemical branching. Strecker and reductive amination routes are strong.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

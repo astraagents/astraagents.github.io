@@ -1,0 +1,385 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Convergent synthesis via hydrothermal pyruvate/oxaloacetate production, surface Strecker/Phosphoro-Strecker pathways to glutamate precursors, and biochemical cyclization under thermal cycling. Key hubs: pyruvate, oxaloacetate, and glutamate enable environmental interconnection.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2084H\u2084O\u2085",
+        "iupac_name": "Oxaloacetic acid",
+        "common_name": "Oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "L-Glutamic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2085H\u2089NO\u2082",
+        "iupac_name": "L-Proline",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2082O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2082H\u2083NO",
+        "iupac_name": "Glycolonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2085NO\u2083",
+        "iupac_name": "N-Phosphoroaminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 hydrogenation via Fe\u2083S\u2084 mineral catalysis",
+        "reasoning": "Huber & Wachtershauser (1997) demonstrated Fe-S catalyzed CO\u2082 reduction"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Oxaloacetate formation via HKG cycle",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe\u00b2\u207a"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "Reductive carboxylation"
+        },
+        "mechanism": "Fe\u00b2\u207a-catalyzed glyoxylate pathway",
+        "reasoning": "Prebiotic HKG cycle analogs (Sources 10738, 9400)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to glutamate",
+        "inputs": [
+          "mol_004",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "\u03b1-ketoglutarate amination",
+        "reasoning": "Blackmond et al. (2008) demonstrated amino acid amplification"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyclization to proline",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": false,
+          "other": "Thermal cycling"
+        },
+        "mechanism": "Glutamate dehydration cyclization",
+        "reasoning": "Levine et al. (2008) thermal amino acid transformations"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface Strecker synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_008",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Aldehyde-cyanide-ammonia condensation",
+        "reasoning": "Cyanosulfidic scenario (Sources 9376, 6942)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Phosphoro-Strecker pathway",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Phosphate minerals",
+          "aqueous": true,
+          "other": "Neutral pH"
+        },
+        "mechanism": "Diamidophosphate-mediated synthesis",
+        "reasoning": "Phosphoroaminonitrile formation (Source 21192)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Borate minerals",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Hydrolysis and phosphate elimination",
+        "reasoning": "Stabilization by borates (Source 16400)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal HKG route",
+        "description": "CO\u2082 \u2192 pyruvate \u2192 oxaloacetate \u2192 glutamate \u2192 proline",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker route",
+        "description": "HCN + HCHO \u2192 glycolonitrile \u2192 phosphoroaminonitrile \u2192 glutamate \u2192 proline",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_005"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.8,
+          "rxn_003": 0.85,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_001) lacks mineral catalysts (e.g., Fe\u00b2\u207a) as per literature. Oxaloacetate formation (rxn_002) aligns with HKG cycle but requires pH/temperature specificity. Reductive amination (rxn_003) and cyclization (rxn_004) are plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Add Fe\u00b2\u207a catalysis to rxn_001",
+          "Clarify HKG cycle conditions in rxn_002"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_006": 0.75,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.78,
+        "feedback": "Strecker synthesis (rxn_005) is valid, but Phosphoro-Strecker (rxn_006) uses glycolonitrile instead of aldehydes as per literature. Aminonitrile hydrolysis (rxn_007) lacks pH/mineral details.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace glycolonitrile with aldehydes in rxn_006",
+          "Specify mineral surfaces (e.g., montmorillonite) for surface reactions"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates key intermediates (oxaloacetate, glutamate) and environmental transitions but under-specifies mineral catalysts (Fe\u00b2\u207a, montmorillonite) and reaction conditions. Convergent design aligns with literature, but some steps lack experimental support (e.g., direct hydrothermal CO\u2082\u2192pyruvate).",
+    "approved": true,
+    "hub_quality": 0.75,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

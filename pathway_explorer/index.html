@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTRA - Pathway Explorer</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/nodes.css">
+  <link rel="stylesheet" href="css/controls.css">
+
+  <link rel="icon" href="Fav.png">
+
+  <!-- Cytoscape.js graph library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"></script>
+
+  <!-- SVG export extension for Cytoscape -->
+  <script src="https://unpkg.com/cytoscape-svg@0.4.0/cytoscape-svg.js"></script>
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+</head>
+<body>
+  <!-- Toolbar -->
+  <div id="toolbar">
+    <img id="brand-logo" src="astra_logo.png" alt="ASTRA">
+    <div class="toolbar-sep"></div>
+
+    <div class="select-group">
+      <span class="select-label">Molecule:</span>
+      <select id="select-molecule"></select>
+    </div>
+
+    <div class="select-group">
+      <span class="select-label">Model:</span>
+      <select id="select-model"></select>
+    </div>
+
+    <div class="select-group">
+      <span class="select-label">Config:</span>
+      <select id="select-config"></select>
+    </div>
+
+    <div class="select-group">
+      <span class="select-label">Attempt:</span>
+      <select id="select-attempt"></select>
+    </div>
+
+    <div class="toolbar-sep"></div>
+
+    <select id="pathway-select">
+      <option value="__all__">Whole Network</option>
+    </select>
+
+    <div class="dropdown">
+      <button class="btn" id="btn-reports" title="View research reports">Reports &#x25BE;</button>
+      <div class="dropdown-menu" id="reports-dropdown">
+        <button data-report="deep-research-claude">Deep Research (Claude)</button>
+        <button data-report="deep-research-gemini">Deep Research (Gemini)</button>
+        <button data-report="deep-research-gpt">Deep Research (GPT 5.4)</button>
+        <button data-report="perfect-rag">Perfect RAG</button>
+      </div>
+    </div>
+    <button class="btn" id="btn-meta-eval" title="View meta evaluation">Meta Eval</button>
+
+    <div class="dropdown">
+      <button class="btn" id="btn-view" title="View actions">View &#x25BE;</button>
+      <div class="dropdown-menu" id="view-dropdown">
+        <button id="btn-chemorigins">ChemOrigins Graph</button>
+        <button id="btn-fit">Fit View</button>
+        <button id="btn-reset">Reset Layout</button>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btn-export" title="Export as SVG">Export</button>
+  </div>
+
+  <!-- Main Layout -->
+  <div id="main-layout">
+    <div id="canvas-container">
+      <div id="cy"></div>
+      <div id="canvas-bbox-overlay"></div>
+      <div id="snap-guide-h"></div>
+      <div id="snap-guide-v"></div>
+
+      <!-- Zoom controls overlay -->
+      <div id="zoom-controls">
+        <button id="btn-zoom-in" title="Zoom in (Shift + Plus)">+</button>
+        <button id="btn-zoom-out" title="Zoom out (Shift + Minus)">&minus;</button>
+      </div>
+
+      <!-- Settings button + popup overlay -->
+      <div id="settings-overlay">
+        <button id="btn-settings" title="Display settings">&#x2699;</button>
+        <div id="settings-popup">
+          <div class="settings-row">
+            <span class="settings-label">Layout</span>
+            <div class="mode-toggle-group">
+              <label class="mode-toggle active">
+                <input type="radio" name="layout-dir" value="vertical" checked>
+                <span>Vertical</span>
+              </label>
+              <label class="mode-toggle">
+                <input type="radio" name="layout-dir" value="horizontal">
+                <span>Horizontal</span>
+              </label>
+            </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Pathway mode</span>
+            <div class="mode-toggle-group">
+              <label class="mode-toggle active">
+                <input type="radio" name="pw-mode" value="highlight" checked>
+                <span>Highlight</span>
+              </label>
+              <label class="mode-toggle">
+                <input type="radio" name="pw-mode" value="isolate">
+                <span>Isolate</span>
+              </label>
+            </div>
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <span class="settings-label">Display</span>
+            <div class="mode-toggle-group">
+              <label class="mode-toggle active">
+                <input type="radio" name="image-mode" value="show" checked>
+                <span>Images</span>
+              </label>
+              <label class="mode-toggle">
+                <input type="radio" name="image-mode" value="hide">
+                <span>No Images</span>
+              </label>
+              <label class="mode-toggle">
+                <input type="radio" name="image-mode" value="names">
+                <span>Names</span>
+              </label>
+            </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Labels</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="mol-labels-toggle" checked>
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Drag labels</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="label-drag-toggle">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </label>
+            <span class="settings-hint">Alt+drag</span>
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <span class="settings-label">Font size</span>
+            <input type="range" id="font-size-slider" min="6" max="28" value="11" title="Label font size">
+            <span id="font-size-value" class="settings-val">11</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Molecule size</span>
+            <input type="range" id="mol-size-slider" min="40" max="200" value="100" title="Molecule node size">
+            <span id="mol-size-value" class="settings-val">100</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Label width</span>
+            <input type="range" id="mol-width-slider" min="40" max="400" value="80" title="Molecule label wrap width">
+            <span id="mol-width-value" class="settings-val">80</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Mol. border</span>
+            <input type="range" id="mol-border-slider" min="0" max="10" value="3" title="Molecule border width">
+            <span id="mol-border-value" class="settings-val">3</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Rxn border</span>
+            <input type="range" id="rxn-border-slider" min="0" max="10" value="1" title="Reaction border width">
+            <span id="rxn-border-value" class="settings-val">1</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Rxn border (HC)</span>
+            <input type="range" id="rxn-hc-border-slider" min="0" max="10" value="3" title="High-coverage reaction border width">
+            <span id="rxn-hc-border-value" class="settings-val">3</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Reaction size</span>
+            <input type="range" id="rxn-size-slider" min="40" max="200" value="100" title="Reaction node size">
+            <span id="rxn-size-value" class="settings-val">100</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Edge width</span>
+            <input type="range" id="edge-width-slider" min="0.5" max="8" value="1.5" step="0.5" title="Edge line width">
+            <span id="edge-width-value" class="settings-val">1.5</span>
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <span class="settings-label">Re-layout</span>
+            <button class="btn btn-sm" id="btn-relayout" title="Re-run automatic layout">Apply</button>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Figure mode</span>
+            <button class="btn btn-sm" id="btn-figure-mode" title="Toggle paper-figure layout (183x170 mm)">Enable</button>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Snap align</span>
+            <label class="settings-toggle">
+              <input type="checkbox" id="snap-align-toggle">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label">Canvas (mm)</span>
+            <input type="number" id="canvas-width-mm" min="10" max="2000" placeholder="W" title="Canvas width in mm">
+            <span class="canvas-size-x">&times;</span>
+            <input type="number" id="canvas-height-mm" min="10" max="2000" placeholder="H" title="Canvas height in mm">
+          </div>
+          <div class="settings-divider"></div>
+          <div class="settings-row">
+            <span class="settings-label">Canvas state</span>
+            <button class="btn btn-sm" id="btn-save-state" title="Save canvas state to JSON">Save</button>
+            <button class="btn btn-sm" id="btn-load-state" title="Load canvas state from JSON">Load</button>
+            <input type="file" id="state-file-input" accept="application/json" style="display:none">
+          </div>
+        </div>
+      </div>
+
+      <!-- Evaluation panel overlay -->
+      <div id="eval-panel">
+        <div id="eval-panel-header">
+          <span id="eval-panel-title">Network Evaluation</span>
+          <button id="eval-panel-toggle" title="Minimize">&#x2212;</button>
+        </div>
+        <div id="eval-panel-body"></div>
+      </div>
+
+      <!-- Legend overlay -->
+      <div id="legend" class="collapsed">
+        <div id="legend-header">
+          <span class="legend-title">Legend</span>
+          <button id="legend-toggle" title="Expand">&#x002B;</button>
+        </div>
+        <div id="legend-body"></div>
+      </div>
+
+      <!-- Status bar -->
+      <div id="status-bar"></div>
+    </div>
+
+    <!-- Sidebar (detail panel) -->
+    <div id="sidebar">
+      <div id="sidebar-header">
+        <h3 id="sidebar-title">Details</h3>
+        <button id="sidebar-close">&times;</button>
+      </div>
+      <div id="sidebar-content"></div>
+    </div>
+
+    <!-- ChemOrigins side panel -->
+    <div id="chemorigins-panel">
+      <div id="chemorigins-panel-header">
+        <span id="chemorigins-panel-title">ChemOrigins Graph</span>
+        <button id="chemorigins-panel-close">&times;</button>
+      </div>
+      <div id="chemorigins-panel-body">
+        <img id="chemorigins-panel-img" src="" alt="ChemOrigins Graph">
+      </div>
+    </div>
+  </div>
+
+  <!-- Meta Evaluation modal -->
+  <div id="meta-eval-backdrop">
+    <div id="meta-eval-modal">
+      <div id="meta-eval-header">
+        <span id="meta-eval-title">Meta Evaluation</span>
+        <button id="meta-eval-close">&times;</button>
+      </div>
+      <div id="meta-eval-controls">
+        <div class="meta-eval-control-group">
+          <span class="select-label">Judge Model:</span>
+          <select id="meta-eval-model"></select>
+        </div>
+        <div class="meta-eval-control-group">
+          <span class="select-label">Run:</span>
+          <div id="meta-eval-runs"></div>
+        </div>
+      </div>
+      <div id="meta-eval-body">
+        <div id="meta-eval-radar"><img id="meta-eval-radar-img" alt="Criterion Radar"></div>
+        <div id="meta-eval-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Markdown modal -->
+  <div id="md-modal-backdrop">
+    <div id="md-modal">
+      <div id="md-modal-header">
+        <span id="md-modal-title"></span>
+        <button id="md-modal-close">&times;</button>
+      </div>
+      <div id="md-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- JS (loaded in dependency order) -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/graph-layout.js"></script>
+  <script src="js/pubchem.js"></script>
+  <script src="js/cytoscape-bridge.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/context-menu.js"></script>
+  <script src="js/figure-mode.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

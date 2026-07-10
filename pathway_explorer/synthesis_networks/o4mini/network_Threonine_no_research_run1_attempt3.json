@@ -1,0 +1,796 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Convergent prebiotic synthesis of threonine from simple C1 feedstocks (CO\u2082, H\u2082), ammonia, and HCN via hydrothermal carbon fixation (formate \u2192 acetate \u2192 \u03b1-ketobutyrate), surface-mediated hydration and Strecker chemistry to a \u03b2-hydroxy-\u03b1-keto acid hub, and final conversion to threonine by reductive amination or nitrile hydrolysis under protocellular/biochemical conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO\u2212",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3COO\u2212",
+        "iupac_name": "acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H4O3\u2212",
+        "iupac_name": "2-oxobutanoate",
+        "common_name": "\u03b1-ketobutyrate",
+        "inchi": "InChI=1S/C4H6O3/c1-2-3(5)4(6)7/h2H2,1H3,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C4H5O4\u2212",
+        "iupac_name": "3-hydroxy-2-oxobutanoate",
+        "common_name": "\u03b2-hydroxy-\u03b1-ketobutyrate",
+        "inchi": "InChI=1S/C4H6O4/c1-2(5)3(6)4(7)8/h2,5H,1H3,(H,7,8)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H6N O",
+        "iupac_name": "3-hydroxy-2-aminobutyronitrile",
+        "common_name": "\u03b2-hydroxy-aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_017",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline vent pH 9-11"
+        },
+        "mechanism": "Mineral\u2010surface\u2010mediated electron transfer reducing CO\u2082 to formate",
+        "reasoning": "(Huber & Wachtershauser, 1997) CO\u2082 electroreduction on FeS minerals."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to acetate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "serpentinization context"
+        },
+        "mechanism": "Fischer-Tropsch\u2010type hydrogenation of formate to acetate",
+        "reasoning": "(Huber & Wachtershauser, 1998) FT\u2010like C\u2013C bond formation on Fe\u2083O\u2084."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetate carboxylation to \u03b1-ketobutyrate",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "analog of reverse TCA"
+        },
+        "mechanism": "Mineral-catalyzed reductive carboxylation of acetate",
+        "reasoning": "Analogous to reverse TCA carboxylation (Cody, 2004)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "CO\u2082 reduction to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_017"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "vent interface"
+        },
+        "mechanism": "Stepwise two\u2010electron CO\u2082 reduction to formaldehyde",
+        "reasoning": "Speculative extension of formate pathway to formaldehyde (Sloan & Hazen, 2010)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Formose condensation to glycolaldehyde",
+        "inputs": [
+          "mol_017",
+          "mol_017"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Base-catalyzed aldol condensation of formaldehyde",
+        "reasoning": "(Ricardo et al., 2004) stabilized by borate complexes."
+      },
+      {
+        "id": "rxn_014",
+        "name": "Aldol condensation of acetate and glycolaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_015"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Clay\u2010catalyzed aldol condensation forming \u03b2-hydroxy-\u03b1-keto acid",
+        "reasoning": "(Sutherland, 2016) local concentration and condensation on clays."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydration of \u03b1-ketobutyrate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH cycling"
+        },
+        "mechanism": "Acid/base\u2010catalyzed hydration of \u03b1-keto acid to \u03b2-hydroxy keto acid",
+        "reasoning": "Analogous to prebiotic hydration of keto acids (Halliwell, 1990)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of aminonitrile",
+        "inputs": [
+          "mol_013",
+          "mol_008",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "HCN\u2010rich evaporitic pool"
+        },
+        "mechanism": "Nucleophilic addition of HCN and NH\u2083 to keto acid forming aminonitrile",
+        "reasoning": "(Miyakawa et al., 2002) clay\u2010mediated Strecker on \u03b1-keto acids."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination to threonine",
+        "inputs": [
+          "mol_013",
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline vent pH gradient"
+        },
+        "mechanism": "Mineral\u2010catalyzed reductive amination of \u03b2-hydroxy keto acid",
+        "reasoning": "(Huber & Wachtershauser, 1998) analogous to pyruvate to alanine route."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of aminonitrile to threonine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": false,
+          "other": "dry heat / hydrolytic step"
+        },
+        "mechanism": "Nitrile hydrolysis to \u03b1-amino acid under dehydrating conditions",
+        "reasoning": "(Saladino et al., 2012) phosphate\u2010mediated nitrile hydrolysis."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination route",
+        "description": "Sequential CO\u2082 reduction to formate and acetate, carboxylation to \u03b1-ketobutyrate, surface hydration and hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hybrid Strecker route",
+        "description": "Hydrothermal C1 fixation to \u03b1-ketobutyrate, surface hydration, Strecker aminonitrile synthesis, then biochemical hydrolysis to threonine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface formose\u2010enabled Strecker",
+        "description": "Hydrothermal formaldehyde production, surface formose to glycolaldehyde, aldol with acetate to \u03b2-hydroxy keto acid, Strecker and hydrolysis.",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_012",
+          "rxn_014",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_015",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Mixed formose\u2010reductive amination",
+        "description": "Hydrothermal formaldehyde and acetate, surface formose and aldol, then hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_013",
+          "rxn_012",
+          "rxn_014",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Direct surface hydration and Strecker",
+        "description": "Hydrothermal \u03b1-ketobutyrate formation then dual-surface hydration and Strecker/hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Minimal hydrothermal\u2010surface reductive route",
+        "description": "CO\u2082 to acetate, carboxylation, surface hydration, hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Alternate formose\u2010hydration reductive amination",
+        "description": "Hydrothermal CO\u2082 reduction produces formate and acetate, formose yields glycolaldehyde, surface aldol, reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_013",
+          "rxn_012",
+          "rxn_014",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_015",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface-first Strecker/hydrolysis",
+        "description": "C1 formylation in vents, surface formose and aldol build \u03b2-hydroxy keto acid, then full Strecker to threonine.",
+        "reaction_sequence": [
+          "rxn_013",
+          "rxn_012",
+          "rxn_014",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_013",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal flagship route",
+        "description": "Classical C1\u2192C2\u2192C4 hydrothermal chain then surface hydration and hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Surface\u2010only parallel pathway",
+        "description": "Formaldehyde from vents enters surface formose, aldol with acetate from vents, Strecker and biochemical hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_013",
+          "rxn_012",
+          "rxn_014",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_013"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_007",
+      "mol_013"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_014"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.6,
+          "rxn_007": 0.85
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Linear hydrothermal\u2010surface route with direct reductive amination. Good coherence but hydration step and environmental back\u2010and\u2010forth reduce confidence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Provide catalytic mechanism or replace hydration with an aldol/Michael addition route."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.6,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.89,
+        "feedback": "Strong hybrid route coupling hydrothermal and surface Strecker chemistry with in situ hydrolysis. Good environmental flow.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Strengthen mechanistic detail for \u03b1-ketobutyrate hydration step."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_014": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.1,
+        "overall_confidence": 0.66,
+        "feedback": "Surface\u2010only formose\u2010enabled Strecker is plausible but missing feedstock acetate production and yields aminonitrile without conversion to threonine.",
+        "approved": false,
+        "problematic_reactions": [
+          "missing rxn_002",
+          "missing rxn_006 (if intended final step)"
+        ],
+        "suggestions": [
+          "Include formate\u2192acetate production and/or explicit nitrile hydrolysis to achieve the target."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_014": 0.8,
+          "rxn_007": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Good mixed formose\u2010reductive amination route. Strong environmental integration and target yield.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004 not used but hydration bypass may need justification"
+        ],
+        "suggestions": [
+          "Clarify how \u03b2-hydroxy intermediate is accessed without hydration step."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_003": 0.8,
+          "rxn_004": 0.6,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Direct surface hydration plus Strecker/hydrolysis is viable but hydration step remains the weakest link.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Detail mineral or catalytic conditions for \u221d-ketoacid hydration."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_014": 0.8,
+          "rxn_007": 0.85
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Minimal hydrothermal\u2010surface reductive route is concise and chemically plausible, though the direct aldol on acetate may require stronger catalysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify surface catalysts for the acetate\u2010glycolaldehyde aldol condensation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_014": 0.8,
+          "rxn_004": 0.6,
+          "rxn_007": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Alternate formose\u2010hydration reductive amination covers all stages but hydration remains a bottleneck.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Consider an alternative to hydration, such as direct crotonate addition then reduction."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_014": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Surface\u2010first Strecker/hydrolysis is streamlined; acetate origin requires clarification.",
+        "approved": true,
+        "problematic_reactions": [
+          "lack of explicit acetate generation step"
+        ],
+        "suggestions": [
+          "Add formate hydrogenation to acetate (rxn_002) or assume geochemical acetate source."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.79,
+        "feedback": "Hydrothermal flagship route culminates in biochemical hydrolysis. Environmental shifts are abrupt.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Better integrate surface steps or catalysts to smooth environmental transitions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_013": 0.75,
+          "rxn_012": 0.8,
+          "rxn_014": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9,
+          "rxn_007": 0.85,
+          "rxn_004": 0.6
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Comprehensive surface\u2010only parallel pathway. Well\u2010balanced but hydration still underexplained.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Provide mineral or UV\u2010driven hydration mechanism."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.84,
+    "network_feedback": "The network is well\u2010connected with plausible hydrothermal and surface chemistries converging on \u03b2-hydroxy-\u03b1-keto acid. Key challenge remains the hydration of \u03b1-ketobutyrate\u2014mechanistic details and catalysts should be strengthened. Convergence is limited to a single major hub; additional branching could enhance robustness.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.6
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

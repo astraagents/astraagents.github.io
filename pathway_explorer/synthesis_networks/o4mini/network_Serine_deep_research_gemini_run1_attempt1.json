@@ -1,0 +1,854 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrate hydrothermal C1 fixation and surface cyanosulfidic homologation pathways with biochemical RTIP and non\u2010enzymatic transamination routes to afford multiple convergent routes to serine under plausible prebiotic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCOOH",
+        "iupac_name": "formic acid",
+        "common_name": "formic acid",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "glycolaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H6O3",
+        "iupac_name": "glyceraldehyde",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H5N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine nitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH5NO",
+        "iupac_name": "aminomethanol",
+        "common_name": "aminomethanol",
+        "inchi": "InChI=1S/CH5NO/c2-1-3/h3H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH2NH",
+        "iupac_name": "methylidenimine",
+        "common_name": "formaldimine",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C2H5NO2",
+        "iupac_name": "aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Mineral-catalyzed hydrogenation of CO2",
+        "reasoning": "(Barge et al., 2022)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate protonation to formic acid",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "acidification"
+        },
+        "mechanism": "Protonation of formate on mineral surface",
+        "reasoning": "Speculative connection to supply HCOOH for RTIP pathway"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Fischer\u2013Tropsch type CO2 hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "CO2 hydrogenation via Fischer\u2013Tropsch chemistry",
+        "reasoning": "(Russell et al., 2010)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Speculative hydrothermal HCN formation",
+        "inputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Thermal coupling of NH3 and CO to HCN",
+        "reasoning": "Speculative and necessary to connect hydrothermal C1 to cyanosulfidic network"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanosulfidic homologation to glycolaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": true,
+          "other": "UV irradiation, H2S present"
+        },
+        "mechanism": "Photoredox-driven HCN reduction and homologation",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Further homologation to glyceraldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": true,
+          "other": "UV irradiation, H2S present"
+        },
+        "mechanism": "Second-cycle photoredox reduction",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis of serine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_011",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Strecker condensation of glyceraldehyde",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of serine nitrile to serine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formation of aminomethanol",
+        "inputs": [
+          "mol_011",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Nucleophilic addition of NH3 to formaldehyde",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Dehydration of aminomethanol to formaldimine",
+        "inputs": [
+          "mol_012",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Formic acid-catalyzed dehydration",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Formaldimine coupling to serine",
+        "inputs": [
+          "mol_013",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "intense UV or spark discharge"
+        },
+        "mechanism": "High-energy nucleophilic coupling",
+        "reasoning": "(Li et al., 2024)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Non-enzymatic transamination of glycine",
+        "inputs": [
+          "mol_014",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "SHMT analog transamination",
+        "reasoning": "(Anthony, 2011)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Full hydrothermal-surface cyanosulfidic route",
+        "description": "CO2 fixation forms formate and formaldehyde, then cyanosulfidic homologation yields serine nitrile and hydrolysis gives serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct surface cyanosulfidic route",
+        "description": "Surface homologation of hydrothermal formaldehyde through HCN cycles to serine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Speculative hydrothermal HCN feed into cyanosulfidic pathway",
+        "description": "Hydrothermal HCN generation feeds surface cyanosulfidic homologation to serine",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "RTIP formaldimine coupling via hydrothermal formate",
+        "description": "Hydrothermal formate yields aminomethanol then formaldimine couples with glycolaldehyde to serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "RTIP formaldimine coupling via formaldehyde",
+        "description": "Hydrothermal formaldehyde yields aminomethanol then formaldimine coupling to serine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Glycine transamination from formaldehyde",
+        "description": "Hydrothermal formaldehyde transaminates glycine to serine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "RTIP minimal formaldimine route",
+        "description": "Aminomethanol dehydration to formaldimine then coupling to serine",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct non-enzymatic glycine route",
+        "description": "Direct glycine and formaldehyde transamination",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Partial cyanosulfidic to nitrile route",
+        "description": "Surface homologation to glyceraldehyde then Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Formaldehyde to transamination",
+        "description": "Aminomethanol formation followed by transamination",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_014"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_008",
+      "mol_013"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_003": 0.8,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.9,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Integrates hydrothermal formaldehyde production with cyanosulfidic Strecker synthesis in a coherent route. Well\u2010aligned with literature on glyceraldehyde\u2010to\u2010serine nitrile, but surface homologation lacks H\u2082S and photoredox details.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Incorporate H\u2082S and photoredox catalysts in surface steps",
+          "Clarify mechanistic details of HCN homologation"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.5,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.9,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.73,
+        "feedback": "Surface cycle establishes a Strecker route but relies on speculative hydrothermal HCN formation and omits key photoredox/mineral catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Detail HCN formation mechanism",
+          "Add H\u2082S and UV conditions",
+          "Link formaldehyde feed from hydrothermal stage"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.5,
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.9,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Speculative hydrothermal HCN feed into cyanosulfidic route is conceptually attractive but underdeveloped; needs more robust HCN generation and photochemistry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Investigate alternative HCN sources",
+          "Specify mineral and photoredox catalysts"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_010": 0.5,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.62,
+        "feedback": "RTIP formate\u2010driven route is conceptually supported by computational work but skips aminomethanol formation and lacks mechanistic detail for formaldimine coupling.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Include aminomethanol formation step",
+          "Provide energetic justification for formaldimine coupling",
+          "Consider catalysts"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_009": 0.8,
+          "rxn_010": 0.5,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.68,
+        "feedback": "Formaldehyde\u2010initiated RTIP route has strong early steps but falters at dehydration and coupling stages lacking reductant and catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Detail mechanism for formaldimine conversion",
+          "Add reductant or catalyst"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_012": 0.6
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.58,
+        "feedback": "Non\u2010enzymatic transamination is plausible but requires a clear source of glycine; network lacks glycine synthesis context.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Add glycine origin path",
+          "Specify reaction conditions"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.8,
+          "rxn_010": 0.5,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.68,
+        "feedback": "Minimal RTIP route is concise but hinges on poorly defined dehydration and coupling steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Expand on mechanistic detail",
+          "Consider catalysts"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_012": 0.6
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.6,
+        "feedback": "Single\u2010step transamination oversimplifies serine formation and lacks integration with glycine production.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Integrate glycine formation"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.6,
+          "rxn_006": 0.6,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.73,
+        "feedback": "Captures core Strecker conversion but omits formaldehyde sourcing and key redox/photochemical agents.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include reductant and UV conditions"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_012": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.68,
+        "feedback": "Hydrothermal formaldehyde production is solid but non\u2010enzymatic transamination needs mechanistic support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Detail transamination conditions"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "The network is well\u2010connected with multiple convergent routes to serine, reflecting both cyanosulfidic and RTIP paradigms. However, several surface and RTIP steps lack crucial environmental context (e.g., H\u2082S, photoredox catalysts, mineral surfaces) and detailed mechanisms for HCN formation and formaldimine coupling. Refining these aspects will enhance chemical feasibility and alignment with literature.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

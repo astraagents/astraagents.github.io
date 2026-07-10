@@ -1,0 +1,844 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "L-threonine",
+    "overall_strategy": "Integration of cyanosulfidic photoredox sugar homologation in surface environments with hydrothermal formaldehyde supply, followed by convergent sugar-based thioester and Strecker pathways culminating in threonine under prebiotic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H6O3",
+        "iupac_name": "2,3-dihydroxypropanal",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O4",
+        "iupac_name": "D-erythrose",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H6O3",
+        "iupac_name": "3-hydroxy-2-oxobutanal",
+        "common_name": null,
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H6N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C7H13NO3S",
+        "iupac_name": "O-threonine thioester",
+        "common_name": "threonine thioester",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "L-threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "NH3",
+        "iupac_name": "nitrogen trihydride",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "HCN reductive homologation to glycolaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "Cu(I)-Cu(II)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation, Cu(I)/Cu(II) photoredox"
+        },
+        "mechanism": "Photoredox-driven reductive homologation of HCN",
+        "reasoning": "Patel et al., 2015"
+      },
+      {
+        "id": "rxn_002",
+        "name": "HCN reductive homologation to glyceraldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "Cu(I)-Cu(II)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation, Cu(I)/Cu(II) photoredox"
+        },
+        "mechanism": "Photoredox-driven reductive homologation of HCN",
+        "reasoning": "Patel et al., 2015"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Aldol condensation to erythrose",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 5.2, NH3 catalysis"
+        },
+        "mechanism": "Base-catalyzed aldol condensation",
+        "reasoning": "Prebiotic sugar pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "\u03b2-Dehydration of erythrose to \u03b1-ketoaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Dehydration of aldose to \u03b1-ketoaldehyde",
+        "reasoning": "Prebiotic sugar pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Redox rearrangement to threonine thioester",
+        "inputs": [
+          "mol_006",
+          "mol_013",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "H2S"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "H2S",
+          "aqueous": true,
+          "other": "redox rearrangement"
+        },
+        "mechanism": "Imine-hemithioacetal adduct formation and intramolecular redox to thioester",
+        "reasoning": "Prebiotic sugar pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of threonine thioester",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "290-310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "hydrolytic conditions"
+        },
+        "mechanism": "Thioester hydrolysis to release free threonine",
+        "reasoning": "Speculative; necessary to release free threonine from activated thioester"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis of threonine aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_013",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Strecker synthesis"
+        },
+        "mechanism": "Nitrile formation via Strecker reaction",
+        "reasoning": "Miyakawa & Cleaves, 2013"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of threonine aminonitrile",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Nitrile hydrolysis to amino acid",
+        "reasoning": "Speculative but consistent with known Strecker hydrolysis mechanisms"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Photoredox-enabled Strecker of threonine nitrile",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_013",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "Cu(I)-Cu(II)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation, photoredox-enabled Strecker"
+        },
+        "mechanism": "Copper photoredox-catalyzed Strecker reaction forming aminonitrile",
+        "reasoning": "Patel et al., 2015"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrothermal Fischer\u2013Tropsch-type reduction to formaldehyde",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type reduction"
+        },
+        "mechanism": "CO and H2 reduction to methanal on iron-sulfur surface",
+        "reasoning": "Speculative; connects hydrothermal CO reduction to surface formaldehyde supply"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Aldol condensation to glyceraldehyde",
+        "inputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 5.2, base-catalyzed aldol"
+        },
+        "mechanism": "Aldol condensation of formaldehyde with glycolaldehyde",
+        "reasoning": "Patel et al., 2015"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Thioester path from cyanosulfidic glyceraldehyde",
+        "description": "Surface HCN homologation to glyceraldehyde, hydrothermal formaldehyde supply, sugar condensation to thioester and hydrolysis to threonine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_011",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Thioester path from cyanosulfidic glycolaldehyde",
+        "description": "Surface HCN homologation to glycolaldehyde, hydrothermal formaldehyde, sequential aldol and dehydration to thioester then hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Aminonitrile path via glycolaldehyde homologation",
+        "description": "Cyanosulfidic glycolaldehyde, hydrothermal formaldehyde, aldol to glyceraldehyde, photoredox Strecker to aminonitrile and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_010",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct aminonitrile from glyceraldehyde",
+        "description": "Surface glyceraldehyde from HCN homologation undergoes photoredox Strecker and hydrolysis to threonine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Sugar\u2010Strecker from erythrose",
+        "description": "Surface sugar pathway via glyceraldehyde to erythrose, dehydration to \u03b1-ketoaldehyde, Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Thioester path from formaldehyde and glyceraldehyde",
+        "description": "Hydrothermal formaldehyde and glyceraldehyde from surface aldol yield thioester followed by hydrolysis",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_012",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface aldol\u2010thioester route",
+        "description": "Surface aldol of formaldehyde and glycolaldehyde to erythrose, dehydration to \u03b1-ketoaldehyde, thioester formation and hydrolysis",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Aldol\u2010Strecker from erythrose",
+        "description": "Surface aldol to erythrose, dehydration to \u03b1-ketoaldehyde, Strecker to aminonitrile and hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hybrid sugar pathway from both homologation products",
+        "description": "Cyanosulfidic glycolaldehyde and glyceraldehyde provide both aldol substrates leading to thioester and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hybrid aminonitrile from both homologation products",
+        "description": "Cyanosulfidic glycolaldehyde and glyceraldehyde combine in photoredox Strecker and hydrolysis to generate threonine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_010",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_011": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Cyanosulfidic thioester route is well\u2010rooted in literature; strong photoredox steps.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral or metal catalysts for surface photoredox steps",
+          "Include notes on stereochemical control"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_012": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.85,
+        "feedback": "Extends P1 from glycolaldehyde; plausible but slightly longer.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Streamline redundant homologation steps",
+          "Discuss prebiotic concentration mechanisms"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_001": 0.9,
+          "rxn_004": 0.85,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.83,
+        "feedback": "Glycolaldehyde\u2010based Strecker is sound; aligns with cyanosulfidic precedent.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Ensure plausibility of dehydration under mild pH",
+          "Address stereochemical outcome"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.95,
+          "rxn_010": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Direct photoredox\u2010enabled Strecker is highly efficient and literature\u2010aligned.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail catalyst concentrations for photoredox step",
+          "Include yield estimates under UV conditions"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8,
+        "feedback": "Sugar\u2010Strecker via erythrose is plausible but requires clear catalytic context.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify ammonia\u2019s catalytic role",
+          "Incorporate wet\u2010dry cycle concentration effects"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_012": 0.85,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.83,
+        "feedback": "Integrates formaldehyde supply well; thioester activation robust.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify formaldehyde concentration gradients",
+          "Specify mineral catalysts for aldol"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_012": 0.85,
+          "rxn_003": 0.9,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.79,
+        "feedback": "Surface aldol\u2010thioester route is underdefined; missing explicit dehydration.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Add \u03b2\u2010dehydration step explicitly",
+          "Ensure intermediate stabilization on mineral surfaces"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.83,
+        "feedback": "Aldol\u2010Strecker from erythrose aligns with sugar pathway literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Address racemic/stereoselective outcomes",
+          "Use clay adsorption to concentrate intermediates"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Hybrid sugar route is overly complex; convergence may dilute yields.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Simplify by spatially separating convergent steps",
+          "Incorporate microenvironmental gradients"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.95,
+          "rxn_010": 0.9,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.74,
+        "feedback": "Dual\u2010homologation aminonitrile path is ambiguous; photoredox step needs clarity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Clarify photoredox mechanism details",
+          "Address competing byproduct formation"
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.82,
+    "network_feedback": "Network is well\u2010connected with multiple viable prebiotic routes, especially P4. Hybrid pathways need simplification and stereochemical detail. Overall topology and convergence are strong.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.820"
+}

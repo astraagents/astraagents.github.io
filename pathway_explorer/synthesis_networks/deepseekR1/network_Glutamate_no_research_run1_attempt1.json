@@ -1,0 +1,500 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integration of hydrothermal CO\u2082 fixation, surface formose/Strecker chemistry, and biochemical transamination to synthesize glutamate through multiple convergent pathways leveraging mineral catalysts across environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO\u207b",
+        "iupac_name": "Formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH\u2083COO\u207b",
+        "iupac_name": "Acetate",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2085H\u2086O\u2085",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "2-Aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2083H\u2086O\u2083",
+        "iupac_name": "2,3-Dihydroxypropanal",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C\u2084H\u2088O\u2084",
+        "iupac_name": "Erythrose",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "2-Aminopropanoic acid",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electron transfer from Fe\u2083S\u2084 catalyzes CO\u2082 hydrogenation",
+        "reasoning": "Greigite surfaces facilitate CO\u2082 reduction via Fe-S clusters (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to acetate chain elongation",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "380-420K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis on magnetite surfaces",
+        "reasoning": "Acetate formation via CO\u2082/CO hydrogenation (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetate to \u03b1-ketoglutarate synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": true
+        },
+        "mechanism": "Stepwise carbon fixation via surface-bound intermediates",
+        "reasoning": "Magnetite enables multi-carbon assembly (Nitschke et al., 2013)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 incorporation via FeS-mediated electron transfer",
+        "reasoning": "FeS surfaces enable reductive amination (Huber & W\u00e4chtersh\u00e4user, 2003)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formose reaction initiation",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "colemanite",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Formaldehyde condensation stabilized by borate",
+        "reasoning": "Borate minerals template sugar formation (Benner et al., 2012)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glycolaldehyde to glyceraldehyde",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "ulexite",
+          "aqueous": true
+        },
+        "mechanism": "Aldol addition with formaldehyde",
+        "reasoning": "Borate-mediated formose progression (Kim et al., 2011)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Aldol condensation to erythrose",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Clay-catalyzed sugar chain elongation",
+        "reasoning": "Montmorillonite enables dehydration (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Erythrose oxidation to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "anatase",
+          "aqueous": true,
+          "other": "UV photocatalysis"
+        },
+        "mechanism": "Photocatalytic decarboxylation/oxidation",
+        "reasoning": "TiO\u2082 enables C-C bond cleavage (Sutherland, 2017)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis of alanine",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": true
+        },
+        "mechanism": "Aldehyde + NH\u2083 + HCN condensation",
+        "reasoning": "Clay-mediated amino acid formation (Pascal et al., 2005)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Transamination to glutamate",
+        "inputs": [
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": true
+        },
+        "mechanism": "Amino group transfer via Schiff base",
+        "reasoning": "Metal-stabilized transamination (Kitadai et al., 2018)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO\u2082 \u2192 formate \u2192 acetate \u2192 \u03b1-ketoglutarate \u2192 glutamate via Fe-S catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface photochemical route",
+        "description": "Formose \u2192 erythrose \u2192 \u03b1-ketoglutarate + transamination",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Strecker-transamination hybrid",
+        "description": "Alaninesynthesis \u2192 transamination with \u03b1-ketoglutarate",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_003",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_003": 0.5,
+          "rxn_004": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal steps lack clarity in multi-carbon assembly (e.g., acetate \u2192 \u03b1-ketoglutarate). Reductive amination (rxn_004) requires explicit reducing agents/mineral catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add intermediates for C3-C5 elongation",
+          "Specify mineral catalysts (e.g., FeS) for CO\u2082 reduction"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.6,
+          "rxn_006": 0.8,
+          "rxn_007": 0.7,
+          "rxn_008": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.6,
+        "feedback": "Formose initiation (rxn_005) from CO\u2082 is chemically implausible; erythrose \u2192 \u03b1-ketoglutarate (rxn_008) lacks mechanistic justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Start formose with formaldehyde instead of CO\u2082",
+          "Add oxidative steps for erythrose conversion"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_009": 0.7,
+          "rxn_010": 0.6
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Strecker synthesis (rxn_009) misapplied to pyruvate; transamination (rxn_010) requires enzymatic analogs.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Use glyoxylate instead of pyruvate for Strecker",
+          "Include pyridoxal-like minerals for transamination"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network has convergent design but suffers from oversimplified reactions (e.g., missing intermediates in carbon elongation, unvalidated environmental transitions). Improve chemical plausibility and mineral catalysts specification.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

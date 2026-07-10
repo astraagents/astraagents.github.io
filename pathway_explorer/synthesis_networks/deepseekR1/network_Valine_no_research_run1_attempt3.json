@@ -1,0 +1,477 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Integrated network combining hydrothermal carbon fixation, surface Strecker synthesis, and biochemical transamination. Key hubs (pyruvate, \u03b1-ketoisovalerate, HCN) connect environments through mineral-catalyzed reactions and environmental transitions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH\u2082O\u2082",
+        "iupac_name": "Formic acid",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "Acetic acid",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2085H\u2088O\u2083",
+        "iupac_name": "3-Methyl-2-oxopentanoic acid",
+        "common_name": "\u03b1-ketoisovalerate",
+        "inchi": "InChI=1S/C6H10O3/c1-3-4(2)5(7)6(8)9/h4H,3H2,1-2H3,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2084H\u2088O",
+        "iupac_name": "2-Methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "Glutamic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C\u2085H\u2081\u2081NO\u2082",
+        "iupac_name": "(S)-2-Amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 hydrogenation on Fe\u2083S\u2084 clusters",
+        "reasoning": "Greigite-mediated CO\u2082 reduction establishes early carbon fixation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetate formation",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation",
+        "reasoning": "Magnetite catalyzes acetate synthesis via CO\u2082 hydrogenation (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "Reductive carboxylation of acetate",
+        "reasoning": "Fe-S mineral catalysis enables pyruvate formation (Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "\u03b1-Ketoisovalerate formation",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true
+        },
+        "mechanism": "Carbon chain elongation via methyl addition",
+        "reasoning": "FeS surfaces enable branched-chain keto acid synthesis (Huber et al., 2003)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Isobutyraldehyde synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldol condensation of acetaldehyde derivatives",
+        "reasoning": "Clay-catalyzed condensation under drying conditions (Cleaves et al., 2012)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of valine",
+        "inputs": [
+          "mol_007",
+          "mol_009",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "struvite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate",
+          "aqueous": true
+        },
+        "mechanism": "Aldehyde + NH\u2083 + HCN \u2192 \u03b1-aminonitrile \u2192 hydrolysis",
+        "reasoning": "Phosphate minerals catalyze amino acid formation (Parker et al., 2014)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 incorporation into \u03b1-keto acid",
+        "reasoning": "Pyrite provides reducing power for amination (W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Glutamate synthesis",
+        "inputs": [
+          "mol_005",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true
+        },
+        "mechanism": "Reductive amination of \u03b1-ketoglutarate analog",
+        "reasoning": "Clay-mediated amino acid synthesis (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Transamination",
+        "inputs": [
+          "mol_006",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe\u2083O\u2084"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Amino group transfer via keto-enol tautomerism",
+        "reasoning": "Mineral-catalyzed transamination (Kitadai et al., 2018)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO\u2082 \u2192 formate \u2192 acetate \u2192 pyruvate \u2192 \u03b1-ketoisovalerate \u2192 valine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker synthesis",
+        "description": "Acetate \u2192 isobutyraldehyde + HCN \u2192 valine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Biochemical transamination",
+        "description": "Pyruvate \u2192 glutamate \u2192 \u03b1-ketoisovalerate \u2192 valine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.6,
+          "rxn_004": 0.7,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal pathway shows environmental flow but lacks reductants in reductive amination (rxn_007) and has questionable acetate-to-pyruvate conversion (rxn_003).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., FeS) for hydrothermal steps",
+          "Add reducing agents (e.g., H\u2082S) to rxn_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Strecker synthesis (rxn_006) is chemically valid, but isobutyraldehyde synthesis (rxn_005) lacks mechanistic justification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Clarify rxn_005 mechanism (e.g., aldol condensation with mineral catalysis)"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_008": 0.5,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.4,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.6,
+        "feedback": "Transamination (rxn_009) is valid, but glutamate synthesis (rxn_008) is biochemically implausible without enzymes.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Replace rxn_008 with \u03b1-ketoglutarate-based glutamate synthesis"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates environments but has critical gaps: HCN is underconnected (degree=1), biochemical steps lack prebiotic plausibility, and key reactions lack mineral specifications. Strengthen hydrothermal-surface transitions and validate reaction mechanisms.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

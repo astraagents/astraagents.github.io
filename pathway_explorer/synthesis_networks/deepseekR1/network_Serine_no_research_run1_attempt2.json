@@ -1,0 +1,511 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Convergent synthesis through hydrothermal carbon fixation, surface Strecker/aldol chemistry, and biochemical transamination. Key hubs: glycine, pyruvate, and glycolaldehyde connect environments via mineral-catalyzed reactions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O2",
+        "iupac_name": "Formic acid",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H5NO2",
+        "iupac_name": "Glycine",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H3NO",
+        "iupac_name": "Aminomethanenitrile",
+        "common_name": "Glycinonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H7NO3",
+        "iupac_name": "Serine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH4N2O",
+        "iupac_name": "Hydroxyacetonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O4",
+        "iupac_name": "3-Phosphoglyceric acid",
+        "common_name": "3-Phosphoglycerate",
+        "inchi": "InChI=1S/C3H7O7P/c4-2(3(5)6)1-10-11(7,8)9/h2,4H,1H2,(H,5,6)(H2,7,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H5O4P",
+        "iupac_name": "Glyceraldehyde 3-phosphate",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7O6P/c4-1-3(5)2-9-10(6,7)8/h1,3,5H,2H2,(H2,6,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 hydrogenation",
+        "reasoning": "Greigite-mediated CO\u2082 reduction forms formate (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Fischer-Tropsch-type pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "CO\u2082/CO reductive oligomerization",
+        "reasoning": "Magnetite catalyzes multi-carbon synthesis (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to glycine",
+        "inputs": [
+          "mol_004",
+          "NH3"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "Ammonia incorporation into \u03b1-keto acid",
+        "reasoning": "Fe-S minerals enable abiotic amino acid synthesis (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis initiation",
+        "inputs": [
+          "mol_008",
+          "NH3",
+          "HCN"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Aldehyde-ammonia-HCN condensation",
+        "reasoning": "Clay-catalyzed Strecker precursor formation (Pascal et al., 2005)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Phosphate-assisted hydrolysis",
+        "reasoning": "Mineral-mediated nitrile hydrolysis (Leman et al., 2004)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Formose reaction",
+        "inputs": [
+          "H2CO"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "Borate stabilizes carbohydrate intermediates (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Transamination pathway",
+        "inputs": [
+          "mol_010",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Amino group transfer",
+        "reasoning": "Clay-mediated transamination (Gorrell et al., 2005)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Phosphoglycerate formation",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true
+        },
+        "mechanism": "Oxidative phosphorylation",
+        "reasoning": "Prebiotic phosphorylation pathways (Pasek et al., 2007)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Glyceraldehyde phosphorylation",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Mineral-mediated phosphorylation",
+        "reasoning": "Phosphate mineral catalysis (Pasek et al., 2008)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrothermal glycine hydroxymethylation",
+        "inputs": [
+          "mol_005",
+          "H2CO"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true
+        },
+        "mechanism": "Formaldehyde addition to amino acid",
+        "reasoning": "Fe-S mineral catalyzed C1 addition (Kitadai et al., 2018)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal glycine route",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 glycine \u2192 serine via hydroxymethylation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker pathway",
+        "description": "Formose glycolaldehyde \u2192 Strecker synthesis \u2192 serine",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Phosphorylated pathway",
+        "description": "Glycolaldehyde \u2192 G3P \u2192 3PG \u2192 transamination",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_009",
+          "rxn_008",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_011",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_010": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal steps are plausible catalysts (e.g., Fe-S minerals) but lack explicit specification. Final hydroxymethylation (rxn_010) is mechanistically unclear.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for Fischer-Tropsch-type synthesis",
+          "Clarify mechanism for glycine hydroxymethylation"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Strecker synthesis initiation (rxn_004) is valid, but hydroxyacetonitrile hydrolysis (rxn_005) to serine is chemically implausible (typically forms glycine).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Revise rxn_005 to produce glycine, then add hydroxymethylation step"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_007": 0.5,
+          "rxn_008": 0.6,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Phosphorylation steps (rxn_008, rxn_009) lack prebiotically plausible agents. Transamination (rxn_007) requires enzymatic catalysis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace phosphorylation with non-enzymatic alternatives",
+          "Use redox-driven amination instead of transamination"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network topology is strong with valid hubs and connectivity, but chemical feasibility and environmental transitions need refinement. Key issues: (1) Unjustified phosphorylation/transamination steps, (2) Missing mineral catalysts in hydrothermal reactions, (3) Incorrect Strecker hydrolysis product. Strengthen mechanistic details and environmental context.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

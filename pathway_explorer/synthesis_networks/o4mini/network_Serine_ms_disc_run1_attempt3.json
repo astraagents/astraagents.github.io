@@ -1,0 +1,778 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrate redundant hydrothermal and surface chemistries to prebiotically synthesize serine via Strecker, phosphoro\u2010Strecker, cyanosulfidic, aldol\u2009+\u2009transamination, and hydroxymethylation pathways, leveraging mineral catalysts for CO\u2082 reduction, nitrile formation, and condensation to maximize convergence on key hub intermediates.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H3NO",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H5N2O",
+        "iupac_name": "2-(hydroxy)propane-1-amino-nitrile",
+        "common_name": "serine aminonitrile",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H7N4O2P",
+        "iupac_name": "diamidophosphate",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H5N2O5P",
+        "iupac_name": "N-phosphoro-2-(hydroxy)propane-1-amino-nitrile",
+        "common_name": "N-phosphoro-serine aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoethanoate",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H4O4",
+        "iupac_name": "2-hydroxy-3-oxopropanoate",
+        "common_name": "hydroxypyruvate",
+        "inchi": "InChI=1S/C3H4O4/c4-1-2(5)3(6)7/h1-2,5H,(H,6,7)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to glyoxylate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH ~9-11"
+        },
+        "mechanism": "CO2 hydrogenation on Fe-S surface",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Surface Strecker synthesis of serine aminonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "nucleophilic addition of HCN and NH3 to aldehyde",
+        "reasoning": "(Miyakawa et al., 2002)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrolysis of serine aminonitrile to serine",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycle"
+        },
+        "mechanism": "acid-catalyzed hydrolysis of nitrile",
+        "reasoning": "(Or\u00f3 & Kimball, 1961)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Phosphoro-Strecker synthesis of phosphorylated aminonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_004",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "DAP on phosphate minerals",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "phosphoryl transfer followed by Strecker reaction",
+        "reasoning": "(Zhang et al., 2013)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of N-phosphoro-serine aminonitrile",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": false,
+          "other": "dry heat"
+        },
+        "mechanism": "hydrolysis and dephosphorylation",
+        "reasoning": "(Zhang et al., 2013)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrothermal Strecker formation of serine aminonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "acidic pH ~6-7"
+        },
+        "mechanism": "surface-catalyzed reductive amination and nitrile formation",
+        "reasoning": "(Keefe et al., 1995)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydroxymethylation of glycine to serine",
+        "inputs": [
+          "mol_005",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycle"
+        },
+        "mechanism": "nucleophilic attack of amino acid on formaldehyde",
+        "reasoning": "Speculative extension based on Mannich-type hydroxymethylation (Stafford & Orgel, 1990)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyanosulfidic formation of glycolonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation \u03bb>254 nm"
+        },
+        "mechanism": "photocatalytic addition of HCN to formaldehyde",
+        "reasoning": "(Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of glycolonitrile to glycine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "acidic conditions"
+        },
+        "mechanism": "acid-catalyzed nitrile hydrolysis",
+        "reasoning": "(Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Aldol condensation of glyoxylate and formaldehyde",
+        "inputs": [
+          "mol_011",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "neutral to basic pH"
+        },
+        "mechanism": "aldol condensation",
+        "reasoning": "(Ritson & Sutherland, 2014)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Non-enzymatic transamination of hydroxypyruvate",
+        "inputs": [
+          "mol_012",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "298-310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "phosphate buffer pH~7"
+        },
+        "mechanism": "non-enzymatic transamination",
+        "reasoning": "(Weber, 1981)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Strecker reaction on glyoxylate to serine aminonitrile",
+        "inputs": [
+          "mol_011",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH~9"
+        },
+        "mechanism": "Strecker reaction on \u03b1-keto acid",
+        "reasoning": "Speculative extension of Strecker chemistry"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Evaporitic Pool Strecker Route",
+        "description": "Surface Strecker synthesis and hydrolysis in evaporitic pools",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hot Spring Phosphoro-Strecker Route",
+        "description": "Phosphoro\u2010Strecker followed by dry\u2010heat hydrolysis in geothermal fields",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Alkaline Hydrothermal Strecker Route",
+        "description": "Mackinawite\u2010catalyzed Strecker in vents and surface hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal Phospho Conversion",
+        "description": "Hydrothermal Strecker intermediate diverted to phospho\u2010hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanosulfidic Glycolonitrile Route",
+        "description": "UV\u2010driven glycolonitrile formation, hydrolysis to glycine, then hydroxymethylation",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Glyoxylate Aldol\u2009+\u2009Transamination",
+        "description": "Hydrothermal CO\u2082 reduction to glyoxylate, surface aldol and non\u2010enzymatic transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Glyoxylate Strecker Cascade",
+        "description": "Glyoxylate from vents undergoes Strecker then hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_012",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Glyoxylate Phospho Cascade",
+        "description": "Vent-derived glyoxylate to Strecker intermediate then phospho\u2010hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_012",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct Glyoxylate Strecker",
+        "description": "Strecker on glyoxylate to aminonitrile followed by hydrolysis",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct Glyoxylate Phospho",
+        "description": "Strecker on glyoxylate followed by phospho\u2010hydrolysis",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_007",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn002": 0.9,
+          "rxn003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Straightforward surface Strecker route with clear steps and strong experimental precedent.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify pH and mineral surfaces for evaporitic pool conditions to strengthen realism."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn004": 0.8,
+          "rxn005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.87,
+        "feedback": "Phosphoro\u2010Strecker route is well supported by literature and selective.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include catalytic role of DAP concentration and pH window."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn006": 0.75,
+          "rxn003": 0.9
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal Strecker is plausible but may require more detail on temperature/pressure.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral catalyst (e.g., greigite or pyrite) to support hydrothermal Strecker step."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn012": 0.8,
+          "rxn003": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal strecker on glyoxylate followed by hydrolysis works but not truly phospho\u2010focused.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Rename pathway or include a genuine phosphoro\u2010aminonitrile step if phospho chemistry is intended."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn008": 0.9,
+          "rxn009": 0.9,
+          "rxn007": 0.8
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Cyanosulfidic sequence is coherent and converges on glycine then serine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Mention UV flux or mineral support for glycolonitrile formation in cyanosulfidic scenario."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn001": 0.7,
+          "rxn010": 0.9,
+          "rxn011": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal to surface to biochemical transamination is well\u2010integrated.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail catalyst for CO\u2082 reduction to glyoxylate and phosphate buffer for transamination."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn001": 0.7,
+          "rxn012": 0.8,
+          "rxn003": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Glyoxylate\u2010based Strecker cascade is plausible but multi\u2010step hydrothermal involvement may degrade yields.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consider stability of intermediates at hydrothermal conditions or include cooler vent branch."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.2,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.2,
+        "target_achievement": 0.2,
+        "overall_confidence": 0.2,
+        "feedback": "No clear reaction sequence maps to a glyoxylate\u2010phospho cascade.",
+        "approved": false,
+        "problematic_reactions": [
+          "undefined_sequence"
+        ],
+        "suggestions": [
+          "Define specific intermediates and reactions for the phosphoro\u2010glyoxylate branch or remove pathway."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn012": 0.8,
+          "rxn003": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Direct glyoxylate Strecker is concise and plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral or pH conditions for the glyoxylate Strecker."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn004": 0.8,
+          "rxn005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Phospho route exists but lacks glyoxylate involvement as titled.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn004",
+          "rxn005"
+        ],
+        "suggestions": [
+          "Either retitle pathway or include a glyoxylate activation step before phosphoro\u2010Strecker."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "The network integrates multiple well\u2010known prebiotic routes with good connectivity and convergence.  Mineral catalysts and environmental parameters could be elaborated, and two phospho\u2010based pathways need clearer definitions.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

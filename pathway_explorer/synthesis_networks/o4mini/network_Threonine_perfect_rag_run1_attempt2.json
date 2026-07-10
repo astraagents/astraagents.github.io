@@ -1,0 +1,678 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "L-Threonine",
+    "overall_strategy": "Combine cyanosulfidic surface chemistry (Patel et al., 2015) and hydrothermal aldol condensation (Aubrey et al., 2008) with multiple alanine sourcing routes to provide redundant, convergent networks to L-threonine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H6O2",
+        "iupac_name": "2-Hydroxypropanal",
+        "common_name": "Lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H9NO2",
+        "iupac_name": "2-Cyano-3-hydroxybutanal",
+        "common_name": "Cyanohydrin intermediate",
+        "inchi": "InChI=1S/C5H9NO2/c1-4(7)2-5(8)3-6/h4-5,7-8H,2H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-Amino-3-hydroxybutanenitrile",
+        "common_name": "Aminonitrile intermediate",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-Amino-3-hydroxybutanoic acid",
+        "common_name": "L-Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-Aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4N",
+        "iupac_name": "2-Aminopropanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H3O2",
+        "iupac_name": "2-Oxo-propanoate",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "NH2OH",
+        "iupac_name": "Hydroxylamine",
+        "common_name": null,
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "C2H4O",
+        "iupac_name": "Ethanal",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanohydrin formation of lactaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Nucleophilic addition of CN\u207b to aldehyde to form cyanohydrin",
+        "reasoning": "(Patel & Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminonitrile formation",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Strecker-type amination displacing hydroxyl to form aminonitrile",
+        "reasoning": "(Patel & Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Aminonitrile hydrolysis to threonine",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "prolonged hydrolysis"
+        },
+        "mechanism": "Stepwise nitrile hydration to carboxylate with NH\u2083 release",
+        "reasoning": "(Patel & Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation of alanine with formaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "alkaline pH gradient"
+        },
+        "mechanism": "Aldol-type C\u2013C bond formation extending amino acid by C1 unit",
+        "reasoning": "(Aubrey et al., 2008)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive amination of pyruvate",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "alkaline conditions"
+        },
+        "mechanism": "NH\u2082OH attacks keto group with reduction to yield amino acid",
+        "reasoning": "(Muchowska et al., 2019)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of 2-aminopropanenitrile",
+        "inputs": [
+          "mol_013",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "HCN-rich cyanosulfidic"
+        },
+        "mechanism": "Aldehyde reacts with HCN and NH\u2083 to form aminonitrile",
+        "reasoning": "(Patel & Sutherland, 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of 2-aminopropanenitrile to alanine",
+        "inputs": [
+          "mol_010",
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Nitrile hydration to carboxylate releasing NH\u2083",
+        "reasoning": "(Patel & Sutherland, 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic surface pathway",
+        "description": "Lactaldehyde \u2192 cyanohydrin \u2192 aminonitrile \u2192 hydrolysis to threonine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal aldol condensation",
+        "description": "L-Alanine + formaldehyde \u2192 L-threonine",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Reductive amination + aldol",
+        "description": "Pyruvate \u2192 alanine \u2192 threonine via formaldehyde",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Strecker-derived alanine route",
+        "description": "Acetaldehyde \u2192 aminopropanenitrile \u2192 alanine \u2192 threonine",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Clay-catalyzed cyanosulfidic variant",
+        "description": "Montmorillonite-assisted cyanosulfidic conversion of lactaldehyde to threonine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Wet-dry cyanosulfidic variant",
+        "description": "Wet-dry concentration cycles drive Pathway 1 in evaporitic pools",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "UV-irradiated cyanosulfidic variant",
+        "description": "UV photocatalysis enhances cyanohydrin formation and amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Phosphate-driven hydrolysis variant",
+        "description": "Phosphate minerals accelerate nitrile hydrolysis in Pathway 1",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Greigite-catalyzed aldol variant",
+        "description": "Fe\u2083S\u2084 surfaces promote alanine-formaldehyde condensation",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Magnetite-catalyzed aldol variant",
+        "description": "Fe\u2083O\u2084 surfaces drive hydrothermal aldol to threonine",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic cyanosulfidic three\u2010step sequence directly mirrors Patel et al. (2015). Highly feasible and well\u2010supported.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., phosphate minerals) to anchor the surface context."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Aubrey aldol condensation is sound but lacks an upstream alanine source.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add a reductive amination or Strecker route to supply L\u2010alanine."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Combines hydrothermal reductive amination and aldol in a coherent hydrothermal cascade.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include iron\u2010sulfur or native iron catalysts for reductive amination (rxn_005)."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.85,
+          "rxn_007": 0.9,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Elegant surface\u2010to\u2010hydrothermal convergence via Strecker and aldol, strong interconnection.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail wet\u2010dry cycling conditions for aminonitrile hydrolysis in rxn_007."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Clay\u2010catalyzed variant is plausible but requires explicit catalyst roles.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify the specific clay mineral and its mechanistic role in catalysis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Wet\u2010dry cyanosulfidic variant realistic but lacks cycle parameters.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Define pH range and drying interval specifics for wet\u2010dry cycles."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "UV\u2010irradiated variant aligns with photochemistry but UV conditions are unspecified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include UV flux, wavelength range, and irradiation time."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Phosphate\u2010driven hydrolysis variant plausible but phosphate concentration not defined.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify phosphate buffer strength and pH."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Greigite\u2010catalyzed aldol plausible but mechanistic details are missing.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Describe greigite surface speciation and active sites."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Magnetite\u2010catalyzed variant similar to P9, needs catalyst detail.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Provide magnetite crystallography and surface interaction specifics."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.82,
+    "network_feedback": "The network is well\u2010connected with multiple redundant, convergent routes to L-threonine. Chemistry aligns with key literature, though catalyst roles and environmental specifics could be more detailed.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

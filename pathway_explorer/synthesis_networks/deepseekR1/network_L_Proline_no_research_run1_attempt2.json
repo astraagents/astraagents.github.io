@@ -1,0 +1,492 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Convergent synthesis through hydrothermal carbon fixation to glutamate followed by biochemical cyclization, with alternative surface pathways via Strecker intermediates and HCN chemistry.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO^-",
+        "iupac_name": "Formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H3O3^-",
+        "iupac_name": "Pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H4O5^2-",
+        "iupac_name": "2-Oxopentanedioate",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H8NO4^-",
+        "iupac_name": "Glutamate",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H7NO3",
+        "iupac_name": "Glutamic semialdehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H7NO3/c6-4(2-1-3(7)8)5(9)10/h4H,1-2,6H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO2",
+        "iupac_name": "L-Proline",
+        "common_name": "proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H5NO",
+        "iupac_name": "2-Aminopropanenitrile",
+        "common_name": "alanine nitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electrochemical reduction on Fe\u2083S\u2084 catalytic surfaces",
+        "reasoning": "Greigite-catalyzed CO\u2082 reduction demonstrated in alkaline vent conditions (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Stepwise carbon chain elongation via surface-bound intermediates",
+        "reasoning": "Magnetite-catalyzed carbon fixation (Nitschke et al., 2013)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "CO\u2082 incorporation"
+        },
+        "mechanism": "Reductive carboxylation via FeS-mediated electron transfer",
+        "reasoning": "FeS-catalyzed reverse TCA cycle reactions (Muchowska et al., 2017)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination to glutamate",
+        "inputs": [
+          "mol_005",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": true,
+          "other": "NH\u2083-rich conditions"
+        },
+        "mechanism": "Surface-mediated ammonia incorporation and reduction",
+        "reasoning": "Pyrite-catalyzed amino acid synthesis (Huber & W\u00e4chtersh\u00e4user, 2003)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface glutamate synthesis",
+        "inputs": [
+          "mol_005",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-350K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Adsorption-catalyzed reductive amination",
+        "reasoning": "Clay-mediated amino acid formation from keto acids (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glutamate reduction to semialdehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "Reducing conditions"
+        },
+        "mechanism": "Iron-mediated decarboxylation and reduction",
+        "reasoning": "Prebiotic amino acid modification under anoxic conditions (Kitadai et al., 2018)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyclization to proline",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "clay",
+          "aqueous": false,
+          "other": "Dehydration conditions"
+        },
+        "mechanism": "Intramolecular Schiff base formation and reduction",
+        "reasoning": "Clay-catalyzed cyclization reactions (Lambert, 2008)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis of alanine nitrile",
+        "inputs": [
+          "mol_011",
+          "mol_010",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic aldehyde-ammonia-HCN condensation",
+        "reasoning": "UV-assisted Strecker synthesis (Sutherland, 2017)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Nitrile hydrolysis",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate"
+        ],
+        "conditions": {
+          "temperature": "330-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "pH 9-10"
+        },
+        "mechanism": "Borate-stabilized intermediate hydrolysis",
+        "reasoning": "Borate-mediated nitrile hydrolysis (Benner et al., 2012)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core pathway",
+        "description": "Complete hydrothermal synthesis from CO\u2082 to glutamate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface-assisted glutamate route",
+        "description": "Surface re-amination of hydrothermal \u03b1-ketoglutarate",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic pathway",
+        "description": "Surface synthesis via HCN and photochemistry",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.7,
+          "rxn_004": 0.8,
+          "rxn_006": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal steps (rxn_002, rxn_003) lack explicit catalysts/mineral agents. Pyruvate to \u03b1-ketoglutarate (rxn_003) requires additional carboxylation steps. Biochemical cyclization (rxn_006, rxn_007) needs enzymatic plausibility in prebiotic contexts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., FeS) for hydrothermal steps",
+          "Add intermediate steps for \u03b1-ketoglutarate synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Surface reductive amination (rxn_005) lacks justification for non-enzymatic conditions. Pathway overlaps redundantly with P1.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Clarify surface-specific conditions (e.g., photochemical activation) for rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_008": 0.8,
+          "rxn_009": 0.3,
+          "rxn_006": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Critical flaw in rxn_009: Alanine nitrile (C3H5NO) cannot hydrolyze to glutamate (C5H8NO4\u207b). Surface-to-biochemical transition is unmotivated.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace rxn_009 with a valid glutamate precursor (e.g., Strecker-derived glutaronitrile)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network has convergent topology but suffers from: (1) Chemically invalid rxn_009, (2) Underdeveloped hydrothermal-to-surface transitions, (3) Insufficient hub connectivity (mol_004 degree=2). Strengthen environmental logic and validate all reaction stoichiometry.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

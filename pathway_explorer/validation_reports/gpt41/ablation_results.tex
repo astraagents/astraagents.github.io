@@ -1,0 +1,68 @@
+% Requires: \usepackage[table]{xcolor}
+\begin{table}[htbp]
+\centering
+\small
+\caption{Ablation study results (mean $\pm$ std across attempts). Configs: no_research=Baseline: No research, deep_research_claude=Deep Research from Claude, deep_research_gemini=Deep Research from Gemini, deep_research_gpt5.4=Deep Research from ChatGPT, ms_disc=MS Discovery only, perfect_rag=Perfect RAG. \colorbox{green!25}{Best} and \colorbox{red!25}{worst} mean recall per molecule are highlighted.}
+\label{tab:ablation_results}
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+Molecule & Config & Confidence & Recall & Precision & Mol Match & $\geq$75\% & \#$\geq$75\% & 100\% & \#100\% & \#Total \\
+\midrule
+Arginine & deep_research_claude & 0.92 & $0.3659 \pm 0.0177$ & $0.27 \pm 0.09$ & $45.4 \pm 5.7$ & $0.1389 \pm 0.0393$ & $1.7 \pm 0.5$ & $0.1111 \pm 0.0393$ & $1.3 \pm 0.5$ & $12.0 \pm 0.0$ \\
+Arginine & deep_research_gemini & 0.95 & $0.3705 \pm 0.0000$ & $0.34 \pm 0.00$ & $47.1 \pm 0.0$ & $0.1667 \pm 0.0000$ & $2.0 \pm 0.0$ & $0.0833 \pm 0.0000$ & $1.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Arginine & deep_research_gpt5.4 & 0.92 & $0.3777 \pm 0.0000$ & $0.28 \pm 0.00$ & $50.0 \pm 0.0$ & $0.0833 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Arginine & ms_disc & 0.88 & \cellcolor{red!25}$0.2233 \pm 0.0055$ & $0.06 \pm 0.02$ & $28.9 \pm 3.1$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Arginine & no_research & 0.90 & $0.2599 \pm 0.0000$ & $0.09 \pm 0.00$ & $25.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Arginine & perfect_rag & 0.99 & \cellcolor{green!25}$0.9861 \pm 0.0000$ & $0.96 \pm 0.00$ & $100.0 \pm 0.0$ & $1.0000 \pm 0.0000$ & $12.0 \pm 0.0$ & $0.9167 \pm 0.0000$ & $11.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+\midrule
+Glutamate & deep_research_claude & 0.97 & $0.4063 \pm 0.0000$ & $0.35 \pm 0.00$ & $46.7 \pm 0.0$ & $0.0909 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+Glutamate & deep_research_gemini & 0.94 & $0.4474 \pm 0.0000$ & $0.42 \pm 0.00$ & $25.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+Glutamate & deep_research_gpt5.4 & 0.98 & $0.4769 \pm 0.0000$ & $0.35 \pm 0.00$ & $40.0 \pm 0.0$ & $0.2727 \pm 0.0000$ & $3.0 \pm 0.0$ & $0.0909 \pm 0.0000$ & $1.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+Glutamate & ms_disc & 0.95 & $0.4225 \pm 0.0000$ & $0.36 \pm 0.00$ & $40.0 \pm 0.0$ & $0.0909 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+Glutamate & no_research & 0.95 & \cellcolor{red!25}$0.3916 \pm 0.0000$ & $0.31 \pm 0.00$ & $46.7 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+Glutamate & perfect_rag & 0.99 & \cellcolor{green!25}$0.9576 \pm 0.0000$ & $0.92 \pm 0.00$ & $100.0 \pm 0.0$ & $0.9091 \pm 0.0000$ & $10.0 \pm 0.0$ & $0.8182 \pm 0.0000$ & $9.0 \pm 0.0$ & $11.0 \pm 0.0$ \\
+\midrule
+Glycine & deep_research_claude & 0.99 & $0.4828 \pm 0.0000$ & $0.38 \pm 0.00$ & $35.0 \pm 0.0$ & $0.1667 \pm 0.0000$ & $2.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Glycine & deep_research_gemini & 0.95 & $0.5026 \pm 0.0000$ & $0.47 \pm 0.00$ & $50.0 \pm 0.0$ & $0.2500 \pm 0.0000$ & $3.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Glycine & deep_research_gpt5.4 & 0.95 & \cellcolor{red!25}$0.4192 \pm 0.0000$ & $0.50 \pm 0.00$ & $33.3 \pm 0.0$ & $0.0833 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Glycine & ms_disc & 0.93 & $0.5032 \pm 0.0000$ & $0.42 \pm 0.00$ & $53.3 \pm 0.0$ & $0.1667 \pm 0.0000$ & $2.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Glycine & no_research & 0.91 & $0.4633 \pm 0.0000$ & $0.42 \pm 0.00$ & $37.5 \pm 0.0$ & $0.1667 \pm 0.0000$ & $2.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+Glycine & perfect_rag & 0.99 & \cellcolor{green!25}$0.9167 \pm 0.0000$ & $0.89 \pm 0.00$ & $100.0 \pm 0.0$ & $1.0000 \pm 0.0000$ & $12.0 \pm 0.0$ & $0.5833 \pm 0.0000$ & $7.0 \pm 0.0$ & $12.0 \pm 0.0$ \\
+\midrule
+L-Alanine & deep_research_claude & 0.98 & \cellcolor{red!25}$0.4740 \pm 0.0000$ & $0.34 \pm 0.00$ & $33.3 \pm 0.0$ & $0.1250 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+L-Alanine & deep_research_gemini & 0.95 & $0.5130 \pm 0.0000$ & $0.41 \pm 0.00$ & $46.7 \pm 0.0$ & $0.1250 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+L-Alanine & deep_research_gpt5.4 & 0.92 & $0.5535 \pm 0.0000$ & $0.29 \pm 0.00$ & $38.9 \pm 0.0$ & $0.1250 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+L-Alanine & ms_disc & 0.94 & $0.5263 \pm 0.0000$ & $0.42 \pm 0.00$ & $33.3 \pm 0.0$ & $0.1250 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+L-Alanine & no_research & 0.92 & $0.5422 \pm 0.0000$ & $0.34 \pm 0.00$ & $46.2 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+L-Alanine & perfect_rag & 1.00 & \cellcolor{green!25}$0.8854 \pm 0.0000$ & $0.72 \pm 0.00$ & $84.6 \pm 0.0$ & $0.8750 \pm 0.0000$ & $7.0 \pm 0.0$ & $0.6250 \pm 0.0000$ & $5.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+\midrule
+L-Proline & deep_research_claude & 0.99 & $0.1806 \pm 0.0000$ & $0.23 \pm 0.00$ & $20.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+L-Proline & deep_research_gemini & 0.95 & $0.3466 \pm 0.0000$ & $0.18 \pm 0.00$ & $31.2 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+L-Proline & deep_research_gpt5.4 & 0.96 & $0.2016 \pm 0.0000$ & $0.23 \pm 0.00$ & $28.6 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+L-Proline & ms_disc & 0.83 & $0.2148 \pm 0.0132$ & $0.12 \pm 0.07$ & $21.5 \pm 1.3$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+L-Proline & no_research & 0.93 & \cellcolor{red!25}$0.1794 \pm 0.0000$ & $0.09 \pm 0.00$ & $23.1 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+L-Proline & perfect_rag & 0.98 & \cellcolor{green!25}$0.9000 \pm 0.0000$ & $0.55 \pm 0.00$ & $90.9 \pm 0.0$ & $0.8000 \pm 0.0000$ & $4.0 \pm 0.0$ & $0.6000 \pm 0.0000$ & $3.0 \pm 0.0$ & $5.0 \pm 0.0$ \\
+\midrule
+Serine & deep_research_claude & 0.94 & \cellcolor{red!25}$0.5507 \pm 0.0000$ & $0.42 \pm 0.00$ & $31.2 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+Serine & deep_research_gemini & 0.98 & $0.7407 \pm 0.0000$ & $0.32 \pm 0.00$ & $31.2 \pm 0.0$ & $0.3333 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.3333 \pm 0.0000$ & $1.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+Serine & deep_research_gpt5.4 & 0.97 & $0.6667 \pm 0.0000$ & $0.31 \pm 0.00$ & $26.7 \pm 0.0$ & $0.6667 \pm 0.0000$ & $2.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+Serine & ms_disc & 0.92 & $0.6688 \pm 0.0000$ & $0.46 \pm 0.00$ & $30.8 \pm 0.0$ & $0.3333 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.3333 \pm 0.0000$ & $1.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+Serine & no_research & 0.94 & $0.5608 \pm 0.0000$ & $0.08 \pm 0.00$ & $33.3 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+Serine & perfect_rag & 0.98 & \cellcolor{green!25}$0.9444 \pm 0.0000$ & $0.26 \pm 0.00$ & $41.2 \pm 0.0$ & $1.0000 \pm 0.0000$ & $3.0 \pm 0.0$ & $0.6667 \pm 0.0000$ & $2.0 \pm 0.0$ & $3.0 \pm 0.0$ \\
+\midrule
+Threonine & deep_research_claude & 0.93 & $0.3727 \pm 0.0000$ & $0.21 \pm 0.00$ & $35.7 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+Threonine & deep_research_gemini & 0.91 & $0.5167 \pm 0.0000$ & $0.25 \pm 0.00$ & $35.3 \pm 0.0$ & $0.2500 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+Threonine & deep_research_gpt5.4 & 0.98 & \cellcolor{red!25}$0.3361 \pm 0.0000$ & $0.14 \pm 0.00$ & $46.2 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+Threonine & ms_disc & 0.92 & $0.3854 \pm 0.0000$ & $0.28 \pm 0.00$ & $33.3 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+Threonine & no_research & 0.94 & $0.5131 \pm 0.0000$ & $0.17 \pm 0.00$ & $40.0 \pm 0.0$ & $0.2500 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+Threonine & perfect_rag & 0.99 & \cellcolor{green!25}$0.9583 \pm 0.0000$ & $0.80 \pm 0.00$ & $100.0 \pm 0.0$ & $1.0000 \pm 0.0000$ & $4.0 \pm 0.0$ & $0.7500 \pm 0.0000$ & $3.0 \pm 0.0$ & $4.0 \pm 0.0$ \\
+\midrule
+Valine & deep_research_claude & 0.96 & $0.2848 \pm 0.0000$ & $0.17 \pm 0.00$ & $26.7 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+Valine & deep_research_gemini & 0.98 & $0.3748 \pm 0.0000$ & $0.35 \pm 0.00$ & $46.7 \pm 0.0$ & $0.1250 \pm 0.0000$ & $1.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+Valine & deep_research_gpt5.4 & 0.96 & $0.2692 \pm 0.0000$ & $0.18 \pm 0.00$ & $38.5 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+Valine & ms_disc & 0.93 & $0.3376 \pm 0.0000$ & $0.33 \pm 0.00$ & $35.7 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+Valine & no_research & 0.91 & \cellcolor{red!25}$0.2614 \pm 0.0000$ & $0.09 \pm 0.00$ & $21.4 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $0.0000 \pm 0.0000$ & $0.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+Valine & perfect_rag & 1.00 & \cellcolor{green!25}$0.8790 \pm 0.0000$ & $0.93 \pm 0.00$ & $100.0 \pm 0.0$ & $0.8750 \pm 0.0000$ & $7.0 \pm 0.0$ & $0.5000 \pm 0.0000$ & $4.0 \pm 0.0$ & $8.0 \pm 0.0$ \\
+\bottomrule
+\end{tabular}
+\end{table}

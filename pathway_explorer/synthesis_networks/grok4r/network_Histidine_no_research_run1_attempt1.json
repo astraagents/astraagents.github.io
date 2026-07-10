@@ -1,0 +1,928 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "The synthesis network for histidine integrates hydrothermal reductions to generate simple carbonyl compounds and amino acid precursors, surface photochemistry and mineral-catalyzed oligomerizations to assemble the imidazole ring and side chain via condensations and Strecker synthesis, and biochemical hydrolysis for final activation. Convergent pathways at hubs like HCN, formaldehyde, and imidazole provide redundancy across environments, with hydrothermal products feeding surface reactions bidirectionally.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "HCHO",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCOOH",
+        "iupac_name": "formic acid",
+        "common_name": "formic acid",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH3COCOOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH3CH(NH2)COOH",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H4N2",
+        "iupac_name": "1H-imidazole",
+        "common_name": "imidazole",
+        "inchi": "InChI=1S/C3H4N2/c1-2-5-3-4-1/h1-3H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-(1H-imidazol-5-yl)acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C6H8N4",
+        "iupac_name": "2-amino-3-(1H-imidazol-5-yl)propanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H8N4/c7-2-5(8)1-6-3-9-4-10-6/h3-5H,1,8H2,(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C6H9N3O2",
+        "iupac_name": "2-amino-3-(1H-imidazol-5-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface adsorption of CO2, activation by Fe-S cluster, hydrogenation with H2",
+        "reasoning": "Greigite acts as a catalyst for early carbon fixation, analogous to modern metalloenzymes, providing reducing power in alkaline vents."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formic acid reduction to formaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "aqueous": true,
+          "other": "serpentinization H2 source"
+        },
+        "mechanism": "Fischer-Tropsch-type hydrogenation on oxide surface",
+        "reasoning": "Magnetite facilitates multi-step reductions from CO2 to aldehydes, common in subseafloor environments."
+      },
+      {
+        "id": "rxn_003",
+        "name": "CO2 multi-carbon reduction to pyruvic acid",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "aqueous": true,
+          "other": "H2S co-catalyst"
+        },
+        "mechanism": "C-C bond formation and reduction on Fe-S surfaces",
+        "reasoning": "Pyruvate as a metabolic hub formed via acetyl-CoA pathway analogs in iron-sulfur world."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of pyruvic acid to alanine",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Schiff base formation followed by surface reduction",
+        "reasoning": "Pyrite donates electrons for amination, linking carbon fixation to amino acid synthesis."
+      },
+      {
+        "id": "rxn_005",
+        "name": "HCN oligomerization to imidazole",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Concentrated polymerization and cyclization on clay",
+        "reasoning": "Clays promote HCN-derived heterocycle formation, key for nucleobase and amino acid side chains."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Formose initiation to glycolaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "evaporitic pools"
+        },
+        "mechanism": "Base-catalyzed aldol self-condensation",
+        "reasoning": "Borate stabilizes early sugars, preventing formose degradation in prebiotic surface settings."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Imidazole condensation with glycolaldehyde",
+        "inputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic attack and dehydration on mineral template",
+        "reasoning": "Clay-templated C-C bond formation builds the histidine side chain precursor."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis to histidine nitrile",
+        "inputs": [
+          "mol_011",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "concentrated pools"
+        },
+        "mechanism": "Imine formation, cyanohydrin addition, on surface",
+        "reasoning": "Strecker pathway provides prebiotic route to complex amino acids with heterocyclic side chains."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of nitrile to histidine",
+        "inputs": [
+          "mol_012",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "geothermal cycling"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid",
+        "reasoning": "Thermal or mineral-assisted hydrolysis completes amino acid formation in prebiotic pools."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Photochemical synthesis of imidazole",
+        "inputs": [
+          "mol_004",
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV photocatalysis drives addition and cyclization",
+        "reasoning": "TiO2 enables photochemical routes to heterocycles under anoxic, UV-rich early Earth conditions."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Photoreduction of formate to formaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Semiconductor photocatalysis with H2 as reductant",
+        "reasoning": "Links hydrothermal formate to surface carbonyl synthesis via photocatalysis."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Photocatalytic CO2 reduction to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photoexcitation of TiO2 for CO2 activation and reduction",
+        "reasoning": "Direct surface route to formaldehyde, independent of hydrothermal processing."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal direct hydrogenation to HCHO with oligomerization",
+        "description": "Full hydrothermal route to formaldehyde followed by surface imidazole oligomerization and assembly.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal formate with surface photoreduction to HCHO, oligomerization",
+        "description": "Hydrothermal formate transferred to surface for photoreduction, then imidazole via oligomerization.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface photocatalytic CO2 to HCHO with oligomerization",
+        "description": "Direct surface reduction of CO2 to formaldehyde, coupled with HCN oligomerization.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal hydrogenation to HCHO with photochemical imidazole",
+        "description": "Hydrothermal formaldehyde used in both formose and photochemical imidazole synthesis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_010",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal formate surface photoreduction with photochemical imidazole",
+        "description": "Inter-environment transfer of formate for dual use in photochemical routes.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_010",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface photocatalytic CO2 to HCHO with photochemical imidazole",
+        "description": "Fully surface-based photochemical pathway to key intermediates.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_010",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal routes with parallel pyruvate to alanine",
+        "description": "Incorporates metabolic side path to alanine alongside main histidine synthesis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal-surface hybrid with pyruvate side path",
+        "description": "Formate transfer to surface with concurrent alanine production.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface CO2 reduction with hydrothermal pyruvate integration",
+        "description": "Surface formaldehyde synthesis combined with hydrothermal pyruvate/alanine branch.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_012",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hydrothermal dual paths with pyruvate and photochemical imidazole",
+        "description": "Comprehensive hydrothermal input supporting both pyruvate and imidazole photochemistry.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal HCHO production is solid, leading to imidazole and side chain assembly, but HCN source is undefined.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Include HCN formation from NH3 and CO2/HCHO"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_011": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.8,
+        "feedback": "Hybrid hydrothermal-surface for HCHO works well, convergent to imidazole, but HCN gap persists.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for surface photoreduction"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_012": 0.9,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Surface-focused pathway is concise and feasible, strong photochemistry alignment.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Add HCN production via surface discharge or catalysis"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal HCHO with surface photochemical imidazole provides good convergence.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Validate imidazole condensation mechanism"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.8,
+        "feedback": "Hybrid route with dual surface steps maintains flow to target.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Ensure HCN input for photochemical step"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_012": 0.9,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "All-surface pathway with photochemical imidazole is efficient.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Incorporate literature on photochemical imidazole yields"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Includes alanine side path, but not integrated to histidine; adds redundancy but dilutes focus.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Connect alanine to histidine or remove if not relevant; fix HCN"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Hybrid with pyruvate integration, but alanine remains disconnected from target.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Justify alanine role or link via additional reaction"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_012": 0.9,
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Surface CO2 with hydrothermal pyruvate, but side path not contributing to histidine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Improve pyruvic acid formation feasibility"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_010": 0.8,
+          "rxn_006": 0.9,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Dual hydrothermal paths with imidazole, but alanine integration lacking.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Address HCN and connect side chain precursors"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.8,
+    "network_feedback": "Well-connected network with strong environmental flow and convergence at key hubs, aligning with prebiotic strategies. However, missing HCN synthesis reaction creates a gap, and the alanine path is not linked to histidine, reducing coherence for the target. Chemically feasible overall with plausible mechanisms.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

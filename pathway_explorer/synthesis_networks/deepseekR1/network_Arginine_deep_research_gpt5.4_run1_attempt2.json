@@ -1,0 +1,341 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Primary synthesis via Patel et al.'s cyanosulfidic homologation pathway (UV-driven HCN/acetylene chemistry) with Fe-S catalysis in hydrothermal environments for precursor generation. Secondary speculative pathway through ornithine-carbamoylation.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H2",
+        "iupac_name": "Ethyne",
+        "common_name": "Acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H3N",
+        "iupac_name": "Propenenitrile",
+        "common_name": "Acrylonitrile",
+        "inchi": "InChI=1S/C3H3N/c1-2-3-4/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H5N2",
+        "iupac_name": "3-aminopropionitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6N2/c4-2-1-3-5/h1-2,4H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH2N2",
+        "iupac_name": "Cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H9N3O",
+        "iupac_name": "Cyclic guanidinium hemiaminal",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9N3",
+        "iupac_name": "5-(aminomethylideneamino)-2-azapentane-1-nitrile",
+        "common_name": "\u03b1-aminonitrile (Patel compound 46)",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H14N4O2",
+        "iupac_name": "L-arginine",
+        "common_name": "Arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Acrylonitrile formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite",
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/H2S",
+          "aqueous": true,
+          "other": "UV 300 nm"
+        },
+        "mechanism": "UV-driven photoredox coupling of HCN and acetylene",
+        "reasoning": "Patel et al. (2015) demonstrated cyanosulfidic homologation with Cu/H2S photocatalysis"
+      },
+      {
+        "id": "rxn_002",
+        "name": "\u03b2-aminopropionitrile synthesis",
+        "inputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-8"
+        },
+        "mechanism": "Nucleophilic addition of ammonia to acrylonitrile",
+        "reasoning": "Key step in Patel pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Guanidinylation",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "H2S",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "UV-driven cyclization with cyanamide addition",
+        "reasoning": "Patel et al. (2015) guanidine group formation"
+      },
+      {
+        "id": "rxn_004",
+        "name": "\u03b1-aminonitrile formation",
+        "inputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "H2S",
+          "aqueous": true,
+          "other": "UV 300 nm"
+        },
+        "mechanism": "Kiliani-Fischer homologation with HCN",
+        "reasoning": "Final homologation step in Patel pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Arginine hydrolysis",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 9-10"
+        },
+        "mechanism": "Alkaline hydrolysis of \u03b1-aminonitrile",
+        "reasoning": "Final step in Patel pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Acetylene synthesis",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "CO/H2 polymerization",
+        "reasoning": "Hydrocarbon backbone source (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Ammonia synthesis",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Serpentinization"
+        },
+        "mechanism": "N2 reduction on FeS surfaces",
+        "reasoning": "Hydrothermal NH3 production (Russell et al., 1994)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyano-sulfidic homologation",
+        "description": "Primary UV-driven synthesis from HCN/acetylene",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_003",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005": 0.75,
+          "rxn_006": 0.4,
+          "rxn_007": 0.4
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Primary Patel pathway aligns with literature but lacks mineral catalyst specifications (Fe-S, Cu) and realistic environmental transitions. Hydrothermal self-reactions (rxn_006, rxn_007) are chemically invalid and disrupt flow. Biochemical hydrolysis (rxn_005) requires justification under prebiotic conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Replace hydrothermal self-reactions with plausible Fe-S-catalyzed precursor syntheses (e.g., HCN/acetylene generation)",
+          "Specify mineral catalysts (Cu, Zn, Fe-S) in reaction conditions",
+          "Clarify environmental transitions (hydrothermal \u2192 surface) for reagent flow"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network core follows Patel's cyanosulfidic homologation (literature-supported), but topology flaws (self-reactions, weak hubs) and missing environmental realism lower confidence. Hydrothermal \u2194 Surface flow is notional rather than operational. Target achievement is strong via main pathway.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.6
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

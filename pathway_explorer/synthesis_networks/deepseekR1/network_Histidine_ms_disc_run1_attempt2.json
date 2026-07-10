@@ -1,0 +1,327 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Combines hydrothermal formate production with surface Strecker synthesis of imidazole-4-acetaldehyde, followed by aminonitrile hydrolysis under wet-dry cycles. Utilizes mineral catalysts (greigite, magnetite, TiO\u2082, montmorillonite) and environmental interconnectivity.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CH3NO",
+        "iupac_name": "Formamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C5H6N2O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H7N3",
+        "iupac_name": "2-Amino-2-(imidazol-4-yl)acetonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C6H9N3O2",
+        "iupac_name": "Histidine",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CHO2",
+        "iupac_name": "Formate",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4O3",
+        "iupac_name": "Pyruvate",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO\u2082 hydrogenation on Fe\u2083S\u2084 surfaces",
+        "reasoning": "Greigite catalyzes CO\u2082 reduction via electron transfer (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate synthesis",
+        "inputs": [
+          "mol_009",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation",
+        "reasoning": "Magnetite enables C-C bond formation (Source 9400)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "HCN to formamide hydrolysis",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic hydrolysis",
+        "reasoning": "TiO\u2082 enables HCN conversion under UV (Source 2582)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Imidazole-4-acetaldehyde formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "HCN-formamide cyclization",
+        "reasoning": "UV-driven imidazole synthesis (Levine et al., 2008)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of aminonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Aldehyde-ammonia-HCN condensation",
+        "reasoning": "Clay-catalyzed Strecker reaction (Levine et al., 2008)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminonitrile hydrolysis to histidine",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Dehydration-rehydration polymerization",
+        "reasoning": "Clay-mediated hydrolysis (Source 21192)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-surface hybrid pathway",
+        "description": "Combines hydrothermal formate production with surface imidazole synthesis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_004",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_001",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_003": 0.9,
+          "rxn_004": 0.7,
+          "rxn_005": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Network aligns with Strecker synthesis and hydrothermal formate production from literature. Key intermediates (imidazole-4-acetaldehyde, aminonitrile) are correctly identified. Weaknesses include: (1) Formate \u2192 pyruvate (rxn_002) lacks mechanistic justification and is not explicitly supported by literature; (2) Imidazole-4-acetaldehyde formation (rxn_004) requires mineral catalysis details; (3) Hub molecule mol_004 has degree=2 (needs \u22653).",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace rxn_002 with a glyoxylate-mediated pathway to pyruvate",
+          "Clarify mineral-catalyzed mechanism for rxn_004 (e.g., montmorillonite)",
+          "Add reactions to increase connectivity of hub molecules (e.g., imidazole-4-acetaldehyde branching)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network demonstrates a plausible prebiotic route to histidine with strong alignment to Strecker chemistry and environmental transitions. Major strengths include target achievement and mineral-catalyzed hydrothermal steps. Key limitations are underdeveloped hubs (mol_004 degree=2) and questionable formate \u2192 pyruvate conversion. Approved with reservations due to partial literature support for critical steps.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

@@ -1,0 +1,478 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrated network combining hydrothermal pyruvate synthesis, surface Strecker/aminonitrile chemistry, and biochemical transamination. Racemic alanine production followed by calcite-mediated enantioselection.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O",
+        "iupac_name": "Acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6N2",
+        "iupac_name": "2-Aminopropionitrile",
+        "common_name": "Ala-CN",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H7N2O",
+        "iupac_name": "N-Formyl-2-aminopropionitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7N2O/c1-3(6-2)5-4(7)8/h3H,1H2,(H,5,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C8H9NO3",
+        "iupac_name": "Pyridoxal",
+        "common_name": null,
+        "inchi": "InChI=1S/C8H9NO3/c1-5-8(12)7(4-11)6(3-10)2-9-5/h2,4,10,12H,3H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-Aminopropanoic acid",
+        "common_name": "DL-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H7NO2",
+        "iupac_name": "(S)-2-Aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate synthesis via CO2 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe3O4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe3O4",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Fischer-Tropsch-type CO2 hydrogenation",
+        "reasoning": "Barge et al. (2019) demonstrated pyruvate formation under alkaline hydrothermal conditions with Fe minerals"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe3O4",
+          "Ni nanoparticles"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni",
+          "aqueous": true,
+          "other": "pH 10"
+        },
+        "mechanism": "Metal-catalyzed reductive amination",
+        "reasoning": "Kaur et al. (2024) reported 44% alanine yield over Pd/Ni catalysts; Barge et al. (2019) showed Fe-mediated pathways"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of aminonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "NiS",
+          "aqueous": true,
+          "other": "alkaline conditions"
+        },
+        "mechanism": "Imine formation followed by cyanide addition",
+        "reasoning": "Diederich et al. (2023) demonstrated acetaldehyde\u2192Ala-CN formation with NiS catalysis"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formamide-mediated aminonitrile stabilization",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "320K",
+          "pressure": "1 atm",
+          "catalyst": "Borate",
+          "aqueous": false,
+          "other": "formamide solvent"
+        },
+        "mechanism": "N-formylation under thermal cycling",
+        "reasoning": "Green et al. (2023) showed formamide stabilizes aminonitriles as N-formyl derivatives"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "Classic Strecker pathway completion as per Ruiz-Bermejo et al. (2013)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyridoxal-enhanced transamination",
+        "inputs": [
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Ni\u2070"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni\u2070",
+          "aqueous": true,
+          "other": "pH 11"
+        },
+        "mechanism": "Schiff base-mediated amino transfer",
+        "reasoning": "Schlikker et al. (2024) demonstrated 4.4\u00d7 yield increase with pyridoxal cofactor"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Enantioselective adsorption",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Calcite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "Calcite",
+          "aqueous": true,
+          "other": "multiple adsorption cycles"
+        },
+        "mechanism": "Chiral surface selection",
+        "reasoning": "Hazen et al. (2001) reported L-alanine preference on calcite surfaces"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO2 \u2192 pyruvate \u2192 alanine via Fe/Ni-catalyzed reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker synthesis",
+        "description": "Acetaldehyde + HCN \u2192 aminonitrile \u2192 alanine hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formamide-stabilized pathway",
+        "description": "Aminonitrile formylation \u2192 protected storage \u2192 hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Biochemical transamination",
+        "description": "Pyruvate \u2192 alanine via pyridoxal-mediated amino transfer",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Enantioselection",
+        "description": "Racemic alanine \u2192 L-enantiomer via calcite adsorption",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.83,
+        "feedback": "Hydrothermal reductive amination aligns with Barge et al. (2019) and Kaur et al. (2024). Pyruvate synthesis (rxn_001) is plausible under Fe/Ni catalysis, but rxn_002 lacks explicit mineral/redox context. DL-alanine production is chemically valid.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify Fe/Ni catalysts for reductive amination to match literature conditions"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.81,
+        "feedback": "Strecker synthesis (rxn_003) and hydrolysis (rxn_005) are well-supported (Green et al., 2023). Surface conditions need mineral/evaporative context for HCN stability. Acetaldehyde (mol_005) is underconnected as a hub.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add mineral catalysts (e.g., clays) for Strecker steps and clarify HCN source"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.78,
+        "feedback": "Formamide stabilization (rxn_004) aligns with Green et al. (2023), but formamide-rich environments are not explicitly justified. Pathway coherence reduced by reliance on surface-to-biochemical transitions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Clarify formamide geochemical source and hydrolysis conditions"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.88,
+        "feedback": "Pyridoxal-enhanced transamination (rxn_006) is strongly supported by Schlikker et al. (2024) under Ni\u2070 catalysis. Links hydrothermal and biochemical phases effectively.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.7,
+        "feedback": "Enantioselective adsorption (rxn_007) on calcite is plausible (Hazen et al., 2001) but produces weak enantiomeric excess (<1 kcal/mol bias). Requires amplification steps not included.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add iterative adsorption cycles or crystallization to amplify L-alanine"
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.82,
+    "network_feedback": "Network integrates key literature-supported routes (hydrothermal, Strecker, transamination) with minor gaps. Strengths: Pyruvate hub, biochemical transamination. Weaknesses: Underconnected acetaldehyde hub, weak enantioselection. Approved due to P1/P2/P4 validity.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

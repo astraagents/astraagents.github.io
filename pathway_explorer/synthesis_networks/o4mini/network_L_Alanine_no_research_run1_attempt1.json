@@ -1,0 +1,803 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate hydrothermal CO2 fixation and surface catalytic chemistry to generate pyruvate hub via multiple routes, then diversify amination pathways\u2014including reductive amination and Strecker synthesis\u2014to converge on L-alanine; interconnect environments by feeding hydrothermal products into surface and biochemical stages.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3COO-",
+        "iupac_name": "acetate",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H3O3-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine nitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Hydride transfer to CO2 on Fe-S cluster surfaces",
+        "reasoning": "Initial step in reductive acetyl-CoA analog pathway, greigite catalyzed CO2 reduction"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to acetate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "pH ~9"
+        },
+        "mechanism": "Fischer\u2013Tropsch-type C\u2013C coupling and hydrogenation",
+        "reasoning": "Mineral-catalyzed chain elongation from formate to acetate"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Carbonyl coupling to pyruvate",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "greigite, magnetite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Sequential carbon addition and reduction",
+        "reasoning": "Acetate carboxylation under vent-like conditions yields \u03b1-keto acid hub"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Pyruvate decarboxylation to acetaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2, magnetite",
+          "aqueous": false,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic decarboxylation via radical intermediates",
+        "reasoning": "Surface UV/TiO2 drives CO2 release from pyruvate to give acetaldehyde"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of alanine nitrile",
+        "inputs": [
+          "mol_011",
+          "mol_007",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite, borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of NH3 and HCN to aldehyde",
+        "reasoning": "Clay- and borate-stabilized \u03b1-aminonitrile formation under plausible prebiotic conditions"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of alanine nitrile",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydration to amino acid",
+        "reasoning": "Spontaneous hydrolysis yields L-alanine and regenerates ammonia"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of pyruvate",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "acidic"
+        },
+        "mechanism": "Direct hydride addition and imine reduction on FeS",
+        "reasoning": "Mackinawite catalyzes \u03b1-keto acid amination, forming alanine"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Fischer\u2013Tropsch synthesis of acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite, pyrite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type"
+        },
+        "mechanism": "CO hydrogenation to aldehyde",
+        "reasoning": "Metal-sulfide surfaces drive CO conversion to C2 aldehydes"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Surface reductive amination on molybdenite",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Mineral-surface-mediated imine formation and reduction",
+        "reasoning": "Molybdenite supports amination of \u03b1-keto acids under prebiotic surface conditions"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrothermal Strecker-like nitrile synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite, pyrite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Fe-S-catalyzed addition of NH3 and HCN to keto acid",
+        "reasoning": "Surface of pyrite/greigite can generate \u03b1-aminonitriles directly from pyruvate"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Clay-catalyzed reductive amination",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Adsorption-mediated imine reduction",
+        "reasoning": "Montmorillonite enhances imine formation and selective reduction to amino acids"
+      },
+      {
+        "id": "rxn_012",
+        "name": "CO2 reduction to CO",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "alkaline"
+        },
+        "mechanism": "CO2 electro-reduction on Fe-S surfaces",
+        "reasoning": "Serpentinization analogue produces CO as key C1 feedstock"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Deep-sea reductive amination route",
+        "description": "Sequential CO2 fixation to pyruvate in vents, then direct amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal pyruvate to alanine on clay",
+        "description": "Fix CO2 to pyruvate, transfer to surface for clay-mediated amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Fischer\u2013Tropsch Strecker surface",
+        "description": "Produce CO and acetaldehyde hydrothermally, then surface Strecker.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal keto-nitrile pathway",
+        "description": "Generate pyruvate in vents, synthesize nitrile then hydrolyze.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface molybdenite reductive amination",
+        "description": "Produce pyruvate then aminate on molybdenite.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Direct surface decarboxylation\u2013Strecker",
+        "description": "Pyruvate decarboxylation on UV surface then Strecker/hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "FT decarboxylation Strecker",
+        "description": "CO-derived acetaldehyde, UV decarboxylation bypass, then Strecker.",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Nitrile shortcut",
+        "description": "Direct Strecker-like nitrile from pyruvate in vent then hydrolysis.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Single-step hydrothermal amination",
+        "description": "Pyruvate to alanine in vents via mackinawite.",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Single-step surface amination",
+        "description": "Pyruvate to alanine on montmorillonite under wet-dry.",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_010",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Deep-sea hydrothermal reductive amination is chemically plausible and coherent, but lacks environmental transition to surface/biochemical stages.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consider adding a mineral surface step for improved realism in environmental progression."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.7,
+          "rxn_011": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Hydrothermal production of pyruvate feeding a clay-catalyzed surface amination is sound and well\u2010connected.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify clay type and pH conditions for clay-catalyzed reductive amination."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_012": 0.9,
+          "rxn_008": 0.8,
+          "rxn_005": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Excellent integration of hydrothermal FT chemistry, surface Strecker, and biochemical hydrolysis. Highly plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "None; strong pathway with realistic conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.7,
+          "rxn_010": 0.7,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Fully hydrothermal keto-nitrile route is plausible, though hydrothermal nitrile synthesis (rxn_010) is less established.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide experimental precedent or mineral catalyst for hydrothermal nitrile formation."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Strong hydrothermal-to-surface progression via molybdenite-catalyzed reductive amination.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail molybdenite surface conditions (pH, temperature) to strengthen realism."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_004": 0.7,
+          "rxn_005": 0.85
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.4,
+        "feedback": "Generates alanine nitrile but lacks hydrolysis to L-alanine. Incomplete for target production.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add a nitrile hydrolysis step (rxn_006) to yield L-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_012": 0.9,
+          "rxn_008": 0.8,
+          "rxn_004": 0.7,
+          "rxn_005": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.49,
+        "feedback": "Misuses decarboxylation step (rxn_004) on acetaldehyde pathway. Sequence is inconsistent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace decarboxylation (rxn_004) with correct ketone formation or remove it entirely."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.7,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.7,
+        "feedback": "Assumes pyruvate availability without generation step; coherence suffers.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include pyruvate production (e.g., rxn_003) prior to nitrile formation."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Single-step hydrothermal amination is appealing but ignores pyruvate genesis. Incomplete network context.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add upstream pyruvate synthesis steps (rxn_001\u2013rxn_003)."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.63,
+        "feedback": "Surface molybdenite amination is feasible but isolated; lacks precursor supply.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate pyruvate formation sequence before rxn_009."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.71,
+    "network_feedback": "The network is well-connected with multiple convergent hubs and diverse routes to L-alanine. Key hydrothermal and surface transitions are defined, though some pathways lack precursor steps or misapply reactions. Supplement missing precursors and clarify catalysts to strengthen weaker routes.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

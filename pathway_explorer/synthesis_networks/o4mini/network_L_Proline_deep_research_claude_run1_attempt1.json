@@ -1,0 +1,769 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Integrate four literature\u2010established abiotic routes\u2014Miller\u2013Urey spark discharge, Patel et al. cyanosulfidic photochemistry, Vogel & Davis glutamate cyclization, Or\u00f3 HCN oligomerization\u2014plus auxiliary thermal transformations in hydrothermal vents to generate redundant, convergent pathways via three hub intermediates (HCN, \u03b1-ketoglutarate, glutamate) across Hydrothermal, Surface, and Biochemical settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H7NO3",
+        "iupac_name": "5-oxo-2-pyrrolidinecarbaldehyde",
+        "common_name": "glutamic-\u03b3-semialdehyde",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H7NO3",
+        "iupac_name": "\u0394\u00b9-pyrroline-5-carboxylic acid",
+        "common_name": "P5C",
+        "inchi": "InChI=1S/C18H24N6O/c1-11-5-4-6-12(9-11)22-17-13(16(20)25)10-21-18(24-17)23-15-8-3-2-7-14(15)19/h4-6,9-10,14-15H,2-3,7-8,19H2,1H3,(H2,20,25)(H2,21,22,23,24)/t14-,15+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H6N2O",
+        "iupac_name": "2-(cyanomethylamino)acetonitrile",
+        "common_name": "\u03b1-aminonitrile",
+        "inchi": "InChI=1S/C4H5N3/c5-1-3-7-4-2-6/h7H,3-4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H9NO2",
+        "iupac_name": "(S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-Proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Miller\u2013Urey spark discharge",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "electric discharge"
+        },
+        "mechanism": "electric spark drives radical formation and Strecker-type aminations",
+        "reasoning": "Miller & Urey (1972) detected proline in spark discharge experiments; montmorillonite aids adsorption and reaction concentration (Ferris et al. 1996)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanosulfidic \u03b1-hydroxythioamide formation",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV irradiation, Cu(I)/Cu(II) cycling"
+        },
+        "mechanism": "HCN addition and H\u2082S incorporation via photoredox",
+        "reasoning": "Patel et al. (2015) 'movement c' yields \u03b1-hydroxythioamide under UV\u2009+\u2009Cu cycle; TiO\u2082 concentrates and channels UV energy"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Thioamide cyclization to thiolactam",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "photochemical cyclization and deoxygenation",
+        "reasoning": "Patel et al. (2015) UV drives ring closure of hydroxythioamide to \u03b3-butyrothiolactam"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Photoreductive HCN addition",
+        "inputs": [
+          "mol_010",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "radical-mediated C\u2013C bond formation",
+        "reasoning": "Patel et al. (2015) photoreduction plus HCN yields \u03b1-aminonitrile precursor"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Aminonitrile hydrolysis to proline",
+        "inputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": "true",
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "nitrile hydrolysis under dehydrative conditions",
+        "reasoning": "Patel et al. (2015) hydrolysis of aminonitrile yields proline; phosphate minerals catalyze hydrolysis (Ross & Deamer 2016)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive amination of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": "true",
+          "other": "H\u2082-rich, pH\u20099"
+        },
+        "mechanism": "FeS\u2082-mediated electron transfer and Schiff base formation",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (2003) reductive amination of \u03b1-keto acids to amino acids on pyrite surfaces"
+      },
+      {
+        "id": "rxn_007",
+        "name": "\u03b3-Carboxyl reduction to GSA",
+        "inputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": "true",
+          "other": "H\u2082S reductant"
+        },
+        "mechanism": "selective reduction of \u03b3-carboxyl to aldehyde",
+        "reasoning": "Vogel & Davis (1952) spontaneous reduction of glutamate to GSA aided by FeS minerals"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Spontaneous cyclization to P5C",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "neutral pH"
+        },
+        "mechanism": "intramolecular imine formation",
+        "reasoning": "Vogel & Davis (1952) GSA cyclizes non-enzymatically to \u0394\u00b9-pyrroline-5-carboxylic acid"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reduction of P5C to proline",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": "true",
+          "other": "H\u2082 reductant"
+        },
+        "mechanism": "imine reduction to secondary amine",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1998) reduction of cyclic imines on FeS surfaces yields amino acids"
+      },
+      {
+        "id": "rxn_010",
+        "name": "HCN tetramerization to DAMN",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "323K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "cyanide concentration"
+        },
+        "mechanism": "oligomerization of HCN via nucleophilic addition",
+        "reasoning": "Or\u00f3 (1961) HCN oligomerization on clay surfaces yields diaminomaleonitrile"
+      },
+      {
+        "id": "rxn_011",
+        "name": "DAMN conversion to hydantoin and proline",
+        "inputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "struvite",
+          "aqueous": "true",
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "polymer hydrolysis and cyclization",
+        "reasoning": "Ruiz-Bermejo et al. (2013) hydantoin intermediates hydrolyze to amino acids including proline"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Thermal decarboxylation of arginine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "613K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": "false",
+          "other": "dry heating"
+        },
+        "mechanism": "loss of carboxyl group via thermal decarboxylation",
+        "reasoning": "Vallentyne (1968) proline identified as degradation product of arginine under hydrothermal conditions"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Miller\u2013Urey direct route",
+        "description": "Electric discharge directly yields proline among other amino acids",
+        "reaction_sequence": [
+          "rxn_001"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic four\u2010step route",
+        "description": "HCN/H\u2082S photochemistry builds pyrrolidine ring via thioamide and thiolactam",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Glutamate\u2010GSA cyclization",
+        "description": "Reductive amination of \u03b1-ketoglutarate feeds spontaneous cyclization to P5C",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "HCN oligomerization route",
+        "description": "HCN tetramerizes to DAMN then hydrolyzes to proline",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Arginine thermal conversion",
+        "description": "Arginine decarboxylates to proline under dry\u2010heat hydrothermal conditions",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface\u2010glutamate shortcut",
+        "description": "Glutamate from hydrothermal vents migrates to surface for cyclization step",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cross\u2010environment glutamate route",
+        "description": "\u03b1-Ketoglutarate formed in hydrothermal vents undergoes amination on pyrite then cycles in surface pools",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hybrid cyanosulfidic\u2010oligomerization",
+        "description": "HCN pool feeds both cyanosulfidic thiolactam and DAMN pathways concurrently",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Miller spark plus HCN oligomerization",
+        "description": "Spark\u2010discharge HCN feeds DAMN proline route",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Integrated metabolic convergence",
+        "description": "Hydrothermal \u03b1-ketoglutarate and surface cyanosulfidic intermediates converge to amplify proline yield",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_014"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_015"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_012",
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Classic Miller\u2013Urey spark discharge route is well supported by literature for minor proline formation, though yields are low and surface\u2010only progression limits integration.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify expected proline yield and consider mineral surface catalysis to boost concentration."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.75,
+          "rxn_004": 0.8,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Cyanosulfidic four\u2010step route aligns well with Patel et al. 2015, providing a mechanistically robust photochemical path to proline.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify mineral or Cu(I)/Cu(II) cycling conditions to match original protocol."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_007": 0.8,
+          "rxn_008": 0.9,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.74,
+        "feedback": "Glutamate\u2192GSA\u2192P5C cascade is literature\u2010supported, but rxn_009 misassigns \u03b1-KG as reductant instead of Fe2+/H2 or mineral catalyst.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Revise P5C reduction step to use Fe2+ or H2S-driven mineral-mediated reduction."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_010": 0.7,
+          "rxn_011": 0.6
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "HCN oligomerization to DAMN is plausible, but direct conversion of hydantoin to proline under surface conditions lacks strong experimental support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify acid hydrolysis and heating conditions or include mineral catalysts for hydantoin ring contraction."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_012": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.48,
+        "feedback": "Thermal decarboxylation of arginine is mischaracterized: mol_008 is glutamate, not arginine; reaction identity needs correction.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Include arginine formation pathway and correct reactant identity for decarboxylation to proline."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Pathway definition is unclear; reaction mapping is missing.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify the exact sequence of reactions and intermediates."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Cross\u2010environment route not clearly delineated; mixing of steps needs clarification.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Define hydrothermal vs biochemical transitions explicitly and list reactions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Hybrid cyanosulfidic\u2010oligomerization pathway lacks detailed steps; convergence logic is present but needs specification.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Break down which photochemical and oligomerization reactions are used."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Miller spark plus HCN oligomerization is conceptually interesting but reaction sequence is undefined.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Provide the list of reactions and conditions for each step."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Integrated metabolic convergence pathway needs explicit mapping of four steps.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail which literature routes are combined and how intermediates flow."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.65,
+    "network_feedback": "The network successfully integrates multiple independent prebiotic routes and features proper hub connectivity around HCN, \u03b1-KG, and glutamate. However, several individual reactions need correction or clarification to match literature mechanistic details, and the mapping for advanced hybrid pathways is incomplete. Overall, the topology is sound, but reaction-level accuracy must be improved.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

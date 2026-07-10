@@ -1,0 +1,397 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "Integrated network combining Strecker synthesis (Surface), hydrothermal pathways (Hydrothermal), and cyanosulfidic protometabolism (Surface) with environmental interconnection. Key hubs: formaldehyde, glyoxylate, and HCN.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH\u2082O",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2082H\u2084N\u2082",
+        "iupac_name": "Aminoacetonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2082H\u2085NO\u2082",
+        "iupac_name": "Glycine",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2082H\u2084O\u2083",
+        "iupac_name": "Glycolic acid",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O3/c3-1-2(4)5/h3H,1H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2082H\u2082O\u2083",
+        "iupac_name": "Glyoxylic acid",
+        "common_name": "Glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2082H\u2083NO",
+        "iupac_name": "Glyconitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H\u2082O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker Aminonitrile Formation",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH 7-9"
+        },
+        "mechanism": "Aldehyde + HCN + NH\u2083 \u2192 aminonitrile via Schiff base formation",
+        "reasoning": "Strecker synthesis pathway (Huber & Wachtershauser, 1997; Sources 6942, 11365)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminonitrile Hydrolysis",
+        "inputs": [
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Hydrolysis"
+        },
+        "mechanism": "Aminonitrile hydrolysis to glycine",
+        "reasoning": "Key Strecker pathway completion (Sources 10835, 6957)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal Glycolic Acid Formation",
+        "inputs": [
+          "mol_001",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Al-rich smectite",
+          "aqueous": true,
+          "other": "Alkaline pH"
+        },
+        "mechanism": "Formaldehyde oxidation and carboxylation",
+        "reasoning": "Hydrothermal carbon fixation (Sources 13497, 13450)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glycolic Acid Amination",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Al-rich smectite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Al-rich smectite",
+          "aqueous": true
+        },
+        "mechanism": "Reductive amination to glycine",
+        "reasoning": "Thermal amination pathway (Sources 2608, 11370)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanosulfidic Glyconitrile Formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "HCN + formaldehyde \u2192 glyconitrile polymerization",
+        "reasoning": "Cyanosulfidic protometabolism (Sources 9376, 21196)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glyconitrile Hydrolysis",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Nitrile \u2192 carboxyl group conversion",
+        "reasoning": "Cyanosulfidic pathway completion (Sources 9376)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive Amination of Glyoxylate",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "H\u2082 atmosphere"
+        },
+        "mechanism": "Glyoxylate + NH\u2083 \u2192 glycine via FeS catalysis",
+        "reasoning": "Iron-sulfur world chemistry (Sources 9396)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Classic Strecker Pathway",
+        "description": "Formaldehyde + HCN + NH\u2083 \u2192 glycine via aminonitrile",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Carbon Fixation",
+        "description": "Formaldehyde \u2192 glycolic acid \u2192 glycine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic Protometabolism",
+        "description": "HCN + formaldehyde \u2192 glyconitrile \u2192 glyoxylate \u2192 glycine",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic Strecker pathway is well-supported by literature. Reactions are chemically sound and conditions align with prebiotic surface environments.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal glycolic acid formation is plausible, but amination step (rxn_004) lacks explicit catalysts (e.g., Al-rich smectites) noted in literature. Conditions for hydrothermal \u2192 surface transitions are realistic.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., Al-smectites) for amination."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.8,
+          "rxn_006": 0.7,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Glyconitrile hydrolysis (rxn_006) and reductive amination (rxn_007) lack explicit reductants (e.g., Fe(OH)\u2082) and mineral catalysts. Environmental transitions are weakly justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add reducing agents (e.g., Fe-based minerals) to rxn_007.",
+          "Clarify glyoxylate-to-glycine mechanism."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates key pathways (Strecker, hydrothermal) with environmental transitions but has weaknesses: (1) HCN (mol_002) and glyoxylate (mol_007) are under-connected (degree < 3), (2) Missing reductants/mineral catalysts in cyanosulfidic pathway, (3) Limited alignment with literature on spatiotemporal separation requirements. Strengths: Convergent pathways, valid Strecker/hydrothermal routes, and target achievement.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

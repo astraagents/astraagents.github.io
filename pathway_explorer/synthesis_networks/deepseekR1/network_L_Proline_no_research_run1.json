@@ -1,0 +1,386 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Convergent synthesis through hydrothermal carbon fixation, surface amino acid formation, and biochemical cyclization. Key hubs (pyruvate, \u03b1-ketoglutarate, glutamate) connect environments using Fe-S minerals and clays.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O2",
+        "iupac_name": "Formic acid",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H3O3\u207b",
+        "iupac_name": "Pyruvate",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H4O5\u00b2\u207b",
+        "iupac_name": "2-Oxopentanedioate",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8NO4\u207b",
+        "iupac_name": "Glutamate",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO3",
+        "iupac_name": "Glutamic semialdehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9NO3/c6-4(2-1-3(7)8)5(9)10/h4H,1-2,6H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO2",
+        "iupac_name": "L-Proline",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 hydrogenation",
+        "reasoning": "Greigite's [Fe\u2084S\u2084] clusters enable CO\u2082 reduction (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe\u2083O\u2084)"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "High",
+          "catalyst": "Magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation",
+        "reasoning": "Magnetite catalyzes formate condensation (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate carboxylation",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "High",
+          "catalyst": "FeS",
+          "aqueous": true
+        },
+        "mechanism": "CO\u2082 fixation via FeS-mediated carboxylation",
+        "reasoning": "FeS surfaces enable \u03b1-keto acid elongation (Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination to glutamate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Greigite",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 incorporation via surface-bound intermediates",
+        "reasoning": "Fe-S minerals catalyze reductive amination (Huber & W\u00e4chtersh\u00e4user, 2003)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface transamination",
+        "inputs": [
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": false,
+          "other": "Dry phase"
+        },
+        "mechanism": "Clay-catalyzed amino group transfer",
+        "reasoning": "Montmorillonite enables non-enzymatic transamination (Bujd\u00e1k & Rode, 1999)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glutamate reduction",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "FeS-mediated reductive deamination",
+        "reasoning": "Fe\u00b2\u207a reduces glutamate to semialdehyde (Kitadai et al., 2017)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyclization to proline",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": false,
+          "other": "Dehydration"
+        },
+        "mechanism": "Clay-template intramolecular cyclization",
+        "reasoning": "Surface confinement enables 5-membered ring formation (Frenkel-Pinter et al., 2020)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal core pathway",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 \u03b1-ketoglutarate \u2192 glutamate \u2192 proline",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface recycling pathway",
+        "description": "Pyruvate/glutamate transamination maintains \u03b1-ketoglutarate pool",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.7,
+          "rxn_003": 0.65,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal core pathway has plausible CO\u2082 fixation and reductive amination steps, but pyruvate carboxylation to \u03b1-ketoglutarate (rxn_003) lacks abiotic precedent. Formate-to-pyruvate (rxn_002) requires mineral catalysis details.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Clarify abiotic mechanism for rxn_003 (e.g., specify Fe-S catalysts)",
+          "Add intermediates for formate-to-pyruvate conversion"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.8,
+          "rxn_007": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Surface/biochemical steps achieve proline synthesis, with strong cyclization (rxn_007). Surface transamination (rxn_005) needs justification for glycolaldehyde production. Glutamate reduction (rxn_006) requires reducing agent specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Add clay mineral catalysis details for rxn_005",
+          "Specify reducing agents for rxn_006 (e.g., H\u2082S/FeS)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.78,
+    "network_feedback": "Network has valid hubs (pyruvate, \u03b1-ketoglutarate) and environmental flow, but key hydrothermal reactions lack mechanistic detail. Surface recycling pathway (P2) achieves target but requires stronger abiotic justification for transamination.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.780"
+}

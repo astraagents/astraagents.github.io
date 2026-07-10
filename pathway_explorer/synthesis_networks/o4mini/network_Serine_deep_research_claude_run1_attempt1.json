@@ -1,0 +1,772 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Divergent-convergent network leveraging hydrothermal CO\u2082 reduction to formate and formaldehyde feeding surface formose and cyanosulfidic photochemistry to produce glycolaldehyde, which undergoes Strecker synthesis and hydrolysis to serine, augmented by direct spark\u2010discharge, ice\u2010photochemistry, and impact\u2010shock routes to yield serine in a biochemical stage.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H4N\u00b7O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serinonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "CH3OH",
+        "iupac_name": "methanol",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4O/c1-2/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_015",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO2 reduction by H2 on Fe\u2083S\u2084 surface",
+        "reasoning": "Santos-Carballal et al. (2018)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "speculative formate hydrogenation to HCHO"
+        },
+        "mechanism": "Hydrogenation of formate to methanal",
+        "reasoning": "Speculative extension to connect hydrothermal formate to surface formaldehyde"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose condensation to glycolaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "basic pH"
+        },
+        "mechanism": "Aldol condensation of formaldehyde",
+        "reasoning": "Breslow (1959)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyanosulfidic glycolaldehyde formation",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Cu(I)/Cu(II) photoredox reductive homologation",
+        "reasoning": "Patel et al. (2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of serinonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_011",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "mildly basic pH"
+        },
+        "mechanism": "Imine formation and HCN addition",
+        "reasoning": "Miller & Van Trump (1981)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of serinonitrile to serine",
+        "inputs": [
+          "mol_008",
+          "mol_015",
+          "mol_015"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "neutral pH hydrolysis"
+        },
+        "mechanism": "Nitrile hydrolysis to amide then acid",
+        "reasoning": "Miller & Van Trump (1981); Magrino et al. (2021)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Spark\u2010discharge Strecker synthesis",
+        "inputs": [
+          "mol_014",
+          "mol_012",
+          "mol_002",
+          "mol_011",
+          "mol_015"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "spark discharge"
+        },
+        "mechanism": "In situ generation of HCN and aldehydes followed by Strecker",
+        "reasoning": "Ring et al. (1972)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Miller\u2010Urey reanalysis amino acid formation",
+        "inputs": [
+          "mol_010",
+          "mol_011",
+          "mol_002",
+          "mol_015"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "spark discharge with volcanic gases"
+        },
+        "mechanism": "Strecker condensation in electric discharge",
+        "reasoning": "Johnson et al. (2008)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Impact shock amino acid synthesis",
+        "inputs": [
+          "mol_011",
+          "mol_013",
+          "mol_015"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron",
+          "olivine"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": "true",
+          "other": "impact shock simulation"
+        },
+        "mechanism": "Shock\u2010induced radical chemistry",
+        "reasoning": "Furukawa et al. (2015)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Cyanosulfidic Strecker precursor formation",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "molybdenite",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Direct serinonitrile formation from HCN and H2S",
+        "reasoning": "Patel et al. (2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Formose\u2010Strecker surface route",
+        "description": "Surface formose of formaldehyde to glycolaldehyde followed by Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic glycolaldehyde Strecker",
+        "description": "Photoredox homologation of HCN to glycolaldehyde then Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal\u2010formose Strecker",
+        "description": "Hydrothermal CO\u2082\u2192formate\u2192formaldehyde feeds surface formose and Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal\u2010cyanosulfidic hybrid",
+        "description": "Hydrothermal CO\u2082 reduction then cyanosulfidic glycolaldehyde and Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Spark\u2010discharge direct route",
+        "description": "Spark discharge generation of precursors yields serine in one step",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Miller-Urey reanalysis route",
+        "description": "Modern reanalysis of spark discharge produces serine directly",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Impact\u2010shock synthesis",
+        "description": "High-energy impact generates serine in ocean water simulations",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct cyanosulfidic Strecker",
+        "description": "HCN and H\u2082S produce serinonitrile then hydrolysis",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Formose-cyanosulfidic hybrid",
+        "description": "Formose glycolaldehyde then direct cyanosulfidic Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Mixed cyanosulfidic route",
+        "description": "Photochemical and Strecker steps combining two cyanosulfidic processes",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic surface Strecker route from formose glycolaldehyde through am\u012bnonitrile hydrolysis is well supported by literature and chemically sound.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanosulfidic formation of glycolaldehyde followed by Strecker and hydrolysis aligns with Sutherland network, though catalysts for rxn_004 should be detailed.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify photoredox catalysts (Cu(I)/Cu(II)) or mineral mediators for rxn_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal CO2 reduction into formose feed is plausible but formaldehyde stabilities and vent conditions need clarification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Detail mineral catalysts and temperatures for formate hydrogenation (rxn_002)",
+          "Assess formaldehyde stability under vent conditions"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_004": 0.8,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Mixed hydrothermal-cyanosulfidic route is conceptually sound but requires clear environmental transitions and catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Define transition from hydrothermal to surface for rxn_004",
+          "Cite specific metal sulfide catalysts"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.55,
+        "feedback": "Aggregated spark-discharge step obscures key intermediates; mechanistic details lacking.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Break rxn_007 into HCN and aldehyde generation then Strecker",
+          "Clarify energy input and by-products"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Miller-Urey reanalysis route is supported by modern analyses showing serine yields in spark experiments.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.3
+        },
+        "chemical_feasibility": 0.3,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.45,
+        "feedback": "Impact-shock reaction omits carbon source and key reactants; not chemically balanced.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Include CO2 or HCN as carbon sources",
+          "Specify impact energies and mineral analogs"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Direct cyanosulfidic Strecker precursor formation needs mechanistic elaboration.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Detail formation of serinonitrile from glycolaldehyde rather than methanol",
+          "Add catalytic context"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_010": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Formose to cyanosulfidic hybrid needs clearer connection between glycolaldehyde and direct nitrile step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Replace rxn_010 with standard Strecker (rxn_005)",
+          "Clarify catalyst and mechanism"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_010": 0.6,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Mixed cyanosulfidic route plausible but direct methanol-based nitrile formation is under-specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Detail Cu-photoredox conditions or mineral catalysts",
+          "Consider glycolaldehyde input"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network presents multiple well-connected routes to serine, especially surface Strecker and cyanosulfidic pathways aligning with literature. Hydrothermal and formose integration is solid, but direct aggregated spark and impact reactions require mechanistic detail. Strengthen catalytic contexts and environmental transitions for weaker steps.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

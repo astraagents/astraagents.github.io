@@ -1,0 +1,826 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The synthesis network for arginine follows the cyanosulfidic pathway for building the carbon skeleton via acrylonitrile homologation and guanidinylation, integrated with post-synthetic modification of ornithine using cyanamide. Hydrothermal environments provide NH3 via nitrogen reduction, feeding into surface photoredox chemistry in shallow-sea vents for key intermediates, with biochemical assembly completing the monomer. Multiple convergent routes via ornithine and direct aminonitrile hydrolysis ensure redundancy, grounded in systems chemistry.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H3N",
+        "iupac_name": "prop-2-enenitrile",
+        "common_name": "acrylonitrile",
+        "inchi": "InChI=1S/C3H3N/c1-2-3-4/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H6N2",
+        "iupac_name": "3-aminopropanenitrile",
+        "common_name": "\u03b2-aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c4-2-1-3-5/h1-2,4H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2N2",
+        "iupac_name": "cyanamide",
+        "common_name": "cyanamide",
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H8N4",
+        "iupac_name": "3-guanidinopropanenitrile",
+        "common_name": "guanidinated \u03b2-aminopropionitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H9N5O",
+        "iupac_name": "hemiaminal intermediate",
+        "common_name": "hemiaminal 37",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H13N5",
+        "iupac_name": "2-amino-5-guanidinopentanenitrile",
+        "common_name": "arginine \u03b1-aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H12N2O2",
+        "iupac_name": "(2S)-2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H13N3O3",
+        "iupac_name": "(2S)-2-amino-5-(carbamoylamino)pentanoic acid",
+        "common_name": "citrulline",
+        "inchi": "InChI=1S/C6H13N3O3/c7-4(5(10)11)2-1-3-9-6(8)12/h4H,1-3,7H2,(H,10,11)(H3,8,9,12)/t4-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C6H14N4O2",
+        "iupac_name": "(2S)-2-amino-5-(diaminomethylideneamino)pentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Acetylene-HCN cross-coupling to acrylonitrile",
+        "inputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "copper sulfide"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)",
+          "aqueous": true,
+          "other": "shallow-sea vent mixing"
+        },
+        "mechanism": "Cu(I)-catalyzed C-C bond formation via cross-coupling",
+        "reasoning": "Establishes the three-carbon tether for arginine skeleton (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Ammonia addition to acrylonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2 photocatalysis",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Nucleophilic addition of NH3 to nitrile-activated double bond",
+        "reasoning": "Generates \u03b2-aminopropionitrile as key hub (Patel et al., 2015; cyanosulfidic paradigm)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Guanidinylation of \u03b2-aminopropionitrile",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "clay concentration",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Nucleophilic attack of amine on cyanamide carbon",
+        "reasoning": "Introduces guanidino group using prebiotic cyanamide (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrolysis to \u03b2-aminopropionaldehyde and hemiaminal formation",
+        "inputs": [
+          "mol_007",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate stabilization",
+          "aqueous": true,
+          "other": "UV-driven"
+        },
+        "mechanism": "Partial hydrolysis followed by hemiaminal trapping with cyanamide",
+        "reasoning": "Stable hemiaminal intermediate prevents aldehyde reactivity (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanohydrin formation and sulfidolysis",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "H2S addition",
+          "aqueous": true,
+          "other": "dark then UV irradiation"
+        },
+        "mechanism": "HCN addition to carbonyl, then H2S sulfidolysis and photoreduction to aminonitrile",
+        "reasoning": "Homologation via Kiliani-Fischer analog with photoredox (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of \u03b1-aminonitrile to arginine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Hydrolytic cleavage of nitrile to carboxylic acid",
+        "reasoning": "Final step to yield free arginine monomer (speculative extension of cyanosulfidic pathway; Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "HCN oligomerization to ornithine",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "clay catalysis",
+          "aqueous": true,
+          "other": "spark-discharge simulation"
+        },
+        "mechanism": "Oligomerization and reductive cyclization to amino acid",
+        "reasoning": "Ornithine formed in HCN solutions and spark experiments (Miller re-analysis; meteorite detection)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Guanidinylation of ornithine to arginine",
+        "inputs": [
+          "mol_010",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "neutral to alkaline pH"
+        },
+        "mechanism": "Primary amine attacks cyanamide electrophilic carbon",
+        "reasoning": "Post-synthetic modification in polypeptides or monomers (recent deconstruction studies; statistical conversion)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Carbamoylation of ornithine to citrulline",
+        "inputs": [
+          "mol_010",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "carbamoyl from cyanamide",
+          "aqueous": true,
+          "other": "prebiotic urea cycle analog"
+        },
+        "mechanism": "Carbamoylation of side-chain amine",
+        "reasoning": "Protometabolic interconversion (urea cycle intermediates; citrulline as arginine precursor)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Deamination of citrulline to arginine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal"
+        },
+        "mechanism": "Amine exchange or reduction",
+        "reasoning": "Interconversion in protometabolic networks (urea cycle; speculative prebiotic extension)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Nitrogen reduction to ammonia",
+        "inputs": [
+          "N2",
+          "H2"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "Fe3S4",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Catalytic reduction on mineral surfaces",
+        "reasoning": "Provides NH3 from serpentinization-derived H2 (metal sulfide catalysis; nitrogen reduction)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "H2S production via serpentinization",
+        "inputs": [
+          "olivine",
+          "H2O"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "Fe3O4",
+          "aqueous": true,
+          "other": "rock-water interaction"
+        },
+        "mechanism": "Hydration releasing sulfides",
+        "reasoning": "Abundant H2S for sulfidolysis (serpentinization products; vent chemistry)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct cyanosulfidic to arginine",
+        "description": "Full homologation from acrylonitrile through photoredox",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic via guanidinated intermediate",
+        "description": "Guanidinylation early, then homologation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Ornithine guanidinylation route",
+        "description": "HCN to ornithine, then direct modification",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal NH3 feed to ornithine",
+        "description": "NH3 from vents to HCN oligomerization",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Citrulline intermediate route",
+        "description": "Ornithine to citrulline to arginine",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal H2S feed to cyanosulfidic",
+        "description": "Vent H2S to sulfidolysis step",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "\u03b2-Aminopropionitrile hub to arginine via ornithine",
+        "description": "Convergent at cyanamide use",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Full integrated hydrothermal-surface to citrulline",
+        "description": "NH3 and H2S to ornithine-citrulline",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_012",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Photoredox homologation shortcut",
+        "description": "Direct from hemiaminal with UV",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Ornithine from surface HCN with biochemical finish",
+        "description": "Polymerization to ornithine, then guanidinylation",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_010",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Direct cyanosulfidic pathway aligns closely with literature, using validated steps from acrylonitrile to alpha-aminonitrile hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify Cu(I) catalyst for rxn_001 in surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "Similar to P1 but emphasizes guanidinated intermediate; strong literature support for hemiaminal trapping.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify inefficiency in guanidinylation and photoredox resolution."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "Ornithine guanidinylation is well-supported as post-synthetic modification; concise and plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail HCN oligomerization mechanism for ornithine."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_011": 0.9,
+          "rxn_002": 0.95,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.87,
+        "feedback": "Integrates hydrothermal NH3 to surface ornithine; good environmental flow but ornithine step vague.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Link NH3 explicitly to HCN oligomerization conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_009": 0.4,
+          "rxn_010": 0.3
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.62,
+        "feedback": "Citrulline route problematic; cyanamide does not standardly form citrulline, and deamination step inaccurate per literature.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Replace with carbamoyl phosphate for citrulline; use biological argininosuccinate for arginine conversion."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_012": 0.85,
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Hydrothermal H2S feeds well into surface cyanosulfidic; aligns with serpentinization and vent chemistry.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts like greigite for H2S utilization."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.95,
+          "rxn_005": 0.95,
+          "rxn_007": 0.8,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hub at beta-aminopropionitrile to ornithine lacks direct link; assumes implicit homologation, reducing coherence.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add explicit reaction for chain extension from C3 to C5."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_011": 0.9,
+          "rxn_012": 0.85,
+          "rxn_007": 0.8,
+          "rxn_009": 0.4
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "Integrated to citrulline but inherits issues with rxn_009; good environmental progression otherwise.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Revise citrulline formation to match urea cycle precursors."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_004": 0.9,
+          "rxn_005": 0.95,
+          "rxn_002": 0.95,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "Photoredox shortcut via homologation supported by UV-driven steps in literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Emphasize Cu(I)/Cu(II) cycling in shallow-sea vents."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "Surface HCN to ornithine with biochemical guanidinylation; aligns with post-synthetic modification hypothesis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify surface mineral agents for HCN oligomerization."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with strong alignment to cyanosulfidic and ornithine pathways in literature; excellent environmental flow from hydrothermal to surface to biochemical. Minor issues in citrulline route reduce some pathway scores, but redundancy via multiple routes to target ensures viability. Hubs at beta-aminopropionitrile, ornithine, and cyanamide effectively converge pathways.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.850"
+}

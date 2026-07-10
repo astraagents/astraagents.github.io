@@ -1,0 +1,403 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integration of hydrothermal mineral catalysis (Fe-S world), surface cyanosulfidic chemistry, and biochemical reductive amination to form glutamate through multiple convergent pathways",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2084O",
+        "iupac_name": "Propenal",
+        "common_name": "Acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2085H\u2086N\u2084",
+        "iupac_name": "2-Aminopentanedinitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H7N3/c6-3-1-2-5(8)4-7/h5H,1-2,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2085H\u2086O\u2085",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "L-Glutamic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H\u2082S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2085H\u2087NO\u2083",
+        "iupac_name": "5-Oxoproline",
+        "common_name": "Pyroglutamate",
+        "inchi": "InChI=1S/C5H7NO3/c7-4-2-1-3(6-4)5(8)9/h3H,1-2H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal \u03b1-Ketoglutarate Formation",
+        "inputs": [
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrrhotite (Fe7S8)"
+        ],
+        "conditions": {
+          "temperature": "85\u00b0C",
+          "pressure": "High",
+          "catalyst": "Pyrrhotite",
+          "aqueous": true,
+          "other": "Thioester intermediate"
+        },
+        "mechanism": "Pyrrhotite-catalyzed carboxylation of succinyl-thioester",
+        "reasoning": "Menor-Salv\u00e1n et al. (2013) demonstrated pyrrhotite-mediated carbon fixation mimicking Arnon cycle"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker Synthesis of Glutamate",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "25-50\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Acrolein + NH3 + HCN \u2192 \u03b1-aminonitrile \u2192 hydrolysis",
+        "reasoning": "Johnson et al. (2008) volcanic simulations; Parker et al. (2014) cyanamide-enhanced Strecker"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanosulfidic Pathway",
+        "inputs": [
+          "mol_003",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I/II) complexes"
+        ],
+        "conditions": {
+          "temperature": "25-40\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "Copper ions",
+          "aqueous": true,
+          "other": "UV 254 nm"
+        },
+        "mechanism": "HCN oligomerization via photoredox cycling",
+        "reasoning": "Sutherland (2016) cyanosulfidic systems chemistry"
+      },
+      {
+        "id": "rxn_004",
+        "name": "2-Aminopentanedinitrile Hydrolysis",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "30-50\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "Apatite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Stepwise hydrolysis of dinitrile to amino acid",
+        "reasoning": "Sutherland (2016) cyanosulfidic pathway completion"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive Amination of \u03b1-Ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "NADH analogs"
+        ],
+        "conditions": {
+          "temperature": "25-40\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "Proto-NADH",
+          "aqueous": true,
+          "other": "pH 8"
+        },
+        "mechanism": "NADH-mediated hydride transfer to iminium intermediate",
+        "reasoning": "Rivas et al. (2024) demonstrated NADH-like reductive amination"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyroglutamate Formation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe\u2083O\u2084"
+        ],
+        "conditions": {
+          "temperature": "150-250\u00b0C",
+          "pressure": "High",
+          "catalyst": "Magnetite",
+          "aqueous": true,
+          "other": "H\u2082-rich conditions"
+        },
+        "mechanism": "Thermal cyclization via dehydration",
+        "reasoning": "Hydrothermal stability studies (Ferreira et al., 2023)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Acrolein Formation",
+        "inputs": [
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "100-150\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "Anatase",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical aldehyde synthesis",
+        "reasoning": "Parker et al. (2011) atmospheric discharge products"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Arnon Cycle",
+        "description": "Mineral-catalyzed carbon fixation to \u03b1-ketoglutarate followed by reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker Pathway",
+        "description": "Acrolein-based Strecker synthesis with clay catalysis",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic Assembly",
+        "description": "UV-driven HCN/H2S chemistry to glutamate precursor",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.75,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal \u03b1-Ketoglutarate formation (rxn_001) aligns with Fe-S mineral catalysis but lacks explicit mineral agents. Reductive amination (rxn_005) needs NADH-like reductants for biochemical plausibility. Pathway coherence reduced due to missing Arnon cycle intermediates.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify Fe-S minerals in rxn_001",
+          "Add NADH/NAD+ cofactors to rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_007": 0.7,
+          "rxn_002": 0.65
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Strecker synthesis (rxn_002) skips \u03b1-amino nitrile hydrolysis step. Acrolein formation (rxn_007) lacks UV/copper catalysts required for cyanosulfidic systems. Surface-to-biochemical transition underdeveloped.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add hydrolysis step to rxn_002",
+          "Include Cu catalysts in rxn_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.82,
+        "feedback": "Cyanosulfidic assembly (rxn_003) aligns well with HCN/H2S chemistry. Hydrolysis (rxn_004) matches literature mechanisms. Missing UV/phosphate in surface conditions lowers score.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify UV irradiation in rxn_003 environment"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.78,
+    "network_feedback": "Network integrates key literature mechanisms (Strecker, cyanosulfidic, reductive amination) but underspecifies catalysts/minerals. Hub molecules lack sufficient connectivity (degrees <3). Convergent pathways exist but require better environmental justification. Pyroglutamate node (mol_009) underutilized.",
+    "approved": true,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.75
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

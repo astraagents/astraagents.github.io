@@ -1,0 +1,770 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "The synthesis network integrates hydrothermal reductive amination of pyruvate, surface Strecker synthesis from acetaldehyde derived from multiple sources including decarboxylation of hydrothermal pyruvate, and cyanosulfidic pathways from HCN, with environmental interconnections via transport of intermediates like pyruvate and acetaldehyde from vents to surface pools. Homochirality towards L-alanine is achieved in biochemical stages via kinetic resolution on mineral surfaces or template-directed selection, ensuring multiple convergent pathways to the target while grounding all routes in literature-described mechanisms.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H\u2082S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH\u2083COCOOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH\u2083CHO",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH\u2083CH(NH\u2082)CN",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine nitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH\u2083CH(NH\u2082)COOH",
+        "iupac_name": "(2S)-2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH\u2083CH=NH",
+        "iupac_name": "ethanimine",
+        "common_name": "acetaldimine",
+        "inchi": "InChI=1S/C2H5N/c1-2-3/h2-3H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH\u2082=NH",
+        "iupac_name": "methanimine",
+        "common_name": "formaldimine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH\u2084",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to pyruvate on greigite",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, alkaline vent"
+        },
+        "mechanism": "Reverse methanogenesis analog: CO\u2082 hydrogenation via iron-sulfur clusters to form pyruvate",
+        "reasoning": "Greigite catalyzes CO\u2082 reduction to pyruvate in hydrothermal vents (Huber & W\u00e4chtersh\u00e4user, 1997; Iron-Sulfur World theory)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate to alanine on green rust",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "green rust"
+        ],
+        "conditions": {
+          "temperature": "343-373K",
+          "pressure": "high",
+          "catalyst": "green rust",
+          "aqueous": true,
+          "other": "pH 9-11, Fe\u00b2\u207a:Fe\u00b3\u207a 1:1"
+        },
+        "mechanism": "Ammonia forms imine with pyruvate, reduced by mixed-valence iron to alanine",
+        "reasoning": "Green rust catalyzes reductive amination of pyruvate to alanine at 70-100\u00b0C under alkaline conditions (Barge et al., simulations of hydrothermal chimneys)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Spark discharge synthesis of acetaldehyde from methane and water",
+        "inputs": [
+          "mol_012",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "electrical discharge simulating lightning"
+        },
+        "mechanism": "Oxidation and hydrolysis of methane in reducing atmosphere to aldehydes",
+        "reasoning": "Miller-Urey experiments produce acetaldehyde as precursor (Miller, 1953; classic spark discharge)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis: imine formation from acetaldehyde and ammonia",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "slightly alkaline"
+        },
+        "mechanism": "Nucleophilic addition of ammonia to carbonyl, dehydration to imine",
+        "reasoning": "First step of Strecker synthesis in aqueous prebiotic conditions (Miller, 1953; Strecker mechanism)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrocyanation to 2-aminopropanenitrile",
+        "inputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "CN\u207b nucleophilic attack"
+        },
+        "mechanism": "Cyanide addition to imine carbon",
+        "reasoning": "Core step of Strecker synthesis producing aminonitrile intermediate (Powner et al., cyanosulfidic networks; Miller re-analyses)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of aminonitrile to racemic alanine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "H\u207a/OH\u207b hydrolysis, rate-limiting"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid, releasing NH\u2083",
+        "reasoning": "Final step of Strecker yielding racemic alanine (Miller, 1953; Strecker kinetics)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Decarboxylation of pyruvate to acetaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "thermal, wet-dry cycles"
+        },
+        "mechanism": "Thermal decarboxylation releasing CO\u2082, forming enol that tautomerizes to aldehyde",
+        "reasoning": "Links hydrothermal pyruvate to surface Strecker via decarboxylation (addressing transport; computational models, AINR simulations)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyanosulfidic reductive homologation to aminopropanenitrile",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": true,
+          "other": "UV radiation, Cu(I)/Cu(II) photoredox"
+        },
+        "mechanism": "UV-driven reduction and homologation of HCN with H\u2082S to aminonitrile",
+        "reasoning": "Cyanosulfidic network produces alanine precursors (Powner, Sutherland group; UV photochemistry)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formaldimine-mediated coupling to alanine precursor",
+        "inputs": [
+          "mol_011",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "RTIP sampling conditions"
+        },
+        "mechanism": "Formaldimine reacts with acetaldehyde to form aminonitrile analog",
+        "reasoning": "Alternative to HCN in Strecker via formaldimine (thermodynamic analyses, RTIP networks)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Kinetic resolution for L-alanine enrichment on pyrite",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "UV illumination, transamination or selective adsorption"
+        },
+        "mechanism": "Asymmetric adsorption and selective reaction favoring L-enantiomer",
+        "reasoning": "Pyrite surfaces induce enantiomeric excess towards L-alanine via kinetic resolution (pyrite asymmetric catalysis studies; homochirality models)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal direct amination",
+        "description": "Pyruvate from CO\u2082 reduction directly aminated in vents",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker classic",
+        "description": "Acetaldehyde from spark to Strecker via imine and hydrocyanation",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal-surface interconnection via decarboxylation",
+        "description": "Pyruvate transported to surface, decarboxylated to acetaldehyde for Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Cyanosulfidic UV pathway",
+        "description": "HCN and H\u2082S homologation under UV to aminonitrile then alanine",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Formaldimine alternative Strecker",
+        "description": "Formaldimine couples with acetaldehyde from spark",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_009",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Volcanic spark to Strecker",
+        "description": "Similar to classic but with H\u2082S influence for higher yield",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal pyruvate to cyanosulfidic link",
+        "description": "Pyruvate decarboxylated, acetaldehyde feeds into HCN pathways",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_008",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface HCN direct to alanine via formaldimine",
+        "description": "HCN to formaldimine then to precursor",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_009",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Biochemical enrichment of hydrothermal alanine",
+        "description": "Racemic from vents enriched to L-form",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full interconnection: vents to surface to biochemical",
+        "description": "Pyruvate via decarboxylation to Strecker, then enrichment",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.93,
+        "feedback": "Direct hydrothermal pathway aligns well with literature on green rust catalysis and reductive amination, but lacks explicit homochirality step until biochemical enrichment.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral-specific conditions for green rust."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.91,
+        "feedback": "Classic Strecker synthesis matches Miller-Urey and meteoritic evidence; produces racemic alanine, requiring later resolution.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify UV or pH conditions for hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_007": 0.85,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.92,
+        "feedback": "Strong interconnection from hydrothermal pyruvate to surface Strecker via decarboxylation; decarboxylation is plausible but less emphasized in literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Cite hydrothermal stability for pyruvate transport."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.9,
+        "feedback": "Cyanosulfidic pathway directly supported by Sutherland group; short but assumes prior HCN/H2S availability.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include Cu photoredox catalysis details."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_009": 0.92,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.93,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.91,
+        "feedback": "Formaldimine-mediated aligns with RTIP sampling studies; good alternative to classic Strecker.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify formaldimine source from HCN/NH3."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.89,
+        "feedback": "Volcanic spark variant matches Miller's 1955 experiments; surface-focused with good literature support.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Emphasize H2S inclusion for meteorite alignment."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_007": 0.85,
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.91,
+        "feedback": "Links hydrothermal to cyanosulfidic; decarboxylation bridges environments effectively.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Validate decarboxylation under surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_011": 0.92,
+          "rxn_009": 0.92,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.93,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.91,
+        "feedback": "HCN via formaldimine supported by thermodynamic analyses; convergent surface route.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify formaldimine generation mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.93,
+        "feedback": "Enrichment on pyrite aligns with asymmetric catalysis literature; addresses homochirality well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Note potential D-preference and transition to L."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_007": 0.85,
+          "rxn_004": 0.95,
+          "rxn_005": 0.95,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.98,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.95,
+        "feedback": "Full interconnected pathway exemplifies Hydrothermal \u2192 Surface \u2192 Biochemical flow; highly coherent with literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Enhance justification for intermediate transport."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.93,
+    "network_feedback": "Excellent synthesis network with strong topology, feasibility, and literature alignment across Miller-Urey, Strecker, cyanosulfidic, and hydrothermal routes. Minor issues with decarboxylation plausibility, but overall robust interconnections and convergence.",
+    "approved": true,
+    "hub_quality": 0.92,
+    "convergence_quality": 0.95
+  },
+  "success": true,
+  "attempts": 2,
+  "notes": null
+}

@@ -1,0 +1,444 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Integration of hydrothermal precursor synthesis (acrolein, NH3, H2S) with surface cyanosulfidic pathway (Patel et al., 2015) to form L-Proline through pyrrolidine ring closure and nitrile hydrolysis.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": null,
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H7NO",
+        "iupac_name": "3-aminopropanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3H,1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8N2O",
+        "iupac_name": "4-amino-2-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c5-2-1-4(7)3-6/h4,7H,1-2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H7NOS",
+        "iupac_name": "3-hydroxypyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NOS/c6-3-1-2-5-4(3)7/h3,6H,1-2H2,(H,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7NS",
+        "iupac_name": "pyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NS/c6-4-2-1-3-5-4/h1-3H2,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H8N2",
+        "iupac_name": "pyrrolidine-2-carbonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8N2/c6-4-5-2-1-3-7-5/h5,7H,1-3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO2",
+        "iupac_name": "L-Proline",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4O",
+        "iupac_name": "Acrolein",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "N2",
+        "iupac_name": "Nitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "intermediate",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_h1",
+        "name": "Fischer-Tropsch acrolein synthesis",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": false,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "CO hydrogenation on magnetite surfaces",
+        "reasoning": "Magnetite-catalyzed Fischer-Tropsch synthesis produces acrolein (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_h2",
+        "name": "Hydrothermal ammonia synthesis",
+        "inputs": [
+          "mol_013",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "Nitrogen fixation"
+        },
+        "mechanism": "FeS-catalyzed Haber-Bosch-like process",
+        "reasoning": "Mackinawite enables ammonia synthesis from N2/H2 (Brandes et al., 1998)"
+      },
+      {
+        "id": "rxn_s1",
+        "name": "3-aminopropanal formation",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Michael addition"
+        },
+        "mechanism": "Clay-catalyzed ammonia addition to acrolein",
+        "reasoning": "Montmorillonite promotes 3-aminopropanal synthesis (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_s2",
+        "name": "Cyanohydrin formation",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Strecker-type reaction"
+        },
+        "mechanism": "Nucleophilic cyanide addition",
+        "reasoning": "Forms 4-amino-2-hydroxybutanenitrile (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_s3",
+        "name": "Thiolation-cyclization",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "H2S atmosphere"
+        },
+        "mechanism": "H2S-mediated ring closure",
+        "reasoning": "Constructs pyrrolidine-thione core (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_s4",
+        "name": "Reductive deoxygenation",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "elemental copper",
+          "hydrogen sulfide"
+        ],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": "Cu/H2S",
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Cu-mediated C-OH bond reduction",
+        "reasoning": "Removes hydroxyl group (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_s5",
+        "name": "Thione-to-nitrile exchange",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Cyanide displacement of thione",
+        "reasoning": "Converts sulfur to nitrile group (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_s6",
+        "name": "Nitrile hydrolysis",
+        "inputs": [
+          "mol_008",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": null
+        },
+        "mechanism": "Two-step nitrile hydrolysis",
+        "reasoning": "Final step to L-Proline (Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyano-sulfidic core pathway",
+        "description": "5-step pyrrolidine assembly from 3-aminopropanal via Patel et al. (2015)",
+        "reaction_sequence": [
+          "rxn_s2",
+          "rxn_s3",
+          "rxn_s4",
+          "rxn_s5",
+          "rxn_s6"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal precursor supply",
+        "description": "Production of acrolein and ammonia for surface chemistry",
+        "reaction_sequence": [
+          "rxn_h1",
+          "rxn_h2",
+          "rxn_s1"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_003"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_005",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_s2"
+        ],
+        "outgoing_reactions": [
+          "rxn_s3"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_s4"
+        ],
+        "outgoing_reactions": [
+          "rxn_s5"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_s1": 0.9,
+          "rxn_s2": 0.9,
+          "rxn_s3": 0.8,
+          "rxn_s4": 0.7,
+          "rxn_s5": 0.8,
+          "rxn_s6": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "P1 aligns well with Patel et al. (2015) but lacks explicit mention of elemental copper (Cu) in rxn_s4 (reductive deoxygenation), which is critical for the mechanism. Nitrile hydrolysis (rxn_s6) should specify two H2O molecules as per the literature. Thiolation-cyclization (rxn_s3) and thione-to-nitrile exchange (rxn_s5) are plausible but require H2S recycling.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_s4",
+          "rxn_s6"
+        ],
+        "suggestions": [
+          "Add Cu as a mineral agent in rxn_s4",
+          "Adjust rxn_s6 stoichiometry to include 2 H2O",
+          "Clarify H2S recycling between rxn_s3 and rxn_s5"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_h1": 0.7,
+          "rxn_h2": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal precursor synthesis (rxn_h1, rxn_h2) lacks mineral catalysts (e.g., Fe/Co for Fischer-Tropsch). Ammonia synthesis (rxn_h2) is plausible but requires validation under prebiotic hydrothermal conditions. Pathway coherence is weakened by incomplete connection to surface intermediates (e.g., 3-aminopropanal formation).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_h1"
+        ],
+        "suggestions": [
+          "Specify Fischer-Tropsch catalysts (e.g., FeS) in rxn_h1",
+          "Add a reaction linking hydrothermal NH3 to 3-aminopropanal formation"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network successfully integrates hydrothermal and cyanosulfidic pathways for L-Proline, with P1 demonstrating strong literature alignment. Key issues include missing mineral agents (Cu in reductive deoxygenation) and incomplete stoichiometry. Hydrothermal steps (P2) require catalytic details. Hub molecules (HCN, 4-amino-2-hydroxybutanenitrile) are well-connected, and convergence points are logical.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

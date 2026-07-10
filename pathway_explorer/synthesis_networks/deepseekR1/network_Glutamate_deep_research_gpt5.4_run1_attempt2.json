@@ -1,0 +1,463 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integrate hydrothermal reductive amination, surface photoredox/Strecker chemistry, and biochemical hydantoin pathways to synthesize glutamate from \u03b1-ketoglutarate and succinic semialdehyde precursors. Leverage environmental gradients and mineral catalysts for redox control.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2085H\u2086O\u2085",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2085H\u2088O\u2085",
+        "iupac_name": "2-Hydroxypentanedioic acid",
+        "common_name": "\u03b1-Hydroxyglutarate",
+        "inchi": "InChI=1S/C5H8O5/c6-3(5(9)10)1-2-4(7)8/h3,6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2084H\u2086O\u2083",
+        "iupac_name": "4-Oxobutanoic acid",
+        "common_name": "Succinic semialdehyde",
+        "inchi": "InChI=1S/C4H6O3/c5-3-1-2-4(6)7/h3H,1-2H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2086H\u2088N\u2083O\u2085P",
+        "iupac_name": "N-Phosphoro-glutamate aminonitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2087H\u2089N\u2082O\u2085",
+        "iupac_name": "5-Carboxyethyl hydantoin",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2085H\u2088N\u2082O\u2085",
+        "iupac_name": "N-Carbamoyl glutamate",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "Glutamic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "FeS_PERM Reductive Amination",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS_PERM"
+        ],
+        "conditions": {
+          "temperature": "23-25\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "FeS_PERM",
+          "aqueous": true,
+          "other": "pH 9.6"
+        },
+        "mechanism": "Electrochemical reductive amination on FeS-Fe\u2070 interfaces",
+        "reasoning": "Kitadai et al. (2019) demonstrated near-complete conversion under vent-like pH gradients"
+      },
+      {
+        "id": "rxn_002",
+        "name": "HS\u207b/UV Oxidation",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "25\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "UV 254 nm, pH 6.5"
+        },
+        "mechanism": "Photoredox oxidation via sulfate radicals",
+        "reasoning": "Ritson (2021) showed 20% \u03b1-ketoglutarate yield from \u03b1-hydroxyglutarate"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Phosphoro-Strecker Synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "25\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7"
+        },
+        "mechanism": "Neutral pH aminonitrile formation with diamidophosphate",
+        "reasoning": "Ashe et al. (2019) achieved 88% yield of N-phosphoro-aminonitrile"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aminonitrile Hydrolysis",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH-dependent hydrolysis"
+        },
+        "mechanism": "Programmable pH-driven hydrolysis",
+        "reasoning": "Ashe et al. (2019) demonstrated pH-controlled conversion to amino acids"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Bucherer-Bergs Hydantoin Formation",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "25\u00b0C \u2192 80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Staged incubation"
+        },
+        "mechanism": "Cyanide-mediated cyclization",
+        "reasoning": "Pulletikurti et al. (2022) reported 96% hydantoin formation"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydantoin Hydrolysis",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Prolonged heating"
+        },
+        "mechanism": "Ring-opening hydrolysis",
+        "reasoning": "Pulletikurti et al. (2022) achieved 21% glutamate yield"
+      },
+      {
+        "id": "rxn_007",
+        "name": "ZnS Photochemical Amination",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "ZnS"
+        ],
+        "conditions": {
+          "temperature": "25\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "ZnS",
+          "aqueous": true,
+          "other": "UV irradiation, pH 9"
+        },
+        "mechanism": "Semiconductor-mediated redox cycling",
+        "reasoning": "Wang et al. (2012) demonstrated 7.4% glutamate yield"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Spark Discharge Synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "25\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "H\u2082S atmosphere"
+        },
+        "mechanism": "Strecker-type in volcanic plumes",
+        "reasoning": "Parker et al. (2011) detected glutamate in spark discharge residues"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Ni-Catalyzed Reductive Amination",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ni/SiO\u2082-Al\u2082O\u2083"
+        ],
+        "conditions": {
+          "temperature": "22\u00b0C",
+          "pressure": "5 bar H\u2082",
+          "catalyst": "Ni catalyst",
+          "aqueous": true,
+          "other": "pH 8"
+        },
+        "mechanism": "Metal-catalyzed hydrogenation",
+        "reasoning": "Kaur et al. (2024) achieved 49% glutamate selectivity with Pd/C"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Reductive Cycle",
+        "description": "FeS_PERM-mediated amination with environmental redox cycling",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker Assembly",
+        "description": "Neutral pH phosphoro-Strecker to biochemical hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydantoin Bioprocessing",
+        "description": "Bucherer-Bergs pathway with staged hydrolysis",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal reductive cycle leverages FeS_PERM catalysis (literature-supported) but lacks explicit \u03b1-ketoglutarate regeneration logic. Competing hydroxyglutarate formation reduces target specificity.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Clarify \u03b1-ketoglutarate recycling mechanism",
+          "Add pH-gradient justification for FeS_PERM activity"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.75,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Phosphoro-Strecker synthesis (rxn_003) aligns with Ashe et al. but omits diamidophosphate (DAP) as a reactant. Hydrolysis step (rxn_004) is well-supported.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Include DAP in reactants for rxn_003",
+          "Specify neutral pH conditions for phosphoro-aminonitrile stability"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.65,
+        "feedback": "Bucherer-Bergs hydantoin formation (rxn_005) lacks cyanide as a required reactant. Pathway omits N-carbamoyl glutamate \u2192 glutamate hydrolysis step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add cyanide to rxn_005 reactants",
+          "Include explicit N-carbamoyl glutamate hydrolysis reaction"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates key literature-supported routes (reductive amination, Strecker, hydantoin) but has gaps: (1) Missing DAP/cyanide in critical reactions, (2) Incomplete hydantoin pathway, (3) Underspecified environmental transitions. Surface Strecker route (P2) is most robust. Hubs \u03b1-ketoglutarate (degree=5) and succinic semialdehyde (degree=3) meet topology criteria; \u03b1-hydroxyglutarate (degree=2) does not.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

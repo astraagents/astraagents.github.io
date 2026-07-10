@@ -1,0 +1,784 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "The synthesis network for L-Proline is constructed from literature-identified precursors and pathways, focusing on convergent routes from simple feedstocks like formaldehyde, HCN, and ammonia through Strecker-type reactions, HKG cycle intermediates like oxaloacetate, and formaldehyde addition to glycine. Hydrothermal environments produce early reductants and keto acids (e.g., pyruvate, oxaloacetate via Fe\u00b2\u207a catalysis at ~370K), surface environments enable Strecker synthesis and aminonitrile formation in tidal pools with dry-wet cycles (~300-370K, montmorillonite catalysis), and biochemical assembly achieves cyclization and enantioselection in prebiotic pools. Hubs include glycolonitrile, oxaloacetate, and glycine for redundancy. Speculative connections for cyclization are minimized, relying on experimental evidence of proline formation in reduced hydrothermal mixtures and enantioselective amplification; 10 pathways are outlined via sequence variations across environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H3N",
+        "iupac_name": "2-Iminoacetonitrile",
+        "common_name": "Glycolonitrile",
+        "inchi": "InChI=1S/C2HN2/c3-1-2-4/h3H/q+1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-Aminoacetic acid",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H4O5",
+        "iupac_name": "2-Oxobutanedioic acid",
+        "common_name": "Oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H7NO4",
+        "iupac_name": "(2S)-2-Aminobutanedioic acid",
+        "common_name": "Aspartate",
+        "inchi": "InChI=1S/C4H7NO4/c5-2(4(8)9)1-3(6)7/h2H,1,5H2,(H,6,7)(H,8,9)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO4",
+        "iupac_name": "(2S)-2-Aminopentanedioic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H7NO3",
+        "iupac_name": "(2S)-5-Oxopyrrolidine-2-carboxylic acid",
+        "common_name": "Delta1-Pyrroline-5-carboxylate",
+        "inchi": "InChI=1S/C5H7NO3/c7-4-2-1-3(6-4)5(8)9/h3H,1-2H2,(H,6,7)(H,8,9)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2S)-Pyrrolidine-2-carboxylic acid",
+        "common_name": "L-Proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH2O2",
+        "iupac_name": "Formic acid",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Formate",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Reverse water-gas shift and reduction on Fe-S clusters",
+        "reasoning": "CO2 + H2 \u2192 HCOO- on greigite surfaces in alkaline vents; foundational for carbon fixation (Huber & W\u00e4chtersh\u00e4user, 1997; Source 9376)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to Pyruvate via Fischer-Tropsch",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "H2, CO"
+        },
+        "mechanism": "Hydrogenation and carbon chain elongation on oxide surfaces",
+        "reasoning": "Fischer-Tropsch-type synthesis yields pyruvate from formate/CO2; relevant to iron-sulfur world (Source 9400; Fe\u00b2\u207a catalysis at 70\u00b0C)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glycolonitrile Formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure, tidal pools"
+        },
+        "mechanism": "Nucleophilic addition of HCN to formaldehyde",
+        "reasoning": "HCN + H2CO \u2192 glycolonitrile in cyanosulfidic pathways; key precursor (Source 9376, 16400)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker Synthesis to Glycine",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aminonitrile formation followed by hydrolysis",
+        "reasoning": "Glycolonitrile + NH3 + HCN \u2192 glycine via Strecker; classic prebiotic amino acid synthesis (Source 6940, 6942)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "HKG Cycle to Oxaloacetate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "Fe\u00b2\u207a, neutral pH"
+        },
+        "mechanism": "Condensation and reduction in proto-TCA analog",
+        "reasoning": "Pyruvate \u2192 oxaloacetate via glyoxylate-dependent HKG cycle; Fe\u00b2\u207a-catalyzed at 70\u00b0C (Source 10738, 9400)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reductive Amination to Aspartate",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photocatalysis, volcanic springs"
+        },
+        "mechanism": "Imine formation and reduction",
+        "reasoning": "Oxaloacetate + NH3 \u2192 aspartate via reductive amination; aligns with Mannich variants (Source 10738)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Transamination to Glutamate",
+        "inputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prebiotic pools, mineral interfaces"
+        },
+        "mechanism": "Amino group transfer between keto acid and amino acid",
+        "reasoning": "Aspartate + pyruvate \u2192 glutamate + alanine analog; protometabolic transamination (Source 10738, 9983)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Formaldehyde Addition to Glycine",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "reduced hydrothermal mixtures, 30 mM HCHO"
+        },
+        "mechanism": "Mannich-like addition and chain extension",
+        "reasoning": "Glycine + HCHO \u2192 intermediates leading to glutamate/proline precursors in experiments (Source 2595)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Dehydrogenation to Pyrroline Carboxylate",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "geothermal cycling, dry-wet"
+        },
+        "mechanism": "Oxidative cyclization with loss of water",
+        "reasoning": "Glutamate \u2192 delta1-pyrroline-5-carboxylate; speculative extension from biological analog, supported by enantioselective studies (Levine et al., 2008; Source 15388)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reduction to L-Proline",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "enantiomeric amplification, RNA precursor context"
+        },
+        "mechanism": "Hydrogenation and stereoselection on mineral surfaces",
+        "reasoning": "Pyrroline reduction to L-proline with enantioselection; demonstrated in prebiotic simulations (Levine et al., 2008; Blackmond et al., Source 21298, 15388)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal HKG to Surface Aspartate to Proline",
+        "description": "Pyruvate via HKG to oxaloacetate, reductive amination to aspartate, transamination to glutamate, cyclization to proline.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker Glycine Route",
+        "description": "Glycolonitrile from HCN/HCHO to glycine, formaldehyde addition to glutamate, then cyclization.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal Formate to Pyruvate Branch",
+        "description": "Formate reduction chain to pyruvate, HKG to oxaloacetate, surface to aspartate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct Formaldehyde-Glycine in Reduced Mixtures",
+        "description": "Glycine from Strecker, direct addition in hydrothermal-surface interface to proline precursors.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Tidal Pool Strecker with HKG Input",
+        "description": "Oxaloacetate from hydrothermal to surface amination, extension via transamination.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Cyanosulfidic to Glycine Cyclization",
+        "description": "Glycolonitrile pathway to glycine, then biochemical assembly with dry-wet.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Fe-Catalyzed Hydrothermal to Surface",
+        "description": "Pyruvate from magnetite, to oxaloacetate, UV-assisted amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Mannich Variant from Pyruvate",
+        "description": "Pyruvate + glyoxylate analog (from HCHO) to aspartate-like, to proline.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Enantioselective Amplification Route",
+        "description": "Glycine extension with HCHO, amplified in pools to L-proline.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Interconnected Hydrothermal-Surface to Biochemical",
+        "description": "Formate to pyruvate to oxaloacetate, Strecker integration to final cyclization.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_004",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_004"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_007": 0.8,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Strong hydrothermal to surface flow via HKG and aspartate intermediates aligns with literature on Fe-catalyzed cycles and reductive amination.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts like Fe\u00b2\u207a for HKG step."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_004": 0.9,
+          "rxn_008": 0.6,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Strecker to glycine is well-supported, but formaldehyde addition to glutamate needs validation; literature supports Strecker but questions direct cyclization.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Replace rxn_008 with literature-backed transamination from aspartate."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_007": 0.8,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Fischer-Tropsch to pyruvate is feasible in hydrothermal settings per literature, leading coherently to proline via glutamate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add yield data from hydrothermal simulations."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_008": 0.6,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.75,
+        "overall_confidence": 0.75,
+        "feedback": "Direct formaldehyde-glycine route is speculative; literature mentions addition but not directly to glutamate/proline without issues.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Incorporate dry-wet cycles for better feasibility."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.87,
+        "feedback": "Tidal pool Strecker with HKG input matches literature on montmorillonite catalysis and surface reactions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify montmorillonite for rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.95,
+          "rxn_004": 0.9,
+          "rxn_008": 0.6,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Cyanosulfidic to glycine is literature-supported, but cyclization step needs more evidence.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Link to bisulfite adducts from literature."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.88,
+        "feedback": "Fe-catalyzed hydrothermal aligns with literature on oxaloacetate formation.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include Fe\u00b2\u207a catalysis details."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_008": 0.7,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Mannich variant from pyruvate is plausible per literature, but integration to proline is indirect.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Validate Mannich for aspartate-to-glutamate."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.75,
+        "overall_confidence": 0.74,
+        "feedback": "Enantioselective amplification is supported by literature, but too short and assumes prior intermediates.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Expand with full pathway to glutamate."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.85,
+          "rxn_003": 0.95,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9,
+          "rxn_006": 0.85,
+          "rxn_007": 0.8,
+          "rxn_008": 0.6,
+          "rxn_009": 0.75,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Comprehensive interconnection across environments; best alignment with literature on multi-stage prebiotic flow.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Refine rxn_008 for better chemical accuracy."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.85,
+    "network_feedback": "Well-connected network with convergent hubs and environmental flow aligning with literature on Strecker, HKG, and hydrothermal-surface transitions. Minor issues in some reactions like formaldehyde addition; addresses challenges in proline cyclization via biochemical steps. Sufficient nodes and pathways for viability.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

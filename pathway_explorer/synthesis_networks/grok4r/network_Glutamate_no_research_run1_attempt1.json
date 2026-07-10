@@ -1,0 +1,862 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The synthesis network for glutamate integrates hydrothermal reductions to generate key keto acid precursors like pyruvate and acetaldehyde, surface environment condensations and Strecker reactions to build the extended carbon chain via 4-oxobutanoic acid, and biochemical-stage aminations and transaminations for final amino acid formation. Hub molecules such as pyruvate, acetaldehyde, 4-oxobutanoic acid, and alpha-ketoglutarate enable convergence of multiple pathways, ensuring environmental interconnections from hydrothermal building blocks to surface assembly and biochemical completion.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCHO",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3COOH",
+        "iupac_name": "acetic acid",
+        "common_name": "acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH3CHO",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH3COCOOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH3CH(NH2)COOH",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "OHC(CH2)2COOH",
+        "iupac_name": "4-oxobutanoic acid",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H6O3/c5-3-1-2-4(6)7/h3H,1-2H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HOOC(CH2)2COCOOH",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_013",
+        "formula": "HOOCCH(NH2)(CH2)2COOH",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 hydrogenation to acetate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Catalytic hydrogenation of CO2 on mineral surface forming C-C bond",
+        "reasoning": "Magnetite facilitates Fischer-Tropsch-type reactions in hydrothermal vents, producing short-chain carboxylates from CO2 and H2 under reducing conditions"
+      },
+      {
+        "id": "rxn_002",
+        "name": "CO2 reduction to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "reducing environment"
+        },
+        "mechanism": "Multi-electron reduction of CO2 with C-C bond formation on Fe-S cluster analog",
+        "reasoning": "Greigite catalyzes pyruvate formation as a prebiotic analog to metabolic CO2 fixation in iron-sulfur world chemistry"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Fischer-Tropsch synthesis to acetaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "metal-catalyzed chain growth"
+        },
+        "mechanism": "CO intermediate hydrogenation and reduction to aldehyde",
+        "reasoning": "Hydrothermal magnetite promotes formation of aldehydes via Fischer-Tropsch processes, providing carbonyl precursors for further synthesis"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "UV exposure, wet-dry cycles"
+        },
+        "mechanism": "Aldol condensations of formaldehyde catalyzed by borates",
+        "reasoning": "Borate minerals stabilize sugars in prebiotic surface pools, enabling formose reaction products like glycolaldehyde as sugar precursors"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis to alanine",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Imine formation, cyanohydrin addition, hydrolysis to amino acid",
+        "reasoning": "Clay minerals concentrate reactants and catalyze Strecker synthesis of alpha-amino acids in evaporitic surface environments"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation to 4-oxobutanoic acid",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photochemistry"
+        },
+        "mechanism": "Photocatalytic aldol coupling followed by selective oxidation",
+        "reasoning": "TiO2 under UV drives carbon chain extension in surface settings, forming keto acid precursors plausible for prebiotic aldehyde elongation"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis to glutamate",
+        "inputs": [
+          "mol_011",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Imine formation, cyanohydrin addition, hydrolysis to amino acid",
+        "reasoning": "Montmorillonite catalyzes Strecker reaction for longer-chain amino acids like glutamate using preformed keto aldehyde precursors"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reductive chain extension to alpha-ketoglutarate",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "electron transfer"
+        },
+        "mechanism": "Carboxylation and reduction extending the pyruvate chain",
+        "reasoning": "Pyrite acts as electron donor in hydrothermal settings for carbon chain growth, analogous to prebiotic TCA cycle extensions"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Reductive amination to glutamate",
+        "inputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH gradient, mineral interfaces"
+        },
+        "mechanism": "Schiff base formation and reduction to amine",
+        "reasoning": "Prebiotic amination of keto acids occurs at mineral interfaces, mimicking early metabolic reductive amination without enzymes"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Transamination to glutamate",
+        "inputs": [
+          "mol_012",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal activation"
+        },
+        "mechanism": "Pyridoxal-like or direct amino group transfer between keto acid and amino acid",
+        "reasoning": "Non-enzymatic transamination exchanges amino groups in prebiotic pools, connecting simple amino acids to complex ones like glutamate"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Reductive carboxylation of acetate to pyruvate",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "H2 reduction"
+        },
+        "mechanism": "CO2 addition and reduction on FeS surface",
+        "reasoning": "Mackinawite enables C-C bond formation from acetate, bridging short carboxylates to metabolic hubs like pyruvate"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Decarboxylation of pyruvate to acetaldehyde",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "thermal"
+        },
+        "mechanism": "Beta-keto acid decarboxylation releasing CO2",
+        "reasoning": "Thermal decarboxylation in prebiotic pools converts keto acids to aldehydes, interconnecting hydrothermal products to surface chemistry"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct hydrothermal reductive pathway via pyruvate",
+        "description": "Pyruvate formed directly in vents, extended to alpha-ketoglutarate, then aminated.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal acetate extension pathway",
+        "description": "Acetate carboxylated to pyruvate, then to alpha-ketoglutarate and glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface Strecker via hydrothermal acetaldehyde",
+        "description": "Acetaldehyde from vents used in aldol with glycolaldehyde to 4-oxobutanoic acid, then Strecker to glutamate.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Biochemical decarboxylation-assisted Strecker",
+        "description": "Pyruvate decarboxylated to acetaldehyde, combined with formose product for chain extension to glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_012",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Acetate to aldehyde Strecker route",
+        "description": "Full chain from acetate via pyruvate decarboxylation to surface Strecker for glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Transamination via direct pyruvate",
+        "description": "Pyruvate to alpha-ketoglutarate and to alanine via decarboxylation, then transamination to glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_012",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Transamination via acetate-derived pyruvate",
+        "description": "Acetate extended to pyruvate and alanine, alpha-ketoglutarate formed, transaminated to glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal aldehyde to alanine transamination",
+        "description": "Direct acetaldehyde to alanine, pyruvate to alpha-ketoglutarate, then transamination.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_002",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009",
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Mixed environment chain extension and amination",
+        "description": "Pyruvate from vents to alpha-ketoglutarate, direct amination in biochemical stage.",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full interconnected transamination with formose",
+        "description": "Acetate to pyruvate to aldehyde to alanine, formose integrated but via transam to glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_005",
+          "rxn_004",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_011",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_008": 0.8,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Direct hydrothermal reductions followed by biochemical amination provide a coherent route to glutamate, though direct CO2 to pyruvate is somewhat speculative.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify catalysts for hydrothermal reductions."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_008": 0.8,
+          "rxn_009": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Acetate extension via reductive carboxylation is feasible in hydrothermal conditions, leading effectively to glutamate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Confirm yields for reductive carboxylation step."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_005": 1.0,
+          "rxn_010": 1.0,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Pathway reaches alanine but requires additional steps for glutamate via transamination; coherence reduced due to indirect target achievement.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Explicitly include transamination to ensure target production."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_012": 0.9,
+          "rxn_005": 1.0,
+          "rxn_010": 1.0,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Decarboxylation to acetaldehyde assists Strecker but adds unnecessary steps; still viable for target.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Streamline to avoid decarboxylation loop."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_012": 0.9,
+          "rxn_005": 1.0,
+          "rxn_010": 1.0,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Long route via acetate to aldehyde and Strecker; coherence suffers from redundancy but reaches target indirectly.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Shorten by direct use of acetaldehyde from Fischer-Tropsch."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_008": 0.8,
+          "rxn_003": 0.8,
+          "rxn_005": 1.0,
+          "rxn_010": 1.0
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Transamination using direct pyruvate-derived KG and alanine is efficient and well-connected across environments.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "None; strong pathway."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_008": 0.8,
+          "rxn_003": 0.8,
+          "rxn_005": 1.0,
+          "rxn_010": 1.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Similar to P6 but via acetate; slightly longer but maintains good progression to target.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Optimize for fewer hydrothermal steps."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_005": 1.0,
+          "rxn_002": 0.7,
+          "rxn_008": 0.8,
+          "rxn_010": 1.0
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Focuses on aldehyde to alanine then transamination; strong hydrothermal to biochemical flow.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Enhance surface role if possible."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_006": 0.3,
+          "rxn_007": 0.9,
+          "rxn_004": 1.0
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Mixed chain extension via aldol is promising but limited by feasibility of aldol product formation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Revise aldol condensation to use appropriate precursors for 4-oxobutanoic acid."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 1.0,
+          "rxn_006": 0.3,
+          "rxn_007": 0.9,
+          "rxn_002": 0.7,
+          "rxn_008": 0.8,
+          "rxn_010": 1.0
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.78,
+        "feedback": "Interconnected with formose but overly complex; aldol issue persists, reducing overall viability.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Simplify and fix chemical inaccuracies in chain extension."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.82,
+    "network_feedback": "The network demonstrates good topology and environmental flow, with multiple convergent pathways to glutamate. However, the aldol condensation (rxn_006) to 4-oxobutanoic acid is chemically implausible without additional steps or catalysts, impacting surface pathways. Hydrothermal and biochemical routes are stronger. No mineral agents specified for surface reactions, slightly lowering scores. Aligns generally with prebiotic literature on Strecker and reductive syntheses.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

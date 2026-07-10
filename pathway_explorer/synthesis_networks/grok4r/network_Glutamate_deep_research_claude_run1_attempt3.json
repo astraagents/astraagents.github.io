@@ -1,0 +1,764 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamic acid",
+    "overall_strategy": "The synthesis network leverages protometabolic pathways for \u03b1-ketoglutarate formation from CO\u2082 fixation in hydrothermal environments, followed by transamination or reductive amination in surface or biochemical settings. Complementary routes include Strecker synthesis via acrolein in surface conditions and HCN oligomerization. Environmental interconnections allow hydrothermal products (pyruvate, glyoxylate) to feed surface Strecker and biochemical assembly, with convergence at \u03b1-ketoglutarate as a key hub. This addresses one-pot challenges by separating reductive fixation (hydrothermal) from amination (surface/biochemical), grounded in literature yields and conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO\u2082",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "dihydrogen",
+        "common_name": "H\u2082",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO\u207b",
+        "iupac_name": "formate",
+        "common_name": "formic acid",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH\u2083COCOOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "OHC-COOH",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HOOC-(CH\u2082)\u2082-C(O)COOH",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH\u2083",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH\u2082=CHCHO",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "NH\u2082CH(CN)CH\u2082CH\u2082CN",
+        "iupac_name": "2-amino-4-cyanobutanenitrile",
+        "common_name": "glutamic acid aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH\u2082CH\u2082COOH",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HOOCCH(NH\u2082)(CH\u2082)\u2082COOH",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe\u2070",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "30-100\u00b0C",
+          "pressure": "high",
+          "catalyst": "Fe\u2070",
+          "aqueous": true,
+          "other": "anoxic, serpentinization fluids"
+        },
+        "mechanism": "Direct reduction by native iron in aqueous solution",
+        "reasoning": "Varma et al. (2018, Nature Ecology & Evolution) demonstrated Fe\u2070 reduces CO\u2082 to formate at 30\u2013100\u00b0C; mackinawite aids as FeS precursor (White et al., 2015)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate formation via acetyl-CoA pathway analog",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "H\u2082-rich, alkaline pH 9-11"
+        },
+        "mechanism": "Fischer-Tropsch-type hydrogenation on mineral surfaces",
+        "reasoning": "Varma et al. (2018) and Preiner et al. (2020) show greigite catalyzes CO\u2082 to pyruvate via formate/acetate intermediates in vents at 70\u00b0C."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glyoxylate formation from CO\u2082 reduction",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "Fe\u00b2\u207a"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "high",
+          "catalyst": "Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "anoxic aqueous solution"
+        },
+        "mechanism": "Iron-promoted reduction and oxidation steps",
+        "reasoning": "Muchowska et al. (2019, Nature) includes glyoxylate in Fe\u00b2\u207a-promoted network from CO\u2082 at 70\u00b0C, though often as input; supported as intermediate."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Protometabolic synthesis of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe\u00b2\u207a",
+          "iron oxyhydroxides"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "high",
+          "catalyst": "Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "pH alkaline, 3 hours reaction"
+        },
+        "mechanism": "Aldol condensation and reductive steps in TCA analog",
+        "reasoning": "Muchowska et al. (2019, Nature) demonstrated Fe\u00b2\u207a promotes pyruvate + glyoxylate to \u03b1-ketoglutarate at 70\u00b0C with 60% carbon balance."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Metal-free \u03b1-ketoglutarate from pyruvate and glyoxylate",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "70\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 4.5, wet-dry cycles"
+        },
+        "mechanism": "Aldol chemistry and Cannizzaro-type reductions",
+        "reasoning": "Stubbs et al. (2020, Nature Chemistry) achieved \u03b1-ketoglutarate from glyoxylate + pyruvate at pH 4.5, 70\u00b0C without metals; clay concentrates (Bada et al., 2023)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Transamination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_006",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "AlK(SO\u2084)\u2082",
+          "aqueous": true,
+          "other": "pH 5, 4 hours"
+        },
+        "mechanism": "Nitrogen transfer from glycine to \u03b1-ketoglutarate",
+        "reasoning": "Stubbs et al. (2020, Nature Chemistry) reported 44% yield of glutamate from \u03b1-ketoglutarate + glycine at 80\u00b0C, pH 5 with Al\u00b3\u207a catalyst."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "pyrite (UV-irradiated)",
+          "aqueous": true,
+          "other": "pH >7, UV exposure"
+        },
+        "mechanism": "Photocatalytic reduction with ammonia on mineral surface",
+        "reasoning": "Nature Communications (2024) showed UV-pyrite drives reductive amination of \u03b1-keto acids to amino acids including glutamate at RT; aligns with Hafenbradl et al. (1995)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "HCN oligomerization to glutamate precursors",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "pH 9.2, room temp",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "0.1 M HCN, hydrolysis"
+        },
+        "mechanism": "Polymerization followed by hydrolysis releasing amino acids",
+        "reasoning": "Ferris et al. (1978, Journal of Molecular Evolution) detected glutamate from HCN oligomers at pH 9.2; clay aids concentration (Siffert and Naidja, 1992)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis via acrolein",
+        "inputs": [
+          "mol_009",
+          "mol_008",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082 (UV)",
+          "aqueous": true,
+          "other": "UV exposure, wet-dry cycles"
+        },
+        "mechanism": "Michael addition of HCN to acrolein, then Strecker with NH\u2083/HCN, hydrolysis",
+        "reasoning": "Van Trump and Miller (1972) and Parker et al. (2011, PNAS) confirmed acrolein + HCN + NH\u2083 yields glutamate via aminonitrile; TiO\u2082 photocatalyzes (surface context)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Glycine formation via Strecker for transamination input",
+        "inputs": [
+          "mol_008",
+          "mol_007",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN + NH\u2083 + H\u2082O (formaldehyde implicit from HCN)"
+        },
+        "mechanism": "Strecker synthesis from HCN-derived formaldehyde",
+        "reasoning": "Miller (1955, JACS) and Parker et al. (2011) produced glycine as major product; used as N-donor for transamination (Stubbs et al., 2020)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal protometabolic to transamination",
+        "description": "CO\u2082 fixation to pyruvate and glyoxylate, then to \u03b1-KG, transaminated with glycine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface metal-free to reductive amination",
+        "description": "Hydrothermal inputs to surface \u03b1-KG formation, then pyrite-catalyzed amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal Fe\u00b2\u207a-promoted to transamination",
+        "description": "Direct Fe\u00b2\u207a TCA analog to \u03b1-KG, then glycine transamination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface HCN oligomerization",
+        "description": "Direct HCN polymerization and hydrolysis to glutamate",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Surface Strecker via acrolein",
+        "description": "Acrolein (from spark/UV) + HCN + NH\u2083 to aminonitrile to glutamate",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal to surface Strecker interconnection",
+        "description": "Pyruvate decarboxylation/decarbonylation to acrolein precursor, then Strecker",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Protometabolic with H\u2082-driven amination",
+        "description": "\u03b1-KG from hydrothermal, then surface H\u2082/Ni amination (adapted to pyrite)",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "HCN to glycine to transamination",
+        "description": "HCN Strecker to glycine, then transamination of hydrothermal \u03b1-KG",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_004",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Metal-free surface full route",
+        "description": "Glyoxylate/pyruvate inputs to \u03b1-KG, then transamination",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Mixed hydrothermal-surface oligomer to amination",
+        "description": "HCN from surface, oligomer to precursors feeding reductive amination",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamic acid",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.85,
+          "rxn_004": 0.95,
+          "rxn_010": 0.6,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Strong hydrothermal protometabolic route to alpha-KG, but glycine production for transamination relies on unconnected HCN path.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add reaction for HCN production from NH3 and carbon sources to connect glycine synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_003": 0.7,
+          "rxn_005": 0.9,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Metal-free surface synthesis of alpha-KG is literature-supported, reductive amination solid, but assumes hydrothermal precursors transition to surface without specified mechanism.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Justify transition of pyruvate/glyoxylate from hydrothermal to surface environments."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.85,
+          "rxn_004": 0.95,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Fe-promoted hydrothermal route aligns well with Muchowska et al. (2019), transamination feasible but glycine source unclear.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify glycine source or alternative transaminating agent."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.75,
+        "feedback": "HCN oligomerization supported by Ferris et al. (1978), but HCN production not connected in network.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Include HCN formation reaction, e.g., from NH3 and CO2 under spark conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Strecker via acrolein matches Parker et al. (2011), but acrolein and HCN not produced from startings.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add reactions for acrolein (e.g., from cyano-sulfidic chemistry) and HCN synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_009": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Interconnection from hydrothermal alpha-KG to surface Strecker is innovative but lacks detail on how products feed in.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify how hydrothermal products enable acrolein or HCN formation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.85,
+          "rxn_004": 0.95,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "H2-driven amination aligns with Kaur et al. (2024), strong protometabolic base.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Address one-pot challenges from literature by specifying separation."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.6,
+          "rxn_008": 0.8,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.72,
+        "feedback": "HCN to glycine to transamination logical, but HCN disconnected.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Connect HCN production."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Concise metal-free surface route, supported by Stubbs et al. (2020), but precursor sourcing vague.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail pyruvate/glyoxylate availability on surface."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_008": 0.8,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8,
+        "feedback": "Mixed environments with oligomer to amination, but HCN issue persists.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Integrate HCN from hydrothermal products."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.82,
+    "network_feedback": "Well-aligned with literature on protometabolic and Strecker routes, strong environmental flow and convergence at alpha-KG. However, disconnected HCN and acrolein production limits full connectivity; addresses one-pot challenges via separation but needs precursor links.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

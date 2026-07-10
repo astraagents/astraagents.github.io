@@ -1,0 +1,872 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Integrate hydrothermal CO\u2082 fixation to formate and formaldehyde, surface formose reactions and HCN oligomerization to key intermediates (glycolaldehyde, glyoxal, DAMN), multiple convergent imidazole formation routes, followed by Strecker synthesis and hydrolysis to histidine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCOO-",
+        "iupac_name": "Formate",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O2",
+        "iupac_name": "Hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H2O2",
+        "iupac_name": "Ethandial",
+        "common_name": "glyoxal",
+        "inchi": "InChI=1S/C2H2O2/c3-1-2-4/h1-2H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H4N4",
+        "iupac_name": "2,3-Diaminomaleonitrile",
+        "common_name": "DAMN",
+        "inchi": "InChI=1S/C4H4N4/c5-1-3(7)4(8)2-6/h7-8H2/b4-3-",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H4N2",
+        "iupac_name": "1H-Imidazole",
+        "common_name": "imidazole",
+        "inchi": "InChI=1S/C3H4N2/c1-2-5-3-4-1/h1-3H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H4N2O",
+        "iupac_name": "1H-Imidazole-4-carbaldehyde",
+        "common_name": "imidazole-4-carboxaldehyde",
+        "inchi": "InChI=1S/C4H4N2O/c7-2-4-1-5-3-6-4/h1-3H,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H6N3O",
+        "iupac_name": "2-(1H-Imidazol-4-yl)\u20132-iminopropanenitrile",
+        "common_name": "imidazole-4-aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(S)-2-Amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 hydrogenation to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "pH 9-11"
+        },
+        "mechanism": "Two-electron reduction of CO2 to formate on Fe-S surface",
+        "reasoning": "CO2 reduction on greigite surfaces provides formate under alkaline vent conditions; (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate reduction to formaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "Fischer\u2013Tropsch-type"
+        },
+        "mechanism": "Hydrogenation of formate to formaldehyde",
+        "reasoning": "Fischer\u2013Tropsch-type CO2 hydrogenation yields formaldehyde on magnetite surfaces; (McCollom & Seewald, 2007)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "alkaline wet-dry cycle"
+        },
+        "mechanism": "Aldol condensation of formaldehyde to glycolaldehyde",
+        "reasoning": "Borate stabilizes intermediates in the formose reaction under wet-dry cycles; (Pizzarello & Shock, 2010)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrothermal glyoxal synthesis",
+        "inputs": [
+          "mol_014",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "FT-like"
+        },
+        "mechanism": "Coupling of CO and H2 to glyoxal",
+        "reasoning": "Fischer\u2013Tropsch-type synthesis on magnetite yields multi-carbon aldehydes including glyoxal; (Russell et al., 2010)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "HCN oligomerization to DAMN",
+        "inputs": [
+          "mol_003",
+          "mol_003",
+          "mol_003",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "cyanide polymerization"
+        },
+        "mechanism": "Tetramerization of HCN to diaminomaleonitrile",
+        "reasoning": "HCN oligomerization on clays produces DAMN as an imidazole precursor; (Sanchez et al., 1966)"
+      },
+      {
+        "id": "rxn_006a",
+        "name": "DAMN cyclization to imidazole",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "false",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic cyclization of DAMN to imidazole",
+        "reasoning": "UV-activated cyclization of cyanide oligomers yields imidazole on TiO2; (Ferris & Hagan, 1984)"
+      },
+      {
+        "id": "rxn_006b",
+        "name": "Glycolaldehyde, NH3 and HCN to imidazole",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "HCN condensation"
+        },
+        "mechanism": "Condensation of glycolaldehyde, ammonia and HCN to imidazole",
+        "reasoning": "Alternative imidazole synthesis via glycolaldehyde and HCN under clay catalysis; (Miyakawa et al., 2002)"
+      },
+      {
+        "id": "rxn_006c",
+        "name": "Glyoxal, NH3 and HCN to imidazole",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "phosphorylation-driven condensation"
+        },
+        "mechanism": "Phosphate-mediated condensation of glyoxal, NH3 and HCN to imidazole",
+        "reasoning": "Surface phosphate minerals direct imidazole formation from glyoxal and HCN; (Griesser & Dworkin, 2014)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Imidazole carboxylation to imidazole-4-carboxaldehyde",
+        "inputs": [
+          "mol_009",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": "true",
+          "other": "C\u2013C bond formation"
+        },
+        "mechanism": "C\u2013C coupling of imidazole and glyoxal",
+        "reasoning": "Surface-mediated C\u2013C bond formation yields imidazole-4-carboxaldehyde; speculative but fits prebiotic C\u2013C coupling analogs; (speculative)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis to imidazole aminonitrile",
+        "inputs": [
+          "mol_010",
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "pH ~6"
+        },
+        "mechanism": "Strecker reaction of aldehyde with ammonia and HCN",
+        "reasoning": "Strecker synthesis extends to heterocyclic aldehydes under clay catalysis; (Weber, 1981)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis to histidine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "acidic pH"
+        },
+        "mechanism": "Acid-catalyzed hydrolysis of nitrile to carboxylic acid",
+        "reasoning": "Nitrile hydrolysis yields amino acid functional groups; plausible under acidic pool conditions; (speculative)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Surface glyoxal synthesis",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic oxidation of glycolaldehyde to glyoxal",
+        "reasoning": "Surface photochemistry of sugars yields dicarbonyl compounds; (Striberger & Or\u00f3, 1974)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-DAMN glyoxal route",
+        "description": "Hydrothermal CO\u2082 fixation to formate/formaldehyde, Fischer\u2013Tropsch glyoxal, HCN oligomerization, imidazole formation and Strecker to histidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006a",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface-DAMN glyoxal route",
+        "description": "HCN oligomerization to DAMN, DAMN cyclization, surface glyoxal via sugar oxidation, then histidine sequence",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006a",
+          "rxn_010",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formose-imine hybrid route",
+        "description": "Hydrothermal formose to glycolaldehyde, clay-driven imidazole, surface glyoxal, then Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006b",
+          "rxn_010",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Pure surface glycolaldehyde imine route",
+        "description": "Formose to glycolaldehyde, clay-driven imidazole, glyoxal formation, then histidine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006b",
+          "rxn_010",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal glyoxal imine route",
+        "description": "CO and H2 to glyoxal in vents, phosphate-driven imidazole, then Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006c",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface glyoxal imine route",
+        "description": "Formose to glycolaldehyde, glyoxal via photochemistry, phosphate imidazole, histidine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_006c",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Minimal DAMN hybrid route",
+        "description": "Formaldehyde to DAMN, DAMN cyclization, then histidine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006a",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct surface imine route",
+        "description": "Clay-driven imidazole from glycolaldehyde, glyoxal formation, histidine",
+        "reaction_sequence": [
+          "rxn_006b",
+          "rxn_010",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct glyoxal imine route",
+        "description": "Phosphate imidazole from glyoxal, then histidine",
+        "reaction_sequence": [
+          "rxn_006c",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Formose-glyoxal minimal route",
+        "description": "Formose / photochemical glyoxal, phosphate imidazole, histidine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006c",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_007",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006c",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_006a",
+          "rxn_006b",
+          "rxn_006c"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_005": 0.7,
+          "rxn_006a": 0.75,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Solid hydrothermal to surface integration but HCN oligomerization needs catalytic context.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts for HCN oligomerization",
+          "Detail pH and temperature for DAMN cyclization"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_004": 0.7,
+          "rxn_005": 0.7,
+          "rxn_006a": 0.75,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.78,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Combines hydrothermal glyoxal with DAMN route; glyoxal synthesis under hydrothermal conditions needs more justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Include evidence for CO to glyoxal conversion",
+          "Clarify HCN polymerization control"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.65,
+          "rxn_006b": 0.7,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Innovative formose-imine hybrid route but formose steps are low\u2010yield without catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Detail mineral or alkaline catalysts for formose reaction"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.65,
+          "rxn_006b": 0.7,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Streamlined surface glycolaldehyde route, but lacks hydrothermal feed justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Explain surface-sourced formaldehyde availability",
+          "Provide pH details for imine formation"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_006c": 0.75,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal glyoxal and imine route is coherent, but CO-based glyoxal step needs literature support.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Cite studies on hydrothermal CO-to-glyoxal conversion"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.75,
+          "rxn_006c": 0.75,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Surface glyoxal imine route is high-confidence with realistic conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006a": 0.75,
+          "rxn_007": 0.9,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Efficient DAMN-based hybrid route, though HCN oligomerization remains a challenge.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Incorporate mineral surface templating for DAMN formation"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.65,
+          "rxn_006b": 0.7,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "Very short surface route, but formose and imine steps are unassisted.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add catalytic minerals for formose chemistry"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_010": 0.75,
+          "rxn_006c": 0.75,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct glyoxal imine route is concise and chemically robust under surface conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.65,
+          "rxn_010": 0.75,
+          "rxn_006c": 0.75,
+          "rxn_008": 0.9,
+          "rxn_009": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.84,
+        "feedback": "Balanced formose-glyoxal minimal route, though formose step needs catalytic detail.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify alkaline or mineral catalysis for formose reaction"
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.84,
+    "network_feedback": "The network is well-connected with multiple convergent routes. Hydrothermal and surface stages are integrated realistically, though formose and HCN oligomerization steps require more catalytic detail. Strecker and hydrolysis steps are robust.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.840"
+}

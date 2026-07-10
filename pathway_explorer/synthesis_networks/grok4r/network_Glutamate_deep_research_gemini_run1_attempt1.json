@@ -1,0 +1,768 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The synthesis network for glutamate integrates pathways from Miller-Urey atmospheric simulations (surface environment), cyanosulfidic photochemistry (surface), and iron-sulfur hydrothermal catalysis, converging on key hubs like alpha-ketoglutarate and 2-aminopentanedinitrile. Hydrothermal routes produce alpha-ketoglutarate via pyrrhotite-catalyzed carboxylation, feeding into surface Strecker and reductive amination in biochemical assembly. Multiple convergent pathways ensure redundancy, with minerals driving reactions and H2 stabilizing products.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2=CHCHO",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H7N2",
+        "iupac_name": "2-aminopentanedinitrile",
+        "common_name": "2-aminopentanedinitrile",
+        "inchi": "InChI=1S/C5H7N3/c6-3-1-2-5(8)4-7/h5H,1-2,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8N2O",
+        "iupac_name": "2-amino-5-cyanopentanamide",
+        "common_name": "amino nitrile intermediate",
+        "inchi": "InChI=1S/C6H11N3O/c7-4-2-1-3-5(8)6(9)10/h5H,1-3,8H2,(H2,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH2CH2CN",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Acrolein formation via spark discharge",
+        "inputs": [
+          "mol_012",
+          "mol_001",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "spark discharge",
+          "aqueous": "true",
+          "other": "reducing atmosphere simulation"
+        },
+        "mechanism": "Spark discharge in CH4/NH3/H2/H2O mixture produces unsaturated aldehydes like acrolein through radical intermediates.",
+        "reasoning": "Based on Miller-Urey volcanic apparatus reanalysis showing acrolein as precursor (Johnson et al., 2008, Science)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker synthesis to alpha-amino nitrile",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "pH >8, wet-dry cycles"
+        },
+        "mechanism": "Imine formation from aldehyde and NH3, followed by CN- addition to form alpha-amino nitrile.",
+        "reasoning": "Strecker synthesis mechanism for glutamate from acrolein, favored in concentrated surface pools (Commeyras et al., 2002, Origins of Life and Evolution of the Biosphere)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrolysis of amino nitrile to glutamate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "acidic or basic hydrolysis"
+        },
+        "mechanism": "Hydration to alpha-amino amide, then hydrolysis to alpha-amino acid.",
+        "reasoning": "Rate-limiting hydrolysis step in Strecker pathway, catalyzed by clays (Menor-Salv\u00e1n and Mar\u00edn-Yaseli, 2012, Chemical Society Reviews)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyanosulfidic formation of 2-aminopentanedinitrile",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu I/II, UV 254 nm",
+          "aqueous": "true",
+          "other": "wet-dry cycling, phosphate buffer"
+        },
+        "mechanism": "Reductive homologation of HCN with H2S under UV photoredox cycling.",
+        "reasoning": "Cyanosulfidic pathway produces 2-aminopentanedinitrile as glutamate precursor (Sutherland, 2016, Nature Reviews Chemistry)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of 2-aminopentanedinitrile to glutamate",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "pH 7-8"
+        },
+        "mechanism": "Sequential hydrolysis of dinitrile to diacid via amide intermediates.",
+        "reasoning": "Integrated hydrolysis in cyanosulfidic network yields glutamate (Sutherland, 2016, Nature Reviews Chemistry)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyrrhotite-catalyzed carboxylation to alpha-ketoglutarate",
+        "inputs": [
+          "mol_012",
+          "mol_011",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrrhotite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrrhotite",
+          "aqueous": "true",
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Carboxylation of succinyl-thioester analogs on mineral surface using CO2 and H2.",
+        "reasoning": "Pyrrhotite facilitates carbon fixation mimicking Arnon cycle (Menor-Salv\u00e1n et al., 2013, Life)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reductive amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "NADH",
+          "aqueous": "true",
+          "other": "pH 8, 1M NH3"
+        },
+        "mechanism": "Hemiaminal formation, iminium dehydration, hydride transfer from NADH.",
+        "reasoning": "Non-enzymatic reductive amination yields 23% glutamate (Rivas et al., 2024, RSC)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Transamination on pyrrhotite",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrrhotite"
+        ],
+        "conditions": {
+          "temperature": "358K",
+          "pressure": "high",
+          "catalyst": "pyrrhotite",
+          "aqueous": "true",
+          "other": "one-pot with thioester"
+        },
+        "mechanism": "Non-enzymatic transamination using glycine as amine donor on mineral template.",
+        "reasoning": "Pyrrhotite catalyzes transamination to glutamate, yielding pyroglutamate intermediate (Menor-Salv\u00e1n et al., 2013, Life)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Glycine formation via Strecker",
+        "inputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "HCN polymerization"
+        },
+        "mechanism": "Strecker from formaldehyde equivalent and HCN/NH3.",
+        "reasoning": "Glycine as common product in Miller experiments (Johnson et al., 2008, Science)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Aminoacetonitrile formation",
+        "inputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV exposure"
+        },
+        "mechanism": "Addition of NH3 to HCN oligomer.",
+        "reasoning": "Intermediate in cyanosulfidic and Strecker pathways (Sutherland, 2016, Nature Reviews Chemistry)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface Strecker via acrolein",
+        "description": "Atmospheric spark to acrolein, then Strecker to glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic direct to dinitrile",
+        "description": "UV-driven HCN/H2S to 2-aminopentanedinitrile, hydrolysis to glutamate.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal reductive amination",
+        "description": "Pyrrhotite carboxylation to alpha-ketoglutarate, then biochemical reductive amination.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal transamination",
+        "description": "Carboxylation to alpha-ketoglutarate, surface glycine to transamination.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_009",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanosulfidic via aminoacetonitrile",
+        "description": "HCN to aminoacetonitrile, extension to dinitrile, hydrolysis.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Miller cyanamide enhanced Strecker",
+        "description": "Spark with cyanamide to acrolein/glycine, Strecker routes converge.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface to hydrothermal transamination",
+        "description": "Surface glycine feeds hydrothermal transamination after carboxylation.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "UV HCN oligomer to Strecker",
+        "description": "UV on HCN to aminoacetonitrile, then acrolein extension to Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Integrated cyanosulfidic-Strecker",
+        "description": "HCN/H2S to dinitrile, parallel Strecker from acrolein, both to glutamate.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hydrothermal-surface reductive",
+        "description": "Hydrothermal alpha-ketoglutarate to surface pools for reductive amination.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_002": 0.3,
+          "rxn_003": 0.5
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.3,
+        "feedback": "Pathway relies on acrolein Strecker synthesis, but acrolein (C3) cannot produce C5 glutamate without additional carbon sources; carbon chain mismatch.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Incorporate appropriate C4 aldehyde precursor like 4-oxobutanoic acid for Strecker to match glutamate skeleton."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Aligns with cyanosulfidic literature for 2-aminopentanedinitrile intermediate, though reaction simplified; hydrolysis in biochemical stage plausible.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Add details on UV irradiation and Cu catalysis as per Sutherland's cyanosulfidic protocol."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.2,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.4,
+        "feedback": "Reductive amination supported by literature, but alpha-ketoglutarate formation from aminoacetonitrile and CO2/H2 is chemically implausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Revise alpha-KG synthesis to use succinate carboxylation on pyrrhotite as in literature."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.2,
+          "rxn_008": 0.9,
+          "rxn_009": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.5,
+        "feedback": "Transamination on pyrrhotite aligns well with iron-sulfur world hypothesis, but glycine and alpha-KG precursors flawed.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Use literature-supported thioester carboxylation for alpha-KG and proper Strecker for glycine with formaldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_010": 0.4,
+          "rxn_004": 0.6,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.7,
+        "feedback": "Integrates aminoacetonitrile into cyanosulfidic path, but aminoacetonitrile formation lacks formaldehyde.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Include HCHO in Strecker for aminoacetonitrile to align with standard prebiotic routes."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_002": 0.3,
+          "rxn_003": 0.5
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.2,
+        "overall_confidence": 0.4,
+        "feedback": "Mentions cyanamide enhancement from literature, but not incorporated in reactions; pathway vague and inaccurate for glutamate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Explicitly add cyanamide molecule and reactions based on 1958 Miller experiments."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.4,
+          "rxn_006": 0.2,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.5,
+        "feedback": "Shows surface-to-hydrothermal flow, justified by literature, but precursor issues persist.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Improve environmental transition with mineral transport mechanisms."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_002": 0.3,
+          "rxn_003": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.6,
+        "feedback": "HCN oligomerization aligns with literature, but integration into Strecker for glutamate unclear.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify oligomer like diaminomaleonitrile as intermediate."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_002": 0.3,
+          "rxn_005": 0.8,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "Integrates cyanosulfidic and Strecker, supported by systems chemistry literature, but some steps mismatched.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Ensure carbon chain consistency across integrated steps."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.2,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.5,
+        "feedback": "Hydrothermal to surface reductive amination shows flow, but alpha-KG synthesis invalid.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Reverse flow if needed and use H2 stabilization from literature."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.65,
+    "network_feedback": "The network captures key hubs and environmental transitions from literature (e.g., cyanosulfidic, pyrrhotite catalysis, Strecker), with good convergence, but suffers from chemically implausible reactions, missing intermediates (e.g., formaldehyde), and carbon count errors, reducing overall viability.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,379 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Synthesize serine through convergent pathways combining hydrothermal CO\u2082 reduction, Strecker synthesis variants, and biochemical transamination. Key hubs (glycine, pyruvate, glyoxylate) bridge environments using mineral catalysts (montmorillonite, magnetite) and environmental cycling.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH\u2082O",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2082H\u2085NO\u2082",
+        "iupac_name": "Glycine",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2083H\u2083O\u2083",
+        "iupac_name": "Pyruvic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2082H\u2082O\u2083",
+        "iupac_name": "Glyoxylic acid",
+        "common_name": "Glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2083H\u2087NO\u2083",
+        "iupac_name": "Serine",
+        "common_name": "Serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "Dihydroxyacetone",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h4-5H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2083H\u2085NO\u2083",
+        "iupac_name": "Phosphoserine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H8NO6P/c4-2(3(5)6)1-10-11(7,8)9/h2H,1,4H2,(H,5,6)(H2,7,8,9)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker Synthesis of Glycine",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + HCN + NH\u2083 \u2192 \u03b1-aminonitrile \u2192 glycine via hydrolysis",
+        "reasoning": "Primary pathway for glycine synthesis (Huber & W\u00e4chtersh\u00e4user, 2006; Miller, 1953)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Hydrothermal Pyruvate Synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 + H\u2082 \u2192 pyruvate via Fe\u2083O\u2084-catalyzed carbon fixation",
+        "reasoning": "Magnetite enables reductive carboxylation (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Transamination to Serine",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "phosphate buffer"
+        },
+        "mechanism": "Pyruvate + glyoxylate \u2192 serine via non-enzymatic transamination",
+        "reasoning": "Prebiotic transamination demonstrated by Weber (2001)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydroxymethylation of Glycine",
+        "inputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "dry-phase condensation"
+        },
+        "mechanism": "Glycine + formaldehyde \u2192 serine via hydroxymethyl transfer",
+        "reasoning": "Clay-catalyzed condensation (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Phosphoro-Strecker Synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "HCHO + HCN + NH\u2083 \u2192 N-phosphoroaminonitrile \u2192 phosphoserine",
+        "reasoning": "Selective phosphorylation pathway (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrothermal Glyoxylate Synthesis",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": true,
+          "other": "subseafloor conditions"
+        },
+        "mechanism": "Formaldehyde oxidation to glyoxylate on pyrite surfaces",
+        "reasoning": "FeS\u2082 enables redox reactions (W\u00e4chtersh\u00e4user, 2006)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Strecker \u2192 Hydroxymethylation",
+        "description": "Surface glycine converted to serine via clay-catalyzed condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Pyruvate Transamination",
+        "description": "Hydrothermal pyruvate + glyoxylate \u2192 serine in pools",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Phosphoro-Strecker Route",
+        "description": "Phosphate-mediated serine phosphorylation pathway",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_004": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Strecker \u2192 Hydroxymethylation pathway aligns with literature (Strecker synthesis and glycine hydroxymethylation). Hydroxymethylation lacks explicit mineral catalyst specification (montmorillonite mentioned in network but not in reaction details).",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., montmorillonite) for hydroxymethylation step."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_003": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.6,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_002) lacks literature support for formaldehyde + NH\u2083 \u2192 pyruvate. Transamination (rxn_003) requires an amino donor (not specified).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Revise pyruvate synthesis to use CO\u2082 reduction pathways (FeS/H\u2082S) as per literature.",
+          "Clarify transamination mechanism with amino group source."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Phosphoro-Strecker (rxn_005) omits diamidophosphate (DAP) as per literature. Glyoxylate synthesis (rxn_006) lacks mechanism for C1\u2192C2 conversion. Pathway does not connect phosphoserine to serine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include DAP in Phosphoro-Strecker reaction.",
+          "Add dephosphorylation step for phosphoserine \u2192 serine."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates key literature concepts (Strecker, hydrothermal systems) but has critical gaps: (1) Pyruvate synthesis (rxn_002) and transamination (rxn_003) lack chemical plausibility. (2) Mineral catalysts (montmorillonite, magnetite) are under-specified in reactions. (3) Glyoxylate synthesis (rxn_006) and Phosphoro-Strecker (rxn_005) require mechanistic refinement. Hub molecules (glycine, pyruvate) are well-connected, but glyoxylate has low degree. Convergent pathways exist but lack full coherence.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

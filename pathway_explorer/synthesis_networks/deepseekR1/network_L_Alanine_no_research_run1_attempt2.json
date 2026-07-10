@@ -1,0 +1,455 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrated network combining hydrothermal CO\u2082 fixation, surface Strecker synthesis, and biochemical transamination. Key hubs (pyruvate, HCN, glycolaldehyde) connect environments through mineral-catalyzed reactions and environmental cycling.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH\u2082O\u2082",
+        "iupac_name": "Formic acid",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2084O\u2083",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "L-Alanine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2085H\u2089NO\u2084",
+        "iupac_name": "L-Glutamic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2085H\u2086O\u2085",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electrochemical reduction on Fe\u2083S\u2084 catalytic surfaces",
+        "reasoning": "Greigite-catalyzed CO\u2082 reduction demonstrated in alkaline vent conditions (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate synthesis via FTT",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis with CO/CO\u2082 hydrogenation",
+        "reasoning": "Magnetite catalyzes chain elongation to \u03b1-keto acids (McCollom et al., 1999)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to alanine",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "NH\u2083 incorporation into \u03b1-keto acid on Fe-S mineral surfaces",
+        "reasoning": "Demonstrated pyruvate amination under simulated vent conditions (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Serpentinization NH\u2083 production",
+        "inputs": [],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "olivine"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "olivine",
+          "aqueous": true
+        },
+        "mechanism": "Nitrogen reduction during serpentinization",
+        "reasoning": "Abiotic NH\u2083 generation in ultramafic systems (Russell et al., 2010)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of alanine",
+        "inputs": [
+          "mol_006",
+          "mol_005",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + NH\u2083 + HCN \u2192 aminonitrile \u2192 amino acid",
+        "reasoning": "Clay-catalyzed Strecker reaction demonstrated (Cleaves et al., 2008)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Formaldehyde oligomerization stabilized by borate",
+        "reasoning": "Borate minerals enable selective sugar formation (Benner et al., 2012)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Transamination pathway",
+        "inputs": [
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true
+        },
+        "mechanism": "Amino group transfer between \u03b1-keto acids",
+        "reasoning": "Prebiotic transamination demonstrated without enzymes (Weber, 2001)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Glutamate synthesis",
+        "inputs": [
+          "mol_010",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "Reductive amination of \u03b1-ketoglutarate",
+        "reasoning": "Fe-S mineral catalyzed amino acid formation (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "\u03b1-Ketoglutarate formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true
+        },
+        "mechanism": "FTT chain elongation with CO/CO\u2082",
+        "reasoning": "Magnetite-catalyzed C-C bond formation (McCollom et al., 1999)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 alanine via Fe-S catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker synthesis",
+        "description": "CO\u2082 \u2192 glycolaldehyde \u2192 alanine via clay-catalyzed HCN chemistry",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Biochemical transamination",
+        "description": "Pyruvate + glutamate \u2192 alanine + \u03b1-ketoglutarate",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.8,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal reductive amination pathway is chemically sound and well-structured. Pyruvate acts as a strong hub. Serpentinization-driven NH\u2083 production aligns with prebiotic chemistry.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., FeS) for FTT synthesis in rxn_002"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Strecker synthesis pathway is weakened by questionable glycolaldehyde formation (rxn_006: Formose reaction requires formaldehyde, not direct CO\u2082 input). Surface conditions need explicit mineral agents.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add formaldehyde intermediate to rxn_006",
+          "Clarify mineral catalysis in surface reactions"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.6,
+          "rxn_008": 0.8,
+          "rxn_009": 0.4
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.55,
+        "feedback": "Transamination pathway lacks prebiotic plausibility: rxn_007 requires enzymes, and rxn_009 (direct \u03b1-ketoglutarate synthesis) is chemically implausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace transamination with abiotic amination",
+          "Revise \u03b1-ketoglutarate formation pathway"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network has a strong hydrothermal core (P1) but suffers from weak surface/biochemical pathways and underconnected hubs (glycolaldehyde/HCN). Key issues: rxn_006/rxn_009 feasibility, missing catalyst specifications, and insufficient hub degrees. Strengthen environmental transitions and reaction mechanisms.",
+    "approved": false,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

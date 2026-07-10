@@ -1,0 +1,724 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The synthesis network for glutamate is constructed around two primary carbon skeleton hubs: \u03b1-ketoglutarate and succinic semialdehyde. Multiple convergent pathways utilize reductive amination in hydrothermal environments with FeS/Fe\u2070 catalysts, photochemical oxidation in surface settings with ZnS or HS\u207b/UV, neutral-pH phosphoro-Strecker synthesis from succinic semialdehyde, and Bucherer\u2013Bergs hydantoin intermediates. Upstream provisioning of \u03b1-ketoglutarate occurs via surface photoredox oxidation of \u03b1-hydroxyglutarate, while interconnections allow hydrothermal products (e.g., hydroxyacids) to feed surface oxidations and vice versa. This creates 10 distinct pathways emphasizing environmental staging, mineral catalysis, and literature-grounded yields/selectivity.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "null"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H8O6",
+        "iupac_name": "2-hydroxypentanedioic acid",
+        "common_name": "\u03b1-hydroxyglutarate",
+        "inchi": "InChI=1S/C5H8O5/c6-3(5(9)10)1-2-4(7)8/h3,6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H6O3",
+        "iupac_name": "4-oxobutanoic acid",
+        "common_name": "succinic semialdehyde",
+        "inchi": "InChI=1S/C4H6O3/c5-3-1-2-4(6)7/h3H,1-2H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "null",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H7N2O5P",
+        "iupac_name": "(2S)-2-amino-5-(dioxidophosphoryl)oxy-5-oxopentanenitrile (approximate)",
+        "common_name": "N-phosphoro-glutamate aminonitrile",
+        "inchi": "null",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H6N2O6",
+        "iupac_name": "5-(2-carboxyethyl)imidazolidine-2,4-dione",
+        "common_name": "5-carboxyethyl hydantoin",
+        "inchi": "null",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H10N2O7",
+        "iupac_name": "2-(carbamoylamino)pentanedioic acid",
+        "common_name": "N-carbamoyl glutamate",
+        "inchi": "InChI=1S/C6H10N2O5/c7-6(13)8-3(5(11)12)1-2-4(9)10/h3H,1-2H2,(H,9,10)(H,11,12)(H3,7,8,13)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H3N2OP",
+        "iupac_name": "diamidophosphoric acid",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HS-",
+        "iupac_name": "sulfanide",
+        "common_name": "hydrosulfide",
+        "inchi": "InChI=1S/H2S/h1H2/p-1",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Photoredox oxidation of \u03b1-hydroxyglutarate to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "ZnS"
+        ],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "ZnS suspension",
+          "aqueous": "true",
+          "other": "UV irradiation (254 nm), pH ~6.5, phosphate buffer, 2.5 h"
+        },
+        "mechanism": "UV photolysis of HS\u207b generates oxidized sulfur radicals that selectively oxidize the \u03b1-hydroxy group to ketone, yielding ~20% \u03b1-ketoglutarate.",
+        "reasoning": "Directly from Ritson (2021, Science Advances), providing upstream \u03b1-ketoglutarate in cyanosulfidic surface settings compatible with HCN networks; yield ~20% after 2.5 h UV."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of \u03b1-ketoglutarate to glutamate using FeS/Fe\u2070",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS",
+          "Fe\u2070"
+        ],
+        "conditions": {
+          "temperature": "23-25\u00b0C",
+          "pressure": "high",
+          "catalyst": "FeS_PERM assemblage",
+          "aqueous": "true",
+          "other": "pH ~9.6, 1 M NH4Cl + NaOH, 48 h incubation"
+        },
+        "mechanism": "Imine formation from \u03b1-ketoglutarate and NH3, followed by hydride transfer from H2 activated at FeS/Fe\u2070 interface under alkaline pH gradient.",
+        "reasoning": "From Kitadai et al. (2019, Science Advances), nearly complete conversion in alkaline hydrothermal vent-inspired geoelectrochemical setup; addresses pH/redox gradients for protometabolism."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Ni-catalyzed reductive amination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni/SiO2-Al2O3"
+        ],
+        "conditions": {
+          "temperature": "22\u00b0C",
+          "pressure": "5 bar H2",
+          "catalyst": "10 mol% Ni",
+          "aqueous": "true",
+          "other": "pH ~8, NH4HCO3, ~30 mM substrate"
+        },
+        "mechanism": "Iminium intermediate reduced by H2 on Ni surface, competing with carbonyl reduction to hydroxyketoglutarate (45:55 selectivity).",
+        "reasoning": "From Kaur et al. (2024, Chem), 34% combined yield with ~15% glutamate; prebiotic analog using meteoritic Ni for mild aqueous conditions."
+      },
+      {
+        "id": "rxn_004",
+        "name": "ZnS UV-photocatalyzed amination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "ZnS"
+        ],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "2 mmol ZnS",
+          "aqueous": "true",
+          "other": "pH ~9, 100 mmol NH4Cl, UV (500 W Hg-Xe lamp), optional Na2SO3 hole scavenger"
+        },
+        "mechanism": "Photogenerated electrons reduce iminium intermediate on ZnS surface, with holes scavenged by sulfite.",
+        "reasoning": "From Wang et al. (2012, Chemical Communications), yields 0.6-7.4% glutamate; models reversible redox in shallow-water UV settings."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Phosphoro-Strecker synthesis of N-phosphoro-glutamate aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "pH ~7, neutral aqueous"
+        },
+        "mechanism": "DAP acts as ammonia surrogate for imine formation with aldehyde, followed by CN addition to yield stable N-phosphoro-aminonitrile at neutral pH.",
+        "reasoning": "From Ashe et al. (2019, Communications Chemistry), 88% yield for glutamate aminonitrile; overcomes pH incompatibility in HCN-derived systems."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of N-phosphoro-glutamate aminonitrile to glutamate",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "null"
+        ],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "null",
+          "aqueous": "true",
+          "other": "alkaline hydrolysis, pH >7"
+        },
+        "mechanism": "pH-programmed hydrolysis of nitrile and phospho groups to yield amino acid.",
+        "reasoning": "From Ashe et al. (2019, Communications Chemistry), alkaline hydrolysis steers to N-phosphoro amino acid, then dephosphorylation; connects to prebiotic pools."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Bucherer\u2013Bergs formation of 5-carboxyethyl hydantoin from \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_003",
+          "mol_007",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "null"
+        ],
+        "conditions": {
+          "temperature": "room temperature",
+          "pressure": "1 atm",
+          "catalyst": "null",
+          "aqueous": "true",
+          "other": "pH 8.5, 0.5 M bicarbonate buffer, 21 days"
+        },
+        "mechanism": "CN and ammonia (from DAP) add to ketoacid, cyclizing to hydantoin intermediate.",
+        "reasoning": "From Pulletikurti et al. (2022, Nature Chemistry), ~96% hydantoin yield; staged for stable intermediate in prebiotic networks."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of hydantoin to N-carbamoyl glutamate and then glutamate",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "null"
+        ],
+        "conditions": {
+          "temperature": "80\u00b0C",
+          "pressure": "1 atm",
+          "catalyst": "null",
+          "aqueous": "true",
+          "other": "pH 8.5 or 6, 14 days or 7 days heating"
+        },
+        "mechanism": "Ring opening and hydrolysis of hydantoin/carbamoyl groups to amino acid.",
+        "reasoning": "From Pulletikurti et al. (2022, Nature Chemistry), 19-21% glutamate yield; requires heating for completion in wet-dry cycles."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Spark-discharge generation of succinic semialdehyde and amino acids",
+        "inputs": [
+          "mol_001",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "false",
+          "other": "H2S-rich atmosphere, spark discharge/UV, volcanic plume simulation"
+        },
+        "mechanism": "Discharge generates HCN and aldehydes; Strecker-like condensation yields amino acids including glutamate at low levels.",
+        "reasoning": "From Parker et al. (2011, PNAS), glutamate detected at ~10^{-2} relative to glycine in H2S experiment; models atmospheric-water interface."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrothermal reduction to \u03b1-hydroxyglutarate (upstream provisioning)",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": "true",
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Carbonyl reduction on FeS surface using H2 from serpentinization.",
+        "reasoning": "Speculative connection based on Kitadai et al. (2019, Science Advances) hydroxyacid co-products; necessary to close hydrothermal-surface loop for \u03b1-ketoglutarate cycling (competes in amination routes)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive amination via FeS/Fe\u2070",
+        "description": "Direct amination in alkaline vents using geoelectrochemical catalysts.",
+        "reaction_sequence": [
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Ni-catalyzed reductive amination",
+        "description": "Mild H2 reduction with meteoritic Ni in aqueous pools.",
+        "reaction_sequence": [
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface ZnS photochemical amination",
+        "description": "UV-driven electron transfer on semiconductor surfaces.",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface phosphoro-Strecker via succinic semialdehyde",
+        "description": "Neutral-pH nitrile synthesis followed by hydrolysis.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Biochemical Bucherer\u2013Bergs hydantoin route",
+        "description": "Staged cyclization and hydrolysis from \u03b1-ketoglutarate.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface spark-discharge direct to glutamate",
+        "description": "Atmospheric synthesis in volcanic plumes.",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal-surface loop: reduction-oxidation-amination",
+        "description": "Cycle hydroxyglutarate via hydrothermal reduction and surface oxidation to \u03b1-ketoglutarate, then amination.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface oxidation to \u03b1-ketoglutarate then Ni amination",
+        "description": "Photoredox provisioning followed by catalytic reduction.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Spark to semialdehyde then phosphoro-Strecker",
+        "description": "Discharge generates aldehyde precursor for neutral Strecker.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Surface UV to \u03b1-ketoglutarate then Bucherer\u2013Bergs",
+        "description": "Oxidation upstream integrated with hydantoin pathway.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_003",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_006",
+      "mol_001"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_001",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.95,
+        "feedback": "Direct hydrothermal reductive amination aligns perfectly with Kitadai et al. FeS/Fe\u2070 catalysis at alkaline pH.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consider specifying ammonia concentration for optimal yield."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.92
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Ni-catalyzed reductive amination supported by Kaur et al., but surface H2 availability may be limited compared to hydrothermal.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Address selectivity vs. hydroxyacid byproduct as per literature."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.88
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "ZnS UV-photocatalysis matches Wang et al., with good UV access in surface settings; yields modest but plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include hole scavenger like sulfite for improved efficiency."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Phosphoro-Strecker from succinic semialdehyde highly supported by Ashe et al. at neutral pH; hydrolysis pH-dependent.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify hydrolysis conditions to avoid aminonitrile trap."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.9,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Bucherer\u2013Bergs route aligns with Pulletikurti et al., but biochemical labeling may overstate prebiotic staging; yields incomplete.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Emphasize staged heating for better conversion from hydantoin."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Spark-discharge produces glutamate per Parker et al., but low abundance; also generates semialdehyde as bonus.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Account for low yield and potential contamination in analysis."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.9,
+          "rxn_001": 0.95,
+          "rxn_002": 0.95
+        },
+        "chemical_feasibility": 0.93,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.95,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.94,
+        "feedback": "Excellent hydrothermal-surface loop; reduction-oxidation-amination justified by competing reactions and Ritson/Kitadai.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Highlight pH gradient for environmental transition."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_003": 0.92
+        },
+        "chemical_feasibility": 0.94,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Surface oxidation followed by Ni amination; strong literature support, but H2 sourcing on surface noted.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Integrate with hydrothermal H2 export if needed."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Spark to semialdehyde then phosphoro-Strecker; combines Parker and Ashe routes effectively.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify direct glutamate from spark as parallel product."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "UV oxidation to ketoglutarate then Bucherer\u2013Bergs; good flow but biochemical steps may need prebiotic justification.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify DAP role more explicitly for prebiotic plausibility."
+        ]
+      }
+    ],
+    "best_pathway_id": "P7",
+    "overall_confidence": 0.92,
+    "network_feedback": "Excellent network with strong topology, feasibility, and literature alignment. Convergent hubs and environmental flow well-justified; addresses key challenges like pH and selectivity.",
+    "approved": true,
+    "hub_quality": 0.95,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

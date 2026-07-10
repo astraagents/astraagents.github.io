@@ -1,0 +1,788 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrate hydrothermal Fischer\u2013Tropsch and CO\u2082 reduction reactions to generate C1 and C2 precursors, followed by surface Strecker, phosphoro\u2010Strecker, formose, aldol, and reductive amination routes to assemble serine via multiple convergent pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen gas",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O2",
+        "iupac_name": "hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6N2O2",
+        "iupac_name": "2-amino-3-hydroxypropionitrile",
+        "common_name": "serine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O2/c4-1-3(2-5)6/h3,6H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H4N2PO2",
+        "iupac_name": "diamidophosphate",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6N3O5P",
+        "iupac_name": "N-phosphoro-2-amino-3-hydroxypropionitrile",
+        "common_name": "phosphoro-serine aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoethanoic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoethanoate",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C3H4O4",
+        "iupac_name": "3-oxopropanoate",
+        "common_name": "hydroxypyruvate",
+        "inchi": "InChI=1S/C3H4O3/c4-2-1-3(5)6/h2H,1H2,(H,5,6)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Fischer\u2013Tropsch synthesis of C1/C2 precursors",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Fischer\u2013Tropsch-type hydrogenation and carbon chain growth",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997; Russell & Martin, 2004)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Phosphoro-Strecker synthesis of serine aminonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_005",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate mineral",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate mineral",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Diamidophosphate-enabled Strecker-type aminonitrile formation",
+        "reasoning": "(Data Source 21192)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrolysis of phosphoro-serine aminonitrile",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate mineral"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Hydrolysis of nitrile and phosphate groups",
+        "reasoning": "(Data Source 21192)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of serine aminonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral to basic pH"
+        },
+        "mechanism": "Condensation of aldehyde, cyanide, and ammonia to form aminonitrile",
+        "reasoning": "(Miller, 1959; Carson & Orgel, 1966)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of serine aminonitrile",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate mineral"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Nitrile hydrolysis to amino acid",
+        "reasoning": "(Or\u00f3 & Kimball, 1962)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Formose reaction to produce glycolaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate mineral"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate mineral",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Aldol condensation of formaldehyde to sugars",
+        "reasoning": "(Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal reductive amination to glycine",
+        "inputs": [
+          "mol_011",
+          "mol_006",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Reductive amination of CO2",
+        "reasoning": "(Keefe et al., 1995)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrothermal production of glyoxylate",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Successive reduction and hydration of CO2",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Aldol condensation to hydroxypyruvate",
+        "inputs": [
+          "mol_014",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "basic pH"
+        },
+        "mechanism": "Aldol condensation of glyoxylate and formaldehyde",
+        "reasoning": "(Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination of hydroxypyruvate to serine",
+        "inputs": [
+          "mol_015",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "reducing power from H2"
+        },
+        "mechanism": "Reductive amination of keto acid",
+        "reasoning": "(Hudson et al., 2020) (speculative)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Fischer\u2013Tropsch Strecker pathway",
+        "description": "Hydrothermal Fischer\u2013Tropsch generation of glycolaldehyde feeds surface Strecker and hydrolysis to serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Fischer\u2013Tropsch phosphoro-Strecker pathway",
+        "description": "Hydrothermal Fischer\u2013Tropsch C2 feedstock into surface phosphoro-Strecker and hydrolysis to serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface Formose Strecker pathway",
+        "description": "Surface formose conversion of formaldehyde to glycolaldehyde, followed by Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface Formose phosphoro-Strecker pathway",
+        "description": "Surface formose generation of glycolaldehyde, then phosphoro-Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal glyoxylate aldol reductive pathway",
+        "description": "Hydrothermal CO2 reduction to glyoxylate, surface aldol to hydroxypyruvate, reductive amination back in hydrothermal to serine",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_015"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Combined Hydrothermal\u2013Formose Strecker pathway",
+        "description": "Hydrothermal Fischer\u2013Tropsch followed by surface formose, Strecker, and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Combined Hydrothermal\u2013Formose phosphoro-Strecker pathway",
+        "description": "Hydrothermal Fischer\u2013Tropsch, surface formose, then phosphoro-Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Glyoxylate-mediated Strecker pathway",
+        "description": "Hydrothermal glyoxylate undergoes surface formose to glycolaldehyde then Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glyoxylate-mediated phosphoro-Strecker pathway",
+        "description": "Hydrothermal glyoxylate, surface formose, then phosphoro-Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_006",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hybrid Fischer\u2013Tropsch\u2013aldol reductive pathway",
+        "description": "Hydrothermal Fischer\u2013Tropsch produces formaldehyde, formose and aldol to hydroxypyruvate then reductive amination to serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_015"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct Fischer\u2013Tropsch to Strecker route is efficient and well\u2010connected.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral or metal catalyst for Fischer\u2013Tropsch step (rxn_001)."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.8
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Phosphoro\u2010Strecker variant is coherent and selective; hydrolysis step needs condition details.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Include water and pH conditions for hydrolysis in rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Surface formose\u2010Strecker is plausible; formose reaction needs catalyst specification.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail mineral catalysts for formose reaction (rxn_006)."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.8,
+          "rxn_002": 0.9,
+          "rxn_003": 0.8
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Surface formose\u2010phosphoro\u2010Strecker works; hydrolysis needs explicit conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Include hydrolysis water and pH for rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_008": 0.6,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Glyoxylate\u2010aldol route is coherent but glyoxylate formation is under\u2010specified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Clarify mechanism and catalyst for glyoxylate formation (rxn_008)."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.8,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Combined hydrothermal\u2013formose Strecker is robust and well\u2010justified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Apply catalyst specifications from P1 and P3 for rxn_001 and rxn_006."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.8,
+          "rxn_002": 0.9,
+          "rxn_003": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Combined hydrothermal\u2013formose phosphoro\u2010Strecker is plausible; include hydrolysis details.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add hydrolysis conditions for rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_008": 0.6,
+          "rxn_009": 0.9,
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Glyoxylate\u2010mediated Strecker path is coherent; main uncertainty is glyoxylate synthesis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Refer to glyoxylate formation details suggested for rxn_008."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_008": 0.6,
+          "rxn_009": 0.9,
+          "rxn_002": 0.9,
+          "rxn_003": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Glyoxylate\u2010mediated phosphoro\u2010Strecker is viable; clarify both glyoxylate and hydrolysis steps.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Clarify catalysts for rxn_008 and hydrolysis conditions for rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_008": 0.6,
+          "rxn_009": 0.9,
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Hybrid Fischer\u2013Tropsch\u2013aldol route is sound except for glyoxylate formation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Provide mechanistic details and catalyst for rxn_008."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "The network is well\u2010connected with multiple convergent, literature\u2010aligned routes to serine. Minor specification gaps exist in glyoxylate formation (rxn_008) and hydrolysis conditions.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

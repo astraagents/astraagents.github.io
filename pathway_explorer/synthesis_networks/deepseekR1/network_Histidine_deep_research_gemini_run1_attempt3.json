@@ -1,0 +1,411 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Integration of Shen-Or\u00f3 erythrose-formamidine pathway with cyanosulfidic 2-aminoimidazole synthesis and purine-linked AICAR chemistry, connected through hydrothermal-surface-biochemical interfaces using Fe-S minerals, clays, and phosphate catalysts.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": "NH3",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH4N2",
+        "iupac_name": "Formamidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8O4",
+        "iupac_name": "D-Erythrose",
+        "common_name": "Erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H6N2O",
+        "iupac_name": "Imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C6H9N3O2",
+        "iupac_name": "L-Histidine",
+        "common_name": "Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH2N2",
+        "iupac_name": "Cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H5N3",
+        "iupac_name": "2-Aminoimidazole",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H5N3/c4-3-5-1-2-6-3/h1-2H,(H3,4,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C9H14N4O8P",
+        "iupac_name": "5-Aminoimidazole-4-carboxamide ribonucleotide",
+        "common_name": "AICAR",
+        "inchi": "InChI=1S/C9H15N4O8P/c10-7-4(8(11)16)12-2-13(7)9-6(15)5(14)3(21-9)1-20-22(17,18)19/h2-3,5-6,9,14-15H,1,10H2,(H2,11,16)(H2,17,18,19)/t3-,5-,6-,9-/m1/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formamidine synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Catalytic condensation of HCN and NH3 on FeS surfaces",
+        "reasoning": "Huber & Wachtershauser (1997) demonstrated FeS-mediated nitrogen fixation under hydrothermal conditions"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Erythrose formation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Borate",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Formose reaction with glycolaldehyde elongation",
+        "reasoning": "Breslow (1959) showed borate stabilization of tetrose sugars"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Amadori rearrangement",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": false,
+          "other": "Dehydration conditions"
+        },
+        "mechanism": "Sugar-amidine condensation followed by ketose isomerization",
+        "reasoning": "Shen et al. (1990) demonstrated this pathway with 3.5% yield"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of histidine",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Clay",
+          "aqueous": true,
+          "other": "Ammonia-rich"
+        },
+        "mechanism": "\u03b1-Aminonitrile formation followed by hydrolysis",
+        "reasoning": "Shen et al. (1990) one-pot synthesis protocol"
+      },
+      {
+        "id": "rxn_005",
+        "name": "2-Aminoimidazole synthesis",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Phosphate",
+          "aqueous": true,
+          "other": "NH4+ ions present"
+        },
+        "mechanism": "Phosphate-catalyzed cyclization",
+        "reasoning": "Sutherland et al. (2009) cyanosulfidic chemistry with 15-41% yields"
+      },
+      {
+        "id": "rxn_006",
+        "name": "AICAR formation",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe3S4)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Fe3S4",
+          "aqueous": true,
+          "other": "Reducing conditions"
+        },
+        "mechanism": "HCN oligomerization on Fe-S mineral surfaces",
+        "reasoning": "Ferris et al. (1978) demonstrated HCN polymerization on mineral substrates"
+      },
+      {
+        "id": "rxn_007",
+        "name": "AICAR to histidine conversion",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Protocell encapsulation"
+        },
+        "mechanism": "Hypothetical dephosphorylation/amination sequence",
+        "reasoning": "Speculative step based on modern biosynthetic pathways (no prebiotic evidence)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Shen-Or\u00f3 erythrose-formamidine pathway",
+        "description": "Primary histidine synthesis through sugar-amidine chemistry",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyanosulfidic 2-aminoimidazole pathway",
+        "description": "Alternative imidazole synthesis through cyanamide chemistry",
+        "reaction_sequence": [
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Purine-linked AICAR pathway",
+        "description": "Histidine synthesis via shared purine intermediates",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_003",
+      "mol_005",
+      "mol_007",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Shen-Or\u00f3 pathway aligns with literature but lacks explicit mineral agents (e.g., Fe-S catalysts in hydrothermal steps). Formamidine instability and erythrose availability are concerns.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify Fe-S/clay catalysts in hydrothermal steps",
+          "Address formamidine stability via mineral buffering"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "2-Aminoimidazole synthesis lacks phosphate catalyst specification. No clear connection to histidine synthesis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Include phosphate catalyst in reaction conditions",
+          "Link 2-aminoimidazole to histidine via intermediate steps"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.6,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.5,
+        "feedback": "AICAR formation from HCN alone is chemically incomplete; biochemical conversion to histidine is unsupported by literature.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add NH3 to AICAR synthesis",
+          "Clarify prebiotic mechanism for AICAR-to-histidine conversion"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "Network integrates key literature pathways but has critical gaps: underconnected hubs (mol_003/005/007/010), unstable intermediates, and unsupported AICAR-to-histidine step. Hydrothermal-surface flow is logical but requires stronger mineral catalysis specifications.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

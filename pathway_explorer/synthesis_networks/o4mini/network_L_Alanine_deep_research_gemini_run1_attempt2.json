@@ -1,0 +1,762 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Combine hydrothermal carbon fixation and reductive amination with surface Strecker and cyanosulfidic chemistries, augmented by ab initio nanoreactor simulations, to generate multiple convergent pathways to L-alanine across diverse minerals and environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H4N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH2NH",
+        "iupac_name": "methanimine",
+        "common_name": "formaldimine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Mineral-catalyzed CO2 reduction to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Redox-driven multi-electron CO2 fixation on Fe\u2013S surface",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Reductive amination of pyruvate to alanine on green rust",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "green rust"
+        ],
+        "conditions": {
+          "temperature": "343-373K",
+          "pressure": "high",
+          "catalyst": "green rust",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Mixed-valence iron catalyzed reductive amination",
+        "reasoning": "(Barge et al., 2020)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Enantioselective reductive amination on pyrite",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Asymmetric catalysis on chiral pyrite surface",
+        "reasoning": "(Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of aminonitrile on montmorillonite",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "slightly alkaline"
+        },
+        "mechanism": "Imine formation followed by nucleophilic cyanide addition",
+        "reasoning": "(Miller, 1953)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nitrile hydrolysis to alanine on phosphate minerals",
+        "inputs": [
+          "mol_008",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Acid/base-catalyzed nitrile hydrolysis",
+        "reasoning": "(Sutherland et al., 2010)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic formation of formaldimine",
+        "inputs": [
+          "mol_007",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoredox-mediated homologation of HCN",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Imine-mediated aminonitrile synthesis from formaldimine",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Imine-mediated nucleophilic cyanide addition",
+        "reasoning": "(Sutherland et al., 2009)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Direct alanine synthesis via AINR simulations on magnetite",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "simulated high pressure"
+        },
+        "mechanism": "Multistep reductive coupling under mineral catalysis",
+        "reasoning": "speculative, supported by AINR simulations (Boch et al., 2017)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis of aminonitrile on mackinawite",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "alkaline"
+        },
+        "mechanism": "Imine formation and cyanide addition on sulfide surface",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrothermal nitrile hydrolysis on mackinawite",
+        "inputs": [
+          "mol_008",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "alkaline"
+        },
+        "mechanism": "Mineral-catalyzed nitrile hydrolysis",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Classical spark discharge formation of alanine",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_002",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "electrical discharge"
+        },
+        "mechanism": "Radical recombination under spark discharge",
+        "reasoning": "(Miller, 1953)"
+      },
+      {
+        "id": "rxn_013",
+        "name": "Volcanic spark discharge alanine formation",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_009",
+          "mol_002",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "aspirated spark discharge"
+        },
+        "mechanism": "Radical gas-phase reactions in volcanic plume",
+        "reasoning": "(Miller, 1955)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal fixation and amination via green rust",
+        "description": "CO2 reduction to pyruvate followed by reductive amination on green rust",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal fixation and enantioselective amination on pyrite",
+        "description": "Pyruvate formation then asymmetric amination on pyrite surfaces",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "AINR magnetite direct synthesis",
+        "description": "Ab initio nanoreactor simulated direct coupling on magnetite",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface Strecker and hydrolysis",
+        "description": "Strecker synthesis on clay then nitrile hydrolysis on phosphate minerals",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanosulfidic homologation pathway",
+        "description": "HCN and H2S photochemistry to formaldimine, aminonitrile, then hydrolysis",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal Strecker and hydrolysis",
+        "description": "Strecker on mackinawite followed by hydrolysis on same mineral",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hybrid hydrothermal-surface hydrolysis",
+        "description": "Mackinawite Strecker then surface hydrolysis on phosphate minerals",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Classical spark discharge route",
+        "description": "Miller\u2013Urey style electrical discharge synthesis on clay surfaces",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Volcanic aspirator spark route",
+        "description": "Volcanic plume aspirator experiment variant on clay",
+        "reaction_sequence": [
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanosulfidic hydrothermal hybrid",
+        "description": "Photochemical homologation then hydrothermal hydrolysis on mackinawite",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Hydrothermal reductive amination via green rust is well-supported by experimental data and aligns with literature on pyruvate amination.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "None; pathway is robust"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_003": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Enantioselective amination on pyrite adds homochirality considerations; mechanism plausible but yields may be modest.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Characterize ee under varying UV conditions"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_008": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.5,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.78,
+        "feedback": "AINR simulation is promising but lacks experimental validation; direct one-step hydrothermal synthesis may be over-optimistic.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Supplement with lab-based magnetite catalysis experiments",
+          "Detail reaction mechanism and kinetics"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.94,
+        "feedback": "Classic surface Strecker followed by hydrolysis on phosphate minerals is highly coherent and well supported.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify mineral buffering effects on pH"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_006": 0.9,
+          "rxn_007": 0.85,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.93,
+        "feedback": "Cyanosulfidic homologation routed through formaldimine fits modern systems chemistry models.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include photoredox catalysts (Cu ions) for completeness"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_011": 0.8
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.91,
+        "feedback": "Hydrothermal Strecker on mackinawite is plausible; nitrile hydrolysis on sulfide surfaces is less studied but credible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Investigate hydrolysis rates on mackinawite under vent conditions"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Combining hydrothermal Strecker with surface hydrolysis bridges environments but requires transport assumptions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail intermediate transfer between hydrothermal and surface pools"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_012": 0.75
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Spark discharge route aligns with Miller\u2013Urey, though starting with acetaldehyde vs. CH4 requires justification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Replace acetaldehyde with CH4/N2 mixture to mimic Miller\u2013Urey conditions"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_013": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Volcanic spark discharge including H2S is supported by 1955 experiments, though precursors could be expanded.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify aspirator flow rates and gas ratios"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.9,
+          "rxn_007": 0.85,
+          "rxn_011": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Hybrid cyanosulfidic-hydrothermal pathway is creative and literature-aligned, but environmental switching needs detail.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify pH and redox transitions between steps"
+        ]
+      }
+    ],
+    "best_pathway_id": "P4",
+    "overall_confidence": 0.9,
+    "network_feedback": "The network is comprehensive, well-connected, and aligns closely with literature on Strecker, cyanosulfidic, hydrothermal, and spark discharge chemistries. Minor issues concern speculative AINR steps and environmental transfers. Overall, the network robustly achieves L-alanine synthesis via multiple convergent routes.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": true,
+  "attempts": 2,
+  "notes": null
+}

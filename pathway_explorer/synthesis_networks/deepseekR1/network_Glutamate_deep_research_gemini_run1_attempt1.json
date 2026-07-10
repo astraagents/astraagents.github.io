@@ -1,0 +1,440 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integration of hydrothermal carboxylation, surface Strecker/cyanosulfidic synthesis, and biochemical transamination pathways through key intermediates like \u03b1-ketoglutarate and 2-aminopentanedinitrile",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O",
+        "iupac_name": "Propenal",
+        "common_name": "Acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H6N4",
+        "iupac_name": "2-Aminopentanedinitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H7N3/c6-3-1-2-5(8)4-7/h5H,1-2,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H9NO4",
+        "iupac_name": "Glutamic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H7NO3",
+        "iupac_name": "5-Oxoproline",
+        "common_name": "Pyroglutamate",
+        "inchi": "InChI=1S/C5H7NO3/c7-4-2-1-3(6-4)5(8)9/h3H,1-2H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H5NO2",
+        "iupac_name": "Glycine",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H6O3S",
+        "iupac_name": "Succinyl-thioester",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal Carboxylation",
+        "inputs": [
+          "mol_002",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrrhotite (Fe7S8)"
+        ],
+        "conditions": {
+          "temperature": "358K",
+          "pressure": "high",
+          "catalyst": "Pyrrhotite",
+          "aqueous": true,
+          "other": "H2-rich environment"
+        },
+        "mechanism": "Mineral-catalyzed carbon fixation via thioester intermediate",
+        "reasoning": "Menor-Salv\u00e1n et al. (2013) demonstrated pyrrhotite-catalyzed carboxylation mimicking Arnon cycle"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker Synthesis of Glutamate",
+        "inputs": [
+          "mol_004",
+          "mol_003",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Aldehyde + NH3 + HCN \u2192 \u03b1-amino nitrile \u2192 hydrolysis to amino acid",
+        "reasoning": "Johnson et al. (2008) volcanic simulations; Parker et al. (2014) cyanamide-enhanced Strecker"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanosulfidic Pathway",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu ions",
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "Cu photoredox",
+          "aqueous": true,
+          "other": "UV irradiation (254 nm)"
+        },
+        "mechanism": "HCN homologation via UV-driven photoredox cycling",
+        "reasoning": "Sutherland (2016) cyanosulfidic systems chemistry framework"
+      },
+      {
+        "id": "rxn_004",
+        "name": "2-Aminopentanedinitrile Hydrolysis",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 7-8"
+        },
+        "mechanism": "Stepwise hydrolysis of dinitrile to amino acid",
+        "reasoning": "Sutherland (2016) nucleotide-amino acid co-synthesis"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reductive Amination",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "NADH"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "NADH",
+          "aqueous": true,
+          "other": "1M NH3, pH 8"
+        },
+        "mechanism": "NADH-mediated hydride transfer to \u03b1-keto acid",
+        "reasoning": "Rivas et al. (2024) demonstrated prebiotic NADH activity"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyroglutamate Formation",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe3O4"
+        ],
+        "conditions": {
+          "temperature": "423K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": true,
+          "other": "H2 buffering"
+        },
+        "mechanism": "Thermal cyclization via intramolecular dehydration",
+        "reasoning": "Hydrothermal stability studies (Ferreira et al., 2023)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Thioester Synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe3S4)"
+        ],
+        "conditions": {
+          "temperature": "400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "Alkaline pH"
+        },
+        "mechanism": "CO2 reduction via Fe-S mineral catalysis",
+        "reasoning": "Iron-sulfur world hypothesis (W\u00e4chtersh\u00e4user, 1988)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Transamination",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrrhotite"
+        ],
+        "conditions": {
+          "temperature": "358K",
+          "pressure": "high",
+          "catalyst": "Pyrrhotite",
+          "aqueous": true,
+          "other": "Mineral surface templating"
+        },
+        "mechanism": "Amino group transfer from glycine",
+        "reasoning": "Menor-Salv\u00e1n et al. (2013) mineral-catalyzed transamination"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Arnon Cycle",
+        "description": "Iron-sulfur mediated carboxylation and transamination",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_001",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Volcanic Strecker Synthesis",
+        "description": "Acrolein-based amino acid formation",
+        "reaction_sequence": [
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic Network",
+        "description": "UV-driven HCN polymerization",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_007": 0.6,
+          "rxn_005": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Hydrothermal Arnon Cycle lacks explicit mineral catalysts (e.g., pyrrhotite) critical for carboxylation. Thioester synthesis (rxn_007) omits H2S, a key reductant in literature. Reductive amination (rxn_005) requires NADH-like agents not specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Include Fe-S minerals in hydrothermal steps",
+          "Add H2S to thioester synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.5,
+        "feedback": "Strecker synthesis (rxn_002) uses undefined mol_011 (likely HCN) and lacks acrolein\u2019s aldehyde specificity. No mineral surface (e.g., montmorillonite) for hydrolysis catalysis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Define HCN as a molecule",
+          "Add clay catalysts for hydrolysis"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Cyanosulfidic pathway (rxn_003) omits H2S and UV/copper catalysts. Hydrolysis (rxn_004) aligns with literature but needs pH/condition details.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Include H2S and Cu catalysts",
+          "Specify photoredox conditions"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network integrates key concepts (hydrothermal carboxylation, Strecker, cyanosulfidic) but has critical gaps: undefined molecules (mol_011, mol_012), missing mineral catalysts (Fe-S, clays), and incomplete environmental transitions. Target is achievable via multiple routes, but final steps lack mechanistic detail.",
+    "approved": false,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

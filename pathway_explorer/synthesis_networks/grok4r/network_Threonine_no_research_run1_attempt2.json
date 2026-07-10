@@ -1,0 +1,864 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "threonine",
+    "overall_strategy": "The synthesis network for threonine emphasizes convergent pathways to the key precursor lactaldehyde via multiple hydrothermal reductions to acetaldehyde and pyruvate, surface-level production of formaldehyde from HCN or CO2, and dual routes (aldol and photochemical) to lactaldehyde, culminating in Strecker synthesis to the aminonitrile followed by biochemical hydrolysis, ensuring bidirectional flow from hydrothermal to surface and onward to biochemical assembly with redundancy across environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH3C(O)COOH",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH3CHO",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH3CH(OH)CHO",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH3CH(OH)CH(NH2)CN",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine nitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "HO2CCH(NH2)CH(OH)CH3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, alkaline vents"
+        },
+        "mechanism": "Surface-mediated reduction using Fe-S clusters as electron donors.",
+        "reasoning": "Key initial step in hydrothermal carbon fixation, supported by experiments on greigite catalysis (Huber & W\u00e4chtersh\u00e4user, 1998)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate extension to pyruvate",
+        "inputs": [
+          "mol_006",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "subseafloor interactions"
+        },
+        "mechanism": "Hydrogenation and carbonylation steps analogous to acetyl-CoA pathway precursors.",
+        "reasoning": "Builds on formate to form C3 unit via mineral-catalyzed fixation (Codispoti et al., 2019, speculative extension for network completeness)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate decarboxylation to acetaldehyde",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Thermal decarboxylation of alpha-keto acid on clay surfaces.",
+        "reasoning": "Plausible in evaporitic pools, connecting hydrothermal products to surface chemistry (Huber et al., 2003)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "HCN hydrolysis to formaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photocatalytic hydrolysis of nitrile to aldehyde.",
+        "reasoning": "UV-driven in tidal flats, key for cyanosulfidic pathways (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Photocatalytic CO2 reduction to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Semiconductor-mediated multi-electron reduction of CO2.",
+        "reasoning": "Direct surface route linking atmospheric CO2 to organics under anoxic UV conditions (Zhang & Martin, 2008, speculative for prebiotic yields)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Crossed aldol to lactaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Enol from acetaldehyde adds to formaldehyde, followed by protonation.",
+        "reasoning": "Extension of formose-like chemistry in pools containing mixed aldehydes; experimental support for branched products (Decker et al., 1982)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Fischer-Tropsch synthesis of acetaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "black smoker vents"
+        },
+        "mechanism": "Catalytic chain growth and hydrogenation from syngas precursors.",
+        "reasoning": "Established in iron-sulfur world for aldehyde production (McCollom et al., 1999)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Direct hydrothermal synthesis of pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Surface-catalyzed CO2 fixation and reduction without formate intermediate.",
+        "reasoning": "Alternative route in acidic vents, providing redundancy (Huber & W\u00e4chtersh\u00e4user, 2003)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Photochemical formation of lactaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "UV-induced alpha-hydroxylation of acetaldehyde.",
+        "reasoning": "Speculative photocatalytic step to introduce hydroxy group, addressing gap in lactaldehyde formation (inspired by UV organic synthesis, Ranjan et al., 2015)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Strecker synthesis to threonine nitrile",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "evaporitic pools"
+        },
+        "mechanism": "Cyanohydrin formation followed by nucleophilic substitution with ammonia.",
+        "reasoning": "Core prebiotic amino acid synthesis, yielding beta-hydroxy acids from hydroxy aldehydes (Miller, 1953; Powner et al., 2009)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrolysis of threonine nitrile to threonine",
+        "inputs": [
+          "mol_011",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mild heating in prebiotic pools"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid.",
+        "reasoning": "Final assembly step in concentrated solutions, connecting surface products to proto-biomolecules (speculative but necessary for completion)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal formate-pyruvate route with HCN-derived HCHO and aldol",
+        "description": "Via formate intermediate, surface decarboxylation, HCN to HCHO, aldol to lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal formate-pyruvate route with surface CO2 HCHO and aldol",
+        "description": "Via formate, decarboxylation, direct surface HCHO from CO2, aldol to lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct hydrothermal pyruvate route with HCN HCHO and aldol",
+        "description": "Direct to pyruvate, surface decarboxylation, HCN to HCHO, aldol.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct hydrothermal pyruvate route with surface CO2 HCHO and aldol",
+        "description": "Direct pyruvate, decarboxylation, surface CO2 to HCHO, aldol.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal Fischer-Tropsch acetaldehyde with HCN HCHO and aldol",
+        "description": "Direct hydrothermal acetaldehyde, HCN to HCHO, aldol to lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_004",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrothermal Fischer-Tropsch acetaldehyde with surface CO2 HCHO and aldol",
+        "description": "Direct acetaldehyde, surface CO2 to HCHO, aldol.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal formate-pyruvate with HCN HCHO and photochemical lactaldehyde",
+        "description": "Via formate-pyruvate-acetaldehyde, HCN to HCHO, photo to lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal formate-pyruvate with surface CO2 HCHO and photochemical lactaldehyde",
+        "description": "Via formate-pyruvate-acetaldehyde, surface CO2 HCHO, photo lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal Fischer-Tropsch acetaldehyde with HCN HCHO and photochemical",
+        "description": "Direct acetaldehyde, HCN HCHO, photo to lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct hydrothermal pyruvate with HCN HCHO and photochemical lactaldehyde",
+        "description": "Direct pyruvate, decarbox to acetaldehyde, HCN HCHO, photo lactaldehyde.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_004": 0.3,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Pathway relies on dubious HCN hydrolysis to formaldehyde; otherwise coherent hydrothermal to surface flow.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace rxn_004 with a more plausible formaldehyde source like formamide hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Solid pathway using photocatalytic formaldehyde; good convergence at lactaldehyde.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Enhance rxn_002 with specific mineral catalysts for better feasibility."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.3,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Shorter route but compromised by unreliable HCN to HCHO step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Use alternative HCHO production to avoid rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_003": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.87,
+        "feedback": "Efficient direct pyruvate route with reliable surface steps; strong prebiotic alignment.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Validate surface decarboxylation conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_004": 0.3,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Concise but hindered by problematic formaldehyde source.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Substitute rxn_004 for better HCHO generation."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_005": 0.8,
+          "rxn_006": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Shortest viable pathway with Fischer-Tropsch and aldol; excellent convergence.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Confirm FT yields for aldehydes in hydrothermal settings."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_004": 0.3,
+          "rxn_009": 0.2,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Invalid photochemical step to lactaldehyde; major chemistry issue.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Revise rxn_009 to a plausible mechanism; avoid rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.7,
+          "rxn_003": 0.8,
+          "rxn_005": 0.8,
+          "rxn_009": 0.2,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.72,
+        "feedback": "Photochemical lactaldehyde formation is chemically implausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace rxn_009 with aldol condensation or reduction route."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_004": 0.3,
+          "rxn_009": 0.2,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Multiple problematic reactions undermine viability.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Overhaul lactaldehyde and HCHO steps."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_003": 0.8,
+          "rxn_004": 0.3,
+          "rxn_009": 0.2,
+          "rxn_010": 0.95,
+          "rxn_011": 0.9
+        },
+        "chemical_feasibility": 0.67,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Combines two invalid steps; not feasible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Switch to aldol-based lactaldehyde production."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.82,
+    "network_feedback": "Well-connected network with strong topology and environmental flow; some reactions (e.g., HCN hydrolysis, photochemical lactaldehyde) reduce feasibility in certain pathways, but viable routes exist via aldol condensation. Aligns with prebiotic principles, though literature citations absent.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

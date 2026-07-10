@@ -1,0 +1,733 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "The synthesis network integrates literature-supported routes to serine, emphasizing surface environments for UV photoredox cyanometallate chemistry (Ritson & Sutherland, 2012), bisulfite-protected Strecker synthesis (Ritson & Sutherland, 2018), and formamide-mediated N-formylaminonitrile formation (Green et al., 2023). Hydrothermal environments provide thermodynamic favorability and mineral concentration for precursors like HCN and glycolaldehyde (Schulte & Shock, 1995), with surface-to-biochemical flow via wet-dry cycling on clays. Multiple convergent pathways from HCN and glycolaldehyde hubs ensure redundancy, addressing stability and concentration bottlenecks.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCHO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HOCH2CH(OH)CN",
+        "iupac_name": "2,3-dihydroxypropanenitrile",
+        "common_name": "glyceronitrile",
+        "inchi": "InChI=1S/C3H5NO2/c4-1-3(6)2-5/h3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HOCH2C(N)NH2",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2SO3",
+        "iupac_name": "sulfurous acid",
+        "common_name": "bisulfite source",
+        "inchi": "InChI=1S/H2O3S/c1-4(2)3/h(H2,1,2,3)",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCONH2",
+        "iupac_name": "formamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HOCH2CH(NHCHO)CN",
+        "iupac_name": "N-(1-cyano-2-hydroxyethyl)formamide",
+        "common_name": "N-formyl serine nitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HOCH2CH(NH2)COOH",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "HOCH2CN",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "UV photoredox cyanometallate synthesis of glycolaldehyde and glycolonitrile from HCN",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "copper cyanide complexes",
+          "aqueous": "true",
+          "other": "UV irradiation 254 nm"
+        },
+        "mechanism": "Photoredox cycling reduces cyanohydrins to imines and aldehydes via Kiliani-Fischer-like homologation.",
+        "reasoning": "UV-driven cyanometallate chemistry generates C2/C3 sugar derivatives including glycolaldehyde and glycolonitrile from HCN (Ritson & Sutherland, 2012, Nature Chemistry)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Bisulfite protection of glycolaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "bisulfite",
+          "aqueous": "true",
+          "other": "alkaline pH"
+        },
+        "mechanism": "Adduct formation stabilizes glycolaldehyde against decomposition in alkaline conditions.",
+        "reasoning": "Bisulfite adduct stabilizes glycolaldehyde for subsequent Strecker chemistry (Ritson & Sutherland, 2018, Nature Communications)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of serine aminonitrile from glycolaldehyde, ammonia, and HCN",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "bisulfite-protected",
+          "aqueous": "true",
+          "other": "alkaline conditions, hours timescale"
+        },
+        "mechanism": "Imine formation followed by cyanide addition to aminonitrile.",
+        "reasoning": "Direct Strecker pathway with bisulfite protection yields serine aminonitrile (Ritson & Sutherland, 2018, Nature Communications; classic Strecker from glycolaldehyde)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrolysis of serine aminonitrile to serine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "acid or alkaline hydrolysis"
+        },
+        "mechanism": "Nitrile hydration and hydrolysis to carboxylic acid.",
+        "reasoning": "Hydrolysis converts aminonitrile to amino acid (Ritson & Sutherland, 2018; Green et al., 2023)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formamide-mediated N-formyl serine nitrile from glycolaldehyde and HCN",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "formamide solvent",
+          "aqueous": "false",
+          "other": "0.1 M solution, 36 h"
+        },
+        "mechanism": "N-formylation during cyanide addition to imine intermediate.",
+        "reasoning": "Glycolaldehyde + cyanide in formamide yields FoSer-CN with quantified branching (Green et al., 2023, JACS)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Alkaline hydrolysis of N-formyl serine nitrile to serine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "alkaline",
+          "aqueous": "true",
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Nitrile hydration outcompetes deformylation, yielding amino acid.",
+        "reasoning": "Alkaline processing of FoSer-CN yields serine mixtures (Green et al., 2023, JACS)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Spark discharge synthesis of serine from simple gases",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "spark discharge",
+          "aqueous": "false",
+          "other": "H2S, CH4 mixture, high-energy input"
+        },
+        "mechanism": "Plasma chemistry forms amino acids via radical intermediates.",
+        "reasoning": "Spark discharge yields low-abundance serine (Parker et al., 2011, PNAS)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrothermal Strecker thermodynamic favorability with mineral concentration",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "mineral adsorption",
+          "aqueous": "true",
+          "other": "pH gradient, low concentrations"
+        },
+        "mechanism": "Surface-catalyzed imine-cyanide addition, concentrated by adsorption.",
+        "reasoning": "Thermodynamically favorable but requires mineral concentration (Schulte & Shock, 1995; Aubrey et al., 2009)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV ice photolysis analog for serine precursors",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "~288K post-warm",
+          "pressure": "1 atm",
+          "catalyst": "UV photolysis",
+          "aqueous": "true",
+          "other": "ice analog warming and hydrolysis"
+        },
+        "mechanism": "Photolysis of mixed ices forms aminonitriles upon hydrolysis.",
+        "reasoning": "UV processing of interstellar ice analogs yields racemic serine precursors (Bernstein et al., 2002, Nature)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reduction of glycolonitrile to serine aminonitrile equilibrium",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "photoredox",
+          "aqueous": "true",
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photoreduction to imine, amination to aminonitrile.",
+        "reasoning": "Serine nitrile in equilibrium with reduced cyanohydrin intermediates (Ritson & Sutherland, 2012)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "UV Cyanometallate to Strecker",
+        "description": "HCN via photoredox to glycolaldehyde, then bisulfite-protected Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct Strecker without Protection",
+        "description": "Glycolaldehyde + NH3 + HCN in aqueous alkaline.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formamide N-Formyl Route",
+        "description": "Glycolaldehyde in formamide with HCN to FoSer-CN, then hydrolysis.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Spark Discharge One-Pot",
+        "description": "Simple gases to serine via high-energy input.",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal Concentrated Strecker",
+        "description": "Mineral-adsorbed precursors in vents to aminonitrile, then surface hydrolysis.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "UV Ice Photolysis",
+        "description": "Mixed precursors photolyzed to aminonitrile, hydrolyzed.",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Glycolonitrile Reduction Path",
+        "description": "HCN to glycolonitrile, reduction to serine aminonitrile.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyanosulfidic Integration",
+        "description": "HCN + sulfur/UV to aminonitrile via sugar chemistry.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Bisulfite from Photoredox",
+        "description": "Photoredox HCN to glycolaldehyde, protected, Strecker in formamide hybrid.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hydrothermal Precursor to Surface Formamide",
+        "description": "Vents provide HCN/CO2, surface formamide processing.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "Strong alignment with UV cyanometallate and Strecker synthesis from literature; good convergence at serine aminonitrile.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for surface steps."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Direct Strecker is feasible but lacks protection, aligning with literature concerns on stability.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate bisulfite protection for better yield."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.94,
+        "feedback": "Excellent match to Green et al. formamide route; addresses protection and hydrolysis well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify branching products from literature."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Spark discharge aligns with Parker et al., but low selectivity and yields noted in literature.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Address contamination risks for serine detection."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Hydrothermal Strecker supported by Schulte & Shock thermodynamics, but concentration issues persist.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral concentration mechanisms."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "UV ice photolysis matches Bernstein et al., but pathway to serine precursor is indirect.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Clarify link from HCHO to serine aminonitrile."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_010": 0.8,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Glycolonitrile reduction aligns with Ritson & Sutherland equilibria; good hub use.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify reduction mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.89,
+        "feedback": "Cyanosulfidic integration per Patel et al.; bisulfite protection enhances feasibility.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate sulfur chemistry details."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.85,
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "Bisulfite from photoredox well-supported by Ritson & Sutherland 2018.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Model wet-dry cycling for concentration."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.85,
+          "rxn_005": 0.9,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal to surface formamide flow justified; addresses environmental transitions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify formamide sourcing."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.87,
+    "network_feedback": "Well-connected network with strong literature alignment, multiple convergent pathways, and feasible chemistry; minor issues in hydrothermal concentration and spark selectivity.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

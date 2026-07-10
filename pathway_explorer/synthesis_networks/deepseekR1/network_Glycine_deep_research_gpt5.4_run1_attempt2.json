@@ -1,0 +1,358 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "Integration of hydrothermal reductive amination, surface Strecker synthesis, and mineral-catalyzed ethanolamine oxidation pathways with environmental cross-feeding",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C2H7NO",
+        "iupac_name": "Ethanolamine",
+        "common_name": "Ethanolamine",
+        "inchi": "InChI=1S/C2H7NO/c3-1-2-4/h4H,1-3H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H3N2",
+        "iupac_name": "Aminoacetonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H2O3",
+        "iupac_name": "Glyoxylic acid",
+        "common_name": "Glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H5NO2",
+        "iupac_name": "Glycine",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CO",
+        "iupac_name": "Carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker Aminonitrile Formation",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "pH 6-8"
+        },
+        "mechanism": "Nucleophilic addition of NH3 to HCHO followed by cyanide attack",
+        "reasoning": "Classic Strecker synthesis pathway (Miller, 1953)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminonitrile Hydrolysis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis",
+        "reasoning": "Final step of Strecker synthesis (Miller, 1953)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glyoxylate Reductive Amination",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ferroan brucite"
+        ],
+        "conditions": {
+          "temperature": "290-310K",
+          "pressure": "1 atm",
+          "catalyst": "Ferroan brucite",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Fe(II)-mediated imine formation and reduction",
+        "reasoning": "Mineral-catalyzed pathway (Chimiak et al., 2024)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Ethanolamine Oxidation",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe/Ni catalyst"
+        ],
+        "conditions": {
+          "temperature": "353-433K",
+          "pressure": "0.1-8 MPa",
+          "catalyst": "Fe/Ni",
+          "aqueous": true,
+          "other": "pH 9.7"
+        },
+        "mechanism": "Metal-catalyzed oxidative deamination",
+        "reasoning": "Alkaline vent synthesis (Zhang et al., 2017)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Surface-Mediated Glycine Formation",
+        "inputs": [
+          "mol_007",
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Forsterite"
+        ],
+        "conditions": {
+          "temperature": "150-200K",
+          "pressure": "Low",
+          "catalyst": "Forsterite",
+          "aqueous": false,
+          "other": "UV exposure"
+        },
+        "mechanism": "Mineral-surface catalyzed C-C-N bond formation",
+        "reasoning": "Astrochemical pathway (Mates-Torres & Rimola, 2026)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glyoxylate Formation",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Magnetite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "CO2 reduction via Fischer-Tropsch-type synthesis",
+        "reasoning": "Hydrothermal carbon fixation (Barge et al., 2019)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal Reductive Amination",
+        "description": "Glyoxylate formation from CO reduction followed by Fe-mediated amination",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Classic Strecker Synthesis",
+        "description": "HCN-based amino acid formation through wet-dry cycling",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Alkaline Vent Oxidation",
+        "description": "Metal-catalyzed conversion of ethanolamine to glycine",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_006": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Hydrothermal reductive amination pathway includes glyoxylate formation (rxn_006), which lacks direct literature support. Glyoxylate reductive amination (rxn_003) is plausible but requires Fe-mineral catalysts not explicitly specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace CO \u2192 glyoxylate with a literature-supported route (e.g., glycolaldehyde oxidation) and specify Fe-mineral catalysts for rxn_003."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic Strecker synthesis is well-supported by literature. Hydrolysis of aminoacetonitrile (rxn_002) is chemically valid, though mineral catalysts (e.g., clays) could enhance yield.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., montmorillonite) for rxn_001 to align with surface reaction mechanisms."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Ethanolamine oxidation (rxn_004) aligns with Zhang et al. (2017) but requires explicit mention of Fe/Ni/Co catalysts and high-pH hydrothermal conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify metal catalysts (e.g., Fe powder) and high-temperature/pH conditions in rxn_004."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.8,
+    "network_feedback": "The network integrates multiple literature-supported pathways but has weaknesses: (1) Glyoxylate formation (rxn_006) lacks direct experimental support, (2) Mineral catalysts are underspecified, and (3) Hub molecules mol_004/mol_005 have low connectivity. Strengths include valid Strecker and ethanolamine oxidation pathways with environmental transitions.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

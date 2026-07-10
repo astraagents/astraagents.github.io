@@ -1,0 +1,339 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integration of hydrothermal Fe\u00b2\u207a-catalyzed \u03b1-ketoglutarate synthesis, surface Strecker/cyanosulfidic pathways, and biochemical reductive amination to produce glutamate through convergent prebiotic routes",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C2H4O3",
+        "iupac_name": "Oxopropanedioic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H2O5/c4-1(2(5)6)3(7)8/h(H,5,6)(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H2O3",
+        "iupac_name": "Oxoacetic acid",
+        "common_name": "Glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "\u03b1-Ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H5NO3",
+        "iupac_name": "2-Aminopentanedioic acid",
+        "common_name": "Glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CHNO",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H7NO3",
+        "iupac_name": "2-Iminopentanedioic acid",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H7NO4/c6-3(5(9)10)1-2-4(7)8/h6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "CO\u2082 hydrogenation via Fe-S mineral catalysis",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) demonstrated Fe-S mediated CO\u2082 reduction to pyruvate"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aldol condensation to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite (Fe\u2083O\u2084)"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fe\u00b2\u207a-catalyzed aldol condensation",
+        "reasoning": "Cody et al. (2000) showed glyoxylate+pyruvate condensation under hydrothermal conditions"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive amination to glutamate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Fe\u00b2\u207a ions",
+          "aqueous": true
+        },
+        "mechanism": "NH3 incorporation via imine intermediate",
+        "reasoning": "Barge et al. (2019) demonstrated clay-catalyzed reductive amination of \u03b1-ketoglutarate"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker synthesis of glutamate precursor",
+        "inputs": [
+          "mol_008",
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Borate minerals",
+          "aqueous": true
+        },
+        "mechanism": "Aminonitrile formation via aldehyde-HCN-NH3 reaction",
+        "reasoning": "Miller (1953) Strecker mechanism adapted for C5 chain formation"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of iminoglutarate",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true
+        },
+        "mechanism": "Acid-catalyzed hydrolysis",
+        "reasoning": "Standard Strecker pathway completion as per Parker et al. (2011)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanosulfidic glyoxylate synthesis",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "UV light",
+          "aqueous": true
+        },
+        "mechanism": "Photochemical HCN oligomerization",
+        "reasoning": "Patel et al. (2015) cyanosulfidic protometabolism pathways"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal TCA-like route",
+        "description": "CO\u2082 \u2192 Pyruvate \u2192 \u03b1-KG \u2192 Glutamate via Fe-S catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker route",
+        "description": "HCN + Glyoxylate \u2192 Iminoglutarate \u2192 Glutamate",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal steps (rxn_001, rxn_002) align with Fe\u00b2\u207a-catalyzed literature, but reductive amination (rxn_003) lacks explicit prebiotic catalyst specification. Pathway converges on \u03b1-ketoglutarate but under-specifies mineral agents.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify Fe\u00b2\u207a/FeS catalysts for rxn_003 to align with hydrothermal literature"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.85,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Strecker/cyanosulfidic steps (rxn_004, rxn_006) align well with literature. Hydrolysis (rxn_005) is plausible but could benefit from mineral surface catalysis details.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add montmorillonite clay catalysis for rxn_005 hydrolysis step"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.82,
+    "network_feedback": "Network integrates key literature-supported pathways (hydrothermal aldol condensation, Strecker synthesis) but has minor gaps: 1) Under-specified mineral catalysts in hydrothermal steps, 2) Biochemical reductive amination requires prebiotic reductant justification. Hubs mol_005 (degree=2) and mol_008 (degree=2) need expanded connectivity.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

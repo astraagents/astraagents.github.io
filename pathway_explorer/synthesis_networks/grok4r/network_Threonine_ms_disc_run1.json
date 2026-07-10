@@ -1,0 +1,724 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "The synthesis network for threonine integrates hydrothermal reduction and fixation to produce key precursors like pyruvate and acetaldehyde, surface wet-dry and UV-driven aldol and formose reactions to form hydroxy aldehydes such as lactaldehyde, and convergent Strecker/phosphoro-Strecker routes on mineral surfaces to aminonitriles, followed by biochemical hydrolysis to the amino acid. Multiple pathways converge at hubs like pyruvate, glycolaldehyde, and acetaldehyde, with bidirectional flow from hydrothermal products to surface catalysis, addressing literature pathways including Strecker, phosphoro-Strecker, ketoacid conversion, and cyanosulfidic chemistry while acknowledging challenges in yield and specificity.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H6NO3P",
+        "iupac_name": "diamidophosphate",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate synthesis via carbon fixation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "greigite/magnetite",
+          "aqueous": true,
+          "other": "pH 9-11, alkaline vents"
+        },
+        "mechanism": "CO2 hydrogenation and acetyl analog formation on Fe-S clusters",
+        "reasoning": "Hydrothermal systems facilitate pyruvate formation from CO2 and H2 using mineral catalysts (Imai et al., 1999; Sources 2655, 2656)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetaldehyde synthesis via FTT",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "acidic black smokers"
+        },
+        "mechanism": "Fischer-Tropsch-type reduction of CO intermediates to aldehydes",
+        "reasoning": "Magnetite catalyzes aldehyde production in hydrothermal vents (Sources 2655; Foustoukos and Seyfried, 2004)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol condensations of formaldehyde",
+        "reasoning": "Formose reaction produces sugar precursors like glycolaldehyde in evaporitic pools with borate stabilization (Sources 6942; Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation to lactaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles, UV exposure"
+        },
+        "mechanism": "Crossed aldol addition on clay surfaces concentrating reactants",
+        "reasoning": "Aldol reactions on clays form hydroxy aldehydes in surface environments (Sources 512; dry-wet cycles facilitate condensation)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis to aminonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Imine formation followed by cyanohydrin addition and amination",
+        "reasoning": "Strecker reaction yields \u03b1-amino acids like threonine from aldehydes in prebiotic surface settings (Or\u00f3, 1960; Sources 6940, 6942)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis to threonine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH gradient, mineral interfaces"
+        },
+        "mechanism": "Nitrile hydrolysis to amide then carboxylic acid",
+        "reasoning": "Final hydrolysis step in Strecker and related pathways to amino acids (Sources 6940; Wolman et al., 1971)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Phosphoro-Strecker to aminonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "pH 7"
+        },
+        "mechanism": "Phosphorylation-assisted aminonitrile formation avoiding side products",
+        "reasoning": "Phosphoro-Strecker variant selectively forms aminonitriles at neutral pH (Sources 21192, 21193; Ritson et al., 2022)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Decarboxylation of pyruvate to acetaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "thermal, dry conditions"
+        },
+        "mechanism": "Thermal decarboxylation releasing CO2",
+        "reasoning": "Pyruvate decarboxylation provides aldehydes for downstream synthesis (Sources 6940; Oba et al., 2020)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal FTT to Strecker",
+        "description": "Direct FTT acetaldehyde feeds into surface aldol and Strecker",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Pyruvate decarbox to Strecker",
+        "description": "Hydrothermal pyruvate decarboxylates to acetaldehyde for surface Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal FTT to Phosphoro-Strecker",
+        "description": "FTT acetaldehyde via aldol to phosphoro-Strecker variant",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Pyruvate route to Phosphoro-Strecker",
+        "description": "Pyruvate-derived acetaldehyde to phosphoro-Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Ketoacid conversion via decarbox",
+        "description": "Emphasizes pyruvate as ketoacid hub to aldehyde for Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface formose dominant Strecker",
+        "description": "Surface-focused with glycolaldehyde hub to threonine precursor",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cyanosulfidic-inspired Strecker",
+        "description": "HCN-driven surface chemistry to aminonitrile (speculative extension)",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Dry-wet cycle enhanced Phosphoro",
+        "description": "Wet-dry promotes concentration for phosphoro-Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Heterotrophic model Strecker",
+        "description": "From formaldehyde and HCN/ammonia in surface pools",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Thioester-protometabolic to Strecker",
+        "description": "Pyruvate in thioester cycles feeds decarbox to Strecker (addressing gap in energy activation)",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_007",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal FTT to Strecker aligns well with literature on FTT and Strecker synthesis, using acetaldehyde as key intermediate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts for surface aldol step."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_008": 0.8,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.88,
+        "feedback": "Pyruvate decarboxylation to acetaldehyde is biochemically valid but less emphasized in prebiotic literature; still coherent.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Justify decarboxylation under prebiotic conditions with mineral catalysis."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_004": 0.85,
+          "rxn_007": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Phosphoro-Strecker variant strongly supported by literature, using DAP intermediate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add pH conditions for Phosphoro-Strecker steps."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_008": 0.8,
+          "rxn_004": 0.85,
+          "rxn_007": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.87,
+        "feedback": "Similar to P2 but with Phosphoro-Strecker; decarboxylation step needs prebiotic validation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Explore abiotic decarboxylation mechanisms."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_008": 0.8,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Ketoacid conversion via decarbox aligns with literature on alpha-ketoacids, but direct link to threonine less clear.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Clarify how decarbox product leads to threonine backbone."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.93,
+        "feedback": "Surface formose-dominant Strecker is well-supported by literature on formose and Strecker reactions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate UV or mineral details for formose enhancement."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Cyanosulfidic-inspired aligns with literature, though threonine not explicitly mentioned.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add sulfidic agents if inspired by cyanosulfidic chemistry."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.85,
+          "rxn_007": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.93,
+        "feedback": "Dry-wet cycle enhanced Phosphoro-Strecker matches literature on cycles and Phosphoro-Strecker.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify cycle conditions for selectivity."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Heterotrophic model Strecker is brief; assumes direct precursors, aligns but lacks detail.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Expand on heterotrophic precursor sourcing."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_004": 0.85,
+          "rxn_005": 0.95,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.88,
+        "feedback": "Thioester-protometabolic to Strecker supported by literature on thioesters and metabolism.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate thioester intermediates explicitly."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.9,
+    "network_feedback": "The network is well-connected with strong alignment to literature on Strecker, Phosphoro-Strecker, and hydrothermal/surface pathways. Hubs like pyruvate and acetaldehyde facilitate convergence. Minor issues with unspecified minerals and biochemical steps in prebiotic context, but overall viable and addresses yield challenges.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

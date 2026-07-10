@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRA · Autonomous Multi-Agent Reconstruction of Prebiotic Reaction Networks</title>
+<meta name="description" content="ASTRA — an autonomous multi-agent AI system that reconstructs prebiotic chemical reaction networks, revealing organizational features of amino acid synthesis.">
+<link rel="icon" href="demo/imgs/Fav.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg0:#0A0E1A; --bg1:#0B1020; --panel:#121829; --panel2:#0E1422;
+    --border:#243049; --border2:#33415e;
+    --text:#E6ECF7; --muted:#8FA0BD; --dim:#5d6b86;
+    --astra:#7C8CF8; --gold:#FCD34D; --teal:#2DD4BF;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+    font-family:'Source Sans 3','Helvetica Neue',sans-serif;
+    color:var(--text);
+    background:radial-gradient(1200px 700px at 50% 18%, #131a30 0%, var(--bg1) 45%, var(--bg0) 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- animated sky (behind everything) ---------- */
+  .sky{position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .glow{position:absolute; border-radius:50%; filter:blur(24px);}
+  .glow-a{width:720px; height:720px; left:-180px; top:-200px;
+    background:radial-gradient(circle, rgba(124,140,248,.22), transparent 62%);
+    animation:drift 24s ease-in-out infinite;}
+  .glow-b{width:640px; height:640px; right:-180px; bottom:-220px;
+    background:radial-gradient(circle, rgba(45,212,191,.14), transparent 62%);
+    animation:drift 30s ease-in-out infinite reverse;}
+  .stars{position:absolute; top:0; left:0; width:2px; height:2px; border-radius:50%;
+    background:transparent; animation:twinkle 5.5s ease-in-out infinite;
+    box-shadow:
+      40px 60px rgba(224,231,255,.6), 130px 200px rgba(224,231,255,.55), 210px 90px rgba(224,231,255,.6),
+      300px 320px rgba(224,231,255,.5), 380px 150px rgba(224,231,255,.6), 470px 40px rgba(224,231,255,.55),
+      540px 260px rgba(224,231,255,.5), 620px 120px rgba(224,231,255,.6), 700px 350px rgba(224,231,255,.5),
+      790px 200px rgba(224,231,255,.55), 860px 70px rgba(224,231,255,.6), 950px 300px rgba(224,231,255,.5),
+      1030px 160px rgba(224,231,255,.55), 1120px 380px rgba(224,231,255,.5), 1200px 90px rgba(224,231,255,.6),
+      1290px 250px rgba(224,231,255,.5), 1370px 130px rgba(224,231,255,.55), 1450px 330px rgba(224,231,255,.5),
+      90px 400px rgba(224,231,255,.55), 260px 470px rgba(224,231,255,.5), 430px 520px rgba(224,231,255,.55),
+      600px 440px rgba(224,231,255,.5), 760px 500px rgba(224,231,255,.55), 930px 460px rgba(224,231,255,.5),
+      1100px 520px rgba(224,231,255,.55), 1270px 430px rgba(224,231,255,.5), 1420px 500px rgba(224,231,255,.55),
+      160px 640px rgba(224,231,255,.5), 350px 700px rgba(224,231,255,.55), 520px 660px rgba(224,231,255,.5),
+      690px 720px rgba(224,231,255,.55), 880px 680px rgba(224,231,255,.5), 1050px 730px rgba(224,231,255,.55),
+      1230px 660px rgba(224,231,255,.5), 1400px 710px rgba(224,231,255,.55), 70px 820px rgba(224,231,255,.5),
+      300px 860px rgba(224,231,255,.55), 560px 830px rgba(224,231,255,.5), 820px 880px rgba(224,231,255,.55),
+      1080px 840px rgba(224,231,255,.5), 1340px 870px rgba(224,231,255,.55);}
+  .stars2{animation:twinkle2 7.5s ease-in-out infinite; animation-delay:-2s;
+    box-shadow:
+      100px 120px 1px rgba(255,255,255,.9), 320px 250px 1px rgba(124,140,248,.9), 560px 100px 1px rgba(255,255,255,.9),
+      780px 300px 1px rgba(255,255,255,.85), 1010px 180px 1px rgba(124,140,248,.85), 1250px 320px 1px rgba(255,255,255,.9),
+      1440px 140px 1px rgba(255,255,255,.85), 200px 560px 1px rgba(255,255,255,.9), 480px 620px 1px rgba(124,140,248,.85),
+      740px 560px 1px rgba(255,255,255,.9), 1000px 640px 1px rgba(255,255,255,.85), 1300px 580px 1px rgba(45,212,191,.8),
+      150px 760px 1px rgba(255,255,255,.9), 460px 800px 1px rgba(255,255,255,.85), 720px 760px 1px rgba(124,140,248,.85),
+      1020px 820px 1px rgba(255,255,255,.9), 1320px 780px 1px rgba(255,255,255,.85), 620px 400px 1px rgba(255,255,255,.9),
+      900px 420px 1px rgba(45,212,191,.8), 1180px 460px 1px rgba(255,255,255,.9);}
+  @keyframes twinkle{0%,100%{opacity:.35}50%{opacity:.85}}
+  @keyframes twinkle2{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(34px,-22px)}100%{transform:translate(0,0)}}
+
+  /* ---------- top nav ---------- */
+  .nav{position:relative; z-index:5;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:14px 34px; border-bottom:1px solid var(--border);
+    background:rgba(10,14,26,.55); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px);}
+  .brand{display:flex; align-items:center; text-decoration:none;}
+  .brand img{height:38px; width:auto; filter:drop-shadow(0 0 14px rgba(124,140,248,.45));}
+  .menu{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .menu a{color:var(--muted); text-decoration:none; font-weight:600; font-size:15px;
+    padding:8px 14px; border-radius:10px; transition:color .2s, background .2s;}
+  .menu a:hover{color:var(--text); background:rgba(124,140,248,.12);}
+  .menu a.cta{color:#0b1020; background:linear-gradient(180deg,#93a0ff,var(--astra));
+    box-shadow:0 4px 18px rgba(124,140,248,.4); margin-left:6px;}
+  .menu a.cta:hover{filter:brightness(1.06); color:#0b1020;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; z-index:3; flex:1; min-height:0;
+    display:grid; grid-template-columns:1.35fr 1fr; gap:46px;
+    align-items:center; padding:40px 48px;}
+
+  .video-col{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;}
+  .video-wrap{position:relative; width:100%; max-width:940px; aspect-ratio:16/9;
+    border-radius:16px; overflow:hidden; border:1px solid var(--border2); background:#000;
+    box-shadow:0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(124,140,248,.10), 0 0 70px rgba(124,140,248,.14);}
+  .video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-cap{font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:.4px; color:var(--dim);}
+  .video-cap b{color:var(--muted); font-weight:500;}
+
+  /* ---------- paper info ---------- */
+  .paper{display:flex; flex-direction:column; gap:16px; max-width:580px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:2.4px;
+    text-transform:uppercase; color:var(--astra); margin:0;}
+  .title{margin:0; font-weight:700; letter-spacing:-.3px; line-height:1.14;
+    font-size:clamp(26px, 2.5vw, 41px);
+    background:linear-gradient(96deg,#ffffff 0%, #e2e8ff 42%, var(--astra) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .lead{margin:0; font-size:16px; line-height:1.55; color:var(--muted);}
+  .authors{margin:4px 0 0; font-size:15.5px; line-height:1.75; color:var(--text);}
+  .authors sup{color:var(--astra); font-weight:600; font-size:.7em; padding-left:1px;}
+  .authors sup.corr{color:var(--gold);}
+  .affils{margin:0; font-size:12.8px; line-height:1.7; color:var(--dim);}
+  .affils .n{color:var(--astra); font-weight:600; font-family:'JetBrains Mono',monospace; font-size:.92em;}
+  .corresp{margin:0; font-size:13px; color:var(--muted);}
+  .corresp .corr{color:var(--gold); font-weight:700;}
+  .corresp a{color:var(--astra); text-decoration:none;}
+  .corresp a:hover{text-decoration:underline;}
+
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+  .btn{display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    font-weight:600; font-size:14.5px; color:var(--text);
+    padding:10px 16px; border-radius:12px; border:1px solid var(--border2);
+    background:linear-gradient(180deg,#141b2e,#0e1322);
+    transition:border-color .2s, box-shadow .2s, transform .12s;}
+  .btn svg{width:16px; height:16px; opacity:.92;}
+  .btn:hover{border-color:var(--astra); box-shadow:0 0 16px rgba(124,140,248,.3); transform:translateY(-1px);}
+  .btn.primary{color:#0b1020; border-color:transparent;
+    background:linear-gradient(180deg,#93a0ff,var(--astra)); box-shadow:0 6px 20px rgba(124,140,248,.42);}
+  .btn.primary:hover{filter:brightness(1.06); box-shadow:0 8px 26px rgba(124,140,248,.5);}
+
+  /* ---------- footer ---------- */
+  .foot{position:relative; z-index:3;
+    display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
+    padding:14px 34px; border-top:1px solid var(--border);
+    background:rgba(10,14,26,.42); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);}
+  .collab{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .collab-label{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--dim);}
+  .chip{display:inline-flex; align-items:center; gap:9px; padding:7px 14px;}
+  .chip img{height:24px; width:auto; display:block;}
+  .chip .ms-word{font-weight:600; font-size:13px; color:var(--text); white-space:nowrap;}
+  .copy{font-size:12px; color:var(--dim);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    html,body{height:auto}
+    .hero{grid-template-columns:1fr; gap:28px; padding:28px 20px; align-items:start;}
+    .paper{max-width:none}
+    .nav{padding:12px 18px; gap:12px}
+    .menu{gap:2px}
+    .menu a{padding:7px 10px; font-size:14px}
+    .menu a.cta{margin-left:4px}
+    .foot{padding:14px 18px; justify-content:center}
+  }
+  @media (max-width:560px){
+    .brand img{height:32px}
+    .menu a{font-size:13px; padding:6px 8px}
+    .title{font-size:25px}
+    .collab-label{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .stars,.stars2,.glow{animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="sky" aria-hidden="true">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="stars"></div>
+    <div class="stars stars2"></div>
+  </div>
+
+  <!-- ===== Top navigation ===== -->
+  <header class="nav">
+    <a class="brand" href="#" aria-label="ASTRA home">
+      <img src="demo/imgs/astra_logo.png" alt="ASTRA">
+    </a>
+    <nav class="menu">
+      <a href="#">Paper</a>
+      <a href="https://github.com/amirgroup-codes/astra">Code</a>
+      <a href="pathway_explorer/">Pathway Explorer</a>
+      <a href="agents_logs/">Agents Logs</a>
+      <a class="cta" href="demo/index.html">Demo</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero: video (left) + paper info (right) ===== -->
+  <main class="hero">
+
+    <section class="video-col">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/SOK9iy22RaI"
+          title="ASTRA — overview"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-cap">▶ <b>Watch the overview</b> — the ASTRA multi-agent synthesis pipeline</p>
+    </section>
+
+    <section class="paper">
+      <p class="eyebrow">Autonomous Multi-Agent AI · Origins of Life</p>
+
+      <h1 class="title">Autonomous Multi-Agent Reconstruction of Prebiotic Reaction Networks Reveals Organizational Features of Amino Acid Synthesis</h1>
+
+      <p class="lead">ASTRA is an autonomous multi-agent system that reconstructs prebiotic chemical reaction networks — uncovering the organizational principles behind how amino acids are synthesized.</p>
+
+      <p class="authors">
+        Daniel Saeedi<sup>1</sup>,
+        Nihit Pokhrel<sup>2</sup>,
+        Leijia Gao<sup>2</sup>,
+        Charley Wen<sup>2</sup>,
+        Elizabeth Bruce<sup>2</sup>,
+        José C. Aponte<sup>3</sup>,
+        Amanda Stockton<sup>4</sup>,
+        Amirali Aghazadeh<sup>1</sup><sup class="corr">&#42;</sup>
+      </p>
+
+      <p class="affils">
+        <span class="n">1</span>&nbsp;School of Electrical &amp; Computer Engineering, Georgia Institute of Technology&nbsp;&nbsp;·&nbsp;&nbsp;
+        <span class="n">2</span>&nbsp;Microsoft Discovery&nbsp;&nbsp;·&nbsp;&nbsp;
+        <span class="n">3</span>&nbsp;Astrochemistry Laboratory, NASA Goddard Space Flight Center&nbsp;&nbsp;·&nbsp;&nbsp;
+        <span class="n">4</span>&nbsp;School of Chemistry &amp; Biochemistry, Georgia Institute of Technology
+      </p>
+
+      <p class="corresp"><span class="corr">&#42;</span> Corresponding author — <a href="mailto:amiralia@gatech.edu">amiralia@gatech.edu</a></p>
+
+      <div class="actions">
+        <a class="btn" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+          Paper
+        </a>
+        <a class="btn" href="https://github.com/amirgroup-codes/astra">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Code
+        </a>
+        <a class="btn" href="pathway_explorer/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="10" cy="18" r="2.2"/><line x1="7.9" y1="6.9" x2="16.1" y2="6.6"/><line x1="6.9" y1="7.9" x2="9.1" y2="16"/><line x1="11.4" y1="16.4" x2="16.3" y2="8.6"/></svg>
+          Pathway Explorer
+        </a>
+        <a class="btn" href="agents_logs/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 10 12 7 15"/><line x1="12.5" y1="15" x2="16" y2="15"/></svg>
+          Agents Logs
+        </a>
+        <a class="btn primary" href="demo/index.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="7 5 19 12 7 19"/></svg>
+          Live Demo
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer: institution logos ===== -->
+  <footer class="foot">
+    <div class="collab">
+      <span class="collab-label">In collaboration with</span>
+      <span class="chip"><img src="demo/imgs/GT_logo.png" alt="Georgia Institute of Technology"></span>
+      <span class="chip"><img src="demo/imgs/MS_logo.png" alt="Microsoft"><span class="ms-word">Microsoft Discovery</span></span>
+      <span class="chip"><img src="demo/imgs/NASA_Wormball_logo.svg" alt="NASA" style="height: 50px"></span>
+    </div>
+    <span class="copy">© 2025 ASTRA · Georgia Tech · Microsoft Discovery · NASA</span>
+  </footer>
+
+</body>
+</html>

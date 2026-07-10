@@ -1,0 +1,774 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "The synthesis network for histidine leverages Strecker and Phosphoro-Strecker pathways from HCN polymerization and aldehyde precursors, with hydrothermal formation of simple organics like glyoxylate feeding into surface Strecker reactions, culminating in biochemical hydrolysis; multiple convergent routes via hubs like HCN and imidazole-4-acetaldehyde ensure redundancy across environments, grounded in literature on amino acid synthesis under prebiotic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2CO",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCONH2",
+        "iupac_name": "Formamide",
+        "common_name": "Formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H3O3-",
+        "iupac_name": "Glyoxylate",
+        "common_name": "Glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-(1H-Imidazol-4-yl)acetaldehyde",
+        "common_name": "Imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C6H8N3O2",
+        "iupac_name": "2-(1H-Imidazol-4-yl)-2-oxoacetic acid",
+        "common_name": "Imidazolepyruvate",
+        "inchi": "InChI=1S/C5H4N2O3/c8-4(5(9)10)3-1-6-2-7-3/h1-2H,(H,6,7)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(2S)-2-Amino-3-(1H-imidazol-5-yl)propanoic acid",
+        "common_name": "Histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH4HCO2",
+        "iupac_name": "Ammonium formate",
+        "common_name": "Ammonium formate",
+        "inchi": "InChI=1S/CH2O2.H3N/c2-1-3;/h1H,(H,2,3);1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H7N3",
+        "iupac_name": "2-(1H-Imidazol-4-yl)acetonitrile",
+        "common_name": "Imidazole-4-acetonitrile",
+        "inchi": "InChI=1S/C5H5N3/c6-2-1-5-3-7-4-8-5/h3-4H,1H2,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H8N4",
+        "iupac_name": "2-Amino-3-(1H-imidazol-4-yl)propanenitrile",
+        "common_name": "Histidine aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2N-CH(CN)-CH2-imidazole",
+        "iupac_name": "2-Amino-3-(1H-imidazol-5-yl)propanenitrile",
+        "common_name": "Aminonitrile precursor",
+        "inchi": "InChI=1S/C6H8N4/c7-2-5(8)1-6-3-9-4-10-6/h3-5H,1,8H2,(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "HCN Polymerization to Formamide",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "100-150K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "pH 7-10"
+        },
+        "mechanism": "Hydrolysis and polymerization of HCN catalyzed by mineral surfaces leading to formamide",
+        "reasoning": "HCN polymerization under hydrothermal conditions produces formamide as an intermediate for amino acid synthesis (Huber & W\u00e4chtersh\u00e4user, 1997); supported by data sources (2582, 9371)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formamide Hydrolysis to Ammonium Formate and Glyoxylate",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "100-150K",
+          "pressure": "high",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Thermal hydrolysis of formamide in presence of ammonia yielding formate and glyoxylate",
+        "reasoning": "Formamide decomposition under hydrothermal conditions contributes to \u03b1-ketoacids like glyoxylate (Sources 2582, 9371); aligns with glyoxylate scenario (9332)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glyoxylate + HCN to Imidazole-4-acetaldehyde via HCN Oligomerization",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles, UV"
+        },
+        "mechanism": "Aldol-type condensation and cyclization of glyoxylate with HCN and formaldehyde to form imidazole ring",
+        "reasoning": "HCN oligomerization and cyanosulfidic pathways produce imidazole precursors (Sources 9365, 9376); speculative extension for imidazole but grounded in Strecker precursors (21192)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Imidazole-4-acetaldehyde to Imidazolepyruvate via Oxidation",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photochemistry"
+        },
+        "mechanism": "Photocatalytic oxidation of aldehyde to ketoacid",
+        "reasoning": "\u03b1-Ketoacid formation from aldehydes in prebiotic surface conditions (Sources 6987); necessary to connect to transamination pathway."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker Synthesis: Imidazole-4-acetaldehyde + NH3 + HCN to Histidine Aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Nucleophilic addition of ammonia and cyanide to aldehyde forming \u03b1-aminonitrile",
+        "reasoning": "Classic Strecker reaction for amino acids including histidine precursors (Sources 21188, 985); demonstrated for imidazole-4-acetaldehyde (21332)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Phosphoro-Strecker: Imidazole-4-acetaldehyde + DAP + HCN to Phosphoroaminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "neutral pH, DAP as activator"
+        },
+        "mechanism": "DAP-mediated addition of HCN to aldehyde forming N-phosphoroaminonitrile, then to aminonitrile",
+        "reasoning": "Phosphoro-Strecker synthesis selectively forms aminonitriles under prebiotic conditions (Sources 21192, 21194)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of Aminonitriles to Histidine",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH gradient, wet-dry cycles"
+        },
+        "mechanism": "Hydrolysis of nitrile group to carboxylic acid in prebiotic pools",
+        "reasoning": "Hydrolysis of Strecker aminonitriles yields amino acids (Sources 21188); connects surface products to biochemical assembly."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Imidazolepyruvate + NH3 to Histidine via Reductive Amination",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Transamination or reductive amination of ketoacid to amino acid",
+        "reasoning": "\u03b1-Ketoacid conversion to amino acids using ammonia (Sources 6987); addresses biotic transition (6943)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "HCN + NH3 to Aminomalononitrile Intermediate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "100-150K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Reductive amination and oligomerization on mineral surface",
+        "reasoning": "HCN polymerization with ammonia forms aminonitriles in hydrothermal vents (Sources 6362, 2655)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Aminomalononitrile to Imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "colemanite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Condensation with formaldehyde to build imidazole ring",
+        "reasoning": "Cyanosulfidic scenario intermediates lead to heterocycles (Sources 9376, 9331); borate stabilizes (10209)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal HCN to Surface Strecker",
+        "description": "HCN polymerizes hydrothermally to formamide, hydrolyzes to glyoxylate, then surface Strecker to histidine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct Surface HCN Oligomerization",
+        "description": "Surface oligomerization of HCN with formaldehyde to imidazole precursor, then Strecker",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Phosphoro-Strecker Surface Route",
+        "description": "Glyoxylate from hydrothermal to imidazole-4-acetaldehyde, then Phosphoro-Strecker hydrolysis",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Ketoacid Transamination",
+        "description": "Imidazolepyruvate from surface oxidation, reductive amination in biochemical",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal Aminomalononitrile Path",
+        "description": "Hydrothermal aminonitrile formation, surface condensation to imidazole, Strecker",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formamide-Direct to Glyoxylate Strecker",
+        "description": "Formamide hydrolysis, direct Strecker on glyoxylate derivative",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "UV Photocatalytic Imidazole Formation",
+        "description": "Surface UV on HCN/formaldehyde to imidazole-4-acetaldehyde, then ketoacid route",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Bidirectional Hydro-Surface Aminonitrile",
+        "description": "Hydrothermal HCN to aminonitrile, surface to imidazole, Phosphoro-Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_010",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glyoxylate Convergent Strecker",
+        "description": "Multiple inputs to glyoxylate, then to histidine via Strecker",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Biochemical Assembly from Mixed Precursors",
+        "description": "Converged imidazolepyruvate and aminonitriles to final hydrolysis/amination",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006",
+          "rxn_008",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_005",
+      "mol_006",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.4,
+          "rxn_003": 0.6,
+          "rxn_005": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Solid hydrothermal to surface flow with Strecker, but glyoxylate formation questionable.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Clarify glyoxylate source with literature-supported mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_003": 0.6,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "Direct oligomerization aligns with HCN literature, but imidazole formation needs more detail.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add UV or mineral catalysis for oligomerization."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_006": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Phosphoro-Strecker well-supported in literature, good surface focus.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include DAP explicitly in inputs."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Ketoacid route coherent, but oxidation and amination need reductant/oxidant specs.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify surface oxidants like Fe minerals."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.3,
+          "rxn_010": 0.2,
+          "rxn_005": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Aminomalononitrile mislabeled as imidazole derivative; poor alignment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct intermediate to actual aminomalononitrile and link properly."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.4,
+          "rxn_003": 0.6,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "Formamide route aligns with literature, but hydrolysis step flawed.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Revise rxn_002 to standard formamide chemistry."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_003": 0.6
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.68,
+        "feedback": "UV imidazole formation plausible per literature, but incomplete to target.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Expand to full pathway with Strecker integration."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_009": 0.3,
+          "rxn_005": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.72,
+        "feedback": "Bidirectional flow good, but aminonitrile issues persist.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Fix intermediate nomenclature."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.4,
+          "rxn_003": 0.6,
+          "rxn_005": 1.0,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Glyoxylate convergence strong in literature, despite formation issues.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Support glyoxylate with hydrothermal CO reactions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_005": 1.0,
+          "rxn_007": 0.9,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.85,
+        "feedback": "Biochemical assembly valid, good convergence from mixed precursors.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add mineral catalysts for surface steps."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.82,
+    "network_feedback": "Well-connected network with strong Strecker alignment to literature, but some reactions like formamide hydrolysis and imidazole-acetonitrile formation are chemically dubious or mislabeled. Good environmental flow and redundancy via hubs.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

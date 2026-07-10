@@ -1,0 +1,416 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integration of Strecker synthesis, UV-driven cyanometallate chemistry, and formamide-mediated pathways across hydrothermal, surface, and biochemical environments to produce serine through multiple convergent routes.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H5N2O",
+        "iupac_name": "Serine aminonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H5N2O/c4-1-3(5,6)2-7/h7H,1-2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H7NO3",
+        "iupac_name": "Serine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "Formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "Glycolonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H5O5S-",
+        "iupac_name": "Glycolaldehyde bisulfite adduct",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H5N2O2",
+        "iupac_name": "N-formylserine nitrile",
+        "common_name": "FoSer-CN",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose reaction",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Aldol condensation of formaldehyde catalyzed by borate",
+        "reasoning": "Ritson & Sutherland (2012) demonstrated UV-driven sugar formation from HCN chemistry"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Bisulfite adduct formation",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "bisulfite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Sulfite sequestration of glycolaldehyde",
+        "reasoning": "Ritson & Sutherland (2018) showed bisulfite protection enables Strecker chemistry"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Alkaline Strecker synthesis",
+        "inputs": [
+          "mol_008",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Imine formation followed by cyanide addition",
+        "reasoning": "Ritson & Sutherland (2018) Nature Communications"
+      },
+      {
+        "id": "rxn_004",
+        "name": "UV-driven cyanometallate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(CN)2\u207b",
+          "aqueous": true,
+          "other": "254 nm UV"
+        },
+        "mechanism": "Photoredox cycling creates sugar-aminonitrile equilibrium",
+        "reasoning": "Ritson & Sutherland (2012) Nature Chemistry"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formamide nitrile formation",
+        "inputs": [
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "formamide solvent"
+        },
+        "mechanism": "N-formylaminonitrile formation via cyanide addition",
+        "reasoning": "Green et al. (2023) JACS"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of protected nitriles",
+        "inputs": [
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Alkaline hydrolysis of aminonitriles",
+        "reasoning": "Green et al. (2023) JACS; Ritson & Sutherland (2018)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Spark discharge synthesis",
+        "inputs": [],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "electric discharge"
+        },
+        "mechanism": "Plasma-driven radical recombination",
+        "reasoning": "Parker et al. (2011) PNAS"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Interstellar ice hydrolysis",
+        "inputs": [],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "280-300K",
+          "pressure": "low",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "UV photolysis"
+        },
+        "mechanism": "Radical chemistry in ices followed by hydrolysis",
+        "reasoning": "Bernstein et al. (2002) Nature"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Bisulfite-Strecker pathway",
+        "description": "Formaldehyde \u2192 glycolaldehyde \u2192 bisulfite-protected aldehyde \u2192 serine aminonitrile \u2192 serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "UV cyanometallate pathway",
+        "description": "HCN + glycolonitrile \u2192 serine aminonitrile via UV photoredox chemistry",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formamide protection pathway",
+        "description": "Formamide-mediated N-formylserine nitrile formation and hydrolysis",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_004",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.9,
+          "rxn_003": 0.85,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Bisulfite-Strecker pathway aligns well with literature (Ritson & Sutherland 2018). Bisulfite adduct formation (rxn_002) and alkaline Strecker synthesis (rxn_003) are chemically sound. Hydrolysis (rxn_006) is valid but requires mol_009 from another pathway, reducing independence.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Clarify how mol_009 is sourced in this pathway or adjust pathway steps."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "UV-driven cyanometallate synthesis (rxn_004) is plausible but lacks explicit mineral agents (e.g., CuCN) as per literature. Dependency on mol_009 (from P3) weakens coherence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify cyanometallate catalysts (e.g., CuCN) in rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Formamide-mediated steps (rxn_005) align with Green et al. (2023), but hydrolysis (rxn_006) requires mol_004 from other pathways. Environmental transitions need justification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Clarify formamide stability in biochemical environments for rxn_006."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.8,
+    "network_feedback": "Network integrates literature-supported routes (bisulfite-Strecker, UV cyanometallate, formamide) but has issues: (1) mol_009 (FoSer-CN) is a weak hub (degree=2), (2) rxn_007/rxn_008 (direct serine production) lack intermediates and conflict with literature\u2019s emphasis on aminonitrile pathways, (3) mineral agents (e.g., CuCN, bisulfite minerals) are underspecified. Approved due to P1 and P3 viability, but requires refinement.",
+    "approved": true,
+    "hub_quality": 0.7,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,839 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "The synthesis network for threonine integrates cyanosulfidic protometabolism, prebiotic sugar pathways, and photochemical catalysis, drawing from hydrothermal reduction of CO2 to simple feedstocks that feed into surface UV-driven and wet-dry cycle reactions, culminating in biochemical assembly. Key hubs like HCN, glycolaldehyde, and glyceraldehyde enable convergent routes across environments, with mineral catalysts facilitating each step under anoxic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCHO",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HOCH2CHO",
+        "iupac_name": "2-Hydroxyacetaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "HOCH2CH(OH)CHO",
+        "iupac_name": "2,3-Dihydroxypropanal",
+        "common_name": "Glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2OHCOCH2OH",
+        "iupac_name": "1,3-Dihydroxypropan-2-one",
+        "common_name": "Dihydroxyacetone",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h4-5H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HC\u2261C-CN",
+        "iupac_name": "Prop-2-ynenitrile",
+        "common_name": "Cyanoacetylene",
+        "inchi": "InChI=1S/C3HN/c1-2-3-4/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH3C\u2261C-CN",
+        "iupac_name": "But-2-ynenitrile",
+        "common_name": "Propyne nitrile",
+        "inchi": "InChI=1S/C4H3N/c1-2-3-4-5/h1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "NH2CH(CN)CH(OH)CH3",
+        "iupac_name": "2-Amino-3-hydroxybutanenitrile",
+        "common_name": "Threonine nitrile precursor",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-Amino-3-hydroxybutanoic acid",
+        "common_name": "L-Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "H2",
+        "iupac_name": "Dihydrogen",
+        "common_name": "H2",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_014",
+        "formula": "CH3CHO",
+        "iupac_name": "Acetaldehyde",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Formaldehyde",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": "true",
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "Reverse water-gas shift and reduction on Fe-S clusters",
+        "reasoning": "Hydrothermal vents provide reducing conditions for CO2 fixation to formaldehyde via Fischer-Tropsch-type synthesis on greigite (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "HCN Formation from CO2 and NH3",
+        "inputs": [
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": "true",
+          "other": "serpentinization-driven H2"
+        },
+        "mechanism": "Nitrogen activation and carbon-nitrogen bond formation on mineral surfaces",
+        "reasoning": "Pyrite catalyzes HCN synthesis in alkaline vents, linking carbon and nitrogen cycles (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive Homologation of HCN to Glycolaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "UV radiation, Cu(I)-Cu(II) photoredox"
+        },
+        "mechanism": "UV-driven dimerization and reduction with H2S",
+        "reasoning": "Cyanosulfidic pathway produces glycolaldehyde from HCN homologation (Sutherland et al., 2015)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glycolaldehyde to Glyceraldehyde via Formose-like Reaction",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Aldol condensation catalyzed by borates",
+        "reasoning": "Borate-stabilized formose reaction yields trioses (Ricardo et al., 2004; aligns with Sutherland network)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Isomerization of Glyceraldehyde to Dihydroxyacetone",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "UV exposure"
+        },
+        "mechanism": "Enolization and keto-enol tautomerism on clay surfaces",
+        "reasoning": "59% yield in cyanosulfidic simulations (Sutherland et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker Synthesis of Threonine Precursor from Glyceraldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV photochemistry, H2S present"
+        },
+        "mechanism": "Photocatalytic addition of NH3 and HCN to aldehyde",
+        "reasoning": "Inevitable byproduct in cyanosulfidic network via Strecker-like reaction (Sutherland et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of Threonine Nitrile to Threonine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "pH gradient, mineral interfaces"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid",
+        "reasoning": "Final step in Strecker pathway to amino acid (Powner et al., 2009; Sutherland group)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Aldol Condensation to Tetrose Sugars",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "pH 5.2, ammonia catalysis"
+        },
+        "mechanism": "Ammonia-catalyzed aldol addition",
+        "reasoning": "Prebiotic sugar pathway forms tetroses leading to threonine precursors (Weber, 2002)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Tetrose to Threonine Thioester via Redox Rearrangement",
+        "inputs": [
+          "mol_005",
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": "true",
+          "other": "thiol catalyst, wet-dry cycles"
+        },
+        "mechanism": "Dehydration, imine formation, redox rearrangement, hydrolysis",
+        "reasoning": "\u0394G\u00b0' -34 kcal/mol for related pathway (Weber, 1987; prebiotic sugar pathway)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Photochemical Synthesis from Cyanoacetylene",
+        "inputs": [
+          "mol_008",
+          "mol_012",
+          "mol_013",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite (for concentration)",
+          "aqueous": "true",
+          "other": "UV radiation, Mg.porphin-like catalysis"
+        },
+        "mechanism": "Photochemical activation, aziridine formation, stereocontrolled cyclization",
+        "reasoning": "Computational model for L-threonine on Mg.porphin (Aylward, 2018)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrothermal Reduction to Acetaldehyde",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": "true",
+          "other": "Fischer-Tropsch-type"
+        },
+        "mechanism": "Hydrogenation of CO intermediates",
+        "reasoning": "Meteorite parent body processing (Cronin & Pizzarello, 1997; Murchison evidence)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Strecker from Acetaldehyde to Threonine Branch",
+        "inputs": [
+          "mol_014",
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV, H2S for branching"
+        },
+        "mechanism": "Photocatalytic Strecker with hydroxy branch",
+        "reasoning": "Extension of cyanosulfidic to branched amino acids (Sutherland et al., 2015; meteorite HAAs)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic HCN to Threonine via Glyceraldehyde",
+        "description": "Hydrothermal HCN to surface homologation and Strecker",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Sugar Pathway Aldol to Thioester",
+        "description": "Surface aldol from hydrothermal formaldehyde",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Photochemical Cyanoacetylene Route",
+        "description": "Direct surface photochemistry",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal Acetaldehyde Strecker",
+        "description": "Hydro to surface via acetaldehyde",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_012",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanosulfidic via Dihydroxyacetone",
+        "description": "Alternative triose route",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Convergent Aldol-Strecker",
+        "description": "Combining sugar and cyanosulfidic",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_008",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Meteorite-like Hydrothermal Processing",
+        "description": "Formaldehyde-acetaldehyde mix",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_011",
+          "rxn_012",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_014",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "UV-Driven Homologation Direct to Precursor",
+        "description": "Bypassing full sugar assembly",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Thioester from Glyceraldehyde",
+        "description": "Direct from triose",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Porphin-Catalyzed Branching",
+        "description": "Photochemical with propyne extension",
+        "reaction_sequence": [
+          "rxn_002",
+          "mol_008 to mol_009 implied",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_003": 0.9,
+          "rxn_004": 0.9,
+          "rxn_006": 0.3,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Pathway relies on cyanosulfidic chemistry but uses incorrect Strecker substrate (glyceraldehyde leads to serine, not threonine precursor).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Correct Strecker input to 2-hydroxypropanal for threonine specificity."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_008": 0.6,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.55,
+        "feedback": "Sugar pathway mislabels inputs; glyceraldehyde is triose, not tetrose, and direct C3 to C4 conversion lacks carbon addition step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Incorporate tetrose intermediate from extended aldol; align with literature redox rearrangement from tetroses."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "Photochemical route aligns with literature but uses cyanoacetylene instead of propyne nitrile; single-step simplification plausible under catalysis.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify Mg.porphin catalyst and stereocontrol mechanism per computational studies."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_012": 0.3,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.55,
+        "feedback": "Hydrothermal to Strecker branch incorrect; acetaldehyde yields alanine, not threonine precursor.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Use reduction to 2-hydroxypropanal instead of acetaldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.7,
+          "rxn_003": 0.9,
+          "rxn_005": 0.9,
+          "rxn_009": 0.5,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Via dihydroxyacetone similar to P1 but still lacks proper C4 assembly from C3; literature supports triose role but needs branching.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add carbon homologation step before thioester formation."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_008": 0.6,
+          "rxn_006": 0.3,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.65,
+        "feedback": "Convergent aldol-Strecker good in concept but Strecker error persists; tetrose misformation in aldol.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Define tetrose product explicitly and correct Strecker aldehyde."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_011": 0.8,
+          "rxn_012": 0.3,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.65,
+        "feedback": "Meteorite-like processing aligns with literature detections but Strecker flaw undermines target.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Incorporate mineral catalysis for stereoselectivity as in Murchison analyses."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_006": 0.3,
+          "rxn_010": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "UV-driven homologation promising but combines flawed Strecker with photochemical; partial literature match.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Focus on UV-H2S reduction without erroneous Strecker."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.9,
+          "rxn_009": 0.5,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.6,
+        "feedback": "Thioester from glyceraldehyde short but inaccurate C-count; literature requires tetrose input.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Extend to tetrose via additional aldol."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.7,
+          "rxn_009": 0.5,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Porphin-catalyzed branching closely matches Aylward's computational model; good stereocontrol potential.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add details on magnetic vector and bicyclic intermediate for enhanced alignment."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.7,
+    "network_feedback": "The network exhibits strong topology with key hubs and convergence, aligning broadly with cyanosulfidic, sugar, and photochemical literature pathways. However, chemical feasibility is compromised by inaccurate Strecker and carbon-count errors in several reactions, preventing reliable threonine synthesis. Environmental flow is realistic, but mineral agents are under-specified. Overall viable with revisions.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

@@ -1,0 +1,777 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Convergent prebiotic synthesis of alanine via interlinked hydrothermal and surface pathways including Miller\u2013Urey spark discharge, Strecker aminonitrile formation, Bucherer\u2013Bergs hydantoin route, cyanosulfidic and oligomerization chemistry, Fischer\u2013Tropsch CO hydrogenation, reductive amination of pyruvate, and photochemical ice analog reactions, feeding into biochemical assembly in protocell-like settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "Methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "Hydrogen gas",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H3O3\u2212",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H4N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "\u03b1-Aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H5N2O2",
+        "iupac_name": "5-methylimidazolidine-2,4-dione",
+        "common_name": "5-Methylhydantoin",
+        "inchi": "InChI=1S/C4H6N2O2/c1-2-3(7)6-4(8)5-2/h2H,1H3,(H2,5,6,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H4N4",
+        "iupac_name": "2,3-diaminomaleonitrile",
+        "common_name": "DAMN",
+        "inchi": "InChI=1S/C4H4N4/c5-1-3(7)4(8)2-6/h7-8H2/b4-3-",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH4O",
+        "iupac_name": "methanol",
+        "common_name": "Methanol",
+        "inchi": "InChI=1S/CH4O/c1-2/h2H,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "CO",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_014",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "CO\u2082",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Miller\u2013Urey spark discharge",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "electric discharge"
+        },
+        "mechanism": "gas-phase radical recombination",
+        "reasoning": "Miller, 1953; Johnson et al., 2008"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker aminonitrile formation",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "mild pH"
+        },
+        "mechanism": "imine formation and nucleophilic addition of HCN",
+        "reasoning": "Miller & Van Trump, 1981"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrolysis of \u03b1-aminopropionitrile",
+        "inputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "acid hydrolysis"
+        },
+        "mechanism": "nitrile hydrolysis to amino acid",
+        "reasoning": "Miller, 1955"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrothermal reductive amination of pyruvate",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "5 bar",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "pH 7-8"
+        },
+        "mechanism": "reductive amination",
+        "reasoning": "Kaur, Rauscher & Werner, 2024"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Bucherer\u2013Bergs hydantoin formation",
+        "inputs": [
+          "mol_007",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "353K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "CO\u2082 capture"
+        },
+        "mechanism": "cyclization of aminonitrile",
+        "reasoning": "Pulletikurti et al., 2022"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of 5-methylhydantoin",
+        "inputs": [
+          "mol_009",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "353-373K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "acid hydrolysis"
+        },
+        "mechanism": "hydantoin ring opening",
+        "reasoning": "Pulletikurti et al., 2022"
+      },
+      {
+        "id": "rxn_007",
+        "name": "HCN oligomerization to DAMN",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "[HCN]>0.01M"
+        },
+        "mechanism": "sequential addition of HCN",
+        "reasoning": "Ferris et al., 1978"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of DAMN to alanine",
+        "inputs": [
+          "mol_010",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "acid hydrolysis"
+        },
+        "mechanism": "polymer hydrolysis to amino acid",
+        "reasoning": "Or\u00f3, 1961"
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV photolysis of ice analogs to alanine",
+        "inputs": [
+          "mol_006",
+          "mol_012",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "12K",
+          "pressure": "low",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "photochemical radical reactions",
+        "reasoning": "Bernstein et al., 2002"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Fischer\u2013Tropsch-type CO hydrogenation to pyruvate",
+        "inputs": [
+          "mol_013",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type"
+        },
+        "mechanism": "CO hydrogenation",
+        "reasoning": "Beyazay et al., 2023"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Thermal decarboxylation of pyruvate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "thermal decarboxylation"
+        },
+        "mechanism": "decarboxylation",
+        "reasoning": "Chandru et al., 2013"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Classic Strecker from spark discharge",
+        "description": "Methane and ammonia spark discharge produce HCN and acetaldehyde, followed by Strecker synthesis and hydrolysis to alanine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "HCN oligomer route via Miller\u2013Urey",
+        "description": "Spark discharge generates HCN, which oligomerizes to DAMN then hydrolyzes to alanine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Ice photolysis direct alanine formation",
+        "description": "UV photolysis of interstellar ice analogs yields alanine directly.",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Bucherer\u2013Bergs hydantoin pathway",
+        "description": "Pyruvate reacts with cyanide and ammonia to form hydantoin, which hydrolyzes to alanine.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal reductive amination",
+        "description": "Fischer\u2013Tropsch CO hydrogenation to pyruvate followed by direct reductive amination to alanine.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "FT-decaboxylation-Strecker cascade",
+        "description": "CO hydrogenation to pyruvate, thermal decarboxylation to acetaldehyde, Strecker formation and hydrolysis to alanine.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Pyruvate decarboxylation\u2013Strecker",
+        "description": "Thermal decarboxylation of pyruvate to acetaldehyde followed by Strecker synthesis and hydrolysis.",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrolysis-only aminonitrile route",
+        "description": "Hydrolysis of preformed \u03b1-aminopropionitrile directly yields alanine.",
+        "reaction_sequence": [
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydantoin-only hydrolysis",
+        "description": "Hydrolysis of 5-methylhydantoin yields alanine without upstream pyruvate synthesis in network.",
+        "reaction_sequence": [
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "DAMN hydrolysis route",
+        "description": "Sequential oligomerization of HCN to DAMN and hydrolysis to alanine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Classic Strecker pathway is well\u2010established, chemically sound, and coherent under surface conditions. Yields and pH dependencies could be specified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify concentration and pH conditions for Strecker hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.8,
+        "feedback": "HCN oligomerization route is plausible but yields of alanine from DAMN hydrolysis are low and nonspecific.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Include acid/base conditions for DAMN hydrolysis and expected yield ranges."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.76,
+        "feedback": "Photochemical ice analog route is supported by literature but yields are low and environmental details (temperature, ice eutectic) should be clearer.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify ice eutectic concentrations, temperature, and UV flux conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_005": 0.85,
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Bucherer\u2013Bergs pathway is well\u2010aligned with recent studies; specifying mineral catalysts (e.g., FeS\u2082) and pH would improve realism.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add details on catalyst identity (iron\u2010sulfur minerals) and decarboxylation capture conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_004": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal reductive amination route is highly plausible under vent conditions, matching literature yields with Fe mineral catalysts.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include Fe(II)/Fe(III) ratio and pH 7\u20138 with 5 bar H\u2082 details for reductive amination."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.85,
+          "rxn_011": 0.8,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "FT\u2013decarboxylation\u2013Strecker cascade is coherent, though decarboxylation conditions need clarity to avoid side reactions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Detail temperature and mineral context for selective pyruvate decarboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_002": 0.95,
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Pyruvate decarboxylation\u2013Strecker is plausible, but transport between hydrothermal and surface phases should be outlined.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify mechanism of transfer from vent effluent to surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrolysis\u2010only route is chemically sound but lacks upstream aminonitrile formation context.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include preceding Strecker step or source of \u03b1-aminopropionitrile."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_006": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Hydantoin hydrolysis is valid but should specify hydantoin formation step for completeness.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add reaction forming 5\u2010methylhydantoin as precursor."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.85,
+          "rxn_008": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.75,
+        "overall_confidence": 0.8,
+        "feedback": "DAMN hydrolysis route is plausible but yields are low and reaction conditions need specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Detail acid hydrolysis pH and temperature for DAMN conversion."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.9,
+    "network_feedback": "The network is comprehensive, well\u2010connected, and aligns with known prebiotic alanine synthesis literature across hydrothermal and surface contexts. Minor improvements include specifying environmental conditions, catalysts, and concentration mechanisms. Chirality selection remains unaddressed and could be integrated as an emergent network property.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 1,
+  "notes": null
+}

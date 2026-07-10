@@ -1,0 +1,976 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The synthesis network is grounded in the cyanosulfidic protometabolism pathway of Patel et al. (2015), utilizing sequential UV-driven homologation and reduction steps in surface environments to build the five-carbon backbone and guanidino group of arginine from simple precursors like HCN, acetylene, NH3, H2S, and cyanamide. Hydrothermal environments provide key precursors such as NH3 and H2S via serpentinization and mineral catalysis. Surface photochemistry drives the core homologation sequence, with clay minerals concentrating intermediates. Biochemical steps involve final hydrolysis in prebiotic pools. Multiple pathways arise from alternative sequencing of reagent additions and parallel reductions, creating convergence at hub intermediates like \u03b2-aminopropionitrile and the \u03b1-aminonitrile precursor, ensuring redundancy in anoxic, UV-exposed conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H2",
+        "iupac_name": "Ethyne",
+        "common_name": "Acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "H2S",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2=CHCN",
+        "iupac_name": "Propenenitrile",
+        "common_name": "Acrylonitrile",
+        "inchi": "InChI=1S/C3H3N/c1-2-3-4/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH2CH2CH2CN",
+        "iupac_name": "2-Aminopropanenitrile",
+        "common_name": "\u03b2-Aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH2CN",
+        "iupac_name": "Cyanamide",
+        "common_name": "Cyanamide",
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH2CH2CH2CHO",
+        "iupac_name": "3-Aminopropanal",
+        "common_name": "\u03b2-Aminopropionaldehyde",
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3H,1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H9N3S",
+        "iupac_name": "4-Amino-1-thiolactam",
+        "common_name": "\u03b3-Butyrothiolactam intermediate",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H11N5",
+        "iupac_name": "2-Amino-5-guanidinopentanenitrile",
+        "common_name": "\u03b1-Aminonitrile precursor (compound 46)",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H14N4O2",
+        "iupac_name": "(2S)-2-Amino-5-(diaminomethylideneamino)pentanoic acid",
+        "common_name": "Arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Serpentinization-derived ammonia formation",
+        "inputs": [
+          "mol_013",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": "true",
+          "other": "pH 9-11, reducing conditions"
+        },
+        "mechanism": "Rock-water interaction releases NH3 from nitrogenous minerals via serpentinization.",
+        "reasoning": "Alkaline vents provide NH3 through serpentinization; necessary precursor for surface steps (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "H2S production in vents",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": "true",
+          "other": "sulfidization reactions"
+        },
+        "mechanism": "Mineral sulfides release H2S under hydrothermal conditions.",
+        "reasoning": "H2S as reductant from vents feeds surface photochemistry (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acrylonitrile formation via Cu photoredox",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II) from sulfide minerals",
+          "aqueous": "true",
+          "other": "UV ~300 nm, H2S reductant"
+        },
+        "mechanism": "Photoredox coupling of HCN and acetylene with H2S reduction.",
+        "reasoning": "Key first step in cyanosulfidic pathway, >25% yield (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "\u03b2-Aminopropionitrile from acrylonitrile amination",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "neutral to basic pH, wet-dry cycles"
+        },
+        "mechanism": "Nucleophilic addition of NH3 to nitrile.",
+        "reasoning": "Amination step concentrates on clay surfaces (Patel et al., 2015; Frenkel-Pinter et al., 2019)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanamide as guanidinylating agent",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV photochemistry"
+        },
+        "mechanism": "HCN polymerization and NH3 reaction to cyanamide.",
+        "reasoning": "Cyanamide from HCN/NH3, acts as =NH donor (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Reduction to \u03b2-aminopropionaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": "true",
+          "other": "UV ~300 nm, acidic pH for reduction"
+        },
+        "mechanism": "Photoreduction of nitrile to aldehyde using H2S.",
+        "reasoning": "UV-driven reduction step (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Guanidine intermediate formation",
+        "inputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet-dry cycles, UV"
+        },
+        "mechanism": "Addition of cyanamide to aldehyde forming cyclic hemiaminal then thiolactam.",
+        "reasoning": "Installs guanidino group via cyanamide (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Kiliani-Fischer homologation with HCN",
+        "inputs": [
+          "mol_009",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV, sequential HCN addition"
+        },
+        "mechanism": "Cyanide addition and reduction to extend chain to five carbons.",
+        "reasoning": "Homologation builds backbone (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Alternative reduction pathway to aldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": "true",
+          "other": "UV, NH3-assisted"
+        },
+        "mechanism": "NH3-catalyzed photoreduction variant.",
+        "reasoning": "Provides convergence to aldehyde intermediate (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrolysis of \u03b1-aminonitrile to arginine",
+        "inputs": [
+          "mol_010",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "alkaline hydrolysis, pH 9-11"
+        },
+        "mechanism": "Nitrile hydrolysis to carboxylic acid.",
+        "reasoning": "Final step to free amino acid (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Clay concentration of intermediates",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "true",
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Adsorption and concentration on clay surfaces.",
+        "reasoning": "Enhances reactivity for basic intermediates (Frenkel-Pinter et al., 2019)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Parallel HCN addition variant",
+        "inputs": [
+          "mol_009",
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdenite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "sulfide minerals",
+          "aqueous": "true",
+          "other": "UV, H2S reduction"
+        },
+        "mechanism": "Alternative homologation with extra reduction.",
+        "reasoning": "Redundancy in chain extension (Patel et al., 2015)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Core acrylonitrile to \u03b2-aminopropionitrile route",
+        "description": "Standard amination sequence",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "NH3-assisted reduction variant",
+        "description": "Uses rxn_009 for aldehyde formation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanamide early addition path",
+        "description": "Cyanamide introduced before full reduction",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Parallel homologation with extra H2S",
+        "description": "Uses rxn_012 for final extension",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_012",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Clay-concentrated guanidinylation",
+        "description": "Includes concentration step post-amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Extended cyanamide homologation",
+        "description": "Cyanamide with early HCN",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_012",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "H2S-rich reduction path",
+        "description": "Emphasizes H2S in multiple reductions",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_007",
+          "rxn_012",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "UV-TiO2 catalyzed variant",
+        "description": "TiO2 for cyanamide and homologation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Sulfide mineral convergence",
+        "description": "Stibnite/molybdenite for reductions",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_007",
+          "rxn_012",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full sequential addition with concentration",
+        "description": "Incorporates clay step throughout",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_007",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.0
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.93,
+        "feedback": "Core route aligns closely with Patel et al. cyanosulfidic pathway, using sequential homologation and reduction.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Refine rxn_011 as a non-reactive concentration step; specify Cu/Zn catalysts more explicitly."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.0,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.0
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "NH3-assisted variant maintains feasibility but introduces minor redundancy in reductions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Ensure alternative reduction (rxn_009) specifies UV/H2S conditions clearly."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.0,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Early cyanamide addition path follows literature guanidinylation but may face selectivity issues.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Address potential side reactions in early guanidine formation."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.0,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.0,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "H2S-rich variant enhances reduction but risks over-reduction side products.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Quantify H2S excess to avoid competing reactions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "Clay concentration improves intermediate yields, aligning with montmorillonite adsorption literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Incorporate wet-dry cycling for clay catalysis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.0,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.0,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Extended cyanamide path builds guanidino group effectively but adds steps.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Streamline homologation to reduce step count."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.0,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.0,
+          "rxn_009": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.0
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.89,
+        "feedback": "H2S-rich reduction emphasizes sulfide minerals, per literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify FeS catalysts for reductions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.0,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.92,
+        "feedback": "UV-TiO2 variant enhances photochemistry, plausible extension of Patel route.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Cite TiO2 mineral sources in prebiotic contexts."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.0,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.0,
+          "rxn_009": 0.9,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.9
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.95,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.91,
+        "feedback": "Sulfide mineral convergence strengthens environmental ties.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Detail mineral agents like greigite for convergence."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.95,
+          "rxn_003": 1.0,
+          "rxn_004": 0.95,
+          "rxn_005": 0.9,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9,
+          "rxn_008": 0.95,
+          "rxn_009": 0.0,
+          "rxn_010": 0.95,
+          "rxn_011": 0.7,
+          "rxn_012": 0.0
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Full sequential with concentration is comprehensive but longer.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Optimize for fewer steps to improve yield."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.91,
+    "network_feedback": "Excellent alignment with Patel et al. literature; strong topology, feasibility, and environmental flow. Minor issues with non-reactive steps.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 2,
+  "notes": null
+}

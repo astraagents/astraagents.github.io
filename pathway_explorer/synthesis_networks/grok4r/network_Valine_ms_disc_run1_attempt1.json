@@ -1,0 +1,800 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "The synthesis network for valine integrates Strecker synthesis and reductive amination pathways across hydrothermal, surface, and biochemical environments, starting from simple precursors like HCN, NH3, and formaldehyde. Hydrothermal vents produce early carbon fixation products like pyruvate via mineral-catalyzed reductions, which feed into surface Strecker reactions for aminonitriles and biochemical transamination for final assembly. Multiple convergent routes ensure redundancy, with hubs at pyruvate, 2-ketoisovalerate, and isobutyraldehyde enabling interconnection between environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2CO",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3CHO",
+        "iupac_name": "Ethanal",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "(CH3)2CHCHO",
+        "iupac_name": "2-Methylpropanal",
+        "common_name": "Isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8O3",
+        "iupac_name": "2-Oxo-3-methylbutanoic acid",
+        "common_name": "2-Ketoisovalerate",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "(CH3)2CHCH(NH2)CN",
+        "iupac_name": "2-Amino-3-methylbutanenitrile",
+        "common_name": "Valine nitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-Amino-3-methylbutanoic acid",
+        "common_name": "Valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH3COOH",
+        "iupac_name": "Acetic acid",
+        "common_name": "Acetate",
+        "inchi": "InChI=1S/C2H4O2/c1-2(3)4/h1H3,(H,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H2",
+        "iupac_name": "Dihydrogen",
+        "common_name": "Hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "CO2",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 Reduction to Acetate",
+        "inputs": [
+          "mol_012",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, H2-rich"
+        },
+        "mechanism": "CO2 hydrogenation on Fe-S cluster surface to formate then acetate",
+        "reasoning": "Based on iron-sulfur world chemistry in alkaline vents; (Huber & Wachtershauser, 1997) supports CO2 reduction to acetate on greigite analogs."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Acetate to Acetaldehyde via Decarboxylation",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "reducing conditions"
+        },
+        "mechanism": "Thermal decarboxylation and reduction on mineral surface",
+        "reasoning": "Fischer-Tropsch-type synthesis produces aldehydes from carboxylates; speculative extension from (Keefe et al., 1995) on sulfur reducing agents for organics."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate Formation from Acetaldehyde and CO2",
+        "inputs": [
+          "mol_004",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "NH3 present"
+        },
+        "mechanism": "Carbon fixation and condensation on sulfide surface",
+        "reasoning": "Pyruvate as key intermediate in hydrothermal carbon fixation; (Friedmann and Miller, 1969) demonstrates synthesis under primitive conditions."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol Condensation to Isobutyraldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Base-catalyzed aldol addition followed by dehydration",
+        "reasoning": "Surface condensation of pyruvate and acetaldehyde to branched aldehydes; montmorillonite catalyzes polymerizations and condensations (general from literature, e.g., montmorillonite role in (Furukawa et al., 2012))."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker Synthesis to Valine Nitrile",
+        "inputs": [
+          "mol_006",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "neutral pH"
+        },
+        "mechanism": "Imine formation from aldehyde and NH3, cyanohydrin addition of HCN, yielding aminonitrile",
+        "reasoning": "Classic Strecker pathway for valine from isobutyraldehyde; (Friedmann and Miller, 1969) and general Strecker in prebiotic soup."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of Aminonitrile to Valine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mild hydrolysis"
+        },
+        "mechanism": "Hydrolysis of nitrile to carboxylic acid",
+        "reasoning": "Standard step in Strecker synthesis to amino acids; supported by (Keefe et al., 1995) on prebiotic amino acid formation."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Alternative Route: Pyruvate to 2-Ketoisovalerate",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "UV exposure, wet-dry"
+        },
+        "mechanism": "Condensation and rearrangement to branched ketoacid",
+        "reasoning": "Cyanide/formaldehyde chemistry to \u03b1-ketoacids; borate stabilizes intermediates (from cyanosulfidic pathways, e.g., general in literature)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reductive Amination to Valine",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "reducing agent like H2 or thioesters"
+        },
+        "mechanism": "Imine formation and reduction to amine",
+        "reasoning": "Transamination analog from \u03b1-ketoacid; connects to biochemical routes (6943, 6994) on cyanide/ammonia conversion."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formaldehyde to Acetaldehyde via Hydrothermal Reduction",
+        "inputs": [
+          "mol_003",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Reduction on FeS surface",
+        "reasoning": "Early reduction steps in vents; speculative based on (Huber & Wachtershauser, 1997) for organics from formates."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Direct Hydrothermal Strecker-like to Aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "373-473K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "lower T to avoid degradation"
+        },
+        "mechanism": "Mineral-catalyzed Strecker under pressure",
+        "reasoning": "Hydrothermal synthesis of amino acids; (Furukawa et al., 2012) on high P/T peptide formation, extended to monomers."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal CO2 to Pyruvate to Surface Aldol to Strecker",
+        "description": "CO2 reduction in vents feeds pyruvate to surface condensation for isobutyraldehyde, then Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal Formaldehyde Reduction to Acetaldehyde to Ketoisovalerate",
+        "description": "Formaldehyde reduced in vents, condenses on surface to ketoacid, then amination.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Reducing Atmosphere Simulation via Hydrothermal to Direct Strecker",
+        "description": "Acetate to aldehyde, then hydrothermal Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Pyruvate Hub to Dual Ketoacid and Aldehyde Paths",
+        "description": "Pyruvate branches to both isobutyraldehyde and ketoisovalerate on surface.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanide-Driven Surface Strecker from Hydrothermal Inputs",
+        "description": "Hydrothermal pyruvate decarboxylates to acetaldehyde, then surface Strecker.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Formaldehyde to Pyruvate via Hydrothermal Fixation",
+        "description": "Formaldehyde contributes to pyruvate, then to valine via ketoacid.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_003",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Bidirectional Hydrothermal-Surface: Acetate to Dual Routes",
+        "description": "Acetate from vents to both aldehyde and pyruvate paths.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Ketoisovalerate Convergence from Aldol Variants",
+        "description": "Multiple aldol routes to ketoacid, then biochemical amination.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal Direct to Aminonitrile",
+        "description": "Full hydrothermal chain to nitrile, then hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_010",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Pyruvate to Valine via Reductive Amination Alternative",
+        "description": "Pyruvate condenses to ketoisovalerate, direct amination in biochemical pool.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.7,
+          "rxn_004": 0.6,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Pathway uses hydrothermal carbon fixation to pyruvate, then surface aldol and Strecker; decarboxylation step chemically dubious, but aligns with literature on Strecker.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace decarboxylation with plausible reduction; specify mineral catalysts for aldol."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_009": 0.8,
+          "rxn_003": 0.7,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "Short route via formaldehyde reduction to ketoisovalerate; reduction plausible in hydrothermal, but pyruvate to ketoisovalerate mechanism unclear.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Clarify mechanism for C3+C2 to branched C5 ketoacid; add literature support."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_004": 0.6,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Simulates reducing atmosphere in hydrothermal to direct Strecker; good alignment with reducing conditions in literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Improve acetate to aldehyde step; include mineral agents for hydrothermal Strecker."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_004": 0.6,
+          "rxn_007": 0.6,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.83,
+        "feedback": "Pyruvate hub to dual paths; coherent use of hubs, supports reductive amination as biochemical step per literature.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Refine aldol mechanisms for branching; specify reductant for amination."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.7,
+          "rxn_004": 0.6,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Cyanide-driven surface Strecker from hydrothermal inputs; strong literature alignment with Strecker and HCN/NH3 chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Address feasibility issues in early steps; add UV or mineral catalysis for surface."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.8,
+          "rxn_003": 0.7,
+          "rxn_001": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Formaldehyde to pyruvate via fixation; plausible hydrothermal carbon fixation, aligns with pyruvate as key precursor.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Extend to full target; specify conditions for fixation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.7,
+          "rxn_004": 0.6,
+          "rxn_007": 0.6,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Bidirectional hydrothermal-surface via acetate; good flow but acetate step weak.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Revise acetate handling; enhance convergence details."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.6,
+          "rxn_007": 0.6
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.72,
+        "feedback": "Ketoisovalerate convergence from aldol; short but mechanisms questionable.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Provide detailed mechanism for aldol variants; link to literature."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.5,
+          "rxn_003": 0.7,
+          "rxn_004": 0.6,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.79,
+        "feedback": "Hydrothermal direct to aminonitrile; aligns with hydrothermal Strecker proposals.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Strengthen early reductions; add mineral catalysts."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_007": 0.6,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.84,
+        "feedback": "Pyruvate to valine via reductive amination; excellent biochemical closure, literature-supported.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Improve pyruvate to ketoisovalerate step."
+        ]
+      }
+    ],
+    "best_pathway_id": "P5",
+    "overall_confidence": 0.82,
+    "network_feedback": "Well-connected network with strong Strecker and reductive amination alignment to literature; good environmental flow but lacks mineral specifications and has feasibility issues in aldol and decarboxylation steps. Hubs effectively interconnect pathways.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.85
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

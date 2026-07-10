@@ -1,0 +1,421 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Integrated network combining hydrothermal CO\u2082 fixation, surface Strecker/cyanosulfidic chemistry, and clay-mediated polymerization. Key hubs (formate, glycine, glyceraldehyde) connect environments through mineral-catalyzed reactions and wet-dry cycling.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CHO\u2082\u207b",
+        "iupac_name": "formate",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2083O\u2083\u207b",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH\u2083",
+        "iupac_name": "ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH\u2082O",
+        "iupac_name": "formaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2082H\u2084O\u2082",
+        "iupac_name": "2-hydroxyacetaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C\u2083H\u2086O\u2083",
+        "iupac_name": "2,3-dihydroxypropanal",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C\u2082H\u2085NO\u2082",
+        "iupac_name": "glycine",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C\u2083H\u2087NO\u2083",
+        "iupac_name": "serine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Mineral-catalyzed CO\u2082 hydrogenation",
+        "reasoning": "Greigite surfaces enable CO\u2082 reduction via electron transfer (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeNiS clusters"
+        ],
+        "conditions": {
+          "temperature": "350-450K",
+          "pressure": "high",
+          "catalyst": "FeNiS",
+          "aqueous": true
+        },
+        "mechanism": "Carbonylative condensation",
+        "reasoning": "FeNiS-mediated carbon fixation analogous to acetyl-CoA pathway (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of glycine",
+        "inputs": [
+          "mol_007",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true
+        },
+        "mechanism": "Aldehyde-cyanide-ammonia condensation",
+        "reasoning": "Clay-catalyzed amino acid formation (Cleaves et al., 2008)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formose reaction",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Sugar formation with borate stabilization",
+        "reasoning": "Borate directs formose products to trioses (Ricardo et al., 2004)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Serine Strecker synthesis",
+        "inputs": [
+          "mol_009",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photocatalytic triose aldehyde reaction",
+        "reasoning": "UV-activated TiO\u2082 enables triose-based Strecker synthesis (Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glycine hydroxymethylation",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Clay-mediated C1 addition",
+        "reasoning": "Montmorillonite promotes formaldehyde addition to glycine (Forsythe et al., 2015)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal glycine synthesis",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true
+        },
+        "mechanism": "Reductive amination",
+        "reasoning": "Fe-S mineral catalyzed amino acid formation (Muchowska et al., 2017)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal glycine route",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 glycine \u2192 serine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker route",
+        "description": "Formaldehyde \u2192 glyceraldehyde \u2192 serine via UV catalysis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Clay-mediated assembly",
+        "description": "Glycine + formaldehyde \u2192 serine via wet-dry cycles",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_007": 0.6,
+          "rxn_006": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.68,
+        "feedback": "Hydrothermal glycine route connects environments but has weak links: pyruvate synthesis (rxn_002) and glycine formation from pyruvate (rxn_007) lack mechanistic clarity. Hydroxymethylation (rxn_006) is plausible but requires clay mediation details.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace rxn_002 with stepwise C-C bond formation (e.g., via glyoxylate)",
+          "Clarify glycine synthesis mechanism from pyruvate (e.g., reductive amination)"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.7,
+          "rxn_005": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.6,
+        "feedback": "Surface Strecker route relies on non-standard serine synthesis (rxn_005). Formose reaction (rxn_004) produces glyceraldehyde but lacks selectivity controls.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Use glycine as a precursor for serine synthesis (e.g., via hydroxymethylation in P1)",
+          "Add phosphate or mineral catalysts to improve formose selectivity"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {},
+        "chemical_feasibility": 0.0,
+        "pathway_coherence": 0.0,
+        "environmental_progression": 0.0,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.0,
+        "feedback": "Clay-mediated assembly pathway (P3) is undefined in the reaction list.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify polymerization reactions (e.g., peptide bond formation on clays)"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "Network has environmental interconnectivity but suffers from: (1) Underconnected hubs (only glycine has degree \u22653), (2) Chemically ambiguous reactions (pyruvate/glycine synthesis), (3) Missing mineral specifications in hydrothermal/surface steps. Strengthen hub connectivity and reaction mechanisms.",
+    "approved": false,
+    "hub_quality": 0.5,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

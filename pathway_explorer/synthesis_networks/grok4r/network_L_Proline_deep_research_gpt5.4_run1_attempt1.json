@@ -1,0 +1,764 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "The synthesis network for L-Proline is grounded in literature findings, primarily following the reductive amination of \u03b1-ketoglutarate to glutamate in H2-rich hydrothermal environments using Ni/Fe-S catalysts, followed by non-enzymatic reduction and spontaneous cyclization to P5C and then proline in biochemical settings. Alternative pathways include broad electric discharge (Miller-Urey) and UV photolysis in surface environments producing proline directly or via precursors. Hydrothermal products like \u03b1KG and formate feed into surface wet-dry cycles for concentration and further reactions, converging at hub molecules (\u03b1KG, glutamate, P5C). Multiple convergent routes ensure redundancy, with 10 pathways tracing environmental interconnections under anoxic, UV-exposed early Earth conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH3COCO2-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HOOC(CH2)2COCO2-",
+        "iupac_name": "2-oxoglutarate",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2NOC(CH2)2CH2CO2-",
+        "iupac_name": "2-aminopentanedioate",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2NOC(CH2)2CHO",
+        "iupac_name": "5-oxonorvaline",
+        "common_name": "glutamate-\u03b3-semialdehyde",
+        "inchi": "InChI=1S/C5H9NO3/c6-4(5(8)9)2-1-3-7/h3-4H,1-2,6H2,(H,8,9)/t4-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H7NO2",
+        "iupac_name": "pyrrolidine-2,5-dione",
+        "common_name": "\u0394\u00b9-pyrroline-5-carboxylate",
+        "inchi": "InChI=1S/C4H5NO2/c6-3-1-2-4(7)5-3/h1-2H2,(H,5,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11, alkaline vents"
+        },
+        "mechanism": "Surface-catalyzed hydrogenation of CO2 on Fe-S clusters",
+        "reasoning": "CO2 reduction on greigite provides formate as a C1 hub in hydrothermal settings (Kaur et al. 2024 [3]; analogous to iron-sulfur world chemistry)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate and CO2 to pyruvate via chain elongation",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Fischer-Tropsch-type hydrogenation and carbonylation to C3 keto acid",
+        "reasoning": "Hydrothermal carbon fixation yields pyruvate as a metabolic hub, feeding into \u03b1KG pathways (Kaur et al. 2024 [3]; protometabolic networks)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate and CO2 to \u03b1-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "50-120C",
+          "pressure": "high",
+          "catalyst": "pyrite with Ni",
+          "aqueous": true,
+          "other": "pH ~9, H2-driven reductive carboxylation"
+        },
+        "mechanism": "Reductive carboxylation mimicking rTCA cycle",
+        "reasoning": "Prebiotic Krebs cycle analog generates \u03b1KG from pyruvate and CO2 under H2/Ni catalysis in vents (Kaur et al. 2024 [3])"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of \u03b1KG to glutamate",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "295-393K (22-120C)",
+          "pressure": "high",
+          "catalyst": "Ni on mackinawite",
+          "aqueous": true,
+          "other": "pH 8, NH4+ 6-150 mM"
+        },
+        "mechanism": "H2-mediated reductive amination on metal surfaces",
+        "reasoning": "H2 and NH3 over Ni catalysts convert \u03b1-keto acids to amino acids, including glutamate from \u03b1KG (Kaur et al. 2024 [3])"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reduction of glutamate to glutamate-\u03b3-semialdehyde",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "323-373K (50-100C)",
+          "pressure": "ambient",
+          "catalyst": "FeS surfaces",
+          "aqueous": true,
+          "other": "moderate pH, reducing conditions"
+        },
+        "mechanism": "Decarboxylative reduction of \u03b3-carboxyl group",
+        "reasoning": "Non-enzymatic reduction on mineral surfaces mimics biological pathway (Somorjai et al. 2023 [4])"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Spontaneous cyclization to P5C",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "spontaneous in solution"
+        },
+        "mechanism": "Intramolecular imine formation and cyclization",
+        "reasoning": "Glutamate semialdehyde spontaneously cyclizes to P5C under prebiotic conditions (Somorjai et al. 2023 [4])"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Reduction of P5C to proline",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-373K",
+          "pressure": "ambient",
+          "catalyst": "Fe-S on clay",
+          "aqueous": true,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Hydrogenation of imine to amine, yielding cyclic structure",
+        "reasoning": "P5C reduced to proline by available reductants on mineral surfaces (Somorjai et al. 2023 [4]; Cueto-D\u00edaz et al. 2023 [8])"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Electric discharge synthesis of proline",
+        "inputs": [
+          "mol_011",
+          "mol_012",
+          "mol_003",
+          "H2O"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "clay surfaces",
+          "aqueous": true,
+          "other": "spark discharge ~7000V, CH4:N2:NH3 mixture"
+        },
+        "mechanism": "Radical recombination in plasma to form amino acids including proline",
+        "reasoning": "Miller-Urey sparking yields proline as a minor product (Ring et al. 1972 [1])"
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV photolysis of nitriles to proline",
+        "inputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "UV photocatalysis on TiO2",
+          "aqueous": false,
+          "other": "UV exposure in evaporitic pools"
+        },
+        "mechanism": "Radical-radical coupling from HCN oligomers and ammonia",
+        "reasoning": "UV irradiation of HCN-rich mixtures produces proline via radical pathways (Simionato et al. 2018 [2])"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Wet-dry cyclization of glutamate to proline analog",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "trimetaphosphate"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay and P3m",
+          "aqueous": false,
+          "other": "wet-dry cycles, pH oscillations"
+        },
+        "mechanism": "Concentration-driven reduction and cyclization",
+        "reasoning": "Wet-dry cycles on clays facilitate amino acid transformations to cyclic forms (Guo et al. 2024 [7]; speculative extension for proline)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal reductive carboxylation to proline",
+        "description": "Full hydrothermal chain from CO2 to \u03b1KG, amination, and biochemical cyclization",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal \u03b1KG direct to proline via surface feed",
+        "description": "Hydrothermal \u03b1KG fed to surface wet-dry for amination and cyclization",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface discharge primary synthesis",
+        "description": "Direct Miller-Urey pathway in surface environments",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P4",
+        "name": "UV photolysis in surface ices",
+        "description": "HCN-based UV route in evaporitic pools",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydrothermal glutamate to biochemical proline",
+        "description": "Glutamate from vents directly to cyclization",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface-assisted reductive amination of hydrothermal \u03b1KG",
+        "description": "\u03b1KG from hydrothermal fed to surface UV/amine for glutamate, then cycle",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Pyruvate bypass to proline via chain extension",
+        "description": "Alternative C3 to C5 extension in hydrothermal, then standard",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Mixed hydrothermal-surface cyclization",
+        "description": "Glutamate from hydro to surface wet-dry for proline",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Extended UV-HCN to P5C convergence",
+        "description": "Surface HCN UV to P5C-like, converging with biochemical reduction",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Discharge-glutamate hybrid",
+        "description": "Surface discharge produces precursors feeding hydrothermal amination",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_007",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.9,
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.85,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Strong hydrothermal buildup to biochemical completion aligns with literature reductive pathways; minor issue with non-enzymatic reduction in bio stage.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify Fe-S catalysts for rxn_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.85,
+        "feedback": "Good hydro-to-surface transition via \u03b1KG feed; direct cyclization from glutamate plausible but simplified per literature wet-dry cycles.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Elaborate mechanism for wet-dry cyclization"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_008": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct surface discharge matches Miller-Urey literature exactly; isolated but valid standalone route.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add yield estimates from literature"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "UV photolysis of HCN aligns with interstellar ice experiments; mechanism slightly speculative for direct proline.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Reference radical mechanisms from Simionato et al."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_005": 0.85,
+          "rxn_006": 0.95,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.85,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Core biochemical pathway from hydrothermal glutamate; excellent alignment with non-enzymatic cyclization in literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include Ni catalyst details"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_010": 0.7,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Surface-assisted amination of hydro \u03b1KG; good convergence but cyclization step needs validation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Link to mineral surfaces like pyrite"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_003": 0.9,
+          "rxn_004": 0.95,
+          "rxn_005": 0.85,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Pyruvate bypass via chain extension; feasible but less direct, aligns with ketoacid elongation in hydro vents.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify chain extension mechanism"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.8,
+        "feedback": "Mixed hydro-surface cyclization; short but relies on simplified rxn_010, supported by wet-dry literature for analogs.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add reduction step for accuracy"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_009": 0.85,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "UV-HCN to P5C convergence; innovative link to literature UV routes, but HCN to P5C speculative.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Cite HCN polymerization evidence"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.95,
+          "rxn_004": 0.95,
+          "rxn_010": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Discharge-glutamate hybrid; good redundancy, but integration of discharge products to glutamate unclear.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Define convergence at glutamate hub"
+        ]
+      }
+    ],
+    "best_pathway_id": "P5",
+    "overall_confidence": 0.88,
+    "network_feedback": "Well-connected network with strong literature alignment to hydrothermal reductive amination and surface discharge/UV routes; minor simplifications in cyclization steps, but overall chemically sound and environmentally progressive.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.95
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

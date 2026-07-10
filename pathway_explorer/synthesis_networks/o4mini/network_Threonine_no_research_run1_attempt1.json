@@ -1,0 +1,850 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Integrate hydrothermal CO2/H2 fixation with surface photochemistry and mineral-catalyzed condensation to build C3 and C4 keto acids, followed by aminonitrile or reductive amination routes to threonine in protocellular aqueous settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2CO",
+        "iupac_name": "formaldehyde",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H3O3-",
+        "iupac_name": "pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O",
+        "iupac_name": "acetaldehyde",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O2",
+        "iupac_name": "glycolaldehyde",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H4O3-",
+        "iupac_name": "2-oxobutanoate",
+        "common_name": "\u03b1-ketobutyrate",
+        "inchi": "InChI=1S/C4H6O3/c1-2-3(5)4(6)7/h2H2,1H3,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H6N1O2",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine aminonitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed reduction of CO2 by H2 via Fe\u2013S cluster mimic",
+        "reasoning": "Analogous to Huber & Wachtershauser (1997) in alkaline vents"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate reduction to formaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Stepwise electron transfer on FeS surfaces reducing formate to formaldehyde",
+        "reasoning": "Modeled on FeS-catalyzed C1 reduction pathways"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Direct pyruvate synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "magnetite+greigite",
+          "aqueous": true,
+          "other": "elevated pressure"
+        },
+        "mechanism": "Reductive carboxylation of CO2 to C3 keto acid on Fe\u2013S/Fe\u2013O surfaces",
+        "reasoning": "Proposed analog of acetyl-CoA pathway in vents"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Pyruvate decarboxylation to acetaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "moderate",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "acidic microenvironment"
+        },
+        "mechanism": "Thermal decarboxylation on sulfide surface",
+        "reasoning": "Decarboxylation of \u03b1-keto acids on pyrite surfaces observed experimentally"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate",
+          "aqueous": true,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "Aldol-type dimerization of formaldehyde stabilized by borate",
+        "reasoning": "Classic formose pathway in evaporitic pools"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation to 2-oxobutanoate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "Clays promote C\u2013C bond formation between keto acid and aldehyde",
+        "reasoning": "Montmorillonite-catalyzed aldehyde\u2013keto acid condensations observed (Ferris et al.)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker synthesis of threonine aminonitrile",
+        "inputs": [
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Nucleophilic addition of NH3 and HCN to keto acid forming aminonitrile",
+        "reasoning": "Surface-photocatalyzed cyanosulfidic pathways (Powner et al., 2009)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of aminonitrile to threonine",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acid/base catalysis"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis to amino acid",
+        "reasoning": "Prebiotic nitrile hydrolysis yields \u03b1-amino acids"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal aldol to 2-oxobutanoate",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Fe\u2013S surface-mediated C\u2013C coupling of keto acid and aldehyde",
+        "reasoning": "Analogous to hydrothermal analogue of Montmorillonite aldol"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Glycolaldehyde reduction to acetaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "UV-driven"
+        },
+        "mechanism": "Surface-mediated hydrogenation of glycolaldehyde",
+        "reasoning": "Surface Fe\u2013O catalysis of sugar reduction under UV"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Reductive amination of 2-oxobutanoate",
+        "inputs": [
+          "mol_008",
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "alkaline pH"
+        },
+        "mechanism": "Mineral-catalyzed reductive amination of keto acid to amino acid",
+        "reasoning": "Proposed prebiotic analog of enzymatic transamination in vents"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct hydrothermal-surface Strecker route",
+        "description": "Pyruvate from hydrothermal CO2 reduction undergoes decarboxylation, surface aldol, Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal aldol-Strecker shortcut",
+        "description": "Pyruvate condenses directly with formaldehyde in vents to keto acid, then surface Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_009",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formate-enhanced pyruvate Strecker",
+        "description": "Formate-derived formaldehyde supplements pyruvate pathway for aldol and Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formate-assisted direct aldol route",
+        "description": "Formaldehyde from formate reduction enables hydrothermal aldol and downstream Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_009",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Reductive amination shortcut",
+        "description": "Aldol product in vents is directly aminated to threonine bypassing nitrile route",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Direct vent amination",
+        "description": "Hydrothermal aldol followed by vent reductive amination produces threonine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formate-enabled amination",
+        "description": "Formaldehyde from formate reduction drives aldol then reductive amination in vents",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formate-assisted direct amination",
+        "description": "Formate-derived aldehyde feeding vent aldol and reductive amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glycolaldehyde branch Strecker",
+        "description": "Surface formose produces glycolaldehyde, reduced to acetaldehyde for surface aldol, Strecker and hydrolysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_010",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Surface glycolaldehyde-assisted direct route",
+        "description": "Glycolaldehyde reduction yields acetaldehyde for hydrothermal aldol and surface Strecker",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_010",
+          "rxn_003",
+          "rxn_009",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_006": 0.75,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.84,
+        "feedback": "Direct integration of hydrothermal pyruvate formation and surface Strecker is coherent, but the direct pyruvate synthesis step is speculative.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Split rxn_003 into sequential formate reductions",
+          "Incorporate mineral catalysts for pyruvate formation"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_009": 0.5,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.79,
+        "feedback": "Shortcut via hydrothermal aldol is efficient but rxn_009 under hydrothermal conditions is unproven.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Move the aldol condensation to a surface/mineral context",
+          "Validate hydrothermal aldol with experimental analogs"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.6,
+          "rxn_004": 0.75,
+          "rxn_006": 0.65,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.79,
+        "feedback": "Formate-enhanced pyruvate route is mechanistically plausible but adds length and redundancy.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Simplify by bypassing direct pyruvate step",
+          "Optimize formate to glycolaldehyde branching"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_005": 0.7,
+          "rxn_010": 0.65,
+          "rxn_006": 0.75,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.88,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.84,
+        "feedback": "Surface-driven aldol then reductive amination is sound, with realistic mineral catalysis assumptions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include specific mineral catalysts (e.g., CaCO3) for the aldol step"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.8,
+          "rxn_006": 0.75,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "Reductive amination shortcut reduces steps and feeds directly to threonine but still depends on speculative rxn_003.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Divide the direct pyruvate formation into well-established two-step reductions",
+          "Test reductive amination yields under vent-like H2 pressures"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_009": 0.5,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.72,
+        "feedback": "Very short vent-only route, but hydrothermal aldol (rxn_009) is poorly supported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Consider surface-assisted aldol instead of rxn_009",
+          "Introduce formate intermediary to stabilize C\u2013C bond formation"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_003": 0.6,
+          "rxn_004": 0.75,
+          "rxn_009": 0.5,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.78,
+        "feedback": "Formate-enabled vent amination adds intermediates but retains speculative steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Shift the aldol (rxn_009) to surface conditions",
+          "Break down direct pyruvate synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.88,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.84,
+        "feedback": "Good formate-assisted surface route with plausible steps; integration into vent for amination is balanced.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify UV flux prerequisites for formose step",
+          "Detail pH conditions for optimal aldol yield"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.8,
+          "rxn_005": 0.7,
+          "rxn_010": 0.65,
+          "rxn_006": 0.75,
+          "rxn_009": 0.5,
+          "rxn_007": 0.85,
+          "rxn_008": 0.9,
+          "rxn_011": 0.85
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.77,
+        "feedback": "Long glycolaldehyde branch is imaginative but overly complex; multiple speculative condensation steps lower robustness.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Streamline by removing redundant aldol steps",
+          "Test sequential surface-hydrothermal transitions"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_010": 0.65,
+          "rxn_006": 0.75,
+          "rxn_011": 0.85,
+          "rxn_008": 0.9,
+          "rxn_004": 0.8,
+          "rxn_002": 0.8,
+          "rxn_001": 0.85
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.76,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.79,
+        "feedback": "Surface-driven multi-step route shows good environmental transitions but is lengthy and includes less robust steps like glycolaldehyde reduction.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Consider alternative pathways to acetaldehyde",
+          "Reduce step count by integrating formate reductions"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.7,
+    "network_feedback": "The network is well-connected with multiple convergent hubs and realistic mineral-catalyzed surface chemistries. However, the direct hydrothermal synthesis of pyruvate (rxn_003) and hydrothermal aldol (rxn_009) are speculative and should be substituted with known stepwise formate-based or surface-catalyzed processes.",
+    "approved": true,
+    "hub_quality": 0.85,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

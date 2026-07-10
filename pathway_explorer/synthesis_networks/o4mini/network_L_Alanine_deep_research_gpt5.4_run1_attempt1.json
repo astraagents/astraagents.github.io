@@ -1,0 +1,731 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate high-yield hydrothermal pyruvate reductive amination modules with cyanosulfidic Strecker aminonitrile pathways under surface wet\u2013dry cycling, complemented by atmospheric discharge inputs and nonenzymatic transamination selection to furnish multiple convergent routes to alanine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C3H3O3-",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CN-",
+        "iupac_name": "cyanide",
+        "common_name": "cyanide",
+        "inchi": "InChI=1S/CN/c1-2/q-1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "H2S",
+        "iupac_name": "hydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH3NO",
+        "iupac_name": "methanamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C4H6N2O",
+        "iupac_name": "N-formyl-2-aminopropanenitrile",
+        "common_name": "formylalanine nitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate reductive amination on mixed-valence iron oxyhydroxide",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mixed-valence iron oxyhydroxide"
+        ],
+        "conditions": {
+          "temperature": "343K (70\u00b0C)",
+          "pressure": "1 atm",
+          "catalyst": "mixed-valence iron oxyhydroxide",
+          "aqueous": true,
+          "other": "pH 10, 48\u201372 h"
+        },
+        "mechanism": "Reductive amination of the keto acid",
+        "reasoning": "(Barge et al., 2019)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate reductive amination on Ni0 with pyridoxal",
+        "inputs": [
+          "mol_001",
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ni^0"
+        ],
+        "conditions": {
+          "temperature": "353K (80\u00b0C)",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni^0",
+          "aqueous": true,
+          "other": "pH 11, 18 h"
+        },
+        "mechanism": "Hydrogenation-mediated reductive amination enhanced by pyridoxal",
+        "reasoning": "(Schlikker et al., 2024)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Pyruvate reductive amination on Pd nanoparticles",
+        "inputs": [
+          "mol_001",
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pd nanoparticles"
+        ],
+        "conditions": {
+          "temperature": "295K (22\u00b0C)",
+          "pressure": "5 bar H2",
+          "catalyst": "Pd nanoparticles",
+          "aqueous": true,
+          "other": "pH 7\u20138, 24 h"
+        },
+        "mechanism": "Hydrogenation-mediated reductive amination",
+        "reasoning": "(Kaur et al., 2024)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Acetaldehyde formation from acetylene and CO on mackinawite",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "373\u2013400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "alkaline, high pressure"
+        },
+        "mechanism": "Fischer\u2013Tropsch-type carbon chain growth",
+        "reasoning": "(Diederich et al., 2023)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker cyanation to alanine aminonitrile on mackinawite",
+        "inputs": [
+          "mol_002",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "373\u2013400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "pH 9\u201311, 7 days"
+        },
+        "mechanism": "Imine formation and CN\u207b addition",
+        "reasoning": "(Diederich et al., 2023)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "N-formylation of aminonitrile in formamide",
+        "inputs": [
+          "mol_002",
+          "mol_004",
+          "mol_003",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "333K then 423K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": false,
+          "other": "formamide-rich, staged heating"
+        },
+        "mechanism": "Strecker-type aminonitrile formation and formylation",
+        "reasoning": "(Green et al., 2023)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of alanine aminonitrile to alanine on phosphate minerals",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "340K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": false,
+          "other": "wet\u2013dry cycling"
+        },
+        "mechanism": "Nitrile hydrolysis",
+        "reasoning": "(Ruiz-Bermejo et al., 2013)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Spark discharge synthesis of alanine (Miller)",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_005",
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "sub-atmospheric",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "continuous discharge ~1 week"
+        },
+        "mechanism": "Gas-phase radical network and aqueous trapping",
+        "reasoning": "(Miller, 1953)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Volcanic-plume spark discharge synthesis of alanine",
+        "inputs": [
+          "mol_008",
+          "mol_004",
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "sub-atmospheric",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "continuous discharge ~1 week"
+        },
+        "mechanism": "Gas-phase radical network and aqueous trapping",
+        "reasoning": "(Parker et al., 2011)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Nonenzymatic transamination of pyruvate with Fe3+-pyridoxal",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe3+-pyridoxal complex"
+        ],
+        "conditions": {
+          "temperature": "348K (75\u00b0C)",
+          "pressure": "1 atm",
+          "catalyst": "Fe3+-pyridoxal complex",
+          "aqueous": true,
+          "other": "pH 5\u20137.5, 7.5 mol% pyridoxal"
+        },
+        "mechanism": "Schiff-base\u2013mediated amino transfer",
+        "reasoning": "(Dherbassy et al., 2023)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal pyruvate \u2192 alanine (iron oxyhydroxide)",
+        "description": "Direct reductive amination of pyruvate on mixed-valence iron oxyhydroxide.",
+        "reaction_sequence": [
+          "rxn_001"
+        ],
+        "key_intermediates": [
+          "mol_001"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Serpentinization-like Ni0 module",
+        "description": "Pyruvate reductive amination on Ni0 under alkaline vent conditions with H2.",
+        "reaction_sequence": [
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_001"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Meteorite/Pd-catalyzed reductive amination",
+        "description": "Room-temperature reductive amination of pyruvate on Pd nanoparticles.",
+        "reaction_sequence": [
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_001"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal Strecker via acetylene \u2192 aminonitrile \u2192 alanine",
+        "description": "Acetylene and CO yield acetaldehyde, then aminonitrile, then hydrolysis to alanine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Formamide Strecker + formylation + hydrolysis",
+        "description": "Acetaldehyde in formamide yields N-formyl aminonitrile then hydrolysis to alanine.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_013",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Classic Miller discharge",
+        "description": "Atmospheric spark discharge route producing alanine in aqueous trap.",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Volcanic-plume discharge",
+        "description": "Sulfur-rich spark discharge yielding racemic alanine.",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Nonenzymatic transamination",
+        "description": "Fe3+-pyridoxal\u2013catalyzed transamination of pyruvate to alanine.",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_001"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Aminonitrile hydrolysis",
+        "description": "Direct hydrolysis of alanine aminonitrile formed hydrothermally.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Full cyanosulfidic vent route",
+        "description": "Acetylene\u2192acetaldehyde\u2192aminonitrile\u2192alanine hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_014",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.95
+        },
+        "chemical_feasibility": 1.0,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.92,
+        "feedback": "Direct hydrothermal reductive amination on mixed-valence iron oxyhydroxide is well supported by Barge et al., high yield under vent-like conditions.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Consider specifying pH and Fe(II)/Fe(III) ratio for completeness."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Serpentinization-like Ni0 with pyridoxal is plausible and supported by Schlikker et al.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include details on NH3 concentration and H2 partial pressure."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Pd nanoparticle-catalyzed reductive amination under mild conditions is consistent with Kaur et al.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify catalyst loading and reaction time."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_005": 0.85,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal acetylene to acetaldehyde and Strecker to aminonitrile, followed by mineral-catalyzed hydrolysis is coherent and literature-aligned.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Annotate reaction conditions (pH, mineral identity) for each step."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.6,
+        "feedback": "Formamide-based N-formylation is plausible but the subsequent hydrolysis to alanine is missing.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add a hydrolysis step for N-formylaminonitrile to free alanine or revise pathway to include deprotection."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.82,
+        "feedback": "Classic Miller spark discharge is historically validated but yields are low and racemic.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Quantify expected yields and specify apparatus geometry."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.86,
+        "feedback": "Volcanic-plume discharge with H2S is well documented by Parker et al. for racemic alanine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail steam-to-spark ratio and sampling conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Nonenzymatic transamination via Fe3+-pyridoxal is plausible per Dherbassy et al., though equilibrium considerations apply.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Discuss possible back-reaction and equilibrium yield."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.85,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Two-step aminonitrile hydrolysis route is sound, combining Strecker and mineral-catalyzed hydrolysis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify wet\u2013dry cycle parameters for hydrolysis efficiency."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.85,
+          "rxn_005": 0.85,
+          "rxn_006": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.7,
+        "feedback": "Cyanosulfidic vent route outlines precursor formation but lacks final hydrolysis to alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include a final deprotection/hydrolysis step or adjust to produce free alanine."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.84,
+    "network_feedback": "The network is well connected with multiple robust hydrothermal and surface modules. Key hub intermediates are effectively utilized, though some formamide-based routes lack completion. Integration across environments is sound. Improve aminonitrile hub connectivity and add missing hydrolysis steps for formylated nitriles.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

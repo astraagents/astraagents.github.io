@@ -1,0 +1,480 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate hydrothermal reductive amination, cyanosulfidic nitrile hydrolysis, and serine reduction pathways with pyruvate as central hub. Connect CO2 fixation in vents to surface chemistry through environmental transport.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Molecular hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": null,
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H6N2",
+        "iupac_name": "2-Aminopropanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H3NO",
+        "iupac_name": "Hydroxylamine",
+        "common_name": null,
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO3",
+        "iupac_name": "L-Serine",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H4O5",
+        "iupac_name": "Oxaloacetic acid",
+        "common_name": "Oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O3",
+        "iupac_name": "2-Hydroxypropanoic acid",
+        "common_name": "Lactic acid",
+        "inchi": "InChI=1S/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-Aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanosulfidic nitrile hydrolysis",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Stibnite",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Nucleophilic addition of water to nitrile group",
+        "reasoning": "Patel et al. (2015) demonstrated cyanosulfidic hydrolysis of 2-aminopropanenitrile in surface pools"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Iron-catalyzed reductive amination (variant A)",
+        "inputs": [
+          "mol_005",
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "High",
+          "catalyst": "Fe\u2070/Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "pH gradient"
+        },
+        "mechanism": "Fe\u2070-mediated electron transfer for NH2OH reduction",
+        "reasoning": "Muchowska et al. (2019) showed Fe-catalyzed pyruvate amination at hydrothermal conditions"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Iron-catalyzed reductive amination (variant B)",
+        "inputs": [
+          "mol_005",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "High",
+          "catalyst": "Fe\u2070/Fe\u00b2\u207a",
+          "aqueous": true,
+          "other": "Dehydration conditions"
+        },
+        "mechanism": "Net dehydration pathway for amination",
+        "reasoning": "Alternative stoichiometry from Muchowska et al. (2019)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Serine reductive dehydroxylation",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "High",
+          "catalyst": "FeS surfaces",
+          "aqueous": true,
+          "other": "H2-rich vent fluids"
+        },
+        "mechanism": "H2-mediated reduction of hydroxymethyl group",
+        "reasoning": "Aubrey et al. (2008) demonstrated serine-to-alanine conversion in vent conditions"
+      },
+      {
+        "id": "rxn_005",
+        "name": "CO2 fixation to pyruvate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron",
+          "Awaruite",
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "High",
+          "catalyst": "Fe/Ni alloys",
+          "aqueous": true,
+          "other": "Fischer-Tropsch-type synthesis"
+        },
+        "mechanism": "Stepwise CO2 reduction on mineral surfaces",
+        "reasoning": "Preiner et al. (2020) showed direct pyruvate synthesis from CO2/H2"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Oxaloacetate decarboxylation (surface)",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Sulfide minerals",
+          "aqueous": true,
+          "other": "Cyano-sulfidic conditions"
+        },
+        "mechanism": "\u03b2-keto acid decarboxylation",
+        "reasoning": "Ritson (2021) demonstrated cyanosulfidic TCA cycle analogs"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Lactic acid oxidation",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Stibnite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "Sulfide minerals",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "\u03b1-hydroxy acid oxidation",
+        "reasoning": "Ritson (2021) showed surface oxidation pathways"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal CO2 fixation",
+        "description": "CO2 + H2 \u2192 Pyruvate \u2192 Alanine via Fe-catalyzed amination",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface nitrile hydrolysis",
+        "description": "Cyanosulfidic synthesis of alanine from HCN derivatives",
+        "reaction_sequence": [
+          "rxn_001"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Serine reduction pathway",
+        "description": "Hydrothermal conversion of serine to alanine",
+        "reaction_sequence": [
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface TCA analog",
+        "description": "Oxaloacetate \u2192 Pyruvate \u2192 Alanine",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Lactate oxidation pathway",
+        "description": "Surface lactic acid \u2192 Pyruvate \u2192 Alanine",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_001"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_005": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.7,
+        "feedback": "CO\u2082 fixation to pyruvate (rxn_005) is well-supported by literature, but downstream steps (reductive amination) lack hydroxylamine (mol_007) synthesis. Pyruvate production is valid, but pathway to alanine is incomplete.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Add hydroxylamine synthesis steps (e.g., NH\u2083 oxidation or NO reduction) to enable reductive amination."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.5,
+        "feedback": "Nitrile hydrolysis (rxn_001) is chemically valid but lacks 2-aminopropanenitrile (mol_006) synthesis. Pathway cannot proceed without upstream cyanosulfidic chemistry (HCN/H\u2082S reactions).",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Include Strecker-like synthesis of 2-aminopropanenitrile from HCN, NH\u2083, and aldehydes per Patel et al. (2015)."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.8
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.3,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.4,
+        "feedback": "Serine reduction (rxn_004) requires L-serine (mol_008), which is not synthesized in the network. Pathway is non-functional without serine production steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Add prebiotic serine synthesis (e.g., glycolaldehyde + cyanamide pathways) to enable this route."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_006": 0.7
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.5,
+        "feedback": "Oxaloacetate decarboxylation (rxn_006) lacks oxaloacetate (mol_009) synthesis. Surface TCA analog pathway is incomplete upstream steps.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Include oxaloacetate formation (e.g., CO\u2082 + pyruvate condensation) as per Ritson (2021)."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.4,
+        "overall_confidence": 0.5,
+        "feedback": "Lactic acid oxidation (rxn_007) requires lactic acid (mol_010), which is not synthesized. Pathway is non-functional without lactate production.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add lactic acid synthesis (e.g., sugar degradation or HCN-derived pathways)."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.65,
+    "network_feedback": "Network integrates key literature routes (hydrothermal reductive amination, nitrile hydrolysis) but lacks critical upstream steps: (1) No synthesis of hydroxylamine (mol_007), 2-aminopropanenitrile (mol_006), serine (mol_008), oxaloacetate (mol_009), or lactic acid (mol_010). (2) Hub molecules mol_006 (degree=1) and mol_007 (degree=2) are underconnected. Add missing precursor synthesis and improve hub connectivity to meet approval thresholds.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

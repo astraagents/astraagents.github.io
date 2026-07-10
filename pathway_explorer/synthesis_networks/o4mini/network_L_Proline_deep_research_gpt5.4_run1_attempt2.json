@@ -1,0 +1,707 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Integrate multiple literature\u2010supported contexts: direct Miller\u2013Urey spark discharge (Ring et al. 1972), hydrothermal H\u2082\u2010driven reductive amination of \u03b1-ketoglutarate over Ni\u2010alloys (Kaur et al. 2024), non\u2010enzymatic cyclization/reduction on Fe\u2013S minerals (Somorjai et al. 2023), UV ice photolysis of butylamine (Simionato et al. 2018), and meteorite delivery pathways (Simionato et al. 2018), plus surface\u2010catalyzed variants to establish ten convergent routes to L-proline.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "\u03b1-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "L-glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H7NO3",
+        "iupac_name": "5-oxo-2-aminopentanoic acid",
+        "common_name": "glutamate semialdehyde",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H7NO3",
+        "iupac_name": "1-pyrroline-5-carboxylic acid",
+        "common_name": "\u0394\u00b9-pyrroline-5-carboxylate (P5C)",
+        "inchi": "InChI=1S/C5H7NO2/c7-5(8)4-2-1-3-6-4/h3-4H,1-2H2,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H9NO2",
+        "iupac_name": "pyrrolidine-2-carboxylic acid",
+        "common_name": "L-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H12N2O2",
+        "iupac_name": "2,5-diaminopentanoic acid",
+        "common_name": "L-ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO2",
+        "iupac_name": "5-oxo-2-aminopentanoic acid",
+        "common_name": "ornithine semialdehyde",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H11N",
+        "iupac_name": "butan-1-amine",
+        "common_name": "butylamine",
+        "inchi": "InChI=1S/C4H11N/c1-2-3-4-5/h2-5H2,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal reductive amination of \u03b1KG to glutamate",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "awaruite"
+        ],
+        "conditions": {
+          "temperature": "295K",
+          "pressure": "1 atm",
+          "catalyst": "Ni-bearing awaruite",
+          "aqueous": true,
+          "other": "pH 8"
+        },
+        "mechanism": "Hydrogenation of keto group and amine addition to form amino acid",
+        "reasoning": "Kaur et al. 2024 demonstrated H\u2082/NH\u2084\u207a reductive amination of \u03b1-ketoglutarate on Ni catalysts (Chem, 2024)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyrite-catalyzed reduction of glutamate to semialdehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "323-373K",
+          "pressure": "high",
+          "catalyst": "FeS\u2082",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Selective reduction of \u03b3-carboxyl to aldehyde",
+        "reasoning": "Somorjai et al. 2023 describes non-enzymatic \u03b3-carboxyl reduction on Fe\u2013S surfaces (Phil. Trans. R. Soc., 2023)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Spontaneous cyclization of semialdehyde to P5C",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "323K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Intramolecular cyclization of the aldehyde and amino group",
+        "reasoning": "Somorjai et al. 2023 reports spontaneous formation of \u0394\u00b9-pyrroline-5-carboxylate from glutamate semialdehyde"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Greigite-mediated hydrogenation of P5C to proline",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "323-373K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083S\u2084",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Reduction of the imine to a secondary amine",
+        "reasoning": "Somorjai et al. 2023 shows P5C hydrogenation on greigite analogs of enzymatic reduction"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Magnetite-catalyzed transamination of glutamate to ornithine",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "323-373K",
+          "pressure": "high",
+          "catalyst": "Fe\u2083O\u2084",
+          "aqueous": true,
+          "other": "NH\u2083 excess"
+        },
+        "mechanism": "Amine transfer to \u03b3-carboxyl forming diamino acid",
+        "reasoning": "Speculative extension of metabolic Orn synthesis to Fe\u2083O\u2084 surfaces connecting urea-cycle analogs"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Mackinawite reduction of ornithine to semialdehyde",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "323-373K",
+          "pressure": "high",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "\u03b3-carboxyl reduction to aldehyde",
+        "reasoning": "Extension of Fe\u2013S \u03b3-carboxyl reductions to ornithine semialdehyde analogously to glutamate (Somorjai et al. 2023)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Cyclization of ornithine semialdehyde to P5C",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "323K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Intramolecular cyclization forming the cyclic imine",
+        "reasoning": "Somorjai et al. 2023 reports analogous cyclizations for amino aldehydes"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Miller\u2013Urey spark discharge synthesis of proline",
+        "inputs": [],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "7000 V spark, CH\u2084:N\u2082:NH\u2083:H\u2082O"
+        },
+        "mechanism": "Radical formation and recombination yields amino acids including proline",
+        "reasoning": "Ring et al. 1972 observed trace proline in spark\u2010discharge mixtures (PNAS, 1972)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "UV-photolysis of butylamine ice to proline",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082"
+        ],
+        "conditions": {
+          "temperature": "<100K",
+          "pressure": "1 atm",
+          "catalyst": "anatase",
+          "aqueous": false,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Radical\u2013radical coupling in ice analogs",
+        "reasoning": "Simionato et al. 2018 demonstrated proline formation from butylamine under UV in interstellar ice analogs"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Meteorite delivery of L-proline",
+        "inputs": [],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "ambient",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": ""
+        },
+        "mechanism": "Exogenous infusion of meteoritic amino acids",
+        "reasoning": "Simionato et al. 2018 detected proline in Murchison meteorite at ppb levels"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Spark discharge synthesis",
+        "description": "Direct formation of proline in electric discharge experiments",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal \u03b1KG route",
+        "description": "\u03b1KG\u2192Glu\u2192GS-Ald\u2192P5C\u2192proline via Fe\u2013S catalysts",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal Ornithine branch",
+        "description": "\u03b1KG\u2192Glu\u2192Orn\u2192Orn semialdehyde\u2192P5C\u2192proline",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Glu semialdehyde shortcut",
+        "description": "Glu\u2192GS-Ald\u2192P5C\u2192proline without \u03b1KG step",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Interstellar ice UV route",
+        "description": "Butylamine ice under UV yields proline",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Meteorite seeding",
+        "description": "Exogenous delivery of proline from meteorites",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Meteorite ornithine cyclization",
+        "description": "Orn delivered by meteorite \u2192 Orn semialdehyde \u2192P5C\u2192proline",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface variant of \u03b1KG amination",
+        "description": "Surface magnetite\u2010catalyzed \u03b1KG\u2192Glu then hydrothermal to proline",
+        "reaction_sequence": [
+          "rxn_012",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface reduction shortcut",
+        "description": "Glu\u2192GS-Ald\u2192surface montmorillonite reduction to proline",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hybrid hydrothermal\u2010surface",
+        "description": "\u03b1KG\u2192Glu (Ni)\u2192GS-Ald (pyrite)\u2192P5C then surface montmorillonite reduction",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_013"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Direct spark discharge is well-supported by Ring et al. (1972) and yields proline directly, but environmental context could be better integrated.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Provide specific environmental parameters for the spark discharge setup within the network context."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Hydrothermal \u03b1KG\u2192glutamate\u2192P5C\u2192proline route is strongly supported by Kaur et al. (2024) and Somorjai et al. (2023).",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify pH and temperature ranges for each hydrothermal step to strengthen environmental linkage."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_007": 0.9,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Ornithine branch follows a valid prebiotic route via transamination and cyclization, but transamination on magnetite is less documented.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Include evidence or conditions for magnetite-catalyzed transamination, or consider alternative catalysts."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.86,
+        "feedback": "Shortcut via glutamate semialdehyde is concise and chemically plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify mineral catalyst roles for reduction steps in this shortcut pathway."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "UV-ice photolysis of butylamine is supported by Simionato et al. (2018), but the source of butylamine should be detailed.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add a precursor route for butylamine to strengthen pathway context."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_010": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Meteorite delivery is realistic per Simionato et al. (2018) but is an exogenous delivery rather than synthesis.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Differentiate delivery mechanisms from in situ synthesis to avoid conflating contexts."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.95,
+          "rxn_006": 0.75,
+          "rxn_007": 0.9
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.4,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.52,
+        "feedback": "Combining meteorite delivery with downstream ornithine chemistry is not supported; meteorites deliver amino acids, not ornithine semialdehyde.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Separate endogenous synthesis from exogenous delivery or provide evidence for meteorite-derived ornithine analogs."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.4,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Surface variant of \u03b1KG amination is not defined; it reuses hydrothermal steps without specifying surface catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Define surface-specific catalysts or modify steps to realistic surface reactions (e.g., clay, UV-driven)."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.8,
+          "rxn_003": 0.9,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.4,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.6,
+        "feedback": "Surface reduction shortcut lacks distinct surface chemistry and context.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Incorporate explicit surface catalysts or UV-driven steps to make this a true surface pathway."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.95,
+          "rxn_005": 0.7,
+          "rxn_006": 0.75,
+          "rxn_009": 0.85
+        },
+        "chemical_feasibility": 0.56,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.4,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Hybrid hydrothermal\u2013surface pathway is under-specified and mixes environments without clear links.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Map out environmental transitions and ensure catalysts and conditions are appropriate at each step."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.76,
+    "network_feedback": "Network integrates many literature-supported routes to L-proline, with strong hydrothermal and spark discharge pathways. However, some surface and hybrid variants lack clear mechanistic or environmental detail. Hub connectivity is uneven and convergence points are under-defined.",
+    "approved": false,
+    "hub_quality": 0.65,
+    "convergence_quality": 0.6
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

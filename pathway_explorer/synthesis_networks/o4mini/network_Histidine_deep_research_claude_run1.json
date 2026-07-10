@@ -1,0 +1,824 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Integrate the sole prebiotic Shen route for histidine (erythrose\u2009+\u2009formamidine via Amadori and Strecker steps) and converge multiple imidazole\u2010ring formation pathways onto the key precursor imidazole-4-acetaldehyde. Simple gases CO\u2082, H\u2082, HCN, NH\u2083 feed hydrothermal CO\u2082 reduction and formose chemistry to erythrose; alternate surface routes (Debus\u2013Radziszewski, HCN photochemistry, Sutherland cascade) provide parallel access to imidazole-4-acetaldehyde. Biochemical assembly of histidine then proceeds via Strecker synthesis. Speculative connections are clearly identified and cited.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8O4",
+        "iupac_name": "(2R,3S)-2,3,4-trihydroxybutanal",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH4N2",
+        "iupac_name": "formamidine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H6N2O",
+        "iupac_name": "imidazole-4-acetaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H9N3O2",
+        "iupac_name": "(S)-2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)/t5-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H2O2",
+        "iupac_name": "ethanedial",
+        "common_name": "glyoxal",
+        "inchi": "InChI=1S/C2H2O2/c3-1-2-4/h1-2H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H4N2",
+        "iupac_name": "imidazole",
+        "common_name": "imidazole",
+        "inchi": "InChI=1S/C3H4N2/c1-2-5-3-4-1/h1-3H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H3N3O",
+        "iupac_name": "N-formyldehydroalanine nitrile",
+        "common_name": "FoDHA-CN",
+        "inchi": null,
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Heterogeneous reduction on Fe-S surface",
+        "reasoning": "Speculative CO2 reduction on greigite analogous to biological [Fe4S4] clusters (Huber & Wachtershauser, 1997) to connect geochemical CO2 to formate."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Fischer-Tropsch-type hydrogenation",
+        "reasoning": "Speculative Fischer-Tropsch-type reduction of formate to formaldehyde on greigite (Huber & Wachtershauser, 1997)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose aldol: formaldehyde to glycolaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "Formose reaction C1\u2013C1 aldol step (Butlerow, 1861; Ricardo et al., 2004)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formose aldol: glycolaldehyde to erythrose",
+        "inputs": [
+          "mol_005",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Aldol condensation",
+        "reasoning": "Formose C2\u2013C2 aldol yielding erythrose under borate stabilization (Ricardo et al., 2004)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "HCN + NH3 to formamidine",
+        "inputs": [
+          "mol_013",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Condensation",
+        "reasoning": "Formation of formamidine from HCN and NH3 in the Shen route (Shen et al., 1987)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Shen Amadori rearrangement to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Amadori rearrangement"
+        },
+        "mechanism": "Schiff base formation followed by Amadori rearrangement",
+        "reasoning": "Imidazole-4-acetaldehyde from erythrose and formamidine at 1.6% yield (Shen et al., 1987; Shen et al., 1990)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Shen Strecker synthesis of histidine",
+        "inputs": [
+          "mol_008",
+          "mol_013",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Strecker synthesis"
+        },
+        "mechanism": "Imination, cyanide addition, aminonitrile hydrolysis",
+        "reasoning": "Classical Strecker synthesis yielding histidine (Shen et al., 1990)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Debus\u2013Radziszewski imidazole formation",
+        "inputs": [
+          "mol_010",
+          "mol_004",
+          "mol_014",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Multiple Schiff base condensations and cyclization",
+        "reasoning": "Imidazole from glyoxal, formaldehyde, ammonia under mild aqueous conditions (Or\u00f3 et al., 1984)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Speculative functionalization of imidazole",
+        "inputs": [
+          "mol_011",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Electrophilic addition and rearrangement",
+        "reasoning": "Speculative pathway to imidazole-4-acetaldehyde; no direct literature precedent but hypothesized to connect Debus imidazole to histidine precursor."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Speculative HCN photochemical ring functionalization",
+        "inputs": [
+          "mol_013",
+          "mol_013",
+          "mol_013",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Photochemical rearrangement",
+        "reasoning": "Highly speculative direct conversion of HCN to imidazole-4-acetaldehyde under UV (no experimental support; included for pathway exploration)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Sutherland imidazole cascade extension",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "pH 9.2"
+        },
+        "mechanism": "Cascade forming imidazole ring then side\u2010chain functionalization",
+        "reasoning": "Adapted from high-yield imidazole formation from FoDHA-CN (Green et al., 2023) and speculatively extended to histidine precursor."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal formose Shen route",
+        "description": "Hydrothermal CO\u2082 reduction through formate and formaldehyde, surface formose to erythrose, then Shen Amadori & Strecker to histidine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface formose Shen route",
+        "description": "Formose on surface to erythrose, then direct Shen steps to histidine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct Shen Strecker",
+        "description": "Amadori and Strecker steps from supplied erythrose & formamidine.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Debus\u2013Radziszewski hybrid",
+        "description": "Imidazole formed via Debus\u2013Radziszewski then speculative functionalization and Strecker.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "HCN photochemical route",
+        "description": "Direct photochemical HCN conversion to imidazole-4-acetaldehyde then Strecker.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Sutherland cascade route",
+        "description": "FoDHA-CN cascade to precursor then Strecker.",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal to Debus hybrid",
+        "description": "CO\u2082 reduction and formose to formaldehyde, then Debus imidazole, functionalization, Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal to HCN photochemical",
+        "description": "Hydrothermal to formaldehyde then photochemical precursor formation and Strecker.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface formose to Sutherland",
+        "description": "Surface formose to erythrose, then Sutherland cascade and Strecker.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_011",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Formamidine-limited Shen route",
+        "description": "Minimal Shen sequence starting from HCN + NH\u2083 \u2192 formamidine.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_008",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.7,
+          "rxn_006": 0.6,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Complete Shen route is coherent and connects hydrothermal to surface chemistry, but formamidine instability and low Amadori yield undermine prebiotic plausibility.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Investigate formamidine stabilization on mineral surfaces",
+          "Explore alternative imidazole formation pathways to bypass low-yield step"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_005": 0.7,
+          "rxn_006": 0.6,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Surface-only Shen route reduces hydrothermal steps but still relies on low-yield Amadori rearrangement.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Stabilize erythrose with borate minerals",
+          "Develop methods to maintain high formamidine concentration"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_006": 0.6,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.73,
+        "feedback": "Minimal direct Shen Strecker is succinct but presupposes availability of imidazole-4-acetaldehyde, whose formation is the main bottleneck.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Identify alternative routes to imidazole-4-acetaldehyde",
+          "Test Amadori rearrangement under varied conditions"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_008": 0.9,
+          "rxn_009": 0.5,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.71,
+        "feedback": "Debus\u2013Radziszewski imidazole formation is well-supported, but functionalization (rxn_009) is speculative and low confidence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Experimentally validate imidazole-to-aldehyde transformation",
+          "Optimize conditions for functionalization step"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_010": 0.5,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.67,
+        "feedback": "HCN photochemistry is plausible for imidazole core but direct conversion to imidazole-4-acetaldehyde is unproven.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Quantify yield and mechanism of photochemical ring functionalization",
+          "Explore catalysts to direct aldehyde introduction"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.78,
+        "feedback": "Sutherland cascade offers high-yield imidazole formation, improving plausibility; needs extension to specific aldehyde position.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Test cascade extension to imidazole-4-acetaldehyde",
+          "Assess compatibility with wet-dry cycles"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_008": 0.9,
+          "rxn_009": 0.5,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.71,
+        "feedback": "Integrates hydrothermal formose with Debus reaction but retains speculative functionalization step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace or validate functionalization with known prebiotic reactions",
+          "Optimize intermediate concentrations"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.85,
+          "rxn_010": 0.5,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.71,
+        "feedback": "Hydrothermal CO\u2082 reduction integrated with HCN photochemistry is conceptually interesting but the photochemical step is low confidence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Improve photochemical yield through catalysts",
+          "Explore alternative UV-driven pathways"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.8,
+          "rxn_011": 0.8,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.81,
+        "feedback": "Combines surface formose with high-yield Sutherland cascade and Strecker; balanced and plausible with minimal speculative steps.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Incorporate mineral catalysts to enhance concentrations and yields",
+          "Perform experimental validation of cascade-to-Strecker integration"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.7,
+          "rxn_006": 0.6,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.74,
+        "feedback": "Formamidine-limited Shen route reduces steps but still suffers from labile formamidine and low Amadori yield.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Explore stable analogs of formamidine",
+          "Stabilize reaction environment via evaporation or mineral adsorption"
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.74,
+    "network_feedback": "The network is well-connected and integrates hydrothermal CO\u2082 reduction, surface formose chemistry, multiple imidazole formation routes, and final Strecker synthesis. It aligns with literature for prebiotic plausibility of most steps, though the Shen Amadori rearrangement (formamidine instability) and speculative functionalization routes remain weak links. Focus on extending the Sutherland cascade to imidazole-4-acetaldehyde and employing mineral catalysts will strengthen the overall scheme.",
+    "approved": true,
+    "hub_quality": 0.8,
+    "convergence_quality": 0.9
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.740"
+}

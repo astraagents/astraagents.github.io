@@ -1,0 +1,697 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Integrate hydrothermal Fischer\u2013Tropsch CO2 fixation, iron-promoted decarboxylation and reductive amination pathways with surface cyanosulfidic Strecker and hydrolysis chemistry to converge on L-alanine via multiple redundant routes.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "dihydrogen monoxide",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H4O5",
+        "iupac_name": "2-oxobutanedioic acid",
+        "common_name": "oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6O3",
+        "iupac_name": "2-hydroxypropanoic acid",
+        "common_name": "lactic acid",
+        "inchi": "InChI=1S/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H3NO",
+        "iupac_name": "hydroxylamine",
+        "common_name": "hydroxylamine",
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "2-aminopropanenitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-amino-3-propanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "L-Serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Oxaloacetate \u03b2-decarboxylation to pyruvate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ferrous iron (Fe2+)"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "Iron(II)-catalyzed \u03b2-decarboxylation of oxaloacetate",
+        "reasoning": "(Muchowska et al., 2019)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Surface cyanosulfidic decarboxylation of oxaloacetate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2",
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV irradiation, H2S presence"
+        },
+        "mechanism": "Cyanosulfidic decarboxylation under UV and sulfide conditions",
+        "reasoning": "(Ritson, 2021)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Lactic acid oxidation to pyruvate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "stibnite",
+          "aqueous": true,
+          "other": "cyanosulfidic oxidation"
+        },
+        "mechanism": "Oxidation of the \u03b1-hydroxy group by sulfur species",
+        "reasoning": "(Ritson, 2021)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Fischer\u2013Tropsch-type CO2 fixation to pyruvate",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe0)",
+          "Awaruite (Ni3Fe)",
+          "Magnetite (Fe3O4)"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "Fe0/Awaruite/Magnetite",
+          "aqueous": true,
+          "other": "H2:CO2 ratio 5:3"
+        },
+        "mechanism": "H2-dependent stepwise CO2 reduction on metal surfaces",
+        "reasoning": "(Preiner et al., 2020)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of 2-aminopropanenitrile to L-Alanine",
+        "inputs": [
+          "mol_009",
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "298K",
+          "pressure": "1 atm",
+          "catalyst": "Phosphate minerals",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Nucleophilic addition of water to the nitrile followed by amide hydrolysis",
+        "reasoning": "(Patel et al., 2015)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Iron-promoted reductive amination of pyruvate (variant A)",
+        "inputs": [
+          "mol_005",
+          "mol_008",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe0)",
+          "Ferrous Iron (Fe2+)"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "Fe0/Fe2+",
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "Iron-driven reductive amination with hydroxylamine",
+        "reasoning": "(Muchowska et al., 2019)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Iron-promoted reductive amination of pyruvate (variant B)",
+        "inputs": [
+          "mol_005",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe0)",
+          "Ferrous Iron (Fe2+)"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "Fe0/Fe2+",
+          "aqueous": true,
+          "other": "pH ~7"
+        },
+        "mechanism": "Iron-driven reductive amination with net water release",
+        "reasoning": "(Muchowska et al., 2019)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reductive dehydroxylation of L-Serine to L-Alanine",
+        "inputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe0)"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "Fe0",
+          "aqueous": true,
+          "other": "H2 availability"
+        },
+        "mechanism": "Reductive removal of the hydroxymethyl group by H2",
+        "reasoning": "(Aubrey et al., 2008)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Strecker synthesis of 2-aminopropanenitrile",
+        "inputs": [
+          "mol_012",
+          "mol_004",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite",
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Aminonitrile formation via Strecker-like addition",
+        "reasoning": "(Patel et al., 2015)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Fischer\u2013Tropsch CO2 fixation then reductive amination (A)",
+        "description": "Hydrothermal CO2 + H2 \u2192 pyruvate followed by iron-promoted amination with hydroxylamine",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Hydrothermal oxaloacetate decarboxylation then amination (A)",
+        "description": "Fe2+-catalyzed decarboxylation of oxaloacetate to pyruvate then amination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Surface decarboxylation of oxaloacetate then amination (A)",
+        "description": "Cyanosulfidic surface decarboxylation followed by iron-driven amination",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Surface lactic acid oxidation then amination (A)",
+        "description": "Cyanosulfidic oxidation of lactic acid to pyruvate then iron amination",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Fischer\u2013Tropsch CO2 fixation then reductive amination (B)",
+        "description": "Hydrothermal CO2 + H2 fixation to pyruvate followed by amination variant B",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydrolysis of aminonitrile to alanine",
+        "description": "Surface hydrolysis of 2-aminopropanenitrile to alanine",
+        "reaction_sequence": [
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface Strecker synthesis and hydrolysis",
+        "description": "Strecker formation of aminopropanenitrile then hydrolysis to alanine",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Serine reductive dehydroxylation",
+        "description": "Hydrothermal H2-driven dehydroxylation of L-serine to alanine",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface decarboxylation then amination (B)",
+        "description": "Cyanosulfidic decarboxylation of oxaloacetate to pyruvate then amination variant B",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Lactic acid oxidation then amination (B)",
+        "description": "Oxidation of lactic acid to pyruvate then amination variant B",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_001",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Robust hydrothermal route integrating Fischer\u2013Tropsch CO2 fixation with iron-promoted reductive amination. Well-supported by literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts (Fe0, Ni3Fe, Fe3O4) for rxn_004 and Fe0/Fe2+ for rxn_006 to enhance clarity."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.89,
+        "feedback": "Straightforward hydrothermal sequence converting oxaloacetate to alanine. Both steps are well-documented.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include Fe2+ Lewis acid catalysis details in rxn_001."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Good hybrid pathway; surface-derived pyruvate feeding hydrothermal amination is plausible.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify transport or concentration mechanism for surface-generated pyruvate entering hydrothermal zone."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_006": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Surface oxidation of lactic acid followed by hydrothermal amination is sound.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail sulfur oxidant species for rxn_003 under cyanosulfidic conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.95,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal-only route with net water release in amination is very well-supported.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify temperature and iron phases for rxn_007 to match literature conditions."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.95,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Direct hydrolysis of 2-aminopropanenitrile is highly feasible and literature-backed.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Mention potential wet-dry cycling or photolytic steps to promote hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.9,
+          "rxn_005": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classic surface Strecker plus hydrolysis pathway aligns well with Patel et al.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Include pH and H2S or UV conditions for optimal aminonitrile formation in rxn_009."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Hydrothermal serine reduction is credible and supported by vent simulation studies.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Add temperature and pressure parameters for rxn_008 to reflect submarine vent conditions."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.85,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Surface decarboxylation feeding hydrothermal amination B is a valid hybrid route.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify whether additional catalysts are needed for rxn_002 under surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_007": 0.95
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.88,
+        "feedback": "Lactic acid oxidation then variant B amination is well-aligned with literature.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify oxidant identity and kinetics for rxn_003 in surface context."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.89,
+    "network_feedback": "The network is comprehensive, chemically sound, and well-connected across environments. Hub molecule pyruvate is effectively produced by multiple routes, and L-alanine is formed via five independent mechanisms. Minor improvements include adding explicit catalyst and condition details for surface reactions, and noting chirality and concentration challenges.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

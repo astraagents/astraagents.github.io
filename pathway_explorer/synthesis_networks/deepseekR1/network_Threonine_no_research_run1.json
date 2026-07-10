@@ -1,0 +1,492 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Combined hydrothermal carbon fixation for \u03b1-keto acid precursors and surface environment transformations for hydroxylation/amination, with convergent pathways through pyruvate and \u03b1-ketobutyrate hubs",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO\u2082",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H\u2082",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO\u207b",
+        "iupac_name": "Formate",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C\u2083H\u2083O\u2083\u207b",
+        "iupac_name": "Pyruvate",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C\u2084H\u2085O\u2083\u207b",
+        "iupac_name": "2-Oxobutanoate",
+        "common_name": "\u03b1-Ketobutyrate",
+        "inchi": "InChI=1S/C4H6O3/c1-2-3(5)4(6)7/h2H2,1H3,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C\u2083H\u2086O\u2083",
+        "iupac_name": "Glyceraldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C\u2083H\u2086O\u2082",
+        "iupac_name": "3-Hydroxypropanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C3H6O2/c4-2-1-3-5/h2,5H,1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C\u2084H\u2089NO\u2083",
+        "iupac_name": "(2S,3R)-2-Amino-3-hydroxybutanoic acid",
+        "common_name": "Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH\u2083",
+        "iupac_name": "Ammonia",
+        "common_name": null,
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C\u2084H\u2087O\u2084\u207b",
+        "iupac_name": "3-Hydroxy-2-oxobutanoate",
+        "common_name": "\u03b2-Hydroxy-\u03b1-ketobutyrate",
+        "inchi": "InChI=1S/C4H6O4/c1-2(5)3(6)4(7)8/h2,5H,1H3,(H,7,8)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C\u2083H\u2087NO\u2082",
+        "iupac_name": "Alanine",
+        "common_name": "Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Greigite-catalyzed CO\u2082 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite (Fe\u2083S\u2084)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Electrochemical reduction via Fe-S mineral electron transfer",
+        "reasoning": "Greigite's [Fe\u2084S\u2084]-like clusters enable multi-electron transfers for CO\u2082 reduction (Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Pyruvate formation via FeS-mediated carbonylation",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Mackinawite (FeS)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "CO co-reactant"
+        },
+        "mechanism": "Stepwise C-C bond formation through surface-bound carbonyl intermediates",
+        "reasoning": "FeS surfaces promote sequential CO\u2082/CO reduction to pyruvate (Cody et al., 2000)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "\u03b1-Ketobutyrate synthesis via chain elongation",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Elemental Iron (Fe\u2070)"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "High",
+          "catalyst": "Fe\u2070",
+          "aqueous": true,
+          "other": "CO-mediated chain growth"
+        },
+        "mechanism": "Radical-based methyl addition to pyruvate carbonyl",
+        "reasoning": "Fe\u2070 provides strong reducing power for carbon chain elongation (Varma et al., 2018)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glyceraldehyde formation via borate-stabilized formose",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate Minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Colemanite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Aldol condensation of formaldehyde with glycolaldehyde-borate complex",
+        "reasoning": "Borate minerals stabilize carbohydrate intermediates (Benner et al., 2012)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "\u03b2-Hydroxypropanal synthesis via clay-catalyzed aldol",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": false,
+          "other": "Dehydration conditions"
+        },
+        "mechanism": "Surface-mediated aldol condensation with water elimination",
+        "reasoning": "Clay minerals catalyze sugar dehydration/condensation (Ferris et al., 1996)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of threonine from \u03b2-hydroxypropanal",
+        "inputs": [
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Iminolactone formation followed by hydrolysis",
+        "reasoning": "Clay surfaces concentrate reactants for \u03b2-hydroxy amino acid formation (Parker et al., 2014)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "TiO\u2082-photocatalyzed \u03b1-ketobutyrate hydroxylation",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO\u2082 (Anatase)"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO\u2082",
+          "aqueous": true,
+          "other": "UV irradiation"
+        },
+        "mechanism": "Radical-mediated C-H hydroxylation via photogenerated holes",
+        "reasoning": "TiO\u2082 photocatalysis enables selective \u03b2-hydroxylation (Schoonen et al., 2008)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Clay-mediated transamination to threonine",
+        "inputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-330K",
+          "pressure": "1 atm",
+          "catalyst": "Montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycling"
+        },
+        "mechanism": "Schiff base formation and proton-shuttle amination",
+        "reasoning": "Clay surfaces facilitate amino group transfer (Lahav et al., 1978)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Pyruvate reductive amination to alanine",
+        "inputs": [
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Pyrite (FeS\u2082)"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "High",
+          "catalyst": "Pyrite",
+          "aqueous": true,
+          "other": "H\u2082 reducing atmosphere"
+        },
+        "mechanism": "Surface-stabilized imine reduction",
+        "reasoning": "FeS\u2082 provides both catalytic surface and reducing power (W\u00e4chtersh\u00e4user, 2006)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal \u03b1-keto Acid Route",
+        "description": "CO\u2082 \u2192 Formate \u2192 Pyruvate \u2192 \u03b1-Ketobutyrate \u2192 Hydroxylation \u2192 Transamination",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface Strecker Route",
+        "description": "Formose \u2192 Glyceraldehyde \u2192 \u03b2-Hydroxypropanal \u2192 Strecker Synthesis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hybrid Redox Cycling",
+        "description": "Alanina-mediated transamination with hydrothermal-surface exchange",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.7,
+          "rxn_003": 0.6,
+          "rxn_007": 0.7,
+          "rxn_008": 0.8
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Hydrothermal steps show plausible mineral catalysis but pyruvate formation (rxn_002) and \u03b1-ketobutyrate elongation (rxn_003) lack clear mechanistic support. Surface hydroxylation (rxn_007) needs experimental validation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add intermediate steps for carbon chain elongation",
+          "Specify reducing agents in rxn_003"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.5,
+          "rxn_005": 0.6,
+          "rxn_006": 0.8
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.68,
+        "feedback": "Formose reaction starting from CO\u2082 (rxn_004) is chemically implausible. Aldol condensation (rxn_005) producing \u03b2-hydroxypropanal lacks precedent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Replace CO\u2082 with formaldehyde for formose initiation",
+          "Clarify stereochemistry in Strecker synthesis (rxn_006)"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_007": 0.7,
+          "rxn_008": 0.8,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.79,
+        "feedback": "Effective environmental transitions with plausible transamination (rxn_008), but TiO\u2082-photocatalyzed hydroxylation (rxn_007) requires wavelength/energy validation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Provide UV irradiation details for rxn_007",
+          "Confirm clay mineral specificity in rxn_008"
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.73,
+    "network_feedback": "Network demonstrates environmental interconnectivity with mineral-mediated reactions but suffers from under-connected hubs (mol_005/mol_006 degree=2) and key reaction plausibility gaps. Strengthen carbon fixation pathways and hub molecule utilization.",
+    "approved": false,
+    "hub_quality": 0.6,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.730"
+}

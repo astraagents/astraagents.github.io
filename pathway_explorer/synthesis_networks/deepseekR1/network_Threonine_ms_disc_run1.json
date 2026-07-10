@@ -1,0 +1,417 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Integrate hydrothermal synthesis of key precursors (pyruvate, glycolaldehyde) with surface Strecker/Phosphoro-Strecker pathways using mineral-catalyzed reactions. Converge through C4 aldehyde intermediates and proto-metabolic transamination.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": null,
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O2",
+        "iupac_name": "Formic acid",
+        "common_name": "Formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8O2",
+        "iupac_name": "2-Hydroxybutanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8O2/c1-2-4(6)3-5/h3-4,6H,2H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9N3O2P",
+        "iupac_name": "Diamidophosphate",
+        "common_name": "DAP",
+        "inchi": "InChI=1S/H5N2O2P/c1-5(2,3)4/h(H5,1,2,3,4)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-Amino-3-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H9NO3",
+        "iupac_name": "(2S,3R)-2-Amino-3-hydroxybutanoic acid",
+        "common_name": "Threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO\u2082 hydrogenation to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Greigite",
+          "aqueous": true,
+          "other": "pH 9-11"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 reduction via Fe\u2083S\u2084 electron transfer",
+        "reasoning": "Huber & W\u00e4chtersh\u00e4user (1997) demonstrated FeS-mediated CO\u2082 reduction"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formate to pyruvate synthesis",
+        "inputs": [
+          "mol_003",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "370-400K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type chain elongation",
+        "reasoning": "Hydrothermal carbon fixation pathway (Huber & W\u00e4chtersh\u00e4user, 2006)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glycolaldehyde synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "Magnetite",
+          "aqueous": true
+        },
+        "mechanism": "Fischer-Tropsch-type synthesis",
+        "reasoning": "Marshall (1994) demonstrated Fe\u2083O\u2084-catalyzed sugar precursor formation"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation to C4 aldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "Colemanite",
+          "aqueous": false,
+          "other": "wet-dry cycles"
+        },
+        "mechanism": "Borate-stabilized aldol condensation",
+        "reasoning": "Ricardo et al. (2004) borate-mediated sugar stabilization"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Phosphoro-Strecker synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "Apatite",
+          "aqueous": true,
+          "other": "pH 7"
+        },
+        "mechanism": "N-phosphoroaminonitrile formation",
+        "reasoning": "Burcar et al. (2016) phosphoro-Strecker mechanism"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminonitrile hydrolysis",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "pH 1.5"
+        },
+        "mechanism": "Acid-catalyzed nitrile hydrolysis",
+        "reasoning": "Burcar et al. (2016) phosphoro-Strecker pathway completion"
+      },
+      {
+        "id": "rxn_007",
+        "name": "DAP synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "Struvite",
+          "aqueous": true,
+          "other": "NH3-rich"
+        },
+        "mechanism": "Phosphate activation via mineral surface",
+        "reasoning": "Powner et al. (2009) phosphate mineral catalysis"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Proto-metabolic transamination",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe\u00b2\u207a ions"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "FeS",
+          "aqueous": true,
+          "other": "NH3 present"
+        },
+        "mechanism": "Non-enzymatic transamination",
+        "reasoning": "Weber (2001) demonstrated Fe\u00b2\u207a-catalyzed amino acid interconversion"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Hydrothermal-surface hybrid",
+        "description": "CO\u2082 \u2192 formate \u2192 pyruvate \u2192 transamination \u2192 threonine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Phosphoro-Strecker route",
+        "description": "Glycolaldehyde \u2192 C4 aldehyde \u2192 phosphoro-Strecker \u2192 threonine",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_009"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.8,
+          "rxn_002": 0.6,
+          "rxn_003": 0.7,
+          "rxn_008": 0.5
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.65,
+        "feedback": "Hydrothermal pyruvate synthesis (rxn_002) lacks mechanistic detail. Proto-metabolic transamination (rxn_008) omits amino donor. Environmental flow is logical but lacks mineral catalysts.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., magnetite) for hydrothermal steps",
+          "Add HCN synthesis reaction to support hub connectivity",
+          "Clarify transamination mechanism in rxn_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.7,
+          "rxn_004": 0.8,
+          "rxn_005": 0.75,
+          "rxn_006": 0.8,
+          "rxn_007": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.75,
+        "feedback": "Phosphoro-Strecker steps (rxn_005-006) align with literature but DAP synthesis (rxn_007) from CO\u2082/H\u2082 is chemically unsupported. Surface aldol condensation (rxn_004) is plausible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Revise DAP synthesis to use phosphate sources",
+          "Add mineral surface catalysis for aldol reaction",
+          "Include HCN production pathway"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.72,
+    "network_feedback": "Network integrates key literature concepts (Phosphoro-Strecker, hydrothermal precursors) but has critical gaps: missing HCN synthesis, unrealistic DAP formation, underconnected hubs (mol_007 degree=1), and unspecified mineral catalysts. Topology suffers from low hub connectivity.",
+    "approved": false,
+    "hub_quality": 0.5,
+    "convergence_quality": 0.7
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.720"
+}

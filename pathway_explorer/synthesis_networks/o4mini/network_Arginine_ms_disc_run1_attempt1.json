@@ -1,0 +1,837 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Combine hydrothermal mineral-catalyzed carbon fixation to build \u03b1-keto acids, reductive amination to \u03b1-amino acids, surface-based Strecker and decarboxylation routes to Ornithine, UV-driven guanidino group formation, and final condensation steps to assemble Arginine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "Hydrogen",
+        "common_name": "molecular hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCOO-",
+        "iupac_name": "Formate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H3O3-",
+        "iupac_name": "Pyruvate",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H5O5-",
+        "iupac_name": "2-Oxoglutarate",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H8NO4-",
+        "iupac_name": "Glutamate",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H12N2O2",
+        "iupac_name": "Ornithine",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)/t4-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH6N3",
+        "iupac_name": "Guanidine",
+        "common_name": "guanidine",
+        "inchi": "InChI=1S/CH5N3/c2-1(3)4/h(H5,2,3,4)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H14N4O2",
+        "iupac_name": "Arginine",
+        "common_name": null,
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_010",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Mineral-catalyzed CO2 reduction to formate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "H2 oxidation at Fe\u2013S surface transfers electrons to CO2 yielding formate",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002a",
+        "name": "Greigite-catalyzed formate to pyruvate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Fischer\u2013Tropsch\u2013type C\u2013C coupling of formate units to form pyruvate",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002b",
+        "name": "Magnetite-catalyzed formate to pyruvate",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Surface-mediated C\u2013C bond formation from formate to pyruvate",
+        "reasoning": "(Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_003a",
+        "name": "Pyruvate carboxylation to \u03b1-ketoglutarate (pyrite)",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "CO2 saturation"
+        },
+        "mechanism": "Reductive carboxylation of pyruvate to build five\u2010carbon ketoacid",
+        "reasoning": "Speculative; necessary to generate \u03b1-ketoglutarate in vent analogs"
+      },
+      {
+        "id": "rxn_003b",
+        "name": "Pyruvate carboxylation to \u03b1-ketoglutarate (mackinawite)",
+        "inputs": [
+          "mol_004",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "CO2 saturation"
+        },
+        "mechanism": "Mineral-driven reductive C\u2013C carboxylation to \u03b1-ketoglutarate",
+        "reasoning": "Speculative; alternative to pyrite route"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive amination of \u03b1-ketoglutarate to glutamate",
+        "inputs": [
+          "mol_005",
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "NH3 rich"
+        },
+        "mechanism": "Hydride transfer and imine reduction yields glutamate",
+        "reasoning": "(Yanagawa & Kobayashi, 1992)"
+      },
+      {
+        "id": "rxn_005a",
+        "name": "Strecker-like synthesis of ornithine",
+        "inputs": [
+          "mol_006",
+          "mol_011",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "pH ~9"
+        },
+        "mechanism": "Aldehyde of glutamate undergoes cyanide addition and hydrolysis to Ornithine",
+        "reasoning": "(Ba\u00f1ez & Or\u00f3, 1971); speculative extension to Ornithine"
+      },
+      {
+        "id": "rxn_005b",
+        "name": "Pyrite-catalyzed decarboxylation of glutamate to ornithine",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "400-450K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": ""
+        },
+        "mechanism": "Thermal decarboxylation on Fe\u2013S surface yields Ornithine",
+        "reasoning": "Speculative; alternative prebiotic route"
+      },
+      {
+        "id": "rxn_006",
+        "name": "UV-driven guanidine formation from ammonium cyanide",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": false,
+          "other": "UV exposure"
+        },
+        "mechanism": "Photolysis of NH4CN generates guanidine",
+        "reasoning": "(Journal of Molecular Evolution, 2004)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Nonenzymatic condensation of ornithine and guanidine",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-310K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "0.1 M phosphate buffer"
+        },
+        "mechanism": "Nucleophilic attack of guanidino on Ornithine amino yields Arginine",
+        "reasoning": "Speculative; mimics enzymatic amidination"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal reductive amidination of \u03b1-ketoglutarate with guanidine",
+        "inputs": [
+          "mol_005",
+          "mol_008",
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "NH3 rich"
+        },
+        "mechanism": "Reductive amidination of ketoacid with guanidine to form Arginine",
+        "reasoning": "Speculative; nonenzymatic analog of biosynthetic amidinotransferase"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Greigite pyruvate route + Strecker Ornithine",
+        "description": "Formate reduced on greigite to pyruvate, carboxylated on pyrite to \u03b1-ketoglutarate, aminated to glutamate, surface Strecker to Ornithine, UV guanidine, condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_005a",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Greigite pyruvate + decarboxylation Ornithine",
+        "description": "Greigite formate-to-pyruvate, pyrite carboxylation, amination, pyrite decarboxylation to Ornithine, UV guanidine, condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_005b",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Magnetite pyruvate + Strecker Ornithine",
+        "description": "Formate to pyruvate on magnetite, mackinawite carboxylation to \u03b1-ketoglutarate, amination, Strecker Ornithine, guanidine, Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002b",
+          "rxn_003b",
+          "rxn_004",
+          "rxn_005a",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Magnetite pyruvate + decarboxylation Ornithine",
+        "description": "Magnetite formate-to-pyruvate, mackinawite carboxylation, amination, pyrite decarboxylation, UV guanidine, Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002b",
+          "rxn_003b",
+          "rxn_004",
+          "rxn_005b",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Combined greigite/magnetite route to Ornithine",
+        "description": "Formate reduced by greigite, pyruvate carboxylated by pyrite, amination, magnetite Strecker Ornithine, guanidine, condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_005a",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Alternate decarboxylation hydrothermal Ornithine",
+        "description": "Formate magnetite-to-pyruvate, pyrite carboxylation, amination, decarboxylation Ornithine, UV guanidine, Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002b",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_005b",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Surface\u2013hydrothermal hybrid Ornithine synthesis",
+        "description": "Greigite pyruvate, mackinawite carboxylation, amination, surface Strecker Ornithine, guanidine, condensation",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003b",
+          "rxn_004",
+          "rxn_005a",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Fully hydrothermal decarboxylation Ornithine",
+        "description": "Greigite pyruvate, pyrite carboxylation, amination, pyrite decarboxylation, UV guanidine, Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_005b",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct hydrothermal amidination",
+        "description": "Formate to pyruvate on greigite, pyrite carboxylation, amination to glutamate, UV guanidine, reductive amidination to Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002a",
+          "rxn_003a",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Magnetite-based direct amidination",
+        "description": "Magnetite formate-to-pyruvate, mackinawite carboxylation, amination, UV guanidine, hydrothermal amidination to Arginine",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002b",
+          "rxn_003b",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_003a",
+          "rxn_003b"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005a",
+          "rxn_005b"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005a": 0.7,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Strong hydrothermal-to-surface-to-biochemical flow with plausible reaction steps and clear convergence on arginine.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Experimentally validate the Strecker-like ornithine synthesis under surface conditions"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005b": 0.3,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Decarboxylation of glutamate to ornithine is not chemically supported; pathway coherence suffers.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005b"
+        ],
+        "suggestions": [
+          "Revise the decarboxylation step for plausible ornithine formation"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002b": 0.8,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005a": 0.7,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.83,
+        "feedback": "Good variant of the Strecker route; magnetite alternative remains plausible and well\u2010integrated.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Further characterize magnetite catalysis for pyruvate synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002b": 0.8,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005b": 0.3,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.65,
+        "feedback": "Similar issues to P2; decarboxylation step weakens feasibility.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005b"
+        ],
+        "suggestions": [
+          "Substitute a more feasible ornithine\u2010forming reaction for decarboxylation"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005a": 0.7,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Reasonable Strecker\u2010based route but combining two mineral catalysts adds complexity without clear benefit.",
+        "approved": false,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Clarify why both greigite and magnetite steps are combined and eliminate redundancy"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005b": 0.3,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.7,
+        "feedback": "Fully hydrothermal ornithine route suffers from the same decarboxylation issue.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005b"
+        ],
+        "suggestions": [
+          "Replace or augment the hydrothermal decarboxylation with a more plausible ornithine synthesis"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005a": 0.7,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Strong environmental progression; hybrid surface\u2013hydrothermal route integrates well.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail the surface conditions to optimize the hybrid route"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_004": 0.8,
+          "rxn_005b": 0.3,
+          "rxn_006": 0.9,
+          "rxn_007": 0.75
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.68,
+        "feedback": "Fully hydrothermal decarboxylation remains the weak link.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005b"
+        ],
+        "suggestions": [
+          "Introduce an alternative ornithine synthesis step instead of decarboxylation"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002a": 0.85,
+          "rxn_003a": 0.8,
+          "rxn_006": 0.9,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.79,
+        "feedback": "Direct amidination is innovative but lacks literature support and environmental coherence suffers.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Validate the novel hydrothermal reductive amidination step in experiments"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002b": 0.8,
+          "rxn_003a": 0.8,
+          "rxn_006": 0.9,
+          "rxn_009": 0.6
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Magnetite\u2010based direct amidination is concise and reaches the target but needs experimental backing.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Investigate the plausibility of hydrothermal amidination with guanidine"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.75,
+    "network_feedback": "The network is well\u2010connected with multiple convergent routes and realistic hydrothermal to surface transitions. However, the decarboxylation steps for ornithine are chemically weak and direct hydrothermal amidination lacks literature precedent. Improved experimental validation of these key steps would strengthen the network.",
+    "approved": false,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

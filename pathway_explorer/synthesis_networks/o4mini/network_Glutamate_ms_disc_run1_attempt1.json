@@ -1,0 +1,784 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Integrate hydrothermal carbon fixation and protometabolic \u03b1-ketoacid networks with surface Strecker and biochemical transamination/reductive amination routes to converge on glutamate via multiple redundant pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C2H2O3",
+        "iupac_name": "oxosalicylate",
+        "common_name": "glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C3H3O3",
+        "iupac_name": "2-oxopropanoate",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C5H4O5",
+        "iupac_name": "2-oxopentanedioate",
+        "common_name": "alpha-ketoglutaric acid",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H2O4",
+        "iupac_name": "propanedioate",
+        "common_name": "malonic acid",
+        "inchi": "InChI=1S/C3H4O4/c4-2(5)1-3(6)7/h1H2,(H,4,5)(H,6,7)/p-2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H6O5",
+        "iupac_name": "2-hydroxyglutarate",
+        "common_name": "alpha-hydroxyglutaric acid",
+        "inchi": "InChI=1S/C5H8O5/c6-3(5(9)10)1-2-4(7)8/h3,6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CHO2",
+        "iupac_name": "methanoate",
+        "common_name": "formate",
+        "inchi": "InChI=1S/CH2O2/c2-1-3/h1H,(H,2,3)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2",
+        "iupac_name": "hydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H3NO",
+        "iupac_name": "hydroxylamine",
+        "common_name": "hydroxylamine",
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CHN",
+        "iupac_name": "carbonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H6N2O4",
+        "iupac_name": "2-(cyanomethylamino)pentanedioate",
+        "common_name": "glutamate aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Glyoxylate\u2009+\u2009malonate\u2009+\u2009ammonia\u2009\u2192\u2009\u03b1-ketoglutarate",
+        "inputs": [
+          "mol_001",
+          "mol_004",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "323K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "pH 5\u20136"
+        },
+        "mechanism": "Cross-Claisen condensation in presence of ammonia",
+        "reasoning": "(Kitadai et al., 2020)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Glyoxylate\u2009+\u2009pyruvate\u2009\u2192\u2009\u03b1-ketoglutarate",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "350\u2013400K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "pH 8.3\u201310.5"
+        },
+        "mechanism": "Aldol condensation followed by oxidative decarboxylation",
+        "reasoning": "(Muchowska et al., 2019)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "\u03b1-Hydroxyglutarate\u2009\u2192\u2009\u03b1-ketoglutarate",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "oxidative dehydrogenation"
+        },
+        "mechanism": "FeS-catalyzed dehydrogenation of secondary alcohol to ketone",
+        "reasoning": "(Ritson & Sutherland, 2012)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "CO\u2082\u2009+\u2009H\u2082\u2009\u2192\u2009formate",
+        "inputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "350\u2013400K",
+          "pressure": "high",
+          "catalyst": "greigite",
+          "aqueous": true,
+          "other": "CO\u2082 reduction"
+        },
+        "mechanism": "Mineral-catalyzed hydrogenation of CO\u2082",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "CO\u2082\u2009+\u2009H\u2082\u2009\u2192\u2009pyruvate",
+        "inputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "350\u2013450K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "Fischer\u2013Tropsch-type synthesis"
+        },
+        "mechanism": "Surface-catalyzed CO\u2082 hydrogenation and C\u2013C coupling",
+        "reasoning": "(Martin & Russell, 2003)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Pyruvate\u2009+\u2009ammonia\u2009\u2192\u2009alanine",
+        "inputs": [
+          "mol_002",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite"
+        ],
+        "conditions": {
+          "temperature": "350\u2013400K",
+          "pressure": "high",
+          "catalyst": "pyrite",
+          "aqueous": true,
+          "other": "reductive amination"
+        },
+        "mechanism": "Imine formation and reduction on mineral surface",
+        "reasoning": "(Huber & W\u00e4chtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Alanine\u2009+\u2009\u03b1-ketoglutarate\u2009\u2192\u2009glutamate\u2009+\u2009pyruvate",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_002"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "wet-dry cycling"
+        },
+        "mechanism": "Non-enzymatic transamination on clay surface",
+        "reasoning": "(Copley et al., 2012)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "\u03b1-Ketoglutarate\u2009+\u2009ammonia\u2009\u2192\u2009glutamate",
+        "inputs": [
+          "mol_003",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "mackinawite",
+          "aqueous": true,
+          "other": "Fe\u00b2\u207a reductive amination"
+        },
+        "mechanism": "Reductive amination via imine intermediate",
+        "reasoning": "(Kitadai et al., 2012)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "\u03b1-Ketoglutarate\u2009+\u2009formate\u2009\u2192\u2009glutamate",
+        "inputs": [
+          "mol_003",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "formate\u2010driven reductive amination"
+        },
+        "mechanism": "Formate as hydride donor to imine",
+        "reasoning": "(Weber, 2000)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "\u03b1-Ketoglutarate\u2009+\u2009hydroxylamine\u2009\u2192\u2009glutamate",
+        "inputs": [
+          "mol_003",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "elemental iron"
+        ],
+        "conditions": {
+          "temperature": "343K",
+          "pressure": "high",
+          "catalyst": "elemental iron",
+          "aqueous": true,
+          "other": "hydroxylamine reductive amination"
+        },
+        "mechanism": "Transimination and reduction by Fe\u2070",
+        "reasoning": "(Kitadai et al., 2012)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "\u03b1-Ketoglutarate\u2009+\u2009ammonia\u2009+\u2009HCN\u2009\u2192\u2009glutamate aminonitrile",
+        "inputs": [
+          "mol_003",
+          "mol_009",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300\u2013350K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Strecker synthesis"
+        },
+        "mechanism": "Nucleophilic addition of HCN then ammonia to ketone",
+        "reasoning": "(S\u00e1nchez & Or\u00f3, 1967)"
+      },
+      {
+        "id": "rxn_012",
+        "name": "Glutamate aminonitrile\u2009+\u2009water\u2009\u2192\u2009glutamate",
+        "inputs": [
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "300K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "acidic hydrolysis"
+        },
+        "mechanism": "Irreversible nitrile hydrolysis",
+        "reasoning": "(Fuchs et al., 2016)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface malonate route via Fe\u00b2\u207a amination",
+        "description": "Glyoxylate and malonate condense to \u03b1-ketoglutarate, followed by Fe\u00b2\u207a reductive amination to glutamate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Surface malonate route via formate",
+        "description": "\u03b1-Ketoglutarate formed from glyoxylate+malonate is aminated by formate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Hydrothermal glyoxylate\u2013pyruvate route",
+        "description": "Glyoxylate and pyruvate yield \u03b1-ketoglutarate, then reductive amination by Fe\u00b2\u207a",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_002"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal glyoxylate\u2013pyruvate with hydroxylamine",
+        "description": "\u03b1-Ketoglutarate from glyoxylate+pyruvate is aminated by hydroxylamine",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_002"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydroxyglutarate dehydrogenation cycle",
+        "description": "\u03b1-Hydroxyglutarate oxidizes to \u03b1-ketoglutarate then undergoes Fe\u00b2\u207a reductive amination",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Surface Strecker pathway",
+        "description": "\u03b1-Ketoglutarate undergoes Strecker synthesis then nitrile hydrolysis to glutamate",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Biochemical transamination loop",
+        "description": "Alanine and \u03b1-ketoglutarate interconvert via transamination yielding glutamate and pyruvate",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_002"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formate\u2010driven amination pathway",
+        "description": "\u03b1-Ketoglutarate derived from malonate route is aminated by formate",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_006"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydrothermal formate feed into malonate route",
+        "description": "CO\u2082 hydrogenation to formate integrates with malonate condensation and Fe\u00b2\u207a amination",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_001",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_003"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hydrothermal formate into formate amination",
+        "description": "CO\u2082 hydrogenation to formate directly feeds into formate\u2010driven glutamate synthesis",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_003",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "The surface malonate route followed by hydrothermal reductive amination is chemically plausible and integrates environmental stages, though rxn_001 could benefit from more detailed catalyst specification.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Specify surface catalysts (e.g., Fe\u00b2\u207a) and reaction conditions for rxn_001 to improve plausibility."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.78,
+        "feedback": "This pathway uses surface aldol amination then hydrothermal formate reductive amination. While each step is individually plausible, the transition lacks detail on environmental integration and catalyst specifics.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Clarify environmental compartmentalization and catalysts for the surface step."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "The hydrothermal glyoxylate\u2013pyruvate condensation followed by reductive amination is highly plausible and aligns well with literature on Fe\u00b2\u207a-catalyzed protometabolic networks.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.9,
+          "rxn_010": 0.6
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.8,
+        "feedback": "Hydrothermal glyoxylate\u2013pyruvate route with hydroxylamine reductive amination is conceptually sound but the second step has moderate feasibility and may require specific conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide evidence for efficient hydroxylamine-mediated amination under hydrothermal conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.85,
+          "rxn_008": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.88,
+        "feedback": "The hydroxyglutarate dehydrogenation cycle is a strong route with high chemical plausibility and continuity in a hydrothermal setting.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_011": 0.9,
+          "rxn_012": 0.95
+        },
+        "chemical_feasibility": 0.925,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.9,
+        "feedback": "The surface Strecker pathway is highly plausible and well-supported by literature, offering a robust two-step route to glutamate.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_007": 0.8
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "The biochemical transamination loop depends on enzyme-like catalysis and omits \u03b1-ketoglutarate generation; the pathway could be more self-contained.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Integrate \u03b1-ketoglutarate formation and specify plausible mineral or non-enzymatic catalysts for transamination."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Formate-driven reductive amination is supported by literature; specifying the source and fate of \u03b1KG would improve the pathway description.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Detail the generation and sustainability of \u03b1-ketoglutarate in the same environmental context."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_001": 0.7,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.8,
+        "feedback": "This multi-step route leverages formate feed into a surface malonate route but mixes environments without clear compartmentalization.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Clarify environmental sequence and ensure compatibility of surface and hydrothermal conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_009": 0.8
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.9,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal formate generation followed by reductive amination is robust, mirroring pathway P8 with strong feasibility.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": []
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.86,
+    "network_feedback": "The network presents a well-connected topology with multiple feasible pathways to glutamate, aligning well with literature on protometabolic condensation, Strecker synthesis, and reductive amination. Minor concerns include an unrealistic direct CO\u2082\u2192pyruvate step (rxn_005), a need for clearer catalyst and condition specifications, and tighter environmental compartment transitions. Addressing these will strengthen the network.",
+    "approved": true,
+    "hub_quality": 0.95,
+    "convergence_quality": 0.9
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

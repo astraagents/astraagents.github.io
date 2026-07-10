@@ -1,0 +1,590 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "Integration of Strecker, cyanosulfidic, oxyglycolate, and hydrothermal pathways using mineral-catalyzed reactions across environments. Key hubs enable convergent synthesis from atmospheric, surface, and deep-sea precursors.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2CO",
+        "iupac_name": "Formaldehyde",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4N2",
+        "iupac_name": "Aminoacetonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H5NO2",
+        "iupac_name": "Glycine",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H4O2",
+        "iupac_name": "Glycolaldehyde",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "Glycolonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H5NO2",
+        "iupac_name": "Hydroxyacetamide",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H2,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O3",
+        "iupac_name": "Glycolic acid",
+        "common_name": "Glycolic acid",
+        "inchi": "InChI=1S/C2H4O3/c3-1-2(4)5/h3H,1H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2HO3-",
+        "iupac_name": "Glyoxylate",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "NO3-",
+        "iupac_name": "Nitrate",
+        "common_name": null,
+        "inchi": "InChI=1S/NO3/c2-1(3)4/q-1",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "CO2",
+        "iupac_name": "Carbon dioxide",
+        "common_name": "Carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Strecker synthesis of aminoacetonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Wet-dry cycles"
+        },
+        "mechanism": "Aldehyde-ammonia-HCN condensation",
+        "reasoning": "Classical Strecker pathway catalyzed by clay minerals (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_002",
+        "name": "Aminoacetonitrile hydrolysis",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "Hydrolysis in wet phase"
+        },
+        "mechanism": "Water-mediated nitrile hydrolysis",
+        "reasoning": "Clay-catalyzed hydrolysis overcoming kinetic barrier (Huber & Wachtershauser, 1997)"
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose reaction to glycolaldehyde",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "UV exposure"
+        },
+        "mechanism": "Aldol condensation of formaldehyde",
+        "reasoning": "Borate-stabilized sugar formation (Sutherland et al.)"
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyano sulfidic aminoacetonitrile synthesis",
+        "inputs": [
+          "mol_006",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "308K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": true,
+          "other": "UV photoredox"
+        },
+        "mechanism": "Photocatalytic Strecker analog",
+        "reasoning": "TiO2-mediated cyanosulfidic chemistry (Sutherland et al.)"
+      },
+      {
+        "id": "rxn_005",
+        "name": "Oxyglycolate pathway: Glycolonitrile formation",
+        "inputs": [
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Cyanide addition to formaldehyde",
+        "reasoning": "Borate-mediated C-C bond formation (2024 computational study)"
+      },
+      {
+        "id": "rxn_006",
+        "name": "Glycolonitrile hydration to hydroxyacetamide",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "Basic conditions"
+        },
+        "mechanism": "Hydration-hydrolysis cascade",
+        "reasoning": "Borate-stabilized intermediate formation (2024 computational study)"
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydroxyacetamide to glycolic acid",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": true,
+          "other": "pH 8-9"
+        },
+        "mechanism": "Dehydration and oxidation",
+        "reasoning": "Base-catalyzed transformation (2024 computational study)"
+      },
+      {
+        "id": "rxn_008",
+        "name": "Glycolic acid amination to glycine",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "SN2 substitution"
+        },
+        "mechanism": "\u03b1-position nucleophilic attack",
+        "reasoning": "Oxyglycolate pathway final step (2024 computational study)"
+      },
+      {
+        "id": "rxn_009",
+        "name": "Fischer-Tropsch glyoxylate synthesis",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "High",
+          "catalyst": "magnetite",
+          "aqueous": false,
+          "other": "CO/H2 atmosphere"
+        },
+        "mechanism": "Surface-mediated CO2 reduction",
+        "reasoning": "Magnetite-catalyzed FT synthesis (W\u00e4chtersh\u00e4user)"
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination of glyoxylate",
+        "inputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS",
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "373K",
+          "pressure": "1 bar",
+          "catalyst": "FeS/NiS",
+          "aqueous": true,
+          "other": "CO atmosphere"
+        },
+        "mechanism": "Mineral-surface catalysis",
+        "reasoning": "Iron-sulfur world chemistry (Huber & Wachtersh\u00e4user, 1997)"
+      },
+      {
+        "id": "rxn_011",
+        "name": "Nitrate reduction to ammonia",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "ferroan brucite"
+        ],
+        "conditions": {
+          "temperature": "370-470K",
+          "pressure": "High",
+          "catalyst": "ferroan brucite",
+          "aqueous": true,
+          "other": "Serpentinization context"
+        },
+        "mechanism": "Mineral-mediated nitrate reduction",
+        "reasoning": "Ferroan brucite redox catalysis (Recent experimental studies)"
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Classical Strecker",
+        "description": "Formaldehyde + ammonia + HCN to glycine via clay catalysis",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Cyano sulfidic photoredox",
+        "description": "Glycolaldehyde-driven synthesis with TiO2 photocatalysis",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Oxyglycolate pathway",
+        "description": "Formaldehyde/HCN to glycine via glycolate intermediate",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Hydrothermal reductive amination",
+        "description": "CO2 \u2192 glyoxylate \u2192 glycine with FeS/NiS catalysis",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Nitrate-driven synthesis",
+        "description": "Nitrate reduction feeds ammonia for multiple pathways",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_002"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.9,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 0.8,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.9,
+        "feedback": "Classical Strecker pathway is chemically sound and literature-aligned. Surface environment matches hydrolysis requirements, but mineral catalysts (e.g., clays) are not explicitly specified.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral catalysts (e.g., montmorillonite) for rxn_001 to enhance environmental realism."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.85,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.75,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Cyano sulfidic pathway integrates photoredox steps but lacks explicit H2S or Cu catalysts mentioned in literature. Glycolaldehyde hub usage aligns with systems chemistry models.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Include H2S and UV radiation in rxn_004 to match cyanosulfidic photoredox mechanisms."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.75,
+          "rxn_006": 0.8,
+          "rxn_007": 0.8,
+          "rxn_008": 0.7
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.75,
+        "feedback": "Oxyglycolate pathway\u2019s hydroxyacetamide step (rxn_007) has high barriers in basic conditions. Biochemical environment for rxn_008 (amination) lacks catalytic mineral details.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Clarify pH conditions for rxn_007 and specify mineral catalysts (e.g., FeS) for rxn_008."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_009": 0.8,
+          "rxn_010": 0.85
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.9,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "Hydrothermal reductive amination aligns with ferroan brucite catalysis, but rxn_009 lacks explicit mineral agents. Nitrate reduction (rxn_011) is literature-supported.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify Fe/Mg hydroxides or sulfides as catalysts for Fischer-Tropsch synthesis (rxn_009)."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_011": 0.8,
+          "rxn_002": 0.9
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.7,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.8,
+        "feedback": "Nitrate-driven synthesis is novel but low-yield per literature. Requires explicit mineral catalysts (e.g., ferroan brucite) for rxn_011.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Clarify mineral-mediated nitrate reduction in rxn_011 to match experimental conditions."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "Network integrates multiple literature-supported pathways with robust hubs (mol_004, mol_010) and environmental transitions. Improvements needed: specify mineral catalysts in hydrothermal/surface reactions, clarify pH conditions for oxyglycolate steps, and address Garakuta-world complexity.",
+    "approved": true,
+    "hub_quality": 0.9,
+    "convergence_quality": 0.8
+  },
+  "success": true,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.850"
+}
