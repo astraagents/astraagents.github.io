@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ASTRA · Expert Review</title>
+<link rel="icon" href="../demo/imgs/Fav.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/review.css">
+</head>
+<body>
+
+<!-- ============================ LOGIN ============================ -->
+<section id="login" class="login panel">
+  <h2>Expert Review</h2>
+  <p class="muted tiny">Prebiotic synthesis network assessment. Your scores save as you
+  go, and signing in again picks up exactly where you left off.</p>
+
+  <form id="login-form">
+    <div class="idblock">
+      <div class="field">
+        <label for="in-user">Reviewer username</label>
+        <input id="in-user" type="text" required
+               pattern="[A-Za-z0-9_.\-]+" autocapitalize="off" autocorrect="off"
+               spellcheck="false" autocomplete="username"
+               placeholder="e.g. jane_doe">
+        <p class="hint">Lowercase, no spaces. This is how your work is found again &mdash;
+        use the same one every time.</p>
+      </div>
+    </div>
+
+    <div class="dbblock">
+      <p class="legend">Database connection</p>
+      <!-- No credentials are stored here. Reviewers are given these out of band.
+           For local testing you may temporarily add value="..." to the two inputs
+           below, but never commit that -- this repo is public. -->
+      <div class="field">
+        <label for="in-db-user">Database username</label>
+        <input id="in-db-user" type="text" autocomplete="off" spellcheck="false" required
+               placeholder="pscale_api_...">
+      </div>
+      <div class="field">
+        <label for="in-db-pass">Database password</label>
+        <input id="in-db-pass" type="password" autocomplete="off" required
+               placeholder="pscale_pw_...">
+      </div>
+    </div>
+
+    <div class="field">
+      <button id="btn-login" class="btn primary" type="submit" style="width:100%">Sign in</button>
+    </div>
+    <p id="login-msg" class="notice" hidden></p>
+    <p class="dim tiny" style="margin-bottom:0">
+      Credentials are held in this browser tab only and are cleared when you close it.
+    </p>
+  </form>
+</section>
+
+<!-- ============================= APP ============================= -->
+<div id="app" hidden>
+
+  <header class="topbar">
+    <h1><span class="dot"></span> ASTRA · Expert Review</h1>
+    <span class="spacer"></span>
+    <span class="who">Reviewing as <b id="who-name"></b></span>
+    <button id="btn-logout" class="btn small" type="button">Sign out</button>
+  </header>
+
+  <div class="wrap">
+
+    <section class="panel">
+      <div class="pickers">
+        <div class="field">
+          <label for="sel-molecule">Target molecule</label>
+          <select id="sel-molecule"></select>
+        </div>
+        <div class="field" style="flex:1 1 320px; min-width:260px">
+          <label>Candidate network <span class="dim">(authorship hidden)</span></label>
+          <div id="net-buttons" class="netbtns"></div>
+        </div>
+      </div>
+      <div class="progress">
+        <span class="tiny muted" id="overall-progress">&nbsp;</span>
+        <span class="bar"><i id="overall-bar"></i></span>
+      </div>
+    </section>
+
+    <p id="app-msg" class="notice" hidden></p>
+
+    <section class="panel">
+      <h3 style="margin:0 0 2px" id="net-title">&nbsp;</h3>
+      <p class="muted tiny" style="margin:0" id="net-strategy">&nbsp;</p>
+      <div class="progress">
+        <span class="tiny muted" id="net-progress">&nbsp;</span>
+        <span class="bar"><i id="net-bar"></i></span>
+      </div>
+    </section>
+
+    <!-- slide deck -->
+    <div id="chips" class="chips"></div>
+    <div id="slides"></div>
+
+    <div class="deckbar">
+      <button id="btn-prev" class="btn" type="button">&larr; Previous</button>
+      <span class="count" id="slide-count">&nbsp;</span>
+      <button id="btn-next" class="btn" type="button">Next &rarr;</button>
+      <span class="spacer"></span>
+      <button id="btn-graph" class="btn" type="button">View network graph</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========================= GRAPH POPUP ========================= -->
+<div id="graph-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="graph-title">
+  <div class="dialog">
+    <div class="mhead">
+      <h3 id="graph-title">Network graph</h3>
+      <span class="dim tiny" id="graph-sub"></span>
+      <span class="spacer"></span>
+      <button id="btn-focus" class="btn small" type="button" aria-pressed="false">Focus this reaction</button>
+      <button id="btn-zoom-in"  class="btn small" type="button" title="Zoom in">+</button>
+      <button id="btn-zoom-out" class="btn small" type="button" title="Zoom out">&minus;</button>
+      <button id="btn-zoom-fit" class="btn small" type="button">Fit</button>
+      <button id="btn-graph-close" class="btn small" type="button">Close &times;</button>
+    </div>
+    <div id="cy"></div>
+    <div class="mfoot">
+      <span class="legend">
+        <span><i class="round" style="color:#2c3e50"></i>Starting</span>
+        <span><i class="round" style="color:#2980b9"></i>Intermediate</span>
+        <span><i class="round" style="color:#c0392b"></i>Target</span>
+        <span><i style="background:#c692dd"></i>Hydrothermal</span>
+        <span><i style="background:#ce9576"></i>Surface</span>
+        <span><i style="background:#1abc9c"></i>Biochemical</span>
+      </span>
+      <span class="spacer" style="flex:1"></span>
+      <span class="dim">Click a reaction to jump to it · Esc to close</span>
+    </div>
+  </div>
+</div>
+
+<!-- Graph renderer, copied verbatim from pathway_explorer/js/. Classic scripts on
+     window.SynthVis, so they must load in this order and before app.js. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"></script>
+<script src="js/vendor-graph/utils.js"></script>
+<script src="js/vendor-graph/data-loader.js"></script>
+<script src="js/vendor-graph/graph-layout.js"></script>
+<script src="js/vendor-graph/cytoscape-bridge.js"></script>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
