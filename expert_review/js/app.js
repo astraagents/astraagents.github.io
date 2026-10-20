@@ -1,76 +1,179 @@
 /**
- * ASTRA expert review -- UI, slide deck and form state.
- * All database access goes through js/db.js; the graph popup through js/graph.js.
+ * ASTRA expert review -- reaction-level scoring.
+ *
+ * Each reviewer is assigned one molecule at a time (spread across reviewers by
+ * js/db.js#assignNetwork) and scores its reactions one card at a time. All
+ * database access goes through js/db.js; sound, confetti and toasts through
+ * js/fx.js. The whole network can still be opened in the Pathway Explorer,
+ * embedded unmodified through explorer.html.
  */
 
 import * as db from "./db.js";
-import * as graph from "./graph.js";
+import * as fx from "./fx.js";
+import { $, el, icon, setLabel, pretty } from "./dom.js";
+import { startAdmin } from "./admin.js";
 
-const SAVE_DEBOUNCE_MS = 700;
-const AUTO_ADVANCE_MS = 900;
-const SCORE_MAX = 10;      // scores are 0-10; SCORE_MAX + 1 tick dots are drawn
+const SAVE_DEBOUNCE_MS = 600;
+const SCORE_MAX = 10;               // scores are 0-10; keep in step with js/db.js
+const TARGET_REVIEWERS = 3;         // independent reviews wanted per reaction
+const SECONDS_PER_REACTION = 45;    // for the "~N min" estimate only
+const BOARD_REFRESH_MS = 60_000;
+const BOARD_SHOWN = 8;              // rows before the reviewer's own is appended
 
-/** @type {{criteria:{reaction:string[],network:string[]}, molecules:string[], networks:any[]}} */
-let manifest = null;
-/** Reviewer's saved work, keyed "<netKey>|<scope>|<reactionId>". */
-let progress = { scores: {}, comments: {}, submitted: new Set() };
-let username = "";
-let current = null;                 // { entry, meta, net, slides, index }
-const loadedNetworks = new Map();   // file -> parsed JSON
-let autoAdvanceTimer = null;
+// Signing in with this username opens the admin dashboard (js/admin.js) instead
+// of the review flow. A UI switch only -- every reviewer already holds the same
+// database credentials, so it grants nothing they could not already read.
+const ADMIN_USERNAME = "admin_123";
 
-const $ = (id) => document.getElementById(id);
-const el = (tag, props = {}, kids = []) => {
-  const n = Object.assign(document.createElement(tag), props);
-  for (const k of [].concat(kids)) n.append(k);
-  return n;
+const CREDS_KEY = "astra_review_db";
+const USER_KEY = "astra_review_user";
+
+/** One line under each criterion, so every reviewer reads it the same way. */
+const CRITERION_HELP = {
+  "Chemical Feasibility": "Would this step actually proceed as written: thermodynamics, kinetics, stoichiometry?",
+  "Environmental Consistency": "Do the stated setting and conditions fit each other and the neighbouring steps?",
+  "Mechanistic Detail": "Is the mechanism specific, correct and well explained?",
+  "Prebiotic Plausibility": "Could this happen on the early Earth without modern lab intervention?",
+  "Novelty of Reactions": "Does it go beyond textbook steps in a scientifically meaningful way?",
 };
-const cell = (netKey, scope, rid = "") => `${netKey}|${scope}|${rid}`;
 
-/* --------------------------------------------------------------- login --- */
+/** `icon` is a Font Awesome solid icon name; `hue` tints it once earned. */
+const BADGES = [
+  { icon: "vial", hue: 200, name: "First reaction", hint: "Review your first reaction", test: (s) => s.reactions >= 1 },
+  { icon: "flask", hue: 160, name: "Warming up", hint: "Review 5 reactions", test: (s) => s.reactions >= 5 },
+  { icon: "microscope", hue: 245, name: "Bench chemist", hint: "Review 10 reactions", test: (s) => s.reactions >= 10 },
+  { icon: "dna", hue: 290, name: "Molecule done", hint: "Finish a whole molecule", test: (s) => s.molecules >= 1 },
+  { icon: "compass", hue: 30, name: "Pathfinder", hint: "Review 25 reactions", test: (s) => s.reactions >= 25 },
+  { icon: "pen-to-square", hue: 330, name: "Annotator", hint: "Leave 5 notes", test: (s) => s.notes >= 5 },
+  { icon: "diagram-project", hue: 190, name: "Network weaver", hint: "Review 50 reactions", test: (s) => s.reactions >= 50 },
+  { icon: "volcano", hue: 12, name: "Hydrothermal", hint: "Finish 3 molecules", test: (s) => s.molecules >= 3 },
+  { icon: "earth-americas", hue: 140, name: "Origin hunter", hint: "Review 100 reactions", test: (s) => s.reactions >= 100 },
+  { icon: "crown", hue: 45, name: "Full panel", hint: "Finish all 9 molecules", test: (s) => s.molecules >= 9 },
+];
 
-$("login-form").addEventListener("submit", async (ev) => {
-  ev.preventDefault();
+/** @type {{criteria:{reaction:string[]}, molecules:string[], networks:any[]}} */
+let manifest = null;
+let criteria = [];
+let username = "";
+/** Reviewer's saved work, keyed "<netKey>|reaction|<reactionId>". */
+let progress = { scores: {}, comments: {} };
+/** { entry, meta, reactions, idx } for the assigned network. */
+let current = null;
+let board = [];
+let myRank = null;
+let me = { reactions: 0, molecules: 0, notes: 0 };
+let earned = new Set();
+let streak = 0;
+let boardTimer = null;
+let activeSaver = null;            // flushes the open card's pending scores
+let busy = false;                  // a network switch is in flight
+
+const cell = (netKey, rid) => `${netKey}|reaction|${rid}`;
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
+  del(k) { try { localStorage.removeItem(k); } catch { /* private mode */ } },
+};
+
+/* ------------------------------------------------------------- sign-in --- */
+
+/**
+ * An invite link carries the database credentials in its fragment
+ * (#k=<base64url("user:password")>, from tools/make_invite.py). Fragments never
+ * reach a server; we keep the credentials in localStorage so a phone reconnects
+ * on its own, and strip the fragment from the address bar straight away.
+ */
+function readInvite() {
+  const m = /(?:^#|&)k=([^&]+)/.exec(location.hash);
+  if (!m) return;
+  history.replaceState(null, "", location.pathname + location.search);
+  try {
+    const b64 = m[1].replace(/-/g, "+").replace(/_/g, "/");
+    const text = atob(b64 + "=".repeat((4 - (b64.length % 4)) % 4));
+    const i = text.indexOf(":");
+    if (i > 0) store.set(CREDS_KEY, JSON.stringify({ user: text.slice(0, i), password: text.slice(i + 1) }));
+  } catch {
+    showMsg($("login-msg"), "That invite link looks damaged. Ask for a fresh one.");
+  }
+}
+
+function storedCreds() {
+  try { return JSON.parse(store.get(CREDS_KEY) || "null"); } catch { return null; }
+}
+
+function initLogin() {
+  readInvite();
+  const creds = storedCreds();
+  $("invite-ok").hidden = !creds;
+  $("db-details").open = !creds;
+
+  const remembered = store.get(USER_KEY);
+  if (remembered) $("in-user").value = remembered;
+
+  $("login-form").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    signIn();
+  });
+
+  // Returning reviewer on the same device: straight back in.
+  if (remembered && creds) signIn();
+}
+
+async function signIn() {
   const msg = $("login-msg");
   const btn = $("btn-login");
 
-  // One normalisation, at the door. Everything downstream uses this value, so a
-  // reviewer typing "Jane_Doe" and "jane_doe" is the same person -- previously a
-  // difference in case silently started them over with an empty slate.
+  // One normalisation, at the door: "Jane_Doe" and "jane_doe" are the same person.
   const name = $("in-user").value.trim().toLowerCase();
-  if (!name) return showMsg(msg, "Please enter your reviewer username.");
-  if (/\s/.test(name)) return showMsg(msg, "Username cannot contain spaces.");
   $("in-user").value = name;
+  if (!name) return showMsg(msg, "Choose a username to appear on the leaderboard.");
+  if (!/^[a-z0-9_.-]{2,32}$/.test(name)) {
+    return showMsg(msg, "Use 2–32 letters, digits, dots, dashes or underscores. No spaces.");
+  }
 
-  hide(msg);
+  const typedUser = $("in-db-user").value.trim();
+  const typedPass = $("in-db-pass").value;
+  const creds = typedUser && typedPass ? { user: typedUser, password: typedPass } : storedCreds();
+  if (!creds) {
+    $("db-details").open = true;
+    return showMsg(msg, "Open your invite link, or enter the database credentials.");
+  }
+
+  msg.hidden = true;
   btn.disabled = true;
   btn.textContent = "Connecting…";
 
   try {
-    await db.connect({ user: $("in-db-user").value.trim(), password: $("in-db-pass").value });
+    await db.connect(creds);
     username = name;
-    sessionStorage.setItem("astra_reviewer_username", name);
+    store.set(USER_KEY, name);
+    store.set(CREDS_KEY, JSON.stringify(creds));
 
     if (!manifest) manifest = await fetchJSON("data/review_index.json");
-    progress = await db.loadProgress(username);
+    criteria = manifest.criteria.reaction;
 
     $("login").hidden = true;
     $("app").hidden = false;
     $("who-name").textContent = username;
+    paintAvatar($("who-avatar"), username);
+
+    if (username === ADMIN_USERNAME) {
+      if (!wired) wireChrome();
+      wired = true;
+      await startAdmin({ manifest, username, targetReviewers: TARGET_REVIEWERS });
+      return;
+    }
+    progress = await db.loadProgress(username);
     await startApp();
   } catch (err) {
+    $("login").hidden = false;
+    $("app").hidden = true;
     showMsg(msg, err.message);
   } finally {
     btn.disabled = false;
-    btn.textContent = "Sign in";
+    setLabel(btn, "Start reviewing", "arrow-right");
   }
-});
-
-$("btn-logout").addEventListener("click", async () => {
-  await db.disconnect();
-  sessionStorage.removeItem("astra_reviewer_username");
-  location.reload();
-});
+}
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -83,585 +186,1117 @@ function showMsg(node, text, kind = "") {
   node.className = `notice ${kind}`;
   node.hidden = false;
 }
-const hide = (node) => { node.hidden = true; };
 
 /* ----------------------------------------------------------- app start --- */
 
+let wired = false;
+
 async function startApp() {
-  const sel = $("sel-molecule");
-  sel.replaceChildren(
-    ...manifest.molecules.map((m) =>
-      el("option", { value: m, textContent: m.replace(/_/g, "-") }))
-  );
-  sel.addEventListener("change", () => selectMolecule(sel.value));
+  if (!wired) wireChrome();
+  wired = true;
 
-  $("btn-prev").addEventListener("click", () => { cancelAutoAdvance(); go(current.index - 1); });
-  $("btn-next").addEventListener("click", () => { cancelAutoAdvance(); go(current.index + 1); });
-  $("btn-graph").addEventListener("click", openGraph);
+  await refreshBoard();
+  earned = new Set(BADGES.filter((b) => b.test(me)).map((b) => b.name));
+  renderBadges();
 
-  graph.initGraphControls();
-  graph.setReactionTapHandler((rid) => {
-    const i = current.slides.findIndex((s) => s.rxn && s.rxn.id === rid);
-    if (i >= 0) go(i);
+  clearInterval(boardTimer);
+  boardTimer = setInterval(() => refreshBoard({ announce: true }).catch(() => {}), BOARD_REFRESH_MS);
+
+  const mine = await db.myAssignments(username);
+  const keyOf = (r) => [r.model, r.molecule, r.config, r.run, r.attempt].join("|");
+  const activeKey = mine.filter((r) => r.status === "active").map(keyOf)[0];
+  const entry = manifest.networks.find((n) => n.key === activeKey)
+    || await db.assignNetwork(username, manifest.networks);
+
+  if (!entry) return allDoneView();
+  await openNetwork(entry, { intro: true });
+}
+
+function wireChrome() {
+  $("btn-logout").addEventListener("click", askLogout);
+  $("leave-yes").addEventListener("click", logout);
+  $("leave-no").addEventListener("click", () => { $("leave-sheet").hidden = true; });
+
+  const sound = $("btn-sound");
+  const paintSound = () => {
+    sound.replaceChildren(icon(fx.isMuted() ? "volume-xmark" : "volume-high"));
+    sound.setAttribute("aria-pressed", String(!fx.isMuted()));
+  };
+  paintSound();
+  sound.addEventListener("click", () => {
+    fx.setMuted(!fx.isMuted());
+    paintSound();
+    fx.sound.tick(8);
+  });
+
+  $("btn-rail").addEventListener("click", () => setRail(!document.body.classList.contains("rail-open")));
+  $("rail-backdrop").addEventListener("click", () => setRail(false));
+
+  $("sheet-close").addEventListener("click", closeSheet);
+  $("net-sheet").addEventListener("click", (ev) => { if (ev.target === $("net-sheet")) closeSheet(); });
+  $("leave-sheet").addEventListener("click", (ev) => {
+    if (ev.target === $("leave-sheet")) $("leave-sheet").hidden = true;
   });
 
   document.addEventListener("keydown", onKeydown);
-
-  await resume();
 }
 
-/** Where the reviewer should land: the first network still needing work. */
-async function resume() {
-  const queue = queueOrder();
-  const next = queue.find((n) => !progress.submitted.has(n.key));
+function setRail(open) {
+  document.body.classList.toggle("rail-open", open);
+  $("rail-backdrop").hidden = !open;
+  $("btn-rail").setAttribute("aria-expanded", String(open));
+}
 
-  if (!next) {
-    await selectNetwork(queue[0]);
-    showMsg($("app-msg"), "All 36 networks are complete. Thank you!", "ok");
-    return;
+function onKeydown(ev) {
+  if (ev.key === "Escape") {
+    if (!$("net-sheet").hidden) return closeSheet();
+    if (!$("leave-sheet").hidden) { $("leave-sheet").hidden = true; return; }
+    return setRail(false);
   }
+  const typing = /^(TEXTAREA|INPUT|SELECT|SUMMARY)$/.test(document.activeElement?.tagName);
+  if (typing || !$("net-sheet").hidden || !current?.reactions) return;
+  if (!document.querySelector(".rxn-view")) return;
 
-  $("sel-molecule").value = next.molecule;
-  renderNetButtons(next.molecule);
-  await selectNetwork(next);
-
-  // Within that network, the first reaction still missing a score. If they are
-  // all done, the remaining work is the overall assessment.
-  const firstTodo = current.slides.findIndex((s) => s.rxn && !reactionDone(s.rxn.id));
-  go(firstTodo >= 0 ? firstTodo : current.slides.length - 1);
-}
-
-/** Queue order: molecules as listed in the manifest, then blind label A..D. */
-function queueOrder() {
-  const order = new Map(manifest.molecules.map((m, i) => [m, i]));
-  return [...manifest.networks].sort((a, b) =>
-    (order.get(a.molecule) - order.get(b.molecule)) || a.blind.localeCompare(b.blind));
-}
-
-function networksFor(molecule) {
-  return manifest.networks
-    .filter((n) => n.molecule === molecule)
-    .sort((a, b) => a.blind.localeCompare(b.blind));
-}
-
-function renderNetButtons(molecule) {
-  $("net-buttons").replaceChildren(
-    ...networksFor(molecule).map((n) => {
-      const b = el("button", { className: "netbtn", type: "button" });
-      b.setAttribute("aria-pressed", "false");
-      b.dataset.key = n.key;
-      b.addEventListener("click", () => selectNetwork(n));
-      return b;
-    })
-  );
-}
-
-function selectMolecule(molecule) {
-  hide($("app-msg"));
-  renderNetButtons(molecule);
-  selectNetwork(networksFor(molecule)[0]);
-}
-
-async function selectNetwork(entry) {
-  cancelAutoAdvance();
-
-  for (const b of $("net-buttons").children) {
-    b.setAttribute("aria-pressed", String(b.dataset.key === entry.key));
+  if (ev.key === "Enter") {
+    // Enter on a focused pill would otherwise "click" it and clear its score.
+    if (document.activeElement?.classList.contains("pill")) ev.preventDefault();
+    const btn = $("btn-next");
+    if (btn && !btn.disabled) { ev.preventDefault(); btn.click(); }
+  } else if (ev.key === "ArrowRight" && current.idx < current.reactions.length - 1) {
+    goTo(current.idx + 1, 1);
+  } else if (ev.key === "ArrowLeft" && current.idx > 0) {
+    goTo(current.idx - 1, -1);
   }
+}
 
-  let data = loadedNetworks.get(entry.file);
-  if (!data) {
-    try {
-      data = await fetchJSON(entry.file);
-      loadedNetworks.set(entry.file, data);
-    } catch (err) {
-      return showMsg($("app-msg"), err.message);
-    }
-  }
+/* ------------------------------------------------------------ networks --- */
 
-  current = {
-    entry,
-    meta: {
-      reviewerName: username,
-      model: entry.model,
-      molecule: entry.molecule,
-      config: entry.config,
-      run: entry.run,
-      attempt: entry.attempt ?? "",
-    },
-    net: data.network,
-    slides: [],
-    index: 0,
+function metaOf(entry) {
+  return {
+    reviewerName: username,
+    model: entry.model,
+    molecule: entry.molecule,
+    config: entry.config,
+    run: entry.run,
+    attempt: entry.attempt ?? "",
   };
-
-  renderNetwork();
-  go(0);
 }
 
-/* ------------------------------------------------------------ rendering -- */
+async function openNetwork(entry, { intro = false } = {}) {
+  const meta = metaOf(entry);
+  const reactions = await db.loadReactions(meta);
+  current = { entry, meta, reactions, idx: 0 };
 
-function moleculeLookup(net) {
-  const map = new Map();
-  for (const m of net.molecules || []) {
-    map.set(m.id, { label: m.common_name || m.iupac_name || m.id, formula: m.formula || "" });
+  if (!reactions.length) {
+    return stage(el("section", { className: "card view" }, [
+      el("h2", { textContent: "Nothing to review yet" }),
+      el("p", {
+        className: "muted",
+        textContent: `The reactions for ${pretty(entry.molecule)} are not in the database. ` +
+          "Run expert_review/tools/seed_reactions.py, then reload.",
+      }),
+    ]));
   }
-  return map;
+  if (intro || doneCount() === reactions.length) introView();
+  else reactionView(nextUnscored(-1) ?? 0);
 }
 
-function renderNetwork() {
-  const { entry, net } = current;
-  const reactions = net.reactions || [];
-  const mols = moleculeLookup(net);
+const isComplete = (rid) => {
+  const s = progress.scores[cell(current.entry.key, rid)] || {};
+  return criteria.every((c) => Object.prototype.hasOwnProperty.call(s, c));
+};
+const scoredCriteria = (rid) => {
+  const s = progress.scores[cell(current.entry.key, rid)] || {};
+  return criteria.filter((c) => Object.prototype.hasOwnProperty.call(s, c)).length;
+};
+const doneCount = () => current.reactions.filter((r) => isComplete(r.id)).length;
 
-  $("net-title").textContent = `Network ${entry.blind} · ${entry.molecule.replace(/_/g, "-")}`;
-  $("net-strategy").textContent = net.overall_strategy || "";
-
-  // Every slide is built once and shown/hidden, so slider state and pending
-  // autosaves survive paging back and forth.
-  current.slides = reactions.map((rxn, i) => ({
-    rxn,
-    node: reactionSlide(rxn, i, mols),
-  }));
-  current.slides.push({ overall: true, node: overallSlide() });
-
-  $("slides").replaceChildren(...current.slides.map((s) => s.node));
-  renderChips();
-  refreshProgress();
+/** The first reaction after `from` (wrapping) that is not fully scored, or null. */
+function nextUnscored(from, { skip = null } = {}) {
+  const n = current.reactions.length;
+  for (let step = 1; step <= n; step++) {
+    const i = (((from + step) % n) + n) % n;
+    if (i !== skip && !isComplete(current.reactions[i].id)) return i;
+  }
+  return null;
 }
 
-function formatSide(ids, mols) {
-  if (!ids || !ids.length) return el("span", { className: "dim", textContent: "—" });
-  const frag = document.createDocumentFragment();
-  ids.forEach((id, i) => {
-    if (i) frag.append(" + ");
-    const m = mols.get(id);
-    frag.append(el("span", { className: "mol", textContent: m ? m.label : id }));
-    if (m?.formula) frag.append(el("span", { className: "f", textContent: ` (${m.formula})` }));
+async function swapMolecule() {
+  if (busy) return;
+  busy = true;
+  try {
+    await activeSaver?.flush();
+    fx.sound.swoosh();
+    const pick = await db.assignNetwork(username, manifest.networks, { exclude: current.entry.key });
+    if (!pick) return allDoneView();
+    if (pick.key === current.entry.key) {
+      fx.toast("That's the only molecule left for you. Nearly there!", { icon: "flag-checkered" });
+    }
+    await openNetwork(pick, { intro: true });
+  } catch (err) {
+    fx.toast(err.message, { kind: "err" });
+  } finally {
+    busy = false;
+  }
+}
+
+async function nextMolecule() {
+  if (busy) return;
+  busy = true;
+  try {
+    const pick = await db.assignNetwork(username, manifest.networks, { exclude: current.entry.key });
+    if (!pick || pick.key === current.entry.key) return allDoneView();
+    fx.sound.swoosh();
+    await openNetwork(pick, { intro: true });
+  } catch (err) {
+    fx.toast(err.message, { kind: "err" });
+  } finally {
+    busy = false;
+  }
+}
+
+/* --------------------------------------------------------------- views --- */
+
+/** Swap the main stage content, with an entrance animation. */
+function stage(view, dir = 0) {
+  setRail(false);
+  view.classList.add("view", dir > 0 ? "enter-r" : dir < 0 ? "enter-l" : "enter-up");
+  $("stage").replaceChildren(view);
+  scrollTo({ top: 0, behavior: fx.motionOK() ? "smooth" : "auto" });
+}
+
+function introView() {
+  activeSaver = null;
+  const { entry, reactions } = current;
+  const n = reactions.length;
+  const done = doneCount();
+  const left = n - done;
+  const mins = Math.max(1, Math.round((left * SECONDS_PER_REACTION) / 60));
+
+  const ring = progressRing(done / n, `${done}/${n}`);
+  const start = el("button", { className: "btn primary big", type: "button" });
+  setLabel(start, done === n ? "Next molecule" : done ? `Continue · ${left} to go` : "Start reviewing", "arrow-right");
+  start.addEventListener("click", () => {
+    fx.sound.tick(10);
+    if (done === n) return nextMolecule();
+    reactionView(nextUnscored(-1) ?? 0, 1);
   });
-  return frag;
+
+  const swap = el("button", {
+    className: "btn ghost", type: "button",
+    textContent: done === n ? "Review my scores" : "Not my area? Swap molecule",
+  });
+  swap.addEventListener("click", () => (done === n ? reactionView(0, 1) : swapMolecule()));
+
+  // Every reaction scored but never marked done (e.g. the tab closed first).
+  if (done === n) db.setAssignmentStatus(username, current.meta, "done").catch(() => {});
+
+  const view = el("section", { className: "card intro" }, [
+    el("div", { className: "intro-art", ariaHidden: "true" }, [el("i"), el("i"), el("i"), el("b")]),
+    el("p", { className: "eyebrow", textContent: done ? "Welcome back, your molecule" : "Your assignment" }),
+    el("h1", { className: "intro-title", textContent: pretty(entry.molecule) }),
+    el("p", {
+      className: "muted",
+      textContent: done && done < n
+        ? `You're ${Math.round((done / n) * 100)}% through. Just ${left} reaction${left === 1 ? "" : "s"} left to finish ${pretty(entry.molecule)}.`
+        : `A proposed prebiotic synthesis network for ${pretty(entry.molecule)}. ` +
+          "Score each reaction on five criteria. Your scores save as you tap.",
+    }),
+    el("div", { className: "intro-stats" }, [
+      ring,
+      el("div", {}, [el("b", { textContent: String(n) }), el("span", { textContent: "reactions" })]),
+      el("div", {}, [el("b", { textContent: done === n ? "0" : `~${mins}` }), el("span", { textContent: "minutes left" })]),
+    ]),
+    el("div", { className: "intro-actions" }, [start, swap]),
+    el("p", {
+      className: "tiny dim",
+      textContent: "Molecules are shared out across reviewers so every network gets independent expert eyes.",
+    }),
+  ]);
+  stage(view);
 }
 
-function reactionSlide(rxn, i, mols) {
-  const slide = el("div", { className: "slide" });
-  const card = el("div", { className: "rxn" });
-  card.dataset.rid = rxn.id;
+function progressRing(frac, label) {
+  const r = 26;
+  const c = 2 * Math.PI * r;
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", "0 0 64 64");
+  svg.setAttribute("class", "ring");
+  svg.innerHTML =
+    `<circle cx="32" cy="32" r="${r}" class="ring-bg"/>` +
+    `<circle cx="32" cy="32" r="${r}" class="ring-fg" stroke-dasharray="${c}" stroke-dashoffset="${c}"/>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    svg.querySelector(".ring-fg").style.strokeDashoffset = String(c * (1 - frac));
+  }));
+  return el("div", { className: "ringwrap" }, [svg, el("span", { textContent: label })]);
+}
 
-  card.append(el("div", { className: "head" }, [
-    el("span", { className: "rid", textContent: rxn.id }),
-    el("span", { className: "rname", textContent: rxn.name || `Reaction ${i + 1}` }),
-    el("span", { className: "state" }),
+/* ------------------------------------------------------------ reaction --- */
+
+function goTo(i, dir) {
+  activeSaver?.flush();
+  reactionView(i, dir);
+}
+
+function reactionView(i, dir = 0) {
+  current.idx = i;
+  const rxn = current.reactions[i];
+  const n = current.reactions.length;
+  const key = cell(current.entry.key, rxn.id);
+  const wasComplete = isComplete(rxn.id);
+
+  /* --- header: where am I --- */
+  const segs = el("nav", { className: "segs", ariaLabel: "Reactions" });
+  current.reactions.forEach((r, j) => {
+    const s = el("button", {
+      type: "button", className: "seg", title: `Reaction ${j + 1}: ${r.name}`,
+    });
+    s.setAttribute("aria-label", `Reaction ${j + 1}`);
+    if (isComplete(r.id)) s.classList.add("done");
+    else if (scoredCriteria(r.id)) s.classList.add("part");
+    if (j === i) s.setAttribute("aria-current", "step");
+    s.addEventListener("click", () => { if (j !== current.idx) goTo(j, j > current.idx ? 1 : -1); });
+    segs.append(s);
+  });
+
+  const done = doneCount();
+  const swap = el("button", { className: "linkbtn", type: "button", textContent: "Swap molecule" });
+  swap.addEventListener("click", swapMolecule);
+
+  const head = el("div", { className: "rxn-head" }, [
+    el("div", { className: "rxn-head-row" }, [
+      el("span", { className: "chip mol", textContent: pretty(current.entry.molecule) }),
+      el("span", { className: "rxn-count", innerHTML: `Reaction <b>${i + 1}</b> of ${n}` }),
+      el("span", { className: "spacer" }),
+      el("span", { className: "tiny dim", id: "done-count", textContent: `${done} done · ${n - done} to go` }),
+      swap,
+    ]),
+    segs,
+  ]);
+
+  /* --- the scoring form --- */
+  const { card: scoreCard, saver } = scoreForm(rxn, key);
+  activeSaver = saver;
+
+  /* --- actions --- */
+  const skip = el("button", { className: "btn ghost", type: "button", textContent: "Skip for now" });
+  const next = el("button", { className: "btn primary big", type: "button", id: "btn-next" });
+  const paintNext = () => {
+    const have = criteria.filter((c) => saver.sel[c] != null).length;
+    next.disabled = have < criteria.length;
+    if (have < criteria.length) setLabel(next, `Score all five (${have}/${criteria.length})`);
+    else setLabel(next, "Save & next", wasComplete ? "arrow-right" : "check");
+  };
+  saver.onChange = paintNext;
+  paintNext();
+
+  skip.addEventListener("click", () => {
+    const j = nextUnscored(i, { skip: i });
+    if (j == null) return fx.toast("This is the last reaction left. You can do it!", { icon: "hand-fist" });
+    goTo(j, 1);
+  });
+  next.addEventListener("click", () => saveAndNext(rxn, saver, wasComplete, next));
+
+  const view = el("div", { className: "rxn-view" }, [
+    head,
+    reactionCard(rxn),
+    scoreCard,
+    el("div", { className: "actionbar" }, [skip, next]),
+  ]);
+  stage(view, dir);
+
+  const ahead = nextUnscored(i, { skip: i });
+  if (ahead != null) preloadStructures(current.reactions[ahead]);
+}
+
+async function saveAndNext(rxn, saver, wasComplete, btn) {
+  btn.disabled = true;
+  try {
+    await saver.flush();
+  } catch {
+    btn.disabled = false;
+    return;                         // the saver already reported the error
+  }
+
+  const newlyDone = !wasComplete && isComplete(rxn.id);
+  if (newlyDone) {
+    streak++;
+    me.reactions++;
+    fx.sound.success();
+    fx.haptic(18);
+    const r = btn.getBoundingClientRect();
+    fx.confetti({ x: r.left + r.width / 2, y: r.top, count: 28, spread: 0.55 });
+    floatPlusOne(btn);
+    paintStreak();
+    paintStats();
+    checkBadges();
+    refreshBoard({ announce: true }).catch(() => {});
+    db.setAssignmentStatus(username, current.meta, "active").catch(() => {});   // keep it fresh
+  }
+
+  // Revisiting a finished molecule just pages through it; the celebration
+  // happens once, on the save that completes it.
+  let j = nextUnscored(current.idx);
+  if (j == null && !newlyDone) {
+    j = current.idx + 1 < current.reactions.length ? current.idx + 1 : null;
+    if (j == null) return finishMolecule({ celebrate: false });
+  }
+  if (j == null) return finishMolecule({ celebrate: true });
+
+  const view = document.querySelector(".rxn-view");
+  if (view && fx.motionOK()) {
+    view.classList.add("fly-out");
+    setTimeout(() => reactionView(j, 1), 220);
+  } else {
+    reactionView(j, 1);
+  }
+}
+
+function floatPlusOne(anchor) {
+  if (!fx.motionOK()) return;
+  const r = anchor.getBoundingClientRect();
+  const n = el("div", { className: "plus-one", textContent: "+1" });
+  n.style.left = `${r.left + r.width / 2}px`;
+  n.style.top = `${r.top}px`;
+  document.body.append(n);
+  setTimeout(() => n.remove(), 1000);
+}
+
+/** The reaction itself: equation, setting, conditions, mechanism, reasoning. */
+function reactionCard(rxn) {
+  const card = el("section", { className: "card rxn" });
+  card.append(el("h2", { className: "rxn-name", textContent: rxn.name }));
+
+  const side = (mols) => el("div", { className: "eq-side" },
+    (mols || []).flatMap((m, k) => [k ? el("span", { className: "eq-plus", ariaHidden: "true", textContent: "+" }) : null, molCard(m)]));
+  card.append(el("div", { className: "eq" }, [
+    side(rxn.inputs),
+    el("span", { className: "eq-arrow" }, [icon("arrow-right-long")]),
+    side(rxn.outputs),
   ]));
 
-  const eq = el("div", { className: "eq" });
-  eq.append(formatSide(rxn.inputs, mols));
-  eq.append(el("span", { className: "arrow", textContent: "→" }));
-  eq.append(formatSide(rxn.outputs, mols));
-  card.append(eq);
-
+  const tags = el("div", { className: "tags" });
   if (rxn.environment) {
-    card.append(el("span", { className: `tag ${rxn.environment}`, textContent: rxn.environment }));
+    const env = el("span", { className: "chip env" }, [icon("location-dot"), ` ${rxn.environment}`]);
+    env.style.setProperty("--h", String(hue(String(rxn.environment))));
+    tags.append(env);
+  }
+  const long = [];
+  const cond = rxn.conditions;
+  if (cond && typeof cond === "object" && !Array.isArray(cond)) {
+    for (const [k, v] of Object.entries(cond)) {
+      if (isEmpty(v)) continue;
+      const text = k === "aqueous" && typeof v === "boolean" ? (v ? "aqueous" : "dry / gas phase") : scalar(v);
+      if (text.length <= 34 && k !== "other") {
+        tags.append(el("span", { className: "chip cond" }, [
+          CONDITION_ICON[k]
+            ? Object.assign(icon(CONDITION_ICON[k], "k"), { title: label(k) })
+            : el("span", { className: "k", textContent: /^ph$/i.test(k) ? "pH" : label(k) }),
+          ` ${text}`,
+        ]));
+      } else {
+        long.push([label(k), text]);
+      }
+    }
+  } else if (!isEmpty(cond)) {
+    long.push(["Conditions", scalar(cond)]);
+  }
+  if (tags.childNodes.length) card.append(tags);
+
+  if (!isEmpty(rxn.agents)) {
+    card.append(el("div", { className: "agents" }, [
+      el("span", { className: "lbl", textContent: "Agents" }),
+      ...[].concat(rxn.agents).filter((a) => !isEmpty(a)).map((a) => el("span", { className: "chip agent", textContent: scalar(a) })),
+    ]));
+  }
+  if (long.length) {
+    card.append(el("dl", { className: "kv" }, long.flatMap(([k, v]) => [el("dt", { textContent: k }), el("dd", { textContent: v })])));
   }
 
-  const facts = el("dl", { className: "facts" });
-  const addFact = (label, value) => {
-    if (value === undefined || value === null || value === "") return;
-    facts.append(el("dt", { textContent: label }), el("dd", { textContent: String(value) }));
+  const fold = (title, body, open = true) => {
+    const d = el("details", { className: "fold", open }, [el("summary", { textContent: title }), el("p", { textContent: body })]);
+    return d;
   };
-  const c = rxn.conditions || {};
-  addFact("Temperature", c.temperature);
-  addFact("Pressure", c.pressure);
-  addFact("Catalyst", c.catalyst);
-  if (typeof c.aqueous === "boolean") addFact("Aqueous", c.aqueous ? "yes" : "no");
-  addFact("Other", c.other);
-  if (rxn.agents?.length) addFact("Agents", rxn.agents.join(", "));
-  if (facts.childElementCount) card.append(facts);
+  if (!isEmpty(rxn.mechanism)) card.append(fold("Mechanism", scalar(rxn.mechanism)));
+  if (!isEmpty(rxn.reasoning)) card.append(fold("Scientific reasoning", scalar(rxn.reasoning)));
 
-  const prose = el("div", { className: "prose" });
-  if (rxn.mechanism) prose.append(el("h4", { textContent: "Mechanism" }), el("p", { textContent: rxn.mechanism }));
-  if (rxn.reasoning) prose.append(el("h4", { textContent: "Reasoning" }), el("p", { textContent: rxn.reasoning }));
-  if (prose.childElementCount) card.append(prose);
+  // Any other fields this network's schema carries (e.g. description, catalyst).
+  for (const [k, v] of Object.entries(rxn)) {
+    if (KNOWN_FIELDS.has(k) || isEmpty(v)) continue;
+    card.append(fold(label(k), scalar(v), false));
+  }
 
-  card.append(scoreBlock("reaction", rxn.id, manifest.criteria.reaction, card));
-  paintCardState(card);
-
-  slide.append(card);
-  return slide;
+  const view = el("button", { className: "btn ghost small netbtn", type: "button" },
+    [icon("diagram-project"), " View in network"]);
+  view.addEventListener("click", () => openSheet(rxn));
+  card.append(view);
+  return card;
 }
 
-function overallSlide() {
-  const slide = el("div", { className: "slide" });
-  const panel = el("div", { className: "panel overall" });
-  const key = cell(current.entry.key, "network", "");
+/**
+ * One molecule: its 2D structure from PubChem (by CID, resolved offline by
+ * tools/resolve_pubchem.py), name and formula. Molecules PubChem does not know
+ * get a formula tile instead. When the structure's formula disagrees with the
+ * network's own, the card says so -- that inconsistency is itself worth a
+ * reviewer's attention.
+ */
+function molCard(m) {
+  const fig = el("figure", { className: `mol-card role-${m.role || "x"}` });
+  const roleNote = m.role ? ` (${m.role.replace(/_/g, " ")})` : "";
 
-  panel.append(
-    el("h3", { textContent: "Overall assessment of this network" }),
-    el("p", {
-      className: "muted tiny",
-      style: "margin:0 0 14px",
-      textContent: `All seven criteria are required to mark the network complete. 0 = worst, ${SCORE_MAX} = best.`,
-    }),
-    scoreBlock("network", "", manifest.criteria.network, null)
-  );
+  let tile;
+  if (m.cid) {
+    tile = el("a", {
+      className: "mol-img loading", href: `https://pubchem.ncbi.nlm.nih.gov/compound/${m.cid}`,
+      target: "_blank", rel: "noopener", title: `Open ${m.name} on PubChem`,
+    });
+    loadStructure(m.cid).then((s) => {
+      tile.classList.remove("loading");
+      if (!s?.url) return tile.replaceChildren(formulaTile(m, s?.blank ? "" : "image unavailable"));
+      const img = el("img", { src: s.url, alt: `2D structure of ${m.name}`, decoding: "async" });
+      // Cap the zoom so NH3 still looks small next to arginine, as in any textbook.
+      img.style.maxWidth = `${s.w * MAX_ZOOM}px`;
+      img.style.maxHeight = `${s.h * MAX_ZOOM}px`;
+      tile.replaceChildren(img);
+    });
+  } else {
+    tile = el("div", { className: "mol-img none", title: "Not found in PubChem" }, [formulaTile(m, "not in PubChem")]);
+  }
 
-  const box = el("div", { className: "comment" });
-  const ta = el("textarea", {
-    id: "overall-opinion", rows: 5,
-    placeholder: "Overall impressions, specific concerns, anything the numbers do not capture.",
-    value: progress.comments[key] || "",
+  fig.append(tile, el("figcaption", { title: m.name + roleNote }, [
+    el("b", { textContent: m.name }),
+    m.formula && m.formula !== m.name ? formulaNode(m.formula) : null,
+    m.cid && m.cid_match === false
+      ? el("span", {
+        className: "mol-warn",
+        title: `The network states ${m.formula}, but its structure resolves in PubChem to ${m.pubchem_formula}.`,
+      }, [icon("triangle-exclamation"), ` PubChem: ${m.pubchem_formula}`])
+      : null,
+  ]));
+  return fig;
+}
+
+function formulaTile(m, note) {
+  return el("span", { className: "mol-noimg" }, [
+    m.formula ? formulaNode(m.formula) : el("span", { textContent: "?" }),
+    note ? el("small", { textContent: note }) : null,
+  ]);
+}
+
+/* ------------------------------------------------------ PubChem images -- */
+
+const STRUCTURE_PX = 500;           // fetched size; drawings scale with the canvas
+const INK_BOOST = 1.9;              // darkening applied to PubChem's thin strokes
+const MAX_ZOOM = 0.7;               // tile px per source px, so tiny molecules stay modest
+const structureUrl = (cid) =>
+  `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/PNG?record_type=2d&image_size=${STRUCTURE_PX}x${STRUCTURE_PX}`;
+
+/** cid -> Promise<{url, w, h} | {blank: true} | null>, one fetch per compound. */
+const structures = new Map();
+
+// PubChem allows ~5 requests/second; a card plus its preloaded successor can
+// ask for a dozen at once, so keep a few in flight at a time.
+const fetchQueue = [];
+let fetching = 0;
+function throttle(job) {
+  return new Promise((resolve) => {
+    fetchQueue.push(() => job().then(resolve));
+    pump();
   });
-  box.append(
-    el("label", { htmlFor: "overall-opinion", textContent: "Your opinion on this network (optional)" }),
-    ta
-  );
-  panel.append(box);
+}
+function pump() {
+  while (fetching < 4 && fetchQueue.length) {
+    fetching++;
+    fetchQueue.shift()().finally(() => { fetching--; setTimeout(pump, 200); });
+  }
+}
 
-  const status = el("div", { className: "saving", id: "overall-saving" });
-  const btn = el("button", { className: "btn primary", type: "button", id: "btn-submit" });
-  btn.addEventListener("click", submitNetwork);
-  panel.append(el("div", { className: "submitrow" }, [btn, status]));
+function loadStructure(cid) {
+  if (!structures.has(cid)) {
+    structures.set(cid, throttle(() => new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";          // PubChem sends ACAO: *, so the canvas stays readable
+      img.onload = () => {
+        try { resolve(trimStructure(img)); } catch { resolve({ url: img.src, w: STRUCTURE_PX, h: STRUCTURE_PX }); }
+      };
+      img.onerror = () => { structures.delete(cid); resolve(null); };   // let a later card retry
+      img.src = structureUrl(cid);
+    })));
+  }
+  return structures.get(cid);
+}
 
-  let timer = null;
-  ta.addEventListener("focus", cancelAutoAdvance);
-  ta.addEventListener("input", () => {
-    clearTimeout(timer);
-    timer = setTimeout(async () => {
-      status.textContent = "Saving…";
-      status.className = "saving";
-      try {
-        await db.saveComment(current.meta, "network", "", ta.value);
-        if (ta.value.trim()) progress.comments[key] = ta.value.trim();
-        else delete progress.comments[key];
-        status.textContent = "Opinion saved";
-        status.className = "saving ok";
-      } catch (err) {
-        status.textContent = err.message;
-        status.className = "saving err";
+/**
+ * PubChem pads every drawing to the full canvas on a #f5f5f5 background, which
+ * leaves small molecules as a speck. Crop to the drawn pixels and lift the grey
+ * to white. Some compounds (H2: implicit hydrogens) render as an empty canvas,
+ * reported as blank so the card falls back to the formula.
+ */
+function trimStructure(img) {
+  const w = img.naturalWidth;
+  const h = img.naturalHeight;
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  const g = c.getContext("2d", { willReadFrequently: true });
+  g.drawImage(img, 0, 0);
+  const data = g.getImageData(0, 0, w, h);
+  const px = data.data;
+  const bg = [px[0], px[1], px[2]];
+
+  let x0 = w, y0 = h, x1 = -1, y1 = -1;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4;
+      const d = Math.abs(px[i] - bg[0]) + Math.abs(px[i + 1] - bg[1]) + Math.abs(px[i + 2] - bg[2]);
+      if (d > 24) {
+        if (x < x0) x0 = x;
+        if (x > x1) x1 = x;
+        if (y < y0) y0 = y;
+        if (y > y1) y1 = y;
       }
-    }, SAVE_DEBOUNCE_MS);
-  });
+      // Levels: background grey -> white, then deepen the ink. PubChem draws
+      // 1px bonds, which turn faint once the drawing is scaled into a tile.
+      for (let k = 0; k < 3; k++) {
+        const v = Math.min(255, (px[i + k] * 255) / Math.max(1, bg[k]));
+        px[i + k] = Math.max(0, 255 - (255 - v) * INK_BOOST);
+      }
+    }
+  }
+  if (x1 < 0) return { blank: true };
 
-  slide.append(panel);
-  return slide;
+  g.putImageData(data, 0, 0);
+  const pad = 14;
+  x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad);
+  x1 = Math.min(w - 1, x1 + pad); y1 = Math.min(h - 1, y1 + pad);
+  const out = document.createElement("canvas");
+  out.width = x1 - x0 + 1;
+  out.height = y1 - y0 + 1;
+  out.getContext("2d").drawImage(c, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+  return { url: out.toDataURL("image/png"), w: out.width, h: out.height };
+}
+
+/** Warm the cache with the next card's structures, so it appears complete. */
+function preloadStructures(rxn) {
+  for (const m of [...(rxn?.inputs || []), ...(rxn?.outputs || [])]) {
+    if (m.cid) loadStructure(m.cid);
+  }
+}
+
+const KNOWN_FIELDS = new Set(["id", "name", "position", "inputs", "outputs", "environment",
+  "agents", "conditions", "mechanism", "reasoning"]);
+/** Font Awesome icons for common condition keys; others are labelled in words. */
+const CONDITION_ICON = { temperature: "temperature-half", pressure: "gauge-high", aqueous: "droplet",
+  catalyst: "flask", uv: "sun", time: "clock" };
+
+function isEmpty(v) {
+  if (v == null || v === "") return true;
+  if (Array.isArray(v)) return v.every(isEmpty);
+  if (typeof v === "object") return Object.keys(v).every((k) => isEmpty(v[k]));
+  return false;
+}
+function scalar(v) {
+  if (typeof v === "boolean") return v ? "Yes" : "No";
+  if (Array.isArray(v)) return v.filter((x) => !isEmpty(x)).map(scalar).join(", ");
+  if (v && typeof v === "object") {
+    return Object.entries(v).filter(([, x]) => !isEmpty(x)).map(([k, x]) => `${k}: ${scalar(x)}`).join("; ");
+  }
+  return String(v);
+}
+function label(key) {
+  const s = key.replace(/_/g, " ");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+/** "C2H5NO2" with digits after an element or bracket set as subscripts. */
+function formulaNode(formula) {
+  const span = el("span", { className: "formula" });
+  for (const part of String(formula).split(/(\d+)/)) {
+    if (!part) continue;
+    if (/^\d+$/.test(part) && /[A-Za-z)\]]$/.test(span.textContent)) span.append(el("sub", { textContent: part }));
+    else span.append(part);
+  }
+  return span;
 }
 
 /* -------------------------------------------------------------- scoring -- */
 
 /**
- * Sliders plus a comment box for one scope. Sliders start unset, shown as "--",
- * so an untouched criterion is never written as a real score.
+ * Five rows of 0-10 tap pills plus an optional note. Every tap autosaves after a
+ * short debounce; tapping the selected pill again clears that score (the row is
+ * deleted, never stored as a zero). Returns the card and its saver, whose
+ * flush() resolves once everything pending is in the database.
  */
-function scoreBlock(scope, reactionId, criteria, cardForState) {
-  const key = cell(current.entry.key, scope, reactionId);
+function scoreForm(rxn, key) {
+  const meta = current.meta;       // pinned: a save must land on the network it was made for
   const saved = progress.scores[key] || {};
+  const saver = makeSaver(meta, rxn.id, key);
+  for (const c of criteria) saver.sel[c] = Object.prototype.hasOwnProperty.call(saved, c) ? saved[c] : null;
 
-  const block = el("div", { className: "scores" });
-  block.append(el("h4", { textContent: scope === "reaction" ? `Your scores (0–${SCORE_MAX})` : "" }));
-
-  const pending = {};
-  let timer = null;
-  const status = el("div", { className: "saving" });
-
-  const flush = async () => {
-    const batch = pending.scores;
-    pending.scores = null;
-    if (!batch) return;
-    const wasDone = scope === "reaction" && reactionDone(reactionId);
-    status.textContent = "Saving…";
-    status.className = "saving";
-    try {
-      await db.saveScores(current.meta, scope, reactionId, batch);
-      Object.assign((progress.scores[key] ||= {}), batch);
-      for (const [crit, v] of Object.entries(batch)) {
-        if (v === null) delete progress.scores[key][crit];
-      }
-      status.textContent = "Saved";
-      status.className = "saving ok";
-      if (cardForState) paintCardState(cardForState);
-      renderChips();
-      refreshProgress();
-      // Only when this save is what completed the reaction -- not on every
-      // later tweak of an already-complete one.
-      if (scope === "reaction" && !wasDone && reactionDone(reactionId)) scheduleAutoAdvance();
-    } catch (err) {
-      status.textContent = err.message;
-      status.className = "saving err";
-    }
-  };
-
-  const queue = (criterion, value) => {
-    (pending.scores ||= {})[criterion] = value;
-    clearTimeout(timer);
-    timer = setTimeout(flush, SAVE_DEBOUNCE_MS);
-  };
+  const card = el("section", { className: "card scorecard" });
+  card.append(el("div", { className: "score-h" }, [
+    el("h3", { textContent: "Your scores" }),
+    el("span", { className: "scale tiny dim", innerHTML: "<b>0</b> implausible · <b>5</b> unsure · <b>10</b> excellent" }),
+  ]));
 
   for (const criterion of criteria) {
-    const row = el("div", { className: "srow" });
-    const id = `s-${scope}-${reactionId}-${criterion}`.replace(/[^\w-]/g, "_");
-    const has = Object.prototype.hasOwnProperty.call(saved, criterion);
+    const row = el("div", { className: "crit" });
+    const value = el("span", { className: "crit-val" });
+    const pills = el("div", { className: "pills", role: "radiogroup", ariaLabel: criterion });
 
-    const range = el("input", {
-      type: "range", min: "0", max: String(SCORE_MAX), step: "1", id,
-      value: has ? String(saved[criterion]) : String(Math.round(SCORE_MAX / 2)),
-    });
-    // One dot per selectable value, laid out with the same half-thumb inset as
-    // the native track so each dot sits under the position it represents.
-    const ticks = el("div", { className: "ticks" },
-      Array.from({ length: SCORE_MAX + 1 }, () => el("span")));
-    const track = el("div", { className: "track" }, [range, ticks]);
-    const num = el("span", { textContent: has ? String(saved[criterion]) : "--" });
-    const clear = el("button", {
-      className: "clear", type: "button", title: "Clear this score", textContent: "×",
-    });
-    const out = el("span", { className: "val" }, [num, clear]);
+    const paint = () => {
+      const v = saver.sel[criterion];
+      row.classList.toggle("set", v != null);
+      value.textContent = v == null ? "–" : String(v);
+      if (v != null) row.style.setProperty("--c", scoreColor(v));
+      for (const p of pills.children) {
+        const on = Number(p.dataset.v) === v;
+        p.setAttribute("aria-checked", String(on));
+        p.tabIndex = on || (v == null && p.dataset.v === "5") ? 0 : -1;
+      }
+    };
 
-    row.classList.toggle("unset", !has);
-    row.append(el("label", { htmlFor: id, textContent: criterion }), track, out);
-
-    range.addEventListener("input", () => {
-      row.classList.remove("unset");
-      num.textContent = range.value;
-      queue(criterion, Number(range.value));
-    });
-    clear.addEventListener("click", () => {
-      cancelAutoAdvance();
-      row.classList.add("unset");
-      num.textContent = "--";
-      range.value = String(Math.round(SCORE_MAX / 2));
-      queue(criterion, null);
-    });
-
-    block.append(row);
-  }
-
-  if (scope === "reaction") {
-    const cid = `c-${reactionId}`;
-    const ta = el("textarea", {
-      id: cid, rows: 3,
-      placeholder: "Optional note on this reaction",
-      value: progress.comments[key] || "",
-    });
-    const box = el("div", { className: "comment" }, [
-      el("label", { htmlFor: cid, textContent: "Note (optional)" }),
-      ta,
-    ]);
-    // Reaching for the note must not have the slide pulled away mid-thought.
-    ta.addEventListener("focus", cancelAutoAdvance);
-    let ctimer = null;
-    ta.addEventListener("input", () => {
-      clearTimeout(ctimer);
-      ctimer = setTimeout(async () => {
-        status.textContent = "Saving…";
-        status.className = "saving";
-        try {
-          await db.saveComment(current.meta, scope, reactionId, ta.value);
-          if (ta.value.trim()) progress.comments[key] = ta.value.trim();
-          else delete progress.comments[key];
-          status.textContent = "Saved";
-          status.className = "saving ok";
-        } catch (err) {
-          status.textContent = err.message;
-          status.className = "saving err";
-        }
-      }, SAVE_DEBOUNCE_MS);
-    });
-    block.append(box);
-  }
-
-  block.append(status);
-  return block;
-}
-
-/* ------------------------------------------------------------- deck nav -- */
-
-function go(index) {
-  if (!current || index < 0 || index >= current.slides.length) return;
-  current.index = index;
-  current.slides.forEach((s, i) => s.node.classList.toggle("active", i === index));
-
-  const n = current.slides.length - 1;          // reaction count
-  $("slide-count").textContent =
-    index === n ? "Overall assessment" : `Reaction ${index + 1} of ${n}`;
-  $("btn-prev").disabled = index === 0;
-  $("btn-next").disabled = index === current.slides.length - 1;
-
-  renderChips();
-  if (current.slides[index].overall) updateSubmitButton();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function renderChips() {
-  if (!current) return;
-  const chips = current.slides.map((s, i) => {
-    const b = el("button", { className: "chip", type: "button" });
-    if (s.overall) {
-      b.classList.add("overall");
-      b.textContent = "Overall";
-      const done = networkScored() === manifest.criteria.network.length;
-      if (done) b.classList.add("done");
-      else if (networkScored() > 0) b.classList.add("partial");
-    } else {
-      b.textContent = String(i + 1);
-      const saved = progress.scores[cell(current.entry.key, "reaction", s.rxn.id)] || {};
-      const count = Object.keys(saved).length;
-      if (count === manifest.criteria.reaction.length) b.classList.add("done");
-      else if (count > 0) b.classList.add("partial");
-      b.title = s.rxn.name || s.rxn.id;
+    for (let v = 0; v <= SCORE_MAX; v++) {
+      const p = el("button", { type: "button", className: "pill", textContent: String(v) });
+      p.dataset.v = String(v);
+      p.setAttribute("role", "radio");
+      p.style.setProperty("--c", scoreColor(v));
+      p.addEventListener("click", () => {
+        const clear = saver.sel[criterion] === v;
+        saver.set(criterion, clear ? null : v);
+        if (clear) fx.sound.untick(); else fx.sound.tick(v, SCORE_MAX);
+        fx.haptic();
+        paint();
+        if (!clear) fx.pulse(value);
+      });
+      p.addEventListener("keydown", (ev) => {
+        const d = ev.key === "ArrowRight" || ev.key === "ArrowUp" ? 1
+          : ev.key === "ArrowLeft" || ev.key === "ArrowDown" ? -1 : 0;
+        if (!d) return;
+        ev.preventDefault();
+        ev.stopPropagation();
+        const t = pills.children[Math.min(SCORE_MAX, Math.max(0, v + d))];
+        t.focus();
+        t.click();
+      });
+      pills.append(p);
     }
-    if (i === current.index) b.classList.add("current");
-    b.addEventListener("click", () => { cancelAutoAdvance(); go(i); });
-    return b;
+
+    row.append(
+      el("div", { className: "crit-h" }, [
+        el("span", { className: "crit-name", textContent: criterion }),
+        value,
+      ]),
+      el("p", { className: "crit-help", textContent: CRITERION_HELP[criterion] || "" }),
+      pills
+    );
+    paint();
+    card.append(row);
+  }
+
+  /* --- optional note --- */
+  const note = progress.comments[key] || "";
+  const ta = el("textarea", {
+    rows: 3, value: note, id: "rxn-note",
+    placeholder: "What's wrong, missing, or especially good? A reference helps.",
   });
-  $("chips").replaceChildren(...chips);
+  const noteBox = el("details", { className: "note", open: !!note }, [
+    el("summary", { textContent: note ? "Your note" : "Add a note (optional)" }),
+    ta,
+  ]);
+  let timer = null;
+  ta.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => saveNote(meta, rxn.id, key, ta.value, saver), SAVE_DEBOUNCE_MS);
+  });
+  saver.flushNote = () => {
+    if (!timer) return Promise.resolve();
+    clearTimeout(timer);
+    timer = null;
+    return saveNote(meta, rxn.id, key, ta.value, saver);
+  };
+  card.append(noteBox, saver.status);
+
+  return { card, saver };
 }
 
-function onKeydown(ev) {
-  if (graph.isOpen()) {
-    if (ev.key === "Escape") graph.closeGraph();
+async function saveNote(meta, rid, key, text, saver) {
+  const had = !!progress.comments[key];
+  try {
+    await db.saveComment(meta, "reaction", rid, text);
+    const body = text.trim();
+    if (body) progress.comments[key] = body;
+    else delete progress.comments[key];
+    if (!had && body) { me.notes++; paintStats(); checkBadges(); }
+    if (had && !body) { me.notes = Math.max(0, me.notes - 1); paintStats(); }
+    saver.say("Note saved", "ok");
+  } catch (err) {
+    saver.say(err.message, "err");
+    fx.toast(err.message, { kind: "err" });
+  }
+}
+
+/** Debounced, serialised score saving for one reaction card. */
+function makeSaver(meta, rid, key) {
+  let pending = {};
+  let timer = null;
+  let chain = Promise.resolve();
+  const status = el("div", { className: "saving", ariaLive: "polite" });
+
+  const saver = {
+    sel: {},
+    status,
+    onChange: null,
+    flushNote: null,
+    say(text, kind = "") {
+      const mark = { ok: "check", err: "triangle-exclamation" }[kind];
+      status.replaceChildren(...(mark ? [icon(mark), " "] : []), text);
+      status.className = `saving ${kind}`;
+    },
+    set(criterion, value) {
+      saver.sel[criterion] = value;
+      pending[criterion] = value;
+      saver.onChange?.();
+      clearTimeout(timer);
+      timer = setTimeout(() => saver.flush().catch(() => {}), SAVE_DEBOUNCE_MS);
+    },
+    /** Resolves when every pending score (and the note) is saved; rejects on failure. */
+    flush() {
+      clearTimeout(timer);
+      const batch = pending;
+      pending = {};
+      const note = saver.flushNote ? saver.flushNote() : Promise.resolve();
+      if (!Object.keys(batch).length) return Promise.all([chain, note]).then(() => {});
+
+      saver.say("Saving…");
+      chain = chain.catch(() => {}).then(async () => {
+        try {
+          await db.saveScores(meta, "reaction", rid, batch);
+        } catch (err) {
+          // Put the batch back under anything newer, so a retry sends it.
+          pending = { ...batch, ...pending };
+          saver.say(err.message, "err");
+          fx.toast("Couldn't save. Check your connection and try again.", { kind: "err", icon: "triangle-exclamation" });
+          throw err;
+        }
+        const s = (progress.scores[key] ||= {});
+        for (const [c, v] of Object.entries(batch)) {
+          if (v == null) delete s[c];
+          else s[c] = v;
+        }
+        saver.say("Saved", "ok");
+        repaintSegments();
+      });
+      return Promise.all([chain, note]).then(() => {});
+    },
+  };
+  return saver;
+}
+
+function repaintSegments() {
+  const segs = document.querySelectorAll(".segs .seg");
+  current.reactions.forEach((r, j) => {
+    const s = segs[j];
+    if (!s) return;
+    s.classList.toggle("done", isComplete(r.id));
+    s.classList.toggle("part", !isComplete(r.id) && scoredCriteria(r.id) > 0);
+  });
+  const d = $("done-count");
+  if (d) d.textContent = `${doneCount()} done · ${current.reactions.length - doneCount()} to go`;
+}
+
+/** 0 = red through amber to 10 = green. */
+function scoreColor(v) {
+  return `hsl(${Math.round((v / SCORE_MAX) * 125)} 72% 44%)`;
+}
+
+/* ------------------------------------------------------- finish / done --- */
+
+async function finishMolecule({ celebrate = true } = {}) {
+  activeSaver = null;
+  const { entry, meta, reactions } = current;
+  if (celebrate) {
+    try {
+      await db.setAssignmentStatus(username, meta, "done");
+    } catch (err) {
+      fx.toast(err.message, { kind: "err" });
+    }
+    me.molecules++;
+    paintStats();
+    fx.sound.fanfare();
+    fx.haptic(40);
+    fx.confetti({ count: 180, spread: 1.1 });
+    setTimeout(() => fx.confetti({ x: innerWidth * 0.2, y: innerHeight * 0.5, count: 60, spread: 0.6 }), 250);
+    setTimeout(() => fx.confetti({ x: innerWidth * 0.8, y: innerHeight * 0.5, count: 60, spread: 0.6 }), 450);
+    checkBadges();
+    refreshBoard({ announce: true }).catch(() => {});
+  }
+
+  // Your mean per criterion over this network, next to the rest of the panel's.
+  const mine = Object.fromEntries(criteria.map((c) => {
+    const vals = reactions.map((r) => progress.scores[cell(entry.key, r.id)]?.[c]).filter((v) => v != null);
+    return [c, vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null];
+  }));
+  let panel = {};
+  try { panel = await db.panelAverages(meta, username); } catch { /* the comparison is a bonus */ }
+  const others = Math.max(0, ...Object.values(panel).map((p) => p.reviewers));
+
+  const rows = criteria.map((c) => {
+    const you = mine[c];
+    const them = panel[c]?.mean;
+    return el("div", { className: "cmp-row" }, [
+      el("span", { className: "cmp-name", textContent: c }),
+      el("div", { className: "cmp-bars" }, [
+        bar("you", you),
+        them != null ? bar("panel", them) : null,
+      ]),
+    ]);
+  });
+
+  const next = el("button", { className: "btn primary big", type: "button" });
+  setLabel(next, "Next molecule", "arrow-right");
+  next.addEventListener("click", nextMolecule);
+  const revisit = el("button", { className: "btn ghost", type: "button", textContent: "Revisit my scores" });
+  revisit.addEventListener("click", () => reactionView(0, -1));
+
+  stage(el("section", { className: "card finish" }, [
+    el("div", { className: "trophy" }, [icon("trophy")]),
+    el("p", { className: "eyebrow", textContent: "Molecule complete" }),
+    el("h1", { className: "intro-title", textContent: `${pretty(entry.molecule)} done!` }),
+    el("p", {
+      className: "muted",
+      textContent: `You reviewed all ${reactions.length} reactions. ` + (others
+        ? `Here's how your scores compare with ${others} other reviewer${others === 1 ? "" : "s"}.`
+        : `You're the first to finish ${pretty(entry.molecule)}. The panel comparison unlocks as others finish it.`),
+    }),
+    el("div", { className: "cmp" }, [
+      el("div", { className: "cmp-legend tiny" }, [
+        el("span", { className: "k you", textContent: "you" }),
+        others ? el("span", { className: "k panel", textContent: "panel average" }) : null,
+      ]),
+      ...rows,
+    ]),
+    el("div", { className: "intro-actions" }, [next, revisit]),
+  ]));
+}
+
+function bar(kind, v) {
+  const b = el("div", { className: `cmp-bar ${kind}` }, [el("i"), el("span", { textContent: v == null ? "–" : v.toFixed(1) })]);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    b.querySelector("i").style.width = `${((v ?? 0) / SCORE_MAX) * 100}%`;
+  }));
+  return b;
+}
+
+function allDoneView() {
+  activeSaver = null;
+  fx.confetti({ count: 200, spread: 1.2 });
+  fx.sound.fanfare();
+  stage(el("section", { className: "card finish" }, [
+    el("div", { className: "trophy" }, [icon("crown")]),
+    el("p", { className: "eyebrow", textContent: "Every molecule reviewed" }),
+    el("h1", { className: "intro-title", textContent: "You did it all." }),
+    el("p", {
+      className: "muted",
+      textContent: `You've reviewed every network on the panel: ${me.reactions} reactions in total. ` +
+        "Thank you! This is exactly what makes the evaluation trustworthy.",
+    }),
+  ]));
+}
+
+/* ---------------------------------------------------------- leaderboard -- */
+
+async function refreshBoard({ announce = false } = {}) {
+  const { model, config } = manifest.networks[0];
+  const rows = await db.leaderboard(model, config, criteria);
+  const before = myRank;
+  board = rows;
+  const i = rows.findIndex((r) => r.reviewer === username);
+  myRank = i >= 0 ? i + 1 : null;
+  const mine = rows[i];
+  // The server is the source of truth, but never move the counters backwards
+  // under an optimistic +1 that is still in flight.
+  if (mine) {
+    me.reactions = Math.max(mine.reactions, announce ? me.reactions : 0);
+    me.molecules = Math.max(mine.molecules, announce ? me.molecules : 0);
+    me.notes = mine.notes;
+  }
+
+  renderBoard();
+  paintStats();
+  renderPanel();
+
+  if (!announce) return;
+  if (before == null && myRank != null) {
+    fx.toast(`You're on the leaderboard at #${myRank}!`, { icon: "ranking-star", kind: "badge" });
+    fx.sound.sparkle();
+  } else if (before != null && myRank != null && myRank < before) {
+    const passed = rows[myRank]?.reviewer;
+    fx.toast(passed ? `You passed @${passed}, now #${myRank}!` : `Up to #${myRank}!`, { icon: "rocket", kind: "badge" });
+    fx.sound.sparkle();
+    fx.pulse($("btn-rail"));
+  }
+}
+
+function renderBoard() {
+  const list = $("lb-list");
+  const top = board.reduce((m, r) => Math.max(m, r.reactions), 1);
+  const shown = board.slice(0, BOARD_SHOWN);
+  const rowFor = (r, rank) => {
+    const li = el("li", { className: r.reviewer === username ? "me" : "" });
+    const av = el("span", { className: "avatar sm" });
+    paintAvatar(av, r.reviewer);
+    li.append(
+      rank <= 3
+        ? el("span", { className: `rank medal m${rank}`, title: `#${rank}` }, [icon("medal")])
+        : el("span", { className: "rank", textContent: String(rank) }),
+      av,
+      el("span", { className: "lb-name" }, [
+        el("span", { textContent: `@${r.reviewer}` }),
+        el("span", { className: "lb-bar" }, [Object.assign(el("i"), { style: `width:${(r.reactions / top) * 100}%` })]),
+      ]),
+      el("b", { className: "lb-n", textContent: String(r.reactions) })
+    );
+    return li;
+  };
+
+  const items = shown.map((r, k) => rowFor(r, k + 1));
+  if (myRank && myRank > BOARD_SHOWN) {
+    items.push(el("li", { className: "gap" }, [icon("ellipsis")]), rowFor(board[myRank - 1], myRank));
+  }
+  if (!items.length) items.push(el("li", { className: "empty", textContent: "No reviews yet. Be the first!" }));
+  list.replaceChildren(...items);
+
+  $("rank-short").textContent = myRank ? `#${myRank}` : "–";
+
+  const nudge = $("lb-nudge");
+  if (!myRank) {
+    nudge.replaceChildren(icon("flag-checkered"), " Review your first reaction to join the board.");
+  } else if (myRank === 1) {
+    const lead = board.length > 1 ? board[0].reactions - board[1].reactions : 0;
+    nudge.replaceChildren(icon("crown"), board.length > 1
+      ? (lead ? ` You lead by ${lead}. Keep it up!` : " Tied for first. One more takes the lead!")
+      : " You're setting the pace.");
+  } else {
+    const ahead = board[myRank - 2];
+    const gap = ahead.reactions - me.reactions + 1;
+    nudge.replaceChildren(icon("arrow-up"), ` ${gap} more to pass @${ahead.reviewer}`);
+  }
+}
+
+function renderPanel() {
+  const totalReactions = manifest.networks.reduce((a, n) => a + n.n_reactions, 0);
+  const target = totalReactions * TARGET_REVIEWERS;
+  const doneAll = board.reduce((a, r) => a + r.reactions, 0);
+  $("panel-frac").textContent = `${doneAll} / ${target}`;
+  $("panel-bar").style.width = `${Math.min(100, (doneAll / target) * 100)}%`;
+  $("panel-note").textContent =
+    `${board.length} reviewer${board.length === 1 ? "" : "s"} so far. Goal: ${TARGET_REVIEWERS} independent reviews of all ${totalReactions} reactions.`;
+}
+
+function paintStats() {
+  for (const [id, v] of [["st-reactions", me.reactions], ["st-molecules", me.molecules], ["st-notes", me.notes]]) {
+    const node = $(id);
+    if (node.textContent !== String(v)) {
+      node.textContent = String(v);
+      fx.pulse(node);
+    }
+  }
+}
+
+function paintStreak() {
+  const s = $("streak");
+  s.hidden = streak < 2;
+  s.replaceChildren(icon("fire"), ` ${streak}`);
+  s.title = `${streak} in a row this session`;
+  fx.pulse(s);
+}
+
+function renderBadges() {
+  $("badges").replaceChildren(...BADGES.map((b) => {
+    const on = earned.has(b.name);
+    const node = el("span", { className: `badge${on ? " on" : ""}`, title: on ? b.name : `Locked: ${b.hint}` }, [
+      icon(b.icon, "bi"),
+      el("span", { className: "bn" }, [on ? b.name : icon("lock")]),
+    ]);
+    node.style.setProperty("--bh", String(b.hue));
+    node.dataset.name = b.name;
+    return node;
+  }));
+}
+
+function checkBadges() {
+  const fresh = BADGES.filter((b) => !earned.has(b.name) && b.test(me));
+  if (!fresh.length) return;
+  fresh.forEach((b, k) => {
+    earned.add(b.name);
+    setTimeout(() => {
+      fx.toast(`Badge unlocked: ${b.name}`, { icon: b.icon, kind: "badge", ms: 4000 });
+      fx.sound.sparkle();
+      fx.confetti({ count: 70, spread: 0.8 });
+    }, 500 + k * 900);
+  });
+  renderBadges();
+  for (const b of fresh) fx.pulse(document.querySelector(`.badge[data-name="${CSS.escape(b.name)}"]`), "shine");
+}
+
+function hue(s) {
+  let h = 0;
+  for (const ch of s) h = (h * 31 + ch.codePointAt(0)) % 360;
+  return h;
+}
+function paintAvatar(node, name) {
+  node.textContent = (name[0] || "?").toUpperCase();
+  node.style.setProperty("--h", String(hue(name)));
+}
+
+/* ---------------------------------------------------------------- sheet -- */
+
+function openSheet(rxn) {
+  const { entry } = current;
+  const frame = $("explorer");
+  $("sheet-title").textContent = `${pretty(entry.molecule)} network`;
+  $("net-sheet").hidden = false;
+  document.body.classList.add("noscroll");
+
+  // Same network already loaded: just move the focus, no reload.
+  if (frame.dataset.file === entry.file && frame.contentWindow) {
+    frame.contentWindow.postMessage({ type: "astra-focus", id: rxn.id }, location.origin);
     return;
   }
-  // Let arrows do their native job inside a slider or a note.
-  const tag = ev.target?.tagName;
-  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
-  if (ev.key === "ArrowLeft") { cancelAutoAdvance(); go(current.index - 1); }
-  if (ev.key === "ArrowRight") { cancelAutoAdvance(); go(current.index + 1); }
+  // explorer.html serves this one network to the unmodified explorer as its
+  // whole file index; paths are relative to pathway_explorer/.
+  const q = new URLSearchParams({ f: entry.file, v: entry.validation || "", m: entry.molecule, focus: rxn.id });
+  frame.dataset.file = entry.file;
+  frame.src = `explorer.html?${q}`;
 }
 
-function scheduleAutoAdvance() {
-  cancelAutoAdvance();
-  if (current.slides[current.index].overall) return;
-  autoAdvanceTimer = setTimeout(() => {
-    autoAdvanceTimer = null;
-    // Re-check at fire time, not only via cancelAutoAdvance(). The save is
-    // debounced and then round-trips to the database, so this timer is often
-    // created AFTER the reviewer has already clicked into the note box -- there
-    // would have been no timer to cancel. Never move the slide out from under
-    // someone who is typing.
-    const tag = document.activeElement?.tagName;
-    if (tag === "TEXTAREA" || graph.isOpen()) return;
-    const next = current.slides.findIndex(
-      (s, i) => i > current.index && s.rxn && !reactionDone(s.rxn.id));
-    go(next >= 0 ? next : current.index + 1);
-  }, AUTO_ADVANCE_MS);
+function closeSheet() {
+  $("net-sheet").hidden = true;
+  document.body.classList.remove("noscroll");
 }
 
-function cancelAutoAdvance() {
-  clearTimeout(autoAdvanceTimer);
-  autoAdvanceTimer = null;
-}
+/* --------------------------------------------------------------- logout -- */
 
-function openGraph() {
-  cancelAutoAdvance();
-  const slide = current.slides[current.index];
-  graph.openGraph(
-    current.entry.file,
-    slide.rxn ? slide.rxn.id : null,
-    `Network ${current.entry.blind} · ${current.entry.molecule.replace(/_/g, "-")}`
-  ).catch((err) => showMsg($("app-msg"), `Could not draw the graph: ${err.message}`));
-}
-
-/* ------------------------------------------------------------- progress -- */
-
-function reactionDone(rid) {
-  const saved = progress.scores[cell(current.entry.key, "reaction", rid)] || {};
-  return manifest.criteria.reaction.every((c) =>
-    Object.prototype.hasOwnProperty.call(saved, c));
-}
-
-function networkScored() {
-  const saved = progress.scores[cell(current.entry.key, "network", "")] || {};
-  return manifest.criteria.network.filter((c) =>
-    Object.prototype.hasOwnProperty.call(saved, c)).length;
-}
-
-function paintCardState(card) {
-  const done = reactionDone(card.dataset.rid);
-  card.classList.toggle("done", done);
-  const state = card.querySelector(".head .state");
-  if (!state) return;
-  const n = Object.keys(
-    progress.scores[cell(current.entry.key, "reaction", card.dataset.rid)] || {}).length;
-  const total = manifest.criteria.reaction.length;
-  state.textContent = done ? "✓ reviewed" : n ? `${n}/${total}` : "not scored";
-}
-
-function updateSubmitButton() {
-  const btn = $("btn-submit");
-  if (!btn) return;
-  const total = manifest.criteria.network.length;
-  const have = networkScored();
-  btn.disabled = have < total;
-  btn.textContent = progress.submitted.has(current.entry.key)
-    ? "Complete ✓ — click to re-confirm"
-    : have < total
-      ? `Mark network complete (${have}/${total} criteria)`
-      : "Mark network complete";
-}
-
-async function submitNetwork() {
-  const status = $("overall-saving");
-  const btn = $("btn-submit");
-  btn.disabled = true;
-  status.textContent = "Submitting…";
-  status.className = "saving";
-  try {
-    await db.markSubmitted(current.meta);
-    progress.submitted.add(current.entry.key);
-    status.textContent = "Network marked complete. Thank you.";
-    status.className = "saving ok";
-    refreshProgress();
-  } catch (err) {
-    status.textContent = err.message;
-    status.className = "saving err";
-  } finally {
-    updateSubmitButton();
+function askLogout() {
+  const left = current?.reactions ? current.reactions.length - doneCount() : 0;
+  if (left > 0 && left <= 5 && document.querySelector(".rxn-view, .intro")) {
+    $("leave-text").textContent =
+      `Only ${left} reaction${left === 1 ? "" : "s"} left to finish ${pretty(current.entry.molecule)}. ` +
+      "Finish now and unlock the panel comparison?";
+    $("leave-sheet").hidden = false;
+    return;
   }
+  logout();
 }
 
-function refreshProgress() {
-  const reactions = current.net.reactions || [];
-  const done = reactions.filter((r) => reactionDone(r.id)).length;
-
-  $("net-progress").textContent =
-    `${done} / ${reactions.length} reactions reviewed · ` +
-    `${networkScored()} / ${manifest.criteria.network.length} overall criteria`;
-  $("net-bar").style.width = reactions.length ? `${(done / reactions.length) * 100}%` : "0";
-
-  const submitted = manifest.networks.filter((n) => progress.submitted.has(n.key)).length;
-  $("overall-progress").textContent =
-    `${submitted} / ${manifest.networks.length} networks complete`;
-  $("overall-bar").style.width = `${(submitted / manifest.networks.length) * 100}%`;
-
-  for (const b of $("net-buttons").children) {
-    const n = manifest.networks.find((x) => x.key === b.dataset.key);
-    if (!n) continue;
-    // Counted from saved progress, not from the file, so networks that have not
-    // been opened yet still show a real fraction rather than a bare total.
-    b.replaceChildren(
-      document.createTextNode(`Network ${n.blind}`),
-      progress.submitted.has(n.key)
-        ? el("span", { className: "tick", textContent: "✓" })
-        : document.createTextNode(""),
-      el("span", {
-        className: "frac",
-        textContent: `${countReactionsDone(n.key)}/${n.n_reactions} reactions`,
-      })
-    );
-  }
-  updateSubmitButton();
+async function logout() {
+  clearInterval(boardTimer);
+  try { await activeSaver?.flush(); } catch { /* signing out regardless */ }
+  await db.disconnect();
+  store.del(USER_KEY);
+  store.del(CREDS_KEY);
+  location.replace(location.pathname);
 }
 
-/** How many reactions of a network this reviewer has fully scored. */
-function countReactionsDone(netKey) {
-  const prefix = `${netKey}|reaction|`;
-  let n = 0;
-  for (const [key, saved] of Object.entries(progress.scores)) {
-    if (!key.startsWith(prefix)) continue;
-    if (manifest.criteria.reaction.every((c) =>
-      Object.prototype.hasOwnProperty.call(saved, c))) n++;
-  }
-  return n;
-}
-
-/* Prefill the username if this tab already signed in. */
-const remembered = sessionStorage.getItem("astra_reviewer_username");
-if (remembered) $("in-user").value = remembered;
+initLogin();

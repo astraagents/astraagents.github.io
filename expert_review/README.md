@@ -1,143 +1,257 @@
 # ASTRA Expert Review Platform
 
-A static review platform where domain experts score ASTRA's prebiotic synthesis
-networks: five criteria per reaction, seven for the network overall, each 0–10,
-plus optional free text. Reactions are presented one at a time as a slide deck,
-with a popup showing the whole network as a graph. Runs as plain JavaScript on
-GitHub Pages with no backend; submissions go straight to PlanetScale Postgres.
+A static, mobile-first review platform where domain experts score ASTRA's prebiotic
+synthesis networks **one reaction at a time**: five criteria, each 0–10, plus an
+optional note. Each reviewer is assigned a molecule, works through its reactions as
+cards, and climbs a shared leaderboard. It runs as plain JavaScript on GitHub Pages
+with no backend. The reactions live in PlanetScale Postgres and submissions go
+straight there.
 
 ## What is under review
 
 | | |
 |---|---|
-| Models | `claude_opus4.6`, `gpt5.4` |
-| Configs | `deep_research_claude`, `deep_research_gpt5.4` |
-| Molecules | the 9 covered by all four model×config cells |
-| Queue | **36 networks, 615 reactions** (4 cells × 9 molecules, final networks only) |
+| Network | `gpt6_xhigh_azure` + `deep_research_gpt6` (`network_<Mol>_<timestamp>_deep_research_gpt6_run1.json`) |
+| Molecules | Arginine, Glutamate, Glycine, Histidine, L-Alanine, L-Proline, Serine, Threonine, Valine |
+| Queue | **9 networks, 166 reactions**, stored in `expert_reactions` |
 
-Per reaction (5 criteria): Chemical Feasibility, Environmental Consistency,
-Mechanistic Detail, Prebiotic Plausibility, Novelty of Reactions.
-Per network (7 criteria): the above plus Pathway Coherence and Network Completeness —
-the canonical set from `pathway_explorer/meta_evaluations/all_scores.csv`, so expert
-scores sit alongside the LLM-judge scores on a near-identical scale: those are
-integers 1–10, these are 0–10 (0 is available to a human reviewer as an explicit
-"not plausible at all", which the judges' 1–10 scale cannot express).
+Criteria per reaction (5): Chemical Feasibility, Environmental Consistency,
+Mechanistic Detail, Prebiotic Plausibility, Novelty of Reactions. These are the
+reaction-level subset of the canonical LLM-judge criteria (the earlier
+`pathway_explorer/meta_evaluations/all_scores.csv`, now only in git history), so expert
+scores sit alongside the judge scores on a near-identical scale. The judges score 1–10; humans score
+0–10, because 0 gives a reviewer an explicit "not plausible at all".
 
-The slider is `step=1` with 11 tick dots, one per selectable value. Changing the
-scale means changing `SCORE_MAX` in both `js/app.js` and `js/db.js`; the dot count
-follows automatically. The table's `CHECK (score between 0 and 100)` is inherited
-from the original schema and still passes — 0–10 is a subset — and cannot be
-tightened without an owner-level `ALTER TABLE`.
+Scores are entered with **11 tap pills (0–10)**. Tapping the selected pill again
+clears it, which *deletes* the row rather than storing a 0. Changing the scale means
+changing `SCORE_MAX` in both `js/app.js` and `js/db.js`, and the CHECK in `schema.sql`.
 
-Reviewers see networks as **Network A–D** with the model and config hidden. The
-label→cell permutation is derived per molecule from a SHA-256 of the molecule name,
-so the mapping differs for every molecule and cannot be learned. Copied data files
-are named `<Molecule>_<Label>.json` so the filename gives nothing away either.
+Network-level scoring and the Naive network (formerly "Network B") were removed in v3.
+Their rows (`scope = 'network'`) stay in the database and are ignored.
 
-**Blinding is UI-level only.** The page must send the true model/config to the
-database, so `data/review_index.json` necessarily contains the mapping. It stops a
-reviewer *seeing* provenance while scoring; it is not secrecy from someone reading
-the source.
+## How reviewers experience it
 
-## Signing in
+1. **Invite link → username.** The link carries the database credentials (see below),
+   so a reviewer only chooses a username. On the same device they go straight back in.
+2. **Assignment.** They are given one molecule (see *Assignment* below), with an intro
+   card showing its size and the time it will take. *"Not my area? Swap molecule"* draws another.
+3. **Reaction cards.** Each card shows the equation as 2D structures from PubChem
+   (with names and formulae; see *Molecular structures*), then the setting,
+   conditions, agents, mechanism and reasoning, and a *View in network* button that opens
+   the Pathway Explorer focused on that reaction. Scores autosave ~0.6 s after a tap.
+   *Save & next* unlocks once all five are set and moves to the next unscored reaction.
+   *Skip for now* moves on without saving. The progress segments jump to any reaction.
+4. **Finishing a molecule** marks it done, celebrates, and shows the reviewer's mean
+   per criterion **next to the other reviewers' mean**. That comparison only appears
+   after they finish, so it cannot anchor their own scores. Then the next molecule is assigned.
 
-Reviewers identify themselves with a **username** (lowercase, no spaces, e.g.
-`jane_doe`), not a display name. It is normalised with `trim().toLowerCase()` at
-sign-in, so `Jane_Doe` and `jane_doe` are the same reviewer. This matters: scores
-are keyed on this string, and before the normalisation a reviewer who capitalised
-differently silently started over with an empty slate and split their data across
-two identities.
+Keyboard on desktop: `Enter` = Save & next, `←`/`→` = previous/next reaction, and arrow
+keys move within a row of pills.
 
-Signing in restores every score, note and submission, then jumps to the first
-network still unsubmitted and the first reaction in it still missing a score.
+### Engagement design
 
-The username lives in the `reviewer_name` column — the column was not renamed
-because the API role is not the table owner and cannot `ALTER TABLE`. If you have
-rows from before this change, migrate them (`UPDATE` is allowed by
-`pg_write_all_data`, so no console trip is needed):
+The page is built to keep busy experts coming back without rewarding speed over care:
+
+| Mechanism | Where |
+|---|---|
+| Small, finite goal ("Glycine · 20 reactions · ~15 min") and a progress ring | intro card |
+| Unfinished-task pull ("You're 65% through, just 7 left") | intro on return; a *"So close!"* prompt on sign-out with ≤ 5 left |
+| Immediate feedback: score-pitched tick, chime, confetti burst, `+1` | every tap / save |
+| Leaderboard ranked by *completed* reactions, with "N more to pass @x" | left rail (desktop), trophy-button drawer (phone) |
+| "You passed @bob" / "You're on the board" moments | toast after a save |
+| Badges at 1, 5, 10, 25, 50, 100 reactions, 1/3/9 molecules, 5 notes | rail |
+| Session streak (flame + n) | top bar |
+| Shared mission: panel progress toward 3 reviews × 166 reactions | rail |
+| Curiosity reward: your scores vs the panel's, unlocked on finishing | finish card |
+
+Sound is synthesised with WebAudio (no audio files) and can be muted with the speaker button (saved
+per device). Phones that support it get a light haptic tick. `prefers-reduced-motion`
+turns off slides and confetti. Light and dark themes follow the OS. Icons are
+Font Awesome 6.5.2 (free, solid), loaded from cdnjs; there are no emoji in the UI.
+
+## Molecular structures
+
+Each molecule in a reaction card is drawn from PubChem's 2D depiction. Two parts make it work:
+
+- **Offline, by CID.** `tools/resolve_pubchem.py` resolves each molecule once, trying
+  its **InChI** first (the network's own structural claim), then its IUPAC name, then its
+  common name. It checks the hit against the network's stated formula on heavy atoms only,
+  so protonation and charge differences (formate vs formic acid) don't count. Results go to
+  `data/pubchem.json` and reach the page through `expert_reactions.payload`. The page
+  never looks molecules up by name: those lookups are rate-limited and often 404 on the
+  networks' descriptive names. Current state: **96 of 115 resolved**. The other 19 are
+  intermediates and adducts that PubChem does not have (e.g. *Arginine alpha-aminonitrile*,
+  *Glycolaldehyde bisulfite adduct*), and they show a formula tile instead.
+- **Cropped in the browser.** PubChem pads every drawing to the full canvas on a grey
+  background with 1px bonds, which leaves small molecules as a faint speck. The page fetches
+  the 500×500 PNG by CID (PubChem sends `Access-Control-Allow-Origin: *`), crops it to the
+  drawn pixels, whitens the background and deepens the ink, and caps the zoom so NH₃ still looks
+  small next to arginine. Compounds PubChem draws as an empty canvas (H₂, whose hydrogens are
+  implicit) fall back to the formula. At most 4 requests are in flight at once (PubChem allows ~5/s),
+  and the next reaction's structures are preloaded.
+
+Tapping a structure opens the compound on PubChem. When the PubChem structure's formula
+disagrees with the network's stated formula, the card shows a warning, **PubChem: <formula>**.
+That flags a genuine inconsistency in the network's own data. No molecule in the current
+queue triggers it. The check is redone against the current networks on every run, because
+`pubchem.json` caches lookups by structure and the same InChI can carry a different stated
+formula in another network.
+
+## Assignment
+
+`db.assignNetwork` gives a reviewer the network with the **fewest other reviewers**
+(status `done`, or `active` and touched in the last 14 days), breaking ties at random.
+Candidates are networks the reviewer has not finished or skipped. When none are left,
+skipped ones come back. A reviewer has at most one `active` assignment. Swapping marks
+the current one `skipped` (their scores are kept and still count). Finishing marks it `done`.
+Assignments live in `expert_assignments`, so the spread is visible in the data:
 
 ```sql
-update expert_scores      set reviewer_name = '<username>' where reviewer_name = '<Old Name>';
-update expert_comments    set reviewer_name = '<username>' where reviewer_name = '<Old Name>';
-update expert_submissions set reviewer_name = '<username>' where reviewer_name = '<Old Name>';
+select molecule, status, count(*) from expert_assignments group by 1, 2 order by 1, 2;
 ```
 
-## Navigating
+## Admin dashboard
 
-- **Chips** above the slide jump to any reaction; green = fully scored, amber = partial.
-- **Prev/Next** and the **left/right arrow keys** page the deck. Arrows are ignored
-  while a slider or note has focus, so they still nudge the value and move the caret.
-- Completing all five criteria on a reaction **auto-advances** after ~0.9 s to the next
-  unscored one. It is skipped if you are typing in a note or have the graph open —
-  checked when the timer fires, not only when it is set, because the save round-trips
-  to the database and the timer is often created after you have already clicked away.
-- The last slide is the seven-criteria overall assessment and the submit button.
-- **View network graph** opens the whole network. The current reaction is outlined;
-  *Focus this reaction* dims everything outside its neighbourhood. Click any reaction
-  node to jump to its slide. Esc or a backdrop click closes it.
+Sign in with the username **`admin_123`** (constant `ADMIN_USERNAME` in `js/app.js`) to open
+the admin view (`js/admin.js`) instead of the review flow. The admin is never assigned a molecule,
+never scores, and doesn't appear on the leaderboard. The view refreshes every 30 s and has a
+Refresh button. It shows:
+
+- **KPIs:** complete reviews out of the goal (166 × 3), reactions with ≥ 1 complete review,
+  reactions at the goal, active reviewers, partly scored reactions, and notes.
+- **Molecules:** reactions, complete reviews, a coverage bar, reactions at goal, and assignments
+  active/done/skipped. This shows whether the assignment is spreading work evenly.
+- **Reviewers:** complete and in-progress reactions, notes, molecules done, the current molecule,
+  and last activity.
+- **Recent activity:** the last 15 reactions saved.
+- **Export:** *Download all (.zip)* builds `astra_expert_review_<date>_<time>.zip` in the browser,
+  containing every `expert_*` table as CSV, `expert_reaction_scores_wide.csv` (one row per reviewer ×
+  reaction, one column per criterion, plus the note) and a `README.txt` with row counts. There are
+  also per-table buttons for single CSVs. Tables are discovered from `information_schema`, so new
+  `expert_*` tables are exported automatically. The CSVs are RFC 4180 with a UTF-8 BOM (Excel-safe);
+  `jsonb` is written as JSON and timestamps as ISO 8601. JSZip 3.10.1 loads from cdnjs only on the
+  first zip export.
+
+**This is a convenience switch, not access control.** The username is visible in the public JS, and
+every reviewer already holds the database credentials, so they can read everything the dashboard
+shows anyway. To make admin access real, use the proxy described in *Hardening further*.
 
 ## Setup
 
 ### 1. Create the tables (one-time, needs an elevated credential)
 
 The API credential in `planetscale.txt` holds `pg_write_all_data` but **cannot create
-tables** — verified:
+tables**. Verified:
 
 ```
 select has_schema_privilege('public','CREATE');   -->  false
 create table t (id int);                          -->  42501 permission denied for schema public
-create schema astra_review;                       -->  42501 permission denied for database postgres
 ```
 
-So run `schema.sql` once from the **PlanetScale console SQL editor**, or with a
-password for the `postgres` role. It creates `expert_scores`, `expert_comments`,
-`expert_submissions` and — importantly — `GRANT`s `select, insert, update, delete`
-to the API role. The grant of `SELECT` is required: `pg_write_all_data` does not
-include it, and the app reads its own rows back to restore a reviewer's progress.
-
-Verify afterwards:
+So run `schema.sql` once from the **PlanetScale console SQL editor**. It is safe to
+re-run: every statement is `if not exists`. v3 adds `expert_reactions` and
+`expert_assignments`. It also `GRANT`s `select, insert, update, delete` on all five
+tables to the API role. `SELECT` is required: `pg_write_all_data` does not include it,
+and the app reads rows back for progress and the leaderboard.
 
 ```sql
-select has_table_privilege('pscale_api_y1qbjsmef33x','expert_scores','INSERT'),
-       has_table_privilege('pscale_api_y1qbjsmef33x','expert_scores','SELECT');
+select has_table_privilege('pscale_api_y1qbjsmef33x','expert_reactions','INSERT'),
+       has_table_privilege('pscale_api_y1qbjsmef33x','expert_assignments','SELECT');
 -- both must be true
 ```
 
-### 2. Rebuild the queue (only if the source networks change)
+### 2. Build the queue and load the reactions
 
 ```bash
-python3 expert_review/tools/build_review_index.py
+python3 expert_review/tools/build_review_index.py   # writes data/review_index.json
+python3 expert_review/tools/resolve_pubchem.py      # writes data/pubchem.json (cached; --refresh to redo)
+python3 expert_review/tools/seed_reactions.py       # upserts 166 rows into expert_reactions
 ```
 
-Reads `../pathway_explorer/file_index.csv`, copies the 36 networks into
-`data/networks/`, and writes `data/review_index.json`.
+`seed_reactions.py` stores each reaction's raw JSON as `payload`, with `inputs` and
+`outputs` resolved to `{id, formula, name, role, cid, cid_match, pubchem_formula}`. It is
+idempotent, so re-run it whenever the source networks or `pubchem.json` change. It uses the
+API credential (inserts are allowed).
 
-### 3. Run locally
+### 3. Invite reviewers
+
+```bash
+python3 expert_review/tools/make_invite.py                     # GitHub Pages URL
+python3 expert_review/tools/make_invite.py http://localhost:8000/expert_review/
+```
+
+This prints `…/expert_review/#k=<base64url(user:password)>`. The credentials sit in the
+URL **fragment**, which browsers never send to a server, so they never reach GitHub
+Pages' logs or this repo. The page moves them into `localStorage` and strips the
+fragment from the address bar. **Send the link privately; it is a password.**
+*Sign out* clears both the username and the stored credentials.
+
+Without a link, the login form has an *"I have database credentials"* fallback. For
+local testing, `js/local-creds.js` (gitignored) prefills those two fields.
+
+### 4. Run locally
 
 ```bash
 cd /path/to/astraagents.github.io
 python3 -m http.server 8000
-# open http://localhost:8000/expert_review/
+# open the link from make_invite.py with http://localhost:8000/expert_review/
 ```
 
-Must be served over HTTP — `file://` will not load the ES modules.
+It must be served over HTTP: `file://` will not load the ES modules.
+
+## Signing in
+
+Reviewers identify themselves with a **username** (2–32 of `a-z 0-9 _ . -`), shown on
+the leaderboard. It is normalised with `trim().toLowerCase()`, so `Jane_Doe` and
+`jane_doe` are the same reviewer. Scores are keyed on this string. It lives in the
+`reviewer_name` column; the column was not renamed because the API role cannot `ALTER TABLE`.
 
 ## Architecture
 
 ```
-index.html          login + app shell
-css/review.css      light palette, token values from pathway_explorer/css/theme.css
-js/app.js           slide deck, resume position, form state, debounced autosave
-js/db.js            THE ONLY DATABASE SEAM
-js/graph.js         glue to the graph renderer (~110 lines)
+index.html             login, top bar, left rail (leaderboard, stats, badges), stage, sheets
+explorer.html          pathway_explorer/index.html markup + <base href="../pathway_explorer/">
+css/review.css         mobile-first styles; light + dark tokens
+css/explorer-embed.css hides the explorer's toolbar, settings and eval panel
+js/app.js              sign-in, assignment flow, reaction cards, scoring, leaderboard, badges
+js/admin.js            admin dashboard (admin_123): status, CSV / zip export
+js/dom.js              small DOM helpers shared by app.js and admin.js
+js/db.js               THE ONLY DATABASE SEAM
+js/fx.js               WebAudio sounds, confetti, toasts, haptics
+js/explorer-shim.js    serves explorer.html a one-row file_index.csv
+js/explorer-sidebar.js reaction sidebar from raw JSON; ?focus= / postMessage focusing
+js/local-creds.js      local testing only, gitignored
 js/vendor/
-  neon-serverless.js  @neondatabase/serverless 1.2.0, vendored ESM bundle
-js/vendor-graph/    utils.js, data-loader.js, graph-layout.js, cytoscape-bridge.js
-                    copied VERBATIM from pathway_explorer/js/ -- do not edit here;
-                    re-copy from the explorer if it changes
-data/review_index.json, data/networks/*.json
-tools/build_review_index.py
-schema.sql
+  neon-serverless.js   @neondatabase/serverless 1.2.0, vendored ESM bundle
+data/review_index.json the 9 networks + the 5 criteria
+data/pubchem.json      molecule (InChI or names) -> PubChem CID, formula check
+tools/
+  build_review_index.py  manifest
+  resolve_pubchem.py     molecules -> PubChem CIDs
+  seed_reactions.py      reactions (+ CIDs) -> expert_reactions
+  make_invite.py         invite links
+  export_reviews.py      CSV export
+  pscale.py              shared credentials + HTTP /sql helper for the tools
+schema.sql, schema_reset.sql
+```
+
+### Tables
+
+| Table | One row per | Written by |
+|---|---|---|
+| `expert_reactions` | reaction under review | `seed_reactions.py` |
+| `expert_scores` | reviewer × reaction × criterion (`scope='reaction'`) | the page |
+| `expert_comments` | reviewer × reaction note | the page |
+| `expert_assignments` | reviewer × network, `active`/`skipped`/`done` | the page |
+| `expert_submissions` | *(v2 network submissions, unused since v3)* | n/a |
+
+The leaderboard counts, per reviewer, the reactions with **all five** criteria scored:
+
+```sql
+select reviewer_name, count(*) from (
+  select reviewer_name, molecule, reaction_id from expert_scores
+   where scope = 'reaction' group by 1, 2, 3 having count(distinct criterion) = 5) t
+ group by 1 order by 2 desc;
 ```
 
 ### Why WebSockets and not HTTP
@@ -146,8 +260,9 @@ PlanetScale's Neon-compatible HTTP endpoint works from a server but **not from a
 browser**: `POST https://<host>/sql` returns no `Access-Control-Allow-*` headers and
 answers `OPTIONS` with `405 {"message":"/sql requires POST"}`. Since the driver sends
 a custom `Neon-Connection-String` header, the preflight is mandatory and always fails.
+(The Python tools use that HTTP endpoint, which is fine outside a browser.)
 
-The WebSocket proxy does work — `wss://<host>/v2?address=<host>:5432` returns
+The WebSocket proxy does work: `wss://<host>/v2?address=<host>:5432` returns
 `101 Switching Protocols` even with a cross-origin `Origin`, because WebSockets are
 exempt from CORS. So `js/db.js` uses `Pool` in WebSocket mode:
 
@@ -157,64 +272,51 @@ neonConfig.pipelineConnect = false;   // mandatory: PlanetScale uses SCRAM-SHA-2
 ```
 
 Writes are `INSERT … ON CONFLICT ON CONSTRAINT … DO UPDATE`, so a reviewer can revise
-any score without creating duplicate rows. Clearing a slider **deletes** the row
-rather than storing a 0, and sliders start in an explicit unset state (`--`) so an
-untouched criterion is never recorded as a real score.
+any score without creating duplicate rows.
 
-## The network graph
+## The embedded explorer
 
-`js/vendor-graph/` holds four files copied unmodified from `pathway_explorer/js/`.
-They are classic scripts on `window.SynthVis`, so they load in dependency order
-before `app.js`, and need only cytoscape 3.30.4 from the CDN — `dagre`,
-`cytoscape-dagre` and `cytoscape-svg` are used solely by the explorer's
-`figure-mode.js` / `export.js`, which are not copied.
+Nothing in `pathway_explorer/` is modified or copied. *View in network* opens a sheet
+with `explorer.html?f=<network>&v=<validation>&m=<molecule>&focus=<reaction id>`:
 
-`js/graph.js` drives them with the explorer's own render sequence
-(`computeLayout` → `buildCytoscapeElements` → `cy.json` → `fit`), using
-`SV.loadFromPaths(file, null, null)` to convert the raw network JSON into the
-normalized model the renderer expects. Two things to know if you touch it:
-
-- **Cytoscape measures its container on init** and silently renders 0×0 if it is
-  hidden, so the modal is revealed before the graph is built, and `cy.resize()`
-  runs on every open.
-- **`main.js` is deliberately NOT copied.** It holds `MODEL_LABELS` /
-  `CONFIG_LABELS` (`'claude_opus4.6': 'Claude Opus 4.6 Extended Thinking'`) and
-  would reveal the authorship this tool hides. The four copied files contain no
-  model or config strings — node labels come only from the network JSON.
-
-PubChem structure images (`pubchem.js`) are not copied either: they fire one
-external request per molecule. `loadPubChemImages` is null-guarded, so omitting it
-just gives plain nodes.
+- `explorer.html` is the explorer's own markup with `<base href="../pathway_explorer/">`,
+  so every relative URL in its unmodified JS and CSS resolves exactly as it does there.
+- `js/explorer-shim.js` answers the explorer's `file_index.csv` request with a single
+  row built from the query string, so `main.js` auto-loads that one network.
+- `js/explorer-sidebar.js` rewrites the reaction sidebar from the raw JSON fields, and
+  focuses the requested reaction: it opens its details, centres on it and dims all but
+  its inputs/outputs. While the sheet stays loaded, later reactions are focused via
+  `postMessage({type: "astra-focus", id})` with no reload.
+- If `pathway_explorer/index.html` gains new markup, re-copy it into `explorer.html`
+  and keep the four added lines (base, embed CSS, shim, sidebar).
 
 ## Before publishing
 
-1. **Never commit credentials in `index.html`.** The two database inputs ship with
-   `placeholder` only; reviewers paste their own. If you temporarily add `value="…"`
-   for local testing, strip it before committing. Check with:
+1. **Never commit credentials.** The two database inputs in `index.html` ship with
+   `placeholder` only. Check with:
    ```bash
-   grep -n 'value="pscale_' index.html    # must return nothing
+   grep -rnE 'pscale_pw_[A-Za-z0-9]{8}' expert_review --exclude=planetscale.txt --exclude=local-creds.js   # must return nothing
    ```
-2. `planetscale.txt` is in `.gitignore` — confirm with
-   `git check-ignore -v expert_review/planetscale.txt`. **Never commit it.**
-3. Credentials entered by a reviewer are kept in memory and their name in
-   `sessionStorage`; nothing is persisted to disk.
+2. `planetscale.txt` and `js/local-creds.js` are in `.gitignore`. Confirm with
+   `git check-ignore -v expert_review/planetscale.txt expert_review/js/local-creds.js`.
+3. Credentials from an invite link are kept in the reviewer's `localStorage` until they
+   sign out.
 
 ### Hardening further
 
-Every reviewer who signs in holds `pg_write_all_data` on the whole database. For a
-small trusted panel that may be acceptable; to remove it, put a serverless proxy
-(e.g. a Cloudflare Worker) in front: keep the credentials in the Worker's secrets,
-give it CORS headers and a per-reviewer token, and rewrite the four exported
-functions in `js/db.js` as `fetch()` calls. Nothing else in the app changes —
-`db.js` is the only file that touches the database.
+Every reviewer holds `pg_write_all_data` on the whole database. For a small, trusted
+panel that may be acceptable. To remove it, put a serverless proxy (e.g. a Cloudflare
+Worker) in front: keep the credentials in the Worker's secrets, give it CORS headers
+and a per-reviewer token, and rewrite the exported functions in `js/db.js` as
+`fetch()` calls. Nothing else in the app changes, because `db.js` is the only file
+that touches the database.
 
 ## Exporting results
 
-```sql
-select reviewer_name, model, molecule, run, config, scope, reaction_id, criterion, score
-  from expert_scores
- order by reviewer_name, molecule, config, scope, reaction_id, criterion;
+```bash
+python3 expert_review/tools/export_reviews.py
 ```
 
-The `network`-scope rows line up column-for-column with `all_scores.csv`
-(`Model,Molecule,Run,Config,Criterion,Score`) once `scope`/`reaction_id` are dropped.
+This writes `exports/` (gitignored): `expert_scores.csv` (long format),
+`expert_reaction_scores.csv` (one row per reviewer × reaction, one column per criterion,
+plus the note), `expert_comments.csv` and `expert_assignments.csv`.

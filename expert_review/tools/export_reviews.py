@@ -2,11 +2,13 @@
 """Export expert review submissions from PlanetScale to CSV.
 
 Credentials are read from expert_review/planetscale.txt (gitignored), so nothing
-secret lives in this script. Writes three files into expert_review/exports/:
+secret lives in this script. Writes into expert_review/exports/ (also gitignored):
 
-  expert_scores.csv      every score, long format, both scopes
-  expert_network.csv     network-level scores only, in all_scores.csv column order
-  expert_comments.csv    free-text opinions and reaction notes
+  expert_scores.csv            every score, long format
+  expert_reaction_scores.csv   one row per reviewer x reaction, one column per
+                               criterion, plus the reviewer's note
+  expert_comments.csv          free-text notes
+  expert_assignments.csv       who was given which molecule, and what they did with it
 
 Usage:
     python3 expert_review/tools/export_reviews.py
@@ -14,14 +16,41 @@ Usage:
 
 import csv
 import json
-import re
-import ssl
-import subprocess
-import urllib.request
 from pathlib import Path
+
+from pscale import query
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
+
+CRITERIA = json.loads((ROOT / "data" / "review_index.json").read_text())["criteria"]["reaction"]
+
+
+def wide_reaction_scores():
+    # One pivot column per criterion, named after it; criteria come from the
+    # manifest (trusted), and are quoted as identifiers and literals.
+    cols = ", ".join(
+        "max(s.score) filter (where s.criterion = '{0}') as \"{0}\"".format(c.replace("'", "''"))
+        for c in CRITERIA
+    )
+    return f"""
+        select s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+               r.name as reaction_name, {cols},
+               c.body as note, max(s.updated_at) as updated_at
+          from expert_scores s
+          left join expert_reactions r
+            on r.model = s.model and r.molecule = s.molecule and r.config = s.config
+           and r.run = s.run and r.attempt = s.attempt and r.reaction_id = s.reaction_id
+          left join expert_comments c
+            on c.reviewer_name = s.reviewer_name and c.model = s.model
+           and c.molecule = s.molecule and c.config = s.config and c.run = s.run
+           and c.attempt = s.attempt and c.scope = 'reaction' and c.reaction_id = s.reaction_id
+         where s.scope = 'reaction'
+         group by s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+                  r.name, r.position, c.body
+         order by s.reviewer_name, s.molecule, r.position
+    """
+
 
 QUERIES = {
     "expert_scores.csv": """
@@ -30,66 +59,19 @@ QUERIES = {
           from expert_scores
          order by reviewer_name, molecule, config, scope, reaction_id, criterion
     """,
-    # Same columns, same order as pathway_explorer/meta_evaluations/all_scores.csv
-    # (scores here are 0-10; the LLM-judge scores there are 1-10).
-    "expert_network.csv": """
-        select model as "Model", molecule as "Molecule", run as "Run",
-               config as "Config", criterion as "Criterion", score as "Score",
-               reviewer_name as "Reviewer"
-          from expert_scores
-         where scope = 'network'
-         order by model, molecule, run, config, criterion
-    """,
+    "expert_reaction_scores.csv": wide_reaction_scores(),
     "expert_comments.csv": """
         select reviewer_name, model, molecule, run, config, scope,
                reaction_id, body, updated_at
           from expert_comments
          order by reviewer_name, molecule, config, scope, reaction_id
     """,
+    "expert_assignments.csv": """
+        select reviewer_name, model, molecule, run, config, status, assigned_at, updated_at
+          from expert_assignments
+         order by molecule, assigned_at
+    """,
 }
-
-
-def credentials():
-    """Pull the connection URI out of planetscale.txt."""
-    path = ROOT / "planetscale.txt"
-    if not path.exists():
-        raise SystemExit(f"missing {path} -- it holds the database credentials")
-    text = path.read_text()
-    m = re.search(r"postgresql://([^:]+):([^@]+)@([^:]+):(\d+)/(\w+)", text)
-    if not m:
-        raise SystemExit(f"could not find a connection URI in {path}")
-    user, password, host, port, database = m.groups()
-    return user, password, host, port, database
-
-
-def query(sql):
-    user, password, host, port, database = credentials()
-    req = urllib.request.Request(
-        f"https://{host}/sql",
-        data=json.dumps({"query": " ".join(sql.split()), "params": []}).encode(),
-        headers={
-            "Content-Type": "application/json",
-            "Neon-Connection-String":
-                f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode=require",
-        },
-    )
-    # Some python.org builds ship without a CA bundle, which makes urllib fail
-    # certificate verification; fall back to curl, which uses the system store.
-    try:
-        body = urllib.request.urlopen(req, context=ssl.create_default_context()).read()
-    except (urllib.error.URLError, ssl.SSLError):
-        body = subprocess.run(
-            ["curl", "-s", "-X", "POST", f"https://{host}/sql",
-             "-H", "Content-Type: application/json",
-             "-H", f"Neon-Connection-String: postgresql://{user}:{password}"
-                   f"@{host}:{port}/{database}?sslmode=require",
-             "--data-binary", json.dumps({"query": " ".join(sql.split()), "params": []})],
-            capture_output=True, check=True).stdout
-
-    payload = json.loads(body)
-    if "rows" not in payload:
-        raise SystemExit(f"query failed: {payload.get('message', payload)}")
-    return payload["fields"], payload["rows"]
 
 
 def main():

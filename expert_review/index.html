@@ -2,155 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#6366f1">
 <title>ASTRA · Expert Review</title>
 <link rel="icon" href="../demo/imgs/Fav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="css/review.css">
 </head>
 <body>
 
 <!-- ============================ LOGIN ============================ -->
-<section id="login" class="login panel">
-  <h2>Expert Review</h2>
-  <p class="muted tiny">Prebiotic synthesis network assessment. Your scores save as you
-  go, and signing in again picks up exactly where you left off.</p>
+<section id="login" class="login">
+  <div class="login-card">
+    <div class="login-hero">
+      <div class="orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="eyebrow">ASTRA · Origins of life</p>
+      <h1>Expert Review</h1>
+      <p>Help us judge how plausible AI-proposed prebiotic chemistry really is,
+      one reaction at a time.</p>
+      <ul class="hero-facts">
+        <li><i class="fa-solid fa-stopwatch" aria-hidden="true"></i><b>~45 s</b> per reaction</li>
+        <li><i class="fa-solid fa-sliders" aria-hidden="true"></i><b>5</b> quick scores</li>
+        <li><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i><b>Saves</b> as you go</li>
+      </ul>
+    </div>
 
-  <form id="login-form">
-    <div class="idblock">
+    <form id="login-form" class="login-body" novalidate>
       <div class="field">
-        <label for="in-user">Reviewer username</label>
-        <input id="in-user" type="text" required
+        <label for="in-user">Choose your reviewer username</label>
+        <input id="in-user" type="text" required minlength="2" maxlength="32"
                pattern="[A-Za-z0-9_.\-]+" autocapitalize="off" autocorrect="off"
-               spellcheck="false" autocomplete="username"
+               spellcheck="false" autocomplete="username" enterkeyhint="go"
                placeholder="e.g. jane_doe">
-        <p class="hint">Lowercase, no spaces. This is how your work is found again &mdash;
-        use the same one every time.</p>
+        <p class="hint">Shown on the leaderboard. Use the same one every time and
+        you'll pick up exactly where you left off.</p>
       </div>
-    </div>
 
-    <div class="dbblock">
-      <p class="legend">Database connection</p>
-      <!-- No credentials are stored here. Reviewers are given these out of band.
-           For local testing you may temporarily add value="..." to the two inputs
-           below, but never commit that -- this repo is public. -->
-      <div class="field">
-        <label for="in-db-user">Database username</label>
-        <input id="in-db-user" type="text" autocomplete="off" spellcheck="false" required
-               placeholder="pscale_api_...">
-      </div>
-      <div class="field">
-        <label for="in-db-pass">Database password</label>
-        <input id="in-db-pass" type="password" autocomplete="off" required
-               placeholder="pscale_pw_...">
-      </div>
-    </div>
+      <!-- The database credentials normally arrive in the invite link (#k=...).
+           No credentials are stored here, and this repo is public: never put
+           value="..." on these inputs. For local testing, js/local-creds.js
+           (gitignored) prefills them. -->
+      <details id="db-details" class="dbblock">
+        <summary>I have database credentials</summary>
+        <div class="field">
+          <label for="in-db-user">Database username</label>
+          <input id="in-db-user" type="text" autocomplete="off" spellcheck="false"
+                 autocapitalize="off" placeholder="pscale_api_...">
+        </div>
+        <div class="field">
+          <label for="in-db-pass">Database password</label>
+          <input id="in-db-pass" type="password" autocomplete="off" placeholder="pscale_pw_...">
+        </div>
+      </details>
+      <p id="invite-ok" class="invite-ok" hidden><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Invite link recognised</p>
 
-    <div class="field">
-      <button id="btn-login" class="btn primary" type="submit" style="width:100%">Sign in</button>
-    </div>
-    <p id="login-msg" class="notice" hidden></p>
-    <p class="dim tiny" style="margin-bottom:0">
-      Credentials are held in this browser tab only and are cleared when you close it.
-    </p>
-  </form>
+      <button id="btn-login" class="btn primary big" type="submit">Start reviewing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      <p id="login-msg" class="notice" hidden></p>
+    </form>
+  </div>
 </section>
 
 <!-- ============================= APP ============================= -->
 <div id="app" hidden>
 
   <header class="topbar">
-    <h1><span class="dot"></span> ASTRA · Expert Review</h1>
+    <button id="btn-rail" class="rankbtn" type="button" aria-controls="rail" aria-expanded="false"
+            title="Leaderboard">
+      <i class="fa-solid fa-trophy" aria-hidden="true"></i><b id="rank-short">–</b>
+    </button>
+    <div class="brand"><span class="dot"></span><span>ASTRA <em>Expert Review</em></span></div>
+    <span id="admin-pill" class="admin-pill" hidden><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Admin</span>
     <span class="spacer"></span>
-    <span class="who">Reviewing as <b id="who-name"></b></span>
-    <button id="btn-logout" class="btn small" type="button">Sign out</button>
+    <span class="streak" id="streak" hidden></span>
+    <button id="btn-sound" class="iconbtn" type="button" title="Sound on/off" aria-pressed="true"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></button>
+    <div class="who">
+      <span class="avatar" id="who-avatar" aria-hidden="true"></span>
+      <span class="who-name">@<b id="who-name"></b></span>
+      <button id="btn-logout" class="btn small ghost" type="button" title="Sign out"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i><span class="lbl">Sign out</span></button>
+    </div>
   </header>
 
-  <div class="wrap">
+  <div class="shell">
+    <div class="rail-backdrop" id="rail-backdrop" hidden></div>
 
-    <section class="panel">
-      <div class="pickers">
-        <div class="field">
-          <label for="sel-molecule">Target molecule</label>
-          <select id="sel-molecule"></select>
+    <!-- Leaderboard and personal stats: the left rail on desktop, a drawer on phones. -->
+    <aside id="rail" class="rail" aria-label="Leaderboard and progress">
+      <section class="card lb">
+        <div class="card-h">
+          <h2><i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Leaderboard</h2>
+          <span class="tiny dim">reactions reviewed</span>
         </div>
-        <div class="field" style="flex:1 1 320px; min-width:260px">
-          <label>Candidate network <span class="dim">(authorship hidden)</span></label>
-          <div id="net-buttons" class="netbtns"></div>
+        <ol id="lb-list" class="lb-list"></ol>
+        <p id="lb-nudge" class="nudge"></p>
+      </section>
+
+      <section class="card me">
+        <div class="stats">
+          <div><b id="st-reactions">0</b><span>reactions</span></div>
+          <div><b id="st-molecules">0</b><span>molecules</span></div>
+          <div><b id="st-notes">0</b><span>notes</span></div>
         </div>
-      </div>
-      <div class="progress">
-        <span class="tiny muted" id="overall-progress">&nbsp;</span>
-        <span class="bar"><i id="overall-bar"></i></span>
-      </div>
-    </section>
+        <h3><i class="fa-solid fa-medal" aria-hidden="true"></i> Badges</h3>
+        <div id="badges" class="badges"></div>
+      </section>
 
-    <p id="app-msg" class="notice" hidden></p>
+      <section class="card panelprog">
+        <div class="card-h">
+          <h3><i class="fa-solid fa-users" aria-hidden="true"></i> Panel progress</h3>
+          <span class="tiny dim" id="panel-frac"></span>
+        </div>
+        <div class="bar"><i id="panel-bar"></i></div>
+        <p class="tiny dim" id="panel-note"></p>
+      </section>
+    </aside>
 
-    <section class="panel">
-      <h3 style="margin:0 0 2px" id="net-title">&nbsp;</h3>
-      <p class="muted tiny" style="margin:0" id="net-strategy">&nbsp;</p>
-      <div class="progress">
-        <span class="tiny muted" id="net-progress">&nbsp;</span>
-        <span class="bar"><i id="net-bar"></i></span>
-      </div>
-    </section>
-
-    <!-- slide deck -->
-    <div id="chips" class="chips"></div>
-    <div id="slides"></div>
-
-    <div class="deckbar">
-      <button id="btn-prev" class="btn" type="button">&larr; Previous</button>
-      <span class="count" id="slide-count">&nbsp;</span>
-      <button id="btn-next" class="btn" type="button">Next &rarr;</button>
-      <span class="spacer"></span>
-      <button id="btn-graph" class="btn" type="button">View network graph</button>
-    </div>
-
+    <main id="stage" class="stage" aria-live="polite"></main>
   </div>
-</div>
 
-<!-- ========================= GRAPH POPUP ========================= -->
-<div id="graph-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="graph-title">
-  <div class="dialog">
-    <div class="mhead">
-      <h3 id="graph-title">Network graph</h3>
-      <span class="dim tiny" id="graph-sub"></span>
-      <span class="spacer"></span>
-      <button id="btn-focus" class="btn small" type="button" aria-pressed="false">Focus this reaction</button>
-      <button id="btn-zoom-in"  class="btn small" type="button" title="Zoom in">+</button>
-      <button id="btn-zoom-out" class="btn small" type="button" title="Zoom out">&minus;</button>
-      <button id="btn-zoom-fit" class="btn small" type="button">Fit</button>
-      <button id="btn-graph-close" class="btn small" type="button">Close &times;</button>
+  <!-- The whole network, in the Pathway Explorer, focused on the current reaction. -->
+  <div id="net-sheet" class="sheet" hidden>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-h">
+        <h3 id="sheet-title">Network</h3>
+        <span class="tiny dim">tap any node for details</span>
+        <span class="spacer"></span>
+        <button id="sheet-close" class="iconbtn" type="button" title="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <iframe id="explorer" title="Pathway Explorer"></iframe>
     </div>
-    <div id="cy"></div>
-    <div class="mfoot">
-      <span class="legend">
-        <span><i class="round" style="color:#2c3e50"></i>Starting</span>
-        <span><i class="round" style="color:#2980b9"></i>Intermediate</span>
-        <span><i class="round" style="color:#c0392b"></i>Target</span>
-        <span><i style="background:#c692dd"></i>Hydrothermal</span>
-        <span><i style="background:#ce9576"></i>Surface</span>
-        <span><i style="background:#1abc9c"></i>Biochemical</span>
-      </span>
-      <span class="spacer" style="flex:1"></span>
-      <span class="dim">Click a reaction to jump to it · Esc to close</span>
+  </div>
+
+  <!-- Gentle "you're nearly done" before signing out. -->
+  <div id="leave-sheet" class="sheet center" hidden>
+    <div class="sheet-panel small" role="dialog" aria-modal="true" aria-labelledby="leave-title">
+      <h3 id="leave-title">So close!</h3>
+      <p id="leave-text" class="muted"></p>
+      <div class="row-end">
+        <button id="leave-yes" class="btn ghost" type="button">Sign out anyway</button>
+        <button id="leave-no" class="btn primary" type="button">Keep going</button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Graph renderer, copied verbatim from pathway_explorer/js/. Classic scripts on
-     window.SynthVis, so they must load in this order and before app.js. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"></script>
-<script src="js/vendor-graph/utils.js"></script>
-<script src="js/vendor-graph/data-loader.js"></script>
-<script src="js/vendor-graph/graph-layout.js"></script>
-<script src="js/vendor-graph/cytoscape-bridge.js"></script>
-
+<!-- Local testing only: fills the database fields. Gitignored, so it 404s harmlessly
+     on GitHub Pages. See README "Signing in". -->
+<script src="js/local-creds.js"></script>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>

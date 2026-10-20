@@ -52,7 +52,8 @@ create table if not exists expert_comments (
         (reviewer_name, model, molecule, config, run, attempt, scope, reaction_id)
 );
 
--- Marks a network as finished, so a reviewer can tell at a glance what is left.
+-- Marks a network as finished. Unused since v3 (reaction-level scoring); kept so
+-- earlier rows survive.
 create table if not exists expert_submissions (
     id              bigserial primary key,
     reviewer_name   text        not null,
@@ -66,13 +67,54 @@ create table if not exists expert_submissions (
         (reviewer_name, model, molecule, config, run, attempt)
 );
 
+-- v3: the reactions under review, one row each, seeded by tools/seed_reactions.py.
+-- payload is the raw reaction JSON with inputs/outputs resolved to
+-- {id, formula, name, role}, so the review page needs nothing else to show it.
+create table if not exists expert_reactions (
+    id              bigserial primary key,
+    model           text        not null,
+    molecule        text        not null,
+    config          text        not null,
+    run             int         not null default 1,
+    attempt         text        not null default '',
+    reaction_id     text        not null,
+    position        int         not null,
+    name            text        not null,
+    payload         jsonb       not null,
+    updated_at      timestamptz not null default now(),
+    constraint expert_reactions_key unique
+        (model, molecule, config, run, attempt, reaction_id)
+);
+
+-- v3: which molecule each reviewer was given. The page spreads molecules across
+-- reviewers by assigning the one with the fewest other active/done reviewers.
+create table if not exists expert_assignments (
+    id              bigserial primary key,
+    reviewer_name   text        not null,
+    model           text        not null,
+    molecule        text        not null,
+    config          text        not null,
+    run             int         not null default 1,
+    attempt         text        not null default '',
+    status          text        not null check (status in ('active', 'skipped', 'done')),
+    assigned_at     timestamptz not null default now(),
+    updated_at      timestamptz not null default now(),
+    constraint expert_assignments_key unique
+        (reviewer_name, model, molecule, config, run, attempt)
+);
+
 create index if not exists expert_scores_lookup   on expert_scores   (reviewer_name, molecule);
 create index if not exists expert_comments_lookup on expert_comments (reviewer_name, molecule);
+create index if not exists expert_reactions_lookup on expert_reactions (molecule, position);
+create index if not exists expert_assignments_lookup on expert_assignments (molecule, status);
 
 -- The app reads its own rows back to restore a reviewer's progress, so SELECT is
 -- required too; pg_write_all_data alone does not grant it.
-grant select, insert, update, delete on expert_scores, expert_comments, expert_submissions
+grant select, insert, update, delete
+    on expert_scores, expert_comments, expert_submissions, expert_reactions, expert_assignments
     to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_scores_id_seq       to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_comments_id_seq     to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_submissions_id_seq  to pscale_api_y1qbjsmef33x;
+grant usage, select on sequence expert_reactions_id_seq    to pscale_api_y1qbjsmef33x;
+grant usage, select on sequence expert_assignments_id_seq  to pscale_api_y1qbjsmef33x;
