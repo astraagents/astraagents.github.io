@@ -25,15 +25,15 @@ EXPLORER = ROOT.parent / "pathway_explorer"
 MODEL = "gpt6_xhigh_azure"
 CONFIG = "deep_research_gpt6"
 
-# Scored per reaction: the canonical criteria that make sense for a single step,
-# in the same order they appear in pathway_explorer/meta_evaluations/all_scores.csv.
-# (Pathway Coherence and Network Completeness only exist at network level.)
+# Scored per reaction: the criteria from GeminiJudgePrompt.md that make sense for
+# a single step. (Pathway Coherence, Environmental Consistency and Network
+# Completeness judge how steps fit together, so they stay network-level.)
+# Their scoring anchors are shown to reviewers via CRITERION_GUIDE in js/app.js.
 REACTION_CRITERIA = [
     "Chemical Feasibility",
-    "Environmental Consistency",
-    "Mechanistic Detail",
-    "Prebiotic Plausibility",
-    "Novelty of Reactions",
+    "Reaction Justification",
+    "Geochemical Condition Realism",
+    "Novelty of Reaction",
 ]
 
 

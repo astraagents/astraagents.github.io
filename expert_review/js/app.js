@@ -28,14 +28,55 @@ const ADMIN_USERNAME = "admin_123";
 const CREDS_KEY = "astra_review_db";
 const USER_KEY = "astra_review_user";
 
-/** One line under each criterion, so every reviewer reads it the same way. */
-const CRITERION_HELP = {
-  "Chemical Feasibility": "Would this step actually proceed as written: thermodynamics, kinetics, stoichiometry?",
-  "Environmental Consistency": "Do the stated setting and conditions fit each other and the neighbouring steps?",
-  "Mechanistic Detail": "Is the mechanism specific, correct and well explained?",
-  "Prebiotic Plausibility": "Could this happen on the early Earth without modern lab intervention?",
-  "Novelty of Reactions": "Does it go beyond textbook steps in a scientifically meaningful way?",
+/**
+ * What each criterion asks, so every reviewer reads it the same way. `help` is the
+ * line under the criterion; `anchors` and `note` open behind its (?) button. Taken
+ * from GeminiJudgePrompt.md, reworded for a single reaction, with the bottom band
+ * widened to 0 because humans score 0-10.
+ */
+const CRITERION_GUIDE = {
+  "Chemical Feasibility": {
+    help: "Is this step thermodynamically and kinetically plausible under the stated conditions, and is the claimed product the expected one?",
+    anchors: [
+      ["0–3", "Thermodynamically forbidden, gives the wrong product, or unbalanced in a way that changes the chemistry."],
+      ["4–6", "Reasonable overall, but a key aspect is doubtful: implausible kinetics at the stated temperature, wrong regio/stereochemical outcome, or a missing reagent."],
+      ["7–8", "Chemically reasonable; minor issues only (e.g. an optimistic rate, unstated by-products)."],
+      ["9–10", "Chemically sound, balanced, and consistent with known reactivity under the stated conditions."],
+    ],
+  },
+  "Reaction Justification": {
+    help: "Does the step give a reaction type, a correct stoichiometric description, and a rationale backed by literature or flagged as speculative?",
+    anchors: [
+      ["0–3", "No reaction type or rationale, or the stated rationale contradicts the reaction."],
+      ["4–6", "A rationale is present but generic; literature support or speculative status is unstated."],
+      ["7–8", "A specific reaction type and rationale, with a supporting citation or an explicit speculative flag."],
+      ["9–10", "A specific, internally consistent reaction type and rationale; side reactions or selectivity discussed where relevant."],
+    ],
+    note: "Judges how consistent and complete the written justification is. It is not an arrow-pushing mechanism review; the networks don't contain full mechanisms.",
+  },
+  "Geochemical Condition Realism": {
+    help: "Are the concentrations, catalysts, energy source and reagents consistent with published constraints for the stated early-Earth environment?",
+    anchors: [
+      ["0–3", "Relies on reagents or conditions inconsistent with early Earth: O₂, purified modern reagents, enzymes, or implausibly high concentrations with no concentration mechanism."],
+      ["4–6", "Generally consistent, but some conditions or concentrations are unsupported or only weakly argued."],
+      ["7–8", "Conditions and reagents are consistent with published geochemical constraints; minor assumptions are stated."],
+      ["9–10", "All conditions, catalysts and concentrations are explicitly tied to published constraints for the stated environment."],
+    ],
+    note: "Not whether this is the origin-of-life scenario. No framework (cyanosulfidic, iron–sulfur, formamide…) or feedstock is privileged; competing scenarios are scored on the same basis.",
+  },
+  "Novelty of Reaction": {
+    help: "Does this step go beyond a standard textbook reaction while remaining chemically defensible?",
+    anchors: [
+      ["0–3", "A standard textbook reaction."],
+      ["4–6", "Mostly standard, with one non-obvious element (reagent, intermediate or condition)."],
+      ["7–8", "A non-obvious but defensible transformation, intermediate or catalytic strategy."],
+      ["9–10", "A substantially novel yet chemically defensible step."],
+    ],
+    note: "Novelty that is chemically unsound should not score above 6.",
+  },
 };
+/** Criteria whose scoring guide is expanded; kept open from card to card. */
+const openGuides = new Set();
 
 /** `icon` is a Font Awesome solid icon name; `hue` tints it once earned. */
 const BADGES = [
@@ -400,7 +441,7 @@ function introView() {
       textContent: done && done < n
         ? `You're ${Math.round((done / n) * 100)}% through. Just ${left} reaction${left === 1 ? "" : "s"} left to finish ${pretty(entry.molecule)}.`
         : `A proposed prebiotic synthesis network for ${pretty(entry.molecule)}. ` +
-          "Score each reaction on five criteria. Your scores save as you tap.",
+          `Score each reaction on ${criteria.length} criteria. Your scores save as you tap.`,
     }),
     el("div", { className: "intro-stats" }, [
       ring,
@@ -485,7 +526,7 @@ function reactionView(i, dir = 0) {
   const paintNext = () => {
     const have = criteria.filter((c) => saver.sel[c] != null).length;
     next.disabled = have < criteria.length;
-    if (have < criteria.length) setLabel(next, `Score all five (${have}/${criteria.length})`);
+    if (have < criteria.length) setLabel(next, `Score all (${have}/${criteria.length})`);
     else setLabel(next, "Save & next", wasComplete ? "arrow-right" : "check");
   };
   saver.onChange = paintNext;
@@ -822,7 +863,7 @@ function formulaNode(formula) {
 /* -------------------------------------------------------------- scoring -- */
 
 /**
- * Five rows of 0-10 tap pills plus an optional note. Every tap autosaves after a
+ * One row of 0-10 tap pills per criterion, plus an optional note. Every tap autosaves after a
  * short debounce; tapping the selected pill again clears that score (the row is
  * deleted, never stored as a zero). Returns the card and its saver, whose
  * flush() resolves once everything pending is in the database.
@@ -882,12 +923,35 @@ function scoreForm(rxn, key) {
       pills.append(p);
     }
 
+    const guide = CRITERION_GUIDE[criterion];
+    let tip = null, more = null;
+    if (guide) {
+      const id = `guide-${criteria.indexOf(criterion)}`;
+      more = el("div", { className: "crit-guide", id, hidden: !openGuides.has(criterion) }, [
+        el("dl", {}, guide.anchors.flatMap(([band, text]) => [
+          el("dt", { textContent: band }),
+          el("dd", { textContent: text }),
+        ])),
+        guide.note ? el("p", { className: "crit-guide-note", textContent: guide.note }) : null,
+      ]);
+      tip = el("button", { type: "button", className: "crit-tip", title: "How to score this" }, [icon("circle-question")]);
+      tip.setAttribute("aria-label", `How to score ${criterion}`);
+      tip.setAttribute("aria-controls", id);
+      tip.setAttribute("aria-expanded", String(!more.hidden));
+      tip.addEventListener("click", () => {
+        more.hidden = !more.hidden;
+        tip.setAttribute("aria-expanded", String(!more.hidden));
+        if (more.hidden) openGuides.delete(criterion); else openGuides.add(criterion);
+      });
+    }
+
     row.append(
       el("div", { className: "crit-h" }, [
-        el("span", { className: "crit-name", textContent: criterion }),
+        el("span", { className: "crit-name" }, [criterion, tip]),
         value,
       ]),
-      el("p", { className: "crit-help", textContent: CRITERION_HELP[criterion] || "" }),
+      el("p", { className: "crit-help", textContent: guide?.help || "" }),
+      more,
       pills
     );
     paint();

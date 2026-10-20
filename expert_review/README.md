@@ -1,7 +1,7 @@
 # ASTRA Expert Review Platform
 
 A static, mobile-first review platform where domain experts score ASTRA's prebiotic
-synthesis networks **one reaction at a time**: five criteria, each 0–10, plus an
+synthesis networks **one reaction at a time**: four criteria, each 0–10, plus an
 optional note. Each reviewer is assigned a molecule, works through its reactions as
 cards, and climbs a shared leaderboard. It runs as plain JavaScript on GitHub Pages
 with no backend. The reactions live in PlanetScale Postgres and submissions go
@@ -15,11 +15,15 @@ straight there.
 | Molecules | Arginine, Glutamate, Glycine, Histidine, L-Alanine, L-Proline, Serine, Threonine, Valine |
 | Queue | **9 networks, 166 reactions**, stored in `expert_reactions` |
 
-Criteria per reaction (5): Chemical Feasibility, Environmental Consistency,
-Mechanistic Detail, Prebiotic Plausibility, Novelty of Reactions. These are the
-reaction-level subset of the canonical LLM-judge criteria (the earlier
-`pathway_explorer/meta_evaluations/all_scores.csv`, now only in git history), so expert
-scores sit alongside the judge scores on a near-identical scale. The judges score 1–10; humans score
+Criteria per reaction (4): Chemical Feasibility, Reaction Justification,
+Geochemical Condition Realism, Novelty of Reaction. These are the reaction-level
+subset of the LLM-judge criteria in `GeminiJudgePrompt.md` (Pathway Coherence,
+Environmental Consistency and Network Completeness stay network-level), so expert
+scores sit alongside the judge scores on a near-identical scale. Each criterion shows
+a one-line description, and its **(?)** button expands the judge prompt's scoring
+anchors, reworded for a single reaction (`CRITERION_GUIDE` in `js/app.js`).
+Scores saved under the earlier v3 criteria (Environmental Consistency, Mechanistic
+Detail, Prebiotic Plausibility, Novelty of Reactions) stay in the database and are ignored. The judges score 1–10; humans score
 0–10, because 0 gives a reviewer an explicit "not plausible at all".
 
 Scores are entered with **11 tap pills (0–10)**. Tapping the selected pill again
@@ -39,7 +43,7 @@ Their rows (`scope = 'network'`) stay in the database and are ignored.
    (with names and formulae; see *Molecular structures*), then the setting,
    conditions, agents, mechanism and reasoning, and a *View in network* button that opens
    the Pathway Explorer focused on that reaction. Scores autosave ~0.6 s after a tap.
-   *Save & next* unlocks once all five are set and moves to the next unscored reaction.
+   *Save & next* unlocks once all four are set and moves to the next unscored reaction.
    *Skip for now* moves on without saving. The progress segments jump to any reaction.
 4. **Finishing a molecule** marks it done, celebrates, and shows the reviewer's mean
    per criterion **next to the other reviewers' mean**. That comparison only appears
@@ -223,7 +227,7 @@ js/explorer-sidebar.js reaction sidebar from raw JSON; ?focus= / postMessage foc
 js/local-creds.js      local testing only, gitignored
 js/vendor/
   neon-serverless.js   @neondatabase/serverless 1.2.0, vendored ESM bundle
-data/review_index.json the 9 networks + the 5 criteria
+data/review_index.json the 9 networks + the 4 criteria
 data/pubchem.json      molecule (InChI or names) -> PubChem CID, formula check
 tools/
   build_review_index.py  manifest
@@ -245,12 +249,14 @@ schema.sql, schema_reset.sql
 | `expert_assignments` | reviewer × network, `active`/`skipped`/`done` | the page |
 | `expert_submissions` | *(v2 network submissions, unused since v3)* | n/a |
 
-The leaderboard counts, per reviewer, the reactions with **all five** criteria scored:
+The leaderboard counts, per reviewer, the reactions with **all four** criteria scored:
 
 ```sql
 select reviewer_name, count(*) from (
   select reviewer_name, molecule, reaction_id from expert_scores
-   where scope = 'reaction' group by 1, 2, 3 having count(distinct criterion) = 5) t
+   where scope = 'reaction' and criterion = any(array['Chemical Feasibility', 'Reaction Justification',
+                                'Geochemical Condition Realism', 'Novelty of Reaction'])
+   group by 1, 2, 3 having count(distinct criterion) = 4) t
  group by 1 order by 2 desc;
 ```
 
