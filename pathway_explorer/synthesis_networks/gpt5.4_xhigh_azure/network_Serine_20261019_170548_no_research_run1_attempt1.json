@@ -1,0 +1,980 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "Use glycolaldehyde as the central hub because serine's beta-hydroxymethyl side chain is already encoded in this C2 hydroxyaldehyde, minimizing later redox editing. Four independent entry routes supply glycolaldehyde: surface formose initiation, surface cyanosulfidic photoredox chemistry, hydrothermal reduction of glyoxal, and more speculative hydrothermal CO homologation. In concentrated prebiotic pools, glycolaldehyde is converted either to serine nitrile by Strecker chemistry or to a hydroxymethylhydantoin reservoir; direct hydrolysis, stepwise amide hydrolysis, and hydantoin hydrolysis then release serine. The main bottleneck is freeing serine from these masked precursors without degrading the beta-hydroxyl group.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2S",
+        "iupac_name": "sulfane",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H2O2",
+        "iupac_name": "ethanedial",
+        "common_name": "glyoxal",
+        "inchi": "InChI=1S/C2H2O2/c3-1-2-4/h1-2H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine nitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H8N2O2",
+        "iupac_name": "2-amino-3-hydroxypropanamide",
+        "common_name": "serinamide",
+        "inchi": "InChI=1S/C3H8N2O2/c4-2(1-6)3(5)7/h2,6H,1,4H2,(H2,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H6N2O3",
+        "iupac_name": "5-(hydroxymethyl)imidazolidine-2,4-dione",
+        "common_name": "5-hydroxymethylhydantoin",
+        "inchi": "InChI=1S/C4H6N2O3/c7-1-2-3(8)6-4(9)5-2/h2,7H,1H2,(H2,5,6,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose initiation to glycolaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ca(OH)2-rich alkaline minerals"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "alkaline earth hydroxides",
+          "aqueous": true,
+          "other": "wet-dry cycling in mildly alkaline evaporitic pools; pH 9-10"
+        },
+        "mechanism": "Base-catalyzed formose initiation couples two formaldehyde equivalents via enediol/enolate chemistry to give glycolaldehyde.",
+        "reasoning": "Alkaline evaporitic pools can concentrate formaldehyde and promote the first C-C bond of the formose network. Glycolaldehyde is the key C2 product, though controlling overreaction to higher sugars is a major challenge."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanosulfidic photoredox synthesis of glycolaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "copper cyanide photoredox complexes"
+        ],
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II) cyanide photoredox cycle",
+          "aqueous": true,
+          "other": "UV irradiation in shallow anoxic pools; HS-/H2S serves as reductant"
+        },
+        "mechanism": "UV photoredox reduction and homologation of cyanide-derived intermediates, followed by hydrolysis, furnishes glycolaldehyde.",
+        "reasoning": "UV cyanosulfidic chemistry directly links cyanide feedstocks to glycolaldehyde under anoxic surface conditions and is one of the strongest experimental surface routes to this C2 hydroxyaldehyde."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Partial reduction of glyoxal to glycolaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS",
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "350-420K",
+          "pressure": "high",
+          "catalyst": "FeS/NiS mineral surfaces",
+          "aqueous": true,
+          "other": "H2-rich subseafloor fluids; mildly alkaline conditions"
+        },
+        "mechanism": "Surface-mediated hydrogenation reduces one aldehyde of glyoxal to the corresponding primary alcohol.",
+        "reasoning": "Reducing one carbonyl of glyoxal is chemically simpler than building a new C-C bond and is compatible with H2-rich FeS/NiS settings, giving a conservative hydrothermal entry into the glycolaldehyde hub."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrothermal CO homologation to glycolaldehyde",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "awaruite (Ni3Fe)",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "370-430K",
+          "pressure": "high",
+          "catalyst": "reduced Fe-Ni alloy and sulfide surfaces",
+          "aqueous": true,
+          "other": "CO-rich alkaline vent fluids with strong redox gradients"
+        },
+        "mechanism": "Adsorbed CO-derived formyl/carbonyl fragments undergo hydrogenation and C-C coupling on reduced mineral surfaces, releasing glycolaldehyde.",
+        "reasoning": "FTT-like CO homologation on reduced Fe-Ni minerals can in principle furnish oxygenated C2 products. Direct glycolaldehyde release remains less secure experimentally than the surface routes, so this branch is included as a plausible but more speculative hydrothermal alternative."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of serine nitrile",
+        "inputs": [
+          "mol_009",
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "concentrated prebiotic pools or mineral interfaces; evaporation concentration; pH 6-8"
+        },
+        "mechanism": "Imine formation from glycolaldehyde and ammonia is followed by cyanide addition to form the alpha-aminonitrile.",
+        "reasoning": "Glycolaldehyde already contains the carbon skeleton required for serine, so Strecker capture is a short route to the correct beta-hydroxylated aminonitrile. Concentrated prebiotic pools can accumulate ammonia and cyanide alongside the aldehyde."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Direct hydrolysis of serine nitrile to serine",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe2+-rich clay interfaces"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "Fe2+-rich mineral surfaces",
+          "aqueous": true,
+          "other": "near-boiling geothermal cycling with repeated heating-cooling"
+        },
+        "mechanism": "Net nitrile hydration and hydrolysis yields the free amino acid.",
+        "reasoning": "Aminonitriles are masked amino acids. Repeated near-boiling pool cycles and mineral-assisted hydration can carry serine nitrile to serine, although the beta-hydroxylated product remains vulnerable to side reactions."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Partial hydrolysis of serine nitrile to serinamide",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "silica",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-350K",
+          "pressure": "1 atm",
+          "catalyst": "silica/clay mineral surfaces",
+          "aqueous": true,
+          "other": "shorter geothermal pulses; incomplete hydrolysis"
+        },
+        "mechanism": "Single-stage nitrile hydration gives the amide.",
+        "reasoning": "Under milder or shorter-lived hydrolysis conditions, the nitrile can stop at the amide stage. This creates a distinct reservoir that can be converted later under continued cycling."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of serinamide to serine",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe2+-rich clay interfaces"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "Fe2+-rich mineral surfaces",
+          "aqueous": true,
+          "other": "extended aqueous residence during geothermal cycling"
+        },
+        "mechanism": "Amide hydrolysis liberates the carboxylic acid.",
+        "reasoning": "Amide hydrolysis is slower than nitrile hydration but becomes plausible in repeatedly heated aqueous pools, releasing free serine once enough residence time is available."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Bucherer-Bergs type formation of 5-hydroxymethylhydantoin",
+        "inputs": [
+          "mol_009",
+          "mol_006",
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "carbonate-rich mineral interfaces"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "carbonate-concentrating mineral surfaces",
+          "aqueous": true,
+          "other": "concentrated ammonium carbonate/cyanide chemistry in prebiotic pools"
+        },
+        "mechanism": "Cyanohydrin and imino intermediates trap carbamoyl equivalents and cyclize to the substituted hydantoin.",
+        "reasoning": "Bucherer-Bergs-type chemistry offers an alternative protected precursor: the reactive glycolaldehyde carbon skeleton is trapped as a hydroxymethylhydantoin in carbonate-, ammonia-, and cyanide-rich pools."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrolysis of 5-hydroxymethylhydantoin to serine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "clay mineral interfaces"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": "clay-rich geothermal interfaces",
+          "aqueous": true,
+          "other": "extended hydrolysis under anoxic geothermal cycling"
+        },
+        "mechanism": "Ring opening and carbamoyl hydrolysis liberate the corresponding amino acid.",
+        "reasoning": "Hydantoins are classic masked amino acid reservoirs. Extended geothermal hydrolysis can open the ring and ultimately release serine, providing an alternative to direct aminonitrile hydrolysis."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Formose-Strecker-direct hydrolysis",
+        "description": "Surface formose initiation gives glycolaldehyde, which is converted to serine nitrile in prebiotic pools and hydrolyzed directly to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Formose-Strecker-stepwise hydrolysis",
+        "description": "Formose-derived glycolaldehyde enters Strecker chemistry, then proceeds through isolable serinamide before yielding serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic-Strecker-direct hydrolysis",
+        "description": "HCN/H2S photoredox chemistry supplies glycolaldehyde, which is captured as serine nitrile and hydrolyzed directly to serine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Cyanosulfidic-Strecker-stepwise hydrolysis",
+        "description": "Photochemically generated glycolaldehyde undergoes Strecker synthesis and then stepwise hydrolysis via serinamide.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Glyoxal-reduction-Strecker-direct hydrolysis",
+        "description": "Hydrothermal reduction of glyoxal furnishes glycolaldehyde, followed by Strecker capture and direct hydrolysis to serine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Glyoxal-reduction-Strecker-stepwise hydrolysis",
+        "description": "Hydrothermal glyoxal reduction feeds glycolaldehyde into Strecker chemistry, then serinamide hydrolysis releases serine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "CO-homologation-Strecker-direct hydrolysis",
+        "description": "A speculative hydrothermal CO homologation route makes glycolaldehyde, which then undergoes Strecker synthesis and direct hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "CO-homologation-Strecker-stepwise hydrolysis",
+        "description": "Hydrothermal CO homologation supplies glycolaldehyde that is converted to serine through serine nitrile and serinamide.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Formose-hydantoin route",
+        "description": "Formose-derived glycolaldehyde is trapped as a hydroxymethylhydantoin reservoir and later hydrolyzed to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanosulfidic-hydantoin route",
+        "description": "Cyanosulfidic photoredox chemistry supplies glycolaldehyde, which enters a Bucherer-Bergs-type hydantoin route to serine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_003",
+      "mol_005",
+      "mol_006",
+      "mol_009",
+      "mol_010",
+      "mol_013"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.68,
+          "rxn_005": 0.42,
+          "rxn_006": 0.24
+        },
+        "chemical_feasibility": 0.43,
+        "pathway_coherence": 0.57,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.46,
+        "feedback": "Conceptually reasonable glycolaldehyde -> serine nitrile -> serine route, but two of the three steps are mis-specified. rxn_005 is a Strecker step that should release H2O. rxn_006 is an unbalanced conservation violation; a chemically reasonable overall form is serine nitrile + 2 H2O -> serine + NH3. The formose entry is plausible on mineral-rich surfaces, but selectivity and transfer into the aqueous hydrolysis setting are not explained.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Write rxn_001 explicitly as 2 CH2O -> glycolaldehyde",
+          "Correct rxn_005 to include H2O as a product",
+          "Replace direct rxn_006 with explicit hydrolysis stoichiometry or use the amide sequence in P2"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.68,
+          "rxn_005": 0.42,
+          "rxn_007": 0.5,
+          "rxn_008": 0.3
+        },
+        "chemical_feasibility": 0.49,
+        "pathway_coherence": 0.66,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.43,
+        "overall_confidence": 0.53,
+        "feedback": "This is more coherent than P1 because amino nitrile hydrolysis normally proceeds through an amide. However rxn_005 is missing H2O as a product, rxn_007 is missing H2O as a reactant, and rxn_008 should consume H2O and release NH3. The overall route is plausible in a concentrated aqueous pool, but the network labels those steps only as 'Biochemical' and does not justify transfer from the surface source of glycolaldehyde.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Keep the amide intermediate and correct stoichiometry: rxn_007 needs H2O, rxn_008 needs H2O and releases NH3",
+          "Specify pH and temperature for the aqueous hydrolysis setting instead of using 'Biochemical'",
+          "Add a transport and concentration step from the surface source of glycolaldehyde into the reaction pool"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.05,
+          "rxn_005": 0.42,
+          "rxn_006": 0.24
+        },
+        "chemical_feasibility": 0.23,
+        "pathway_coherence": 0.35,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.28,
+        "feedback": "The entry step is unacceptable as written. rxn_002, HCN + H2S -> glycolaldehyde, is deterministically unbalanced and no simple missing small molecule fixes it. It also does not represent the actual cyanosulfidic photoredox chemistry, which requires a larger UV-driven redox network and realistic metal mediation. Downstream, rxn_005 should release H2O and rxn_006 should consume 2 H2O and release NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_002 with an explicit multi-step cyanosulfidic photoredox subnetwork including UV and realistic metal or mineral mediators",
+          "Correct rxn_005 and rxn_006 stoichiometry by adding H2O and NH3 where required",
+          "Document how glycolaldehyde is isolated from the photoredox mixture before Strecker chemistry"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.05,
+          "rxn_005": 0.42,
+          "rxn_007": 0.5,
+          "rxn_008": 0.3
+        },
+        "chemical_feasibility": 0.32,
+        "pathway_coherence": 0.45,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.43,
+        "overall_confidence": 0.36,
+        "feedback": "The stepwise hydrolysis part is better than direct nitrile hydrolysis, but the pathway is still undermined by rxn_002. As written, the cyanosulfidic entry is not mass balanced and omits the actual photoredox network. Downstream corrections are also required: rxn_005 should produce H2O, rxn_007 should consume H2O, and rxn_008 should consume H2O and release NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Replace rxn_002 with a mechanistically explicit cyanosulfidic sequence",
+          "Correct rxn_005, rxn_007, and rxn_008 stoichiometry with water and NH3",
+          "Define a real aqueous pool environment for the hydrolysis steps"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.73,
+          "rxn_005": 0.42,
+          "rxn_006": 0.24
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.49,
+        "feedback": "This is a relatively defensible entry route because rxn_003 is balanced and hydrothermal reduction of glyoxal to glycolaldehyde is chemically plausible with suitable mineral catalysts. The weaknesses are downstream: rxn_005 needs H2O as a product and rxn_006 needs 2 H2O as reactants plus NH3 as a product. The pathway also assumes export of glycolaldehyde from a hydrothermal setting into a concentrated aqueous pool without justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify the hydrothermal catalyst or mineral for selective glyoxal -> glycolaldehyde reduction",
+          "Correct rxn_005 to release H2O and rxn_006 to consume 2 H2O and release NH3",
+          "Add a justified transfer and concentration step from the hydrothermal source to the hydrolysis environment"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.73,
+          "rxn_005": 0.42,
+          "rxn_007": 0.5,
+          "rxn_008": 0.3
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.43,
+        "overall_confidence": 0.56,
+        "feedback": "This is the strongest pathway in the network. rxn_003 is balanced and reasonably plausible under hydrothermal conditions with H2 and suitable mineral catalysts, and stepwise nitrile -> amide -> amino acid hydrolysis is more realistic than direct nitrile hydrolysis. However the written stoichiometry still fails: rxn_005 should produce H2O, rxn_007 should consume H2O, and rxn_008 should consume H2O and release NH3. The downstream environment also needs to be stated as a specific prebiotic aqueous setting rather than 'Biochemical'.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Correct downstream stoichiometry: rxn_005 releases H2O, rxn_007 consumes H2O, rxn_008 consumes H2O and releases NH3",
+          "Define a concrete prebiotic aqueous environment for the hydrolysis sequence",
+          "Support rxn_003 with explicit mineral catalysts and conditions to improve selectivity"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_004": 0.3,
+          "rxn_005": 0.42,
+          "rxn_006": 0.24
+        },
+        "chemical_feasibility": 0.31,
+        "pathway_coherence": 0.46,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.37,
+        "feedback": "Even after balancing rxn_004 as 2 CO + 2 H2 -> glycolaldehyde, the entry chemistry remains highly speculative. Direct hydrothermal CO homologation to glycolaldehyde is not well established and would require strong catalytic justification. Downstream, rxn_005 should release H2O and rxn_006 should consume 2 H2O and release NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Write rxn_004 explicitly as 2 CO + 2 H2 -> glycolaldehyde and justify the catalyst",
+          "Provide stronger evidence or replace the speculative CO homologation entry",
+          "Correct rxn_005 and rxn_006 stoichiometry"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.3,
+          "rxn_005": 0.42,
+          "rxn_007": 0.5,
+          "rxn_008": 0.3
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.56,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.43,
+        "overall_confidence": 0.44,
+        "feedback": "The amide-mediated hydrolysis sequence is sensible, but the pathway still depends on a weak entry reaction. rxn_004 is only a speculative hydrothermal CO homologation proposal even when written with the correct 2 CO + 2 H2 stoichiometry. In addition, rxn_005 should produce H2O, rxn_007 should consume H2O, and rxn_008 should consume H2O and release NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Write rxn_004 with explicit coefficients and a realistic hydrothermal catalyst",
+          "Retain the amide hydrolysis sequence but correct water and NH3 stoichiometry in rxn_005, rxn_007, and rxn_008",
+          "Explain transport from hydrothermal synthesis to the aqueous hydrolysis setting"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.68,
+          "rxn_009": 0.38,
+          "rxn_010": 0.24
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.61,
+        "environmental_progression": 0.54,
+        "target_achievement": 0.39,
+        "overall_confidence": 0.48,
+        "feedback": "The hydantoin reservoir concept is coherent and addresses precursor stability, but the reaction specification is poor. rxn_009 is only formally balanceable through implausibly large coefficients, which strongly suggests a mis-specified Bucherer-Bergs step; the chemically meaningful one-turnover version likely needs H2O as a product. rxn_010 is an unbalanced conservation violation and should include water plus release of CO2 and NH3, or be split through an N-carbamylserine intermediate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_009; the chemically sensible one-turnover Bucherer-Bergs form likely includes H2O as a product",
+          "Replace rxn_010 with hydantoin + 2 H2O -> serine + CO2 + NH3 or split it through N-carbamylserine",
+          "Specify hydrolysis conditions that preserve serine while opening the hydantoin ring"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_002": 0.05,
+          "rxn_009": 0.38,
+          "rxn_010": 0.24
+        },
+        "chemical_feasibility": 0.21,
+        "pathway_coherence": 0.38,
+        "environmental_progression": 0.35,
+        "target_achievement": 0.39,
+        "overall_confidence": 0.27,
+        "feedback": "This combines the weakest entry step with a mis-specified hydantoin branch. rxn_002 is not mass balanced and does not represent actual cyanosulfidic photoredox synthesis of glycolaldehyde. rxn_009 likely needs H2O as a product in a chemically sensible Bucherer-Bergs formulation, and rxn_010 should include 2 H2O and release CO2 plus NH3 or proceed through an N-carbamylserine intermediate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Replace the unbalanced rxn_002 with an explicit cyanosulfidic photoredox route",
+          "Correct rxn_009 and rxn_010 stoichiometry",
+          "Define how the photochemical source environment connects to the hydantoin-forming pool"
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.47,
+    "network_feedback": "The network is connected, contains enough nodes to define multiple routes, and the glycolaldehyde-centered strategy is conceptually coherent. However, network validity is strongly limited by the deterministic balance check: only 1 of 10 reactions is balanced as written, 3 are balanceable only with omitted coefficients, and 6 are explicit conservation violations. The most important fixes are: rxn_001 should be written as 2 CH2O -> glycolaldehyde; rxn_004 should be 2 CO + 2 H2 -> glycolaldehyde; rxn_005 should produce H2O; rxn_006 should be serine nitrile + 2 H2O -> serine + NH3; rxn_007 should consume H2O; rxn_008 should be serinamide + H2O -> serine + NH3; rxn_009 is chemically plausible but mis-specified and likely needs H2O as a product in a one-turnover Bucherer-Bergs form; rxn_010 should include 2 H2O and release CO2 + NH3 or be split through N-carbamylserine. Chemically, the strongest entry routes are rxn_001 and especially rxn_003; rxn_002 is not acceptable as written, and rxn_004 remains highly speculative. Environmental consistency is weakened because 'Biochemical' is not a defined prebiotic environment and transfers from surface or hydrothermal settings into concentration and hydrolysis pools are not justified. P6 is the best pathway, but the network is not approvable as written.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 10,
+      "n_balanced_as_written": 1,
+      "n_balanceable": 3,
+      "n_unbalanced": 6,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.4,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_004": 2,
+            "mol_009": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -1,
+            "N": 1,
+            "H": -1,
+            "S": 1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_003": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_002": 2,
+            "mol_003": 2,
+            "mol_009": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1,
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "N": 1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 1,
+            "N": 1,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 5,
+            "mol_006": 2,
+            "mol_005": 10,
+            "mol_001": 4,
+            "mol_012": 6
+          },
+          "element_delta": {
+            "O": 1,
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": 1,
+            "H": -1,
+            "N": 1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

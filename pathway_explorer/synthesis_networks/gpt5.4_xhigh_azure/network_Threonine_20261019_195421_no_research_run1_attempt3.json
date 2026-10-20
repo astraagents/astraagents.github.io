@@ -1,0 +1,954 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "A multi-entry surface-geochemical network is used rather than forcing weak upstream CO2 reduction or extended formose chemistry. Small prebiotic carbonyl reservoirs converge on the common hub threonine nitrile by two main families of reactions: (i) the strongest route, Strecker capture of lactaldehyde, supplied directly or via methylglyoxal reduction to hydroxyacetone followed by isomerization; and (ii) an alternative C-C bond-forming route in which aminoacetonitrile, itself formed from formaldehyde by Strecker chemistry, adds to acetaldehyde. Threonine nitrile is then converted to threonine either stepwise through threoninamide or by a harsher overall nitrile hydrolysis. Hydroxyacetone and lactaldehyde are treated as admissible reservoir-entry feedstocks as well as in-network products, because either could plausibly be supplied directly in the same surface settings. The expected nonenzymatic output is a racemic threonine and allothreonine mixture that includes threonine.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3N",
+        "iupac_name": "methanimine",
+        "common_name": "methylene imine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4N2",
+        "iupac_name": "aminoacetonitrile",
+        "common_name": "glycine nitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H4O2",
+        "iupac_name": "2-oxopropanal",
+        "common_name": "methylglyoxal",
+        "inchi": "InChI=1S/C3H4O2/c1-3(5)2-4/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O2",
+        "iupac_name": "1-hydroxypropan-2-one",
+        "common_name": "hydroxyacetone",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h4H,2H2,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine nitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C4H10N2O2",
+        "iupac_name": "2-amino-3-hydroxybutanamide",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formaldehyde imine formation",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "false",
+          "other": "evaporative thin film on silicate shore or geothermal pool margin; near-neutral to mildly basic pH"
+        },
+        "mechanism": "Ammonia adds to methanal and dehydration in a drying film gives methanimine.",
+        "reasoning": "Imine formation from methanal and ammonia is equilibrium-limited in bulk water but becomes plausible during wet-dry cycling because water removal drives condensation. This supplies a standard Strecker precursor without invoking oxidants."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanide addition to methanimine",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "rewetted cyanide-bearing pool; pH about 8-9"
+        },
+        "mechanism": "Cyanide attacks the imine carbon and proton transfer gives the alpha-aminonitrile.",
+        "reasoning": "This is the canonical second half of a Strecker sequence. Aminoacetonitrile is a chemically plausible and relatively stable prebiotic reservoir compared with free glycine."
+      },
+      {
+        "id": "rxn_003",
+        "name": "One-pot Strecker synthesis of aminoacetonitrile",
+        "inputs": [
+          "mol_005",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "ammonium-cyanide-rich pool or wet film; pH about 8-9"
+        },
+        "mechanism": "Methanimine forms in situ from methanal and ammonia, then cyanide adds to the iminium or imine precursor.",
+        "reasoning": "In realistic prebiotic pools imine formation and cyanide addition need not be isolated. Including a one-pot route reflects the likelihood that aminoacetonitrile forms directly in cyanide and ammonia rich formaldehyde mixtures."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrogenation of methylglyoxal to hydroxyacetone",
+        "inputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-Fe sulfides"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "Ni-Fe sulfides",
+          "aqueous": "true",
+          "other": "gas-water-mineral interface in a subaerial geothermal field with H2-bearing volcanic gases; pH 7-9"
+        },
+        "mechanism": "Surface-mediated H2 activation and carbonyl hydrogenation convert the dicarbonyl to the alpha-hydroxyketone.",
+        "reasoning": "Partial reduction of methylglyoxal to hydroxyacetone is chemically easier to justify than demanding selective direct formation of lactaldehyde. Metal-sulfide-rich geothermal settings can provide both H2 and catalytic surfaces, although product mixtures and some over-reduction are still expected."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Carbonyl isomerization of hydroxyacetone to lactaldehyde",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "carbonate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "carbonate minerals",
+          "aqueous": "true",
+          "other": "mildly basic evaporitic pool; repeated concentration and dilution"
+        },
+        "mechanism": "Base-catalyzed enolization and enediol rearrangement interconvert the alpha-hydroxyketone and hydroxyaldehyde.",
+        "reasoning": "Hydroxyacetone and lactaldehyde are constitutional isomers linked by carbonyl isomerization. Even if equilibrium does not strongly favor lactaldehyde, rapid capture of the aldehyde in the next Strecker step can draw flux forward."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of threonine nitrile from lactaldehyde",
+        "inputs": [
+          "mol_011",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN and NH3 concentrated in a pool or brine during wet-dry cycling; pH about 8-9"
+        },
+        "mechanism": "Ammonia forms an imine or iminium with lactaldehyde and cyanide adds to give the alpha-aminonitrile.",
+        "reasoning": "This is the most direct and chemically secure route to the threonine carbon skeleton because lactaldehyde already contains the required beta-hydroxypropionaldehyde framework. Nonenzymatic Strecker chemistry should give a diastereomeric and racemic threonine-nitrile family containing the threonine precursor."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Aldol-type addition of aminoacetonitrile to acetaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "carbonate minerals",
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "carbonate minerals and montmorillonite",
+          "aqueous": "true",
+          "other": "mildly basic mineral interface with evaporative concentration"
+        },
+        "mechanism": "Base-assisted alpha-deprotonation or enamine-like activation of aminoacetonitrile is followed by C-C bond formation with ethanal and protonation of the beta-hydroxy product.",
+        "reasoning": "This alternative route is less secure than rxn_006 but chemically coherent: alpha-aminonitriles are nitrile-stabilized carbon nucleophiles, and addition to acetaldehyde gives the beta-hydroxy alpha-aminonitrile skeleton of threonine. Competing imine formation, oligomerization, and threonine and allothreonine mixtures are expected, so this branch is included as plausible rather than preferred."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydration of threonine nitrile to threoninamide",
+        "inputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica/alumina-rich mineral surfaces"
+        ],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": "silica/alumina-rich mineral surfaces",
+          "aqueous": "true",
+          "other": "hot geothermal pool or pore water; prolonged heating"
+        },
+        "mechanism": "Water adds to the nitrile and tautomerizes to the amide.",
+        "reasoning": "Aminonitriles normally hydrolyze stepwise through amides. Explicitly including threoninamide avoids compressing the endgame into an unrealistically mild single step."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of threoninamide to threonine",
+        "inputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica/alumina-rich mineral surfaces"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": "silica/alumina-rich mineral surfaces",
+          "aqueous": "true",
+          "other": "continued geothermal cycling or acidic hot-spring episode"
+        },
+        "mechanism": "Hot aqueous mineral-assisted amide hydrolysis yields the carboxylic acid and releases ammonia.",
+        "reasoning": "Once the amide is formed, further hydrolysis to threonine is chemically straightforward under prolonged hot-water exposure. The product should still be viewed as part of a racemic threonine and allothreonine mixture rather than a stereochemically pure amino acid."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Direct net hydrolysis of threonine nitrile to threonine",
+        "inputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica/alumina-rich mineral surfaces"
+        ],
+        "conditions": {
+          "temperature": "350-370K",
+          "pressure": "1 atm",
+          "catalyst": "silica/alumina-rich mineral surfaces",
+          "aqueous": "true",
+          "other": "net overall hydrolysis during long residence in boiling or near-boiling mineral-rich hot springs; balanced with two water equivalents"
+        },
+        "mechanism": "Overall two-water nitrile hydrolysis converts the aminonitrile directly to the amino acid with ammonia release.",
+        "reasoning": "This shorter endgame is chemically plausible only under harsher and longer-lasting conditions than rxn_008 plus rxn_009. It is included as a net alternative, while the explicit amide route is likely more realistic."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Stepwise formaldehyde Strecker entry with amide endgame",
+        "description": "Formaldehyde first gives methanimine and then aminoacetonitrile; aminoacetonitrile adds to acetaldehyde to form threonine nitrile, which hydrolyzes through threoninamide.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Stepwise formaldehyde Strecker entry with direct nitrile hydrolysis",
+        "description": "The same methanimine and aminoacetonitrile branch is used, but threonine nitrile is taken directly to threonine under harsher hydrolysis conditions.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "One-pot aminoacetonitrile formation with amide endgame",
+        "description": "Aminoacetonitrile forms directly in one Strecker pool from formaldehyde, ammonia, and cyanide, then couples with acetaldehyde and hydrolyzes through threoninamide.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "One-pot aminoacetonitrile formation with direct nitrile hydrolysis",
+        "description": "The one-pot aminoacetonitrile branch converges on threonine nitrile and then uses the shorter overall hydrolysis route.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Hydroxyacetone reservoir route with amide endgame",
+        "description": "A hydroxyacetone reservoir isomerizes to lactaldehyde, which undergoes Strecker chemistry to threonine nitrile before stepwise hydrolysis.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Hydroxyacetone reservoir route with direct nitrile hydrolysis",
+        "description": "Hydroxyacetone enters through lactaldehyde and Strecker chemistry, followed by overall direct hydrolysis of threonine nitrile.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Methylglyoxal reduction-isomerization-Strecker route with amide endgame",
+        "description": "Methylglyoxal is reduced to hydroxyacetone, isomerized to lactaldehyde, trapped by Strecker chemistry, and then hydrolyzed through threoninamide.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Methylglyoxal reduction-isomerization-Strecker route with direct nitrile hydrolysis",
+        "description": "The same methylglyoxal branch converges on threonine nitrile but uses the shorter overall hydrolysis route to the amino acid.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct lactaldehyde Strecker route with amide endgame",
+        "description": "Pre-existing lactaldehyde in carbonyl-rich pools is converted directly to threonine nitrile and then hydrolyzed via threoninamide.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct lactaldehyde Strecker route with direct nitrile hydrolysis",
+        "description": "A short direct-entry route in which lactaldehyde undergoes Strecker chemistry and the resulting threonine nitrile is hydrolyzed overall to threonine.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.85,
+          "rxn_007": 0.45,
+          "rxn_008": 0.73,
+          "rxn_009": 0.71
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.73,
+        "feedback": "This route is connected and atom-balanced, but rxn_007 is the main weak link: direct C-C bond formation between aminoacetonitrile and acetaldehyde is much less secure than the lactaldehyde Strecker branch and likely needs stronger base or mineral activation than stated. The amide hydrolysis endgame is plausible if wetter, catalytic surface conditions are available.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Specify the mineral, base, or activation mode needed for rxn_007.",
+          "Define the acidic/basic or catalytic surface conditions for rxn_008 and rxn_009."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_002": 0.85,
+          "rxn_007": 0.45,
+          "rxn_010": 0.56
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.67,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.82,
+        "overall_confidence": 0.69,
+        "feedback": "The pathway remains coherent, but it inherits the same major uncertainty in rxn_007 and also uses the harsher net hydrolysis rxn_010. rxn_010 should be written explicitly as threonine nitrile + 2 H2O -> threonine + NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_010 to consume 2 H2O.",
+          "Prefer the stepwise amide endgame if a more defensible hydrolysis sequence is desired."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.84,
+          "rxn_007": 0.45,
+          "rxn_008": 0.73,
+          "rxn_009": 0.71
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.74,
+        "feedback": "One-pot Strecker entry to aminoacetonitrile is plausible and avoids isolating methanimine, but the route still depends on rxn_007, the least supported step in the sequence. Hydrolysis through the amide remains reasonable with suitable catalytic surface conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Provide precedent or catalytic detail for rxn_007.",
+          "Specify mineral, pH, or wet-dry conditions for rxn_008 and rxn_009."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.84,
+          "rxn_007": 0.45,
+          "rxn_010": 0.56
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.82,
+        "overall_confidence": 0.69,
+        "feedback": "This is shorter than P3, but the same speculative C-C bond-forming step rxn_007 remains the central concern, and direct net hydrolysis in rxn_010 is harsher and under-specified. rxn_010 also needs 2 H2O in the written stoichiometry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_010 to threonine nitrile + 2 H2O -> threonine + NH3.",
+          "Use the amide sequence or the lactaldehyde Strecker branch to improve plausibility."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_005": 0.64,
+          "rxn_006": 0.87,
+          "rxn_008": 0.73,
+          "rxn_009": 0.71
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.76,
+        "target_achievement": 0.86,
+        "overall_confidence": 0.79,
+        "feedback": "Once lactaldehyde is available, the Strecker capture and stepwise hydrolysis are fairly plausible. The main uncertainty is rxn_005, because hydroxyacetone -> lactaldehyde isomerization needs more explicit acid/base or mineral catalysis and may compete with other carbonyl reactions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify the catalytic surface or pH regime for rxn_005.",
+          "Show that lactaldehyde accumulation can outcompete side reactions under the stated surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_005": 0.64,
+          "rxn_006": 0.87,
+          "rxn_010": 0.56
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.77,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.83,
+        "overall_confidence": 0.74,
+        "feedback": "This route is reasonably coherent, but it combines the uncertainty of rxn_005 with the harsher direct hydrolysis rxn_010. rxn_010 should explicitly consume 2 H2O, and the isomerization step still needs clearer support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_010 to include 2 H2O.",
+          "If possible, replace direct hydrolysis with the amide sequence used in P5."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_004": 0.55,
+          "rxn_005": 0.64,
+          "rxn_006": 0.87,
+          "rxn_008": 0.73,
+          "rxn_009": 0.71
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.73,
+        "feedback": "The downstream Strecker and hydrolysis chemistry is serviceable, but the upstream entry is weak because rxn_004 requires selective H2 hydrogenation of methylglyoxal without a specified catalyst, and rxn_005 still needs explicit isomerization conditions. This makes the pathway less convincing than routes that start from lactaldehyde or hydroxyacetone.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Name a realistic metal or sulfide surface and conditions for selective rxn_004.",
+          "If that support is unavailable, enter the network at hydroxyacetone or lactaldehyde instead."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.55,
+          "rxn_005": 0.64,
+          "rxn_006": 0.87,
+          "rxn_010": 0.56
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.82,
+        "overall_confidence": 0.7,
+        "feedback": "This pathway includes three notable uncertainties: selective methylglyoxal hydrogenation in rxn_004, hydroxyacetone/lactaldehyde isomerization in rxn_005, and the harsh direct hydrolysis in rxn_010. rxn_010 also needs to be written with 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_010 to consume 2 H2O.",
+          "Provide explicit catalytic support for rxn_004 and rxn_005, or avoid this branch in favor of the direct lactaldehyde route."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_006": 0.87,
+          "rxn_008": 0.73,
+          "rxn_009": 0.71
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.81,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.84,
+        "feedback": "This is the strongest pathway in the network. Strecker synthesis from lactaldehyde to threonine nitrile is chemically plausible, and stepwise hydrolysis through threoninamide is more defensible than a single direct nitrile hydrolysis. Confidence is limited mainly by the generic 'Surface' label, which should be resolved into specific wet/dry and catalytic conditions for rxn_008 and rxn_009.",
+        "approved": true,
+        "problematic_reactions": [],
+        "suggestions": [
+          "Specify mineral, pH, and hydration conditions for rxn_008 and rxn_009.",
+          "State explicitly that the likely product distribution is a threonine/allothreonine mixture containing threonine."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.87,
+          "rxn_010": 0.56
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.78,
+        "feedback": "The route is short and coherent, and the core lactaldehyde Strecker step is strong, but direct nitrile hydrolysis is less convincing than the amide sequence. rxn_010 is also written with incomplete stoichiometry and should be threonine nitrile + 2 H2O -> threonine + NH3.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_010 to include 2 H2O.",
+          "Use the amide sequence from P9 if a more realistic endgame is desired."
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.79,
+    "network_feedback": "The network is connected and uses molecule IDs consistently, with no isolated subgraphs. The RDKit balance check reports no conservation violations; 9 reactions are balanced as written, and rxn_010 is only correct when written with 2 H2O rather than 1. The strongest chemistry is the lactaldehyde Strecker branch to threonine nitrile followed by stepwise hydrolysis through threoninamide. The weakest parts are rxn_007, which is a relatively speculative aminoacetonitrile + acetaldehyde C-C bond-forming step, rxn_004, which requires under-specified and potentially unselective H2 hydrogenation of methylglyoxal, and the lack of explicit catalytic, pH, and water-activity details for rxn_005 and the hydrolysis steps. Overall, the network can plausibly produce threonine as part of a threonine/allothreonine mixture, but the generic single-surface description and several weakly supported steps keep confidence below the 0.9 approval threshold.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 10,
+      "n_balanced_as_written": 9,
+      "n_balanceable": 1,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_002": 1,
+            "mol_006": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_001": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_002": 1,
+            "mol_001": 1,
+            "mol_007": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_004": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 1,
+            "mol_001": 1,
+            "mol_012": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_003": 1,
+            "mol_013": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_013": 1,
+            "mol_003": 1,
+            "mol_014": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_003": 2,
+            "mol_014": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

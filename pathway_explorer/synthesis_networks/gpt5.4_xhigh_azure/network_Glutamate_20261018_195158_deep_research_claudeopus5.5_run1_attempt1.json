@@ -1,0 +1,998 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "The network uses two feeder modules to generate 10 target-reaching paths without privileging one origin story. Module A makes alpha-ketoglutarate from glyoxylate plus pyruvate by either Fe2+-driven hydrothermal chemistry or phosphate-mediated surface chemistry, then closes to glutamate by four alternative downstream modules: fresh FeS reductive amination, electroreduced FeS amination, H2/Ni-surface amination, or cyanide/DAP hydantoin hydrolysis. Module B solves the C4 precursor problem with 3-cyanopropanal, obtained either explicitly by cyanosulfidic photochemistry from cyanoacetylene or speculatively by HCN addition to acrolein, followed by Strecker-type aminonitrile formation and hydrolysis. Mechanistically short-lived species are collapsed where they are not network hubs, pyroglutamate is included as the dominant sink/reservoir, and all productive routes are implicitly racemic.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2S",
+        "iupac_name": "sulfane",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H8N2O4",
+        "iupac_name": "5-(2-carboxyethyl)imidazolidine-2,4-dione",
+        "common_name": "glutamate hydantoin",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3HN",
+        "iupac_name": "prop-2-ynenitrile",
+        "common_name": "cyanoacetylene",
+        "inchi": "InChI=1S/C3HN/c1-2-3-4/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H4O",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H5NO",
+        "iupac_name": "4-oxobutanenitrile",
+        "common_name": "3-cyanopropanal",
+        "inchi": "InChI=1S/C4H5NO/c5-3-1-2-4-6/h4H,1-2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H7N3",
+        "iupac_name": "2-aminopentane-1,5-dinitrile",
+        "common_name": "glutamate aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C5H7NO3",
+        "iupac_name": "5-oxopyrrolidine-2-carboxylic acid",
+        "common_name": "pyroglutamate",
+        "inchi": "InChI=1S/C5H7NO3/c7-4-2-1-3(6-4)5(8)9/h3H,1-2H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Fe2+-promoted formation of alpha-ketoglutarate from pyruvate and glyoxylate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "343-353K",
+          "pressure": "moderate to high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "near-neutral Fe2+-rich water-rock interface; hydroxyketoglutarate and oxopentenedioate are compressed into this node"
+        },
+        "mechanism": "Fe2+-assisted aldol coupling of glyoxylate and pyruvate gives hydroxyketoglutarate-like adducts that dehydrate and reduce to alpha-ketoglutarate.",
+        "reasoning": "Fe2+ in warm aqueous networks promotes aldol coupling of pyruvate and glyoxylate, followed by dehydration/reduction to alpha-ketoglutarate (Muchowska et al., 2019). This is one of the better supported abiotic sources of alpha-KG, but I keep amination separate because integrated one-pot closure to glutamate remains unresolved and depends on ongoing glyoxylate supply (Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Phosphate-mediated metal-free formation of alpha-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "orthophosphate"
+        ],
+        "conditions": {
+          "temperature": "320-330K",
+          "pressure": "1 atm",
+          "catalyst": "orthophosphate",
+          "aqueous": true,
+          "other": "pH ~7; concentrated phosphate; maloyl/fumaroyl-formate-like intermediates are compressed into this node"
+        },
+        "mechanism": "Orthophosphate catalyzes aldol condensation and glyoxylate-driven redox rearrangement through alpha-ketoacid analogues to alpha-ketoglutarate.",
+        "reasoning": "Stubbs et al. (2020) showed a metal-free, phosphate-catalyzed alpha-ketoacid network giving about 5% alpha-ketoglutarate from pyruvate plus glyoxylate at 50 C. This makes a surface-compatible alpha-KG source, though the yield is modest and the network still presumes glyoxylate availability."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Fresh FeS reductive amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "fresh FeS"
+        ],
+        "conditions": {
+          "temperature": "323-348K",
+          "pressure": "1-50 bar",
+          "catalyst": "fresh FeS",
+          "aqueous": true,
+          "other": "pH 8-9.5 near the NH4+/NH3 pKa; fresh precipitate required"
+        },
+        "mechanism": "Ammonia adds to the keto group to form an imine or iminium that is reduced on a fresh FeS surface to the amino acid.",
+        "reasoning": "Fresh FeS is the most chemically justified sulfide surface for this step: Huber and Wachtershauser (2003), building on Hafenbradl et al. (1995), reported reductive amination of alpha-oxo acids including glutamate near the NH4+/NH3 pKa, whereas other fresh metal sulfides were largely inactive. Exact primary glutamate yields are not well pinned down, but this route directly addresses the poor intrinsic reactivity of alpha-KG noted by Mayer and Moran (2022)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Electroreduced FeS amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "electrochemically reduced FeS"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "moderate to high",
+          "catalyst": "electrochemically reduced FeS",
+          "aqueous": true,
+          "other": "alkaline vent-like redox gradient; pH 8-10"
+        },
+        "mechanism": "An alpha-keto imine forms from alpha-ketoglutarate and ammonia, then accepts electrons from a reduced FeS surface to yield glutamate.",
+        "reasoning": "Electrochemically reduced FeS, used as an alkaline-vent analogue, converted several alpha-keto acids to amino acids in >50% yield, with glutamate and alanine formed preferentially (Kitadai et al., 2019). This is among the strongest glutamate-specific mineral-interface results, but it depends on maintaining a reduced FeS surface by geoelectrochemical gradients."
+      },
+      {
+        "id": "rxn_005",
+        "name": "H2-driven Ni-surface reductive amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Ni-bearing alloy surface"
+        ],
+        "conditions": {
+          "temperature": "298-300K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni-bearing alloy surface",
+          "aqueous": true,
+          "other": "pH ~8; H2-rich mineral interface; competing alpha-hydroxyglutarate is not separately tracked"
+        },
+        "mechanism": "A Ni surface activates H2 and reduces the alpha-keto imine generated from alpha-ketoglutarate and ammonia.",
+        "reasoning": "Kaur et al. (2024) showed that Ni/SiO2-Al2O3, Pd/C, and Ni-bearing meteorite surfaces reduce alpha-KG with H2 and NH3 at pH 8 and room temperature, whereas no-catalyst controls do not. I choose a Ni-bearing alloy surface over Pd for prebiotic plausibility. The caveats are a competing alpha-hydroxyglutarate channel and the fact that glutamate was not detected when the same study tried to generate it one-pot from upstream ketoacid-forming chemistry."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Cyanide/DAP hydantoin formation from alpha-ketoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "diamidophosphate"
+        ],
+        "conditions": {
+          "temperature": "298-303K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cyanide-rich pool; DAP-assisted Bucherer-Bergs-type closure"
+        },
+        "mechanism": "Cyanide adds to the ketoacid and, with amidating assistance, the adduct cyclizes to a 5-substituted hydantoin.",
+        "reasoning": "Pulletikurti et al. (2022) obtained the glutamate hydantoin from alpha-KG in very high yield (~96%) using cyanide with diamidophosphate. This is the clearest experimentally supported bridge between alpha-ketoacid and cyanide amino-acid chemistry, but it relies on DAP and cyanide availability, both of which remain debated."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of glutamate hydantoin to glutamate",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "350-355K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "warm aqueous hydrolysis; incomplete conversion is expected"
+        },
+        "mechanism": "The hydantoin ring opens and hydrolyzes to release the alpha-amino dicarboxylic acid.",
+        "reasoning": "Warm aqueous hydrolysis of the hydantoin released glutamate in about 19%, with most hydantoin still remaining (Pulletikurti et al., 2022). I therefore treat this as a real but bottlenecked closure step, not a high-yield endpoint."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Cyanosulfidic photoredox generation of 3-cyanopropanal from cyanoacetylene",
+        "inputs": [
+          "mol_010",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II) photoredox"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II) photoredox",
+          "aqueous": true,
+          "other": "UV irradiation (~254 nm), HS-/H2S photoreductant, sequential additions; maleonitrile and succinonitrile are compressed away"
+        },
+        "mechanism": "Cyanoacetylene and HCN furnish dinitrile precursors that undergo UV/H2S photoreduction, ending with selective reduction of one nitrile to the aldehyde 3-cyanopropanal.",
+        "reasoning": "Patel et al. (2015) explicitly derived the glutamate/glutamine branch from cyanoacetylene via maleonitrile, succinonitrile, and then 3-cyanopropanal under UV/H2S chemistry; Cu photoredox can accelerate the photoreductions. I compress those substeps into one node because the decisive bottleneck is generation of the C4 semialdehyde/nitrile precursor. The route is well evidenced but sequential rather than one-pot, and local sulfide availability is a real geochemical constraint (Patel et al., 2015; Ranjan et al., 2018)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "HCN conjugate addition to acrolein",
+        "inputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "post-discharge condensate or evaporitic pool; mild basicity favors conjugate addition"
+        },
+        "mechanism": "Cyanide performs Michael-type 1,4-addition to acrolein, generating beta-cyanopropionaldehyde after protonation.",
+        "reasoning": "Van Trump and Miller (1972) proposed acrolein, observed in discharge chemistry, as a glutamate precursor through HCN addition to give beta-cyanopropionaldehyde; Parker et al. (2011) retained this logic. The conjugate-addition chemistry is reasonable, but a prebiotic experiment closing this step to glutamate has not been shown, so this edge is explicitly speculative."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Strecker-type conversion of 3-cyanopropanal to glutamate aminonitrile",
+        "inputs": [
+          "mol_012",
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "near-neutral to mildly basic HCN/NH3-rich pool; cyanohydrin substep not separately tracked"
+        },
+        "mechanism": "The aldehyde first forms a cyanohydrin; ammonia then furnishes the alpha-aminonitrile center, giving the dinitrile precursor.",
+        "reasoning": "Patel et al. (2015) reported that 3-cyanopropanal forms a cyanohydrin and then aminonitrile 54 upon addition of HCN and NH3. This is the only explicit de novo route in the provided literature to the immediate glutamate/glutamine aminonitrile precursor, though it requires staged reagent delivery and cyanide-rich conditions."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrolysis of glutamate aminonitrile to glutamate",
+        "inputs": [
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prolonged hydrolysis during wet-dry or geothermal cycling; full hydrolysis of both nitriles is needed for glutamate"
+        },
+        "mechanism": "Sequential nitrile hydration and amide hydrolysis convert both nitriles into carboxylates, yielding glutamate.",
+        "reasoning": "Hydrolysis of aminonitriles to amino acids is the classical Strecker closure, and glutamate observed after hydrolysis of discharge residues is consistent with hidden nitrile precursors (Johnson et al., 2008; Parker et al., 2011). Patel et al. (2015) identify 54 as the precursor to glutamine and glutamate. However, mild prebiotic double-nitrile hydrolysis to glutamate has not been cleanly demonstrated for this exact substrate, so this edge is partly speculative and likely slow."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Cyclization of glutamate to pyroglutamate",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "333-373K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic concentration or wet-dry heating; faster at low pH and above ~60 C"
+        },
+        "mechanism": "Intramolecular lactamization between the alpha-amino group and the gamma-carboxyl function gives a five-membered lactam with loss of water.",
+        "reasoning": "Glutamate is unusually prone to cyclize to pyroglutamate during heating, concentration, and acidic exposure; hydrothermal flow experiments also show onward breakdown to succinate, formate, CO2, and NH3, partly suppressed by H2 (Lee et al., 2014). Solid-state and thermal studies likewise identify pyroglutamate as the dominant dehydration product (Wu et al., 2010; Weiss et al., 2018). I include this node because glutamate stability is a core constraint; reverse hydrolysis can occur, but forward cyclization dominates under drying and heating."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Fe2+ alpha-KG formation plus fresh FeS amination",
+        "description": "Hydrothermal Fe2+-driven alpha-ketoglutarate generation followed by mineral-interface reductive amination on fresh FeS.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Fe2+ alpha-KG formation plus electroreduced FeS amination",
+        "description": "Hydrothermal alpha-ketoglutarate supply followed by alkaline-vent-like electroreduced FeS conversion to glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Fe2+ alpha-KG formation plus H2/Ni amination",
+        "description": "Hydrothermal alpha-ketoglutarate production coupled to later H2-driven amination on a Ni-bearing alloy surface.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Fe2+ alpha-KG formation plus hydantoin hydrolysis",
+        "description": "Hydrothermal alpha-ketoglutarate formation followed by cyanide capture as the glutamate hydantoin and warm hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Phosphate alpha-KG formation plus fresh FeS amination",
+        "description": "Surface phosphate-mediated alpha-ketoglutarate formation followed by fresh FeS reductive amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Phosphate alpha-KG formation plus electroreduced FeS amination",
+        "description": "Surface alpha-ketoglutarate production feeding an alkaline-vent-like electroreduced FeS amination step.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Phosphate alpha-KG formation plus H2/Ni amination",
+        "description": "Surface phosphate chemistry supplies alpha-ketoglutarate, then a Ni-bearing surface and H2 reduce the keto-imine to glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Phosphate alpha-KG formation plus hydantoin hydrolysis",
+        "description": "Surface alpha-ketoglutarate formation followed by cyanide/DAP hydantoin capture and warm hydrolysis to glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Cyanosulfidic semialdehyde Strecker route",
+        "description": "UV/H2S/Cu chemistry generates 3-cyanopropanal from cyanoacetylene, then Strecker-type aminonitrile formation and hydrolysis yield glutamate.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Acrolein-derived Strecker route",
+        "description": "Speculative discharge-derived acrolein captures HCN to give 3-cyanopropanal, then standard aminonitrile chemistry and hydrolysis yield glutamate.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_012",
+          "mol_013"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_007",
+      "mol_009",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.44,
+          "rxn_003": 0.22
+        },
+        "chemical_feasibility": 0.33,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.43,
+        "feedback": "Conceptually coherent and supported in pieces by the literature, but not valid as written. rxn_001 is unbalanced and appears to omit an oxygen-containing coproduct or intermediate bookkeeping from the glyoxylate + pyruvate sequence. rxn_003 is more serious: direct alpha-ketoglutarate + NH3 -> glutamate is unbalanced, and as written the atom count would only close via an implausible O2 release; the fresh-FeS redox partner and water/byproducts are missing. The Hydrothermal -> Biochemical handoff is also not physically justified, and 'Biochemical' is not a prebiotic environment label.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Rewrite rxn_001 with explicit coproduct or intermediate accounting from the reported Fe2+-promoted sequence.",
+          "Rewrite rxn_003 to include the actual reducing equivalents and FeS oxidation bookkeeping, plus water/byproducts.",
+          "Replace 'Biochemical' with a defined FeS-rich prebiotic setting and specify pH and temperature."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.44,
+          "rxn_004": 0.34
+        },
+        "chemical_feasibility": 0.39,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.39,
+        "overall_confidence": 0.58,
+        "feedback": "This is the best-aligned hydrothermal branch because both modules map onto strong literature precedents and stay in a vent-like setting. It still fails conservation: rxn_001 is unbalanced, and rxn_004 omits the electrochemical/redox bookkeeping needed for electroreduced FeS amination; as written, direct alpha-ketoglutarate + NH3 -> glutamate leaves extra oxygen unaccounted for. The pathway idea is strong, but the network specification is not chemically valid until the reduced mineral state, electron source, and coproducts are explicit.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Repair rxn_001 stoichiometry or expand it into the reported Fe2+-driven intermediate sequence.",
+          "Represent the reduced FeS or electrochemical input explicitly in rxn_004 instead of writing a direct net amination without redox bookkeeping.",
+          "Specify vent-relevant pH, NH4+/NH3 source, and electrochemical conditions for rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.44,
+          "rxn_005": 0.58
+        },
+        "chemical_feasibility": 0.51,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.41,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.55,
+        "feedback": "The separate chemistry is plausible and literature-backed: Fe2+ chemistry can access alpha-ketoglutarate and Ni/H2 can aminate alpha-ketoglutarate. As written, rxn_001 remains unbalanced, and rxn_005 is also unbalanced and is most naturally corrected by adding H2O as product. The Ni/H2 step is mislabeled 'Biochemical'; the cited chemistry is mineral-catalyzed aqueous reduction and should also acknowledge the competing alpha-hydroxyglutarate channel reported under Ni/H2 conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Add the missing coproduct/intermediate accounting to rxn_001.",
+          "Add H2O as product in rxn_005 and specify the Ni catalyst, pH, and H2 pressure.",
+          "Replace 'Biochemical' with a defined H2-rich mineral surface environment and include the hydroxy-acid side branch."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.44,
+          "rxn_006": 0.44,
+          "rxn_007": 0.18
+        },
+        "chemical_feasibility": 0.35,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.25,
+        "overall_confidence": 0.47,
+        "feedback": "This Bucherer-Bergs-type bridge is literature-aligned in spirit, but the node definitions are too compressed. rxn_006 is unbalanced and likely needs H2O as coproduct; it also cites DAP without including DAP as a reactant node. rxn_007 cannot be written as glutamate hydantoin -> glutamate alone; the balance check shows no single common small species fixes it, so hydrolysis water and carbon/nitrogen byproducts such as NH3 and CO2 must be explicit. The Hydrothermal -> Surface transfer is also left unexplained.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add DAP explicitly and repair rxn_006 with the missing coproduct, likely H2O.",
+          "Replace rxn_007 with a balanced hydrolysis sequence that includes water consumption and NH3/CO2 release.",
+          "Justify transport from the hydrothermal alpha-ketoglutarate setting to the surface hydantoin/hydrolysis setting."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.48,
+          "rxn_003": 0.22
+        },
+        "chemical_feasibility": 0.35,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.34,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.42,
+        "feedback": "The phosphate alpha-ketoglutarate module and fresh FeS amination each have literature precedent, but the pathway is weak as specified. rxn_002 is unbalanced and needs explicit coproduct or intermediate bookkeeping from the phosphate-mediated alpha-ketoacid network. rxn_003 is unbalanced and lacks the reducing/mineral stoichiometry for FeS amination, with the present formula bookkeeping effectively implying an implausible O2 release. The jump from a phosphate-rich surface setting to a 'Biochemical' environment is unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Decompose rxn_002 into the reported phosphate-mediated intermediate sequence or add the omitted coproducts explicitly.",
+          "Rewrite rxn_003 with explicit redox partner, water/byproducts, and mineral-state bookkeeping.",
+          "Use a defined FeS-rich prebiotic environment instead of the 'Biochemical' label."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.48,
+          "rxn_004": 0.34
+        },
+        "chemical_feasibility": 0.41,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.39,
+        "overall_confidence": 0.51,
+        "feedback": "This branch combines two experimentally grounded modules, and the electroreduced FeS amination has strong literature support. However, rxn_002 remains unbalanced, and rxn_004 omits the redox bookkeeping required for electroreduced FeS chemistry. The surface-to-hydrothermal transfer is possible in principle but is not physically described, so environmental continuity is only moderate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Repair or expand rxn_002 so that the phosphate-mediated alpha-ketoglutarate sequence is mass-conserving.",
+          "Represent reduced FeS or explicit electrochemical input in rxn_004.",
+          "Justify how alpha-ketoglutarate formed in a phosphate-rich surface setting is transported into the vent-like FeS amination environment."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.48,
+          "rxn_005": 0.58
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.36,
+        "target_achievement": 0.5,
+        "overall_confidence": 0.53,
+        "feedback": "Chemically this is one of the stronger two-step ideas: phosphate chemistry can give alpha-ketoglutarate, and Ni/H2 chemistry can aminate it. But the network still violates conservation: rxn_002 is unbalanced, and rxn_005 is missing H2O as product according to the balance check. The Ni/H2 step is again mislabeled 'Biochemical' rather than a defined mineral-catalyzed aqueous setting, and the literature warns that alpha-hydroxyglutarate competes strongly under Ni/H2 conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Repair or expand rxn_002 into a balanced phosphate-mediated alpha-ketoacid sequence.",
+          "Add H2O as product in rxn_005 and specify catalyst, pH, and H2 pressure.",
+          "Relabel the Ni/H2 step as a prebiotic mineral environment and include the competing hydroxy-acid branch."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.48,
+          "rxn_006": 0.44,
+          "rxn_007": 0.18
+        },
+        "chemical_feasibility": 0.36,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.81,
+        "target_achievement": 0.25,
+        "overall_confidence": 0.52,
+        "feedback": "Among the surface-only branches, this is the most environmentally coherent and it follows the literature bridge from alpha-ketoacids to hydantoins. The problems are stoichiometric and specification-level: rxn_002 is unbalanced, rxn_006 likely needs H2O as coproduct and should include DAP explicitly, and rxn_007 is not mass-conserving as written and should include hydrolysis water plus carbon/nitrogen byproducts. The pathway concept is sound, but the final closure to glutamate is not correctly encoded.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Include DAP explicitly and repair rxn_006 with the missing coproduct, likely H2O.",
+          "Replace rxn_007 with a balanced hydrolysis sequence rather than a direct hydantoin -> glutamate edge.",
+          "Specify the temperature shift between hydantoin formation and hydrolysis so the surface setting is fully defined."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_008": 0.1,
+          "rxn_010": 0.49,
+          "rxn_011": 0.18
+        },
+        "chemical_feasibility": 0.25,
+        "pathway_coherence": 0.66,
+        "environmental_progression": 0.43,
+        "target_achievement": 0.24,
+        "overall_confidence": 0.37,
+        "feedback": "This captures the cyanosulfidic glutamate family only very approximately. rxn_008 is the main failure: the published chemistry is a multi-step UV/HS-/Cu sequence through maleonitrile and succinonitrile, whereas the network collapses it into an atom-nonconserving single step from cyanoacetylene + HCN + H2S to 3-cyanopropanal with no oxygen source. rxn_010 is close but missing H2O as product, and rxn_011 cannot be reduced to aminonitrile -> glutamate without explicit hydrolysis water and NH3 release. As written this pathway is not chemically valid.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Split rxn_008 into the literature intermediates and include UV, HS-/H2S, Cu photoredox, and water as the oxygen source.",
+          "Add H2O as product to rxn_010.",
+          "Rewrite rxn_011 as a balanced nitrile-hydrolysis sequence with water consumption and NH3 byproducts."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_009": 0.66,
+          "rxn_010": 0.49,
+          "rxn_011": 0.18
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.49,
+        "feedback": "The opening step is the network's only balanced reaction: rxn_009 is a chemically plausible HCN conjugate addition to acrolein. However, the literature treats this glutamate branch as speculative rather than experimentally closed. rxn_010 is unbalanced and likely needs H2O as product, while rxn_011 is severely underspecified because aminonitrile hydrolysis to glutamate must include water consumption and NH3 release. This pathway has a reasonable start but does not yet deliver a valid balanced route to glutamate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Keep rxn_009 as a low-confidence speculative branch unless supporting prebiotic yield data are supplied.",
+          "Add H2O as product to rxn_010.",
+          "Replace rxn_011 with a balanced multistep hydrolysis sequence that includes the missing water and nitrogen byproducts."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.46,
+    "network_feedback": "Topology is adequate: 14 molecule nodes and 12 reaction nodes form a connected network with consistent IDs, and the dual-module strategy matches the two major glutamate families in the literature. The blocking issue is validity: the RDKit balance check flags 11 of 12 reactions as unbalanced, so the network is not mass-conserving as written; only rxn_009 is balanced. rxn_001 and rxn_002 need explicit coproduct or intermediate bookkeeping from the alpha-ketoglutarate-forming sequences, rxn_003 and rxn_004 need explicit reductant/electron bookkeeping rather than direct alpha-ketoglutarate + NH3 -> glutamate, rxn_005, rxn_006, rxn_010, and rxn_012 likely need H2O products, rxn_007 and rxn_011 cannot be repaired by a single small species and should include hydrolysis water plus NH3/CO2-type byproducts, and rxn_008 should be split into the Patel maleonitrile -> succinonitrile -> 3-cyanopropanal sequence with UV/HS-/Cu and an explicit oxygen source. Environmental consistency is mixed because 'Biochemical' is not a physical prebiotic environment, the cyanosulfidic branch lacks UV/Cu/sequential-delivery detail, and transfers between hydrothermal and surface modules are not justified. Literature alignment is otherwise good: the network explicitly includes both alpha-KG and nitrile families, treats the acrolein branch as speculative, and includes pyroglutamate as a sink/reservoir, but it does not solve the literature-highlighted one-pot coupling problem and rxn_012 should also release H2O if retained. Overall, this is a strategically well-informed but currently nonviable network specification, and no pathway reaches approval.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 1,
+      "n_balanceable": 0,
+      "n_unbalanced": 11,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.08333333333333333,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": 1,
+            "H": -1,
+            "N": 1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "N": 1,
+            "S": 1,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_001": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -2,
+            "N": 2,
+            "O": -4
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

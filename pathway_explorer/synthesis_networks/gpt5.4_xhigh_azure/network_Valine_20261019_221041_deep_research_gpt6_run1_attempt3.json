@@ -1,0 +1,1125 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Valine is organized around the two immediate precursor families singled out by the literature: 2-methylpropanal for Strecker chemistry and 3-methyl-2-oxobutanoic acid for alpha-ketoacid amination. Surface discharge chemistry provides formaldehyde, acetaldehyde, and HCN; hydrothermal H2-rich mixing zones are used for speculative branched-skeleton assembly and for the experimentally demonstrated reductive amination step; concentrated surface cyanide pools supply overall Strecker and Bucherer-Bergs finishing. The 10 encoded pathways are one full Strecker branch plus a 3x3 matrix obtained by combining three explicit alpha-ketoisovalerate-source hypotheses with three valine-forming finishing chemistries; product-level shock and one-pot HCHO/NH3 routes are used only as motivation for the carbonyl-growth modules because the literature treats them as mechanistically opaque.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "formonitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H8O3",
+        "iupac_name": "3-methyl-2-oxobutanoic acid",
+        "common_name": "alpha-ketoisovaleric acid",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Electric-discharge oxidation of methane to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370K (bulk), discharge channel much hotter",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "false",
+          "other": "electrical discharge or intense UV over a reduced local gas phase above water"
+        },
+        "mechanism": "Plasma-radical oxidation and partial dehydrogenation of methane to a C1 carbonyl pool.",
+        "reasoning": "Formaldehyde is a standard discharge product from reduced C/H/O mixtures. Miller established aldehyde and HCN generation as the basis of spark amino-acid chemistry, and Ring et al. later showed that such discharge systems reach valine after downstream reactions. The main caveat is environmental: strongly reducing CH4-rich conditions are easier to justify locally or transiently than as the global Hadean atmosphere (Miller, 1957; Ring et al., 1972; Trail et al., 2011)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Carbonyl-pool growth from formaldehyde to acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "overall-net carbonyl growth in concentrated formaldehyde-rich pools"
+        },
+        "mechanism": "Net C-C coupling and reduction within a formaldehyde-derived carbonyl network to generate a C2 aldehyde.",
+        "reasoning": "This step is speculative at the elementary level. Heated or irradiated HCHO-rich systems do generate higher-carbon organic precursors, but the valine literature does not isolate a clean formaldehyde-to-acetaldehyde sequence. It is included here as a compact bookkeeping node connecting experimentally observed C1-rich carbonyl chemistry to the C2 aldehyde pool needed upstream of valine (Fox & Windsor, 1970; Kebukawa et al., 2017; Kebukawa, 2022; Ishikawa et al., 2024)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrothermal homologation of acetaldehyde and formaldehyde to isobutyraldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-380K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "cool H2-rich subseafloor mixing zone; overall-net of two aldol/dehydration/hydrogenation events"
+        },
+        "mechanism": "Sequential formaldehyde addition to aldehyde-derived enolates followed by dehydration and hydrogenation to the branched C4 aldehyde.",
+        "reasoning": "This is an explicitly speculative bottleneck step. The literature makes clear that isobutyraldehyde is the critical Strecker precursor for valine, but the provided valine papers do not supply a directly demonstrated prebiotic synthesis of that branched aldehyde. The H2-supported homologation logic is chemically motivated by the broader reductive carbonyl chemistry discussed in modern H2-driven prebiotic networks, but the exact conversion remains open (Miller, 1957; Ring et al., 1972; Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Electric-discharge synthesis of hydrogen cyanide",
+        "inputs": [
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370K (bulk), discharge channel much hotter",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "false",
+          "other": "spark discharge in a reduced local plume or impact-generated atmosphere"
+        },
+        "mechanism": "Radical dehydrogenation of methane with nitrogen transfer from ammonia to HCN.",
+        "reasoning": "HCN formation is one of the core mechanistic results of classical spark-discharge chemistry. Miller showed that HCN and aldehydes feed aminonitrile chemistry, and Ring et al. identified valine in the downstream amino-acid suite. As with other Miller-type steps, the geochemical caveat is that strongly reducing NH3-rich surface gas mixtures are easier to defend locally than globally (Miller, 1957; Ring et al., 1972; Trail et al., 2011)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Overall Strecker-hydrolysis conversion of isobutyraldehyde to valine",
+        "inputs": [
+          "mol_009",
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NH3"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "cyanide-rich pool followed by aqueous hydrolysis over days to weeks; aminonitrile intermediate omitted from the node"
+        },
+        "mechanism": "Ammonia-assisted imine formation, cyanide addition to the aminonitrile, and nitrile hydrolysis to the amino acid.",
+        "reasoning": "This is the classical valine Strecker route written as its overall net stoichiometry. Miller established the discharge-to-aminonitrile-to-amino-acid logic and showed that aminonitrile hydrolysis is fast enough on week timescales; Ring et al. directly detected valine in spark products consistent with this family. The hard part is not the Strecker finish but obtaining enough isobutyraldehyde (Miller, 1957; Ring et al., 1972)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Carboxylative dimerization of acetaldehyde to alpha-ketoisovalerate",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-380K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "CO2-rich H2-fed porewater; mineral assistance plausible but unspecified"
+        },
+        "mechanism": "Speculative carboxylative coupling of two C2 aldehydes with redox adjustment to the branched C5 alpha-ketoacid.",
+        "reasoning": "Speculative. Kaur et al. (2024) make the alpha-ketoisovalerate-to-valine step experimentally strong but explicitly leave alpha-ketoisovalerate origin unresolved. This compact hydrothermal C2+C2+CO2 hypothesis is included as one possible upstream solution; no direct experiment in the provided valine literature demonstrates it, so it is flagged as a bottleneck proposal rather than an established step (Huber & Wachtershauser, 2003; Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Carboxylation of acetaldehyde to pyruvate",
+        "inputs": [
+          "mol_007",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "anoxic CO2-rich porewater; net carboxylation node"
+        },
+        "mechanism": "Speculative aldehyde carboxylation and oxidation-state reorganization to an alpha-ketoacid.",
+        "reasoning": "Speculative. Pyruvate is a chemically sensible branch point for branched-chain ketoacid chemistry, but the provided valine papers do not demonstrate acetaldehyde carboxylation to pyruvate. This node is included to expose the precursor gap, not to conceal it (Huber & Wachtershauser, 2003; Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Acetolactate-like condensation of pyruvate to alpha-ketoisovalerate",
+        "inputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_005",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-380K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "H2-fed subseafloor pore network; overall-net acetolactate-like step"
+        },
+        "mechanism": "Speculative pyruvate dimerization/decarboxylation to a branched C5 alpha-ketoacid, compressed as an overall net step.",
+        "reasoning": "Speculative. The missing nonenzymatic pyruvate-to-branched-ketoacid step is one of the main open problems identified in the supplied review. This reaction is therefore a chemically motivated acetolactate-like shortcut, not a directly demonstrated transformation from the provided valine papers (Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Surface C1/C2 carbonyl assembly of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_007",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NH3"
+        ],
+        "conditions": {
+          "temperature": "360-460K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "hot evaporitic or geothermal pool; overall-net condensation and rearrangement node"
+        },
+        "mechanism": "Formose-like growth of a C1/C2 carbonyl pool to a branched alpha-ketoacid.",
+        "reasoning": "Speculative. Heated and irradiated HCHO/NH3 systems clearly climb to higher complexity, but they do not directly trace alpha-ketoisovalerate, and modern work does not securely reproduce valine as a robust free product under those conditions. This node therefore re-expresses that poorly resolved carbonyl-growth chemistry as a precursor-building route rather than as a black-box direct valine step (Fox & Windsor, 1970; Kebukawa et al., 2017; Kebukawa, 2022; Ishikawa et al., 2024)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Nickel-catalyzed reductive amination of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_011",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ni/SiO2-Al2O3"
+        ],
+        "conditions": {
+          "temperature": "295-315K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni/SiO2-Al2O3",
+          "aqueous": "true",
+          "other": "cool serpentinization-fed mixing zone, pH about 8, NH4HCO3 present, about 72 h"
+        },
+        "mechanism": "Imine or iminium formation from the alpha-ketoacid and ammonia followed by surface hydrogenation.",
+        "reasoning": "Directly demonstrated. Kaur et al. (2024) converted alpha-ketoisovalerate to valine under mild aqueous H2 with Ni/SiO2-Al2O3. This is one of the best-supported valine-forming final steps in the literature, although Ni gives substantial competing 2-hydroxyisovalerate (Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Meteoritic Fe-Ni-catalyzed reductive amination of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_011",
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Aletai meteoritic Fe-Ni metal"
+        ],
+        "conditions": {
+          "temperature": "295-315K",
+          "pressure": "5 bar H2",
+          "catalyst": "Aletai meteoritic Fe-Ni metal",
+          "aqueous": "true",
+          "other": "cool serpentinization-fed mixing zone, pH about 8, NH4HCO3 present, about 72 h"
+        },
+        "mechanism": "Ammonia-derived imine formation followed by hydrogenation on a meteoritic metal surface.",
+        "reasoning": "Directly demonstrated. Kaur et al. (2024) showed that ground Aletai iron meteorite catalyzes alpha-ketoisovalerate reduction to valine. This variant is more geochemically naturalistic than Pd/C, but valine competes strongly with 2-hydroxyisovalerate (Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Bucherer-Bergs-type conversion of alpha-ketoisovalerate to valine",
+        "inputs": [
+          "mol_011",
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NH4Cl or equivalent ammonia source",
+          "bicarbonate"
+        ],
+        "conditions": {
+          "temperature": "295K then 353K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "pH about 8.5, cyanide plus bicarbonate plus ammonia source, about 21 d at room temperature then about 14 d heating; hydantoin and N-carbamoyl intermediates omitted from the node"
+        },
+        "mechanism": "Cyanide addition to the alpha-ketoacid, hydantoin formation, N-carbamoyl hydrolysis, and net release of the added one-carbon equivalent as CO2.",
+        "reasoning": "Mechanistically plausible but still valine-specific speculation. Pulletikurti et al. (2022) established Bucherer-Bergs conversion of several alpha-ketoacids to amino acids through hydantoin and N-carbamoyl intermediates, but they did not directly report alpha-ketoisovalerate-to-valine. The need for concentrated cyanide, ammonia source, and bicarbonate, plus long processing times, remains a major prebiotic caveat (Pulletikurti et al., 2022)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Surface-discharge Strecker route",
+        "description": "Surface discharge produces formaldehyde and HCN; formaldehyde is grown to acetaldehyde, a cool H2-rich hydrothermal homologation gives isobutyraldehyde, and a surface overall Strecker conversion furnishes valine. The Strecker finish is strong, while branched aldehyde generation remains the bottleneck.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct hydrothermal acetaldehyde dimerization plus Ni finishing",
+        "description": "Surface carbonyl generation feeds a speculative hydrothermal direct C2+C2+CO2 route to alpha-ketoisovalerate, followed by the experimentally demonstrated Ni-catalyzed reductive amination step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct hydrothermal acetaldehyde dimerization plus meteoritic finishing",
+        "description": "The same speculative direct hydrothermal source of alpha-ketoisovalerate as in P2 is coupled to meteoritic Fe-Ni reductive amination rather than Ni/SiO2-Al2O3.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct hydrothermal acetaldehyde dimerization plus Bucherer-Bergs finishing",
+        "description": "A speculative hydrothermal direct source of alpha-ketoisovalerate is followed by HCN generation and a surface Bucherer-Bergs-type conversion to valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_006",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Pyruvate branch plus Ni finishing",
+        "description": "Acetaldehyde is speculatively carboxylated to pyruvate, two pyruvates are combined in an acetolactate-like hydrothermal step to alpha-ketoisovalerate, and Ni-catalyzed reductive amination gives valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Pyruvate branch plus meteoritic finishing",
+        "description": "The same speculative pyruvate-to-alpha-ketoisovalerate branch as in P5 is terminated by meteoritic Fe-Ni reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Pyruvate branch plus Bucherer-Bergs finishing",
+        "description": "A speculative pyruvate-based hydrothermal source of alpha-ketoisovalerate is combined with surface HCN production and Bucherer-Bergs-type finishing.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_010",
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Surface C1/C2 carbonyl assembly plus Ni finishing",
+        "description": "A formaldehyde-rich surface carbonyl pool is speculatively assembled into alpha-ketoisovalerate and then converted to valine by the experimentally supported Ni-catalyzed reductive amination step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Surface C1/C2 carbonyl assembly plus meteoritic finishing",
+        "description": "The same speculative surface carbonyl-assembly source of alpha-ketoisovalerate as in P8 is finished by meteoritic Fe-Ni reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Surface C1/C2 carbonyl assembly plus Bucherer-Bergs finishing",
+        "description": "A speculative surface formaldehyde/acetaldehyde route to alpha-ketoisovalerate is paired with HCN production and Bucherer-Bergs-type finishing in a concentrated cyanide/bicarbonate pool.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_007",
+      "mol_008",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_003": 0.25,
+          "rxn_004": 0.89,
+          "rxn_005": 0.83
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.66,
+        "feedback": "This is the best-aligned complete route in the network: rxn_001 and rxn_004 match Miller-type discharge chemistry and rxn_005 is a classical Strecker-hydrolysis net step. The main gap is rxn_003, a speculative hydrothermal assembly of isobutyraldehyde from acetaldehyde, formaldehyde, and H2 with no direct valine-specific literature support; rxn_002 is also a weakly anchored lumped carbonyl-growth step. Despite the pathway name, it is not purely surface chemistry, and transport of reactive aldehydes into and out of the hydrothermal setting is not justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Break rxn_003 into explicit branching and reduction substeps or replace it with an experimentally supported isobutyraldehyde route",
+          "Add a physical transport and concentration mechanism linking discharge products to hydrothermal and cyanide-pool settings",
+          "Encode explicit coefficients and optionally the aminonitrile intermediate for the Strecker module"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_006": 0.2,
+          "rxn_010": 0.79
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.57,
+        "environmental_progression": 0.62,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.59,
+        "feedback": "rxn_010 is the strongest valine-forming step in the network and aligns with the mild H2/Ni reductive amination literature. The bottleneck is rxn_006: direct carboxylative dimerization of acetaldehyde to alpha-ketoisovalerate has no direct experimental support here and compresses several C-C and redox steps into one hydrothermal event. rxn_002 is also a speculative carbonyl-growth module, and the natural identity of the Ni catalyst should be specified rather than implying the supported laboratory catalyst directly.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_006 with a stepwise, experimentally anchored route to alpha-ketoisovalerate",
+          "Specify a realistic natural Ni-bearing catalyst and H2-rich hydrothermal conditions",
+          "Add a transport mechanism from surface-generated aldehydes to the hydrothermal reaction zone"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_006": 0.2,
+          "rxn_011": 0.74
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.56,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.56,
+        "feedback": "rxn_011 is literature-grounded through meteoritic Fe-Ni catalyzed reductive amination, but it still depends on preformed alpha-ketoisovalerate. rxn_006 remains the major gap and has little direct support as written. Fresh meteoritic metal survival and localization in a hydrothermal zone need justification, and hydroxy-acid competition is substantial in the published experiments.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_006 with explicit supported intermediates on the way to alpha-ketoisovalerate",
+          "Justify sourcing and persistence of fresh Fe-Ni meteoritic catalyst in the hydrothermal setting",
+          "Model competing 2-hydroxyisovalerate formation in rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_004": 0.89,
+          "rxn_006": 0.2,
+          "rxn_012": 0.47
+        },
+        "chemical_feasibility": 0.52,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.54,
+        "feedback": "The upstream problem remains rxn_006. rxn_012 has only class-level support: Bucherer-Bergs chemistry from alpha-ketoacids is plausible, but the cited literature did not directly show alpha-ketoisovalerate to valine. The encoded step also omits the concentrated NH4+/HCO3-/CN- context and long room-temperature plus 80 C processing used experimentally.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Add explicit hydantoin and N-carbamoyl intermediates plus the NH4+/HCO3-/CN- conditions for rxn_012",
+          "Provide a concentration mechanism for surface cyanide and bicarbonate pools",
+          "Replace rxn_006 with a supported route to alpha-ketoisovalerate"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_007": 0.28,
+          "rxn_008": 0.35,
+          "rxn_010": 0.79
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.64,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.6,
+        "feedback": "This is conceptually more coherent than direct acetaldehyde dimerization because pyruvate is an explicit intermediate and rxn_010 is experimentally demonstrated. But rxn_007 from acetaldehyde plus CO2 to pyruvate and rxn_008 from pyruvate to alpha-ketoisovalerate are both speculative in the valine literature; the latter echoes biochemistry but lacks a validated nonenzymatic counterpart. Surface-to-hydrothermal transfer also remains unmodeled.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Add explicit acetolactate-like and dihydroxyisovalerate-like intermediates rather than one lumped rxn_008",
+          "Use or justify a literature-backed pyruvate source instead of the current rxn_007",
+          "Specify how surface carbonyl products or pyruvate are transferred into the H2/Ni hydrothermal zone"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_007": 0.28,
+          "rxn_008": 0.35,
+          "rxn_011": 0.74
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.63,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.57,
+        "feedback": "The pyruvate branch makes the carbon logic clearer, but the two AKIV-forming steps remain hypothetical and the meteoritic reductive amination finish is less valine-selective than the Ni laboratory catalyst. As in P5, there is no direct literature closure from acetaldehyde to pyruvate to alpha-ketoisovalerate under the stated hydrothermal conditions. A transport model and product-competition model are both needed.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Add explicit intermediates for the pyruvate to alpha-ketoisovalerate branch",
+          "Justify fresh meteoritic Fe-Ni availability in the hydrothermal setting",
+          "Quantify or model 2-hydroxyisovalerate competition in rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_004": 0.89,
+          "rxn_007": 0.28,
+          "rxn_008": 0.35,
+          "rxn_012": 0.47
+        },
+        "chemical_feasibility": 0.51,
+        "pathway_coherence": 0.59,
+        "environmental_progression": 0.52,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.54,
+        "feedback": "The pyruvate branch makes the carbon logic clearer, but both AKIV-forming steps are hypothetical and the Bucherer-Bergs finish is only transferred by analogy, not directly shown for valine. rxn_012 also under-specifies the need for concentrated ammonia, bicarbonate, and cyanide and a long two-stage schedule. The route spans surface discharge, hydrothermal ketoacid formation, and surface cyanide chemistry without a transport model.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Make the alpha-ketoisovalerate branch stepwise and experimentally anchored",
+          "Add NH4+/HCO3-/CN- conditions and hydantoin intermediates to rxn_012",
+          "Include a justified transfer and concentration mechanism between discharge, hydrothermal, and cyanide-pool settings"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_009": 0.15,
+          "rxn_010": 0.79
+        },
+        "chemical_feasibility": 0.49,
+        "pathway_coherence": 0.48,
+        "environmental_progression": 0.48,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.52,
+        "feedback": "rxn_010 is strong, but rxn_009 is the weakest upstream proposal in the network. The balance check implies acetaldehyde plus 3 formaldehyde to alpha-ketoisovalerate plus water, so the encoded step hides substantial chemistry and has no direct literature analogue for alpha-ketoisovalerate formation. That leaves the pathway short but chemically under-justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Replace rxn_009 with explicit experimentally motivated carbonyl-building substeps",
+          "Add any needed oxidation sequence and catalysts for surface alpha-ketoisovalerate formation",
+          "Provide transport and concentration rationale for moving alpha-ketoisovalerate into the hydrothermal reductive amination setting"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_009": 0.15,
+          "rxn_011": 0.74
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.47,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.5,
+        "feedback": "This inherits the severe rxn_009 problem and adds the lower-selectivity meteoritic amination finish. The final step is literature-supported in principle, but the pathway is dominated by an unsupported surface alpha-ketoisovalerate assembly and an unstated mechanism for delivering that ketoacid to a meteoritic catalytic site.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Substitute a demonstrated upstream route to alpha-ketoisovalerate",
+          "Justify catalyst sourcing and persistence for the meteoritic Fe-Ni finish",
+          "Make the three-formaldehyde requirement of rxn_009 explicit and chemically stepwise"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.45,
+          "rxn_004": 0.89,
+          "rxn_009": 0.15,
+          "rxn_012": 0.47
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.45,
+        "environmental_progression": 0.48,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.48,
+        "feedback": "This is the least convincing complete pathway. rxn_009 is highly speculative, and rxn_012 is only a mechanistic extrapolation from general alpha-ketoacid Bucherer-Bergs chemistry rather than a direct alpha-ketoisovalerate-to-valine demonstration. Even if kept entirely at the surface, the route still needs a concrete concentration mechanism for formaldehyde, cyanide, ammonia, and bicarbonate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Replace rxn_009 with a supported upstream alpha-ketoisovalerate route",
+          "Add explicit NH4+/HCO3-/CN- conditions and hydantoin intermediates for rxn_012",
+          "Provide a quantified surface concentration scenario for formaldehyde, cyanide, ammonia, and bicarbonate"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.61,
+    "network_feedback": "Network validity is good: the graph is connected, molecule IDs are consistent, and the deterministic balance check reports 0 UNBALANCED reactions. However, several reactions need explicit coefficients in the encoding, especially rxn_001, rxn_002, rxn_003, rxn_004, rxn_006, rxn_008, and rxn_009; rxn_009 in particular requires three formaldehyde equivalents by the balance check. Literature alignment is strongest for the finishing chemistry in rxn_005 and rxn_010/rxn_011, and the strategy appropriately treats shock and one-pot HCHO/NH3 results as motivation rather than mechanistically explicit steps. The main weakness is upstream branched-skeleton construction: rxn_003 and especially rxn_006-rxn_009 are speculative lumped transformations with little direct prebiotic support for generating isobutyraldehyde or alpha-ketoisovalerate from the listed precursors. Environmental consistency is mixed because reactive carbonyls and ketoacids are moved between surface and hydrothermal settings without an explicit transport or concentration mechanism, and rxn_012 under-specifies the concentrated NH4+/HCO3-/CN- context of Bucherer-Bergs chemistry. Best current pathway is P1, but no pathway reaches the 0.8 approval threshold and the network as a whole is not approved.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 5,
+      "n_balanceable": 7,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_006": 1,
+            "mol_003": 2
+          },
+          "element_delta": {
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 2,
+            "mol_003": 1,
+            "mol_007": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_006": 2,
+            "mol_003": 2,
+            "mol_009": 1,
+            "mol_002": 2
+          },
+          "element_delta": {
+            "C": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_004": 1,
+            "mol_008": 1,
+            "mol_003": 3
+          },
+          "element_delta": {
+            "H": 4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 2,
+            "mol_005": 1,
+            "mol_003": 1,
+            "mol_011": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "C": -2,
+            "O": -1,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_005": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 2,
+            "mol_003": 1,
+            "mol_011": 1,
+            "mol_005": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "C": -3,
+            "O": -3,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_006": 3,
+            "mol_011": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "C": -2,
+            "O": -2,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_004": 1,
+            "mol_003": 1,
+            "mol_012": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_004": 1,
+            "mol_003": 1,
+            "mol_012": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_012": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

@@ -1,0 +1,309 @@
+{
+  "target_molecule": "L-Alanine",
+  "pathway_name": "Prebiotic Strecker synthesis of L-alanine from acetylene",
+  "network": {
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C2H2",
+        "iupac_name": "Ethyne",
+        "common_name": "Acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H"
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C2H4O",
+        "iupac_name": "Ethanal",
+        "common_name": "Acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3"
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H7NO",
+        "iupac_name": "1-Aminoethan-1-ol",
+        "common_name": "Acetaldehyde carbinolamine",
+        "inchi": "InChI=1S/C2H7NO/c1-2(3)4/h2,4H,3H2,1H3"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H5N",
+        "iupac_name": "Ethanimine",
+        "common_name": "Acetaldimine",
+        "inchi": "InChI=1S/C2H5N/c1-2-3/h2-3H,1H3"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H6N2",
+        "iupac_name": "(2S)-2-Aminopropanenitrile",
+        "common_name": "S-Alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3/t3-/m0/s1"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6N2",
+        "iupac_name": "(2R)-2-Aminopropanenitrile",
+        "common_name": "R-Alanine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3/t3-/m1/s1"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H8N2O",
+        "iupac_name": "(2S)-2-Aminopropanamide",
+        "common_name": "S-Alaninamide",
+        "inchi": "InChI=1S/C3H8N2O/c1-2(4)3(5)6/h2H,4H2,1H3,(H2,5,6)/t2-/m0/s1"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H8N2O",
+        "iupac_name": "(2R)-2-Aminopropanamide",
+        "common_name": "R-Alaninamide",
+        "inchi": "InChI=1S/C3H8N2O/c1-2(4)3(5)6/h2H,4H2,1H3,(H2,5,6)/t2-/m1/s1"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-Aminopropanoic acid",
+        "common_name": "L-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2R)-2-Aminopropanoic acid",
+        "common_name": "D-Alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m1/s1"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Prebiotic acetylene hydration",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "equation": "C2H2 + H2O -> CH3CHO",
+        "mechanism": "Nickel sulfide catalyzes the hydration of acetylene, producing acetaldehyde.",
+        "conditions": {
+          "catalyst": "NiS",
+          "environment": "Anoxic aqueous hydrothermal environment",
+          "temperature": "Approximately 105 degrees Celsius in a published experiment"
+        },
+        "evidence": "Experimentally demonstrated under simulated prebiotic conditions."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Ammonia addition to acetaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "equation": "CH3CHO + NH3 -> CH3CH(OH)NH2",
+        "mechanism": "Nucleophilic addition of ammonia to the carbonyl carbon produces a carbinolamine.",
+        "conditions": {
+          "environment": "Aqueous solution",
+          "process": "Reversible nucleophilic addition"
+        },
+        "evidence": "The aminoalcohol intermediate was detected in a simulated prebiotic system."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Imine formation",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "equation": "CH3CH(OH)NH2 -> CH3CH=NH + H2O",
+        "mechanism": "Dehydration of the carbinolamine produces an imine.",
+        "conditions": {
+          "environment": "Aqueous environment",
+          "process": "Acid-base-catalyzed dehydration equilibrium"
+        },
+        "evidence": "Mechanistically established Strecker reaction step."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyanide addition producing S-aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "equation": "CH3CH=NH + HCN -> (S)-CH3CH(NH2)CN",
+        "mechanism": "Cyanide attacks the planar imine carbon from one face, generating the S enantiomer.",
+        "conditions": {
+          "environment": "Aqueous cyanide-containing environment",
+          "process": "Strecker aminonitrile formation"
+        },
+        "stereochemistry": "One branch of a normally racemic reaction; no intrinsic preference for S.",
+        "expected_enantiomer_fraction": 0.5
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanide addition producing R-aminonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "equation": "CH3CH=NH + HCN -> (R)-CH3CH(NH2)CN",
+        "mechanism": "Cyanide attacks the opposite face of the planar imine, generating the R enantiomer.",
+        "conditions": {
+          "environment": "Aqueous cyanide-containing environment",
+          "process": "Strecker aminonitrile formation"
+        },
+        "stereochemistry": "Competing enantiomeric branch.",
+        "expected_enantiomer_fraction": 0.5
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydration of S-aminonitrile",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "equation": "(S)-CH3CH(NH2)CN + H2O -> (S)-CH3CH(NH2)CONH2",
+        "mechanism": "Hydrolysis of the nitrile group to a primary amide.",
+        "conditions": {
+          "environment": "Aqueous environment",
+          "process": "Acid- or base-catalyzed nitrile hydrolysis"
+        }
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydration of R-aminonitrile",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "equation": "(R)-CH3CH(NH2)CN + H2O -> (R)-CH3CH(NH2)CONH2",
+        "mechanism": "Hydrolysis of the R-aminonitrile to the corresponding amide.",
+        "conditions": {
+          "environment": "Aqueous environment",
+          "process": "Acid- or base-catalyzed nitrile hydrolysis"
+        }
+      },
+      {
+        "id": "rxn_008",
+        "name": "Formation of L-alanine",
+        "inputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_004"
+        ],
+        "equation": "(S)-CH3CH(NH2)CONH2 + H2O -> (S)-CH3CH(NH2)COOH + NH3",
+        "mechanism": "Hydrolysis of the primary amide generates L-alanine and ammonia.",
+        "conditions": {
+          "environment": "Aqueous environment",
+          "process": "Amide hydrolysis"
+        },
+        "is_target_forming_reaction": true,
+        "stereochemistry": "The S configuration is retained if racemization is avoided."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Formation of D-alanine",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_004"
+        ],
+        "equation": "(R)-CH3CH(NH2)CONH2 + H2O -> (R)-CH3CH(NH2)COOH + NH3",
+        "mechanism": "Hydrolysis of the R-alaninamide produces D-alanine.",
+        "conditions": {
+          "environment": "Aqueous environment",
+          "process": "Amide hydrolysis"
+        },
+        "stereochemistry": "Competing branch yielding the D enantiomer."
+      }
+    ]
+  },
+  "target_molecule_id": "mol_012",
+  "starting_molecule_ids": [
+    "mol_001",
+    "mol_002",
+    "mol_004",
+    "mol_007"
+  ],
+  "main_pathway": [
+    "mol_001",
+    "mol_003",
+    "mol_005",
+    "mol_006",
+    "mol_008",
+    "mol_010",
+    "mol_012"
+  ],
+  "prebiotic_plausibility": {
+    "status": "Experimentally supported route to alanine, with unresolved enantioselectivity",
+    "explanation": "Acetylene hydration over nickel sulfide, followed by Strecker chemistry, has been demonstrated in laboratory simulations of prebiotic environments. The reaction produces alanine without enzymes. Individual elementary intermediates and reaction conditions are not necessarily identical across all proposed stages.",
+    "stereochemistry_limitation": "Achiral Strecker synthesis produces approximately equal amounts of L-alanine and D-alanine. The pathway therefore produces L-alanine as part of a racemic mixture, not as an isolated enantiopure product.",
+    "possible_l_enrichment": "Circularly polarized ultraviolet light has produced small L-alanine enantiomeric excesses in experiments on extraterrestrial organic precursors. Applying such an enrichment mechanism to this specific Strecker network remains hypothetical.",
+    "requires_enzymes": false,
+    "requires_biological_metabolism": false
+  },
+  "references": [
+    {
+      "title": "Formation, stabilization and fate of acetaldehyde and higher aldehydes in an autonomously changing prebiotic system emerging from acetylene",
+      "year": 2023,
+      "doi": "10.1038/s42004-023-00833-5",
+      "url": "https://www.nature.com/articles/s42004-023-00833-5"
+    },
+    {
+      "title": "Proton transfers in the Strecker reaction revealed by DFT calculations",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4143099/"
+    },
+    {
+      "title": "Asymmetric synthesis of amino acid precursors in interstellar complex organics by circularly polarized light",
+      "year": 2007,
+      "doi": "10.1016/j.epsl.2006.11.030",
+      "url": "https://doi.org/10.1016/j.epsl.2006.11.030"
+    }
+  ]
+}

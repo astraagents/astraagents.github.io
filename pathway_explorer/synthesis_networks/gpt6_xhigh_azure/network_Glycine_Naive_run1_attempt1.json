@@ -1,0 +1,202 @@
+{
+  "target_molecule": "Glycine",
+  "pathway_name": "Prebiotic Strecker Synthesis",
+  "pathway_type": "Abiotic amino acid synthesis",
+  "network": {
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "Prebiotic starting material"
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "Nitrogen-containing starting material"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH5NO",
+        "iupac_name": "Aminomethanol",
+        "common_name": null,
+        "inchi": "InChI=1S/CH5NO/c2-1-3/h3H,1-2H2",
+        "role": "Transient carbinolamine intermediate"
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH3N",
+        "iupac_name": "Methanimine",
+        "common_name": "Formaldimine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "Imine intermediate"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2O",
+        "iupac_name": "Oxidane",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "Prebiotic solvent and hydrolysis reactant"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "Prebiotic carbon and nitrogen source"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4N2",
+        "iupac_name": "2-Aminoacetonitrile",
+        "common_name": "Glycinonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "Alpha-aminonitrile intermediate"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H6N2O",
+        "iupac_name": "2-Aminoacetamide",
+        "common_name": "Glycinamide",
+        "inchi": "InChI=1S/C2H6N2O/c3-1-2(4)5/h1,3H2,(H2,4,5)",
+        "role": "Amide hydrolysis intermediate"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-Aminoacetic acid",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "Target molecule"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "step": 1,
+        "name": "Formation of aminomethanol",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "equation": "CH2O + NH3 \u21cc NH2CH2OH",
+        "reaction_type": "Nucleophilic addition",
+        "description": "Ammonia adds to formaldehyde to form the transient carbinolamine aminomethanol.",
+        "conditions": "Aqueous environment; reversible and pH-dependent"
+      },
+      {
+        "id": "rxn_002",
+        "step": 2,
+        "name": "Formation of methanimine",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "equation": "NH2CH2OH \u21cc CH2NH + H2O",
+        "reaction_type": "Dehydration",
+        "description": "Aminomethanol undergoes dehydration to produce methanimine.",
+        "conditions": "Dehydration favored under suitable catalytic or water-removing conditions"
+      },
+      {
+        "id": "rxn_003",
+        "step": 3,
+        "name": "Formation of aminoacetonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "equation": "CH2NH + HCN \u21cc NH2CH2CN",
+        "reaction_type": "Strecker cyanide addition",
+        "description": "Hydrogen cyanide supplies cyanide for addition to the imine, forming aminoacetonitrile.",
+        "conditions": "Aqueous solution with available HCN/cyanide; pH-dependent"
+      },
+      {
+        "id": "rxn_004",
+        "step": 4,
+        "name": "Hydrolysis to glycinamide",
+        "inputs": [
+          "mol_007",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "equation": "NH2CH2CN + H2O \u2192 NH2CH2CONH2",
+        "reaction_type": "Nitrile hydration",
+        "description": "Hydrolysis of the nitrile functional group yields the corresponding amide, glycinamide.",
+        "conditions": "Aqueous hydrolysis; heating and acid/base catalysis may facilitate the reaction"
+      },
+      {
+        "id": "rxn_005",
+        "step": 5,
+        "name": "Formation of glycine",
+        "inputs": [
+          "mol_008",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "equation": "NH2CH2CONH2 + H2O \u2192 NH2CH2COOH + NH3",
+        "reaction_type": "Amide hydrolysis",
+        "description": "Hydrolysis of glycinamide produces glycine and releases ammonia.",
+        "conditions": "Aqueous environment; usually requires suitable thermal and/or acid/base catalysis"
+      }
+    ]
+  },
+  "net_reaction": {
+    "equation": "CH2O + HCN + H2O \u2192 NH2CH2COOH",
+    "description": "The overall atom-balanced Strecker synthesis of glycine. Ammonia is consumed and regenerated in the simplified reaction sequence."
+  },
+  "prebiotic_context": {
+    "starting_materials": [
+      "Formaldehyde",
+      "Ammonia",
+      "Hydrogen cyanide",
+      "Water"
+    ],
+    "possible_environments": [
+      "Prebiotic aqueous ponds",
+      "Hydrothermally influenced environments",
+      "Meteorite parent bodies undergoing aqueous alteration"
+    ],
+    "scientific_status": "Chemically established Strecker reaction sequence and plausible prebiotic synthesis route; the complete sequence occurring under one specific early-Earth environment is not demonstrated.",
+    "limitations": [
+      "Individual reactions are reversible or condition-dependent.",
+      "The aminomethanol intermediate can be short-lived.",
+      "Nitrile and amide hydrolysis may require heating or catalysis.",
+      "Competing reactions and formation of other organic products are possible."
+    ]
+  },
+  "references": [
+    {
+      "title": "Planetary Organic Chemistry and the Origins of Biomolecules",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2890202/"
+    },
+    {
+      "title": "Experimental identification of aminomethanol (NH2CH2OH)\u2014the key intermediate in the Strecker Synthesis",
+      "url": "https://www.nature.com/articles/s41467-022-27963-z"
+    },
+    {
+      "title": "Tracing the Primordial Chemical Life of Glycine: A Review from Quantum Chemical Simulations",
+      "url": "https://www.mdpi.com/1422-0067/23/8/4252"
+    }
+  ]
+}

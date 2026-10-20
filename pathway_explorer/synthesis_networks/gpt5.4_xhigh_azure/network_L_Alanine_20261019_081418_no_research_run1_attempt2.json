@@ -1,0 +1,1048 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-Alanine",
+    "overall_strategy": "Use acetaldehyde directly as the C2 carbonyl feedstock rather than forcing a weak deoxygenation from glycolaldehyde. From acetaldehyde, HCN, and NH3, the network builds alanine chemistry by two Strecker modes: a dry-film imine route and a one-pot aqueous Strecker route. A parallel cyanohydrin branch gives lactate, then pyruvate, then alanine by explicit H2-dependent reductive amination on metal-rich geothermal surfaces. Aminonitriles are converted to an alanine pool either directly or stepwise via alaninamide. Because robust prebiotic evidence for fully homochiral alanine synthesis is weak, the target node represents the isolated L-enriched fraction obtained from that alanine pool by mineral-interface selection or eutectic crystallization in prebiotic pools. All key byproducts and redox partners are explicit, and no unsupported oxygen-sink or reductant-free shortcut is used.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H5N",
+        "iupac_name": "ethanimine",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5N/c1-2-3/h2-3H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine nitrile (racemic/unspecified pool)",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H8N2O",
+        "iupac_name": "2-aminopropanamide",
+        "common_name": "alaninamide (racemic/unspecified pool)",
+        "inchi": "InChI=1S/C3H8N2O/c1-2(4)3(5)6/h2H,4H2,1H3,(H2,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "alanine (racemic/unspecified pool)",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H5NO",
+        "iupac_name": "2-hydroxypropanenitrile",
+        "common_name": "lactonitrile (racemic/unspecified pool)",
+        "inchi": "InChI=1S/C3H5NO/c1-3(5)2-4/h3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O3",
+        "iupac_name": "2-hydroxypropanoic acid",
+        "common_name": "lactic acid (racemic/unspecified pool)",
+        "inchi": "InChI=1S/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-aminopropanoic acid",
+        "common_name": "L-alanine (isolated enriched fraction)",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Reversible acetaldehyde imine formation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "strong wet-dry cycling in NH3-bearing evaporitic or geothermal films; low water activity favors imine accumulation"
+        },
+        "mechanism": "Ammonia adds to acetaldehyde to form a carbinolamine, which dehydrates during concentration to give ethanimine.",
+        "reasoning": "Aldehyde-ammonia condensation is a standard pre-Strecker step. Resolving ethanimine explicitly gives a chemically justified branch of alanine nitrile formation under drying conditions and avoids unsupported deoxygenation chemistry."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Strecker cyanide addition to ethanimine",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cyanide-bearing shallow pools or concentrated films; mildly basic NH3/HCN mixtures"
+        },
+        "mechanism": "Cyanide attacks the C=N center of ethanimine to form the alpha-aminonitrile.",
+        "reasoning": "Cyanide addition to an imine or iminium is the canonical C-C bond-forming step of Strecker chemistry, making alanine nitrile a direct product from acetaldehyde-derived ethanimine."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acetaldehyde cyanohydrin formation",
+        "inputs": [
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN-bearing surface waters or aerosols; reversible cyanohydrin equilibrium"
+        },
+        "mechanism": "Cyanide adds to the carbonyl carbon of acetaldehyde and protonation gives lactonitrile.",
+        "reasoning": "Cyanohydrin formation from aldehydes and HCN is fast and reversible in cyanide-bearing aqueous settings, so lactonitrile is a plausible alternative C3 reservoir derived from the same feedstocks."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Overall Strecker synthesis of alanine nitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "one-pot aqueous NH3/HCN pool; transient imine formation but no isolated imine required"
+        },
+        "mechanism": "Net Strecker sequence in a single pool: transient imine formation followed by cyanide capture to the aminonitrile.",
+        "reasoning": "One-pot Strecker synthesis can generate alanine nitrile directly from acetaldehyde, NH3, and HCN even when free ethanimine does not build up to high concentration. Including this net route captures a second experimentally plausible regime distinct from the dry-film imine branch."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Direct hydrolysis of alanine nitrile to alanine",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prolonged heating in volcanic hot-spring or subaerial geothermal waters; acidic or mildly basic microenvironments accelerate hydrolysis"
+        },
+        "mechanism": "Successive hydration of the nitrile followed by cleavage yields the carboxylic acid and releases ammonia.",
+        "reasoning": "Heated aqueous hydrolysis of alpha-aminonitriles gives amino acids with NH3 release. The product is represented as an alanine pool without fixed stereochemistry because achiral synthesis and hot aqueous processing do not reliably preserve a single enantiomer."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Partial hydrolysis of alanine nitrile to alaninamide",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "geothermal aqueous films or pools with moderate heating"
+        },
+        "mechanism": "First hydration of the nitrile furnishes the corresponding amide.",
+        "reasoning": "Nitrile hydrolysis is mechanistically stepwise, and an amide is the chemically expected intermediate. Including alaninamide keeps oxygen accounting explicit and avoids the imbalances common in oversimplified prebiotic schemes."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrolysis of alaninamide to alanine",
+        "inputs": [
+          "mol_007",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "continued heating in the same geothermal waters that support amide formation"
+        },
+        "mechanism": "Amide hydrolysis converts the carboxamide to the carboxylic acid and releases ammonia.",
+        "reasoning": "Alaninamide is a balanceable and chemically standard intermediate on the route to alanine. Writing NH3 explicitly corrects a common omission in abbreviated nitrile-to-amino-acid schemes."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of lactonitrile to lactic acid",
+        "inputs": [
+          "mol_009",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "hot-spring or subaerial geothermal waters with prolonged contact times"
+        },
+        "mechanism": "Hydration and cleavage of the nitrile group convert the cyanohydrin nitrile into the corresponding alpha-hydroxy acid.",
+        "reasoning": "Cyanohydrin nitriles hydrolyze to alpha-hydroxy acids under heated aqueous conditions. This provides a chemically distinct branch from the same HCN-acetaldehyde pool without any pyruvate shortcut."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Mineral-mediated oxidation of lactic acid to pyruvic acid",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-Fe sulfide surfaces",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm to mildly elevated in porous hot-spring conduits",
+          "catalyst": "Ni-Fe sulfide surfaces / magnetite",
+          "aqueous": true,
+          "other": "subaerial geothermal field with metal-rich crusts; H2 escape helps pull dehydrogenation"
+        },
+        "mechanism": "An alpha-hydroxy acid is dehydrogenated on redox-active mineral surfaces to the corresponding alpha-keto acid, with H2 as the explicit reduced product.",
+        "reasoning": "Lactate/pyruvate is a plausible mineral-mediated redox couple under anoxic geothermal conditions. This is less experimentally secure than Strecker chemistry, but it is chemically defensible when H2 is written explicitly as the electron sink, avoiding any hidden oxidant."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Reductive amination of pyruvic acid to alanine",
+        "inputs": [
+          "mol_011",
+          "mol_002",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-Fe sulfide surfaces"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm to mildly elevated in porous hot-spring conduits",
+          "catalyst": "Ni-Fe sulfide surfaces",
+          "aqueous": true,
+          "other": "NH3-rich reducing geothermal pores with dissolved or freshly generated H2"
+        },
+        "mechanism": "Pyruvate first forms an imine or iminium with ammonia, then H2-driven hydrogenation on metal sulfides gives alanine.",
+        "reasoning": "Pyruvate can be converted to alanine only if both the nitrogen source and the reductant are explicit. Including H2 and H2O makes the redox chemistry transparent and repairs the reductant-free pyruvate-to-alanine shortcut that often fails stoichiometrically."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Chiral mineral-interface enrichment of L-alanine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "chiral calcite or alpha-quartz step edges"
+        ],
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": "chiral mineral step edges",
+          "aqueous": true,
+          "other": "adsorption-desorption cycling at mineral interfaces in prebiotic pools"
+        },
+        "mechanism": "Diastereomeric adsorption at chiral mineral step edges partitions alanine enantiomers, allowing recovery of an L-enriched fraction after repeated cycles.",
+        "reasoning": "This is a physical resolution step, not a claim that a racemic pool quantitatively converts into one enantiomer. The target node denotes the isolated L-enriched fraction accumulated at or recovered from the mineral interface after repeated partitioning cycles."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Eutectic crystallization enrichment of L-alanine",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "evaporite salts"
+        ],
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "repeated evaporation-dissolution cycling in saline prebiotic pools; eutectic or fractional crystallization regime"
+        },
+        "mechanism": "Differential crystal growth, solubility, and phase partitioning during wet-dry cycles enrich the harvestable L-alanine fraction.",
+        "reasoning": "Repeated crystallization can preserve and amplify slight stochastic or surface-induced enantiomeric imbalances in amino-acid pools. As in rxn_011, the target node represents the recovered L-enriched fraction rather than total conversion of the whole alanine pool."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "One-pot Strecker direct hydrolysis with mineral selection",
+        "description": "Acetaldehyde, NH3, and HCN form alanine nitrile in one aqueous Strecker step; hot aqueous hydrolysis gives alanine, and chiral mineral interfaces isolate an L-enriched fraction.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "One-pot Strecker direct hydrolysis with eutectic selection",
+        "description": "The same one-pot Strecker branch is followed by direct aminonitrile hydrolysis and then eutectic crystallization to recover L-enriched alanine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "One-pot Strecker amide branch with mineral selection",
+        "description": "Alanine nitrile from the overall Strecker route first hydrolyzes to alaninamide, then to alanine, before chiral mineral partitioning yields L-alanine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "One-pot Strecker amide branch with eutectic selection",
+        "description": "The one-pot Strecker product proceeds through alaninamide and then alanine, with final L enrichment obtained by crystallization cycling.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_006",
+          "rxn_007",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Dry-film imine Strecker direct hydrolysis with mineral selection",
+        "description": "Wet-dry concentration builds ethanimine first; cyanide addition gives alanine nitrile, which hydrolyzes directly to alanine before mineral-interface L enrichment.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Dry-film imine Strecker direct hydrolysis with eutectic selection",
+        "description": "The explicit imine branch of Strecker chemistry is followed by direct nitrile hydrolysis and then eutectic enrichment of the L fraction.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Dry-film imine Strecker amide branch with mineral selection",
+        "description": "Ethanimine formation under drying conditions is followed by cyanide capture, stepwise hydrolysis through alaninamide, and mineral-interface selection of L-alanine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Dry-film imine Strecker amide branch with eutectic selection",
+        "description": "The same dry-film imine route reaches alanine via alaninamide and then yields L-enriched alanine through repeated crystallization cycles.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Cyanohydrin-lactate-pyruvate route with mineral selection",
+        "description": "Acetaldehyde first forms lactonitrile, which hydrolyzes to lactate; mineral-mediated oxidation gives pyruvate, explicit H2-dependent reductive amination gives alanine, and chiral mineral interfaces isolate L-alanine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanohydrin-lactate-pyruvate route with eutectic selection",
+        "description": "The cyanohydrin branch proceeds through lactate and pyruvate to alanine, and wet-dry eutectic crystallization yields an L-enriched alanine fraction.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_008"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_008"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.69,
+          "rxn_011": 0.62
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.76,
+        "overall_confidence": 0.77,
+        "feedback": "Short and coherent Strecker route to an alanine pool. The main issues are rxn_005, which is one H2O short as written and is mechanistically better viewed through alaninamide, and rxn_011, which is an enrichment or separation step with contingent L-selectivity rather than a robust chiral synthesis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Correct rxn_005 to mol_006 + 2 mol_005 -> mol_008 + mol_002.",
+          "Prefer the explicit amide branch rxn_006 then rxn_007 instead of collapsing nitrile hydrolysis into one step.",
+          "Relabel rxn_011 as mineral-interface selection and specify the chiral mineral and expected enrichment."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_005": 0.69,
+          "rxn_012": 0.56
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.72,
+        "overall_confidence": 0.74,
+        "feedback": "This is still a concise Strecker route, but the direct hydrolysis issue in rxn_005 remains, and rxn_012 is a weaker final step because eutectic enrichment from a nominally racemic alanine pool is not strongly established as a deterministic source of an L-enriched fraction.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Correct rxn_005 to mol_006 + 2 mol_005 -> mol_008 + mol_002.",
+          "Specify the ice or frozen-brine environment for rxn_012 rather than labeling it Biochemical.",
+          "State whether rxn_012 assumes a small pre-existing ee, because eutectic enrichment is more plausible as amplification or partitioning than as symmetry breaking from an exact racemate."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_006": 0.83,
+          "rxn_007": 0.81,
+          "rxn_011": 0.62
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.76,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.82,
+        "feedback": "Best-supported pathway in the network. One-pot Strecker formation of the aminonitrile followed by explicit amide hydrolysis is chemically coherent; confidence is mainly limited by rxn_011, which isolates an L-enriched fraction rather than demonstrating intrinsically enantioselective synthesis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add explicit wetting, temperature, and plausible mineral assistance for rxn_006 and rxn_007.",
+          "Relabel rxn_011 from Biochemical to mineral surface or interfacial enrichment.",
+          "State whether the target is modest L-enrichment or high ee, because that strongly affects plausibility."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.9,
+          "rxn_006": 0.83,
+          "rxn_007": 0.81,
+          "rxn_012": 0.56
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.73,
+        "target_achievement": 0.74,
+        "overall_confidence": 0.78,
+        "feedback": "The core chemistry to alanine is good, and the amide branch is more convincing than direct nitrile hydrolysis. The limiting factor is rxn_012: eutectic selection is better framed as conditional enrichment or partitioning than as a robust route from an exactly racemic pool to a defined L product.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Specify an ice-brine or eutectic freezing environment for rxn_012 instead of Biochemical.",
+          "Clarify whether a small initial alanine ee is assumed before eutectic enrichment.",
+          "If possible, tie rxn_012 to experimentally supported alanine phase behavior under relevant salt and temperature conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.87,
+          "rxn_005": 0.69,
+          "rxn_011": 0.62
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.71,
+        "target_achievement": 0.76,
+        "overall_confidence": 0.76,
+        "feedback": "The dry-film imine route is chemically plausible, but it implicitly needs a wet-dry cycle: dehydration for rxn_001, cyanide addition for rxn_002, then rehydration for hydrolysis. rxn_005 is again one H2O short as written, and the final L-enrichment remains conditional.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Make the wet-dry sequence explicit by assigning dry conditions to rxn_001 and aqueous conditions to the hydrolysis step.",
+          "Correct rxn_005 to include a second H2O or replace it with rxn_006 plus rxn_007.",
+          "Relabel rxn_011 and identify the mineral surface responsible for enantioselective partitioning."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.87,
+          "rxn_005": 0.69,
+          "rxn_012": 0.56
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.69,
+        "target_achievement": 0.72,
+        "overall_confidence": 0.73,
+        "feedback": "This route has the same wet-dry handling issue as P5, plus the weaker eutectic final step. The chemistry to an alanine pool is reasonable, but rxn_005 should be corrected and rxn_012 needs a more explicit and better justified ice or brine setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Correct rxn_005 to mol_006 + 2 mol_005 -> mol_008 + mol_002.",
+          "Specify the environmental transition from dry imine formation to wet hydrolysis and then to freezing or eutectic conditions.",
+          "State whether rxn_012 assumes pre-existing ee or merely selective isolation of one fraction."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.87,
+          "rxn_006": 0.83,
+          "rxn_007": 0.81,
+          "rxn_011": 0.62
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.8,
+        "feedback": "Explicit imine formation, Strecker addition, and stepwise hydrolysis make this a coherent route to an alanine pool. It is slightly less secure than P3 only because the dry-to-wet environmental switch is implicit, and the final L-enrichment is still a selection step rather than a chiral synthesis.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Make the wet-dry sequence explicit by assigning dry conditions to rxn_001 and aqueous rehydration to rxn_006 and rxn_007.",
+          "Relabel rxn_011 from Biochemical to mineral-interface enrichment.",
+          "Quantify the expected alanine ee or fractionation from the chosen mineral surface."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.85,
+          "rxn_002": 0.87,
+          "rxn_006": 0.83,
+          "rxn_007": 0.81,
+          "rxn_012": 0.56
+        },
+        "chemical_feasibility": 0.77,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.74,
+        "overall_confidence": 0.76,
+        "feedback": "The imine plus amide route is chemically sound up to alanine, but the required dry-to-wet transition is only implicit and the eutectic selection step is still the main weakness for the stated L target.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Specify the drying and rewetting sequence across rxn_001, rxn_002, rxn_006, and rxn_007.",
+          "Describe rxn_012 as ice-brine or eutectic partitioning rather than Biochemical selection.",
+          "Support rxn_012 with alanine-specific crystallization or eutectic data if available."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.88,
+          "rxn_008": 0.7,
+          "rxn_009": 0.6,
+          "rxn_010": 0.73,
+          "rxn_011": 0.62
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.66,
+        "target_achievement": 0.75,
+        "overall_confidence": 0.71,
+        "feedback": "This branch is connected and redox-explicit, but it is the most speculative route. rxn_008 is one H2O short as written, rxn_009 needs much firmer catalytic and environmental support for lactate-to-pyruvate dehydrogenation with H2 release, and rxn_010 needs explicit metal and H2 conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Correct rxn_008 to mol_009 + 2 mol_005 -> mol_010 + mol_002 and consider adding the amide intermediate explicitly.",
+          "Specify the catalyst, temperature, and whether rxn_009 is truly acceptorless or coupled to a mineral redox cycle.",
+          "Define the metal surface and H2 availability for rxn_010, or tie it to an experimentally supported prebiotic analogue.",
+          "Relabel rxn_011 as mineral-interface enrichment rather than Biochemical."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_003": 0.88,
+          "rxn_008": 0.7,
+          "rxn_009": 0.6,
+          "rxn_010": 0.73,
+          "rxn_012": 0.56
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.71,
+        "overall_confidence": 0.68,
+        "feedback": "This is the least secure pathway because it combines the more speculative redox branch with the weaker eutectic selection step. rxn_008 needs a second H2O, rxn_009 and rxn_010 need tighter catalytic definition, and rxn_012 should be framed as conditional enrichment in an ice or brine environment rather than a generic Biochemical step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Correct rxn_008 to mol_009 + 2 mol_005 -> mol_010 + mol_002.",
+          "Provide explicit catalyst, temperature, and gas conditions for rxn_009 and rxn_010.",
+          "Relabel rxn_012 as eutectic or ice-brine enrichment and clarify whether any initial alanine ee is assumed."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.79,
+    "network_feedback": "Connected 13-molecule and 12-reaction network with good internal consistency and no unbalanceable reactions. The deterministic balance check shows that rxn_005 and rxn_008 are salvageable but each omit one H2O as written; they should be corrected to the 2 H2O hydrolyses. The strongest chemistry is the Strecker core, especially the explicit amide-mediated hydrolysis routes P3 and P7. The cyanohydrin-lactate-pyruvate branch is less secure because rxn_009 and rxn_010 need much more specific catalytic and environmental support. The main target-level weakness is that rxn_011 and rxn_012 are enrichment or resolution operations rather than true chiral synthesis, and their environment is mislabeled as Biochemical instead of mineral-interface or ice-brine selection; they support at best an isolated L-enriched fraction from an alanine pool, not a robust deterministic origin of L-alanine from an exactly racemic pool. Overall the network is credible for generating an alanine pool but only moderately supported for the stated L-alanine target, so it does not meet the 0.9 approval threshold.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 10,
+      "n_balanceable": 2,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_003": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_003": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_006": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_005": 2,
+            "mol_008": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_005": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_005": 1,
+            "mol_008": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_005": 2,
+            "mol_010": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 1,
+            "mol_012": 1,
+            "mol_008": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_013": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_013": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

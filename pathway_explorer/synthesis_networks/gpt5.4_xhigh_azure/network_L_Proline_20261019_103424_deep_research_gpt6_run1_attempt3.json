@@ -1,0 +1,1101 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Use Patel's cyanosulfidic route as the mechanistic backbone because it is the most explicit proline-specific pathway in the literature, represent hydrothermal HCN/HCHO chemistry, hot HCHO/NH3 chemistry, molybdate-clay HCHO/NH2OH chemistry, and direct discharge chemistry as balanced overall route-family nodes, and connect these to simple-gas source modules that supply HCN/NH3 and formaldehyde/H2 pools. All branches converge on stereochemically unresolved proline; conversion to L-proline is kept as a separate explicitly speculative enrichment node because the supplied literature does not demonstrate a robust abiotic L-selective synthesis. Exogenous formamide and interstellar-ice routes are not expanded here because they do not improve convergence within the 15-molecule cap and likewise do not solve homochirality.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "N2",
+        "iupac_name": "dinitrogen",
+        "common_name": "nitrogen",
+        "inchi": "InChI=1S/N2/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH2OH",
+        "iupac_name": "hydroxylamine",
+        "common_name": "hydroxylamine",
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H6N2",
+        "iupac_name": "3-aminopropanenitrile",
+        "common_name": "beta-aminopropionitrile",
+        "inchi": "InChI=1S/C3H6N2/c4-2-1-3-5/h1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H7NO",
+        "iupac_name": "3-aminopropanal",
+        "common_name": "beta-aminopropionaldehyde",
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3H,1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H8N2",
+        "iupac_name": "pyrrolidine-2-carbonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8N2/c6-4-5-2-1-3-7-5/h5,7H,1-3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C5H9NO2",
+        "iupac_name": "pyrrolidine-2-carboxylic acid",
+        "common_name": "proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_015",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Electric-discharge generation of hydrogen cyanide and ammonia",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silicate surface"
+        ],
+        "conditions": {
+          "temperature": "localized plasma; bulk 300-350K",
+          "pressure": "1 atm",
+          "catalyst": "silicate surface effects possible",
+          "aqueous": false,
+          "other": "electrical discharge; strongly reducing local gas mixture; water vapor or condensed water may be present experimentally but is omitted from the minimal balanced bookkeeping"
+        },
+        "mechanism": "Plasma fragmentation of methane and dinitrogen generates CN-bearing radicals and reduced nitrogen species that recombine to hydrogen cyanide and ammonia.",
+        "reasoning": "Net source module for the HCN and NH3 inventory used elsewhere in the network. Ring et al. detected proline and many simpler nitrogen-bearing organics in CH4/N2/H2O/trace-NH3 discharge mixtures, implying abundant HCN-type intermediates, and vessel surfaces can materially change product distributions (Ring et al., 1972; Criado-Reyes et al., 2021). Atmospheric modeling also supports HCN production in some N2-rich atmospheres even without a globally methane-dominated atmosphere (Rugheimer and Rimmer, 2019). Because a globally CH4-rich atmosphere is contested, this reaction is assigned only to localized or transient reducing surface settings rather than global average Hadean air (Trail et al., 2011)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Energetic methane-water conversion to formaldehyde and reducing power",
+        "inputs": [
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "280-350K bulk with energetic hot spots",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "energetic UV or discharge processing at gas-water interfaces; speculative bookkeeping source module for C1 carbonyls and H2"
+        },
+        "mechanism": "Energetic oxidation of methane-derived radicals by water-derived oxidants yields formaldehyde overall; excess reducing equivalents are represented as H2.",
+        "reasoning": "Speculative balanced source module included to connect methane-rich energetic chemistry to formaldehyde-dependent routes. Formaldehyde is a recurrent feedstock in experimentally supported proline routes, especially the hot HCHO/NH3 and hydrothermal HCN/HCHO networks (Fox and Windsor, 1970; Hennet et al., 1992). Miller-type energetic methane chemistry is known to generate diverse carbonyl products, but the exact net stoichiometry written here was not isolated as such in the provided proline literature, so this node should be read as bookkeeping for atmospheric or plume C1 processing rather than as a single demonstrated elementary step (Ring et al., 1972; Criado-Reyes et al., 2021)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Net cyanosulfidic formation of beta-aminopropionitrile",
+        "inputs": [
+          "mol_005",
+          "mol_007",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II)",
+          "HS-"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II)",
+          "aqueous": true,
+          "other": "UV irradiation in shallow cyanide-rich pools; net compression of acrylonitrile formation followed by ammonia addition"
+        },
+        "mechanism": "HCN adds to acetylene to give acrylonitrile, then ammonia undergoes conjugate addition to give beta-aminopropionitrile.",
+        "reasoning": "Patel et al. experimentally resolved the acrylonitrile branch and then showed high conversion of acrylonitrile to beta-aminopropionitrile. The present node is a balanced net compression of those two documented transformations, used to keep the graph compact while preserving the key C3 proline precursor (Patel et al., 2015). The main caveat is environmental co-location of cyanide, acetylene, sulfide, copper, and UV flux."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Reductive conversion of beta-aminopropionitrile to beta-aminopropanal",
+        "inputs": [
+          "mol_011",
+          "mol_003",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II)",
+          "HS-"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II), with HS- as reductant in the laboratory chemistry",
+          "aqueous": true,
+          "other": "UV irradiation; H2 is used here as balanced redox bookkeeping for the sulfide-driven reduction, not as a claim about the direct laboratory reductant"
+        },
+        "mechanism": "Photoreductive conversion of the nitrile manifold followed by hydration gives the corresponding aldehyde overall.",
+        "reasoning": "Patel et al. explicitly identified beta-aminopropanal as the next proline-branch intermediate after beta-aminopropionitrile. Their chemistry uses HS- and UV, with copper assisting some steps; this balanced node summarizes that redox sequence while keeping sulfur as an external agent rather than a retained atom in the graph (Patel et al., 2015). This is a net step rather than a single elementary reaction, but it remains closely tied to the best-resolved proline-specific pathway."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Net cyanation and cyclization to pyrrolidine-2-carbonitrile",
+        "inputs": [
+          "mol_012",
+          "mol_005",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_004",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Cu(I)/Cu(II)",
+          "HS-"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(I)/Cu(II), with HS- as stoichiometric reductant",
+          "aqueous": true,
+          "other": "UV irradiation; balanced net summary of cyanohydrin formation, sulfurization to thioamide or thiolactam intermediates, reductive ring closure, and final cyanation"
+        },
+        "mechanism": "The aminoaldehyde forms a cyanohydrin; sulfur-mediated activation and cyclization generate a five-membered ring, and reductive cyanation furnishes pyrrolidine-2-carbonitrile overall.",
+        "reasoning": "This is the key proline-specific ring-construction node. Patel et al. tracked the branch through cyanohydrin and sulfur-bearing intermediates including a cyclic thioamide or gamma-butyrothiolactam manifold before reaching the pyrrolidine aminonitrile precursor. The present reaction is therefore deliberately labeled as a balanced net summary of several experimentally supported steps, not as a one-flask elementary event (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of pyrrolidine-2-carbonitrile to proline",
+        "inputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "mild aqueous hydrolysis in pools or during wet-dry cycling; two water molecules are implied by balancing"
+        },
+        "mechanism": "The nitrile hydrolyzes to the corresponding carboxylic acid, releasing ammonia overall.",
+        "reasoning": "Patel et al. stopped experimentally at the aminonitrile, but conversion of alpha-aminonitriles to amino acids by hydrolysis is standard chemistry. This step is therefore plausible but partly extrapolative relative to the most direct cyanosulfidic evidence, and it should be distinguished from a measured high-yield free-proline isolation under the same sequence (Patel et al., 2015). The importance of hydrolysis-based release is also consistent with older proline observations made after hydrolysis in formaldehyde chemistry (Fox and Windsor, 1970; Hatanaka and Egami, 1977)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal HCN-formaldehyde network to proline",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_004",
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite-pyrrhotite-magnetite assemblage",
+          "illite"
+        ],
+        "conditions": {
+          "temperature": "420-430K",
+          "pressure": "10 bar",
+          "catalyst": "Fe-S mineral redox buffer and/or illite",
+          "aqueous": true,
+          "other": "overall route-family summary of concentrated HCN/HCHO/NH4+ hydrothermal chemistry; short residence times and quench to cooler zones favored"
+        },
+        "mechanism": "A cyanide-carbonyl network under reducing mineral buffering forms aminonitriles and related intermediates, with emergent ring closure giving proline as a minor branch.",
+        "reasoning": "Hennet et al. detected proline under simulated hydrothermal conditions with HCN, formaldehyde, ammonium, and geologically motivated mineral assemblages. The present node is explicitly an overall balanced summary, not a claim of a single elementary step. The literature also emphasizes two limitations: the experimental precursor concentrations were intentionally high and amino-acid destruction becomes severe at higher temperatures unless residence times are short and hydrogen fugacity is high (Hennet et al., 1992; Marshall, 1994; Bada et al., 1995; Yanagawa and Kobayashi, 1997)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Thermal formaldehyde-ammonia condensation to proline-releasing products",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_010",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "455-460K",
+          "pressure": "sealed vessel / near 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "hot aqueous condensation; net summary of hydrolysable precursor formation and release of proline on workup"
+        },
+        "mechanism": "Extensive formaldehyde condensation with ammonia builds higher-carbon nitrogenous material; a minor branch cyclizes to a proline-releasing precursor that yields proline upon hydrolysis.",
+        "reasoning": "Fox and Windsor reported proline after hydrolysis of heated formaldehyde-ammonia products at about 185 C. This network encodes that chemistry as a balanced route-family node rather than an elementary direct synthesis of free proline, because the actual C5 ring-forming intermediates were not resolved. Analytical caution about hydrolysis-based amino-acid detection was recognized early by Wolman and coworkers (Fox and Windsor, 1970; Wolman et al., 1971)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Molybdate-clay formaldehyde-hydroxylamine route to proline-releasing products",
+        "inputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_004",
+          "mol_010",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "molybdate",
+          "kaolinite",
+          "montmorillonite",
+          "multimetal ions"
+        ],
+        "conditions": {
+          "temperature": "373-383K",
+          "pressure": "sealed / near 1 atm under N2",
+          "catalyst": "molybdate-clay-transition-metal medium",
+          "aqueous": true,
+          "other": "pH about 5.5; seven-day heating; proline quantified after strong-acid hydrolysis"
+        },
+        "mechanism": "Oxime and nitrogen-carbon condensation chemistry in a multimetal mineral medium redirects the product distribution toward more complex hydrolysable amino-acid precursors, including a proline branch.",
+        "reasoning": "Hatanaka and Egami showed that raising molybdate strongly enhanced the fraction of proline among hydrolyzed products in formaldehyde-hydroxylamine chemistry. This reaction is written as an overall balanced summary because the detailed ring-forming mechanism remains unresolved and the laboratory readout depended on hydrolysis. The major caveats are the unresolved prebiotic source of hydroxylamine and the geochemical difficulty of invoking roughly 10 mM molybdate in anoxic Hadean waters without special concentrating niches (Hatanaka and Egami, 1977; Scott et al., 2008)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Direct Miller-type electric-discharge synthesis of proline",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silicate surface"
+        ],
+        "conditions": {
+          "temperature": "localized plasma; bulk 300-350K",
+          "pressure": "1 atm",
+          "catalyst": "silicate surface effects possible",
+          "aqueous": true,
+          "other": "electrical discharge in CH4/N2/H2O with trace NH3 in the historical experiments; low proline abundance"
+        },
+        "mechanism": "Discharge chemistry generates HCN, carbonyls, and reduced nitrogen compounds that feed a complex mixture network in which pyrrolidine ring formation is a minor branch.",
+        "reasoning": "Ring et al. directly detected proline in discharge products from simple gases, which makes this the oldest direct proline route family in the literature. However, the mechanism is unresolved, proline is a minor product, reactor-surface effects matter, and the strongly reducing bulk atmospheric scenario remains debated. This node is therefore best treated as a route-family summary for local transient environments rather than as a global atmospheric steady state (Ring et al., 1972; Criado-Reyes et al., 2021; Trail et al., 2011)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Speculative post-synthetic enrichment to L-proline",
+        "inputs": [
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "mineral interfaces"
+        ],
+        "conditions": {
+          "temperature": "273-323K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "speculative sorting or amplification module rather than a demonstrated synthesis step"
+        },
+        "mechanism": "Preferential adsorption, crystallization, or other physical symmetry-breaking processes selectively enrich the L enantiomer from an initially nonselective proline pool.",
+        "reasoning": "No surveyed prebiotic synthesis establishes significant intrinsic L-selective formation of proline from achiral feedstocks. Interstellar-ice work and meteoritic analyses show racemic or mixed enantiomeric outcomes rather than a solved route to L-proline. This node is therefore intentionally speculative and is included only to represent the separate unresolved homochirality problem after synthesis of the proline skeleton (Munoz Caro et al., 2002; Bernstein et al., 2002; Engel and Nagy, 1982)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct cyanosulfidic Patel route",
+        "description": "Uses pre-existing HCN, acetylene, NH3, H2, and water in the Patel surface network to reach pyrrolidine-2-carbonitrile, then hydrolyzes to proline and passes through the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Discharge-augmented cyanosulfidic route",
+        "description": "Local discharge generation of HCN and NH3 augments the Patel sequence before hydrolysis to proline and speculative enantioenrichment.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Methane-water-augmented cyanosulfidic route",
+        "description": "Energetic CH4/H2O processing augments the reducing-equivalent pool used by the Patel branch, which then proceeds through the aminonitrile and hydrolysis steps to proline.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013",
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct hydrothermal HCN-formaldehyde route",
+        "description": "Uses the Hennet-type hydrothermal HCN/HCHO network directly, then passes through the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Discharge-augmented hydrothermal route",
+        "description": "Electric-discharge chemistry contributes HCN and reduced nitrogen to the hydrothermal HCN/HCHO route before speculative L-enrichment.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Methane-water-augmented hydrothermal route",
+        "description": "Energetic CH4/H2O processing contributes a formaldehyde pool that feeds the hydrothermal HCN/HCHO network, followed by the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Direct thermal formaldehyde-ammonia route",
+        "description": "Uses the Fox-Windsor hot HCHO/NH3 condensation route to proline-releasing products, then passes through the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Discharge-augmented thermal route",
+        "description": "Electric-discharge chemistry contributes reduced nitrogen to the hot HCHO/NH3 route before speculative L-enrichment.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Molybdate-clay formaldehyde-hydroxylamine route",
+        "description": "Uses the Hatanaka-Egami molybdate-clay HCHO/NH2OH route to hydrolysable proline-releasing products, then passes through the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct electric-discharge route",
+        "description": "Uses direct Miller-type discharge chemistry to reach proline as a minor mixture component, then passes through the unresolved L-selection node.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_014"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_008",
+      "mol_014"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_014",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.74,
+          "rxn_004": 0.4,
+          "rxn_005": 0.32,
+          "rxn_006": 0.56,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.49,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.42,
+        "target_achievement": 0.15,
+        "overall_confidence": 0.47,
+        "feedback": "This is the strongest branch for the proline scaffold because it follows the Patel-type logic from beta-aminopropionitrile to a cyclic aminonitrile. However, rxn_004 and rxn_005 compress several HS-/UV/Cu-dependent sulfur-manifold steps into generic H2-based net reactions, rxn_006 is only a plausible hydrolysis of the proline aminonitrile rather than the experimentally demonstrated Patel endpoint, and rxn_011 has no supported abiotic mechanism for selective L-enrichment or explicit D-proline sink.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Replace the H2-only abstractions in rxn_004 and rxn_005 with explicit HS-/UV/Cu-conditioned Patel chemistry, or clearly label them as speculative net contractions.",
+          "Treat rxn_006 as aqueous hydrolysis to unresolved proline and add a chemically specified chiral resolution or recycling module only if evidence for L-enrichment is available."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.65,
+          "rxn_003": 0.74,
+          "rxn_004": 0.4,
+          "rxn_005": 0.32,
+          "rxn_006": 0.56,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.14,
+        "overall_confidence": 0.43,
+        "feedback": "Adding rxn_001 gives a plausible discharge source of HCN and NH3, but the path still does not supply the reducing chemistry actually used in the Patel branch and does not justify transfer from a discharge setting into a UV-exposed cyanosulfidic surface environment. The main Patel-core concerns at rxn_004 to rxn_006 and the unsupported L-enrichment in rxn_011 remain.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add an explicit transfer and concentration step from the discharge module into the cyanosulfidic setting and source the missing HS-/redox chemistry.",
+          "Do not claim L-proline unless rxn_011 is replaced by an experimentally grounded chiral enrichment or resolution scheme."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.5,
+          "rxn_003": 0.74,
+          "rxn_004": 0.4,
+          "rxn_005": 0.32,
+          "rxn_006": 0.56,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.52,
+        "environmental_progression": 0.34,
+        "target_achievement": 0.14,
+        "overall_confidence": 0.39,
+        "feedback": "rxn_002 can serve as a very high-level source of reducing power, but this branch still lacks an explicit HCN/NH3 source if interpreted as self-contained, and methane-water oxidation to formaldehyde is itself an energetic abstraction rather than a discrete prebiotic step. The Patel core is still oversimplified at rxn_004 to rxn_006 and does not justify L-proline formation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add an HCN/NH3 source module or combine this branch with rxn_001 if the pathway is meant to be feedstock-complete.",
+          "Encode HS-/UV/Cu requirements explicitly instead of using H2-only shortcuts for the key cyanosulfidic redox steps."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_007": 0.45,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.45,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.1,
+        "overall_confidence": 0.38,
+        "feedback": "The hydrothermal family is literature-supported for proline formation in complex mixtures, but rxn_007 is an extremely aggregated node: the published chemistry used concentrated HCN/HCHO/NH4+ with mineral redox buffers and gave proline as a minor product rather than a clean one-step conversion. rxn_011 remains unsupported for any abiotic L-selective outcome.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add NH4+/NH3 and mineral-buffer conditions to rxn_007, or explicitly describe it as a hydrothermal route-family summary node.",
+          "Represent the product as a proline-containing mixture or precursor pool unless free proline before workup is specifically supported."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.65,
+          "rxn_007": 0.45,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.44,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.1,
+        "overall_confidence": 0.35,
+        "feedback": "Coupling discharge chemistry to the hydrothermal node is reasonable at the idea level, but this named path does not explicitly source formaldehyde or justify how discharge products are concentrated and transferred into the hydrothermal setting. rxn_007 still overstates mechanistic knowledge, and rxn_011 is speculative.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add a CH2O source module or combine rxn_001 and rxn_002 before the hydrothermal step if the pathway is intended to be complete.",
+          "Specify hydrothermal minerals, pressure/temperature, and quenching rather than treating rxn_007 as a direct clean conversion to L-proline."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.5,
+          "rxn_007": 0.45,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.43,
+        "pathway_coherence": 0.42,
+        "environmental_progression": 0.34,
+        "target_achievement": 0.1,
+        "overall_confidence": 0.32,
+        "feedback": "This path gives a possible formaldehyde module but no explicit HCN source, and it also leaves the surface-to-hydrothermal transfer unjustified. The hydrothermal node remains a family-level summary rather than a specific reaction, so target achievement is weak even before the unsupported L-enrichment step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add an HCN/NH3 source module or combine this branch with rxn_001 before rxn_007.",
+          "Downgrade rxn_007 to a route-family node or add intermediate and mixture nodes rather than direct free-proline formation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_008": 0.4,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.4,
+        "pathway_coherence": 0.44,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.08,
+        "overall_confidence": 0.34,
+        "feedback": "Fox-type hot formaldehyde-ammonia chemistry does support proline-releasing hydrolysates, but rxn_008 depicts direct free-proline formation and omits the key distinction between precursor formation and analytical hydrolysis. That is a major fidelity issue relative to the literature, and rxn_011 does not solve L-selectivity.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Insert a hydrolysable precursor node and a separate hydrolysis step instead of direct proline output from rxn_008.",
+          "Specify the hot aqueous or evaporative conditions and keep chirality unresolved unless a real enrichment mechanism is added."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.65,
+          "rxn_008": 0.4,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.39,
+        "pathway_coherence": 0.38,
+        "environmental_progression": 0.34,
+        "target_achievement": 0.08,
+        "overall_confidence": 0.3,
+        "feedback": "Discharge can provide reduced nitrogen, but this augmented thermal path still needs an explicit formaldehyde source if treated as self-contained. More importantly, rxn_008 should terminate in a hydrolysable precursor pool rather than free proline, and rxn_011 has no demonstrated prebiotic basis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add a CH2O source module or pair this branch with rxn_002 if it is meant to be complete.",
+          "Represent Fox chemistry as precursor formation plus hydrolysis, and remove or replace rxn_011 with an evidenced resolution step."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_009": 0.38,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.42,
+        "pathway_coherence": 0.42,
+        "environmental_progression": 0.28,
+        "target_achievement": 0.08,
+        "overall_confidence": 0.31,
+        "feedback": "The Hatanaka-Egami family is experimentally relevant because proline is selectively enhanced, but the chemistry depended on molybdate, multiple transition metals, kaolin/montmorillonite, controlled pH, and acid hydrolysis. None of those critical conditions is encoded in rxn_009, so the network overstates both environmental plausibility and direct free-proline production. rxn_011 is unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Encode MoO4^2-, the metal/clay medium, pH, and acid hydrolysis in rxn_009's conditions.",
+          "Use a proline-releasing precursor pool instead of free proline unless workup-independent evidence is provided."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.49,
+          "rxn_011": 0.05
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.42,
+        "target_achievement": 0.1,
+        "overall_confidence": 0.4,
+        "feedback": "This branch best captures the classic Miller-type evidence from simple gases to proline-containing mixtures, and unlike several other branches it is at least self-contained at the level of starting materials. However, the mechanism is unresolved, yields are low, the strongly reducing atmosphere is geochemically contested, and there is still no credible abiotic step from unresolved proline to L-proline.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Label rxn_010 as an electric-discharge route-family node with reduced-atmosphere and low-yield caveats rather than a single clean reaction.",
+          "Do not claim L-proline without an independent chiral enrichment or resolution module."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.54,
+    "network_feedback": "Network validity is fairly good: the graph is connected, molecule IDs are used consistently, and the RDKit check reports 0 UNBALANCED reactions. However, rxn_002, rxn_005, rxn_006, rxn_007, rxn_008, rxn_009, and rxn_010 should be rewritten with explicit coefficients in the graph: rxn_002 = CH4 + H2O -> CH2O + 2 H2; rxn_005 = C3H7NO + 2 HCN + 2 H2 -> C5H8N2 + NH3 + H2O; rxn_006 = C5H8N2 + 2 H2O -> C5H9NO2 + NH3; rxn_007 = 3 HCN + 6 CH2O -> C5H9NO2 + 2 NH3 + 4 CO; rxn_008 = 6 CH2O + NH3 -> C5H9NO2 + CO + 3 H2O; rxn_009 = 8 CH2O + 2 NH2OH -> C5H9NO2 + NH3 + 3 CO + 5 H2O; rxn_010 = 5 CH4 + 3 N2 + 2 H2O -> C5H9NO2 + 5 NH3. Literature alignment is reasonably good in two major respects: the Patel branch is recognized as the best-resolved route to the proline skeleton, and the network correctly acknowledges that a robust abiotic L-selective synthesis is not established. The main weaknesses are chemical compression and endpoint inflation. rxn_004 and rxn_005 remove the key HS-/UV/Cu and sulfur-intermediate logic of Patel; rxn_007 through rxn_010 are family-level summary nodes that overstate direct free-proline production from experiments that produced minor proline in mixtures or proline only after hydrolysis; rxn_009 omits the essential molybdate/metal/clay medium; and rxn_006 and rxn_011 use a 'Biochemical' environment that is not prebiotically justified. Also, if mol_014 denotes a racemic or stereochemically unresolved pool, rxn_011 needs an explicit resolution or recycling logic rather than a simple one-to-one conversion, and mol_014/mol_015 should ideally carry explicit stereochemical identifiers. Overall, this is a valid connected network for abiotic access to unresolved proline, but it does not yet credibly achieve L-proline. If the target were unspecified or DL-proline rather than L-proline, the network would score materially higher.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 11,
+      "n_balanced_as_written": 4,
+      "n_balanceable": 7,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_005": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_003": 1,
+            "mol_006": 1,
+            "mol_008": 2
+          },
+          "element_delta": {
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_007": 1,
+            "mol_004": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_003": 1,
+            "mol_008": 1,
+            "mol_012": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_005": 2,
+            "mol_008": 2,
+            "mol_013": 1,
+            "mol_004": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "H": -3,
+            "N": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_013": 1,
+            "mol_003": 2,
+            "mol_014": 1,
+            "mol_004": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_005": 3,
+            "mol_006": 6,
+            "mol_014": 1,
+            "mol_004": 2,
+            "mol_010": 4
+          },
+          "element_delta": {
+            "C": -4,
+            "N": -1,
+            "H": -9,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 6,
+            "mol_004": 1,
+            "mol_014": 1,
+            "mol_010": 1,
+            "mol_003": 3
+          },
+          "element_delta": {
+            "C": -5,
+            "O": -3,
+            "H": -6
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 8,
+            "mol_009": 2,
+            "mol_014": 1,
+            "mol_004": 1,
+            "mol_010": 3,
+            "mol_003": 5
+          },
+          "element_delta": {
+            "C": -5,
+            "O": -2,
+            "H": -9,
+            "N": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 5,
+            "mol_002": 3,
+            "mol_003": 2,
+            "mol_014": 1,
+            "mol_004": 5
+          },
+          "element_delta": {
+            "C": -4,
+            "H": -6,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_014": 1,
+            "mol_015": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

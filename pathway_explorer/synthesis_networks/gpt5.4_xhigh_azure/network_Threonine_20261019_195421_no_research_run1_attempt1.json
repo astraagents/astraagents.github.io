@@ -1,0 +1,1056 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Build the threonine carbon skeleton by converging on 2-amino-3-hydroxybutanenitrile. Eight pathways arise from combining two routes to glycine nitrile (stepwise methanimine trapping or one-pot Strecker), two routes to acetaldehyde (hydrothermal pyruvate decarboxylation or UV-driven ethanol dehydrogenation), and two endgame hydrolysis regimes (overall nitrile hydrolysis or stepwise hydrolysis via threonine amide). Two additional pathways come from hydroxyacetone isomerization to lactaldehyde followed by Strecker chemistry and the same two hydrolysis regimes. The network is nonenzymatic and therefore targets the threonine constitutional isomer rather than a single stereoisomer; racemic and diastereomeric threonine/allothreonine mixtures are expected.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH3N",
+        "iupac_name": "methanimine",
+        "common_name": "methyleneimine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoethanenitrile",
+        "common_name": "glycine nitrile",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H6O",
+        "iupac_name": "ethanol",
+        "common_name": "ethanol",
+        "inchi": "InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6O2",
+        "iupac_name": "1-hydroxypropan-2-one",
+        "common_name": "acetol",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h4H,2H2,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine nitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H10N2O2",
+        "iupac_name": "2-amino-3-hydroxybutanamide",
+        "common_name": "threonine amide",
+        "inchi": "InChI=1S/C4H10N2O2/c1-2(7)3(5)4(6)8/h2-3,7H,5H2,1H3,(H2,6,8)/t2-,3+/m1/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Condensation of formaldehyde and ammonia to methanimine",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "false",
+          "other": "evaporating surface films or wet-dry cycling; neutral to mildly alkaline; anoxic"
+        },
+        "mechanism": "Ammonia adds to formaldehyde to form a carbinolamine, which dehydrates during dry-down to methanimine.",
+        "reasoning": "Formaldehyde is highly electrophilic and reacts readily with ammonia; in drying surface films the carbinolamine dehydrates to methanimine. This is the standard imine entry point for Strecker-type aminonitrile synthesis."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanide capture of methanimine to give glycine nitrile",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN-bearing shallow pool or thin film; anoxic"
+        },
+        "mechanism": "Cyanide attacks the iminium form of methanimine, yielding the aminonitrile.",
+        "reasoning": "Addition of cyanide to a small imine is the key C-C bond-forming step of the Strecker reaction. Rapid trapping of transient methanimine makes glycine nitrile a credible prebiotic hub."
+      },
+      {
+        "id": "rxn_003",
+        "name": "One-pot Strecker synthesis of glycine nitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "one-pot evaporitic brine or tidal-flat pool; anoxic"
+        },
+        "mechanism": "In situ methanimine formation is followed immediately by cyanide capture, giving glycine nitrile without isolating the imine.",
+        "reasoning": "When formaldehyde, ammonia, and HCN coexist, aminonitrile formation can occur in one pot. This operationally distinct route avoids the need for a separately accumulating methanimine pool."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrothermal decarboxylation of pyruvate to acetaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "380-430K",
+          "pressure": "high",
+          "catalyst": "magnetite plus FeS",
+          "aqueous": "true",
+          "other": "subseafloor hydrothermal mixing zone; anoxic; rapid quench helps preserve acetaldehyde"
+        },
+        "mechanism": "Thermal and mineral-assisted decarboxylation of the alpha-keto acid releases CO2 and furnishes acetaldehyde.",
+        "reasoning": "Alpha-keto acids are thermally labile, and hydrothermal temperatures plus iron-rich mineral surfaces favor decarboxylation to simpler aldehydes. Pyruvate therefore provides an anoxic vent-compatible, though transient, source of acetaldehyde."
+      },
+      {
+        "id": "rxn_005",
+        "name": "UV-driven dehydrogenation of ethanol to acetaldehyde",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "TiO2"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "TiO2",
+          "aqueous": "true",
+          "other": "UV-irradiated shallow film in a subaerial geothermal field; anoxic; short irradiation limits overoxidation"
+        },
+        "mechanism": "UV-excited semiconductor holes oxidize ethanol to acetaldehyde while electrons are discharged by proton reduction.",
+        "reasoning": "Strong early-Earth UV and semiconducting oxides can drive alcohol dehydrogenation without molecular oxygen. TiO2-bearing grains provide a plausible second source of acetaldehyde, although overoxidation is a competing side process."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol-type homologation of glycine nitrile with acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": "false",
+          "other": "concentrated prebiotic pool at a mineral interface; mildly alkaline; low water activity; threonine/allothreonine nitrile mixture expected"
+        },
+        "mechanism": "Deprotonation alpha to the nitrile generates a nucleophilic aminonitrile/enamine equivalent that adds to acetaldehyde; protonation gives the beta-hydroxy aminonitrile.",
+        "reasoning": "This C-C bond-forming step is more speculative than classical Strecker chemistry, but glycine nitrile has an acidified alpha-C-H next to the nitrile and can plausibly undergo mineral-assisted addition to aldehydes. In concentrated alkaline films this provides a compact route to the threonine carbon skeleton and is a likely network bottleneck."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Mineral-catalyzed isomerization of hydroxyacetone to lactaldehyde",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "borate minerals",
+          "aqueous": "true",
+          "other": "mildly alkaline hot-spring or evaporitic pool"
+        },
+        "mechanism": "Enediol-mediated keto-aldehyde isomerization shifts the carbonyl position from C2 to C1.",
+        "reasoning": "Hydroxyacetone and lactaldehyde are carbonyl isomers connected by enediol chemistry. Borate-bearing mineral settings can facilitate such isomerizations and transiently stabilize hydroxycarbonyls, although selectivity in complex mixtures is uncertain."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis of threonine nitrile from lactaldehyde",
+        "inputs": [
+          "mol_010",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN/NH3-rich pool; threonine/allothreonine nitrile mixture expected"
+        },
+        "mechanism": "Ammonia forms an imine with lactaldehyde, then cyanide adds to the iminium carbon to give the aminonitrile.",
+        "reasoning": "Once lactaldehyde is available, classical Strecker chemistry yields the correct threonine skeleton in one step. Because the precursor is already alpha-hydroxylated, the reaction naturally furnishes beta-hydroxy alpha-aminonitriles."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Overall hydrolysis of threonine nitrile to threonine",
+        "inputs": [
+          "mol_011",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "prolonged geothermal cycling or long residence times in prebiotic pools"
+        },
+        "mechanism": "Sequential nitrile hydration and amide hydrolysis occur under extended aqueous heating; the amide does not accumulate as a discrete pool.",
+        "reasoning": "Aminonitriles are more hydrolytically robust than amino acids but can convert to the corresponding amino acid during prolonged heating in water. This lumped step represents conditions where overall nitrile-to-acid hydrolysis proceeds without a persistent threonine amide intermediate."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Partial hydrolysis of threonine nitrile to threonine amide",
+        "inputs": [
+          "mol_011",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "shorter or milder hydrolysis regime in a prebiotic pool"
+        },
+        "mechanism": "Water adds to the nitrile under heating to produce the corresponding primary amide.",
+        "reasoning": "Under milder or shorter hydrolysis regimes, nitriles often stop at the amide stage. Threonine amide is therefore a plausible accumulating late intermediate."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrolysis of threonine amide to threonine",
+        "inputs": [
+          "mol_012",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_013"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "continued heating/cooling and concentration cycles"
+        },
+        "mechanism": "Aqueous amide hydrolysis converts the amide carbonyl to the carboxylic acid.",
+        "reasoning": "Amide hydrolysis is slower than nitrile hydration and is a likely late-stage bottleneck. Repeated geothermal cycling can nevertheless drive threonine amide to threonine over longer timescales."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Stepwise glycine nitrile route with hydrothermal acetaldehyde and direct hydrolysis",
+        "description": "Methanimine is formed by dry condensation, trapped by HCN to give glycine nitrile, converged with hydrothermal acetaldehyde from pyruvate, then hydrolyzed directly from threonine nitrile to threonine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Stepwise glycine nitrile route with photochemical acetaldehyde and direct hydrolysis",
+        "description": "Methanimine-derived glycine nitrile is combined with acetaldehyde generated by UV-driven ethanol dehydrogenation, followed by direct hydrolysis of threonine nitrile.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "One-pot glycine nitrile route with hydrothermal acetaldehyde and direct hydrolysis",
+        "description": "A one-pot Strecker reaction forms glycine nitrile, which is homologated with vent-derived acetaldehyde and then hydrolyzed directly to threonine.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "One-pot glycine nitrile route with photochemical acetaldehyde and direct hydrolysis",
+        "description": "One-pot Strecker formation of glycine nitrile converges with UV-generated acetaldehyde from ethanol, then proceeds through direct hydrolysis of threonine nitrile.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Stepwise glycine nitrile route with hydrothermal acetaldehyde via threonine amide",
+        "description": "The methanimine-mediated glycine nitrile branch meets hydrothermal acetaldehyde and then proceeds through threonine amide before reaching threonine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Stepwise glycine nitrile route with photochemical acetaldehyde via threonine amide",
+        "description": "The methanimine-mediated glycine nitrile branch meets UV-generated acetaldehyde and reaches threonine through a persistent threonine amide stage.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "One-pot glycine nitrile route with hydrothermal acetaldehyde via threonine amide",
+        "description": "One-pot glycine nitrile formation is followed by homologation with hydrothermal acetaldehyde and a stepwise hydrolysis sequence through threonine amide.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "One-pot glycine nitrile route with photochemical acetaldehyde via threonine amide",
+        "description": "One-pot glycine nitrile formation converges with photochemically generated acetaldehyde and proceeds through threonine amide to the target.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Hydroxyacetone-lactaldehyde Strecker route with direct hydrolysis",
+        "description": "Hydroxyacetone isomerizes to lactaldehyde, which undergoes classical Strecker chemistry to threonine nitrile followed by direct hydrolysis to threonine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Hydroxyacetone-lactaldehyde Strecker route via threonine amide",
+        "description": "Hydroxyacetone enters through lactaldehyde and Strecker chemistry, but the endgame proceeds stepwise through threonine amide.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_008",
+      "mol_011",
+      "mol_013",
+      "mol_001",
+      "mol_002",
+      "mol_004",
+      "mol_014"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_002": 0.82,
+          "rxn_004": 0.64,
+          "rxn_006": 0.46,
+          "rxn_009": 0.24
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.5,
+        "feedback": "P1 is connected and conceptually sensible, but it contains multiple conservation errors and one weakly specified C-C bond-forming step. rxn_001 should release H2O, rxn_004 should release CO2, and rxn_009 should be written overall as mol_011 + 2 mol_014 -> mol_013 + mol_002; rxn_006 is only moderately supported as a nonenzymatic glycine nitrile homologation and its Biochemical label conflicts with the stated nonenzymatic setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Rewrite rxn_001 as mol_001 + mol_002 -> mol_003 + mol_014 and specify a dehydrating surface or drying phase.",
+          "Rewrite rxn_004 as mol_006 -> mol_008 + CO2 and state hydrothermal temperature or mineral context.",
+          "Either justify rxn_006 with literature or explicit base/mineral conditions, or replace it with the lactaldehyde Strecker branch.",
+          "Rewrite rxn_009 as mol_011 + 2 mol_014 -> mol_013 + mol_002, or use the amide sequence rxn_010 then rxn_011."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_002": 0.82,
+          "rxn_005": 0.38,
+          "rxn_006": 0.46,
+          "rxn_009": 0.24
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.63,
+        "environmental_progression": 0.42,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.48,
+        "feedback": "This pathway keeps the same main logic as P1 but uses the less well specified photochemical acetaldehyde source. rxn_001 needs H2O as product, rxn_005 needs H2 as coproduct or an explicit oxidant or electron sink plus a photocatalyst, rxn_009 needs NH3 release and an additional equivalent of water overall, and rxn_006 still lacks strong nonenzymatic support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add mol_014 as product in rxn_001.",
+          "For rxn_005, add H2 as coproduct or specify an oxidant or electron sink and a mineral photocatalyst.",
+          "Support rxn_006 with explicit pH, base, or mineral conditions, or replace it with a better-supported carbon-skeleton-forming step.",
+          "Rewrite rxn_009 as mol_011 + 2 mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.64,
+          "rxn_006": 0.46,
+          "rxn_009": 0.24
+        },
+        "chemical_feasibility": 0.52,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.48,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.53,
+        "feedback": "The one-pot glycine nitrile entry is more coherent than isolating methanimine, but the pathway still has several unresolved issues. rxn_003 should include H2O, rxn_004 should include CO2, and rxn_009 should be mol_011 + 2 mol_014 -> mol_013 + mol_002; the key uncertainty remains rxn_006, which needs stronger mechanistic or literature support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Rewrite rxn_003 as mol_001 + mol_002 + mol_004 -> mol_005 + mol_014.",
+          "Rewrite rxn_004 to include CO2 and add a CO2 molecule node if this route is retained.",
+          "Provide explicit nonenzymatic conditions or literature support for rxn_006.",
+          "Use the amide route or correct rxn_009 stoichiometry."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_005": 0.38,
+          "rxn_006": 0.46,
+          "rxn_009": 0.24
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.67,
+        "environmental_progression": 0.44,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.5,
+        "feedback": "One-pot Strecker formation of glycine nitrile helps coherence, but the photochemical acetaldehyde step and final hydrolysis remain underdefined. rxn_003 should release H2O, rxn_005 should include H2 or a stated oxidant and photocatalyst, rxn_009 needs NH3 release and extra water overall, and rxn_006 still needs stronger support.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Rewrite rxn_003 as mol_001 + mol_002 + mol_004 -> mol_005 + mol_014.",
+          "For rxn_005, specify the mineral photocatalyst and electron acceptor, or add H2 as coproduct.",
+          "Provide a better-justified nonenzymatic setting for rxn_006.",
+          "Rewrite rxn_009 as mol_011 + 2 mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_002": 0.82,
+          "rxn_004": 0.64,
+          "rxn_006": 0.46,
+          "rxn_010": 0.56,
+          "rxn_011": 0.42
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.47,
+        "target_achievement": 0.59,
+        "overall_confidence": 0.58,
+        "feedback": "Using rxn_010 as an amide stage is more chemically coherent than direct nitrile-to-acid hydrolysis. However, rxn_001 still needs H2O, rxn_004 still needs CO2, rxn_011 must release NH3, and rxn_006 remains the least secure transformation and is misassigned to a Biochemical environment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to include mol_014.",
+          "Correct rxn_004 to include CO2 and add the missing coproduct node.",
+          "Recast rxn_006, rxn_010, and rxn_011 into explicit nonenzymatic aqueous or mineral environments.",
+          "Rewrite rxn_011 as mol_012 + mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_002": 0.82,
+          "rxn_005": 0.38,
+          "rxn_006": 0.46,
+          "rxn_010": 0.56,
+          "rxn_011": 0.42
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.43,
+        "target_achievement": 0.59,
+        "overall_confidence": 0.56,
+        "feedback": "The amide endgame improves coherence, but the acetaldehyde source is still weakly specified. rxn_001 needs H2O, rxn_005 needs H2 or an explicit oxidant and photocatalyst, rxn_011 must release NH3, and rxn_006 remains only moderately plausible without better nonenzymatic justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add mol_014 as product in rxn_001.",
+          "For rxn_005, specify photocatalyst, UV regime, and electron sink, or add H2 as coproduct.",
+          "Provide stronger mechanistic support for rxn_006 under nonenzymatic conditions.",
+          "Rewrite rxn_011 as mol_012 + mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_004": 0.64,
+          "rxn_006": 0.46,
+          "rxn_010": 0.56,
+          "rxn_011": 0.42
+        },
+        "chemical_feasibility": 0.57,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.49,
+        "target_achievement": 0.62,
+        "overall_confidence": 0.61,
+        "feedback": "Among the glycine nitrile routes, this is the strongest because one-pot Strecker entry and stepwise hydrolysis are both plausible motifs. It still needs correction of rxn_003 to include H2O, rxn_004 to include CO2, and rxn_011 to release NH3, while rxn_006 still needs stronger nonenzymatic support and more realistic environmental labeling.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Rewrite rxn_003 to include mol_014.",
+          "Rewrite rxn_004 to include CO2 and add the missing molecule node.",
+          "Provide explicit nonenzymatic base or mineral support for rxn_006.",
+          "Rewrite rxn_011 as mol_012 + mol_014 -> mol_013 + mol_002 and relabel hydrolysis conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.6,
+          "rxn_005": 0.38,
+          "rxn_006": 0.46,
+          "rxn_010": 0.56,
+          "rxn_011": 0.42
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.73,
+        "environmental_progression": 0.45,
+        "target_achievement": 0.62,
+        "overall_confidence": 0.58,
+        "feedback": "This keeps the more coherent amide endgame, but the photochemical acetaldehyde route still limits confidence. rxn_003 should include H2O, rxn_005 should include H2 or a stated oxidant and photocatalyst, rxn_011 must release NH3, and rxn_006 remains under-justified for a nonenzymatic network.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Rewrite rxn_003 as mol_001 + mol_002 + mol_004 -> mol_005 + mol_014.",
+          "Specify the surface photocatalyst and electron balance for rxn_005, or add H2 as coproduct.",
+          "Provide literature or mechanistic support for rxn_006 under nonenzymatic conditions.",
+          "Rewrite rxn_011 as mol_012 + mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.72,
+          "rxn_008": 0.64,
+          "rxn_009": 0.24
+        },
+        "chemical_feasibility": 0.56,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.57,
+        "feedback": "This branch is mechanistically cleaner than the glycine nitrile homologation routes because rxn_008 follows standard Strecker logic once lactaldehyde is available. Confidence is reduced because rxn_008 omits H2O, rxn_009 omits NH3 and effectively needs two waters overall, and the final hydrolysis is placed in a Biochemical environment rather than explicit nonenzymatic hydrolysis conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Validate rxn_007 with a named mineral or pH regime for hydroxyacetone to lactaldehyde isomerization.",
+          "Rewrite rxn_008 as mol_010 + mol_002 + mol_004 -> mol_011 + mol_014.",
+          "Replace direct rxn_009 with rxn_010 plus corrected rxn_011, or rewrite rxn_009 as mol_011 + 2 mol_014 -> mol_013 + mol_002."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.72,
+          "rxn_008": 0.64,
+          "rxn_010": 0.56,
+          "rxn_011": 0.42
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.64,
+        "overall_confidence": 0.66,
+        "feedback": "This is the most coherent path in the network: rxn_007 plus rxn_008 builds the correct carbon skeleton by a plausible isomerization followed by standard Strecker chemistry, and rxn_010 acknowledges the usual amide intermediate. Remaining issues are that rxn_008 should include H2O, rxn_011 should release NH3, and rxn_010 and rxn_011 need explicit nonenzymatic hydrolysis conditions instead of the Biochemical label.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Rewrite rxn_008 as mol_010 + mol_002 + mol_004 -> mol_011 + mol_014.",
+          "Rewrite rxn_011 as mol_012 + mol_014 -> mol_013 + mol_002.",
+          "Replace the Biochemical labels on rxn_010 and rxn_011 with explicit nonenzymatic hydrolysis conditions, including pH, temperature, and any mineral catalyst.",
+          "Add experimental or literature support for rxn_007 under the stated surface conditions."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.57,
+    "network_feedback": "The network is connected, uses molecule IDs consistently, and offers a chemically sensible set of alternative routes to the threonine carbon skeleton, with the lactaldehyde Strecker branch being the strongest overall. The main validity problem is stoichiometric: 7 of 11 reactions are unbalanced by the supplied deterministic check, specifically rxn_001 needs H2O, rxn_003 needs H2O, rxn_004 needs CO2, rxn_005 needs H2 or an explicit oxidant or electron sink, rxn_008 needs H2O, rxn_009 should be written overall as mol_011 + 2 mol_014 -> mol_013 + mol_002, and rxn_011 should be mol_012 + mol_014 -> mol_013 + mol_002; adding CO2 and H2 also requires new molecule nodes. Chemically, rxn_006 is the least secure transformation and needs stronger mechanistic or literature support, while the hydrolysis and homologation steps are weakened by being assigned to a Biochemical environment despite the stated nonenzymatic framework. The target is nominally reached, likely as a threonine/allothreonine mixture, but the current network is not approvable until the conservation errors are corrected and the key nonenzymatic conditions are specified more rigorously.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 11,
+      "n_balanced_as_written": 4,
+      "n_balanceable": 0,
+      "n_unbalanced": 7,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.36363636363636365,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_003": 1,
+            "mol_004": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": 1,
+            "O": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: CO2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_008": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 1,
+            "N": 1,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: NH3 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_014": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 3,
+            "N": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: NH3 as product",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

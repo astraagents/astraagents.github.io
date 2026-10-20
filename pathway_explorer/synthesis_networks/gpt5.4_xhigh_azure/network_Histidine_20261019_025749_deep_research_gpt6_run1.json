@@ -1,0 +1,1070 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Evidence-weighted network centered on the Shen-Yang-Miller-Or\u00f3 aqueous tetrose/formamidine/Strecker sequence, because it is the only route in the supplied literature with identified histidine-specific intermediates and a substantially resolved mechanism. A speculative formaldehyde-to-erythrose feeder is included upstream, and a glycol-reservoir branch plus a one-pot net step capture experimentally observed variants of the same chemistry. Electrical-discharge, Fischer-Tropsch-type surface catalysis, and UV/EUV PAH-ice chemistry are retained only as coarse balanced source terms, because those studies reported histidine or hydrolysis-released histidine without resolving target-specific intermediates. No dedicated hot hydrothermal branch is added because the supplied literature does not establish a vent-specific histidine pathway and high-temperature aqueous destruction is a major constraint.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C4H8O4",
+        "iupac_name": "2,3,4-trihydroxybutanal",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH4N2",
+        "iupac_name": "methanimidamide",
+        "common_name": "formamidine",
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-(1H-imidazol-4-yl)ethanal",
+        "common_name": "imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C5H8N2O2",
+        "iupac_name": "2-(1H-imidazol-4-yl)ethane-1,1-diol",
+        "common_name": "imidazole-4-glycol",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CHN",
+        "iupac_name": "methanenitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "H3N",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H8N4",
+        "iupac_name": "2-amino-3-(1H-imidazol-4-yl)propanenitrile",
+        "common_name": "histidine aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C6H9N3O2",
+        "iupac_name": "2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": null,
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": null,
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "C10H8",
+        "iupac_name": "naphthalene",
+        "common_name": null,
+        "inchi": "InChI=1S/C10H8/c1-2-6-10-8-4-3-7-9(10)5-1/h1-8H",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose generation of erythrose",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Alkaline solution or drying-rewetting cycles; low-selectivity formose feeder requiring concentration and selection of the tetrose fraction."
+        },
+        "mechanism": "Base-promoted formose oligomerization of formaldehyde gives a mixture of sugars; erythrose is the relevant tetrose branch captured in this node.",
+        "reasoning": "Included only as an upstream feeder to the mechanistic Shen route. Formaldehyde-to-tetrose chemistry is the standard way to rationalize erythrose supply, but no provided study closes this feeder end-to-end with histidine synthesis. V\u00e1zquez-Salazar et al. (2018) emphasize that erythrose is a minor, unstable formose product, so this node is explicitly speculative; Shen et al. (1987) nevertheless treated erythrose as a plausible prebiotic precursor."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Erythrose-formamidine cyclocondensation to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "350-355K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Warm aqueous pool, pH about 6, ca. 12 h heating; no added mineral catalyst."
+        },
+        "mechanism": "Erythrose and formamidine undergo condensation, ring closure, rearrangement, and dehydration to build the imidazole nucleus and the acetaldehyde side chain.",
+        "reasoning": "This is the best-supported precursor-forming step in the histidine literature. Shen et al. (1987) heated about 0.03 M erythrose and 0.03 M formamidine at pH about 6 and 80 C for 12 h and identified imidazole-4-acetaldehyde without any added mineral catalyst. The geochemical weakness is precursor availability, not the reaction chemistry itself (Shen et al., 1987; V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Erythrose-formamidine cyclocondensation to imidazole-4-glycol",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "350-355K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Warm aqueous pool, pH about 6, ca. 12 h heating; coproduct branch of the same imidazole-forming system."
+        },
+        "mechanism": "The same erythrose-formamidine condensation network can terminate as a hydrated glycol/diol reservoir instead of the free aldehyde.",
+        "reasoning": "Imidazole-4-glycol was directly observed as a substantial coproduct in the erythrose plus formamidine system of Shen et al. (1987). It is therefore justified as a real network node, although it is less directly tied to histidine than the aldehyde branch. Its significance is as a plausible aldehyde reservoir rather than as a complete histidine route by itself (Shen et al., 1987)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Dehydrative collapse of imidazole-4-glycol to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Mildly acidic aqueous episodes or drying concentration favor loss of water from the glycol/hydrate reservoir."
+        },
+        "mechanism": "Acid-promoted dehydration of the glycol or hydrated aldehyde regenerates the corresponding imidazole acetaldehyde.",
+        "reasoning": "This branch is chemically plausible and consistent with Shen et al.'s discussion of imidazole-4-glycol as a precursor reservoir, but it was not closed experimentally with the same strength as direct aldehyde formation. It is therefore included as a partially supported conversion rather than a fully demonstrated standalone route (Shen et al., 1987; Shen et al., 1990)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker formation of histidine aminonitrile",
+        "inputs": [
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN and NH3 added to the warm imidazole-aldehyde-containing solution; conventional Strecker conditions."
+        },
+        "mechanism": "Imine or iminium formation from the aldehyde and ammonia is followed by cyanide addition to give the alpha-aminonitrile.",
+        "reasoning": "Once imidazole-4-acetaldehyde exists, the literature-supported route to histidine is a standard Strecker sequence. Shen et al. (1990) added HCN and ammonia directly to the aldehyde-generating mixture and identified histidine downstream; the mechanistically crucial immediate precursor is the corresponding aminonitrile. This is the clearest target-specific step after imidazole-aldehyde formation (Shen et al., 1990)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of histidine aminonitrile to histidine",
+        "inputs": [
+          "mol_008",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_007"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Prolonged aqueous aging, wet-dry rehydration, or geothermal cycling; hydrolysis slower than cyanide addition."
+        },
+        "mechanism": "Stepwise nitrile hydration and hydrolysis converts the aminonitrile into the amino acid while releasing ammonia.",
+        "reasoning": "Representing aminonitrile hydrolysis explicitly clarifies the mass balance of the Shen histidine synthesis. Shen et al. (1990) identified histidine after adding HCN and NH3 to the aldehyde-forming mixture; splitting the chemistry into aminonitrile formation and hydrolysis reflects standard Strecker logic and avoids treating NH3 as a net consumptive reagent. This is chemically strong, though slower than the preceding Strecker addition step (Shen et al., 1990)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "One-pot Shen-Or\u00f3 histidine synthesis (aggregate net step)",
+        "inputs": [
+          "mol_002",
+          "mol_003",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "350-355K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Warm mildly acidic aqueous stage; balanced net representation of the successful one-pot sequence. NH3 was present experimentally but cancels in the net stoichiometry because it is regenerated during nitrile hydrolysis."
+        },
+        "mechanism": "Aggregate of imidazole-ring construction from erythrose and formamidine, Strecker aminonitrile formation, and final hydrolysis to histidine.",
+        "reasoning": "This node summarizes the experimentally successful one-pot aqueous route closed by Shen et al. (1990). It is intentionally encoded as a balanced net transformation rather than an elementary reaction. Experimental support is strong for histidine formation itself, but geochemical criticism remains focused on whether erythrose and formamidine could coexist at useful concentrations in realistic settings (Shen et al., 1990; V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Electrical-discharge reduced-gas source term for histidine (aggregate)",
+        "inputs": [
+          "mol_013",
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "Water reservoir about 350K; plasma microzones hotter",
+          "pressure": "Reduced to near-ambient gas pressure",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Electrical discharge over CH4/NH3/H2O-type reduced gas mixtures; compressed net source term for endpoint chemistry only."
+        },
+        "mechanism": "Spark chemistry creates a complex ensemble of radicals, nitriles, carbonyls, and reduced organics from which histidine appears as a minor product; the target-specific pathway is unresolved.",
+        "reasoning": "Histidine has been reported in modern Miller-Urey-type discharge experiments, but no histidine-specific intermediate sequence is known. Jiang et al. (2014) reported all non-sulfur protein amino acids except glutamate after seven days in CH4/NH3/H2/H2O discharge chemistry, and Criado-Reyes et al. (2021) also reported histidine in CH4/NH3/N2/H2O discharge experiments. This node is therefore encoded as an empirical aggregate source term; H2 is bookkeeping for the overall redox balance, not an experimentally assigned unique coproduct (Jiang et al., 2014; Criado-Reyes et al., 2021)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Ni-catalyzed Fischer-Tropsch-type histidine source term (aggregate)",
+        "inputs": [
+          "mol_011",
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni metal"
+        ],
+        "conditions": {
+          "temperature": "473-973K",
+          "pressure": "Low to moderate gas pressure",
+          "catalyst": "Ni metal",
+          "aqueous": false,
+          "other": "Heterogeneous gas-solid catalysis from CO/H2/NH3; laboratory endpoint route only."
+        },
+        "mechanism": "The catalyst surface mediates CO reduction, C-C bond formation, and nitrogen incorporation in an unresolved multistep network.",
+        "reasoning": "Yoshino et al. (1971) reported histidine among amino acids synthesized from CO/H2/NH3 on catalytic surfaces, and Hayatsu et al. (1971) used isotopic labeling and mass spectrometry to strengthen the contamination control. No histidine-specific mechanism or reliable histidine-specific yield was resolved, so this is a coarse heterogeneous source term rather than an elementary step (Yoshino et al., 1971; Hayatsu et al., 1971)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Alumina-catalyzed Fischer-Tropsch-type histidine source term (aggregate)",
+        "inputs": [
+          "mol_011",
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Al2O3"
+        ],
+        "conditions": {
+          "temperature": "473-973K",
+          "pressure": "Low to moderate gas pressure",
+          "catalyst": "Al2O3",
+          "aqueous": false,
+          "other": "Heterogeneous gas-solid catalysis from CO/H2/NH3; laboratory endpoint route only."
+        },
+        "mechanism": "Alumina supports unresolved surface reduction, chain growth, and nitrogen incorporation leading to a broad amino-acid product suite.",
+        "reasoning": "Alumina was one of the heterogeneous catalysts used in the classic CO/H2/NH3 catalytic synthesis experiments that reported histidine among the products. As with the Ni case, the evidence is endpoint-level rather than mechanistically resolved, so the node is encoded as a catalyst-specific empirical source term (Yoshino et al., 1971; Hayatsu et al., 1971)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Clay-catalyzed Fischer-Tropsch-type histidine source term (aggregate)",
+        "inputs": [
+          "mol_011",
+          "mol_012",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "clay minerals"
+        ],
+        "conditions": {
+          "temperature": "473-973K",
+          "pressure": "Low to moderate gas pressure",
+          "catalyst": "clay minerals",
+          "aqueous": false,
+          "other": "Heterogeneous gas-solid catalysis from CO/H2/NH3; laboratory endpoint route only."
+        },
+        "mechanism": "Clay surfaces provide adsorption and catalytic sites for unresolved multistep carbon reduction and nitrogen incorporation chemistry.",
+        "reasoning": "Clay-catalyzed CO/H2/NH3 synthesis belongs to the same experimentally reported family in which histidine was identified among the products. The reaction is retained because it is a genuine reported histidine source, but the molecular route to histidine is unknown; this is therefore a balanced aggregate source term only (Yoshino et al., 1971; Hayatsu et al., 1971)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "UV/EUV PAH-ice photolysis and hydrolytic release of histidine (aggregate)",
+        "inputs": [
+          "mol_014",
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_011",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "15K irradiation, then about 383K hydrolytic work-up",
+          "pressure": "Ultrahigh vacuum during irradiation; about 1 atm after delivery and hydrolysis",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "1:1:1 naphthalene:H2O:NH3 ice irradiated with 4-20 eV photons; node explicitly combines photolysis with post-irradiation hydrolysis."
+        },
+        "mechanism": "UV/EUV radical chemistry in aromatic ice builds a complex nitrogen-bearing organic residue; hydrolysis then releases histidine or a histidine-yielding precursor ensemble.",
+        "reasoning": "Chen et al. (2008) reported histidine only after irradiation of naphthalene/H2O/NH3 ice and subsequent strong-acid hydrolysis. The experiment therefore supports a histidine-yielding residue, not unequivocally free histidine in the ice before work-up. This node is intentionally an aggregate photolysis-plus-hydrolysis source term, and the small coproducts are bookkeeping species used to balance the coarse-grained step rather than uniquely identified products. The route is low-yield and compositionally challenged, but it is experimentally nonzero (Chen et al., 2008)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct erythrose-formamidine-Strecker route",
+        "description": "Mechanistically explicit Shen pathway starting from erythrose and formamidine, proceeding through imidazole-4-acetaldehyde and histidine aminonitrile.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Formose-fed direct Shen route",
+        "description": "Speculative formaldehyde feeder to erythrose, followed by the direct aldehyde-forming Shen sequence and Strecker closure.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Erythrose glycol-reservoir route",
+        "description": "Observed imidazole-4-glycol coproduct acts as a reservoir that dehydrates to the key aldehyde before Strecker chemistry.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formose-fed glycol-reservoir route",
+        "description": "Formaldehyde first feeds erythrose, then the glycol branch collapses to the aldehyde and closes through aminonitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_005",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "One-pot Shen-Or\u00f3 net synthesis",
+        "description": "Balanced aggregate representation of the experimentally successful aqueous one-pot histidine synthesis from erythrose, formamidine, and HCN.",
+        "reaction_sequence": [
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Reduced-gas electrical-discharge route",
+        "description": "Endpoint-only lightning analog route in which histidine appears within a complex spark-generated product mixture.",
+        "reaction_sequence": [
+          "rxn_008"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Ni-catalyzed Fischer-Tropsch-type route",
+        "description": "High-temperature heterogeneous catalytic source term from CO, H2, and NH3 on nickel surfaces.",
+        "reaction_sequence": [
+          "rxn_009"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Alumina-catalyzed Fischer-Tropsch-type route",
+        "description": "High-temperature heterogeneous catalytic source term from CO, H2, and NH3 on alumina surfaces.",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Clay-catalyzed Fischer-Tropsch-type route",
+        "description": "High-temperature heterogeneous catalytic source term from CO, H2, and NH3 on clay mineral surfaces.",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P10",
+        "name": "UV/EUV PAH-ice photolysis and hydrolytic release route",
+        "description": "Aggregate extraterrestrial-style route in which irradiation of naphthalene/H2O/NH3 ice yields a residue that releases histidine upon hydrolysis.",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": []
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_004",
+      "mol_007",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.91,
+          "rxn_005": 0.92,
+          "rxn_006": 0.76
+        },
+        "chemical_feasibility": 0.89,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.79,
+        "target_achievement": 0.92,
+        "overall_confidence": 0.88,
+        "feedback": "Best pathway in the network and the only one built from histidine-specific intermediates directly supported by the supplied literature. The erythrose plus formamidine condensation and the Strecker logic are chemically strong. Main issues are that rxn_002 needs 3 H2O if explicit stoichiometry is shown, and rxn_006 should be labeled as abiotic aqueous hydrolysis consuming 2 H2O, not Biochemical. Precursor concentration and staging remain geochemical uncertainties, but they do not break the core chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add explicit coefficients to rxn_002 and rxn_006: C4H8O4 + CH4N2 -> C5H6N2O + 3 H2O; C6H8N4 + 2 H2O -> C6H9N3O2 + NH3.",
+          "Rename rxn_006 from Biochemical to abiotic aqueous hydrolysis.",
+          "Add aqueous conditions for the Shen sequence, such as pH about 6 and about 80 C."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_002": 0.91,
+          "rxn_005": 0.92,
+          "rxn_006": 0.76
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.92,
+        "overall_confidence": 0.78,
+        "feedback": "Downstream chemistry is strong once erythrose exists, but the upstream feeder is weak. rxn_001 is only a speculative formose-to-erythrose source term, with no explicit selection or concentration mechanism and no stated transfer from typical formose conditions to the mildly acidic Shen conditions. This makes the pathway coherent as a staged hypothesis, not as a well-resolved experimental sequence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Represent rxn_001 explicitly as 4 CH2O -> erythrose and mark it as a low-evidence feeder.",
+          "Add a concentration or selection step showing how erythrose is enriched from the formose mixture.",
+          "Specify a transfer from formose conditions into the warm mildly acidic Shen conditions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.81,
+          "rxn_004": 0.78,
+          "rxn_005": 0.92,
+          "rxn_006": 0.76
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.76,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "Reasonable secondary route because imidazole-4-glycol is an experimentally observed coproduct in the Shen chemistry. The uncertainty is rxn_004: dehydration of the glycol to imidazole-4-acetaldehyde is plausible, especially under acid catalysis, but is not as directly demonstrated as the aldehyde branch itself. rxn_006 has the same environment-label problem as in P1.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Mark rxn_004 as a lower-evidence, likely acid-promoted reservoir-to-aldehyde step.",
+          "Add explicit coefficients to rxn_003 and rxn_006.",
+          "Rename rxn_006 to abiotic aqueous hydrolysis and specify its conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.52,
+          "rxn_003": 0.81,
+          "rxn_004": 0.78,
+          "rxn_005": 0.92,
+          "rxn_006": 0.76
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.75,
+        "feedback": "This combines two weaker links: a speculative formose feeder and a plausible but less directly demonstrated glycol-to-aldehyde conversion. The route is chemically possible, but the network does not yet justify how erythrose is enriched from formose chemistry and then handed off into the Shen aqueous regime. This is a reasonable exploratory branch, not a high-confidence pathway.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add a concrete erythrose enrichment and transfer mechanism if rxn_001 is retained.",
+          "Keep rxn_004 explicitly flagged as plausible rather than demonstrated.",
+          "Correct rxn_006 environment and add missing coefficients throughout the pathway."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.83
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.79,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "Accurate as an aggregate representation of the 1990 one-pot histidine synthesis, so literature alignment is good. However, collapsing the route into rxn_007 hides the best-supported intermediates, and the actual experiment still relied on NH3 during the Strecker stage even though NH3 cancels from the net stoichiometry. Treat this as a multistep aggregate aqueous process, not an elementary reaction.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Label rxn_007 as an aggregate of the Shen condensation plus Strecker plus hydrolysis sequence.",
+          "Note NH3 in the conditions or annotations even though it cancels in the net stoichiometry.",
+          "Use 2 H2O if explicit stoichiometric coefficients are shown."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_008": 0.57
+        },
+        "chemical_feasibility": 0.57,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.58,
+        "feedback": "Supported only as an endpoint source term: spark-discharge experiments report histidine, but no histidine-specific mechanism or intermediate sequence is established. rxn_008 is therefore acceptable only as an empirical aggregate edge, and it also needs explicit discharge energy plus a better environment label than Surface. The large inferred stoichiometry reinforces that this is not a single-step mechanism.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Label rxn_008 as an empirical aggregate source term, not an elementary step.",
+          "Add the electrical discharge energy source and the actual gas compositions used in the cited studies.",
+          "If possible, split gas-phase precursor formation from aqueous histidine appearance."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.61
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.66,
+        "overall_confidence": 0.61,
+        "feedback": "Coarsely aligned with the Ni-catalyzed CO/H2/NH3 experiments, including the fact that histidine itself was reported. But rxn_009 is an unresolved high-temperature surface-catalytic source term, not an elementary step to histidine, and the network omits the important temperature and catalyst metadata. Keep it as a literature-backed aggregate route only.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Annotate rxn_009 as unresolved multistep Fischer-Tropsch-type chemistry.",
+          "Add Ni catalyst and temperature metadata, roughly 200-700 C in the cited work.",
+          "Do not imply identified histidine-specific intermediates unless supporting data are added."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_010": 0.59
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.53,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.6,
+        "feedback": "Same overall assessment as P7, but for alumina catalysis. Endpoint support exists in the older Fischer-Tropsch-type literature, yet no histidine-specific intermediate sequence is known and the environmental conditions are under-specified. This branch works as a coarse source term, not as a resolved mechanism.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Annotate rxn_010 as unresolved multistep Fischer-Tropsch-type chemistry.",
+          "Add alumina catalyst and temperature metadata.",
+          "Keep this branch clearly separated from the mechanistically resolved Shen route."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_011": 0.58
+        },
+        "chemical_feasibility": 0.59,
+        "pathway_coherence": 0.52,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.59,
+        "feedback": "Same overall assessment as P7 and P8, but for clay catalysis. Histidine has historical endpoint support in this reaction family, yet the branch is not mechanistically resolved and the current edge is too compressed to count as a chemically defined pathway. It is acceptable only as a coarse empirical source term.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Annotate rxn_011 as unresolved multistep Fischer-Tropsch-type chemistry.",
+          "Add clay catalyst and temperature metadata.",
+          "Treat it as an empirical endpoint route rather than a defined mechanism."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_012": 0.45
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.44,
+        "environmental_progression": 0.28,
+        "target_achievement": 0.49,
+        "overall_confidence": 0.45,
+        "feedback": "Literature support is weaker and more ambiguous than the direct Shen route because the cited ice experiment measured histidine after strong-acid hydrolysis of the irradiated residue. rxn_012 therefore conflates cryogenic UV or EUV ice chemistry with later hydrolytic release, and it should not be interpreted as direct free-histidine formation on a surface. The current Surface label is environmentally inaccurate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Split rxn_012 into irradiated residue formation and a separate hydrolytic release step.",
+          "Change the environment label to cryogenic UV or EUV PAH-H2O-NH3 ice, not Surface.",
+          "Note that the 1:1:1 laboratory ice and hydrolysis work-up limit natural extrapolation."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.83,
+    "network_feedback": "Good evidence-weighted network. It is connected, molecule IDs are consistent, and RDKit reports no conservation violations. The Shen-Yang-Miller-Oro chemistry is correctly central, the glycol branch is a plausible secondary reservoir, and the discharge, Fischer-Tropsch-type, and PAH-ice branches are mostly treated as coarse source terms rather than overclaimed mechanisms. The main deficits are presentation and environment metadata: 10 of 12 reactions need explicit stoichiometric coefficients if the network is meant to be balanced as written, including rxn_001 as 4 CH2O -> C4H8O4, rxn_002 with 3 H2O, rxn_003 with 2 H2O, rxn_006 with 2 H2O consumed, rxn_007 with 2 H2O produced, and large-coefficient net forms for rxn_008-rxn_012. Environmental annotations are also too coarse or mismatched: the Shen steps are warm aqueous chemistry rather than generic Surface catalysis, rxn_006 should not be Biochemical, spark-discharge and PAH-ice chemistry are not surface reactions, and rxn_012 should distinguish hydrolysis-released histidine from direct free histidine. The formose feeder remains speculative because no explicit enrichment and transfer mechanism is given for moving erythrose from formose chemistry into the Shen regime. The omission of a dedicated hydrothermal histidine branch is consistent with the supplied literature. Overall this is a good literature-aligned network, but it is not approval-level until stoichiometry and environment annotations are tightened.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 2,
+      "n_balanceable": 10,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 4,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "C": -3,
+            "O": -3,
+            "H": -6
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_004": 1,
+            "mol_010": 3
+          },
+          "element_delta": {
+            "H": 4,
+            "O": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_005": 1,
+            "mol_010": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_006": 1,
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_010": 2,
+            "mol_009": 1,
+            "mol_007": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_006": 1,
+            "mol_009": 1,
+            "mol_010": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_013": 6,
+            "mol_007": 3,
+            "mol_010": 2,
+            "mol_009": 1,
+            "mol_012": 14
+          },
+          "element_delta": {
+            "C": -5,
+            "H": -2,
+            "N": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 6,
+            "mol_012": 4,
+            "mol_007": 3,
+            "mol_009": 1,
+            "mol_010": 4
+          },
+          "element_delta": {
+            "C": -5,
+            "O": -2,
+            "H": -6,
+            "N": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 6,
+            "mol_012": 4,
+            "mol_007": 3,
+            "mol_009": 1,
+            "mol_010": 4
+          },
+          "element_delta": {
+            "C": -5,
+            "O": -2,
+            "H": -6,
+            "N": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 6,
+            "mol_012": 4,
+            "mol_007": 3,
+            "mol_009": 1,
+            "mol_010": 4
+          },
+          "element_delta": {
+            "C": -5,
+            "O": -2,
+            "H": -6,
+            "N": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_014": 1,
+            "mol_007": 3,
+            "mol_010": 6,
+            "mol_009": 1,
+            "mol_011": 4,
+            "mol_012": 10
+          },
+          "element_delta": {
+            "C": 3,
+            "H": 2,
+            "N": -2,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.830"
+}

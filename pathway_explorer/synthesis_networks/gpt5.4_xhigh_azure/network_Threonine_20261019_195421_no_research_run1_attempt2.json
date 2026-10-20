@@ -1,0 +1,1008 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Build the threonine carbon skeleton through lactaldehyde, the most direct nonenzymatic Strecker precursor for a beta-hydroxy alpha-amino acid. A connected inorganic-carbon entry is included through hydrothermal CO2 reduction to formaldehyde, followed by surface formose growth to glyceraldehyde, triose degradation to methylglyoxal, hydrothermal reduction to lactaldehyde, Strecker conversion to the aminonitrile, and explicit nonenzymatic hydrolysis in hot surface waters. The 10 pathways arise from five plausible environmental entry points into this shared carbonyl core crossed with two hydrolysis endgames, and the network deliberately avoids the weaker direct glycine-nitrile homologation route. Stereochemistry is not resolved: the prebiotic product set would include racemic threonine and allothreonine, while the target node tracks the threonine member of that mixture.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H6O3",
+        "iupac_name": "2,3-dihydroxypropanal",
+        "common_name": "glyceraldehyde",
+        "inchi": "InChI=1S/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O2",
+        "iupac_name": "2-oxopropanal",
+        "common_name": "methylglyoxal",
+        "inchi": "InChI=1S/C3H4O2/c1-3(5)2-4/h2H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine nitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H10N2O2",
+        "iupac_name": "2-amino-3-hydroxybutanamide",
+        "common_name": "threoninamide",
+        "inchi": "InChI=1S/C4H10N2O2/c1-2(7)3(5)4(6)8/h2-3,7H,5H2,1H3,(H2,6,8)/t2-,3+/m1/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Mineral-mediated CO2 hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003",
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite",
+          "awaruite"
+        ],
+        "conditions": {
+          "temperature": "350-390K",
+          "pressure": "high",
+          "catalyst": "magnetite/awaruite",
+          "aqueous": true,
+          "other": "H2-rich alkaline to mildly alkaline subseafloor hydrothermal fluids; anoxic"
+        },
+        "mechanism": "Stepwise mineral-surface reduction of CO2 to the carbonyl level, releasing formaldehyde into the aqueous C1 pool.",
+        "reasoning": "This node provides a fully connected inorganic-carbon entry. The overall stoichiometry is CO2 + 2 H2 -> CH2O + H2O. In H2-rich serpentinization settings, Fe-Ni oxides and alloys can reduce CO2 to C1 organics; formaldehyde is expected to be low-yield and transient in hot water, so later pathways also allow entry from pre-existing surface formaldehyde reservoirs."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formaldehyde dimerization to glycolaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals",
+          "carbonate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "borate/carbonate mineral assemblage",
+          "aqueous": true,
+          "other": "Alkaline evaporitic pool with wet-dry concentration and partially UV-shielded microenvironments"
+        },
+        "mechanism": "Base-catalyzed formose dimerization of two formaldehyde equivalents.",
+        "reasoning": "The overall stoichiometry is 2 CH2O -> C2H4O2. This is the initiating C-C bond-forming step of formose-type chemistry. It is concentration-sensitive and challenging at low conversion, but glycolaldehyde is the canonical first higher sugar and borate-bearing alkaline brines can help stabilize higher-carbonyl products against runaway side reactions."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose homologation to glyceraldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "borate minerals",
+          "carbonate minerals"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "borate/carbonate mineral assemblage",
+          "aqueous": true,
+          "other": "Alkaline evaporitic pool or tidal-flat brine under wet-dry concentration"
+        },
+        "mechanism": "Aldol homologation within formose chemistry.",
+        "reasoning": "Aldol addition of formaldehyde to glycolaldehyde grows the carbon skeleton to a triose pool. Glyceraldehyde and dihydroxyacetone are both plausible outcomes under these conditions; only the glyceraldehyde branch is propagated here because it can dehydrate cleanly to methylglyoxal, a direct precursor to lactaldehyde."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Glyceraldehyde dehydration to pyruvaldehyde",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "phosphate minerals"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "phosphate minerals",
+          "aqueous": true,
+          "other": "Warm evaporitic pools or subaerial geothermal fields with intermittent drying; mildly basic to neutral; anoxic"
+        },
+        "mechanism": "Enediolization followed by dehydration and rearrangement to an alpha-oxoaldehyde.",
+        "reasoning": "Triose sugars readily enolize and dehydrate under heating, especially in phosphate-rich or mildly basic media, to give methylglyoxal. Explicit H2O release keeps the node balanced and captures a known degradation path of glyceraldehyde without invoking any unpaired oxidant or reductant."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrothermal reduction of pyruvaldehyde to lactaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "greigite",
+          "awaruite"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "greigite/awaruite",
+          "aqueous": true,
+          "other": "Anoxic H2-rich hydrothermal flow through Fe-Ni mineral assemblages"
+        },
+        "mechanism": "Mineral-surface hydrogenation of the ketone carbonyl of methylglyoxal to give the corresponding alpha-hydroxy aldehyde.",
+        "reasoning": "Compared with the Strecker and hydrolysis steps, this reduction is less directly constrained in prebiotic experiments, but it is chemically straightforward: H2-rich Fe/Ni sulfide or alloy surfaces can deliver the needed two-electron reduction of the keto group of methylglyoxal to lactaldehyde. Selectivity is the key bottleneck, and lactaldehyde would likely coexist with more reduced side products."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Strecker synthesis of threonine nitrile",
+        "inputs": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Concentrated NH3 and HCN in evaporitic or partially UV-shielded surface brines; anoxic"
+        },
+        "mechanism": "Imine formation from lactaldehyde and ammonia followed by cyanide addition.",
+        "reasoning": "This is the chemically strongest way to install the amino nitrile functionality on the correct beta-hydroxy carbon skeleton. Alpha-hydroxy aldehydes undergo standard Strecker chemistry to the corresponding alpha-amino nitriles. Explicit water release keeps the step balanced. Because lactaldehyde is already chiral and cyanide addition creates a new stereocenter, the product is expected to be a racemic threonine and allothreonine nitrile mixture rather than a single stereoisomer."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydration of threonine nitrile to threoninamide",
+        "inputs": [
+          "mol_011",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Hot surface waters in subaerial geothermal fields with repeated heating and cooling; anoxic"
+        },
+        "mechanism": "Nucleophilic hydration of the nitrile to the corresponding amide.",
+        "reasoning": "Aminonitrile hydrolysis is stepwise, with the amide as the chemically realistic first hydrolysis product under hot aqueous conditions. Representing threoninamide explicitly is more rigorous than collapsing the chemistry into an under-specified one-step conversion."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of threoninamide to threonine",
+        "inputs": [
+          "mol_012",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Continued hot-water exposure in geothermal pools or hot springs; anoxic"
+        },
+        "mechanism": "Amide hydrolysis to the carboxylic acid with ammonia release.",
+        "reasoning": "Continued hot-water exposure converts the amide to the amino acid and explicitly releases NH3. This keeps the hydrolysis nonenzymatic and in a defined surface-geothermal setting rather than a vague biochemical placeholder; the resulting amino acid pool would contain both threonine and allothreonine, with threonine tracked as the target node."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Overall hydrolysis of threonine nitrile to threonine",
+        "inputs": [
+          "mol_011",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Extended hot aqueous exposure in geothermal pools; mechanistically via an unisolated amide intermediate"
+        },
+        "mechanism": "Overall nitrile hydrolysis to the amino acid through sequential hydration and amide hydrolysis.",
+        "reasoning": "This alternative overall node represents prolonged hydrolysis without isolating threoninamide. The net stoichiometry is threonine nitrile + 2 H2O -> threonine + NH3, with the implicit second water accounted for by stoichiometric inference. It summarizes the same chemistry made explicit in rxn_007 and rxn_008, again yielding a threonine and allothreonine mixture in practice."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "CO2-entry via stepwise hydrolysis",
+        "description": "CO2 is reduced to a formaldehyde pool hydrothermally, expanded by surface formose chemistry to glyceraldehyde, degraded to methylglyoxal, reduced to lactaldehyde, and taken through Strecker synthesis plus nitrile-to-amide-to-acid hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "CO2-entry via direct nitrile hydrolysis",
+        "description": "The same fully connected inorganic-carbon upstream core is followed, but prolonged hot-water exposure is represented by the overall nitrile-to-amino-acid hydrolysis node rather than the explicit amide sequence.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formaldehyde-entry via stepwise hydrolysis",
+        "description": "Pre-existing surface formaldehyde enters the same formose-to-lactaldehyde core and is hydrolyzed stepwise after Strecker capture.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formaldehyde-entry via direct nitrile hydrolysis",
+        "description": "A surface formaldehyde reservoir feeds the common formose and lactaldehyde core, followed by overall hydrolysis of the aminonitrile under prolonged geothermal heating.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Glycolaldehyde/formaldehyde-entry via stepwise hydrolysis",
+        "description": "A mixed C1 and C2 carbonyl reservoir bypasses the initial formaldehyde dimerization step; glyceraldehyde is formed directly, then carried through methylglyoxal, lactaldehyde, Strecker synthesis, and stepwise hydrolysis.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Glycolaldehyde/formaldehyde-entry via direct nitrile hydrolysis",
+        "description": "The same mixed C1 and C2 reservoir enters at glyceraldehyde formation but uses the overall nitrile hydrolysis endgame instead of isolating the amide.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Glyceraldehyde-entry via stepwise hydrolysis",
+        "description": "Entry from a glyceraldehyde reservoir produced elsewhere in the broader formose network gives methylglyoxal, then lactaldehyde, followed by Strecker synthesis and explicit amide hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Glyceraldehyde-entry via direct nitrile hydrolysis",
+        "description": "A glyceraldehyde-rich carbonyl pool is funneled through methylglyoxal and lactaldehyde, then converted to threonine by Strecker synthesis and overall nitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Methylglyoxal-entry via stepwise hydrolysis",
+        "description": "Entry from a pre-existing methylglyoxal pool generated by sugar degradation requires only reduction to lactaldehyde, Strecker synthesis, and stepwise nitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Methylglyoxal-entry via direct nitrile hydrolysis",
+        "description": "A methylglyoxal reservoir is reduced to lactaldehyde and then taken through Strecker capture plus overall hydrolysis under extended geothermal heating.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_009",
+      "mol_010",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.42,
+          "rxn_002": 0.6,
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_007": 0.67,
+          "rxn_008": 0.79
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.73,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.71,
+        "feedback": "Connected full route from CO2 to threonine, but confidence is limited by rxn_001, rxn_002, and rxn_005. Hydrothermal CO2 reduction to formaldehyde is weakly supported and formaldehyde is hard to preserve; formaldehyde self-coupling and formose chemistry are nonselective; and methylglyoxal hydrogenation may give hydroxyacetone or over-reduced products rather than lactaldehyde. The Strecker plus amide hydrolysis endgame is plausible, but repeated hydrothermal to surface transfers of reactive intermediates are under-justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Write rxn_001 explicitly as CO2 + 2 H2 -> CH2O + H2O and identify a realistic hydrothermal Fe/Ni catalyst plus rapid quench to preserve formaldehyde.",
+          "Write rxn_002 as 2 CH2O -> glycolaldehyde and define alkaline mineral surface conditions that favor glycolaldehyde and glyceraldehyde over uncontrolled formose tar.",
+          "Give a mechanistic rationale for rxn_005 favoring lactaldehyde over hydroxyacetone and over-reduction, and specify the hot aqueous mineral-assisted conditions used for rxn_007 and rxn_008."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.42,
+          "rxn_002": 0.6,
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_009": 0.68
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.69,
+        "feedback": "This shares the same upstream weaknesses as P1, with an additional simplification in rxn_009. Direct aminonitrile to amino acid hydrolysis is chemically acceptable as a net transformation, but it compresses forcing hydrolysis chemistry and should not be treated as a mild single surface step without more detail.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Write rxn_001 explicitly as CO2 + 2 H2 -> CH2O + H2O and identify a realistic hydrothermal Fe/Ni catalyst plus rapid quench to preserve formaldehyde.",
+          "Write rxn_002 as 2 CH2O -> glycolaldehyde and define alkaline mineral surface conditions that favor glycolaldehyde and glyceraldehyde over uncontrolled formose tar.",
+          "Write rxn_009 explicitly as threonine nitrile + 2 H2O -> threonine + NH3, or replace it with rxn_007 plus rxn_008 under specified hot-water or mineral-catalyzed conditions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_007": 0.67,
+          "rxn_008": 0.79
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.76,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.73,
+        "feedback": "Removing the CO2 reduction step improves plausibility, but rxn_002 still depends on difficult formaldehyde self-coupling and rxn_005 remains the main selectivity bottleneck. The downstream Strecker and stepwise hydrolysis sequence is coherent if hot, catalytically active surface waters are available.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Write rxn_002 as 2 CH2O -> glycolaldehyde and specify the catalytic surface, pH, and concentration regime.",
+          "Constrain rxn_003 and rxn_004 with mineral or evaporative conditions that suppress broader formose degradation.",
+          "Provide a selectivity argument for rxn_005 and explicit hot-water or mineral-assisted conditions for rxn_007 and rxn_008."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.6,
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_009": 0.68
+        },
+        "chemical_feasibility": 0.67,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.72,
+        "feedback": "More plausible than full CO2 entry, but still limited by rxn_002 and the uncertain selectivity of rxn_005. The direct hydrolysis shortcut reaches the target, yet it would need explicitly harsh or mineral-assisted conditions to be convincing.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Write rxn_002 as 2 CH2O -> glycolaldehyde and specify the catalytic surface, pH, and concentration regime.",
+          "Constrain rxn_003 and rxn_004 with mineral or evaporative conditions that suppress broader formose degradation.",
+          "Write rxn_009 explicitly as threonine nitrile + 2 H2O -> threonine + NH3 and state the required forcing hydrolysis conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_007": 0.67,
+          "rxn_008": 0.79
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.67,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.75,
+        "feedback": "A reasonable mid-network entry that avoids the weakest C1 reduction step. The route from triose-level carbonyl chemistry to threonine is coherent, but rxn_003 remains mixed-product homologation chemistry and rxn_005 is still the key uncertainty. Stepwise hydrolysis makes the endgame more defensible than the direct shortcut.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Define the surface conditions for rxn_003 so glyceraldehyde is a credible product rather than a minor component of a broader formose mixture.",
+          "Justify rxn_005 selectivity toward lactaldehyde over hydroxyacetone and over-reduction.",
+          "Specify hot aqueous, acid-base, or mineral-assisted conditions for rxn_007 and rxn_008."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.68,
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_009": 0.68
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.77,
+        "environmental_progression": 0.67,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.73,
+        "feedback": "This path is shorter and coherent, but confidence is still limited by nonselective rxn_003, uncertain lactaldehyde selectivity in rxn_005, and the compressed direct hydrolysis in rxn_009. It reaches threonine on paper, though likely within a broader product mixture.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Define the surface conditions for rxn_003 so glyceraldehyde is a credible product rather than a minor component of a broader formose mixture.",
+          "Justify rxn_005 selectivity toward lactaldehyde over hydroxyacetone and over-reduction.",
+          "Write rxn_009 explicitly as threonine nitrile + 2 H2O -> threonine + NH3 and give the hydrolysis conditions instead of leaving it as an unspecified shortcut."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_007": 0.67,
+          "rxn_008": 0.79
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.76,
+        "feedback": "Starting at glyceraldehyde removes most upstream uncertainty. Glyceraldehyde to methylglyoxal is chemically reasonable, but selective reduction of methylglyoxal to lactaldehyde remains the main weakness. The Strecker plus amide hydrolysis tail is chemically sensible and should place threonine within the expected racemic threonine and allothreonine mixture.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Support rxn_005 with a catalyst and quench regime that can enrich lactaldehyde rather than hydroxyacetone or deeper reduction products.",
+          "Specify temperature, pH, and mineral assistance for rxn_007 and rxn_008, since aminonitrile hydrolysis is slow under mild neutral conditions.",
+          "State explicitly that the product set will be a threonine and allothreonine racemic mixture rather than a single stereoisomer."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.75,
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_009": 0.68
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.74,
+        "feedback": "A compact route with a plausible sugar degradation step, but the key reduction rxn_005 is still selective only under favorable catalysis. The direct nitrile hydrolysis endgame is acceptable as an overall transformation, though less well specified than the stepwise hydrolysis route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Support rxn_005 with a catalyst and quench regime that enriches lactaldehyde over competing reduction products.",
+          "Write rxn_009 as threonine nitrile + 2 H2O -> threonine + NH3 and give the forcing hydrolysis conditions.",
+          "State explicitly that the product set will be a threonine and allothreonine racemic mixture rather than a single stereoisomer."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_007": 0.67,
+          "rxn_008": 0.79
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.78,
+        "feedback": "This is the strongest subnetwork because it focuses on the chemically coherent lactaldehyde Strecker strategy and avoids the weakest upstream carbon-growth steps. The main weakness is rxn_005: methylglyoxal hydrogenation is not obviously selective for lactaldehyde over hydroxyacetone or over-reduction. If hot, mineral-assisted surface hydrolysis is specified, the endgame to threonine is credible.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Give a concrete catalytic rationale for rxn_005 favoring lactaldehyde, or add a hydroxyacetone and lactaldehyde equilibration node if that is what is intended.",
+          "Specify pH, temperature, and mineral assistance for rxn_007 and rxn_008 in hot surface waters.",
+          "Clarify the transport and quench logic for moving lactaldehyde from the reducing environment into the Strecker environment."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.5,
+          "rxn_006": 0.8,
+          "rxn_009": 0.68
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.76,
+        "feedback": "Also a strong short route, but weaker than P9 because rxn_009 compresses the hydrolysis chemistry. The core concern remains rxn_005 selectivity; if that step is solved, threonine formation is plausible, though still as part of a racemic threonine and allothreonine mixture.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Give a concrete catalytic rationale for rxn_005 favoring lactaldehyde, or represent competing hydroxyacetone formation explicitly.",
+          "Write rxn_009 as threonine nitrile + 2 H2O -> threonine + NH3 and specify the required hydrolysis conditions.",
+          "Clarify the transport and quench logic for moving lactaldehyde into the Strecker and hydrolysis setting, and note the expected racemic threonine and allothreonine mixture."
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.74,
+    "network_feedback": "Structurally, the network is sound: 13 molecules and 9 reactions form a single connected graph, and the supplied RDKit balance check reports no conservation-violating reactions. The threonine endgame via lactaldehyde Strecker chemistry and aminonitrile or amide hydrolysis is coherent and likely gives threonine within a racemic threonine and allothreonine mixture. Confidence drops because rxn_001 has weak support and poor selectivity for formaldehyde under hydrothermal CO2 and H2 conditions, rxn_002 and rxn_003 are nonselective formose chemistry, and rxn_005 has a serious selectivity problem because methylglyoxal reduction can favor hydroxyacetone or over-reduction instead of lactaldehyde. Environmental descriptions are broadly plausible but too generic; pH, mineral catalysts, temperature, quenching, and transport between hydrothermal and surface reservoirs should be stated explicitly. Stoichiometries should also be written explicitly for rxn_001 as CO2 + 2 H2 -> CH2O + H2O, rxn_002 as 2 CH2O -> glycolaldehyde, and rxn_009 as threonine nitrile + 2 H2O -> threonine + NH3. Best pathway: P9. The network is not approved overall.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 9,
+      "n_balanced_as_written": 6,
+      "n_balanceable": 3,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 2,
+            "mol_003": 1,
+            "mol_010": 1
+          },
+          "element_delta": {
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_003": 2,
+            "mol_004": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_003": 1,
+            "mol_004": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_009": 1,
+            "mol_011": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_010": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_010": 1,
+            "mol_013": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_010": 2,
+            "mol_013": 1,
+            "mol_009": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

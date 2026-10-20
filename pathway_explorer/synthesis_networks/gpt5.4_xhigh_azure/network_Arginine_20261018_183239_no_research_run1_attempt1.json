@@ -1,0 +1,1153 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "The network builds the C5 ornithine scaffold from simple HCN-rich feedstocks and then installs the guanidino group with cyanamide. Three alternative scaffold-building routes converge on ornithine nitrile: (i) stepwise acrolein -> 4-cyanobutanal -> dinitrile chemistry, (ii) aminoacetonitrile chain extension with acrolein followed by reductive amination, and (iii) a one-pot acrolein/HCN/NH3 cascade. Surface chemistry is used for carbon-carbon and carbon-nitrogen bond formation, H2-rich hydrothermal minerals are used for the key reduction steps to ornithine nitrile, and ornithine is obtained by either hydrothermal or wet-dry hydrolysis before cyanamide-mediated guanidination in concentrated prebiotic microphases. The expected product is racemic arginine unless later chiral selection occurs.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C3H4O",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": null,
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H5NO",
+        "iupac_name": "4-oxobutanenitrile",
+        "common_name": "4-cyanobutanal",
+        "inchi": "InChI=1S/C4H5NO/c5-3-1-2-4-6/h4H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H7N3",
+        "iupac_name": "2-aminopentane-1,5-dinitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoethanenitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H8N2O",
+        "iupac_name": "5-oxo-2-aminopentanenitrile",
+        "common_name": null,
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H11N3",
+        "iupac_name": "2,5-diaminopentanenitrile",
+        "common_name": "ornithine nitrile",
+        "inchi": "InChI=1S/C5H11N3/c6-3-1-2-5(8)4-7/h5H,1-3,6,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H12N2O2",
+        "iupac_name": "2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH2N2",
+        "iupac_name": "cyanamide",
+        "common_name": null,
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "C6H14N4O2",
+        "iupac_name": "2-amino-5-(diaminomethylideneamino)pentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/2C6H14N4O2/c2*7-4(5(11)12)2-1-3-10-6(8)9/h2*4H,1-3,7H2,(H,11,12)(H4,8,9,10)",
+        "role": "target",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cross-aldol condensation to acrolein",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "evaporitic pool or geothermal shoreline; wet-dry cycles promote dehydration of the initial aldol adduct; mildly basic due to dissolved ammonia/carbonate"
+        },
+        "mechanism": "Acetaldehyde enolization, aldol addition to formaldehyde, and dehydration furnish the alpha,beta-unsaturated aldehyde acrolein.",
+        "reasoning": "Simple carbonyl condensation is favored during evaporation on clay surfaces. Acrolein is a strategically valuable C3 electrophile because it supports both cyanide Michael addition and aminonitrile chain-extension chemistry under plausible prebiotic surface conditions."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanide Michael addition to acrolein",
+        "inputs": [
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cyanide-bearing aqueous film; mildly basic conditions provide some CN- from HCN"
+        },
+        "mechanism": "Conjugate 1,4-addition of cyanide to acrolein followed by protonation gives 4-cyanobutanal.",
+        "reasoning": "Alpha,beta-unsaturated aldehydes are strong acceptors for cyanide under mild conditions. The product is a bifunctional intermediate that contains both an aldehyde for Strecker chemistry and a distal nitrile that can later become the ornithine side-chain amine."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker homologation of 4-cyanobutanal",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "ammonium cyanide-rich brine or evaporitic shoreline film"
+        },
+        "mechanism": "The aldehyde condenses with ammonia to an imine/iminium species, which is trapped by cyanide to form the alpha-aminonitrile while retaining the terminal nitrile.",
+        "reasoning": "This is a straightforward Strecker-type extension from a C4 aldehyde nitrile to a C5 aminodinitrile. Chemically, this is one of the strongest links in the network because aldehydes, ammonia, and cyanide readily converge to aminonitriles under prebiotic conditions."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Hydrothermal side-chain nitrile reduction to ornithine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "awaruite",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-430K",
+          "pressure": "high",
+          "catalyst": "awaruite/mackinawite",
+          "aqueous": true,
+          "other": "H2-rich alkaline vent pores; pH 9-10; requires transfer of the dinitrile into a reducing subsurface setting"
+        },
+        "mechanism": "Hydrogen is activated on Ni-Fe mineral surfaces and used to reduce the terminal nitrile to a primary amine, giving ornithine nitrile.",
+        "reasoning": "H2-rich hydrothermal minerals provide one of the most plausible prebiotic sources of reduction chemistry. The key uncertainty is chemoselectivity: the side-chain nitrile must be reduced while the alpha-aminonitrile survives long enough to exit the pore system. This makes the step a genuine bottleneck and partly speculative, but it is chemically meaningful as a direct route to the ornithine skeleton."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker synthesis of aminoacetonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "ammonium cyanide solution or concentrated pool"
+        },
+        "mechanism": "Formaldehyde forms an imine/iminium with ammonia, and cyanide addition generates aminoacetonitrile.",
+        "reasoning": "Aminoacetonitrile is among the most plausible and best-known prebiotic aminonitriles. In this network it functions as a masked glycine equivalent that can participate in later chain extension."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminonitrile chain extension with acrolein",
+        "inputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "montmorillonite",
+          "aqueous": true,
+          "other": "mildly basic concentrating shoreline film"
+        },
+        "mechanism": "A carbon-centered nucleophilic equivalent derived from aminoacetonitrile adds to the beta-carbon of acrolein, forming a C5 amino aldehyde nitrile.",
+        "reasoning": "Aminonitriles can behave as masked alpha-amino carbanion equivalents in concentrating environments. Direct evidence for this exact substrate pair is limited, so this branch is more speculative than classical Strecker chemistry, but it offers a chemically coherent C-C bond-forming route to the ornithine carbon skeleton."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrothermal reductive amination to ornithine nitrile",
+        "inputs": [
+          "mol_010",
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "awaruite",
+          "mackinawite"
+        ],
+        "conditions": {
+          "temperature": "370-430K",
+          "pressure": "high",
+          "catalyst": "awaruite/mackinawite",
+          "aqueous": true,
+          "other": "subseafloor or vent-proximal H2-bearing fluids with dissolved ammonia"
+        },
+        "mechanism": "The terminal aldehyde forms an imine with ammonia, and surface-activated hydrogen reduces it to the terminal primary amine, giving ornithine nitrile.",
+        "reasoning": "This branch avoids selective reduction of one nitrile within a dinitrile and may therefore be more tractable than the direct dinitrile-reduction route. Reductive amination is chemically plausible where H2, ammonia, and Ni-Fe mineral surfaces coexist."
+      },
+      {
+        "id": "rxn_008",
+        "name": "One-pot acrolein/HCN/NH3 cascade to the C5 dinitrile",
+        "inputs": [
+          "mol_003",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cyanide-rich evaporitic pool; intermediates not isolated"
+        },
+        "mechanism": "Cyanide first adds conjugatively to acrolein to generate 4-cyanobutanal in situ, after which the aldehyde undergoes Strecker capture with ammonia and cyanide.",
+        "reasoning": "Prebiotic surface chemistry would often proceed as cascades rather than as isolated laboratory steps. If acrolein, ammonia, and cyanide coexist in the same pool, direct one-pot formation of the C5 aminodinitrile is chemically credible."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrothermal hydrolysis of ornithine nitrile",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "380-430K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "continuous hot aqueous flow with local pH gradients across vent pores"
+        },
+        "mechanism": "The alpha-aminonitrile is hydrated to the amide and then hydrolyzed to the carboxylic acid, yielding ornithine.",
+        "reasoning": "Hydrolysis of aminonitriles to amino acids is the classical termination step of Strecker chemistry. Vent pores provide sustained hot water and acid-base microgradients that can accelerate conversion of ornithine nitrile to ornithine."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Surface wet-dry hydrolysis of ornithine nitrile",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "320-370K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "phosphate-rich shoreline crust subjected to repeated drying, heating, and rehydration"
+        },
+        "mechanism": "Repeated hydration/dehydration cycles promote nitrile hydration and subsequent hydrolysis to the amino acid.",
+        "reasoning": "A non-vent alternative is plausible in wet-dry systems where concentration, local acidity/basicity, and repeated heating can gradually hydrolyze aminonitriles. Mineral crusts also help retain the substrate long enough for slow conversion."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Mineral-interface cyanamide guanidination of ornithine",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "apatite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "apatite",
+          "aqueous": true,
+          "other": "phosphate-rich concentrated microphase or mineral interface; repeated heating/cooling without complete desiccation"
+        },
+        "mechanism": "The distal side-chain amine adds to cyanamide to form an amidino intermediate that tautomerizes to the guanidino group of arginine.",
+        "reasoning": "Cyanamide is a plausible prebiotic amidinylating reagent. In a partially hydrated mineral-interface microphase, ornithine can be concentrated and oriented, while its alpha-amino group is partly deactivated by zwitterionic interactions relative to the distal side-chain amine. Regioselectivity is not guaranteed, but arginine formation is chemically plausible."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Dry-state cyanamide guanidination of ornithine",
+        "inputs": [
+          "mol_012",
+          "mol_013"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica"
+        ],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": "silica",
+          "aqueous": false,
+          "other": "geothermal dry-down residue or hot-spring margin with low water activity"
+        },
+        "mechanism": "Low water activity concentrates ornithine and cyanamide, promoting amidination of the terminal amine to generate the guanidino functionality of arginine.",
+        "reasoning": "Dry-down conditions help overcome the entropic cost of guanidination by strongly concentrating reactants. This route is chemically direct and consistent with cyanamide-driven condensation chemistry, although side reactions and imperfect regioselectivity remain real uncertainties."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Stepwise dinitrile route with vent hydrolysis and interfacial guanidination",
+        "description": "Acrolein is made by aldol chemistry, trapped as 4-cyanobutanal, converted stepwise to the C5 aminodinitrile, reduced in a vent to ornithine nitrile, hydrolyzed hydrothermally to ornithine, and amidinated by cyanamide at a mineral interface.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Stepwise dinitrile route with vent hydrolysis and dry-state guanidination",
+        "description": "The same stepwise dinitrile branch is followed by hydrothermal hydrolysis to ornithine, after which cyanamide amidination occurs in a low-water geothermal residue.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Stepwise dinitrile route with surface hydrolysis and interfacial guanidination",
+        "description": "After stepwise formation of the C5 dinitrile and hydrothermal reduction to ornithine nitrile, hydrolysis occurs during surface wet-dry cycling before cyanamide guanidination at a mineral interface.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Stepwise dinitrile route with surface hydrolysis and dry-state guanidination",
+        "description": "The stepwise acrolein -> 4-cyanobutanal -> dinitrile branch is completed by hydrothermal reduction, surface hydrolysis of ornithine nitrile, and dry-state cyanamide guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_007",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Aminoacetonitrile chain-extension route with vent hydrolysis and interfacial guanidination",
+        "description": "Aminoacetonitrile is formed separately from formaldehyde, then chain-extended with acrolein to a C5 amino aldehyde nitrile, reductively aminated in a vent to ornithine nitrile, hydrolyzed hydrothermally, and guanidinated at a mineral interface.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Aminoacetonitrile chain-extension route with vent hydrolysis and dry-state guanidination",
+        "description": "The aminoacetonitrile/acrolein branch is followed by hydrothermal reductive amination to ornithine nitrile, vent hydrolysis to ornithine, and dry-state cyanamide guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Aminoacetonitrile chain-extension route with surface hydrolysis and interfacial guanidination",
+        "description": "After acrolein chain extension and hydrothermal reductive amination, ornithine nitrile is hydrolyzed on a wet-dry surface and then converted to arginine by cyanamide at a mineral interface.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Aminoacetonitrile chain-extension route with surface hydrolysis and dry-state guanidination",
+        "description": "The aminoacetonitrile branch reaches ornithine nitrile by hydrothermal reductive amination, then proceeds through surface hydrolysis and dry cyanamide amidination to arginine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "One-pot acrolein cascade with vent hydrolysis and interfacial guanidination",
+        "description": "Acrolein enters a one-pot cyanide/ammonia cascade to the C5 dinitrile without isolating 4-cyanobutanal; hydrothermal reduction gives ornithine nitrile, vent hydrolysis yields ornithine, and cyanamide at a mineral interface gives arginine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "One-pot acrolein cascade with surface hydrolysis and dry-state guanidination",
+        "description": "The one-pot acrolein/HCN/NH3 cascade generates the C5 dinitrile, which is reduced hydrothermally to ornithine nitrile, hydrolyzed in a wet-dry surface setting, and amidinated by cyanamide under dry geothermal conditions.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_010",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_008",
+          "mol_011",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_008",
+      "mol_011",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_014",
+        "incoming_reactions": [
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_002": 0.9,
+          "rxn_003": 0.62,
+          "rxn_004": 0.4,
+          "rxn_009": 0.18,
+          "rxn_011": 0.68
+        },
+        "chemical_feasibility": 0.49,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.53,
+        "feedback": "The route is strategically coherent, but the written chemistry is not yet valid enough. rxn_001 and rxn_003 each need H2O as a product, rxn_004 should explicitly use 2 H2 and still requires selective mono-reduction of a dinitrile, and rxn_009 is invalid as written because ornithine nitrile hydrolysis should consume 2 H2O and release NH3. rxn_011 is chemically plausible, but the Biochemical label is too vague for a prebiotic setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001 and rxn_003 and rewrite rxn_009 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Write rxn_004 explicitly as mol_008 + 2 H2 -> mol_011 and justify selective reduction of the terminal nitrile.",
+          "Replace the Biochemical label on rxn_011 with a defined geochemical interface and specify pH, mineral, and concentration conditions."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_002": 0.9,
+          "rxn_003": 0.62,
+          "rxn_004": 0.4,
+          "rxn_009": 0.18,
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.51,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.56,
+        "feedback": "This is one of the better versions of the stepwise dinitrile route because dry-state cyanamide guanidination is environmentally credible. However, rxn_001 and rxn_003 still omit H2O, rxn_004 needs 2 H2 and remains selective, and rxn_009 is a conservation violation unless rewritten with 2 H2O as reactants and NH3 as a product. The final guanidination is plausible, but the pathway still depends on an invalid ornithine-forming step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001 and rxn_003 and rewrite rxn_009 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Write rxn_004 with 2 H2 and provide evidence for selective reduction of the side-chain nitrile.",
+          "Define dry-state cyanamide conditions and verify guanidination occurs on the side-chain amine of ornithine."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_002": 0.9,
+          "rxn_003": 0.62,
+          "rxn_004": 0.4,
+          "rxn_010": 0.16,
+          "rxn_011": 0.68
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.32,
+        "overall_confidence": 0.52,
+        "feedback": "The backbone logic remains sound, but the surface-hydrolysis variant is weakened by both bookkeeping and environmental definition. rxn_001 and rxn_003 need H2O as product, rxn_004 should be written with 2 H2 and faces selectivity issues, and rxn_010 is invalid as written because nitrile hydrolysis to ornithine should consume 2 H2O and release NH3. rxn_011 is plausible chemistry, but its Biochemical setting is underspecified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001 and rxn_003 and rewrite rxn_010 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Write rxn_004 explicitly with 2 H2 and justify why only one nitrile is reduced under hydrothermal conditions.",
+          "Replace the Biochemical label on rxn_011 with a concrete interfacial geochemical environment and specify the wet-dry regime for rxn_010."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_002": 0.9,
+          "rxn_003": 0.62,
+          "rxn_004": 0.4,
+          "rxn_010": 0.16,
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.62,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.54,
+        "feedback": "Dry-state guanidination helps the late-stage chemistry, but the pathway still fails on a required upstream conservation step. rxn_001 and rxn_003 omit H2O, rxn_004 needs 2 H2 and selective mono-reduction remains challenging, and rxn_010 must be rewritten with 2 H2O in and NH3 out to represent ornithine formation. As written, arginine is not convincingly reached.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001 and rxn_003 and rewrite rxn_010 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Specify rxn_004 as using 2 H2 and provide catalyst and selectivity rationale for terminal nitrile reduction.",
+          "Quantify wet-dry hydrolysis efficiency and side-chain-selective cyanamide guanidination under the same surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_005": 0.78,
+          "rxn_006": 0.58,
+          "rxn_007": 0.55,
+          "rxn_009": 0.18,
+          "rxn_011": 0.68
+        },
+        "chemical_feasibility": 0.52,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.55,
+        "feedback": "This route is fairly coherent and avoids the hardest selectivity issue of the dinitrile path, but several steps are underspecified. rxn_001, rxn_005, and rxn_007 each need H2O as a product, rxn_006 needs stronger support that it forms the C-C extended 5-oxo-2-aminopentanenitrile rather than an N-alkylated aza-Michael adduct, and rxn_009 must consume 2 H2O and release NH3. rxn_011 again needs a clearer geochemical setting than the current Biochemical label.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001, rxn_005, and rxn_007, and rewrite rxn_009 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Demonstrate that rxn_006 gives the intended C-C bond-forming product rather than an N-alkylated aza-Michael adduct.",
+          "Replace the Biochemical label on rxn_011 with a defined mineral-interface setting and specify catalysts for hydrothermal reductive amination in rxn_007."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_005": 0.78,
+          "rxn_006": 0.58,
+          "rxn_007": 0.55,
+          "rxn_009": 0.18,
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.57,
+        "feedback": "This is the strongest pathway in the set. It avoids selective mono-reduction of a dinitrile and ends with the better-defined dry-state cyanamide step, but it still has major correctness problems: rxn_001 and rxn_005 need H2O as product, rxn_007 also needs H2O as product, rxn_006 needs stronger evidence for the intended C-C extension, and rxn_009 is invalid unless written with 2 H2O as reactants and NH3 as a product. The route remains unapproved until ornithine formation is corrected.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001, rxn_005, and rxn_007, and rewrite rxn_009 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Provide experimental or mechanistic support that rxn_006 forms the C-C extended aldehyde rather than an N-alkylated aza-Michael product.",
+          "Specify hydrothermal catalysts for rxn_007 and dry-state conditions and regioselectivity data for rxn_012."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_005": 0.78,
+          "rxn_006": 0.58,
+          "rxn_007": 0.55,
+          "rxn_010": 0.16,
+          "rxn_011": 0.68
+        },
+        "chemical_feasibility": 0.51,
+        "pathway_coherence": 0.73,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.32,
+        "overall_confidence": 0.53,
+        "feedback": "The aminoacetonitrile chain-extension logic is reasonable, but the implementation is incomplete. rxn_001, rxn_005, and rxn_007 each omit H2O, rxn_006 still needs support for C-C extension versus N-alkylation, and rxn_010 is invalid as written because hydrolysis to ornithine should take 2 H2O and release NH3. The final guanidination chemistry is plausible, but the Biochemical label on rxn_011 is not an adequate environmental specification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001, rxn_005, and rxn_007, and rewrite rxn_010 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Demonstrate that rxn_006 yields the intended C-C extended aldehyde rather than an aza-Michael N-alkylation product.",
+          "Replace the Biochemical label on rxn_011 with a concrete mineral-interface environment and define the wet-dry hydrolysis conditions for rxn_010."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_005": 0.78,
+          "rxn_006": 0.58,
+          "rxn_007": 0.55,
+          "rxn_010": 0.16,
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.56,
+        "feedback": "This is a relatively strong surface-terminated version of the aminoacetonitrile route, mainly because the final dry-state guanidination is plausible. Even so, rxn_001 and rxn_005 need H2O as product, rxn_007 also needs H2O as product, rxn_006 needs stronger evidence for the intended carbon-skeleton construction, and rxn_010 must be rewritten as hydrolysis with 2 H2O in and NH3 out. The target is therefore not securely achieved as written.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_001, rxn_005, and rxn_007, and rewrite rxn_010 as mol_011 + 2 H2O -> mol_012 + NH3.",
+          "Provide mechanistic or experimental support that rxn_006 makes the C-C extended aldehyde rather than an N-alkylated adduct.",
+          "Specify the mineral, temperature, and hydration cycle for rxn_010 and measure regioselectivity of dry-state cyanamide guanidination in rxn_012."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_008": 0.22,
+          "rxn_004": 0.4,
+          "rxn_009": 0.18,
+          "rxn_011": 0.68
+        },
+        "chemical_feasibility": 0.37,
+        "pathway_coherence": 0.59,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.47,
+        "feedback": "This shortcut route is the weakest. rxn_008 is not conserved as written and likely needs a second HCN plus H2O, or else it should be decomposed into explicit Michael-addition and Strecker steps. rxn_004 still needs 2 H2 and selective reduction support, rxn_009 must consume 2 H2O and release NH3, and rxn_011 still lacks a clearly prebiotic environmental definition. Too much chemistry is compressed into one poorly specified step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Rewrite rxn_008 with correct stoichiometry, likely acrolein + NH3 + 2 HCN -> mol_008 + H2O, or split it into rxn_002 followed by rxn_003.",
+          "Write rxn_004 explicitly with 2 H2 and justify selective mono-reduction of the dinitrile.",
+          "Rewrite rxn_009 as mol_011 + 2 H2O -> mol_012 + NH3 and replace the Biochemical label on rxn_011 with a defined geochemical interface."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.55,
+          "rxn_008": 0.22,
+          "rxn_004": 0.4,
+          "rxn_010": 0.16,
+          "rxn_012": 0.8
+        },
+        "chemical_feasibility": 0.39,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.5,
+        "feedback": "Dry-state guanidination improves the final step, but the abbreviated upstream chemistry remains too weak. rxn_008 is mis-specified and likely needs an extra HCN plus H2O, rxn_004 needs 2 H2 and still requires selective reduction evidence, and rxn_010 is invalid unless hydrolysis is written with 2 H2O as reactants and NH3 as a product. As written, the route does not securely deliver ornithine before guanidination.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Rewrite rxn_008 with correct stoichiometry or replace it with the explicit rxn_002 plus rxn_003 sequence.",
+          "Specify rxn_004 as requiring 2 H2 and provide a catalyst and selectivity rationale for mono-reduction of the dinitrile.",
+          "Rewrite rxn_010 as mol_011 + 2 H2O -> mol_012 + NH3 and define the wet-dry hydrolysis and dry-state guanidination conditions."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.53,
+    "network_feedback": "The network is topologically adequate and connected, and the overall strategy of building ornithine then guanidinating it to arginine is coherent. However, the supplied ground-truth balance check is a major liability: only 4 of 12 reactions are balanced as written, rxn_004 needs a coefficient of 2 on H2, and 7 reactions are unbalanced. Specifically, rxn_001, rxn_003, rxn_005, and rxn_007 each omit H2O as a product; rxn_008 likely omits a second HCN as well as H2O; and both rxn_009 and rxn_010 should be written as mol_011 + 2 H2O -> mol_012 + NH3. Because every route depends on an invalid ornithine-forming hydrolysis step, the target is not convincingly achieved as written. Chemically, the late cyanamide guanidination steps are among the stronger parts of the network, and P6 is the least problematic pathway because it avoids selective mono-reduction of a dinitrile and uses the more plausible dry-state guanidination. To become competitive, the network needs corrected stoichiometry, explicit catalysts and conditions for the hydrothermal reduction and reductive amination steps, a clearer geochemical replacement for the current Biochemical label on rxn_011, and stronger support for controlling acrolein side reactions and the intended structure in rxn_006.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 4,
+      "n_balanceable": 1,
+      "n_unbalanced": 7,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.4166666666666667,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_003": 1,
+            "mol_004": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_006": 2,
+            "mol_011": 1
+          },
+          "element_delta": {
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_003": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -1,
+            "H": 1,
+            "O": 1,
+            "N": -1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "N": 1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "N": 1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_013": 1,
+            "mol_014": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_013": 1,
+            "mol_014": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

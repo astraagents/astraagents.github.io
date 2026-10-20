@@ -1,0 +1,1080 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-alanine",
+    "overall_strategy": "The network uses the two best-supported abiotic alanine hubs from the literature: (1) hydrothermal generation of pyruvate followed by several pyruvate-to-alanine transformations, and (2) surface acetaldehyde/HCN Strecker chemistry via alaninonitrile. Because the experimental record strongly supports abiotic DL-alanine rather than direct L-alanine synthesis, the network converges first on a common DL-alanine pool and reaches the requested target only through an explicitly speculative late enantiomer-resolution step that partitions DL-alanine into L- and D-enriched pools.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "molecular hydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_006",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "DL-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alaninonitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C3H7NO2",
+        "iupac_name": "(S)-2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C3H7NO2",
+        "iupac_name": "(R)-2-aminopropanoic acid",
+        "common_name": "D-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m1/s1",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "CO2/H2 fixation to pyruvate on Ni3Fe",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ni3Fe"
+        ],
+        "conditions": {
+          "temperature": "298-370K",
+          "pressure": "25 bar to high",
+          "catalyst": "Ni3Fe",
+          "aqueous": true,
+          "other": "Anoxic, H2-rich serpentinization-linked fluid; low reported pyruvate titers."
+        },
+        "mechanism": "Surface-mediated CO2 reduction and C-C coupling on Ni-Fe alloy yields a C3 alpha-keto acid branch.",
+        "reasoning": "Ni3Fe/awaruite-like surfaces reduce CO2 with H2 to form formate, acetate and detectable pyruvate; this node encodes the pyruvate-forming branch as the balanced net C3 fixation step (Beyazay et al., 2023). The key limitation is concentration: reported pyruvate titers are far below those used in most downstream alanine experiments, so concentration or continuous flux is still an open problem."
+      },
+      {
+        "id": "rxn_002",
+        "name": "High-temperature CO coupling to pyruvate on Fe-Ni sulfides",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS",
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "470-600K",
+          "pressure": "high",
+          "catalyst": "FeS/NiS",
+          "aqueous": true,
+          "other": "CO-rich hydrothermal reactor; net stoichiometry shown, actual intermediate set is more complex."
+        },
+        "mechanism": "Surface carbonyl coupling and insertion on Fe-Ni sulfides generate a C3 alpha-keto acid product branch.",
+        "reasoning": "High-temperature Fe-S/CO chemistry can generate pyruvate under hydrothermal conditions; this JSON encodes the pyruvate-forming branch as the balanced net transformation 3 CO + 2 H2 -> pyruvate (Cody et al., 2000). The actual reactor chemistry is more complex than this net step, but the route is experimentally relevant as an upstream hydrothermal supplier of pyruvate."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Ni/H2 reductive amination of pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Ni metal"
+        ],
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "5 bar H2 to moderate",
+          "catalyst": "Ni metal",
+          "aqueous": true,
+          "other": "Anoxic water, pH about 7-9, NH4+/NH3 present."
+        },
+        "mechanism": "Pyruvate condenses with NH3 to an imine/iminium that is reduced by Ni-activated H2 to alanine.",
+        "reasoning": "Ni catalyzes reductive amination of pyruvate with NH4+/NH3 under H2, giving alanine under mild aqueous conditions and fitting H2-rich serpentinization scenarios (Kaur et al., 2024; Kelley et al., 2005). Because all reagents are achiral, this route is represented as forming DL-alanine rather than L-alanine."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Mixed Fe(II)/Fe(III) oxyhydroxide reductive amination of pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mixed Fe(II)/Fe(III) oxyhydroxide"
+        ],
+        "conditions": {
+          "temperature": "323-353K",
+          "pressure": "1 atm to moderate",
+          "catalyst": "mixed Fe(II)/Fe(III) oxyhydroxide",
+          "aqueous": true,
+          "other": "Alkaline pH 9-10; batch wet-sediment residence times favored over flow-through chimney conditions."
+        },
+        "mechanism": "An NH3-derived imine/iminium on pyruvate is reduced at a partially oxidized iron surface.",
+        "reasoning": "Barge et al. showed strong alanine selectivity from pyruvate + ammonia with mixed Fe(II)/Fe(III) oxyhydroxides at alkaline pH and 50-70 C, with maxima near a 1:1 redox ratio (Barge et al., 2019). The experiments use mineral redox equivalents rather than dissolved H2, so H2 here is an explicit mass-balanced bookkeeping reductant while the agent field preserves the experimentally supported mineral context. Their chimney-flow analog did not yield alanine, so long residence time is likely important."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Fresh FeS/Fe(OH)2-promoted reductive amination of pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "fresh FeS",
+          "Fe(OH)2"
+        ],
+        "conditions": {
+          "temperature": "323-348K",
+          "pressure": "1 atm to moderate",
+          "catalyst": "fresh FeS/Fe(OH)2",
+          "aqueous": true,
+          "other": "Anaerobic, pH about 8.8-9, freshly precipitated mineral phase used in large excess."
+        },
+        "mechanism": "Pyruvate first forms an imine/iminium with NH3, then undergoes two-electron reduction mediated by fresh iron sulfide/hydroxide phases.",
+        "reasoning": "Fresh FeS or Fe(OH)2 promotes reductive amination of pyruvate to alanine near pH 8.8-9, with reported alanine maxima around 52 mol% under optimized conditions (Huber & Wachtershauser, 2003). As in rxn_004, the real system uses a freshly precipitated mineral in large excess rather than free H2; the present stoichiometry is a balanced net representation of the demonstrated transformation. Keefe et al. (1995) cautioned that the wider FeS/CO2 autotrophic network is not thereby established."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Transition-metal sulfide vent-fluid alanine branch from pyruvate",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "transition-metal sulfide minerals"
+        ],
+        "conditions": {
+          "temperature": "300-383K",
+          "pressure": "moderate to high",
+          "catalyst": "transition-metal sulfide mineral",
+          "aqueous": true,
+          "other": "Vent-fluid analog with NH4+, H2, H2S and CO2; strong competition from side reactions."
+        },
+        "mechanism": "Pyruvate enters a mineral-controlled vent-fluid network in which imine formation and reduction can yield alanine.",
+        "reasoning": "Novikov and Copley mapped pyruvate reaction landscapes over transition-metal sulfides in vent-fluid analogs containing ammonium, H2, H2S and CO2 and observed alanine among the products (Novikov & Copley, 2013). This makes a hydrothermal sulfide-mediated alanine branch plausible, but competing sinks frequently dominated, so selectivity depends strongly on mineral identity and fluid composition."
+      },
+      {
+        "id": "rxn_007",
+        "name": "NiS-catalyzed hydration of acetylene to acetaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "NiS"
+        ],
+        "conditions": {
+          "temperature": "375-380K",
+          "pressure": "moderate, autogenous",
+          "catalyst": "NiS",
+          "aqueous": true,
+          "other": "Alkaline hydrothermal water; acetaldehyde formation strongly exceeds catalyst-free control."
+        },
+        "mechanism": "NiS promotes hydration of acetylene to vinyl alcohol, followed by tautomerization to acetaldehyde.",
+        "reasoning": "NiS catalyzes hydration of acetylene to acetaldehyde in water at about 105 C, providing a direct hydrothermal feeder into alanine Strecker chemistry (Communications Chemistry, 2023). The same study showed that downstream alanine formation remained low-yield and required added cyanide/ammonium, so this step is best treated as an upstream aldehyde source rather than a complete high-yield route by itself."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Spark-discharge formation of HCN and acetaldehyde from reduced gases",
+        "inputs": [
+          "mol_010",
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_009",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K bulk; local discharge much hotter",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Lightning or plasma in a reduced volcanic plume or other localized reducing atmosphere."
+        },
+        "mechanism": "Radical discharge chemistry fragments and recombines CH4/NH3/H2O into HCN, aldehydes and H2.",
+        "reasoning": "Electrical discharge in reduced CH4/NH3/H2O mixtures generates HCN and aldehydes, and Miller identified these as the key precursors feeding aminonitrile chemistry to alanine (Miller, 1955; Miller, 1957). Johnson et al. (2008) and Parker et al. (2011) support localized volcanic-plume/H2S-rich variants, whereas Trail et al. (2011) argues against a persistently global strongly reducing atmosphere; this node is therefore best viewed as a local or episodic surface source."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Classical Strecker synthesis of alaninonitrile from acetaldehyde",
+        "inputs": [
+          "mol_009",
+          "mol_006",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Neutral to mildly alkaline aqueous pool; NH3/HCN ratio affects aminonitrile versus cyanohydrin branching."
+        },
+        "mechanism": "Acetaldehyde reacts with NH3 to an imine/aminoalcohol manifold that is trapped by cyanide as 2-aminopropanenitrile.",
+        "reasoning": "This is the classical Strecker hub for alanine: acetaldehyde, NH3 and HCN converge to 2-aminopropanenitrile as the balanced net transformation (Miller, 1957). Product partitioning is pH- and NH3/HCN-dependent because low-pH conditions favor lactonitrile/cyanohydrin chemistry rather than the aminonitrile branch, a point reinforced by the 2023 NiS-acetylene study."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Hydrolysis of alaninonitrile to DL-alanine",
+        "inputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Prolonged aqueous hydrolysis; balance requires 2 H2O input and releases NH3."
+        },
+        "mechanism": "The nitrile hydrolyzes through amide-like intermediates to the amino acid, regenerating ammonia.",
+        "reasoning": "Hydrolysis of alaninonitrile to alanine is the standard terminal Strecker step; balance requires 2 H2O as input and NH3 is released (Miller, 1957). With achiral feedstocks, the expected product is racemic or near-racemic alanine, not specifically the L enantiomer."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Partition of DL-alanine into L- and D-enriched pools",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_014"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "mineral interfaces"
+        ],
+        "conditions": {
+          "temperature": "280-330K cycling",
+          "pressure": "1 atm",
+          "catalyst": "mineral interface (speculative)",
+          "aqueous": true,
+          "other": "Repeated dissolution-crystallization or adsorption-desorption at phase boundaries; outputs idealize separated enantiomer-enriched pools."
+        },
+        "mechanism": "Physical resolution rather than covalent synthesis: selective adsorption/crystallization partitions a racemate into different enantiomeric pools.",
+        "reasoning": "This step is explicitly speculative and represents physical resolution, not demonstrated direct asymmetric synthesis. The provided literature strongly supports abiotic DL-alanine but not a general prebiotic route to L-alanine: Miller's alanine was DL, Parker et al. (2011) found alanine essentially racemic, Bernstein et al. (2002) obtained racemic amino acids from ice photochemistry, and Li et al. (2024) showed mineral-induced asymmetry can even favor D-alanine. The node therefore idealizes an unresolved adsorption/crystallization-based partitioning of a DL-alanine pool into L- and D-enriched pools to satisfy the requested target."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "CO2/H2 to pyruvate, then Ni/H2 alanine branch",
+        "description": "Serpentinization-linked CO2/H2 fixation supplies pyruvate, which undergoes Ni-catalyzed reductive amination to DL-alanine; the requested L endpoint appears only after the speculative resolution step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "CO2/H2 to pyruvate, then Fe oxyhydroxide alanine branch",
+        "description": "Hydrothermal CO2/H2 fixation feeds pyruvate into a mixed-valence iron oxyhydroxide reductive amination route before late enantiomer partitioning.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "CO2/H2 to pyruvate, then fresh FeS/Fe(OH)2 alanine branch",
+        "description": "Hydrothermal pyruvate is converted to DL-alanine by fresh FeS/Fe(OH)2-promoted reductive amination, followed by speculative L/D resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "CO2/H2 to pyruvate, then vent-sulfide alanine branch",
+        "description": "CO2/H2-derived pyruvate enters a transition-metal sulfide vent-fluid network that yields DL-alanine, then feeds the late L/D partitioning step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "CO/H2 to pyruvate, then Ni/H2 alanine branch",
+        "description": "A Cody-type CO-based hydrothermal pyruvate source is coupled to Ni-catalyzed reductive amination and then to speculative enantiomer resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "CO/H2 to pyruvate, then Fe oxyhydroxide alanine branch",
+        "description": "CO-derived hydrothermal pyruvate is aminated on mixed Fe(II)/Fe(III) oxyhydroxides and later partitioned into L- and D-enriched pools.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "CO/H2 to pyruvate, then fresh FeS/Fe(OH)2 alanine branch",
+        "description": "A high-temperature CO route supplies pyruvate, fresh FeS/Fe(OH)2 converts it to DL-alanine, and a late speculative resolution yields the L branch.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "CO/H2 to pyruvate, then vent-sulfide alanine branch",
+        "description": "CO-based hydrothermal pyruvate formation is followed by transition-metal sulfide vent-fluid alanine production and then L/D partitioning.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Acetylene-NiS Strecker route",
+        "description": "NiS hydration of acetylene generates acetaldehyde, which with environmental NH3 and HCN enters classical Strecker chemistry to alaninonitrile and then DL-alanine before speculative L-resolution.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_012",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Miller-type discharge Strecker route",
+        "description": "A localized reduced-atmosphere spark source co-produces HCN and acetaldehyde, which are funneled through the Strecker aminonitrile and hydrolysis sequence to DL-alanine before late L/D partitioning.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_009",
+          "mol_012",
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_005",
+      "mol_007",
+      "mol_009",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.76,
+          "rxn_003": 0.88,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.75,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.58,
+        "feedback": "This route matches the CO2/H2 to pyruvate and Ni/H2 pyruvate amination literature reasonably well up to DL-alanine, but it has not been demonstrated as a naturally coupled high-flux sequence. The main integration problem is that current Ni3Fe CO2/H2 pyruvate production is much lower than the pyruvate concentrations used in downstream alanine experiments. rxn_001 needs explicit coefficients, and rxn_011 is only a speculative partition or resolution step rather than an established prebiotic route to L-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_001 explicitly as 3 CO2 + 5 H2 -> C3H4O3 + 3 H2O.",
+          "Explain how low-yield CO2/H2 pyruvate formation is concentrated, adsorbed, or continuously coupled to the Ni/H2 alanine step.",
+          "Replace the Biochemical resolution with a specific abiotic enantioenrichment mechanism, or redefine the endpoint as DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.76,
+          "rxn_004": 0.7,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.54,
+        "feedback": "The path captures the pyruvate to alanine hub, but the mixed Fe(II)/Fe(III) oxyhydroxide chemistry is under-specified and is not well represented as a simple H2-driven reduction. The strongest literature support is for alkaline batch settings, and alanine was not detected in the flow-through chimney analogue. As in the other routes, rxn_011 does not convincingly deliver L-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_001 explicitly as 3 CO2 + 5 H2 -> C3H4O3 + 3 H2O.",
+          "Represent the mixed Fe(II)/Fe(III) oxyhydroxide phase as the redox-active agent and specify the alkaline batch conditions where alanine was observed.",
+          "Avoid a generic Biochemical resolution unless a specific L-selective adsorption, crystallization, or destruction mechanism is provided."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.76,
+          "rxn_005": 0.66,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.52,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.52,
+        "feedback": "Fresh FeS or Fe(OH)2 promoted pyruvate amination is experimentally supported, but the demonstrated chemistry uses freshly precipitated mineral in large excess as a redox-active promoter rather than a vague catalytic background. That mechanistic detail is missing from rxn_005. Combined with the unsupported resolution step, this is only a moderate-confidence route and only to DL-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Model FeS or Fe(OH)2 as freshly precipitated and redox-active or stoichiometric, not as an unspecified catalyst.",
+          "Add explicit alkaline conditions near the reported optimum and note the need for fresh mineral preparation.",
+          "Replace rxn_011 with a defined abiotic enantioenrichment step, or stop at DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.76,
+          "rxn_006": 0.68,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.53,
+        "feedback": "Transition-metal sulfide vent-fluid chemistry can generate alanine from pyruvate, but the literature shows a broader reaction landscape with strong competition from other pyruvate sinks. rxn_006 therefore simplifies the chemistry too aggressively unless mineral identity and competing branches are made explicit. The final L-resolution step remains unsupported.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify the vent-fluid components that matter for this chemistry, including H2S, CO2, NH4+, and the actual sulfide mineral identity.",
+          "Include competing pyruvate sinks, or at least state that alanine is only one branch among several possible products.",
+          "Replace rxn_011 or redefine the target as DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.58,
+          "rxn_003": 0.88,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.53,
+        "feedback": "Downstream Ni/H2 amination is well supported, but the CO/H2 to pyruvate step is a weak point because the literature support is less direct and usually involves more specific Fe-S or carbonyl-sulfur chemistry than the bare summary in rxn_002. The route is therefore plausible in outline but under-specified in its upstream carbon-fixation chemistry. It still terminates in the same unsupported separation step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_002 explicitly as 3 CO + 2 H2 -> C3H4O3.",
+          "Clarify whether the intended literature model needs sulfur-activated Fe-Ni chemistry or thio or organosulfur partners rather than a bare CO/H2 coupling.",
+          "Replace rxn_011 with a mechanistically specified abiotic resolution step, or stop at DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.58,
+          "rxn_004": 0.7,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.49,
+        "pathway_coherence": 0.66,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.49,
+        "feedback": "Both the upstream CO route and the Fe oxyhydroxide alanine step are under-specified relative to experiment. In particular, rxn_004 assigns H2 as the reductant even though the cited mixed-valence iron chemistry depends on the mineral redox state under alkaline batch conditions. The path is not convincing as written for L-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_002 explicitly as 3 CO + 2 H2 -> C3H4O3.",
+          "Recast rxn_004 around mixed-valence iron oxyhydroxide redox chemistry and specify the alkaline batch conditions used experimentally.",
+          "Do not claim L-alanine unless a real L-selective separation mechanism is supplied."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.58,
+          "rxn_005": 0.66,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.47,
+        "pathway_coherence": 0.64,
+        "environmental_progression": 0.54,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.48,
+        "feedback": "This is one of the weaker pyruvate routes because the CO-based pyruvate source is only loosely summarized and the FeS or Fe(OH)2 alanine step omits the fresh stoichiometric redox role of the mineral. The chemistry is plausible in broad outline but not well enough specified for a high-confidence path. The final enantiomer-resolution step is still speculative.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_002 explicitly as 3 CO + 2 H2 -> C3H4O3.",
+          "Represent FeS or Fe(OH)2 as fresh redox-active reducing material rather than a vague catalyst.",
+          "Replace rxn_011 or retarget the path to DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.58,
+          "rxn_006": 0.68,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.28,
+        "overall_confidence": 0.49,
+        "feedback": "The path is chemically possible in outline, but both the CO-driven pyruvate source and the vent-sulfide alanine branch are simplified well beyond the experimental systems. In the literature, mineral identity and competing pyruvate reactions strongly affect whether alanine is even a significant product. The final conversion to L-alanine is not established.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Write rxn_002 explicitly as 3 CO + 2 H2 -> C3H4O3.",
+          "Specify mineral identity and likely competing products for the vent-sulfide pyruvate chemistry.",
+          "Replace the Biochemical resolution with a defined abiotic enrichment step, or stop at DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_007": 0.8,
+          "rxn_009": 0.91,
+          "rxn_010": 0.82,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.63,
+        "environmental_progression": 0.47,
+        "target_achievement": 0.29,
+        "overall_confidence": 0.55,
+        "feedback": "The acetylene -> acetaldehyde -> alaninonitrile -> alanine logic matches the NiS and Strecker literature well, but this pathway is not complete as a standalone start-to-target route because it does not generate the HCN it consumes. It also requires a hydrothermal-to-surface handoff and a pH and timing choreography that are not encoded here. rxn_010 needs a second water molecule, and rxn_011 remains a speculative non-prebiotic L-resolution step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Add an explicit HCN source or define HCN as an imported environmental feed with a justified transfer step.",
+          "Justify the hydrothermal-to-surface handoff, or keep the NiS and Strecker sequence within one experimentally supported setting.",
+          "Correct rxn_010 to C3H6N2 + 2 H2O -> C3H7NO2 + NH3 and replace rxn_011 or stop at DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_008": 0.79,
+          "rxn_009": 0.91,
+          "rxn_010": 0.82,
+          "rxn_011": 0.12
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.3,
+        "overall_confidence": 0.62,
+        "feedback": "This is the best literature-aligned path to DL-alanine from simple gases: discharge chemistry makes HCN and acetaldehyde, classical Strecker chemistry gives alaninonitrile, and hydrolysis yields alanine. The main limitations are that the atmospheric setting is better justified as local reduced plumes than as a guaranteed global atmosphere, rxn_008 and rxn_010 need explicit stoichiometric correction, and rxn_011 is not an established prebiotic route to L-alanine. This is a good DL-alanine pathway, but not a convincing L-alanine pathway.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Frame the discharge setting as a local reduced volcanic or impact plume rather than a universally reducing global atmosphere.",
+          "Write rxn_008 as 3 CH4 + NH3 + H2O -> HCN + C2H4O + 6 H2 and rxn_010 with 2 H2O.",
+          "Replace rxn_011 with a demonstrated abiotic L-enrichment step, or redefine the product as DL-alanine."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.63,
+    "network_feedback": "Network validity is good: the graph is connected, molecule IDs are used consistently, and the balance check reports 0 UNBALANCED reactions. Five reactions still need explicit stoichiometric correction rather than being balanced as written: rxn_001 should be 3 CO2 + 5 H2 -> C3H4O3 + 3 H2O, rxn_002 should be 3 CO + 2 H2 -> C3H4O3, rxn_008 should be 3 CH4 + NH3 + H2O -> HCN + C2H4O + 6 H2, rxn_010 needs 2 H2O, and rxn_011 is formally 2 DL-alanine -> L-alanine + D-alanine. There is also a minor representation issue because mol_012 has an unparsable InChI, although the stated formula is chemically sensible for alaninonitrile. Literature alignment is otherwise strong: the network correctly centers the two best-supported abiotic alanine hubs, pyruvate reductive amination and acetaldehyde or HCN Strecker chemistry, and it correctly treats the primary abiotic product as DL-alanine rather than directly claiming robust L-selectivity. The main weaknesses are under-specified mineral and redox details in several hydrothermal branches, weak integration between low-yield pyruvate formation and downstream alanine synthesis, and limited justification for inter-environment handoff in the acetylene route. The decisive failure for the stated target is rxn_011: it is a speculative partition rather than a demonstrated prebiotic L-selective synthesis step, and the literature explicitly notes that known mineral asymmetry can even favor D-alanine. As a network to DL-alanine this is reasonably strong; as a network to L-alanine it is not approvable.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 11,
+      "n_balanced_as_written": 6,
+      "n_balanceable": 5,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [
+        "mol_012: InChI could not be parsed by RDKit (RDKit could not parse InChI)"
+      ],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 3,
+            "mol_002": 5,
+            "mol_005": 1,
+            "mol_003": 3
+          },
+          "element_delta": {
+            "C": -2,
+            "O": -2,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_004": 3,
+            "mol_002": 2,
+            "mol_005": 1
+          },
+          "element_delta": {
+            "C": -2,
+            "O": -2,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_003": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 3,
+            "mol_006": 1,
+            "mol_003": 1,
+            "mol_011": 1,
+            "mol_009": 1,
+            "mol_002": 6
+          },
+          "element_delta": {
+            "C": -2,
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_006": 1,
+            "mol_011": 1,
+            "mol_012": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_003": 2,
+            "mol_007": 1,
+            "mol_006": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 2,
+            "mol_013": 1,
+            "mol_014": 1
+          },
+          "element_delta": {
+            "C": -3,
+            "N": -1,
+            "O": -2,
+            "H": -7
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

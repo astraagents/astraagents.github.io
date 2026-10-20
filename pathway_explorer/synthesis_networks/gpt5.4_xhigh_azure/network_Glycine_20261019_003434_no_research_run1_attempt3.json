@@ -1,0 +1,991 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "The network is organized around aminoacetonitrile as a robust hub intermediate. Surface-accessible HCN is supplied either by reduced-gas photochemistry or discharge chemistry, or more restrictively by formamide dehydration in drying geothermal films. Formaldehyde and ammonia then enter one-pot, imine-resolved, or ammonium-cyanide-buffered Strecker manifolds to give aminoacetonitrile. Because aminonitriles are more persistent than free amino acids, aminoacetonitrile can plausibly bridge surface cyanide chemistry and hot aqueous hydrothermal hydrolysis, yielding glycine either stepwise through glycinamide or by the net two-water hydrolysis of the nitrile. Ten explicit pathways arise from combining these source, assembly, and hydrolysis branches, while weaker hydantoin and glycolonitrile amination routes are intentionally omitted.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH3NO",
+        "iupac_name": "methanamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "CH3N",
+        "iupac_name": "methanimine",
+        "common_name": null,
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH4N2",
+        "iupac_name": "ammonium cyanide",
+        "common_name": "ammonium cyanide",
+        "inchi": "InChI=1S/CN.H3N/c1-2;/h;1H3/q-1;/p+1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoethanenitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H6N2O",
+        "iupac_name": "2-aminoethanamide",
+        "common_name": "glycinamide",
+        "inchi": "InChI=1S/C2H6N2O/c3-1-2(4)5/h1,3H2,(H2,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoethanoic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": "Hydrothermal"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Reduced-gas photochemical cyanide formation",
+        "inputs": [
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "Anoxic reduced volcanic plume or gas-water interface; UV and/or electrical discharge provides activation and HCN is trapped in adjacent surface waters"
+        },
+        "mechanism": "High-energy radical photochemistry or discharge chemistry dehydrogenates methane and ammonia to CN-bearing fragments that collapse to HCN, with H2 as the reductive coproduct.",
+        "reasoning": "HCN is a canonical product of UV or discharge processing of reduced C-N gases, and local volcanic or impact-reduced niches can supply it directly to nearby pools (Miller, 1953; Stribling and Miller, 1987). This provides a strong surface cyanide source without invoking unsupported catalytic biology."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Formamide dehydration to hydrogen cyanide",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica",
+          "alumina"
+        ],
+        "conditions": {
+          "temperature": "350-370K",
+          "pressure": "1 atm",
+          "catalyst": "silica/alumina mineral surfaces",
+          "aqueous": false,
+          "other": "Low-water geothermal film or crust; repeated drying; anoxic"
+        },
+        "mechanism": "Mineral-assisted dehydration of formamide eliminates water to produce HCN.",
+        "reasoning": "Heating formamide on mineral surfaces can access HCN-rich chemistry, but this branch is more condition-restricted and lower-confidence than reduced-gas photochemical HCN formation, so it is included only as a secondary route (Barks et al., 2010; Saladino et al., 2012)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "One-pot Strecker synthesis of aminoacetonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Cyanide-bearing pool or evaporitic film; wet-dry concentration; pH about 6-9; anoxic"
+        },
+        "mechanism": "In situ imine or iminium formation from formaldehyde and ammonia is followed by cyanide addition and net dehydration to the aminonitrile.",
+        "reasoning": "This is the strongest prebiotic entry to the glycine manifold: direct Strecker chemistry from formaldehyde gives aminoacetonitrile, the canonical C2 precursor to glycine (Miller, 1957; Sanchez et al., 1966). Surface concentration helps overcome dilution and compete with cyanide and formaldehyde side reactions better than fully dilute water-column chemistry."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Formaldehyde-ammonia condensation to methanimine",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "Drying mineral film or evaporitic interface; anoxic; water removal favors imine accumulation"
+        },
+        "mechanism": "Condensation of formaldehyde and ammonia with loss of water generates methanimine.",
+        "reasoning": "Resolving Strecker chemistry into an explicit imine step reflects the accepted mechanism. Drying interfaces are chemically justified because methanimine formation is disfavored in dilute bulk water (Sanchez et al., 1966; Cleaves, 2008)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Cyanide addition to methanimine",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Rehydrated cyanide-bearing film or concentrated pool; pH about 6-9; anoxic"
+        },
+        "mechanism": "Nucleophilic cyanide addition to methanimine or its protonated iminium form yields aminoacetonitrile.",
+        "reasoning": "This stepwise imine-plus-cyanide branch is mechanistically strong and stays within canonical Strecker chemistry, avoiding the weaker glycolonitrile amination branch criticized in earlier network designs (Sanchez et al., 1966; Danger et al., 2012)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Ammonium cyanide reservoir formation",
+        "inputs": [
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Ammonia-rich cyanide solution or brine; acid-base equilibrium reservoir in anoxic surface waters"
+        },
+        "mechanism": "Proton transfer and ion pairing convert dissolved HCN and NH3 into ammonium cyanide.",
+        "reasoning": "Ammonium cyanide is a realistic buffered reservoir of cyanide in ammonia-rich prebiotic solutions and is well represented in cyanide polymerization and prebiotic synthesis studies (Oro and Kimball, 1961; Ferris et al., 1978)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Ammonium cyanide Strecker-equivalent synthesis",
+        "inputs": [
+          "mol_001",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Concentrated ammonium cyanide solution or drying film; anoxic"
+        },
+        "mechanism": "Buffered Strecker-equivalent addition of cyanide to the formaldehyde-ammonia adduct gives aminoacetonitrile with net water release.",
+        "reasoning": "Representing ammonium cyanide as the operative cyanide donor captures ammonia-buffered Strecker chemistry without invoking unsupported side branches. It is chemically closer to canonical Strecker synthesis than direct amination of glycolonitrile (Miller, 1957; Sanchez et al., 1966)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Partial hydrolysis of aminoacetonitrile to glycinamide",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "370-420K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Hot anoxic water in mineral pores or subseafloor hydrothermal fluids; pH about 5-8; partial hydrolysis favored at shorter residence time"
+        },
+        "mechanism": "Hydration of the nitrile carbon followed by tautomerization gives the corresponding amide, glycinamide.",
+        "reasoning": "Aminonitriles are widely treated as kinetically accessible prebiotic reservoirs that hydrolyze stepwise in hot water. Explicit hydrothermal placement gives the aqueous pH and temperature context missing from vague biochemical labels and makes glycinamide a justified partial-hydrolysis node (Commeyras et al., 2009; Danger et al., 2012)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of glycinamide to glycine",
+        "inputs": [
+          "mol_011",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "390-450K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Longer residence in hot anoxic water; pH about 5-8; likely slower than rxn_008"
+        },
+        "mechanism": "Hot-water amide hydrolysis converts glycinamide to glycine and liberates ammonia.",
+        "reasoning": "Amide hydrolysis is slower than the initial nitrile hydration and is therefore a plausible bottleneck, but it remains chemically reasonable in hot compressed water without enzymes. Writing this explicitly as hot aqueous hydrolysis avoids an ill-defined biochemical conversion (Commeyras et al., 2009; Danger et al., 2012)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Net hydrolysis of aminoacetonitrile to glycine",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": null,
+        "conditions": {
+          "temperature": "390-450K",
+          "pressure": "high",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Hot compressed anoxic water; net stoichiometry consumes two water equivalents and glycinamide may remain only transiently detectable"
+        },
+        "mechanism": "Successive nitrile hydration and amide hydrolysis give the overall two-water conversion of aminoacetonitrile to glycine with ammonia release.",
+        "reasoning": "The direct aminoacetonitrile-to-glycine step is a coarse-grained net hydrolysis that explicitly requires two water equivalents and likely passes through glycinamide in situ. Representing the net conversion is justified when the amide does not accumulate, and hydrothermal water provides the necessary abiotic hydrolytic drive (Commeyras et al., 2009; Danger et al., 2012)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Photochemical HCN, one-pot Strecker, net hydrolysis",
+        "description": "Reduced-gas surface photochemistry supplies HCN, which enters direct Strecker synthesis of aminoacetonitrile followed by net hydrothermal hydrolysis to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Photochemical HCN, one-pot Strecker, stepwise hydrolysis",
+        "description": "The same high-confidence surface cyanide source feeds one-pot Strecker chemistry, but hydrolysis is resolved through glycinamide before glycine appears.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Photochemical HCN, imine-resolved Strecker, net hydrolysis",
+        "description": "HCN from reduced-gas photochemistry is combined with explicit methanimine formation before cyanide capture and net hydrothermal hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Photochemical HCN, imine-resolved Strecker, stepwise hydrolysis",
+        "description": "The imine-resolved Strecker branch is followed by partial nitrile hydrolysis to glycinamide and then amide hydrolysis to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Photochemical HCN, ammonium cyanide route, net hydrolysis",
+        "description": "HCN is first buffered as ammonium cyanide, which then acts as the operative cyanide donor in a Strecker-equivalent route to aminoacetonitrile before net hydrolysis to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Photochemical HCN, ammonium cyanide route, stepwise hydrolysis",
+        "description": "The buffered ammonium cyanide branch reaches aminoacetonitrile and then proceeds through glycinamide under hydrothermal hydrolysis conditions.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_009",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formamide HCN, one-pot Strecker, net hydrolysis",
+        "description": "A lower-confidence geothermal surface branch uses formamide dehydration as the HCN source, then proceeds by direct Strecker capture and net hydrothermal hydrolysis.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formamide HCN, one-pot Strecker, stepwise hydrolysis",
+        "description": "Formamide-derived HCN feeds the one-pot Strecker branch, and aminoacetonitrile is then hydrolyzed stepwise through glycinamide.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Formamide HCN, imine-resolved Strecker, net hydrolysis",
+        "description": "A secondary formamide-based cyanide source is combined with explicit methanimine formation before cyanide addition and net hydrothermal hydrolysis.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Formamide HCN, imine-resolved Strecker, stepwise hydrolysis",
+        "description": "The most explicit lower-confidence formamide branch resolves both aminonitrile formation and hydrolysis, passing through methanimine and glycinamide before glycine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_008",
+          "mol_010",
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_004",
+      "mol_007",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_003": 0.87,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.84,
+        "feedback": "Compact and chemically reasonable once HCN is available. Main corrections are stoichiometric: rxn_001 should be CH4 + NH3 -> HCN + 3 H2, and rxn_010 requires 2 H2O. Environmental confidence is limited because the HCN source is really photochemical or discharge gas chemistry that must then feed a surface Strecker setting.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to produce 3 H2.",
+          "Correct rxn_010 to C2H4N2 + 2 H2O -> C2H5NO2 + NH3 or replace it with rxn_008 plus rxn_009.",
+          "Specify how photochemically generated HCN is deposited or dissolved into the surface aqueous phase."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_003": 0.87,
+          "rxn_008": 0.86,
+          "rxn_009": 0.82
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.91,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.87,
+        "feedback": "This is the most convincing photochemical branch. Strecker assembly is standard, and explicit hydrolysis via glycinamide is mechanistically cleaner than the net nitrile-to-amino-acid shortcut. rxn_001 still needs 3 H2, and the surface-to-hydrothermal handoff should be stated more explicitly.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to CH4 + NH3 -> HCN + 3 H2.",
+          "State the photochemical or discharge setting explicitly and describe HCN transfer into the surface film or pool.",
+          "Define hydrothermal temperature, pH, and any mineral context that favor hydrolysis over glycine destruction."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_004": 0.8,
+          "rxn_005": 0.88,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.77,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "The imine-resolved route is coherent, but rxn_004 needs conditions that let methanimine persist long enough for rapid capture by cyanide; otherwise hydration and oligomerization compete. rxn_001 needs 3 H2, and rxn_010 requires 2 H2O.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to produce 3 H2.",
+          "Correct rxn_010 to consume 2 H2O.",
+          "Specify drying or otherwise low-water conditions for rxn_004 and rapid cyanide trapping in rxn_005."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_004": 0.8,
+          "rxn_005": 0.88,
+          "rxn_008": 0.86,
+          "rxn_009": 0.82
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.85,
+        "feedback": "Chemically sound and more explicit than P3 because hydrolysis is stepwise. The main weakness is environmental: rxn_004 needs drying or otherwise low-water conditions so methanimine survives to rxn_005, while rxn_001 is better framed as atmospheric or discharge chemistry feeding the surface.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to CH4 + NH3 -> HCN + 3 H2.",
+          "Specify low-water, evaporative, or gas-ice conditions for rxn_004 and immediate trapping in rxn_005.",
+          "Define hydrothermal conditions that hydrolyze the aminonitrile or amide without excessive glycine loss."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_006": 0.84,
+          "rxn_007": 0.8,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.77,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.81,
+        "feedback": "Using ammonium cyanide as a reservoir is plausible, but rxn_007 is better interpreted as a net Strecker-equivalent step arising from NH3, HCN, and CN- equilibrium rather than direct reaction of an isolated salt. rxn_001 needs 3 H2, and rxn_010 requires 2 H2O.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to produce 3 H2.",
+          "Correct rxn_010 to consume 2 H2O.",
+          "Reframe rxn_007 as equilibrium-enabled Strecker chemistry and specify whether it occurs in concentrated solution, ice, or evaporative brine."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.78,
+          "rxn_006": 0.84,
+          "rxn_007": 0.8,
+          "rxn_008": 0.86,
+          "rxn_009": 0.82
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.84,
+        "feedback": "Reservoir-mediated assembly is plausible and the explicit hydrolysis sequence helps. Confidence is still moderated because rxn_007 compresses several equilibrium and addition events into one surface step, and rxn_001 needs corrected stoichiometry with 3 H2.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Correct rxn_001 to CH4 + NH3 -> HCN + 3 H2.",
+          "Clarify rxn_007 as net NH3, HCN, and CN- reservoir chemistry rather than direct NH4CN consumption.",
+          "Specify how aminoacetonitrile formed at the surface is transferred into the hydrothermal aqueous setting."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_003": 0.87,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.81,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.83,
+        "feedback": "This surface HCN source is possible but restrictive. rxn_002 likely needs hot, drying mineral surfaces to favor formamide dehydration over competing chemistry, and rxn_010 requires 2 H2O. The core Strecker and glycine-forming logic is valid.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Specify hot, drying geothermal film conditions and any catalytic mineral surface for rxn_002.",
+          "Correct rxn_010 to C2H4N2 + 2 H2O -> C2H5NO2 + NH3 or replace it with rxn_008 plus rxn_009.",
+          "Discuss competing formamide decomposition channels and how HCN is enriched before the Strecker step."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_003": 0.87,
+          "rxn_008": 0.86,
+          "rxn_009": 0.82
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.82,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.85,
+        "feedback": "Among the formamide branches, this is the strongest because hydrolysis is mechanistically explicit. Confidence is limited mainly by rxn_002, which should specify dehydrating geothermal film conditions and ideally a catalytic mineral surface.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Specify dehydrating and possibly catalytic surface conditions for rxn_002.",
+          "Define hydrothermal temperature and pH conditions that favor nitrile and amide hydrolysis while preserving glycine.",
+          "Add an explicit description of aminoacetonitrile transfer from the drying surface film into hydrothermal water."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_004": 0.8,
+          "rxn_005": 0.88,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.8,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.82,
+        "feedback": "The combination of formamide dehydration and isolated methanimine capture is chemically possible but condition-sensitive at both early steps. rxn_002 needs a strongly dehydrating surface setting, rxn_004 needs rapid cyanide trapping, and rxn_010 requires 2 H2O.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Specify catalytic drying conditions for rxn_002.",
+          "Correct rxn_010 to consume 2 H2O.",
+          "State the low-water and rapid-capture conditions needed for methanimine formation and cyanide addition."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_004": 0.8,
+          "rxn_005": 0.88,
+          "rxn_008": 0.86,
+          "rxn_009": 0.82
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.81,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.84,
+        "feedback": "Coherent formamide-to-imine-to-aminonitrile route with explicit hydrolysis, but both rxn_002 and rxn_004 need more tightly defined low-water surface conditions than the generic Surface label currently provides.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Specify dehydrating and possibly mineral-catalyzed conditions for rxn_002.",
+          "Define low-water or evaporative conditions that allow methanimine formation and immediate cyanide capture in rxn_004 and rxn_005.",
+          "Add transport and hydrothermal condition details for the final hydrolysis stage."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.85,
+    "network_feedback": "This is a connected, internally consistent network that does reach glycine through chemically credible Strecker and hydrolysis chemistry centered on aminoacetonitrile. Network validity is strong: all nodes are connected, molecule IDs are used consistently, and the deterministic balance check reports 0 unbalanced reactions. Two reactions still need coefficient correction to be balanced as written: rxn_001 should be CH4 + NH3 -> HCN + 3 H2, and rxn_010 should be C2H4N2 + 2 H2O -> C2H5NO2 + NH3. The strongest routes are the one-pot Strecker plus stepwise hydrolysis pathways, especially P2. Confidence is held below the >=0.90 approval threshold mainly by environmental under-specification: rxn_001 is better described as atmospheric or discharge photochemistry feeding a surface pool, rxn_002 needs clearly dehydrating geothermal or mineral conditions, and the hydrothermal steps need a stated temperature and pH window that hydrolyzes aminonitriles without excessive glycine loss.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 10,
+      "n_balanced_as_written": 8,
+      "n_balanceable": 2,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_003": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_005": 3
+          },
+          "element_delta": {
+            "H": 4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_010": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_008": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_004": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_009": 1,
+            "mol_010": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_007": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_007": 1,
+            "mol_012": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_007": 2,
+            "mol_012": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

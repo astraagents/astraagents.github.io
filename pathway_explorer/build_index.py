@@ -6,16 +6,17 @@ from pathlib import Path
 
 BASE = Path(__file__).parent
 SYNTH_DIR = BASE / "synthesis_networks"
-VALID_DIR = BASE / "validation_reports"
+VALID_DIR = BASE / "validation_report"
 OUTPUT = BASE / "file_index.csv"
 
 # Only index these models; others are kept on disk but excluded from the app.
-KEEP_MODELS = {"gpt41_direct_azure", "gpt6_xhigh_azure"}
+KEEP_MODELS = {"gpt41_direct_azure", "gpt5.4_xhigh_azure", "gpt6_xhigh_azure"}
 
 # Matches: network_{molecule}[_{YYYYMMDD_HHMMSS}]_{config}_run{N}[_attempt{N}].json
-# config is e.g. deep_research_claudeopus5.5, deep_research_gpt6, perfect_rag, no_research
+# config is e.g. deep_research_claudeopus5.5, deep_research_gpt6, perfect_rag, no_research, Naive
+# (Naive files carry no timestamp: network_{molecule}_Naive_run1_attempt1.json)
 SYNTH_RE = re.compile(
-    r"^network_(.+?)(?:_\d{8}_\d{6})?_((?:deep_research_[\w.]+|perfect_rag|no_research))_run(\d+)(?:_attempt(\d+))?\.json$"
+    r"^network_(.+?)(?:_\d{8}_\d{6})?_((?:deep_research_[\w.]+|perfect_rag|no_research|Naive))_run(\d+)(?:_attempt(\d+))?\.json$"
 )
 
 rows = []
@@ -48,7 +49,7 @@ for model_dir in sorted(SYNTH_DIR.iterdir()):
             "run": run,
             "attempt": attempt,
             "synthesis_network_path": f"synthesis_networks/{model}/{f.name}",
-            "validation_path": f"validation_reports/{model}/{stem}_validation.json" if validation_path.exists() else "",
+            "validation_path": f"validation_report/{model}/{stem}_validation.json" if validation_path.exists() else "",
         })
 
 fields = ["model", "molecule", "config", "run", "attempt",

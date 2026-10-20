@@ -1,0 +1,1018 @@
+{
+  "target_molecule": "Threonine",
+  "network": {
+    "target_molecule": "Threonine",
+    "overall_strategy": "Threonine is treated as a late, low-flux surface product rather than a hydrothermal metabolite. The network centers on two experimentally anchored nodes: cyanosulfidic access to lactaldehyde followed by Strecker aminonitrile formation and difficult hydrolysis, and Cu-assisted aldol coupling of glycine with acetaldehyde in concentrated pools. Glycine and acetaldehyde are explicit hubs because their supply is the main bottleneck, and all productive routes are treated as nonselective threonine/allothreonine mixtures. Direct H2S-rich spark and methanol-ice photolysis routes are retained only as trace alternative channels, while hydrothermal synthesis is omitted because threonine is unstable and not demonstrated under vent-like conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H5NO",
+        "iupac_name": "2-hydroxypropanenitrile",
+        "common_name": "lactonitrile",
+        "inchi": "InChI=1S/C3H5NO/c1-3(5)2-4/h3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6O2",
+        "iupac_name": "2-hydroxypropanal",
+        "common_name": "lactaldehyde",
+        "inchi": "InChI=1S/C3H6O2/c1-3(5)2-4/h2-3,5H,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C4H8N2O",
+        "iupac_name": "2-amino-3-hydroxybutanenitrile",
+        "common_name": "threonine aminonitrile",
+        "inchi": "InChI=1S/C4H8N2O/c1-3(7)4(6)2-5/h3-4,7H,6H2,1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid",
+        "common_name": "threonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H9NO3",
+        "iupac_name": "2-amino-3-hydroxybutanoic acid (allo diastereomer)",
+        "common_name": "allothreonine",
+        "inchi": "InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3-/m0/s1",
+        "role": "intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH4O",
+        "iupac_name": "methanol",
+        "common_name": "methanol",
+        "inchi": "InChI=1S/CH4O/c1-2/h2H,1H3",
+        "role": "starting",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Glycolonitrile-mediated access to glycolaldehyde",
+        "inputs": [
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuCN"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN",
+          "aqueous": true,
+          "other": "254 nm UV, phosphate-buffered water near pH 7, bisulfide present; this node compresses the explicit glycolonitrile substep"
+        },
+        "mechanism": "Formaldehyde first captures cyanide as glycolonitrile, then Cu(I)/Cu(II) sulfide photoredox and hydrolysis furnish glycolaldehyde.",
+        "reasoning": "This overall step follows the cyanosulfidic homologation chemistry of Ritson & Sutherland (2013) and Patel et al. (2015). The explicit glycolonitrile intermediate is collapsed here to keep the network compact while preserving the experimentally important glycolaldehyde node. The chemistry is experimentally grounded, but it depends on UV-driven sulfide photoredox and inherits concerns about sulfidic-anion availability and UV attenuation (Ranjan et al., 2018)."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanosulfidic reduction of glycolaldehyde to acetaldehyde",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuCN"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN",
+          "aqueous": true,
+          "other": "254 nm UV, phosphate-buffered water near pH 7, bisulfide present"
+        },
+        "mechanism": "Cu(I)/Cu(II)-mediated sulfide photoredox reduces the cyanide-derived C2 carbonyl network and shifts glycolaldehyde toward acetaldehyde.",
+        "reasoning": "Patel et al. (2015) place acetaldehyde downstream of glycolaldehyde reduction in the same HCN/H2S/UV network that yields sugar and amino-acid precursors. The threonine literature does not quantify this step as directly as the later lactonitrile to lactaldehyde conversion, so it remains somewhat underconstrained, but chemically it is essential because every credible threonine route needs a C2 carbonyl source."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Lactonitrile formation from acetaldehyde and HCN",
+        "inputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN-rich water, neutral to mildly alkaline"
+        },
+        "mechanism": "Cyanide adds to the carbonyl carbon of acetaldehyde to give the cyanohydrin lactonitrile.",
+        "reasoning": "Ritson & Sutherland (2013) used acetaldehyde cyanohydrin, lactonitrile, as the substrate furnishing lactaldehyde. Cyanohydrin formation from aldehydes and HCN is straightforward and chemically better supported than the later hydrolysis to free amino acid. Cobb & Pudritz (2015) also identify 2-hydroxypropanal as threonine's Strecker aldehyde, making lactonitrile the proximate precursor."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Photoredox conversion of lactonitrile to lactaldehyde",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "CuCN"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN",
+          "aqueous": true,
+          "other": "254 nm UV, phosphate-buffered water near pH 7, bisulfide present; reported lactaldehyde yield about 19%"
+        },
+        "mechanism": "Cu(I)/Cu(II)-mediated sulfide photoredox converts the cyanohydrin network into the corresponding hydroxy aldehyde.",
+        "reasoning": "This is one of the few threonine-specific experimental results in the literature: lactonitrile furnished lactaldehyde in 19% yield under CuCN/H2S/UV conditions (Ritson & Sutherland, 2013). Because lactaldehyde supply is the rate-limiting carbonyl node for Strecker threonine, it is kept explicit in the network."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Lactaldehyde Strecker aminonitrile formation",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "freshly generated lactaldehyde in cyanide- and ammonia-bearing water"
+        },
+        "mechanism": "Lactaldehyde forms an imine with ammonia, then cyanide adds to generate the alpha-aminonitrile.",
+        "reasoning": "Ritson & Sutherland (2013) reported that adding HCN and NH3 converted lactaldehyde smoothly to the threonine/allothreonine aminonitrile, and Patel et al. (2015) described such alpha-aminonitriles as inevitable by-products of cyanosulfidic chemistry. However, no aminonitrile yield or diastereomer ratio was reported, so this step is plausible but quantitatively underconstrained."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrolysis of threonine aminonitrile",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cool pooled water or mild geothermal cycling; avoid prolonged heating above about 330K"
+        },
+        "mechanism": "Aminonitrile hydration proceeds through amide-like intermediates to the free amino acids, preserving the nonenzymatic threonine/allothreonine mixture.",
+        "reasoning": "This hydrolysis is chemically required to turn the aminonitrile into free threonine, but it is also the largest evidence gap in the designed Strecker route: Ritson & Sutherland (2013) and Patel et al. (2015) stopped at the aminonitrile stage, with no reported amino-acid yield or threo:allo ratio. The node is therefore explicitly low-confidence and assigned to cool pooled-water conditions, because threonine decomposes rapidly at elevated temperature and is disfavored in hydrothermal settings (Aubrey et al., 2009)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Overall Strecker synthesis of glycine",
+        "inputs": [
+          "mol_003",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "overall Strecker plus hydrolysis in cool surface water"
+        },
+        "mechanism": "Formaldehyde forms an imine with ammonia, cyanide gives aminoacetonitrile, and subsequent hydrolysis yields glycine.",
+        "reasoning": "This node compresses the better-established glycine Strecker sequence into a single overall step. Patel et al. (2015) explicitly treat glycine alpha-aminonitrile as an inevitable by-product of cyanosulfidic photochemistry, and glycine itself is abundantly observed in discharge and ice experiments. That makes this a much stronger prebiotic amino-acid node than threonine formation (Patel et al., 2015; Ring et al., 1972; Mu\u00f1oz Caro et al., 2002)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Akabori-type aldol synthesis of threonine",
+        "inputs": [
+          "mol_009",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Cu(II)"
+        ],
+        "conditions": {
+          "temperature": "300-315K",
+          "pressure": "1 atm",
+          "catalyst": "Cu(II)",
+          "aqueous": true,
+          "other": "mildly basic, bicarbonate-rich or evaporatively concentrated pool; high local glycine and acetaldehyde"
+        },
+        "mechanism": "Metal chelation activates the glycine alpha-carbon toward addition to acetaldehyde, giving a beta-hydroxy-alpha-amino-acid mixture after proton transfers.",
+        "reasoning": "This is the only intentionally optimized chemistry that reports free threonine in substantial amount: copper glycinate plus acetaldehyde gave up to 64% combined threonine and allothreonine, with modest and condition-dependent threo bias (Sato, Okawa & Akabori, 1957; Ikutani et al., 1959). It is included because it is chemically strong and uses glycine, the most abundant abiotic amino acid, but its prebiotic realism is limited by high Cu loading, base requirement, and reversibility toward retro-aldol cleavage. It should therefore be interpreted as a low-volume pool chemistry, not as a globally robust route."
+      },
+      {
+        "id": "rxn_009",
+        "name": "H2S-rich spark discharge glycine and acetaldehyde pool",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K bulk, with transient plasma much hotter",
+          "pressure": "sub-atmospheric to 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "electric discharge over CH4/N2/H2O with NH3 and H2S or CO2 admixtures; condensate later aged and hydrolyzed"
+        },
+        "mechanism": "Electrical discharge generates radicals, HCN, carbonyls, and amino-nitrile precursors that hydrolyze to glycine while leaving an aldehyde-rich condensate.",
+        "reasoning": "Glycine is strongly supported in discharge chemistry, and threonine appears only in chemically richer H2S-bearing runs (Ring et al., 1972; Weber & Miller, 1981; Parker et al., 2011). Acetaldehyde is not directly quantified in the cited threonine analyses, so its explicit inclusion here is an inferred but chemically reasonable carbonyl source; this node is therefore partially speculative and is used only as a feeder into better-defined aldol and Strecker chemistry."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Glycine release from UV-irradiated methanol-bearing ice residues",
+        "inputs": [
+          "mol_013",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "10-80K irradiation, then 250-300K warm-up",
+          "pressure": "low during irradiation; approximately 1 atm after warm-up",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "H2O:CH3OH:NH3:CO:CO2 ice mixture; product release after warm-up and hydrolysis"
+        },
+        "mechanism": "UV photolysis of mixed ices builds complex refractory organics that release amino acids such as glycine upon warm-up and hydrolysis.",
+        "reasoning": "Interstellar or surface ice photolysis experiments consistently yield glycine after hydrolysis, with glycine among the major products (Mu\u00f1oz Caro et al., 2002; Nuevo et al., 2008). This provides a plausible exogenous or cryogenic source of glycine that can later enter warmer surface-pool chemistry. The reaction is written as an overall residue-to-glycine transformation rather than a stepwise ice network."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Direct trace threonine formation in H2S-rich spark discharge",
+        "inputs": [
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K bulk, with transient plasma much hotter",
+          "pressure": "sub-atmospheric to 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "electric discharge; best evidence from the H2S-rich archived Miller mixture"
+        },
+        "mechanism": "Broad radical and nitrile chemistry in discharge condensates yields a complex amino-acid mixture in which threonine and allothreonine are minor hydrolysis products.",
+        "reasoning": "Threonine and allothreonine were detected as trace products in reducing spark chemistry, and Parker et al. (2011) found threonine specifically in Miller's archived H2S-rich 1958 experiment. Weber & Miller (1981) tabulated roughly equal threonine and allothreonine relative yields, consistent with a nonselective route through hydroxy-aldehyde Strecker chemistry (Ring et al., 1972; Weber & Miller, 1981; Parker et al., 2011). This is a demonstrated but very low-yield route."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Direct trace threonine formation in UV-irradiated methanol-bearing ices",
+        "inputs": [
+          "mol_013",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "10-80K irradiation, then 250-300K warm-up",
+          "pressure": "low during irradiation; approximately 1 atm after warm-up",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "VUV or UV irradiation of H2O:CH3OH:NH3:CO:CO2 ice, then warm-up and hydrolysis"
+        },
+        "mechanism": "Photolysis of mixed ices builds complex organics; warm-up and hydrolysis release a trace amino-acid suite that occasionally includes threonine.",
+        "reasoning": "Nuevo et al. (2008) reported threonine in only a few UV-irradiated ice residues, and never as an abundant product; Mu\u00f1oz Caro et al. (2002) had already shown that such ice residues can release amino acids after hydrolysis. This route is therefore included as a sporadic, low-flux source rather than a major synthesis channel."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic lactaldehyde Strecker pathway",
+        "description": "Formaldehyde and HCN enter a cyanosulfidic UV network that reaches glycolaldehyde, then acetaldehyde, then lactonitrile and lactaldehyde before aminonitrile formation and hydrolysis to threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Strecker glycine plus cyanosulfidic acetaldehyde aldol pathway",
+        "description": "Formaldehyde-based Strecker chemistry supplies glycine, the cyanosulfidic branch supplies acetaldehyde, and a later Akabori-type aldol step yields threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Spark-cyanosulfidic mixed aldol pathway",
+        "description": "A spark condensate supplies glycine, a cyanosulfidic branch supplies acetaldehyde, and concentrated-pool aldol chemistry converts the pair to threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Ice-cyanosulfidic mixed aldol pathway",
+        "description": "Ice photolysis residues provide glycine, the cyanosulfidic branch provides acetaldehyde, and later aldol coupling yields threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Strecker-spark mixed aldol pathway",
+        "description": "Formaldehyde Strecker chemistry supplies glycine, and a spark condensate contributes an acetaldehyde-rich pool for later aldol coupling.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Spark-pool self-coupled aldol pathway",
+        "description": "A single spark condensate supplies both glycine and acetaldehyde, which later react in a Cu-assisted aldol step to give threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Ice-spark mixed aldol pathway",
+        "description": "Ice-derived glycine combines with an aldehyde-rich spark condensate in a later aldol reaction to give threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_009",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Spark-fed lactaldehyde Strecker pathway",
+        "description": "An inferred spark-derived acetaldehyde pool is routed through lactonitrile, lactaldehyde, and the threonine aminonitrile before hydrolysis to threonine/allothreonine.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct H2S-rich spark pathway",
+        "description": "Trace threonine and allothreonine emerge directly from an H2S-rich spark-discharge mixture after condensate hydrolysis.",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": []
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct methanol-ice photolysis pathway",
+        "description": "Trace threonine is released directly from UV-irradiated methanol-bearing ice residues after warm-up and hydrolysis.",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": []
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Threonine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.16,
+          "rxn_002": 0.3,
+          "rxn_003": 0.9,
+          "rxn_004": 0.28,
+          "rxn_005": 0.62,
+          "rxn_006": 0.08
+        },
+        "chemical_feasibility": 0.31,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.27,
+        "overall_confidence": 0.4,
+        "feedback": "Conceptually this is the most literature-aligned dedicated threonine route, but 5 of 6 steps are conservation violations. rxn_001 should not convert CH2O + HCN directly to glycolaldehyde; add explicit glycolonitrile or cyanohydrin chemistry. rxn_002 and rxn_004 omit the H2S/Cu/UV redox bookkeeping needed for the cyanosulfidic branch. rxn_005 is essentially the correct Strecker step but needs H2O as a product. rxn_006 is the main failure: one aminonitrile cannot hydrolyze to both threonine and allothreonine, and the 'Biochemical' label does not specify a plausible prebiotic hydrolysis setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add explicit glycolonitrile and cyanohydrin intermediates and rewrite rxn_001-rxn_004 with H2S, Cu, phosphate, water, and byproducts tracked.",
+          "Rewrite rxn_005 as lactaldehyde + NH3 + HCN -> threonine aminonitrile + H2O.",
+          "Split rxn_006 into separate hydrolysis reactions for threonine and allothreonine aminonitriles, each consuming water and releasing NH3 under stated prebiotic conditions."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.16,
+          "rxn_002": 0.3,
+          "rxn_007": 0.38,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.39,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.44,
+        "target_achievement": 0.56,
+        "overall_confidence": 0.47,
+        "feedback": "This is the best current pathway because the glycine plus acetaldehyde hub is chemically sensible and literature-grounded, and rxn_008 corresponds to known Akabori-type chemistry. However, acetaldehyde supply depends on unbalanced rxn_001 and rxn_002, rxn_007 compresses Strecker formation and hydrolysis into an unbalanced overall step, and rxn_008 should be written as 2 glycine + 2 acetaldehyde -> threonine + allothreonine or as separate threo and allo branches. The final step also needs explicit Cu(II), base, and concentration conditions rather than the vague 'Biochemical' label.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Keep the glycine and acetaldehyde hub strategy but correct acetaldehyde supply by expanding rxn_001-rxn_002 into the literature cyanosulfidic subnetwork.",
+          "Rewrite rxn_007 as explicit aminoacetonitrile formation plus hydrolysis, with water and NH3 properly balanced.",
+          "Specify Cu(II), base, and evaporative-pool conditions for rxn_008, or represent threonine and allothreonine as separate product reactions."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_009": 0.06,
+          "rxn_001": 0.16,
+          "rxn_002": 0.3,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.25,
+        "pathway_coherence": 0.56,
+        "environmental_progression": 0.36,
+        "target_achievement": 0.53,
+        "overall_confidence": 0.33,
+        "feedback": "Mixed sourcing is plausible in principle, but rxn_009 is not a valid stoichiometric representation of H2S-rich spark chemistry: CH4 + NH3 cannot yield both glycine and acetaldehyde without additional carbon and oxygen feedstocks. Together with unbalanced rxn_001 and rxn_002, three of four steps are invalid, and the pathway definition is somewhat redundant because rxn_009 already supplies both hubs. Transfer from discharge products to an aldol-active pool is not justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Model spark chemistry as a multicomponent atmospheric or aqueous module including H2O, CO2, and H2S rather than rxn_009.",
+          "Clarify which hub comes from spark chemistry and which from the cyanosulfidic branch, because rxn_009 already generates both in the current graph.",
+          "State how products are transferred and concentrated before the aldol step."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_010": 0.16,
+          "rxn_001": 0.16,
+          "rxn_002": 0.3,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.29,
+        "pathway_coherence": 0.61,
+        "environmental_progression": 0.4,
+        "target_achievement": 0.53,
+        "overall_confidence": 0.37,
+        "feedback": "Ice-derived glycine is literature-consistent only as a minor residue product after UV irradiation and hydrolysis, but rxn_010 overcompresses that chemistry; the balance check suggests missing CO on the reactant side and H2 as a product, and real experiments also require H2O, CO, and CO2. rxn_001 and rxn_002 still mis-specify acetaldehyde supply, and rxn_008 needs explicit Cu, base, and concentration conditions. A thaw or transport step from ice residue to surface pool is implied but not modeled.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_001",
+          "rxn_002"
+        ],
+        "suggestions": [
+          "Expand rxn_010 to the actual UV-ice system with H2O, CH3OH, NH3, CO, CO2, and post-irradiation hydrolysis.",
+          "Correct the cyanosulfidic acetaldehyde sequence with explicit intermediates and redox reagents.",
+          "Specify Cu-assisted aldol conditions in the thawed residue or concentrated pool."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.38,
+          "rxn_009": 0.06,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.29,
+        "pathway_coherence": 0.59,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.54,
+        "overall_confidence": 0.35,
+        "feedback": "The mixed Strecker and spark aldol idea is coherent, but rxn_007 is unbalanced and under-specifies the water and hydrolysis bookkeeping of glycine formation, while rxn_009 is chemically invalid as written. rxn_008 can serve as the target-forming step only if the pathway specifies concentrated, alkaline, Cu-assisted pool conditions. Because rxn_009 already co-produces glycine, the division of labor between the two precursor sources is also blurry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Separate glycine Strecker synthesis into aminonitrile formation and hydrolysis steps.",
+          "Replace rxn_009 with an explicit H2S-rich spark residue network or treat it as an empirical source node rather than a conserved reaction.",
+          "Recast rxn_008 with proper stoichiometric coefficients or separate threo and allo product branches."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_009": 0.06,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.21,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.37,
+        "target_achievement": 0.54,
+        "overall_confidence": 0.3,
+        "feedback": "This is the shortest non-direct route, but it depends almost entirely on rxn_009, which is not a conserved or mechanistic representation of spark chemistry. rxn_008 is the only chemically grounded step, and even it needs explicit 2:2 stoichiometry or separate product branches. As written, this pathway is better interpreted as a placeholder for observed spark product mixtures than as a specified synthesis route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Do not use rxn_009 as a conserved one-step precursor source; replace it with a spark-mixture module.",
+          "Specify how glycine and acetaldehyde are isolated or concentrated before rxn_008.",
+          "Add the known reversibility and retro-aldol sink if the route is intended to model accumulation."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.16,
+          "rxn_009": 0.06,
+          "rxn_008": 0.66
+        },
+        "chemical_feasibility": 0.23,
+        "pathway_coherence": 0.52,
+        "environmental_progression": 0.32,
+        "target_achievement": 0.52,
+        "overall_confidence": 0.29,
+        "feedback": "Both precursor-supply steps are overcompressed: rxn_010 under-specifies UV ice chemistry and rxn_009 under-specifies H2S-rich discharge chemistry. No physical route is given for merging the two product pools before rxn_008, and the final aldol step still lacks explicit Cu and base conditions and corrected stoichiometry. The pathway is conceptually possible but poorly specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Expand both rxn_010 and rxn_009 into realistic multicomponent source processes.",
+          "Provide a physical transport and concentration scenario linking ice residues and spark products.",
+          "Write rxn_008 with explicit coefficients and pool conditions."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_009": 0.06,
+          "rxn_003": 0.9,
+          "rxn_004": 0.28,
+          "rxn_005": 0.62,
+          "rxn_006": 0.08
+        },
+        "chemical_feasibility": 0.27,
+        "pathway_coherence": 0.67,
+        "environmental_progression": 0.35,
+        "target_achievement": 0.26,
+        "overall_confidence": 0.32,
+        "feedback": "Using spark chemistry only as an acetaldehyde feed is literature-aware, but rxn_009 is still impossible as written, rxn_004 omits the CN-loss and O-source chemistry needed to obtain lactaldehyde, rxn_005 needs H2O as a product, and rxn_006 is invalid because one aminonitrile cannot hydrolyze to both threonine and allothreonine. Environmental handoff from discharge to photoredox and Strecker conditions is not described.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_009 with an explicit spark-generated acetaldehyde source that includes oxygenated feedstocks and H2S.",
+          "Rewrite rxn_004-rxn_006 with full redox and hydrolysis stoichiometry and separate stereoisomer branches.",
+          "Specify where photoredox, Strecker, and hydrolysis steps occur and how acetaldehyde or lactonitrile moves between settings."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_011": 0.02
+        },
+        "chemical_feasibility": 0.05,
+        "pathway_coherence": 0.18,
+        "environmental_progression": 0.24,
+        "target_achievement": 0.13,
+        "overall_confidence": 0.1,
+        "feedback": "Trace threonine and allothreonine have been reported in some H2S-rich spark residues, so the idea aligns with the literature at a phenomenological level, but rxn_011 is not a chemically valid reaction. CH4 + NH3 cannot conserve the atoms needed for two C4 amino acids, and the 'Surface' label does not capture atmospheric discharge plus post-hydrolysis workup. This should be modeled as an empirical mixture output, not a one-step synthesis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Encode spark discharge as an empirical product distribution or detailed multistep atmospheric network, not rxn_011.",
+          "Include the actual feedstock mix such as H2O, H2S, and possibly CO2 or N2, plus the hydrolysis step if you want a conserved pathway.",
+          "Treat threonine and allothreonine as trace outputs with unresolved intermediates rather than a single stoichiometric reaction."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_012": 0.03
+        },
+        "chemical_feasibility": 0.06,
+        "pathway_coherence": 0.2,
+        "environmental_progression": 0.3,
+        "target_achievement": 0.11,
+        "overall_confidence": 0.12,
+        "feedback": "Minor literature support exists for threonine in UV-photolyzed methanol-bearing ices, but rxn_012 is not conserved and omits the real multicomponent ice matrix and hydrolysis step. CH3OH + NH3 alone cannot furnish a C4 amino acid. The 'Surface' label is also inaccurate for cryogenic UV ice chemistry. As written this is only a trace empirical placeholder, not a specified pathway.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Replace rxn_012 with a multicomponent ice photolysis and hydrolysis subnetwork using H2O, CH3OH, NH3, CO, and CO2.",
+          "Track threonine as a minor residue product emerging after warm-up and hydrolysis, not direct one-step synthesis.",
+          "Connect the ice branch to the rest of the network through explicit intermediate pools if it is meant to feed broader synthesis."
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.38,
+    "network_feedback": "The graph is connected and the overall strategy aligns reasonably well with the threonine literature: low-flux surface production, explicit acetaldehyde and glycine bottlenecks, nonselective threo and allo outcomes, and omission of hydrothermal synthesis are all sensible. However, the network is not viable as written because the deterministic balance check marks 10 of 12 reactions UNBALANCED; only rxn_003 is balanced as written, and rxn_008 is acceptable only if written with explicit 2:2 stoichiometry or split into separate product branches. The specific reactions needing correction are rxn_001, rxn_002, rxn_004, rxn_005, rxn_006, rxn_007, rxn_009, rxn_010, rxn_011, and rxn_012. Key fixes are to make the cyanosulfidic sequence explicit with glycolonitrile or cyanohydrin intermediates and full H2S/Cu/UV bookkeeping; add H2O to rxn_005; rewrite rxn_006 as one aminonitrile plus water giving one amino acid plus NH3 with separate threo and allo branches; rewrite rxn_007 as explicit aminoacetonitrile formation plus hydrolysis; write rxn_008 as 2 glycine + 2 acetaldehyde -> threonine + allothreonine or as separate product reactions; and replace rxn_009-rxn_012 with multistep spark or ice source modules including the real feedstocks such as H2O, CO or CO2, H2S, and hydrolysis rather than one-step reactions from CH4 or CH3OH. Environmental labels also need tightening: spark discharge and cryogenic UV ice chemistry are not generic 'Surface' reactions, while rxn_006 and rxn_008 should be described as specific prebiotic pool or hydrolysis settings rather than 'Biochemical'. P2 is the best current pathway, but no pathway is close to approval.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 1,
+      "n_balanceable": 1,
+      "n_unbalanced": 10,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.16666666666666666,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "O": -1,
+            "N": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: HCN as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_001": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -1,
+            "N": 1,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; CO2 as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -4,
+            "H": -10,
+            "O": -5
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 1,
+            "O": -1,
+            "N": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: CO2 as reactant; O2 as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 2,
+            "mol_005": 2,
+            "mol_010": 1,
+            "mol_011": 1
+          },
+          "element_delta": {
+            "C": -4,
+            "H": -9,
+            "N": -1,
+            "O": -3
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -3,
+            "H": -2,
+            "O": -3
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -1,
+            "H": 2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2 as product; CO as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -7,
+            "H": -11,
+            "N": -1,
+            "O": -6
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": -3,
+            "H": -2,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

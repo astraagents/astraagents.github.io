@@ -1,0 +1,838 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Exploit a shared iron-mediated C4/C3 organic-acid lineage to converge on 2-oxoglutarate, the direct keto-acid precursor of glutamate. Succinate, fumarate, malate, oxaloacetate, or pyruvate can enter the network; oxaloacetate thermally decarboxylates to pyruvate, pyruvate couples with glyoxylate to form 2-oxoglutarate, and the amino group is installed either by H2-driven hydrothermal reductive amination on Fe-S minerals or by UV/ZnS photoreductive amination in shallow surface settings. Five entry points paired with two terminal amination modes yield ten connected pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C4H6O4",
+        "iupac_name": "butanedioic acid",
+        "common_name": "succinate",
+        "inchi": "InChI=1S/C4H6O4/c5-3(6)1-2-4(7)8/h1-2H2,(H,5,6)(H,7,8)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "C4H4O4",
+        "iupac_name": "(E)-but-2-enedioic acid",
+        "common_name": "fumarate",
+        "inchi": "InChI=1S/C4H4O4/c5-3(6)1-2-4(7)8/h1-2H,(H,5,6)(H,7,8)/b2-1+",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_003",
+        "formula": "C4H6O5",
+        "iupac_name": "2-hydroxybutanedioic acid",
+        "common_name": "malate",
+        "inchi": "InChI=1S/C4H6O5/c5-2(4(8)9)1-3(6)7/h2,5H,1H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H4O5",
+        "iupac_name": "2-oxobutanedioic acid",
+        "common_name": "oxaloacetate",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylate",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvate",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutarate",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Hydrothermal"
+      },
+      {
+        "id": "mol_008",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamate",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": null
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Succinate dehydrogenation to fumarate",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "380-430K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "anoxic subseafloor pores with mixed-valence iron redox cycling"
+        },
+        "mechanism": "Mineral-mediated dehydrogenation of the saturated dicarboxylate to the trans-unsaturated dicarboxylate.",
+        "reasoning": "Succinate and fumarate form a chemically credible redox pair in iron-rich vent systems. The oxidation is slower than neighboring hydration chemistry and is a plausible upstream bottleneck, but mixed-valence iron oxides provide a realistic anoxic electron sink."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Fumarate hydration to malate",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "340-390K",
+          "pressure": "high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "hot vent fluids after partial cooling"
+        },
+        "mechanism": "Water adds across the activated C=C bond of fumarate to give malate.",
+        "reasoning": "Hydration of fumarate is one of the more straightforward members of prebiotic dicarboxylate chemistry. Hot aqueous conditions are sufficient, and dissolved ferrous iron can assist by coordinating the dicarboxylate."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Malate oxidation to oxaloacetate",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "380-430K",
+          "pressure": "high",
+          "catalyst": "magnetite",
+          "aqueous": true,
+          "other": "anoxic vent-wall mineral surfaces with Fe2+/Fe3+ cycling"
+        },
+        "mechanism": "Iron-coordinated oxidation converts the alpha-hydroxy dicarboxylate to the corresponding alpha-keto dicarboxylate.",
+        "reasoning": "Malate/oxaloacetate is a standard hydroxy-acid/keto-acid pair. Iron minerals are well suited to mediate such interconversions under anoxic hydrothermal redox cycling, even if oxaloacetate remains transient because of its lability."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Thermal decarboxylation of oxaloacetate to pyruvate",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "330-380K",
+          "pressure": "high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "rapid turnover of unstable oxaloacetate in heated vent fluids"
+        },
+        "mechanism": "Oxaloacetate undergoes beta-keto-acid-type decarboxylation after keto-enol tautomerization to furnish pyruvate.",
+        "reasoning": "Oxaloacetate is intrinsically decarboxylation-prone under heating. This funnels unstable C4 keto-acid pools into the better-supported pyruvate/glyoxylate network instead of requiring long-lived oxaloacetate accumulation."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Fe2+-promoted pyruvate-glyoxylate coupling to 2-oxoglutarate",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "350-400K",
+          "pressure": "high",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "Fe2+-rich hydrothermal mixing zone; carbonyls kept below destructive temperatures"
+        },
+        "mechanism": "Pyruvate enolization and aldol addition to glyoxylate are followed by oxidation/dehydration steps that net to the C5 alpha-keto diacid.",
+        "reasoning": "Pyruvate-glyoxylate chemistry is among the strongest experimentally supported nonenzymatic entries into metabolism-like C5 products. Represented here as a net step, it plausibly proceeds through transient hydroxy-keto intermediates before giving 2-oxoglutarate."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydrothermal H2-driven reductive amination of 2-oxoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "mackinawite",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "370-430K",
+          "pressure": "high",
+          "catalyst": "mackinawite/greigite",
+          "aqueous": true,
+          "other": "H2-rich alkaline vent conditions with dissolved ammonia and strong redox gradients"
+        },
+        "mechanism": "Ammonia forms an imine or iminium equivalent with 2-oxoglutarate, which is then reduced on Fe-S mineral surfaces by vent-derived hydrogen.",
+        "reasoning": "2-Oxoglutarate is the exact alpha-keto precursor of glutamate, so reductive amination is the most direct carbon-conserving terminal step. H2-rich vents and Fe-S minerals provide a geochemically strong setting for this transformation."
+      },
+      {
+        "id": "rxn_007",
+        "name": "UV-driven ZnS photoreductive amination of 2-oxoglutarate",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "ZnS"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "ZnS",
+          "aqueous": true,
+          "other": "UV-irradiated sulfur-rich hot spring or evaporitic pool; ammonium concentrated during drying-rewetting cycles"
+        },
+        "mechanism": "A 2-oxoglutarate-ammonia imine is reduced by photoexcited sulfide-semiconductor electrons and then protonated to release glutamate.",
+        "reasoning": "Early Earth surface UV and sulfide semiconductors offer a distinct non-vent source of reducing power. This photoreductive amination is more speculative than hydrothermal H2-driven reduction, but it is chemically defensible because imines are more readily reduced than the parent keto acid."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Succinate lineage with hydrothermal amination",
+        "description": "Entry from succinate; oxidation and hydration give malate and oxaloacetate, oxaloacetate decarboxylates to pyruvate, pyruvate couples with glyoxylate to 2-oxoglutarate, and vent H2/NH3 chemistry yields glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_003",
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Fumarate lineage with hydrothermal amination",
+        "description": "Entry from exogenous fumarate; hydration, oxidation, decarboxylation, and pyruvate-glyoxylate coupling build 2-oxoglutarate, followed by hydrothermal reductive amination to glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Malate lineage with hydrothermal amination",
+        "description": "Entry from exogenous malate; oxidation to oxaloacetate and decarboxylation to pyruvate feed the pyruvate-glyoxylate route to 2-oxoglutarate, then hydrothermal amination gives glutamate.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Oxaloacetate lineage with hydrothermal amination",
+        "description": "Entry from exogenous oxaloacetate; thermal decarboxylation gives pyruvate, Fe2+-mediated coupling with glyoxylate gives 2-oxoglutarate, and hydrothermal H2-driven amination yields glutamate.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Direct pyruvate-glyoxylate route with hydrothermal amination",
+        "description": "Entry from exogenous pyruvate; pyruvate and glyoxylate build 2-oxoglutarate directly, which is then converted to glutamate by hydrothermal reductive amination.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Succinate lineage with surface photoreductive amination",
+        "description": "The succinate-to-2-oxoglutarate hydrothermal buildup is followed by handoff to a UV-exposed ZnS-rich surface setting, where photoreductive amination produces glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_002",
+          "mol_003",
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Fumarate lineage with surface photoreductive amination",
+        "description": "Entry from fumarate, progression through malate, oxaloacetate, pyruvate, and 2-oxoglutarate, then ZnS/UV photoreductive amination in a shallow surface pool gives glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Malate lineage with surface photoreductive amination",
+        "description": "Entry from malate; oxaloacetate and pyruvate formation feed the pyruvate-glyoxylate C5-building step, after which surface photoreduction of the 2-oxoglutarate-ammonia adduct gives glutamate.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Oxaloacetate lineage with surface photoreductive amination",
+        "description": "Entry from oxaloacetate; decarboxylation to pyruvate and coupling with glyoxylate furnish 2-oxoglutarate, which is then aminated photochemically in a ZnS-bearing surface environment.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Direct pyruvate-glyoxylate route with surface photoreductive amination",
+        "description": "Entry from exogenous pyruvate; direct C5 construction from pyruvate and glyoxylate gives 2-oxoglutarate, followed by UV/ZnS photoreductive amination to glutamate.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_006",
+      "mol_007",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.2,
+          "rxn_002": 0.5,
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_006": 0.52
+        },
+        "chemical_feasibility": 0.38,
+        "pathway_coherence": 0.5,
+        "environmental_progression": 0.53,
+        "target_achievement": 0.36,
+        "overall_confidence": 0.39,
+        "feedback": "The hydrothermal lineage is conceptually connected, but every step in P1 fails conservation as written: rxn_001 needs an explicit redox partner or H2 product, rxn_002 needs H2O as a reactant, rxn_003 needs an oxidant or H sink, rxn_004 needs CO2 as a product, rxn_005 likely needs H2O as a coproduct and may require intermediate coupling chemistry, and rxn_006 needs H2O as a product. Without those fixes the pathway does not validly reach glutamate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add explicit stoichiometry: H2O in rxn_002, CO2 in rxn_004, H2O in rxn_006, and real redox partners for rxn_001 and rxn_003.",
+          "Replace rxn_005 with balanced substeps from pyruvate and glyoxylate to alpha-ketoglutarate.",
+          "Specify hydrothermal minerals, pH, and redox gradients that support both oxidation and reductive amination."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_002": 0.5,
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_006": 0.52
+        },
+        "chemical_feasibility": 0.41,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.38,
+        "overall_confidence": 0.42,
+        "feedback": "Dropping succinate avoids the weakest dehydrogenation, but P2 still has conservation errors in every reaction: rxn_002 needs H2O, rxn_003 needs an oxidant or H sink, rxn_004 needs CO2, rxn_005 is oversimplified and missing a coproduct, and rxn_006 needs H2O. The route is more plausible than P1 but still not chemically complete.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add H2O to rxn_002 and rxn_006, and CO2 to rxn_004.",
+          "Define a real oxidant or electron sink for rxn_003 instead of leaving dehydrogenation implicit.",
+          "Decompose rxn_005 into experimentally supported intermediate steps."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_006": 0.52
+        },
+        "chemical_feasibility": 0.42,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.39,
+        "overall_confidence": 0.43,
+        "feedback": "Starting from malate shortens the path, yet rxn_003, rxn_004, rxn_005, and rxn_006 are all unbalanced. rxn_003 especially needs a specified oxidant, rxn_004 must release CO2, rxn_005 likely needs H2O and intermediate nodes, and rxn_006 needs H2O as coproduct. The backbone logic is coherent, but the chemistry remains under-specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify the oxidant for rxn_003 and add CO2 and H2O coproducts where required.",
+          "Expand rxn_005 into balanced coupling chemistry rather than a single direct jump to alpha-ketoglutarate.",
+          "If malate is intended as an entry point, label it as an allowed starting molecule."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_006": 0.52
+        },
+        "chemical_feasibility": 0.46,
+        "pathway_coherence": 0.58,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.41,
+        "overall_confidence": 0.47,
+        "feedback": "P4 is one of the more repairable hydrothermal routes because oxaloacetate decarboxylation is chemically plausible, but the written network still violates conservation: rxn_004 must release CO2, rxn_005 needs corrected coupling stoichiometry and likely intermediate chemistry, and rxn_006 needs H2O as product. The target is only reached after those corrections.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Add CO2 to rxn_004 and H2O to rxn_006.",
+          "Recast rxn_005 as balanced substeps or include the missing coproduct and intermediates.",
+          "If oxaloacetate is an intended feedstock, mark it explicitly as a starting node."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_005": 0.35,
+          "rxn_006": 0.52
+        },
+        "chemical_feasibility": 0.44,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.62,
+        "target_achievement": 0.43,
+        "overall_confidence": 0.49,
+        "feedback": "This is the strongest pathway by brevity, but its two key steps are still invalid as written. rxn_005 is not mass balanced and probably compresses a multi-step pyruvate-glyoxylate network into one node, while rxn_006 also needs H2O as coproduct. If repaired, this would be the clearest route to glutamate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Balance rxn_005 and rxn_006 explicitly, including H2O in the amination step.",
+          "Consider expanding rxn_005 into intermediate coupling chemistry rather than a single direct node.",
+          "If pyruvate is an intended feedstock, label mol_006 as an allowed starting node."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.2,
+          "rxn_002": 0.5,
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_007": 0.08
+        },
+        "chemical_feasibility": 0.24,
+        "pathway_coherence": 0.4,
+        "environmental_progression": 0.27,
+        "target_achievement": 0.16,
+        "overall_confidence": 0.2,
+        "feedback": "P6 inherits the same mass-balance problems as P1 through rxn_005 and then adds a much weaker terminal step. rxn_007 is especially problematic: alpha-ketoglutarate plus NH3 cannot give glutamate under UV and ZnS without an explicit reductant or electron donor and full proton and water bookkeeping. The hydrothermal-to-surface transfer is also unmodeled.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace rxn_007 with a fully balanced ZnS photoredox amination including an electron donor, proton source, and coproducts.",
+          "Add an explicit transfer or concentration step from hydrothermal alpha-ketoglutarate formation to the surface environment.",
+          "Correct upstream stoichiometry in rxn_001 through rxn_005 before evaluating the surface terminal step."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.5,
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_007": 0.08
+        },
+        "chemical_feasibility": 0.27,
+        "pathway_coherence": 0.43,
+        "environmental_progression": 0.29,
+        "target_achievement": 0.17,
+        "overall_confidence": 0.22,
+        "feedback": "P7 removes rxn_001 but still contains only unbalanced reactions. rxn_002 needs H2O, rxn_003 needs an oxidant, rxn_004 needs CO2, rxn_005 is oversimplified, and rxn_007 lacks the reductant and coproducts required for a real photoreductive amination. Movement from hydrothermal chemistry to a ZnS surface setting is not justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Make rxn_007 a real photoredox process with an explicit sacrificial donor or reductant and balanced coproducts.",
+          "Add the missing H2O and CO2 species upstream and define the oxidant for rxn_003.",
+          "Justify transport from hydrothermal chemistry to a ZnS-bearing surface setting."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_003": 0.2,
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_007": 0.08
+        },
+        "chemical_feasibility": 0.27,
+        "pathway_coherence": 0.44,
+        "environmental_progression": 0.3,
+        "target_achievement": 0.18,
+        "overall_confidence": 0.23,
+        "feedback": "The shortened surface route is strategically coherent, but rxn_003, rxn_004, rxn_005, and rxn_007 all remain invalid as written. The final ZnS step is the main blocker because it omits the electrons or sacrificial donor needed for reduction, and the pathway still lacks a transport explanation between environments.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Repair upstream stoichiometry, especially the oxidant requirement in rxn_003 and CO2 release in rxn_004.",
+          "Rewrite rxn_007 with an explicit electron donor, proton balance, and coproducts.",
+          "Add a transport step and mark malate as a feedstock if that entry point is intended."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.65,
+          "rxn_005": 0.35,
+          "rxn_007": 0.08
+        },
+        "chemical_feasibility": 0.3,
+        "pathway_coherence": 0.46,
+        "environmental_progression": 0.32,
+        "target_achievement": 0.2,
+        "overall_confidence": 0.25,
+        "feedback": "P9 is the cleanest of the surface proposals, yet it still depends on three unbalanced steps. rxn_004 needs CO2 release, rxn_005 needs corrected coupling stoichiometry, and rxn_007 is not a credible standalone photoreductive amination without explicit redox accounting. Surface transfer and ZnS availability are also assumed rather than shown.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add CO2 to rxn_004 and correct the stoichiometry of rxn_005.",
+          "Replace rxn_007 with a balanced ZnS photochemical reduction including an electron donor.",
+          "Add an explicit hydrothermal-to-surface transfer step and mark oxaloacetate as a feedstock if intended."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_005": 0.35,
+          "rxn_007": 0.08
+        },
+        "chemical_feasibility": 0.19,
+        "pathway_coherence": 0.42,
+        "environmental_progression": 0.31,
+        "target_achievement": 0.16,
+        "overall_confidence": 0.22,
+        "feedback": "This is the shortest surface route, but it is not chemically defensible in its current form. rxn_005 is oversimplified and unbalanced, while rxn_007 lacks the reductant, protons, and coproduct bookkeeping needed to convert alpha-ketoglutarate and NH3 into glutamate under UV and ZnS. The pyruvate entry point and hydrothermal-to-surface handoff are also only implicit.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Balance or decompose rxn_005 into literature-grounded intermediate steps.",
+          "Replace rxn_007 with a fully specified photoredox amination that includes a reductant and coproducts.",
+          "Make the pyruvate entry point and the transfer to the surface environment explicit."
+        ]
+      }
+    ],
+    "best_pathway_id": "P5",
+    "overall_confidence": 0.33,
+    "network_feedback": "Connected network with a sensible convergence on alpha-ketoglutarate, but it is not a valid synthesis network as written. The deterministic check finds 7 of 7 reactions unbalanced and none fixable by stoichiometric coefficients alone: rxn_001 and rxn_003 need explicit oxidants or electron sinks, rxn_002 needs H2O, rxn_004 needs CO2, rxn_005 is oversimplified and at minimum needs corrected coproducts plus likely intermediate nodes, rxn_006 needs H2O, and rxn_007 needs an explicit photoredox donor rather than bare UV and ZnS. The hydrothermal setting is also asked to support both oxidation and reduction without a stated redox gradient, mixed hydrothermal to surface pathways lack a justified transfer step, and the molecule metadata should mark fumarate, malate, oxaloacetate, and pyruvate as starting nodes if those are intended entry points. P5 is the best current scaffold, but no pathway is approvable until conservation and environment details are corrected.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 7,
+      "n_balanced_as_written": 0,
+      "n_balanceable": 0,
+      "n_unbalanced": 7,
+      "n_unchecked": 0,
+      "fraction_balanceable": 0.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2 as product; CO as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "C": 1,
+            "O": 2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: CO2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product; O2 as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as product",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: O2 as product",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

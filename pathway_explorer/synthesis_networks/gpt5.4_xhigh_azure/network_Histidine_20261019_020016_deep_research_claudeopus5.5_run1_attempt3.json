@@ -1,0 +1,1107 @@
+{
+  "target_molecule": "Histidine",
+  "network": {
+    "target_molecule": "Histidine",
+    "overall_strategy": "Use the only experimentally grounded prebiotic framework for histidine: formose-derived C4 aldoses and HCN/NH3-derived formamidine in surface evaporitic pools. The network centers the low-yield erythrose/formamidine annulation to imidazole-4-acetaldehyde, then reaches histidine either by the experimentally observed one-pot HCN/NH3 conversion or by the explicit Strecker aminonitrile plus hydrolysis sequence. Threose analogues and imidazole-4-glycol salvage are included as low-weight extrapolations, so the 10 pathways are variants of one contested chemistry rather than 10 independent validated syntheses. Unsupported hydrothermal, meteoritic, spark, and cyanosulfidic routes are not encoded as productive histidine-forming edges.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH4N2",
+        "iupac_name": "methanimidamide",
+        "common_name": "formamidine",
+        "inchi": "InChI=1S/CH4N2/c2-1-3/h1H,(H3,2,3)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H8O4",
+        "iupac_name": "erythro-2,3,4-trihydroxybutanal",
+        "common_name": "erythrose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4+/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H8O4",
+        "iupac_name": "threo-2,3,4-trihydroxybutanal",
+        "common_name": "threose",
+        "inchi": "InChI=1S/C4H8O4/c5-1-3(7)4(8)2-6/h1,3-4,6-8H,2H2/t3-,4-/m1/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-(1H-imidazol-4-yl)ethanal",
+        "common_name": "imidazole-4-acetaldehyde",
+        "inchi": "InChI=1S/C5H6N2O/c8-2-1-5-3-6-4-7-5/h2-4H,1H2,(H,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H8N2O2",
+        "iupac_name": "2-(1H-imidazol-4-yl)ethane-1,1-diol",
+        "common_name": "imidazole-4-glycol",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C6H8N4",
+        "iupac_name": "2-amino-3-(1H-imidazol-4-yl)propanenitrile",
+        "common_name": "histidine aminonitrile",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H9N3O2",
+        "iupac_name": "2-amino-3-(1H-imidazol-4-yl)propanoic acid",
+        "common_name": "histidine",
+        "inchi": "InChI=1S/C6H9N3O2/c7-5(6(10)11)1-4-2-8-3-9-4/h2-3,5H,1,7H2,(H,8,9)(H,10,11)",
+        "role": "target",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Formose tetrose branch from formaldehyde",
+        "inputs": [
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "alkaline wet-dry formose chemistry in evaporitic pools; low tetrose selectivity; anoxic"
+        },
+        "mechanism": "Base-promoted aldolization and isomerization of formaldehyde generate low-abundance tetroses.",
+        "reasoning": "This net step supplies the C4 aldoses required by the Shen histidine framework. Shen et al. (1987) presupposed erythrose from formaldehyde/formose chemistry, but V\u00e1zquez-Salazar et al. (2016) and V\u00e1zquez-Salazar et al. (2018) emphasize that erythrose and threose are minor, unstable formose products, so this is a major bottleneck and is represented as low-flux rather than robust."
+      },
+      {
+        "id": "rxn_002",
+        "name": "HCN-ammonia amidination to formamidine",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "evaporative concentration in HCN/NH3-rich pools; mildly basic; amidine hydrolysis competes strongly"
+        },
+        "mechanism": "Ammonia addition to cyanide-derived carbon followed by tautomerization gives the amidine pool.",
+        "reasoning": "Formamidine is the amidine used in the only experimental histidine synthesis from small molecules (Shen et al., 1987; Shen et al., 1990). The chemistry is simple enough to include, but its environmental accumulation is heavily contested because the literature reports the need for high formamidine concentration and rapid hydrolysis undermines persistence (V\u00e1zquez-Salazar et al., 2016; V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Erythrose-formamidine annulation to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "concentrated aqueous pool or drying film; exact original Shen conditions are incompletely available in the supplied report"
+        },
+        "mechanism": "Condensation of the tetrose with formamidine, followed by an Amadori-type rearrangement, imidazole ring closure, and dehydration, yields the aldehyde.",
+        "reasoning": "This is the central experimentally supported bottleneck. Shen et al. (1987) reported imidazole-4-acetaldehyde from erythrose plus formamidine at up to about 1.6% based on erythrose. Later critiques argue that the chemistry is real but prebiotically weak because simultaneous accumulation of erythrose and formamidine is unlikely (V\u00e1zquez-Salazar et al., 2016; V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Erythrose-formamidine annulation to imidazole-4-glycol",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "same low-selectivity annulation regime as rxn_003; side-product branch"
+        },
+        "mechanism": "Parallel annulation and hydration chemistry diverts the tetrose/amidine system into a more oxygenated imidazole side product.",
+        "reasoning": "Shen et al. (1987) reported imidazole-4-glycol at up to about 6.8% based on erythrose. The literature treats this as a coproduct or sink, not as a validated productive intermediate to histidine. It is included here conservatively as a reservoir branch, with downstream rescue kept explicitly low confidence (V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Threose-formamidine annulation to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "concentrated aqueous pool or drying film; direct threose-specific histidine data are unavailable"
+        },
+        "mechanism": "The same aldose-amidine annulation sequence is extrapolated to the threo tetrose isomer.",
+        "reasoning": "This edge is speculative but chemically motivated. V\u00e1zquez-Salazar et al. (2018) note that the stereochemical information in the C4 aldose is lost during annulation, so any C4 aldose could in principle feed the same imidazole aldehyde. No direct threose-specific histidine experiment was reported by Shen et al., so this branch is assigned low weight."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Threose-formamidine annulation to imidazole-4-glycol",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "same extrapolated threose annulation regime as rxn_005; side-product branch"
+        },
+        "mechanism": "Parallel annulation and hydration chemistry from threose generates the glycol reservoir branch.",
+        "reasoning": "This is a second speculative threose analogue. It follows from the same stereochemistry-erasing argument discussed by V\u00e1zquez-Salazar et al. (2018), but no direct report shows threose producing this exact imidazole glycol. It is included only as a low-confidence extension of the Shen framework."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Glycol reservoir collapse to imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "drying or concentration-assisted aldehyde-hydrate collapse; highly speculative salvage edge"
+        },
+        "mechanism": "If the glycol behaves as or equilibrates with an aldehyde hydrate, dehydration returns the free aldehyde.",
+        "reasoning": "This step is explicitly speculative. Shen et al. (1987) reported imidazole-4-glycol, but no productive conversion back to imidazole-4-acetaldehyde was shown in the histidine system. The edge is included only by treating the reported glycol as a hydrate-like reservoir that can collapse to the aldehyde; V\u00e1zquez-Salazar et al. (2018) specifically note that such extra transformations were not demonstrated."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker capture of imidazole-4-acetaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN- and NH3-rich aqueous pool; anoxic"
+        },
+        "mechanism": "The aldehyde forms an imine or iminium with ammonia, cyanide adds, and the histidine aminonitrile is produced with water loss.",
+        "reasoning": "This is the expected mechanistic Strecker step from the Shen system. Shen et al. (1990) did not isolate the aminonitrile but obtained histidine after adding HCN and NH3 to the aldehyde-containing mixture, implying this intermediate. The pairing of imidazole-4-acetaldehyde with histidine in Strecker logic is also used in parent-body modeling (Cobb et al., 2015)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of histidine aminonitrile",
+        "inputs": [
+          "mol_010",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "aqueous aging or mild heating; ammonia released on nitrile hydrolysis"
+        },
+        "mechanism": "Sequential hydration of the nitrile to amide and then acid completes the amino acid skeleton.",
+        "reasoning": "This intermediate-level step was not independently isolated in the supplied histidine literature, so it is less directly evidenced than the net one-pot transformation. It is nevertheless the standard completion of Strecker chemistry and is mechanistically required if the Shen et al. (1990) product arose through the conventional aminonitrile pathway (Shen et al., 1990; Cobb et al., 2015)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Net one-pot conversion of imidazole-4-acetaldehyde to histidine",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN and NH3 added to the unpurified annulation mixture; NH3 present in the pot but net-neutral in the balanced overall step"
+        },
+        "mechanism": "Net Strecker capture followed by aminonitrile hydrolysis gives histidine without isolating the intermediates.",
+        "reasoning": "This is the experimentally supported terminal net step. Shen et al. (1990) converted the unpurified imidazole-4-acetaldehyde mixture to histidine by adding HCN and ammonia, identifying histidine at about 3.5% relative to erythrose. Because the aminonitrile hydrolysis returns ammonia, NH3 is a condition of the pot even though it cancels from the net stoichiometry."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Net one-pot erythrose-to-histidine sequence",
+        "inputs": [
+          "mol_005",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "single pooled surface setting with evaporative concentration; NH3 present in the pot but omitted stoichiometrically because it is net-neutral"
+        },
+        "mechanism": "A balanced net compression of annulation, Strecker capture, and hydrolysis in the erythrose branch.",
+        "reasoning": "This node compresses the experimentally reported erythrose route into a single balanced one-pot transformation. Shen et al. (1990) effectively executed this sequence by forming the imidazole precursor mixture first and then adding HCN and ammonia without isolating intermediates. The chemistry is literature-guided but remains severely concentration-limited and prebiotically contested because of the tetrose and formamidine supply problem (Shen et al., 1990; V\u00e1zquez-Salazar et al., 2016; V\u00e1zquez-Salazar et al., 2018)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Net one-pot threose-to-histidine sequence",
+        "inputs": [
+          "mol_006",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "single pooled surface setting with evaporative concentration; NH3 present in the pot but omitted stoichiometrically because it is net-neutral"
+        },
+        "mechanism": "A speculative net compression of annulation, Strecker capture, and hydrolysis in the threose branch.",
+        "reasoning": "This is a low-weight analogue of rxn_011. It is included because later discussion of the Shen chemistry argues that C4-aldose stereochemistry is erased during annulation, so threose could in principle substitute for erythrose. No direct threose-to-histidine experiment has been reported, so this edge remains explicitly speculative (V\u00e1zquez-Salazar et al., 2018; Shen et al., 1990)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Core erythrose annulation plus net terminal conversion",
+        "description": "Best-supported explicit route: formose-derived erythrose, contested formamidine supply, experimentally reported aldehyde formation, then the experimentally supported net terminal HCN/NH3 conversion.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Core erythrose annulation with explicit aminonitrile",
+        "description": "Mechanistic expansion of the erythrose route that exposes the histidine aminonitrile intermediate rather than collapsing the terminal chemistry into one net step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Compressed one-pot erythrose route",
+        "description": "Shortest literature-guided erythrose path, representing the reported one-pot outcome without isolating imidazole-4-acetaldehyde as a separate productive node.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Threose analogue plus net terminal conversion",
+        "description": "Low-weight analogue of the core route in which the threo tetrose replaces erythrose, then feeds the same imidazole aldehyde and net terminal conversion.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Threose analogue with explicit aminonitrile",
+        "description": "Mechanistic version of the threose route that shows the conventional Strecker aminonitrile before hydrolysis to histidine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Compressed one-pot threose route",
+        "description": "Speculative one-pot threose analogue of the reported erythrose sequence, included because C4 stereochemistry is expected to be lost during annulation.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Erythrose glycol-reservoir salvage plus net terminal conversion",
+        "description": "A low-confidence rescue route in which the reported imidazole-4-glycol side branch is treated as a reservoir that can collapse back to the aldehyde before the net terminal histidine-forming step.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_009",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Erythrose glycol-reservoir salvage with explicit aminonitrile",
+        "description": "The same reservoir-salvage concept as P7, but with the terminal chemistry expanded into explicit Strecker capture and aminonitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_004",
+          "mol_009",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Threose glycol-reservoir salvage plus net terminal conversion",
+        "description": "Speculative threose analogue of the glycol-reservoir branch, followed by collapse to the aldehyde and the experimentally grounded net terminal conversion logic.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004",
+          "mol_009",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Threose glycol-reservoir salvage with explicit aminonitrile",
+        "description": "Most speculative route in the network: threose analogue plus glycol-reservoir rescue and explicit Strecker-hydrolysis completion.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_004",
+          "mol_009",
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_008",
+      "mol_009",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Histidine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_003": 0.84,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.71,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.79,
+        "feedback": "This is the best-aligned pathway with the literature: the erythrose-formamidine annulation in rxn_003 is the core demonstrated bottleneck, and rxn_010 reasonably captures the experimentally observed one-pot conversion from imidazole-4-acetaldehyde to histidine. Confidence is capped by rxn_001, which compresses the formose tetrose branch into one reaction, and by rxn_002, which assumes prebiotic accumulation of formamidine under surface conditions despite published hydrolysis concerns. rxn_010 should also note NH3 as a participating condition and acknowledge competing cyanohydrin or alpha-hydroxy-acid side chemistry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Split rxn_001 into separate erythrose and threose production edges or specify it as an 8 CH2O to tetrose mixture process with explicit formose conditions.",
+          "Annotate rxn_002 with the evidence level and concentration challenge for formamidine, ideally citing the 0.3 M criticism.",
+          "Keep rxn_010 as a net edge only if NH3 participation and side-product competition are recorded in the reaction note."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_003": 0.84,
+          "rxn_008": 0.8,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.86,
+        "overall_confidence": 0.78,
+        "feedback": "Mechanistically coherent explicit Strecker route. rxn_008 is chemically plausible for an imidazole aldehyde, but the specific aminonitrile intermediate was not the experimentally isolated product in the cited histidine work, so this pathway is slightly less directly evidenced than the net one-pot version. rxn_009 is plausible but should be written as histidine aminonitrile plus 2 H2O to histidine plus NH3 if explicit stoichiometry is desired.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 stoichiometry to include 2 H2O.",
+          "Add reaction notes on competing cyanohydrin and hydroxy-acid formation during rxn_008.",
+          "Attach direct literature citations to rxn_003 and the Strecker-hydrolysis sequence so the evidential boundary is clear."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_011": 0.76
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.86,
+        "overall_confidence": 0.77,
+        "feedback": "This compressed erythrose route matches the published overall logic but collapses several experimentally distinct operations into rxn_011. That is acceptable as a summary edge, yet it hides the annulation bottleneck and the need for NH3 during the Strecker stage, so it is weaker for mechanistic or kinetic interpretation than P1 or P2.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Replace rxn_011 with rxn_003 plus rxn_010 or rxn_008 plus rxn_009 when detailed pathway analysis is needed.",
+          "Record NH3 as a participating condition for rxn_011 even if it cancels in the net stoichiometry.",
+          "Use explicit water stoichiometry for rxn_011 if quantitative modeling is intended."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_005": 0.6,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.76,
+        "environmental_progression": 0.66,
+        "target_achievement": 0.81,
+        "overall_confidence": 0.71,
+        "feedback": "This pathway is structurally coherent, but its distinguishing step, rxn_005, is a low-support extrapolation from the erythrose chemistry rather than a clearly demonstrated histidine-forming edge. It is reasonable as a hypothesis because C4 aldose stereochemistry may be erased during ring formation, but it should not be ranked alongside the erythrose route without explicit lower confidence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Mark rxn_005 as speculative or low-weight rather than equal-status chemistry.",
+          "Provide a citation or note explaining why a threose analogue is expected to converge to the same imidazole aldehyde.",
+          "Keep the environmental description explicit about concentration by evaporation and rapid formamidine hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_005": 0.6,
+          "rxn_008": 0.8,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.76,
+        "environmental_progression": 0.66,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "This is the explicit mechanistic version of the threose hypothesis. The main weakness is still rxn_005, not the Strecker chemistry, and rxn_009 again needs 2 H2O if rendered explicitly. As encoded, the pathway is plausible but weakly evidenced and should be treated as an extrapolative branch.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 stoichiometry to include 2 H2O.",
+          "Down-weight rxn_005 until direct experimental support for the threose annulation is available.",
+          "Document whether the same surface pool conditions are intended to support both the annulation and the subsequent hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_012": 0.55
+        },
+        "chemical_feasibility": 0.61,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.67,
+        "feedback": "This is the most compressed and least supported threose variant. rxn_012 is only justified as a net extrapolation from the erythrose case, and it omits NH3 as a participating condition while compressing multiple selectivity-sensitive steps into a single edge.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Expand rxn_012 into explicit annulation and Strecker stages or label it as a speculative net edge.",
+          "Annotate NH3 participation and use 2 H2O on the product side if explicit stoichiometry is shown.",
+          "Do not present this route as equivalent in evidential status to the erythrose pathway."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_004": 0.74,
+          "rxn_007": 0.42,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.61,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.77,
+        "overall_confidence": 0.67,
+        "feedback": "The literature supports rxn_004 as a side branch or reservoir, but rxn_007 is the weak point: conversion of imidazole-4-glycol to imidazole-4-acetaldehyde is not established in the same prebiotic setting and was explicitly identified as an open problem. This pathway is best viewed as a salvage hypothesis, not as a validated productive route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Treat rxn_007 as a low-confidence salvage edge or even as a sink until direct evidence is available.",
+          "Specify whether drying, oxidation, or another process is meant to drive rxn_007 under surface conditions.",
+          "Keep rxn_004 clearly labeled as an observed side branch rather than a reliable precursor pool."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_004": 0.74,
+          "rxn_007": 0.42,
+          "rxn_008": 0.8,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.76,
+        "overall_confidence": 0.66,
+        "feedback": "This pathway adds an explicit Strecker sequence to the glycol salvage scenario, but the bottleneck remains rxn_007. Once the aldehyde exists, rxn_008 and rxn_009 are reasonable; the confidence loss comes from the unproven conversion of the glycol reservoir into that aldehyde.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 to include 2 H2O if using explicit stoichiometry.",
+          "Demote rxn_007 to a speculative edge unless supported by experiment.",
+          "Separate observed chemistry from inferred chemistry in pathway annotations so the salvage status is obvious."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_006": 0.57,
+          "rxn_007": 0.42,
+          "rxn_010": 0.82
+        },
+        "chemical_feasibility": 0.54,
+        "pathway_coherence": 0.64,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.71,
+        "overall_confidence": 0.61,
+        "feedback": "This route stacks two extrapolations: the threose annulation branch in rxn_006 and the undemonstrated salvage conversion in rxn_007. The final net conversion to histidine is reasonable only if both speculative upstream steps succeed, so this pathway is much weaker than the erythrose-based routes.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Either remove this route from the productive set or mark both rxn_006 and rxn_007 as low-confidence hypotheses.",
+          "Provide a clear rationale for why threose should furnish the same glycol branch under the stated conditions.",
+          "Use this pathway only as a contingency branch, not as evidence for robust target formation."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_002": 0.5,
+          "rxn_006": 0.57,
+          "rxn_007": 0.42,
+          "rxn_008": 0.8,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.64,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.6,
+        "feedback": "This is the explicit mechanistic version of the weakest class of pathway. The downstream Strecker chemistry is acceptable, but the route depends on both rxn_006 and rxn_007, neither of which is strongly evidenced for histidine-forming chemistry, and rxn_009 again needs 2 H2O if written explicitly.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 stoichiometry to include 2 H2O.",
+          "Collapse this to a nonproductive or clearly speculative branch unless direct experimental support appears.",
+          "Explicitly encode confidence weights so this double-extrapolation route does not look equivalent to the core erythrose path."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.77,
+    "network_feedback": "Network validity is good: it is connected, uses molecule IDs consistently, and the deterministic balance check reports 0 UNBALANCED reactions. Literature alignment is a major strength: the network correctly centers the Shen-Yang-Miller-Oro erythrose plus formamidine route, treats histidine as a contested low-flux product, and avoids unsupported hydrothermal, cyanosulfidic, spark, and meteoritic productive edges. The best-supported chemistry is rxn_003 followed by either rxn_010 or rxn_008 plus rxn_009; the biggest weaknesses are environmental and evidential, namely rxn_002 requiring concentrated formamidine despite rapid hydrolysis, rxn_001 compressing the formose branch and effectively needing 8 CH2O if both tetroses are produced, rxn_007 being undemonstrated, and the threose branches rxn_005, rxn_006, and rxn_012 being extrapolations rather than validated histidine-forming edges. Stoichiometric cleanup would help: rxn_003 and rxn_005 should show 3 H2O, rxn_004 and rxn_006 should show 2 H2O, rxn_009 should show 2 H2O, and rxn_011 and rxn_012 should show 2 H2O if written explicitly; rxn_010 to rxn_012 should also annotate NH3 as a participating condition even when it cancels in the net equation. The narrative says the speculative branches are low-weight, but the graph does not encode those weights, so they currently look too similar to the core validated route. Overall, this is a connected and literature-aware network with a credible core pathway to histidine, but it remains below approval because the key prebiotic supply problem for tetroses and formamidine is unresolved and the strongest result still lacks independent modern replication.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 4,
+      "n_balanceable": 8,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 8,
+            "mol_005": 1,
+            "mol_006": 1
+          },
+          "element_delta": {
+            "C": -7,
+            "O": -7,
+            "H": -14
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_008": 1,
+            "mol_007": 3
+          },
+          "element_delta": {
+            "H": 4,
+            "O": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_009": 1,
+            "mol_007": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_008": 1,
+            "mol_007": 3
+          },
+          "element_delta": {
+            "H": 4,
+            "O": 2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_009": 1,
+            "mol_007": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_008": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_010": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_007": 2,
+            "mol_011": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_011": 1,
+            "mol_007": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_011": 1,
+            "mol_007": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

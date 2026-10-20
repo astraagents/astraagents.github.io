@@ -1,0 +1,1067 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "Use succinaldehyde as a C4 dialdehyde hub that is intrinsically predisposed to five-membered-ring chemistry. In anoxic H2-bearing surface geothermal pools, succinaldehyde undergoes reductive amination either directly to 1-pyrroline or first to gamma-aminobutyraldehyde; the aminoaldehyde can then cyclize explicitly or be trapped immediately by HCN as the cyclic imine forms. From 1-pyrroline, Strecker-type cyanation gives proline nitrile, and controlled hydrolysis proceeds either directly to racemic proline or through a prolinamide relay; one-pot cyanation-plus-hydrolysis variants are also included where the same pool experiences sequential concentration and rehydration. L-proline is obtained only by explicit physical resolution of racemic proline on a handed mineral interface, with a D-rich residual stream represented separately. This avoids unsupported direct CO2 carboxylation and keeps all H2, H2O, and NH3 bookkeeping explicit.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H6O2",
+        "iupac_name": "butane-1,4-dial",
+        "common_name": "succinaldehyde",
+        "inchi": "InChI=1S/C4H6O2/c5-3-1-2-4-6/h3-4H,1-2H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H9NO",
+        "iupac_name": "4-aminobutanal",
+        "common_name": "gamma-aminobutyraldehyde",
+        "inchi": "InChI=1S/C4H9NO/c5-3-1-2-4-6/h4H,1-3,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H7N",
+        "iupac_name": "2,3,4,5-tetrahydro-1H-pyrrole",
+        "common_name": "1-pyrroline",
+        "inchi": "InChI=1S/C4H7N/c1-2-4-5-3-1/h3H,1-2,4H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H8N2",
+        "iupac_name": "pyrrolidine-2-carbonitrile",
+        "common_name": "proline nitrile",
+        "inchi": "InChI=1S/C5H8N2/c6-4-5-2-1-3-7-5/h5,7H,1-3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H10N2O",
+        "iupac_name": "pyrrolidine-2-carboxamide",
+        "common_name": "prolinamide",
+        "inchi": "InChI=1S/C5H10N2O/c6-5(8)4-2-1-3-7-4/h4,7H,1-3H2,(H2,6,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO2",
+        "iupac_name": "pyrrolidine-2-carboxylic acid",
+        "common_name": "DL-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H9NO2",
+        "iupac_name": "(2R)-pyrrolidine-2-carboxylic acid",
+        "common_name": "D-proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m1/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Telescoped reductive amination and cyclization of succinaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Fe-Ni metal surface"
+        ],
+        "conditions": {
+          "temperature": "335-360K",
+          "pressure": "1 atm",
+          "catalyst": "Fe-Ni metal surface",
+          "aqueous": "true",
+          "other": "Anoxic subaerial geothermal field; gas-water-mineral interface on reduced Fe-Ni grains; pH 7-9; lower water activity during drying favors telescoped ring closure while limited H2 suppresses overreduction."
+        },
+        "mechanism": "One aldehyde first undergoes reductive amination on the Fe-Ni surface; the resulting aminoaldehyde cyclizes intramolecularly and dehydrates to the cyclic imine without needing to accumulate in bulk solution.",
+        "reasoning": "This is chemically equivalent to mono-reductive amination of one aldehyde followed by spontaneous cyclodehydration of the resulting gamma-aminobutyraldehyde. Succinaldehyde is predisposed to five-membered closure, and explicit H2 on a reduced metal surface accounts for the necessary reduction without hidden redox assumptions. Lower water activity favors the telescoped outcome over accumulation of the open-chain aminoaldehyde."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Mono-reductive amination of succinaldehyde to 4-aminobutanal",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Fe-Ni metal surface"
+        ],
+        "conditions": {
+          "temperature": "320-345K",
+          "pressure": "1 atm",
+          "catalyst": "Fe-Ni metal surface",
+          "aqueous": "true",
+          "other": "Same anoxic geothermal setting as rxn_001 but under wetter phases and shorter catalyst contact times; pH 7-9; monoamination can outpace full ring closure."
+        },
+        "mechanism": "One aldehyde forms an imine with ammonia and is reduced by H2 activated on the metal surface, leaving the second aldehyde intact.",
+        "reasoning": "Under wetter or shorter-contact conditions the first reductive amination product can accumulate before it cyclizes. The open-chain aminoaldehyde is likely transient, but it is a chemically reasonable branch point because it is the immediate precursor to both 1-pyrroline and direct cyanide capture."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyclodehydration of 4-aminobutanal to 1-pyrroline",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Concentrating aqueous film or pool, neutral to mildly basic, anoxic."
+        },
+        "mechanism": "The amine attacks the aldehyde intramolecularly to give a cyclic hemiaminal, which dehydrates to the imine.",
+        "reasoning": "Gamma-aminobutyraldehyde is expected to equilibrate readily with 1-pyrroline. No extra redox reagent is needed; only explicit water loss must be tracked. This is one of the most secure steps in the network."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Direct cyanide trapping of the aminoaldehyde/cyclic-imine pool to proline nitrile",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-325K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN-rich evaporitic or geothermal pool; NH3/NH4+ buffering keeps a small CN- fraction available; aminoaldehyde is trapped as soon as it cyclizes."
+        },
+        "mechanism": "4-Aminobutanal equilibrates with 1-pyrroline; cyanide adds to the transient cyclic imine and the net transformation expels water from the aminoaldehyde pool.",
+        "reasoning": "Because gamma-aminobutyraldehyde continually equilibrates with the cyclic imine, dissolved HCN can trap that transient imine directly. This telescoped step is chemically conservative: it is simply cyclization plus imine cyanation with explicit water loss, not a novel transformation."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Strecker capture of 1-pyrroline to proline nitrile",
+        "inputs": [
+          "mol_007",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "HCN-rich drying film or pool, mildly basic with NH3/NH4+ buffering, anoxic."
+        },
+        "mechanism": "Cyanide attacks the electrophilic imine carbon of the cyclic imine to give racemic 2-cyanopyrrolidine.",
+        "reasoning": "Cyanide addition to a cyclic imine is classical Strecker-type chemistry and yields the racemic nitrile expected from an achiral pool. This route relies on imine reactivity rather than poorly supported direct carboxylation chemistry."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Full hydrolysis of proline nitrile to racemic proline",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Later wet phase of the same geothermal pool; prolonged heating and pH cycling from mildly acidic to mildly basic drive complete nitrile hydrolysis."
+        },
+        "mechanism": "The nitrile is hydrated to the amide and then further hydrolyzed to the carboxylic acid, releasing ammonia overall.",
+        "reasoning": "Hot aqueous nitrile hydrolysis to amino acids is prebiotically plausible but slow, so the step is assigned to prolonged wet heating in the same pool. Two waters are made explicit and NH3 is released explicitly, keeping the bookkeeping transparent. This is the chemically conservative completion of a Strecker sequence."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Partial hydrolysis of proline nitrile to prolinamide",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-345K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Shorter or less water-rich wet phase in the same anoxic pool; partial hydrolysis is favored over full conversion."
+        },
+        "mechanism": "First hydration of the nitrile gives the corresponding carboxamide.",
+        "reasoning": "Partial hydrolysis of an amino nitrile to the corresponding amide is a standard intermediate stage. Including this node allows a realistic hydrolysis relay rather than forcing every nitrile directly to the acid under all conditions."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of prolinamide to racemic proline",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Continued rewetting and hot exposure after prolinamide accumulation; anoxic, with repeated geothermal cycling."
+        },
+        "mechanism": "Amide hydrolysis furnishes the carboxylic acid and releases ammonia.",
+        "reasoning": "Amide hydrolysis is more sluggish than nitrile hydration but remains plausible during repeated hot wet phases. Water and NH3 are explicit, so the mass balance remains clear. This provides a chemically orthodox finish to DL-proline."
+      },
+      {
+        "id": "rxn_009",
+        "name": "One-cycle cyanation and partial hydrolysis of 1-pyrroline to prolinamide",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-345K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Sequential dry-down and brief rewetting in the same HCN-bearing geothermal pool; pH and hydration change over time rather than remaining static."
+        },
+        "mechanism": "HCN first traps the cyclic imine; limited aqueous heating then hydrates the nitrile only to the amide stage.",
+        "reasoning": "If cyanide capture is followed by only partial hydrolysis in the same wet-dry cycle, prolinamide should accumulate rather than the fully hydrolyzed acid. The step is effectively rxn_005 plus rxn_007 without isolation of the nitrile."
+      },
+      {
+        "id": "rxn_010",
+        "name": "One-pot Strecker-hydrolysis of 1-pyrroline to racemic proline",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Sequential concentration followed by extended hot rewetting in the same pool; temporal pH and hydration changes allow cyanide capture first and hydrolysis later."
+        },
+        "mechanism": "HCN traps the cyclic imine and continued aqueous heating drives full nitrile hydrolysis to the amino acid.",
+        "reasoning": "Extended rehydration and heating after cyanide capture can carry the same chemistry all the way to the amino acid. Two waters and ammonia are written explicitly so the one-pot route remains chemically transparent."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Fractional mineral-surface resolution of racemic proline",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "handed alpha-quartz surface"
+        ],
+        "conditions": {
+          "temperature": "280-320K",
+          "pressure": "1 atm",
+          "catalyst": "handed alpha-quartz surface",
+          "aqueous": "true",
+          "other": "Repeated evaporation-redissolution on a handed mineral interface in an evaporitic pool; physical partitioning gives an L-enriched recoverable fraction and a D-rich residual or adsorbed fraction."
+        },
+        "mechanism": "Repeated adsorption and crystallization at a handed mineral interface partitions the racemic pool into separate L-enriched and D-enriched fractions.",
+        "reasoning": "This final step is intentionally framed as a physical resolution, not an asymmetric synthesis. A handed mineral surface can partition a racemic proline pool into separate L-enriched and D-enriched fractions; the D-rich residual is represented explicitly as mol_012 so no full chemical conversion is claimed. The achievable enantiomeric excess is uncertain and likely local rather than global, but explicit separation is more chemically honest than treating DL-proline as if it directly became L-proline."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct 1-pyrroline branch with full nitrile hydrolysis",
+        "description": "Succinaldehyde undergoes telescoped reductive amination and cyclization to 1-pyrroline, then stepwise Strecker capture to proline nitrile, full hydrolysis to DL-proline, and explicit mineral resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct 1-pyrroline branch with amide relay",
+        "description": "The same direct entry to 1-pyrroline is followed by cyanation to proline nitrile, partial hydrolysis to prolinamide, further hydrolysis to DL-proline, and mineral resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct 1-pyrroline branch with one-cycle amide capture",
+        "description": "After direct formation of 1-pyrroline, cyanide capture and partial hydrolysis occur in one wet-dry cycle to prolinamide, which then hydrolyzes to DL-proline before resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct 1-pyrroline branch with one-pot amino-acid finish",
+        "description": "Direct 1-pyrroline formation is followed by one-pot cyanation plus full hydrolysis to DL-proline in the same geothermal pool, then explicit resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Stepwise aminoaldehyde branch with full nitrile hydrolysis",
+        "description": "Succinaldehyde first gives gamma-aminobutyraldehyde, which cyclizes to 1-pyrroline; Strecker cyanation then gives proline nitrile, followed by full hydrolysis and mineral resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Stepwise aminoaldehyde branch with amide relay",
+        "description": "The explicit aminoaldehyde and 1-pyrroline sequence is followed by nitrile formation, partial hydrolysis to prolinamide, completion to DL-proline, and resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Stepwise aminoaldehyde branch with one-cycle amide capture",
+        "description": "After explicit aminoaldehyde formation and cyclization, 1-pyrroline undergoes one-cycle cyanation and partial hydrolysis to prolinamide before final hydrolysis and resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_009",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Stepwise aminoaldehyde branch with one-pot amino-acid finish",
+        "description": "Succinaldehyde gives gamma-aminobutyraldehyde, then 1-pyrroline, which is converted in one pool to DL-proline by cyanation plus full hydrolysis before mineral resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Aminoaldehyde direct-capture branch with full nitrile hydrolysis",
+        "description": "Gamma-aminobutyraldehyde is formed first and then trapped directly as proline nitrile by HCN without isolating 1-pyrroline; full hydrolysis and explicit resolution then yield the target branch.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Aminoaldehyde direct-capture branch with amide relay",
+        "description": "The aminoaldehyde/cyclic-imine pool is trapped directly as proline nitrile, which hydrolyzes through prolinamide before DL-proline is physically resolved to the L-enriched fraction.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_008",
+          "mol_009",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_008",
+      "mol_009",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.63,
+          "rxn_005": 0.88,
+          "rxn_006": 0.77,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.72,
+        "feedback": "Coherent route to racemic proline through 1-pyrroline and proline nitrile. rxn_001 is plausible only if the surface setting includes a real H2-activating mineral or metal catalyst, and its written stoichiometry should include 2 H2O. rxn_006 also needs 2 H2O. The limiting step for the target is rxn_011, which is a physical resolution rather than a demonstrated asymmetric synthesis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Specify a realistic H2-activating surface catalyst for rxn_001, such as an Fe/Ni-bearing mineral or native metal",
+          "Write rxn_001 and rxn_006 with 2 H2O explicitly",
+          "Model rxn_011 as 2 mol_010 -> mol_011 + mol_012 and give an adsorption or crystallization protocol with measured enantioenrichment"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.63,
+          "rxn_005": 0.88,
+          "rxn_007": 0.84,
+          "rxn_008": 0.83,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.61,
+        "overall_confidence": 0.74,
+        "feedback": "Most chemically coherent branch in this network. The amide relay makes nitrile hydrolysis more realistic than a single leap to proline, but rxn_001 still needs explicit H2 activation and should be written with 2 H2O. Confidence in L-proline is capped by rxn_011, because mineral-surface resolution is only loosely specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Keep the amide relay, but specify temperature and pH windows for rxn_007 and rxn_008",
+          "Add an explicit H2-activating mineral or metal surface for rxn_001 and correct it to 2 H2O",
+          "Provide a concrete chiral mineral separation scheme for rxn_011 rather than a generic handed interface"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.63,
+          "rxn_009": 0.71,
+          "rxn_008": 0.83,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.69,
+        "feedback": "Reasonable net chemistry, but rxn_009 compresses cyanide addition and partial nitrile hydrolysis into one node and really needs explicit wet-dry or concentration-rehydration sequencing. rxn_001 also needs catalytic support and 2 H2O in the stoichiometry. rxn_011 remains the weakest step for claiming L-proline.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Split rxn_009 into cyanation then hydrolysis unless timed wet-dry or rehydration phases are documented",
+          "Add a plausible catalyst and corrected stoichiometry for rxn_001",
+          "Quantify the enantioselective separation assumed in rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.63,
+          "rxn_010": 0.66,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.66,
+        "target_achievement": 0.58,
+        "overall_confidence": 0.66,
+        "feedback": "Shortest branch, but also the most compressed. rxn_010 is only a plausible net transformation if cyanation, prolonged hydrolysis, and ammonia release occur over distinct phases; as written it needs 2 H2O. Together with the catalyst issue in rxn_001 and the weakly supported resolution in rxn_011, this lowers confidence.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Replace rxn_010 with explicit nitrile and or amide intermediates",
+          "Correct rxn_001 and rxn_010 to include the missing extra H2O",
+          "Describe how L-proline is physically resolved and isolated in rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_003": 0.9,
+          "rxn_005": 0.88,
+          "rxn_006": 0.77,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.69,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.71,
+        "feedback": "Mechanistically explicit start through mol_006 then cyclization is coherent, but free 4-aminobutanal is fleeting in water and rxn_002 needs a credible H2-activating surface plus control over mono-reductive amination selectivity. rxn_006 should include 2 H2O. rxn_011 still limits the target claim.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Treat mol_006 as an aminoaldehyde or cyclic-imine pool rather than a stable discrete compound",
+          "Specify the catalyst or mineral phase that enables selective mono-reductive amination in rxn_002",
+          "Write rxn_006 explicitly with 2 H2O and provide hydrolysis conditions"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_003": 0.9,
+          "rxn_005": 0.88,
+          "rxn_007": 0.84,
+          "rxn_008": 0.83,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.61,
+        "overall_confidence": 0.73,
+        "feedback": "Once 1-pyrroline is reached, this is a solid racemic proline route and the amide relay is sensible. The main weakness is rxn_002, because selective H2-driven formation of an aminoaldehyde in a generic surface pool is not well specified. Final access to L-proline still depends on the underdeveloped separation in rxn_011.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Define mol_006 as an equilibrium pool to reflect its rapid cyclization in water",
+          "Add a credible H2-activating catalyst and selectivity rationale for rxn_002",
+          "State the mineral, adsorption geometry, and expected enrichment for rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_003": 0.9,
+          "rxn_009": 0.71,
+          "rxn_008": 0.83,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.67,
+        "target_achievement": 0.59,
+        "overall_confidence": 0.68,
+        "feedback": "Connected and chemically possible in outline, but rxn_002 is environmentally underspecified and rxn_009 again bundles cyanation with hydrolysis into one step. That compression, plus the uncertain mineral-based enantioresolution in rxn_011, keeps confidence moderate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Either split rxn_009 into separate nodes or document the temporal cycling that makes the one-node net plausible",
+          "Specify a realistic catalyst for rxn_002",
+          "Recast rxn_011 as a separations protocol with quantified enantiomeric excess"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_003": 0.9,
+          "rxn_010": 0.66,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.73,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.58,
+        "overall_confidence": 0.65,
+        "feedback": "This branch is the least detailed stepwise option. After a plausible cyclization, rxn_010 jumps directly to proline and therefore hides the condition changes needed for cyanation and complete hydrolysis; it also needs 2 H2O in the stoichiometry. rxn_002 and rxn_011 remain the other major weak points.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Use rxn_005 plus hydrolysis steps instead of rxn_010 if you want a stronger mechanistic path",
+          "Correct rxn_010 to 2 H2O and specify hydrolysis conditions",
+          "Support rxn_002 with an explicit catalytic surface and rxn_011 with a real resolution protocol"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_004": 0.79,
+          "rxn_006": 0.77,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.72,
+        "feedback": "Direct trapping of the aminoaldehyde or cyclic-imine pool is a reasonable idea and fits the instability of mol_006. Still, rxn_002 needs an explicit mineral context for H2 activation, rxn_006 should be written with 2 H2O, and the final L-proline claim again depends on the weakly specified resolution step rxn_011.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Make mol_006 explicitly an aminoaldehyde or cyclic-imine pool",
+          "Correct rxn_006 to 2 H2O and state the hydrolysis regime",
+          "Add a mineral or metal catalyst for rxn_002 and a quantified enantioresolution method for rxn_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_002": 0.57,
+          "rxn_004": 0.79,
+          "rxn_007": 0.84,
+          "rxn_008": 0.83,
+          "rxn_011": 0.5
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.71,
+        "target_achievement": 0.61,
+        "overall_confidence": 0.73,
+        "feedback": "One of the stronger branches, because direct capture of the aminoaldehyde or cyclic-imine pool plus an explicit amide relay is mechanistically sensible. Confidence is still limited by the uncertain reductive amination in rxn_002 and by rxn_011, which is a separation step with little detail on achievable enantioenrichment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Keep the direct-capture logic, but specify the H2-activating surface required for rxn_002",
+          "State pH and temperature windows for rxn_007 and rxn_008",
+          "Provide a concrete and experimentally grounded separation protocol for rxn_011"
+        ]
+      }
+    ],
+    "best_pathway_id": "P2",
+    "overall_confidence": 0.73,
+    "network_feedback": "Network validity is high: the graph is connected, molecule IDs are used consistently enough for pathway tracing, and the balance check found no conservation violations. However, the balanceable reactions should be written explicitly as rxn_001: mol_005 + mol_003 + mol_001 -> mol_007 + 2 mol_002, rxn_006: mol_008 + 2 mol_002 -> mol_010 + mol_003, rxn_010: mol_007 + mol_004 + 2 mol_002 -> mol_010 + mol_003, and rxn_011 should be interpreted as 2 mol_010 -> mol_011 + mol_012. The core succinaldehyde -> 1-pyrroline -> proline nitrile -> proline logic is chemically coherent and reasonably plausible in a dynamic geothermal surface setting, especially in the pathways that use the amide relay. The main confidence limits are the underspecified H2-driven reductive amination in rxn_001 and rxn_002, the fact that mol_006 is really best treated as an aminoaldehyde or cyclic-imine pool, the condition compression in rxn_009 and rxn_010, and the weak support for rxn_011 as an efficient route from racemic proline to a distinct L-proline stream. Overall, the network supports racemic proline reasonably well but only moderately supports L-proline, and no pathway reaches the 0.8 approval threshold.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 11,
+      "n_balanced_as_written": 7,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_003": 1,
+            "mol_001": 1,
+            "mol_007": 1,
+            "mol_002": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_003": 1,
+            "mol_001": 1,
+            "mol_006": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_007": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_008": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_004": 1,
+            "mol_008": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 2,
+            "mol_010": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_002": 1,
+            "mol_010": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_004": 1,
+            "mol_002": 2,
+            "mol_010": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 2,
+            "mol_011": 1,
+            "mol_012": 1
+          },
+          "element_delta": {
+            "C": -5,
+            "H": -9,
+            "N": -1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

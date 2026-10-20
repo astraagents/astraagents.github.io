@@ -1,0 +1,1010 @@
+{
+  "target_molecule": "L-Alanine",
+  "network": {
+    "target_molecule": "L-alanine",
+    "overall_strategy": "Use geochemically plausible C2 feedstocks (acetylene and ethanol) to converge on acetaldehyde in geothermal surface settings. From acetaldehyde, exploit three chemically supported alanine-precursor branches: Strecker aminonitrile formation followed by stepwise hydrolysis, Strecker aminonitrile formation followed by direct net hydrolysis, and Bucherer-Bergs-type hydantoin formation followed by hydrolysis. Because achiral prebiotic synthesis is expected to furnish a racemic alanine pool, L-alanine is obtained only in the final stage by explicit mineral-surface resolution, with calcite- and quartz-mediated partitioning treated as alternative conditional routes.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C2H2",
+        "iupac_name": "ethyne",
+        "common_name": "acetylene",
+        "inchi": "InChI=1S/C2H2/c1-2/h1-2H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "C2H6O",
+        "iupac_name": "ethanol",
+        "common_name": "ethanol",
+        "inchi": "InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6N2",
+        "iupac_name": "2-aminopropanenitrile",
+        "common_name": "alanine nitrile",
+        "inchi": "InChI=1S/C3H6N2/c1-3(5)2-4/h3H,5H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H8N2O",
+        "iupac_name": "2-aminopropanamide",
+        "common_name": "alaninamide",
+        "inchi": "InChI=1S/C3H8N2O/c1-2(4)3(5)6/h2H,4H2,1H3,(H2,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H6N2O2",
+        "iupac_name": "5-methylimidazolidine-2,4-dione",
+        "common_name": "rac-5-methylhydantoin",
+        "inchi": "InChI=1S/C4H6N2O2/c1-2-3(7)6-4(8)5-2/h2H,1H3,(H2,5,6,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H7NO2",
+        "iupac_name": "2-aminopropanoic acid",
+        "common_name": "DL-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2S)-2-aminopropanoic acid",
+        "common_name": "L-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C3H7NO2",
+        "iupac_name": "(2R)-2-aminopropanoic acid",
+        "common_name": "D-alanine",
+        "inchi": "InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m1/s1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Acidic hydration of acetylene to acetaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic sulfur-rich hot-spring water; anoxic"
+        },
+        "mechanism": "Proton-assisted addition of water to acetylene gives vinyl alcohol, which tautomerizes to acetaldehyde.",
+        "reasoning": "Acetylene is a geochemically plausible C2 feedstock in volcanic or impact-processed surface settings. Acidic hot-spring waters can hydrate a C\u2261C bond and the enol product tautomerizes cleanly to acetaldehyde, avoiding the oxygen-sink problem that affects unsupported glycolaldehyde-to-acetaldehyde shortcuts."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Magnetite-mediated ethanol dehydrogenation to acetaldehyde",
+        "inputs": [
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": "magnetite",
+          "aqueous": false,
+          "other": "steam-rich or transiently dry geothermal mineral surface; anoxic"
+        },
+        "mechanism": "Surface-mediated dehydrogenation of the primary alcohol yields acetaldehyde and molecular hydrogen.",
+        "reasoning": "If prebiotic ethanol is available, its conversion to acetaldehyde is redox-explicit because H2 carries away the excess hydrogen. Magnetite-rich geothermal surfaces make this a more defensible acetaldehyde source than any unbalanced deoxygenation step."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Strecker synthesis of alanine nitrile from acetaldehyde",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN/NH3-rich wet-dry cycles in evaporitic pools"
+        },
+        "mechanism": "Acetaldehyde condenses with ammonia to an imine or iminium species, and cyanide adds to furnish the aminonitrile.",
+        "reasoning": "This is the strongest core branch in the network. Strecker chemistry from acetaldehyde requires no molecular oxygen, gives the correct C3/N2 framework directly, and includes water as the necessary byproduct."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aqueous hydration of alanine nitrile to alaninamide",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "heated hot-spring or evaporitic wet phase"
+        },
+        "mechanism": "Nucleophilic water addition to the nitrile followed by tautomerization furnishes the amide.",
+        "reasoning": "Aminonitriles hydrolyze stepwise, and the amide is the expected first oxygenated intermediate. Representing the amide explicitly avoids compressing two hydrolyses into one under overly mild conditions."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of alaninamide to racemic alanine",
+        "inputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prolonged heating in anoxic water"
+        },
+        "mechanism": "Amide hydrolysis via a tetrahedral intermediate yields the carboxylic acid and liberates ammonia.",
+        "reasoning": "The second hydrolysis step releases ammonia explicitly and is a chemically conservative route from aminonitrile chemistry to a racemic alanine pool."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Direct hot-water hydrolysis of alanine nitrile to racemic alanine",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "extended residence in hot-spring water"
+        },
+        "mechanism": "Sequential nitrile hydration and amide hydrolysis are represented as a single net transformation under harsher aqueous heating.",
+        "reasoning": "This shortcut is less gentle than the explicit amide route but is stoichiometrically correct: the net transformation requires two waters and releases ammonia. It represents longer or hotter aqueous processing."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Bucherer-Bergs-type formation of 5-methylhydantoin",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "carbonate-rich wet-dry films in evaporitic pools"
+        },
+        "mechanism": "Acetaldehyde undergoes cyanide/ammonia addition chemistry, captures CO2 as a carbamyl equivalent, and cyclizes with dehydration to hydantoin.",
+        "reasoning": "Hydantoin chemistry is a legitimate alternative branch from the same acetaldehyde feedstock. Carbonate availability makes Bucherer-Bergs-type trapping attractive in evaporitic pools, producing a more stable amino-acid precursor reservoir."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolytic opening of 5-methylhydantoin to racemic alanine",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_008",
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "prolonged hydrolysis in hot-spring water"
+        },
+        "mechanism": "Ring opening yields carbamylated alanine-like intermediates that hydrolyze and decarboxylate to alanine.",
+        "reasoning": "Hydantoin hydrolysis is written with the required CO2 and NH3 outputs, fixing the under-specified chemistry common in simplified schemes. It supplies alanine from a more protected precursor."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Calcite-surface resolution of racemic alanine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "calcite"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "calcite",
+          "aqueous": true,
+          "other": "carbonate-rich shoreline; repeated dissolution and reprecipitation on calcite step and kink sites"
+        },
+        "mechanism": "Differential adsorption and crystallization on carbonate step sites partitions the racemate into separable L-rich and D-rich phases.",
+        "reasoning": "This is a resolution step rather than a chiral synthesis step. Calcite surfaces can impose local enantioselective partitioning for amino acids; repeated wet-dry cycling can therefore yield complementary L- and D-enriched fractions. The network represents the isolated L-rich fraction as the target."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Quartz-surface resolution of racemic alanine",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "alpha-quartz"
+        ],
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": "alpha-quartz",
+          "aqueous": true,
+          "other": "wet-dry cycling on locally single-handed quartz grains"
+        },
+        "mechanism": "Adsorption and desorption on crystallographically chiral quartz faces partition the two enantiomers into separable phases.",
+        "reasoning": "This alternative route uses locally single-handed quartz faces rather than carbonate surfaces. The global availability of a net handed surface is uncertain, so the step is explicitly conditional, but it offers a second chemically plausible route for isolating L-enriched alanine from a racemic pool."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Acetylene-Strecker-amide-calcite route",
+        "description": "Acetylene is hydrated to acetaldehyde, converted by Strecker chemistry to alanine nitrile, hydrolyzed through the amide, and resolved on calcite to isolate L-alanine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_010",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Acetylene-Strecker-amide-quartz route",
+        "description": "The same acetylene-to-Strecker-amide sequence is followed by quartz-surface resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_010",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Acetylene-Strecker-direct-hydrolysis-calcite route",
+        "description": "Acetylene-derived acetaldehyde enters Strecker chemistry, and alanine nitrile is hydrolyzed directly under hotter aqueous conditions before calcite resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Acetylene-Strecker-direct-hydrolysis-quartz route",
+        "description": "Acetylene hydration and Strecker chemistry are followed by net nitrile hydrolysis and quartz-based enantiomeric partitioning.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Acetylene-Bucherer-Bergs-calcite route",
+        "description": "Acetylene supplies acetaldehyde, which is trapped as hydantoin in carbonate-rich cyanide/ammonia chemistry and then hydrolyzed to alanine before calcite resolution.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Ethanol-Strecker-amide-calcite route",
+        "description": "Ethanol is dehydrogenated to acetaldehyde on magnetite, then the standard Strecker-amide branch yields DL-alanine for calcite-mediated resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_010",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Ethanol-Strecker-amide-quartz route",
+        "description": "The ethanol entry merges into the Strecker-amide branch and reaches L-alanine through quartz-surface resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_010",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Ethanol-Strecker-direct-hydrolysis-calcite route",
+        "description": "After ethanol dehydrogenation to acetaldehyde, Strecker chemistry and direct hot-water nitrile hydrolysis produce DL-alanine for calcite resolution.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Ethanol-Bucherer-Bergs-calcite route",
+        "description": "Ethanol-derived acetaldehyde is converted through the hydantoin branch, then hydrolyzed and resolved on calcite.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Ethanol-Bucherer-Bergs-quartz route",
+        "description": "The ethanol entry feeds Bucherer-Bergs hydantoin formation and hydrolysis, followed by quartz-mediated enantiomeric partitioning to isolate L-alanine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_011",
+          "mol_012"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_005",
+      "mol_009",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-alanine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_003": 0.88,
+          "rxn_004": 0.7,
+          "rxn_005": 0.74,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.68,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.56,
+        "feedback": "The Strecker-amide sequence from acetaldehyde to rac-alanine is chemically standard, but rxn_001 lacks a convincing prebiotic catalyst for acetylene hydration under a generic surface setting. The calcite step is better treated as partial enantioenrichment or separation than as a true stoichiometric synthesis of isolated L-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify a credible mineral or metal catalyst and acidity window for rxn_001.",
+          "State explicit hot aqueous or evaporative conditions for rxn_004 and rxn_005.",
+          "Replace rxn_009 with an adsorption or partition plus recovery step and report expected enantiomeric excess."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_003": 0.88,
+          "rxn_004": 0.7,
+          "rxn_005": 0.74,
+          "rxn_010": 0.18
+        },
+        "chemical_feasibility": 0.58,
+        "pathway_coherence": 0.66,
+        "environmental_progression": 0.53,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.53,
+        "feedback": "This pathway has a sound Strecker core, but it inherits the weakly specified acetylene hydration entry step and ends with the least supported resolution option. Quartz-mediated alanine resolution is too speculative to support a strong claim of isolated L-alanine production.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide a realistic catalytic scenario for acetylene hydration in geothermal surface settings.",
+          "Treat quartz as at most a modest enrichment mechanism unless strong alanine-specific evidence is supplied.",
+          "If quartz is retained, model the final stage as separation of an L-enriched fraction rather than clean conversion of DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_003": 0.88,
+          "rxn_006": 0.64,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.64,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.54,
+        "feedback": "The direct nitrile hydrolysis shortcut is acceptable only as a net transformation. Per the supplied balance check, rxn_006 needs 2 H2O, and mechanistically it likely passes through the amide anyway. Weakly justified acetylene hydration and non-stoichiometric calcite resolution remain the main liabilities.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Rewrite rxn_006 as mol_009 + 2 mol_002 -> mol_012 + mol_007 or show the amide intermediate explicitly.",
+          "Strengthen rxn_001 with a specified catalyst or mineral surface.",
+          "Model calcite resolution as adsorption and recovery of an L-enriched fraction."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_003": 0.88,
+          "rxn_006": 0.64,
+          "rxn_010": 0.18
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.62,
+        "environmental_progression": 0.53,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.51,
+        "feedback": "This is a compact route to rac-alanine, but rxn_006 is only defensible as a net hydrolysis and needs 2 H2O. The quartz endpoint is too weak to justify robust L-alanine production, so the pathway mainly supports racemic alanine plus possible minor enrichment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_006 stoichiometry by adding a second water or expand it into amide formation and hydrolysis.",
+          "Give a stronger geochemical case for acetylene hydration.",
+          "Replace quartz resolution with a better supported chiral separation or downgrade the target claim to DL-alanine."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.4,
+          "rxn_007": 0.66,
+          "rxn_008": 0.57,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.48,
+        "pathway_coherence": 0.61,
+        "environmental_progression": 0.5,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.5,
+        "feedback": "Bucherer-Bergs-type hydantoin formation is recognizable precursor chemistry, but the network does not specify the carbonate and ammonium conditions that usually support it, and hydantoin hydrolysis is demanding. Per the balance check, rxn_008 also needs 2 H2O. The calcite resolution step remains the limiting endpoint.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify ammonium carbonate-like conditions, pH, and temperature for rxn_007.",
+          "Rewrite rxn_008 as mol_011 + 2 mol_002 -> mol_012 + mol_008 + mol_007 and consider showing an N-carbamoyl intermediate.",
+          "Treat the final calcite stage as separation or enrichment, not direct synthesis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_003": 0.88,
+          "rxn_004": 0.7,
+          "rxn_005": 0.74,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.61,
+        "feedback": "This is the strongest route in the network. Ethanol dehydrogenation to acetaldehyde is more plausible than acetylene hydration, and the stepwise Strecker hydrolysis is chemically coherent. The major remaining weakness is that rxn_009 is not a true synthetic conversion but a separation or enrichment process with limited evidence for strong alanine selectivity on calcite.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Provide explicit temperature and water-activity conditions for magnetite-mediated ethanol dehydrogenation.",
+          "Cite or add alanine-specific evidence for calcite adsorption and measurable enantioenrichment.",
+          "If strong chiral separation is not demonstrated, treat DL-alanine as the defensible endpoint."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_003": 0.88,
+          "rxn_004": 0.7,
+          "rxn_005": 0.74,
+          "rxn_010": 0.18
+        },
+        "chemical_feasibility": 0.64,
+        "pathway_coherence": 0.72,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.58,
+        "feedback": "The upstream chemistry is fairly strong, but the quartz-based endpoint is the weakest resolution option in the network. As written, this route supports racemic alanine formation much better than it supports isolated L-alanine.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Keep the ethanol to acetaldehyde step but define the mineral interface and temperature more explicitly.",
+          "Replace quartz resolution with a better supported chiral partitioning mechanism or provide quantitative enrichment data.",
+          "Model the final stage as separation from a racemate pool rather than stoichiometric conversion."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_003": 0.88,
+          "rxn_006": 0.64,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.63,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.62,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.59,
+        "feedback": "This is a reasonable route to rac-alanine, but rxn_006 needs 2 H2O by the supplied balance check and likely proceeds through the amide intermediate. The calcite step still leaves L-alanine only conditionally achieved rather than robustly synthesized.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_006 stoichiometry or expand it into amide formation and amide hydrolysis.",
+          "Specify the thermal regime for magnetite-mediated ethanol dehydrogenation and hot-water hydrolysis.",
+          "Represent the calcite stage as adsorption, partitioning, and recovery of an L-enriched fraction."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_007": 0.66,
+          "rxn_008": 0.57,
+          "rxn_009": 0.26
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.65,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.42,
+        "overall_confidence": 0.55,
+        "feedback": "Acetaldehyde generation is plausible here, but the Bucherer-Bergs branch needs more explicit carbonate and cyanide conditions, and hydantoin hydrolysis is a demanding step. Per the balance check, rxn_008 requires 2 H2O. The calcite resolution stage remains the major barrier to claiming L-alanine specifically.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Define carbonate, ammonia, cyanide, pH, and temperature conditions for rxn_007.",
+          "Rewrite rxn_008 with 2 H2O and consider a staged hydantoin to carbamoyl-amino-acid to amino-acid sequence.",
+          "Treat calcite as a possible enrichment surface rather than as a clean stereochemical conversion."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_002": 0.74,
+          "rxn_007": 0.66,
+          "rxn_008": 0.57,
+          "rxn_010": 0.18
+        },
+        "chemical_feasibility": 0.53,
+        "pathway_coherence": 0.63,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.34,
+        "overall_confidence": 0.52,
+        "feedback": "The early chemistry is plausible enough, but this route combines a condition-sensitive Bucherer-Bergs sequence with the weakest chiral endpoint in the network. Quartz resolution does not convincingly establish isolated L-alanine as the product.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Provide explicit Bucherer-Bergs conditions rather than a generic surface label.",
+          "Correct rxn_008 stoichiometry by adding the second water and clarify hydrolysis severity.",
+          "If quartz is retained, present it as a low-level enrichment mechanism, not definitive target formation."
+        ]
+      }
+    ],
+    "best_pathway_id": "P6",
+    "overall_confidence": 0.6,
+    "network_feedback": "The network is connected, has adequate node count, and shows no outright conservation violations under the supplied ground-truth balance check. Convergence on acetaldehyde and branching through Strecker and Bucherer-Bergs chemistry is strategically coherent for making racemic alanine, with the ethanol-Strecker-amide branch being the strongest. However, several steps are under-specified environmentally: rxn_001 needs a credible prebiotic catalyst for acetylene hydration, rxn_002 likely needs a hotter and less aqueous mineral interface than generic surface wording implies, and the hydantoin branch needs clearer carbonate and hydrolysis conditions. Stoichiometrically, rxn_006 and rxn_008 should explicitly consume 2 H2O, and rxn_009 and rxn_010 are only balanceable if treated as partitioning of a racemate pool rather than one-molecule conversions. The biggest weakness is target definition: the network supports DL-alanine much more strongly than it supports L-alanine, because the final calcite and quartz steps are separation or enrichment hypotheses with limited alanine-specific support, especially for quartz.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 10,
+      "n_balanced_as_written": 6,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_003": 1,
+            "mol_005": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_007": 1,
+            "mol_009": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_002": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_002": 1,
+            "mol_012": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_002": 2,
+            "mol_012": 1,
+            "mol_007": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_011": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 2,
+            "mol_012": 1,
+            "mol_008": 1,
+            "mol_007": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 2,
+            "mol_013": 1,
+            "mol_014": 1
+          },
+          "element_delta": {
+            "C": -3,
+            "H": -7,
+            "N": -1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 2,
+            "mol_013": 1,
+            "mol_014": 1
+          },
+          "element_delta": {
+            "C": -3,
+            "H": -7,
+            "N": -1,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

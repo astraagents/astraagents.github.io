@@ -1,0 +1,1021 @@
+{
+  "target_molecule": "Arginine",
+  "network": {
+    "target_molecule": "Arginine",
+    "overall_strategy": "Arginine is built by first forming ornithine, because guanidination of a pre-existing terminal amine with cyanamide is cleaner than installing the guanidino group early. Succinaldehyde is used as the minimal C4 dialdehyde feedstock because it maps directly onto the ornithine side chain. The design avoids selective mono-reduction of dinitriles by generating the nitrile only at the alpha position during the Strecker step, after the terminal amine precursor is already established. Two upstream surface-geochemical branches feed the 4-aminobutanal pool: a wetter reductive monoamination branch and a drier 1-pyrroline reservoir that reopens on hydration. 4-Aminobutanal is then trapped by Strecker chemistry in either evaporitic pools or tidal-flat films to give ornithine nitrile. Three surface hydrolysis regimes convert the nitrile to ornithine, and two low-water cyanamide amidination settings convert ornithine to arginine, yielding ten representative pathways.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C4H6O2",
+        "iupac_name": "butane-1,4-dial",
+        "common_name": "succinaldehyde",
+        "inchi": "InChI=1S/C4H6O2/c5-3-1-2-4-6/h3-4H,1-2H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "ammonia",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H9NO",
+        "iupac_name": "4-aminobutanal",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H9NO/c5-3-1-2-4-6/h4H,1-3,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H7N",
+        "iupac_name": "1-pyrroline",
+        "common_name": "Delta(1)-pyrroline",
+        "inchi": "InChI=1S/C4H7N/c1-2-4-5-3-1/h3H,1-2,4H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H11N3",
+        "iupac_name": "2,5-diaminopentanenitrile",
+        "common_name": "ornithine nitrile",
+        "inchi": "InChI=1S/C5H11N3/c6-3-1-2-5(8)4-7/h5H,1-3,6,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH2N2",
+        "iupac_name": "cyanamide",
+        "common_name": "cyanamide",
+        "inchi": "InChI=1S/CH2N2/c2-1-3/h2H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H12N2O2",
+        "iupac_name": "2,5-diaminopentanoic acid",
+        "common_name": "ornithine",
+        "inchi": "InChI=1S/C5H12N2O2/c6-3-1-2-4(7)5(8)9/h4H,1-3,6-7H2,(H,8,9)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C6H14N4O2",
+        "iupac_name": "2-amino-5-guanidinopentanoic acid",
+        "common_name": "arginine",
+        "inchi": "InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)",
+        "role": "target",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Wet-field reductive monoamination of succinaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NiS",
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": "NiS, FeS",
+          "aqueous": true,
+          "other": "subaerial geothermal ponds supplied with H2-bearing volcanic gases"
+        },
+        "mechanism": "One aldehyde condenses with NH3 to an imine, and mineral-activated H2 reduces that imine to the amine while the second aldehyde remains available. The product belongs to the open-chain 4-aminobutanal pool that can later cyclize or be trapped chemically.",
+        "reasoning": "Surface geothermal fields combine H2-bearing gases with metal sulfides capable of reducing imines. Monoamination of a dialdehyde will not be perfectly selective, but under wetter conditions the productive open-chain amino aldehyde pool can persist long enough to be trapped in later chemistry."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Dry-film reductive cyclization of succinaldehyde to 1-pyrroline",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "NiS",
+          "FeS"
+        ],
+        "conditions": {
+          "temperature": "340-370K",
+          "pressure": "1 atm",
+          "catalyst": "NiS, FeS",
+          "aqueous": false,
+          "other": "intermittently drying geothermal mineral films with H2-bearing gases; 2 H2O are produced overall"
+        },
+        "mechanism": "After initial reductive amination at one aldehyde, the new amine attacks the remaining aldehyde intramolecularly and dehydration gives the cyclic imine 1-pyrroline.",
+        "reasoning": "The same first monoamination, performed in drier films, should strongly favor intramolecular capture of the second aldehyde. Explicitly including 1-pyrroline prevents hiding this major sink and makes the network chemically more realistic."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Hydrolytic ring opening of 1-pyrroline",
+        "inputs": [
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cooler pond, shoreline, or tidal wet phases"
+        },
+        "mechanism": "The imine is hydrated to a carbinolamine and the ring opens to regenerate the open-chain amino aldehyde.",
+        "reasoning": "1-Pyrroline is not a dead end: hydration during cooler wet phases reopens it to 4-aminobutanal, reconnecting the cyclized pool to Strecker chemistry."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Evaporitic-pool Strecker synthesis of ornithine nitrile",
+        "inputs": [
+          "mol_005",
+          "mol_002",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "evaporitic pools with high cyanide and ammonium concentration"
+        },
+        "mechanism": "4-Aminobutanal forms an imine or iminium with NH3, cyanide adds at the carbonyl-derived center, and proton transfer gives the alpha-aminonitrile with net loss of H2O.",
+        "reasoning": "Evaporitic pools are strong candidates for classical Strecker chemistry because HCN and NH3 can concentrate as waters shrink. Trapping 4-aminobutanal as ornithine nitrile preserves the five-carbon skeleton and installs the alpha-amino acid precursor cleanly."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Tidal-flat Strecker synthesis of ornithine nitrile",
+        "inputs": [
+          "mol_005",
+          "mol_002",
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-325K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "salt-rich tidal-flat films with periodic wetting and drying; productive chemistry assumed in mineral-shaded or brine-rich microenvironments"
+        },
+        "mechanism": "The same Strecker sequence occurs in thin films: imine formation, cyanide addition, and proton transfer generate the alpha-aminonitrile.",
+        "reasoning": "Tidal-flat thin films offer the same Strecker chemistry under repeated salting-out and wetting-drying. UV is a liability, so productive chemistry is most plausible in mineral-shaded or brine-rich films, but this remains a credible alternative surface setting."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Acidic hot-spring hydrolysis of ornithine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "acidic sulfur-rich volcanic hot springs, pH about 2-5; 2 H2O are consumed overall and NH3 is released"
+        },
+        "mechanism": "Acid-promoted nitrile hydration gives the amide and then the carboxylic acid, with NH3 released overall.",
+        "reasoning": "Acid catalysis in sulfur-rich hot springs is the quickest surface route from aminonitrile to amino acid. The net hydrolysis consumes 2 H2O and releases NH3, giving ornithine without invoking any selective nitrile reduction."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Silica-film geothermal hydrolysis of ornithine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica"
+        ],
+        "conditions": {
+          "temperature": "330-355K",
+          "pressure": "1 atm",
+          "catalyst": "silica",
+          "aqueous": true,
+          "other": "silica-rich sinter surfaces with repeated heating-cooling; 2 H2O are consumed overall and NH3 is released"
+        },
+        "mechanism": "Thin water films on silica permit stepwise nitrile hydration through the amide to the amino acid.",
+        "reasoning": "Silica-rich geothermal sinters retain thin water films and concentrate adsorbed organics. Although slower than strong acid or base pathways, extended heating-cooling cycles make a neutral-film hydrolysis branch plausible."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Alkaline evaporitic hydrolysis of ornithine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "alkaline evaporitic pools, pH about 8-10, with wet-dry cycling; 2 H2O are consumed overall and NH3 is released"
+        },
+        "mechanism": "Base-assisted hydration and repeated concentration-deconcentration drive conversion of the nitrile through the amide to the carboxylic acid.",
+        "reasoning": "Alkaline evaporitic pools provide base-assisted hydration and long residence times through wet-dry cycling. This is slower than the acidic branch but geochemically credible and still gives the correct ornithine plus NH3 hydrolysis stoichiometry."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Silica dry-down guanidination of ornithine",
+        "inputs": [
+          "mol_010",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "silica"
+        ],
+        "conditions": {
+          "temperature": "330-360K",
+          "pressure": "1 atm",
+          "catalyst": "silica",
+          "aqueous": false,
+          "other": "evaporitic or geothermal dry-down with low water activity"
+        },
+        "mechanism": "The terminal delta-amine of ornithine attacks cyanamide, and proton transfer plus tautomerization yields the guanidino group of arginine.",
+        "reasoning": "Cyanamide is one of the most plausible prebiotic amidinating agents. Low-water silica surfaces suppress its wasteful hydrolysis and favor attack by the terminal side-chain amine of ornithine, giving the guanidino group of arginine."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Interfacial-film guanidination of ornithine",
+        "inputs": [
+          "mol_010",
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "315-345K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "organic-mineral interfacial films on geothermal shorelines; concentrated solutes with little free water"
+        },
+        "mechanism": "Interfacial concentration brings ornithine and cyanamide into close contact, enabling the same amidination and tautomerization sequence without full bulk-water dilution.",
+        "reasoning": "A concentrated organic-mineral film is a second credible low-water niche for the same cyanamide chemistry. It avoids requiring full desiccation while still favoring amidination over bulk-water hydrolysis."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct-evaporitic-acidic-dry route",
+        "description": "Wetter NiS/FeS-mediated monoamination is followed by evaporitic-pool Strecker capture, acidic hot-spring hydrolysis of ornithine nitrile, and silica dry-down guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct-evaporitic-silica-film route",
+        "description": "Direct monoamination feeds evaporitic-pool Strecker chemistry, silica-film hydrolysis, and interfacial-film guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct-evaporitic-alkaline route",
+        "description": "Direct monoamination is coupled to evaporitic-pool Strecker capture, alkaline evaporitic hydrolysis, and silica dry-down guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct-tidal-acidic-interfacial route",
+        "description": "Direct monoamination feeds tidal-flat Strecker chemistry, acidic hot-spring hydrolysis, and interfacial-film guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Direct-tidal-silica-film-dry route",
+        "description": "Direct monoamination is followed by tidal-flat Strecker synthesis, silica-film hydrolysis, and dry-down guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Direct-tidal-alkaline-interfacial route",
+        "description": "Direct monoamination is combined with tidal-flat Strecker chemistry, alkaline evaporitic hydrolysis, and interfacial-film guanidination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Cyclized-evaporitic-acidic-dry route",
+        "description": "A drier 1-pyrroline reservoir is reopened by hydration, then captured by evaporitic-pool Strecker chemistry, acidic hydrolysis, and dry-down guanidination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Cyclized-evaporitic-silica-film route",
+        "description": "The 1-pyrroline branch reopens to 4-aminobutanal, then proceeds through evaporitic-pool Strecker chemistry, silica-film hydrolysis, and interfacial-film guanidination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Cyclized-tidal-silica-film-dry route",
+        "description": "The cyclized reservoir is reopened during wet phases, trapped by tidal-flat Strecker chemistry, hydrolyzed on silica-rich geothermal films, and guanidinated during dry-down.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyclized-tidal-alkaline-interfacial route",
+        "description": "The 1-pyrroline branch reconnects to tidal-flat Strecker chemistry, then alkaline evaporitic hydrolysis and interfacial-film guanidination deliver arginine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_005",
+          "mol_008",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_002",
+      "mol_004",
+      "mol_005",
+      "mol_008",
+      "mol_010"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Arginine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_004": 0.68,
+          "rxn_006": 0.81,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.76,
+        "feedback": "Ornithine-first logic is coherent, and acidic hydrolysis is one of the stronger downstream steps. Confidence is limited by selective H2-driven monoamination of succinaldehyde in rxn_001, competition between Strecker capture and cyclization in rxn_004, and unproven regioselective guanidination in rxn_009; rxn_006 should be written with 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Specify a plausible H2-activating mineral or metal surface for rxn_001.",
+          "Correct rxn_006 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Provide experimental or mechanistic support that rxn_009 favors the side-chain amine of ornithine."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_004": 0.68,
+          "rxn_007": 0.75,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.77,
+        "feedback": "Silica-film hydrolysis plus dry guanidination gives a comparatively compatible late-stage setting. Weak points remain rxn_001, Strecker capture in rxn_004, and the fact that rxn_007 needs 2 H2O and stronger justification for efficient nitrile hydrolysis on silica films.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_007 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Show that geothermal silica films with intermittent wetting can hydrolyze ornithine nitrile efficiently.",
+          "Justify transport or co-location between the evaporitic Strecker setting and the silica dry-down setting."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_004": 0.68,
+          "rxn_008": 0.6,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.67,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.81,
+        "target_achievement": 0.76,
+        "overall_confidence": 0.74,
+        "feedback": "Environmental continuity is relatively good, but alkaline nitrile hydrolysis is the weakest downstream chemistry in the set. rxn_008 should use 2 H2O and likely needs stronger base and heat justification; upstream concerns from rxn_001 and rxn_004 remain.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_008 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Provide stronger kinetic justification for alkaline hydrolysis of a diamino aminonitrile.",
+          "Add catalyst detail for rxn_001 or explicitly route the upstream pool through mol_006 before Strecker capture."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_005": 0.66,
+          "rxn_006": 0.81,
+          "rxn_010": 0.71
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.69,
+        "target_achievement": 0.77,
+        "overall_confidence": 0.74,
+        "feedback": "The hydrolysis step is chemically one of the stronger ones, but the tidal-flat Strecker environment is less controlled and transfer into an acidic hydrolysis site and then an interfacial amidination site is not explained. rxn_006 needs 2 H2O, and rxn_010 still needs selectivity support for side-chain guanidination.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Explain physical transfer from tidal flats to acidic hydrolysis and then to an interfacial amidination site.",
+          "Correct rxn_006 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Provide selectivity evidence for rxn_010 versus alpha-amine guanidination."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_005": 0.66,
+          "rxn_007": 0.75,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.76,
+        "feedback": "This route keeps a plausible low-water finish, but tidal-flat Strecker capture of a cyclization-prone aminoaldehyde remains uncertain. rxn_007 needs 2 H2O, and transport from tidal films to silica-film hydrolysis and dry-down should be justified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_007 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Show that tidal-flat concentration can outcompete cyclization of mol_005 before Strecker capture.",
+          "Clarify how products move from tidal films to silica hydrolysis and dry-down surfaces."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.62,
+          "rxn_005": 0.66,
+          "rxn_008": 0.6,
+          "rxn_010": 0.71
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.79,
+        "target_achievement": 0.74,
+        "overall_confidence": 0.72,
+        "feedback": "Environmental continuity across drying surface settings is acceptable, but chemical confidence is limited by the weaker alkaline hydrolysis in rxn_008 and selectivity in rxn_010. Upstream rxn_001 and rxn_005 still rely on efficient trapping of unstable 4-aminobutanal.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_008 to mol_008 + 2 mol_004 -> mol_010 + mol_002.",
+          "Support alkaline hydrolysis of mol_008 with realistic temperature and pH ranges.",
+          "Demonstrate that interfacial cyanamide chemistry can selectively give arginine from ornithine."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.71,
+          "rxn_003": 0.66,
+          "rxn_004": 0.68,
+          "rxn_006": 0.81,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.73,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.76,
+        "feedback": "Using 1-pyrroline as a reservoir is chemically sensible because 4-aminobutanal tends to cyclize, and acidic hydrolysis is a strong downstream step. However rxn_002 is miswritten and should release 2 H2O, rxn_003 is an equilibrium reopening rather than a strongly driven step, and rxn_006 also needs 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_002 to produce 2 mol_004 and rxn_006 to consume 2 mol_004.",
+          "Quantify the mol_006 to mol_005 equilibrium so rxn_003 can credibly feed Strecker chemistry.",
+          "Specify a realistic H2-activating mineral for the reductive cyclization step."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.71,
+          "rxn_003": 0.66,
+          "rxn_004": 0.68,
+          "rxn_007": 0.75,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.78,
+        "feedback": "This is the strongest pathway in the set because the cyclized reservoir acknowledges likely upstream speciation and the silica-based late stage is reasonably coherent. Remaining concerns are the stoichiometric fixes in rxn_002 and rxn_007, reversible ring opening in rxn_003, uncertain Strecker trapping in rxn_004, and incomplete evidence for selective rxn_009 guanidination.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_002 to produce 2 mol_004 and rxn_007 to consume 2 mol_004.",
+          "Demonstrate that the mol_006 to mol_005 equilibrium can be trapped efficiently by Strecker conditions.",
+          "Provide regioselectivity evidence for dry cyanamide guanidination of ornithine in rxn_009."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.71,
+          "rxn_003": 0.66,
+          "rxn_005": 0.66,
+          "rxn_007": 0.75,
+          "rxn_009": 0.74
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.76,
+        "feedback": "Reservoir logic helps upstream, but tidal-flat Strecker conditions are a bit less persuasive than evaporitic concentration for trapping the open-chain aminoaldehyde. rxn_002 should give 2 H2O, rxn_007 needs 2 H2O, and transfer from tidal films to silica-film hydrolysis and dry-down should be made explicit.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_002 to produce 2 mol_004 and rxn_007 to consume 2 mol_004.",
+          "Clarify transfer from tidal Strecker films to silica-film hydrolysis and dry-down.",
+          "Test whether tidal-flat HCN and NH3 concentrations can trap mol_005 before re-cyclization."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_002": 0.71,
+          "rxn_003": 0.66,
+          "rxn_005": 0.66,
+          "rxn_008": 0.6,
+          "rxn_010": 0.71
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.79,
+        "target_achievement": 0.74,
+        "overall_confidence": 0.73,
+        "feedback": "The dry-to-wet-to-dry surface narrative is plausible, but the chemistry is pulled down by equilibrium ring opening, less favorable alkaline hydrolysis, and selectivity in interfacial cyanamide amidination. rxn_002 should release 2 H2O and rxn_008 should consume 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_008",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Correct rxn_002 to produce 2 mol_004 and rxn_008 to consume 2 mol_004.",
+          "Provide stronger support for alkaline hydrolysis of mol_008 under evaporitic conditions.",
+          "Demonstrate selectivity of interfacial cyanamide amidination for the terminal amine of ornithine."
+        ]
+      }
+    ],
+    "best_pathway_id": "P8",
+    "overall_confidence": 0.76,
+    "network_feedback": "Connected network with a coherent ornithine-first plan and no unbalanceable reactions. Four reactions need stoichiometric correction: rxn_002 should be mol_001 + mol_002 + mol_003 -> mol_006 + 2 mol_004, and rxn_006-rxn_008 should be mol_008 + 2 mol_004 -> mol_010 + mol_002. The main chemical uncertainties are selective H2-driven monoamination or cyclization of succinaldehyde, efficient Strecker trapping of the mol_005 or mol_006 equilibrium, weaker support for alkaline hydrolysis, and whether cyanamide amidinates ornithine mainly at the side-chain amine under low-water conditions. Surface settings are individually plausible, but catalyst identity and transport between wet, evaporitic or tidal, geothermal, and dry or interfacial microenvironments need clearer justification. No literature citations were supplied, so literature support could not raise confidence. For P2, P3, and P8, the unlabeled final step was interpreted as rxn_009.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 10,
+      "n_balanced_as_written": 6,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_005": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_006": 1,
+            "mol_004": 2
+          },
+          "element_delta": {
+            "H": 2,
+            "O": 1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_002": 1,
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_004": 2,
+            "mol_010": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_004": 2,
+            "mol_010": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_004": 2,
+            "mol_010": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_009": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_009": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

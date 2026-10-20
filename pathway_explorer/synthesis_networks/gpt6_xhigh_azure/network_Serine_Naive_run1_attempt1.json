@@ -1,0 +1,199 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2"
+      },
+      {
+        "id": "mol_002",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3"
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H5NO",
+        "iupac_name": "2-hydroxyethanimine",
+        "common_name": null,
+        "inchi": "InChI=1S/C2H5NO/c3-1-2-4/h1,3-4H,2H2"
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C3H6N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "serine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C3H8N2O2",
+        "iupac_name": "2-amino-3-hydroxypropanamide",
+        "common_name": "serinamide",
+        "inchi": "InChI=1S/C3H8N2O2/c4-2(1-6)3(5)7/h2,6H,1,4H2,(H2,5,7)"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "inputs": [
+          "mol_001",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_002"
+        ],
+        "name": "Formation of glycolaldehyde",
+        "reaction_type": "Formose-type carbon-carbon bond formation",
+        "equation": "2 CH2O -> HOCH2CHO",
+        "conditions": "Aqueous mineral-catalyzed conditions, potentially involving olivine or alkaline calcium-bearing minerals",
+        "prebiotic_plausibility": "Supported by experimental mineral-mediated chemistry, although the reaction is not necessarily selective.",
+        "step": 1
+      },
+      {
+        "id": "rxn_002",
+        "inputs": [
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "name": "Imine formation",
+        "reaction_type": "Ammonia-aldehyde condensation",
+        "equation": "HOCH2CHO + NH3 <-> HOCH2CH=NH + H2O",
+        "conditions": "Aqueous ammonia, with pH-dependent equilibrium",
+        "prebiotic_plausibility": "Plausible reversible condensation. The imine need not accumulate or be isolated.",
+        "step": 2
+      },
+      {
+        "id": "rxn_003",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "name": "Serine aminonitrile formation",
+        "reaction_type": "Strecker cyanide addition",
+        "equation": "HOCH2CH=NH + HCN -> HOCH2CH(NH2)CN",
+        "conditions": "Aqueous cyanide chemistry under suitable pH conditions",
+        "prebiotic_plausibility": "Experimentally supported. Formation of serine aminonitrile from glycolaldehyde-derived intermediates has been demonstrated.",
+        "step": 3
+      },
+      {
+        "id": "rxn_004",
+        "inputs": [
+          "mol_007",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "name": "Nitrile hydration",
+        "reaction_type": "Hydrolysis of nitrile to amide",
+        "equation": "HOCH2CH(NH2)CN + H2O -> HOCH2CH(NH2)CONH2",
+        "conditions": "Aqueous hydrolysis, potentially assisted by heating or acidic or alkaline conditions",
+        "prebiotic_plausibility": "Chemically established transformation; efficiency under specific prebiotic environments depends on conditions.",
+        "step": 4
+      },
+      {
+        "id": "rxn_005",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "name": "Serine formation",
+        "reaction_type": "Amide hydrolysis",
+        "equation": "HOCH2CH(NH2)CONH2 + H2O -> HOCH2CH(NH2)COOH + NH3",
+        "conditions": "Warm aqueous conditions with sufficient acid/base catalysis or prolonged hydrolysis",
+        "prebiotic_plausibility": "Established hydrolysis chemistry, but the complete sequence has not been demonstrated as a single selective prebiotic process.",
+        "step": 5
+      }
+    ]
+  },
+  "pathway_name": "Prebiotic Strecker synthesis of serine from formaldehyde",
+  "starting_molecules": [
+    "mol_001",
+    "mol_003",
+    "mol_004",
+    "mol_006"
+  ],
+  "target_molecule_id": "mol_009",
+  "number_of_steps": 5,
+  "overall_reaction": "2 CH2O + HCN + 2 H2O -> C3H7NO3 + NH3",
+  "overall_reaction_note": "The net equation eliminates ammonia consumed and regenerated in the individual steps.",
+  "stereochemistry": {
+    "expected_product": "Racemic DL-serine",
+    "explanation": "The pathway does not specify an enantioselective mechanism. Formation of the aminonitrile creates a stereocenter and can produce both D- and L-serine.",
+    "enantiomeric_enrichment_required_for_L_serine": true
+  },
+  "scientific_limitations": [
+    "The network combines chemically plausible and experimentally supported transformations, rather than representing a fully validated end-to-end prebiotic experiment.",
+    "Formaldehyde condensation generates competing products, and glycolaldehyde can undergo decomposition.",
+    "Strecker aminonitrile formation is sensitive to pH and competing reactions.",
+    "Nitrile and amide hydrolysis require suitable environmental conditions and may produce side products.",
+    "No mechanism for preferential production of L-serine is included."
+  ],
+  "references": [
+    {
+      "title": "Mimicking the surface and prebiotic chemistry of early Earth using flow chemistry",
+      "year": 2018,
+      "doi": "10.1038/s41467-018-04147-2",
+      "url": "https://www.nature.com/articles/s41467-018-04147-2",
+      "relevance": "Experimental formation of serine aminonitrile from a glycolaldehyde-derived intermediate."
+    },
+    {
+      "title": "Olivine-catalyzed glycolaldehyde and sugar synthesis under aqueous conditions: Application to prebiotic chemistry",
+      "year": 2023,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0012821X23005691",
+      "relevance": "Mineral-mediated production of glycolaldehyde from formaldehyde."
+    },
+    {
+      "title": "Selective prebiotic synthesis of phosphoroaminonitriles and aminothioamides in neutral water",
+      "year": 2019,
+      "doi": "10.1038/s42004-019-0124-5",
+      "url": "https://www.nature.com/articles/s42004-019-0124-5",
+      "relevance": "Prebiotic Strecker chemistry and the importance of reaction conditions."
+    }
+  ]
+}

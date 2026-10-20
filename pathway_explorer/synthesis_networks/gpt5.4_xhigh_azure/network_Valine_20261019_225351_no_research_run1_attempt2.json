@@ -1,0 +1,1041 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine",
+    "overall_strategy": "Valine is reached by first building the branched C4 Strecker precursor isobutyraldehyde through two successive C1 aldol/dehydration homologations: acetaldehyde + formaldehyde -> acrolein -> propanal, then propanal + formaldehyde -> methacrolein -> isobutyraldehyde. Simple aldehydes can be taken directly from the wider prebiotic inventory or generated in-network from CO/H2, and HCN can be taken directly or released from formamide. A final balanced Strecker step followed by explicit aminonitrile hydrolysis furnishes valine. The network deliberately avoids a one-step branched C4 syngas reaction and keeps all water and ammonia coproducts explicit.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO",
+        "iupac_name": "carbon monoxide",
+        "common_name": "carbon monoxide",
+        "inchi": "InChI=1S/CO/c1-2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH3NO",
+        "iupac_name": "methanamide",
+        "common_name": "formamide",
+        "inchi": "InChI=1S/CH3NO/c2-1-3/h1H,(H2,2,3)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O",
+        "iupac_name": "ethanal",
+        "common_name": "acetaldehyde",
+        "inchi": "InChI=1S/C2H4O/c1-2-3/h2H,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H4O",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C3H6O",
+        "iupac_name": "propanal",
+        "common_name": "propionaldehyde",
+        "inchi": "InChI=1S/C3H6O/c1-2-3-4/h3H,2H2,1H3",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H6O",
+        "iupac_name": "2-methylprop-2-enal",
+        "common_name": "methacrolein",
+        "inchi": "InChI=1S/C4H6O/c1-4(2)3-5/h3H,1H2,2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C4H8O",
+        "iupac_name": "2-methylpropanal",
+        "common_name": "isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H10N2",
+        "iupac_name": "2-amino-3-methylbutanenitrile",
+        "common_name": "valine aminonitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-amino-3-methylbutanoic acid",
+        "common_name": "valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Biochemical"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Hydrothermal CO hydrogenation to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "awaruite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "370-430K",
+          "pressure": "high",
+          "catalyst": "awaruite/magnetite",
+          "aqueous": "true",
+          "other": "anoxic H2-rich subseafloor or alkaline vent setting"
+        },
+        "mechanism": "surface-mediated reduction of CO to a C1 oxygenate on reduced Fe-Ni mineral phases",
+        "reasoning": "H2-rich hydrothermal systems containing reduced Fe-Ni minerals can reduce CO to small oxygenates without invoking O2. Formaldehyde is unlikely to accumulate at the vent itself, but even low yields make it a plausible feeder to later surface chemistry and a justified in-network source alongside exogenous atmospheric formaldehyde."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Hydrothermal syngas coupling to acetaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe-Ni alloy surfaces",
+          "greigite"
+        ],
+        "conditions": {
+          "temperature": "400-500K",
+          "pressure": "high",
+          "catalyst": "Fe-Ni alloy/greigite",
+          "aqueous": "true",
+          "other": "anoxic H2-rich vent fluid; Fischer-Tropsch-type regime"
+        },
+        "mechanism": "net CO reduction with C-C coupling and aldehyde termination",
+        "reasoning": "Compared with a direct branched C4 synthesis, linear C2 aldehyde formation from CO/H2 is the chemically safer Fischer-Tropsch-type option. Selectivity would be low and product mixtures are expected, but acetaldehyde is a plausible minor product; water is included explicitly as coproduct."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formamide dehydration to hydrogen cyanide",
+        "inputs": [
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "volcanic silica",
+          "alumina"
+        ],
+        "conditions": {
+          "temperature": "380-470K",
+          "pressure": "1 atm",
+          "catalyst": "silica/alumina surfaces",
+          "aqueous": "false",
+          "other": "dry-down films at volcanic hot springs or impact-heated mineral surfaces"
+        },
+        "mechanism": "thermal dehydration of formamide under drying conditions",
+        "reasoning": "Formamide thermolysis or dehydration in drying volcanic or impact-heated settings gives HCN and water. This provides a balanced cyanide source and avoids omitting the obligatory water coproduct."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Aldol condensation of acetaldehyde and formaldehyde to acrolein",
+        "inputs": [
+          "mol_007",
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "carbonate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": "clay/carbonate mineral surfaces",
+          "aqueous": "true",
+          "other": "wet-dry cycling in evaporitic pools; dehydration favored during dry phase"
+        },
+        "mechanism": "acetaldehyde enolization, C-C bond formation with formaldehyde, then dehydration",
+        "reasoning": "Surface concentration is important because the step is a net aldol condensation plus dehydration. Acetaldehyde is the nucleophilic partner, formaldehyde provides one-carbon homologation, and acrolein is treated as a transient enal en route to the saturated aldehyde."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrogenation of acrolein to propanal",
+        "inputs": [
+          "mol_009",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-Fe sulfides"
+        ],
+        "conditions": {
+          "temperature": "330-380K",
+          "pressure": "1 atm",
+          "catalyst": "Ni-Fe sulfides",
+          "aqueous": "false",
+          "other": "reducing geothermal gas-mineral interface with H2 available"
+        },
+        "mechanism": "mineral-catalyzed reduction of the enal C=C bond while retaining the aldehyde",
+        "reasoning": "Reducing geothermal surfaces can supply both H2 and catalytic metal sulfides. Chemoselectivity will not be perfect, but hydrogenation of the enal C=C bond to propanal is chemically reasonable and preserves the aldehyde needed for the second homologation."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aldol condensation of propanal and formaldehyde to methacrolein",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite",
+          "carbonate minerals"
+        ],
+        "conditions": {
+          "temperature": "320-360K",
+          "pressure": "1 atm",
+          "catalyst": "clay/carbonate mineral surfaces",
+          "aqueous": "true",
+          "other": "evaporative concentration; dehydration favored during dry intervals"
+        },
+        "mechanism": "propanal enolization, C-C bond formation with formaldehyde, then dehydration",
+        "reasoning": "A second formaldehyde aldol/dehydration introduces the branch corresponding to the valine side chain. Placing this step at the surface is justified because concentration and water loss are required; methacrolein is again treated as a short-lived intermediate."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Hydrogenation of methacrolein to isobutyraldehyde",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-Fe sulfides"
+        ],
+        "conditions": {
+          "temperature": "330-380K",
+          "pressure": "1 atm",
+          "catalyst": "Ni-Fe sulfides",
+          "aqueous": "false",
+          "other": "reducing geothermal gas-mineral interface with H2 available"
+        },
+        "mechanism": "mineral-catalyzed reduction of the alkene in the branched enal",
+        "reasoning": "Reduction of methacrolein to isobutyraldehyde gives the canonical branched aldehyde precursor to valine and avoids the much weaker assumption of direct branched C4 synthesis from syngas."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Strecker synthesis of valine aminonitrile from isobutyraldehyde",
+        "inputs": [
+          "mol_012",
+          "mol_006",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "cyanide- and ammonia-bearing evaporitic pool or geothermal pond"
+        },
+        "mechanism": "imine formation with ammonia, cyanide addition, and aminonitrile capture",
+        "reasoning": "The Strecker reaction from isobutyraldehyde is the strongest prebiotic entry to valine. Water is shown explicitly as coproduct, and the step can draw HCN either from the broader environment or from rxn_003."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of valine aminonitrile to valine",
+        "inputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_004"
+        ],
+        "environment": "Biochemical",
+        "agents": null,
+        "conditions": {
+          "temperature": "330-370K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "prebiotic pool or mineral interface under geothermal heating-cooling cycles"
+        },
+        "mechanism": "stepwise nitrile hydration to amide and acid under prolonged aqueous heating",
+        "reasoning": "Aminonitrile hydrolysis is slow but geochemically plausible during repeated hydration and heating. Two waters are required stoichiometrically and ammonia is released explicitly, giving a fully balanced conversion to valine."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Fully in-network feedstock generation",
+        "description": "Formaldehyde and acetaldehyde arise from hydrothermal CO/H2 chemistry, HCN arises from formamide dehydration, and the branched aldehyde is built by two surface aldol/hydrogenation cycles before Strecker conversion to valine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "In-network carbonyls with direct environmental HCN",
+        "description": "Hydrothermal CO/H2 supplies formaldehyde and acetaldehyde, but cyanide is assumed to be available directly from the wider surface inventory before Strecker conversion.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Direct formaldehyde entry with generated HCN",
+        "description": "Exogenous formaldehyde is combined with hydrothermally generated acetaldehyde, while formamide supplies cyanide for the final Strecker step.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Direct formaldehyde entry with direct HCN",
+        "description": "Only acetaldehyde is generated in-network; formaldehyde and HCN are taken directly from the prebiotic inventory and then passed through the same branched-aldehyde/Strecker sequence.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Direct acetaldehyde entry with generated HCN",
+        "description": "Hydrothermal CO/H2 supplies formaldehyde, acetaldehyde is assumed directly available, and formamide furnishes cyanide before Strecker conversion.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Direct acetaldehyde entry with direct HCN",
+        "description": "Formaldehyde is produced in-network, while acetaldehyde and cyanide are supplied directly; the downstream carbon-skeleton construction and Strecker chemistry remain unchanged.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Direct C1 and C2 aldehyde entry with generated HCN",
+        "description": "Formaldehyde and acetaldehyde are both taken directly from the ambient prebiotic carbonyl inventory, while formamide supplies HCN for the final Strecker step.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct C1 and C2 aldehyde entry with direct HCN",
+        "description": "The shortest full homologation route starts from pre-existing formaldehyde, acetaldehyde, and HCN and proceeds through acrolein, propanal, methacrolein, and isobutyraldehyde to valine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_010",
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Direct propanal shortcut with generated HCN",
+        "description": "If propanal is already present in the carbonyl inventory, only the second homologation is needed; formaldehyde is still generated in-network and HCN is released from formamide.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Minimal shortcut from formaldehyde, propanal, and HCN",
+        "description": "With direct access to formaldehyde, propanal, and HCN, the network collapses to methacrolein formation, reduction to isobutyraldehyde, Strecker conversion, and aminonitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012",
+          "mol_013"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_003",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_006",
+          "rxn_008"
+        ],
+        "outgoing_reactions": [
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.45,
+          "rxn_002": 0.55,
+          "rxn_003": 0.8,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.67,
+        "pathway_coherence": 0.52,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.62,
+        "overall_confidence": 0.6,
+        "feedback": "The carbon-skeleton logic is recognizable, but the pathway is not fully in-network as claimed because rxn_008 requires NH3 with no upstream source. rxn_001 and rxn_002 are the weakest chemistry without explicit catalytic support, and rxn_009 needs 2 H2O plus an abiotic aqueous setting rather than a biochemical one.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 as a starting/environmental input or generate it before rxn_008.",
+          "Rewrite rxn_002 explicitly as 2 CO + 3 H2 -> C2H4O + H2O and specify plausible hydrothermal catalysts.",
+          "Rewrite rxn_009 as C5H10N2 + 2 H2O -> C5H11NO2 + NH3 in an abiotic aqueous or hydrothermal environment."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.45,
+          "rxn_002": 0.55,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.55,
+        "environmental_progression": 0.58,
+        "target_achievement": 0.64,
+        "overall_confidence": 0.62,
+        "feedback": "Direct HCN removes one plausible step, but the route still depends on weak hydrothermal aldehyde generation and on unsourced NH3 for the Strecker step. The final hydrolysis remains stoichiometrically incomplete as written and environmentally mismatched.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Make NH3 explicit as a starting/environmental reagent if HCN is also treated as external.",
+          "Strengthen rxn_001 and rxn_002 with named mineral catalysts and realistic hydrothermal conditions, or replace them with direct aldehyde entry.",
+          "Correct rxn_009 to C5H10N2 + 2 H2O -> C5H11NO2 + NH3 and move it out of the Biochemical environment."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.55,
+          "rxn_003": 0.8,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.59,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.66,
+        "feedback": "Starting from environmental formaldehyde improves plausibility, but acetaldehyde-from-syngas is still weak and NH3 is still missing upstream. Once aldehydes are available, the homologation logic is coherent, but the last hydrolysis step still needs correction.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add an explicit NH3 source before rxn_008.",
+          "Write rxn_002 as 2 CO + 3 H2 -> C2H4O + H2O and justify the catalyst/environment used for C-C coupling.",
+          "Specify catalysts or pH control for rxn_004-rxn_007 and rewrite rxn_009 with 2 H2O under abiotic aqueous hydrolysis conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.55,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.62,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.69,
+        "overall_confidence": 0.68,
+        "feedback": "This is a more credible shortcut than the fully in-network variants because it avoids in-network HCN production, but it still needs an explicit ammonia source and a corrected non-biochemical hydrolysis step. rxn_002 also needs explicit coefficients and stronger environmental justification.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Declare NH3 as a starting/environmental species or add an upstream synthesis for it.",
+          "Correct rxn_002 to 2 CO + 3 H2 -> C2H4O + H2O and specify a realistic hydrothermal catalyst.",
+          "Rewrite rxn_009 with 2 H2O and place it in an abiotic aqueous, hydrothermal, or wet-dry hydrolysis environment."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.45,
+          "rxn_003": 0.8,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.59,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.66,
+        "feedback": "Direct acetaldehyde entry helps relative to in-network acetaldehyde synthesis, but formaldehyde generation by rxn_001 remains weak and NH3 is still absent upstream of the Strecker step. The carbon-skeleton build itself is reasonable once the aldehydes are available.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 as an explicit pathway input before rxn_008.",
+          "Either support rxn_001 with specific hydrothermal catalysts/conditions or replace it with direct formaldehyde entry.",
+          "Correct rxn_009 to consume 2 H2O and move it to an abiotic aqueous hydrolysis setting."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.45,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.67,
+        "pathway_coherence": 0.62,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.69,
+        "overall_confidence": 0.67,
+        "feedback": "This is a reasonable shortcut if acetaldehyde and HCN are environmental, but rxn_001 remains uncertain and Strecker chemistry still lacks an explicit ammonia input. The final hydrolysis step should be rewritten with 2 H2O in an abiotic aqueous environment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Declare NH3 as a starting/environmental reagent or add an upstream source for it.",
+          "Strengthen rxn_001 with named catalytic minerals and conditions, or bypass it with direct formaldehyde entry.",
+          "Rewrite rxn_009 as C5H10N2 + 2 H2O -> C5H11NO2 + NH3 and relabel the environment."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_003": 0.8,
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.68,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.72,
+        "overall_confidence": 0.71,
+        "feedback": "Once formaldehyde and acetaldehyde are admitted directly, the homologation sequence becomes fairly plausible, and formamide-to-HCN is serviceable. The main remaining defects are the missing NH3 source and the misassigned final hydrolysis environment.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 as a starting/environmental species or introduce a pre-Strecker ammonia-generation step.",
+          "Specify wet-dry or mineral-surface conditions for rxn_004, rxn_006, and rxn_008, and H2-activating catalytic surfaces for rxn_005 and rxn_007.",
+          "Correct rxn_009 to use 2 H2O and move it to an abiotic aqueous or hydrothermal hydrolysis environment."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.78,
+          "rxn_005": 0.72,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.69,
+        "target_achievement": 0.74,
+        "overall_confidence": 0.73,
+        "feedback": "This is one of the stronger routes because it avoids the weakest syngas chemistry and uses a coherent aldol/hydrogenation/Strecker sequence. It is still incomplete as written because NH3 is not supplied before rxn_008, and rxn_009 needs corrected stoichiometry and an abiotic aqueous setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 explicitly as a starting/environmental input.",
+          "Rewrite rxn_009 as C5H10N2 + 2 H2O -> C5H11NO2 + NH3 and move it out of the Biochemical environment.",
+          "Specify catalysts and pH/wet-dry conditions for the aldol, hydrogenation, and Strecker steps."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_001": 0.45,
+          "rxn_003": 0.8,
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.66,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.71,
+        "overall_confidence": 0.69,
+        "feedback": "The propanal shortcut is attractive, but this version still relies on weak hydrothermal formaldehyde generation and on unsourced NH3 for the Strecker step. The final hydrolysis correction remains necessary.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 as an explicit input before rxn_008.",
+          "Replace or better support rxn_001 for formaldehyde supply with realistic catalysts and conditions.",
+          "Correct rxn_009 to consume 2 H2O in an abiotic aqueous hydrolysis environment."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_006": 0.78,
+          "rxn_007": 0.72,
+          "rxn_008": 0.81,
+          "rxn_009": 0.52
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.75,
+        "overall_confidence": 0.74,
+        "feedback": "This is the cleanest chemical core in the network: formaldehyde + propanal -> methacrolein -> isobutyraldehyde -> valine aminonitrile -> valine is coherent. It still falls short of approval because NH3 is not provided before rxn_008, and rxn_009 should be written with 2 H2O under abiotic aqueous hydrolysis conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Add NH3 as a starting/environmental input or generate it upstream of rxn_008.",
+          "Rewrite rxn_009 as C5H10N2 + 2 H2O -> C5H11NO2 + NH3 and relabel it as abiotic aqueous or hydrothermal hydrolysis.",
+          "Specify the mineral or metal catalyst and pH/wet-dry context for rxn_006-rxn_008."
+        ]
+      }
+    ],
+    "best_pathway_id": "P10",
+    "overall_confidence": 0.69,
+    "network_feedback": "Connected 14-molecule/9-reaction network with no RDKit-reported conservation violations; rxn_002 and rxn_009 are balanceable but should be written with explicit coefficients. The aldol/hydrogenation build to isobutyraldehyde and the Strecker step to valine aminonitrile are chemically coherent. The major shortcomings are that mol_004 (NH3) is required in rxn_008 but is neither a declared starting input nor generated upstream, rxn_009 is mislabeled as Biochemical and should be abiotic aqueous hydrolysis with 2 H2O, and rxn_001/rxn_002 are the least secure steps without specified mineral catalysts or conditions. As written, the target is not reachable from the declared starting set because of the NH3 gap. P10 is the strongest shortcut, but the network remains below approval until ammonia sourcing, final-step conditions, and the stoichiometric details of rxn_002 and rxn_009 are corrected.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 9,
+      "n_balanced_as_written": 7,
+      "n_balanceable": 2,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 2,
+            "mol_002": 3,
+            "mol_008": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_009": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_002": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_013": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_013": 1,
+            "mol_003": 2,
+            "mol_014": 1,
+            "mol_004": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

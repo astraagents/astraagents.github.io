@@ -1,0 +1,1049 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine",
+    "overall_strategy": "The network deliberately distributes 10 target-reaching paths across 4 glycolaldehyde-centered and 6 glycine-centered routes. Four paths arise from 2 glycolaldehyde supply reactions, cyanosulfidic photoreduction of glycolonitrile and formose dimerization of formaldehyde, paired with 2 completion modes, staged Ser-CN formation and hydrolysis and a low-selectivity one-pot hydrothermal net conversion. Six paths arise from 3 glycine supply reactions, explicit Strecker and hydrolysis, hydrothermal net synthesis, and spark-discharge net synthesis, paired with 2 catalyst-gated hydroxymethylation modes, Cu2+ and pyridoxal-metal. The literature strongly favors low-temperature surface Strecker chemistry and Cu-mediated glycine hydroxymethylation; hydrothermal and hybrid handoff routes are included as lower-confidence alternatives because serine is thermolabile and typically transient or minor under hot or highly energetic conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2S",
+        "iupac_name": "sulfane",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "S",
+        "iupac_name": "sulfur",
+        "common_name": "elemental sulfur",
+        "inchi": "InChI=1S/S",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "2-hydroxyacetonitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O2",
+        "iupac_name": "2-hydroxyethanal",
+        "common_name": "glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C3H6N2O",
+        "iupac_name": "2-amino-3-hydroxypropanenitrile",
+        "common_name": "Ser-CN",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoacetonitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H5NO2",
+        "iupac_name": "aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-amino-3-hydroxypropanoic acid",
+        "common_name": "serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "CH4",
+        "iupac_name": "methane",
+        "common_name": "methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanohydrin formation of formaldehyde to glycolonitrile",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Neutral to mildly alkaline evaporitic or tidal-pool waters; concentration by evaporation, freezing, or salt accumulation is beneficial"
+        },
+        "mechanism": "Cyanide adds to formaldehyde to give the cyanohydrin glycolonitrile.",
+        "reasoning": "Glycolonitrile is the experimentally used C2 substrate in the cyanosulfidic sugar-to-serine network, so its cyanohydrin formation from formaldehyde and HCN is the logical entry step. The step is chemically standard and implicit in the Ritson-Sutherland sequence, even though the serine review does not report a standalone yield for it (Ritson and Sutherland, 2013; Patel et al., 2015). Concentration of HCN and formaldehyde remains a geochemical challenge."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanosulfidic photoreduction of glycolonitrile to glycolaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_003",
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "copper(I) cyanide"
+        ],
+        "conditions": {
+          "temperature": "290-310K",
+          "pressure": "1 atm",
+          "catalyst": "CuCN photoredox accelerant",
+          "aqueous": "true",
+          "other": "254 nm UV irradiation, near-neutral phosphate-buffered sulfidic water, staged exposure to limit over-reduction"
+        },
+        "mechanism": "UV-driven Cu(I)-assisted reduction of the nitrile followed by hydrolytic release furnishes glycolaldehyde; H2S serves as the stoichiometric reductant and is oxidized to sulfur.",
+        "reasoning": "This is the strongest experimentally supported upstream route to serine feedstock. Under 254 nm UV, glycolonitrile with H2S, phosphate and catalytic CuCN gave glycolaldehyde in 42 percent yield after 2 hours. Copper accelerates rather than being strictly required. The same chemistry over-reduces glycolaldehyde on longer irradiation, so staged exposure is critical, and the need for local sulfide and copper remains a geochemical critique (Ritson and Sutherland, 2013; Patel et al., 2015; Ranjan et al., 2018)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Formose dimerization of formaldehyde to glycolaldehyde",
+        "inputs": [
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "calcium hydroxide"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "Ca(OH)2 or related basic mineral base",
+          "aqueous": "true",
+          "other": "Alkaline wet-dry pools; inherently unselective formose regime"
+        },
+        "mechanism": "Base-catalyzed aldol dimerization of two formaldehyde equivalents gives glycolaldehyde.",
+        "reasoning": "Classical formose chemistry supplies glycolaldehyde but is much less selective than the cyanosulfidic route. The review treats it as a plausible older branch and notes that related aldehyde-plus-ammonia chemistry is poor for serine, so this edge is retained as a weaker alternative rather than a preferred one (Weber, 1998)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Strecker addition of glycolaldehyde to serine nitrile",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Neutral to mildly basic aqueous pools; days to weeks at concentrated HCN and NH3"
+        },
+        "mechanism": "Glycolaldehyde forms an imine with ammonia and cyanide then adds to give the alpha-aminonitrile of serine.",
+        "reasoning": "This is the best-demonstrated serine-specific C3-forming step. In the cyanosulfidic network, glycolaldehyde undergoes Strecker chemistry to stable serine aminonitrile in excellent yield, although the exact numerical yield is not given in the accessible summary (Patel et al., 2015; Foden et al., 2020). No mineral catalyst is required."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Hydrolysis of serine nitrile to serine",
+        "inputs": [
+          "mol_009",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Prolonged aqueous warming or repeated wet-dry rehydration; hydrolysis can be slower than aminonitrile formation"
+        },
+        "mechanism": "Stepwise nitrile hydration and amide hydrolysis release the free amino acid and ammonia.",
+        "reasoning": "Ser-CN is the experimentally observed hub; conversion to free serine is chemically necessary and consistent with standard aminonitrile hydrolysis, but the accessible serine papers emphasize Ser-CN stability more than free-serine yield. This makes the step moderately supported rather than directly quantified (Foden et al., 2020)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "One-pot hydrothermal Strecker-hydrolysis from glycolaldehyde to serine",
+        "inputs": [
+          "mol_008",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite",
+          "pyrrhotite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "398-448K",
+          "pressure": "10 bar to high",
+          "catalyst": "Pyrite-pyrrhotite-magnetite redox buffer",
+          "aqueous": "true",
+          "other": "Net overall equation; NH3 or NH4+ participates but cancels overall; short residence times and rapid quench are favored"
+        },
+        "mechanism": "Net condensation of glycolaldehyde with HCN under ammoniacal conditions gives the aminonitrile, which hydrolyzes in the same hot fluid to free serine.",
+        "reasoning": "Hydrothermal studies report transient serine formation from reduced carbon and nitrogen feedstocks, but not as a clean isolated glycolaldehyde experiment. This node is therefore a balanced overall abstraction of one-pot Strecker plus hydrolysis using glycolaldehyde as the chemically appropriate C2 aldehyde. It is included as a low-confidence alternative because serine rapidly degrades at these temperatures (Hennet et al., 1992; Aubrey, Cleaves and Bada, 2009)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Strecker formation of aminoacetonitrile from formaldehyde",
+        "inputs": [
+          "mol_002",
+          "mol_001",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "290-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Neutral to mildly basic concentrated pools"
+        },
+        "mechanism": "Imine formation from formaldehyde and ammonia followed by cyanide addition gives aminoacetonitrile.",
+        "reasoning": "This is the glycine analogue of the serine Strecker step and is part of the same aldehyde-to-aminonitrile chemistry discussed in cyanosulfidic networks, where formaldehyde is converted onward to glycine aminonitrile under added HCN and ammonia (Ritson and Sutherland, 2013; Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydrolysis of aminoacetonitrile to glycine",
+        "inputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-350K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Warm aqueous pools or rehydration phases after concentration"
+        },
+        "mechanism": "Nitrile hydration and hydrolysis convert aminoacetonitrile to glycine with ammonia release.",
+        "reasoning": "This is the standard completion of Strecker glycine chemistry and supplies the explicit glycine pool needed for the hydroxymethylation branch to serine. As with serine nitrile hydrolysis, the chemistry is secure even though this step is not separately quantified in the serine-focused literature (Patel et al., 2015)."
+      },
+      {
+        "id": "rxn_009",
+        "name": "One-pot hydrothermal synthesis of glycine from HCN and formaldehyde",
+        "inputs": [
+          "mol_002",
+          "mol_001",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "pyrite",
+          "pyrrhotite",
+          "magnetite"
+        ],
+        "conditions": {
+          "temperature": "398-448K",
+          "pressure": "10 bar to high",
+          "catalyst": "Pyrite-pyrrhotite-magnetite redox buffer",
+          "aqueous": "true",
+          "other": "Net overall equation; NH3 or NH4+ participates but cancels overall; yields fall sharply as concentrations drop"
+        },
+        "mechanism": "Net Strecker-type condensation and hydrolysis in one hydrothermal episode furnish glycine from reduced carbon and nitrogen feedstocks.",
+        "reasoning": "This is a balanced overall abstraction of hydrothermal glycine formation from HCN and formaldehyde systems. Glycine is much more robust than serine in such experiments, but total amino-acid yields remain low and strongly concentration-dependent (Hennet et al., 1992; Aubrey, Cleaves and Bada, 2009)."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Spark-discharge synthesis of glycine from reduced atmospheric gases",
+        "inputs": [
+          "mol_013",
+          "mol_003",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "Transient plasma; condensate 300-320K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": "true",
+          "other": "Electric discharge through reduced or volcanic gas mixtures followed by aqueous collection and hydrolysis"
+        },
+        "mechanism": "Discharge-generated radicals produce HCN and aldehyde intermediates that are trapped in aqueous condensates and ultimately hydrolyze to free glycine.",
+        "reasoning": "Spark discharge produces complex mixtures in which glycine is abundant and serine is minor or qualitative. Using discharge chemistry as a glycine source is therefore conservative and better supported than writing a clean direct serine step. The node is intentionally coarse and atmosphere-dependent (Johnson et al., 2008; Parker et al., 2011)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Copper-catalyzed hydroxymethylation of glycine to serine",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "copper(II) sulfate"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "Cu2+",
+          "aqueous": "true",
+          "other": "Mildly alkaline concentrated pools; reversible; over-hydroxymethylation to alpha-(hydroxymethyl)serine competes"
+        },
+        "mechanism": "Glycine coordinates as a copper glycinate, which increases alpha-carbon nucleophilicity and enables aldol-type addition to formaldehyde followed by proton transfer to serine.",
+        "reasoning": "This is the strongest non-Strecker serine route. DL-serine was obtained from glycine and formaldehyde in alkaline water with catalytic CuSO4. The same chemistry is reversible and competes with alpha-(hydroxymethyl)serine, so it is catalyst-gated rather than a generic spontaneous step. The catalyst is experimentally secure but geochemically more contested than the cyanosulfidic route because freely available Cu2+ is harder to justify (Akabori et al., 1959; Chadha and Choughuley, 1984)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Pyridoxal-metal mediated hydroxymethylation of glycine to serine",
+        "inputs": [
+          "mol_011",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "pyridoxal",
+          "Fe3+",
+          "Cu2+",
+          "Al3+"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm",
+          "catalyst": "Pyridoxal plus Fe3+, Cu2+, or Al3+",
+          "aqueous": "true",
+          "other": "Concentrated mildly alkaline pools; reversible serine and glycine plus formaldehyde interconversion"
+        },
+        "mechanism": "A pyridoxal-glycine Schiff base or related metal complex stabilizes alpha-carbanion character and enables C1 transfer from formaldehyde to give serine.",
+        "reasoning": "Pyridoxal with Fe3+, Cu2+, or Al3+ mediates reversible nonenzymatic interconversion of glycine plus formaldehyde and serine. This is an experimentally real analogue of serine hydroxymethyltransferase chemistry, but prebiotic plausibility is weaker than the Cu route because pyridoxal itself lacks a secure abiotic source (Metzler, Longenecker and Snell, 1954)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Cyanosulfidic staged Ser-CN route",
+        "description": "Best-supported path: formaldehyde is trapped as glycolonitrile, photoreduced under UV, H2S and CuCN to glycolaldehyde, then converted through serine nitrile to serine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Formose-derived staged Strecker route",
+        "description": "Classical but less selective surface route in which formose chemistry supplies glycolaldehyde before the same Ser-CN and hydrolysis sequence.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanosulfidic glycolaldehyde with one-pot hot completion",
+        "description": "Surface-generated glycolaldehyde from the cyanosulfidic network is completed to serine in a single hydrothermal Strecker-hydrolysis episode; lower confidence because serine is transient at high temperature.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formose glycolaldehyde with one-pot hot completion",
+        "description": "Formose-derived glycolaldehyde enters the same one-pot hydrothermal net conversion to serine; lower confidence because both glycolaldehyde supply and hot completion are unselective.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Explicit glycine Strecker plus Cu hydroxymethylation",
+        "description": "Formaldehyde is converted to glycine through aminoacetonitrile, then Cu2+-catalyzed Akabori chemistry gives serine.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Explicit glycine Strecker plus pyridoxal-metal hydroxymethylation",
+        "description": "The same explicit glycine Strecker route feeds the reversible pyridoxal-metal serine-forming reaction.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_010",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Hydrothermal glycine then Cu hydroxymethylation",
+        "description": "Glycine is generated in a hydrothermal one-pot system and then enters a cooler Cu-bearing surface pool for hydroxymethylation; this hybrid route is lower confidence because it spans environments.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Hydrothermal glycine then pyridoxal-metal hydroxymethylation",
+        "description": "Hybrid hot-to-cool route using hydrothermal glycine and a pyridoxal-metal finishing step; chemically possible but more prebiotically contested than P7.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Spark-discharge glycine then Cu hydroxymethylation",
+        "description": "Electric-discharge condensates supply glycine, which is then hydroxymethylated with formaldehyde in a Cu2+-bearing surface pool.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Spark-discharge glycine then pyridoxal-metal hydroxymethylation",
+        "description": "As in P9, but the final serine-forming step uses the pyridoxal-metal system and is therefore more prebiotically contested.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_008",
+      "mol_011",
+      "mol_012"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_012"
+        ]
+      },
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.83,
+          "rxn_004": 0.95,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.93,
+        "environmental_progression": 0.84,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.89,
+        "feedback": "Best-supported pathway. rxn_001 and rxn_004 match established cyanohydrin and Strecker chemistry, and rxn_002 is well aligned with cyanosulfidic photoreduction literature, but it should explicitly note UV irradiation and ideally CuCN/phosphate buffering; over-reduction of glycolaldehyde to acetaldehyde is also omitted. rxn_005 is chemically plausible but needs corrected stoichiometry: rxn_005 should be Ser-CN + 2 H2O -> serine + NH3. Overall this is the strongest serine route in the network and closest to literature consensus.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Add UV, near-neutral aqueous conditions, and optional CuCN/phosphate to rxn_002.",
+          "Correct rxn_005 stoichiometry to include 2 H2O.",
+          "Add competing acetaldehyde formation from over-reduction and a serine degradation sink for better realism."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.55,
+          "rxn_004": 0.95,
+          "rxn_005": 0.8
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.86,
+        "overall_confidence": 0.78,
+        "feedback": "The logic is coherent once glycolaldehyde exists, but rxn_003 is only a coarse shorthand for formose chemistry. It needs corrected stoichiometry, rxn_003: 2 CH2O -> glycolaldehyde, and explicit alkaline or mineral conditions; selectivity is a major known problem in the literature. rxn_004 and rxn_005 are strong downstream steps, though rxn_005 again needs 2 H2O. This route is plausible but clearly weaker than the cyanosulfidic upstream route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Correct rxn_003 stoichiometry to 2 CH2O -> glycolaldehyde.",
+          "Specify base or mineral mediation for the formose step and acknowledge poor selectivity.",
+          "Correct rxn_005 to include 2 H2O."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.83,
+          "rxn_006": 0.32
+        },
+        "chemical_feasibility": 0.58,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.72,
+        "overall_confidence": 0.62,
+        "feedback": "The upstream glycolaldehyde generation is sound, but rxn_006 over-compresses hydrothermal serine formation. As written it lacks NH3 or NH4+ even though Strecker-type amino acid synthesis needs an external amino source; literature hydrothermal systems also show serine to be transient and thermolabile. The surface-to-hydrothermal handoff is not physically justified in the pathway description.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Revise rxn_006 to include NH3 or NH4+ and treat it as low-yield, time-limited hydrothermal chemistry rather than a clean one-pot step.",
+          "Justify transfer of glycolaldehyde from a UV-lit surface setting into a hydrothermal environment.",
+          "Add serine decomposition to alanine or pyruvate under hot conditions."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_003": 0.55,
+          "rxn_006": 0.32
+        },
+        "chemical_feasibility": 0.45,
+        "pathway_coherence": 0.6,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.6,
+        "overall_confidence": 0.51,
+        "feedback": "This is the weakest glycolaldehyde-centered route. rxn_003 is an unselective formose shorthand that needs 2 CH2O and explicit alkaline or mineral conditions, while rxn_006 is mechanistically under-specified because NH3 or NH4+ is missing and hydrothermal conditions rapidly degrade serine. Both steps are plausible only as very coarse net summaries, not as a clean target-directed path.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Replace rxn_003 with a more explicit glycolaldehyde-producing subnetwork or prefer the cyanosulfidic upstream route.",
+          "Revise rxn_006 to include NH3 or NH4+ and explicitly mark serine as transient under hydrothermal conditions.",
+          "If retained, present this pathway as speculative and include competing decomposition products."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.92,
+          "rxn_008": 0.8,
+          "rxn_011": 0.84
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.79,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.85,
+        "feedback": "Strong alternative pathway. rxn_007 and rxn_008 are standard Strecker plus hydrolysis chemistry to glycine, although rxn_008 needs corrected stoichiometry: aminoacetonitrile + 2 H2O -> glycine + NH3. rxn_011 is literature-supported for serine formation, but only with explicit Cu2+ catalysis and mildly alkaline aqueous conditions; the catalyst, reversibility, and alpha-(hydroxymethyl)serine side product are not modeled. Even so, this route is chemically credible and aligns well with published serine chemistry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Correct rxn_008 stoichiometry to include 2 H2O.",
+          "Explicitly annotate Cu2+ and mildly alkaline aqueous conditions for rxn_011.",
+          "Add reversibility and alpha-(hydroxymethyl)serine as a competing product in rxn_011."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_007": 0.92,
+          "rxn_008": 0.8,
+          "rxn_012": 0.73
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.73,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.79,
+        "feedback": "Chemically plausible and supported in laboratory systems, but less secure prebiotically than the Cu2+ version. rxn_008 again needs 2 H2O. rxn_012 requires explicit pyridoxal plus a realistic metal ion such as Al3+, Cu2+, or Fe3+ under mildly alkaline aqueous conditions; without those cofactors the glycine plus formaldehyde coupling is too slow. The route is coherent, but catalyst realism is the main weakness.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Correct rxn_008 stoichiometry.",
+          "Specify the pyridoxal-metal cofactor set and justify its prebiotic availability.",
+          "Add reversibility and over-hydroxymethylation side products to rxn_012."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.4,
+          "rxn_011": 0.84
+        },
+        "chemical_feasibility": 0.56,
+        "pathway_coherence": 0.73,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.76,
+        "overall_confidence": 0.63,
+        "feedback": "The second step is reasonable with Cu2+, but rxn_009 is too compressed and likely mis-specified mechanistically: hydrothermal glycine synthesis in the literature typically involves NH3 or NH4+ or a more complex reaction network, whereas the reaction as written omits that amino source. The hydrothermal-to-surface transfer to Cu-catalyzed hydroxymethylation is also not justified. Literature support exists only for low-yield, transient hydrothermal amino acid formation.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Revise rxn_009 to include NH3 or NH4+ and treat it as low-yield hydrothermal net chemistry, not a clean elementary step.",
+          "Explain transport and quenching from hot hydrothermal fluid to a cooler Cu-bearing surface setting.",
+          "Add serine degradation channels at elevated temperature."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_009": 0.4,
+          "rxn_012": 0.73
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.51,
+        "target_achievement": 0.73,
+        "overall_confidence": 0.58,
+        "feedback": "This combines two under-specified elements: rxn_009 is a mechanistically weak hydrothermal net step lacking NH3 or NH4+, and rxn_012 depends on a contested pyridoxal-metal catalytic system that is not explicitly present. The route can be imagined, but it is poorly grounded as modeled and needs a clearer environmental handoff from hot fluids to cooler catalytic aqueous conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Revise rxn_009 to include the necessary amino source and lower-confidence yield assumptions.",
+          "Specify pyridoxal plus metal cofactors and the aqueous pH regime for rxn_012.",
+          "Model transport from hydrothermal synthesis to surface catalysis explicitly."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_010": 0.45,
+          "rxn_011": 0.84
+        },
+        "chemical_feasibility": 0.61,
+        "pathway_coherence": 0.71,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.65,
+        "feedback": "Spark-discharge experiments do produce glycine, but rxn_010 is only a very coarse atmospheric net summary, not a discrete surface reaction. It needs corrected stoichiometry, rxn_010: 2 CH4 + NH3 + 2 H2O -> glycine + 5 H2, and should be assigned to a discharge or atmospheric environment with HCN and aldehydes as intermediates. The downstream Cu-catalyzed hydroxymethylation is reasonable, but atmospheric-to-aqueous transfer is not described.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Correct rxn_010 stoichiometry and relabel it as an atmospheric spark-discharge environment rather than Surface.",
+          "Consider replacing rxn_010 with an explicit discharge subnetwork through HCN and aldehyde intermediates.",
+          "Explain dissolution and collection of spark products before rxn_011 and specify Cu2+ conditions."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.45,
+          "rxn_012": 0.73
+        },
+        "chemical_feasibility": 0.55,
+        "pathway_coherence": 0.68,
+        "environmental_progression": 0.42,
+        "target_achievement": 0.77,
+        "overall_confidence": 0.59,
+        "feedback": "Like P9, the spark step is an acceptable gross summary of a demonstrated product distribution but not a clean elementary reaction, and it is mis-labeled as Surface. The pyridoxal-metal serine step is also catalyst-sensitive and under-specified. This makes the full pathway possible only as a speculative cross-environment sequence rather than a well-supported target-directed route.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Correct rxn_010 stoichiometry and use an atmospheric discharge environment.",
+          "Explicitly include the pyridoxal-metal catalyst set and aqueous conditions for rxn_012.",
+          "Add a transfer node or justification for atmospheric product deposition into the catalytic aqueous setting."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.84,
+    "network_feedback": "The network is structurally valid and reasonably complete: 14 molecule nodes and 12 reaction nodes form a connected graph, IDs are consistent, and the deterministic balance check found no unbalanceable reactions. Network validity is therefore high. However, four reactions need stoichiometric correction as written: rxn_003 should be 2 CH2O -> glycolaldehyde, rxn_005 and rxn_008 each require 2 H2O for aminonitrile hydrolysis, and rxn_010 should be 2 CH4 + NH3 + 2 H2O -> glycine + 5 H2. The chemistry is strongest for the staged cyanosulfidic glycolaldehyde Strecker route and the explicit glycine plus formaldehyde Cu route, which align well with the literature. The major weaknesses are mechanistic under-specification of rxn_006 and rxn_009, both of which omit NH3 or NH4+ for hydrothermal amino acid formation; rxn_010 being a coarse atmospheric-discharge net step misassigned to a Surface environment; and missing explicit catalyst and condition annotations for rxn_002, rxn_011, and rxn_012. Literature alignment is good in strategy but incomplete in detail: the network correctly emphasizes low-temperature Strecker and catalyst-gated glycine hydroxymethylation, yet it omits important side processes and critiques such as glycolaldehyde over-reduction, reversibility and alpha-(hydroxymethyl)serine formation in glycine hydroxymethylation, and rapid serine degradation under hot conditions. Overall, this is a coherent and literature-aware serine network with a strong primary route, but it is not yet precise enough chemically or environmentally to reach approval at the >=0.9 threshold.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 8,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_008": 1,
+            "mol_003": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_002": 2,
+            "mol_008": 1
+          },
+          "element_delta": {
+            "C": -1,
+            "O": -1,
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_001": 1,
+            "mol_003": 1,
+            "mol_009": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_004": 2,
+            "mol_012": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_001": 1,
+            "mol_004": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_001": 1,
+            "mol_003": 1,
+            "mol_010": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_004": 2,
+            "mol_011": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_002": 1,
+            "mol_001": 1,
+            "mol_004": 1,
+            "mol_011": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_013": 2,
+            "mol_003": 1,
+            "mol_004": 2,
+            "mol_011": 1,
+            "mol_014": 5
+          },
+          "element_delta": {
+            "C": -1,
+            "H": 2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_002": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}

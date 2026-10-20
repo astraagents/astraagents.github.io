@@ -1,0 +1,972 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Network centered on alpha-ketoglutarate because targeted prebiotic glutamate chemistry most strongly converges on that immediate carbon skeleton. To keep the graph mass-balanced and avoid unsupported environment jumps, the chemistry is placed in surface geothermal or evaporitic mineral interfaces and uses two C5-building modules from pyruvate plus glyoxylate: an integrated one-pot net step and an explicit aldol-dehydration-reduction sequence, with ZnS photochemistry optionally supplying pyruvate from lactate. From alpha-ketoglutarate, three experimentally distinct nitrogen-entry modes lead to glutamate: H2/metal reductive amination, Al(III)-assisted transamination, and Bucherer-Bergs hydantoin formation followed by explicit hydrolysis. This keeps redox bookkeeping explicit and makes both the alpha-ketoglutarate bottleneck and the hydantoin-hydrolysis bottleneck visible.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H6O3",
+        "iupac_name": "2-hydroxypropanoic acid",
+        "common_name": "lactic acid",
+        "inchi": "InChI=1S/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylic acid",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O6",
+        "iupac_name": "4-hydroxy-2-oxopentanedioic acid",
+        "common_name": "4-hydroxy-2-oxoglutaric acid",
+        "inchi": "InChI=1S/C5H6O6/c6-2(4(8)9)1-3(7)5(10)11/h2,6H,1H2,(H,8,9)(H,10,11)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H4O5",
+        "iupac_name": "2-oxopent-4-enedioic acid",
+        "common_name": "2-oxo-4-pentenedioic acid",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "alpha-ketoglutaric acid",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "glutamic acid",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoacetic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "CHN",
+        "iupac_name": "methanenitrile",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "C6H8N2O4",
+        "iupac_name": "5-(2-carboxyethyl)imidazolidine-2,4-dione",
+        "common_name": "5-carboxyethylhydantoin",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "ZnS photochemical oxidation of lactate to pyruvate",
+        "inputs": [
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "ZnS"
+        ],
+        "conditions": {
+          "temperature": "285-300K",
+          "pressure": "1 atm",
+          "catalyst": "ZnS",
+          "aqueous": true,
+          "other": "UV-irradiated aqueous mineral surface; anoxic"
+        },
+        "mechanism": "Photoexcited ZnS oxidizes the alpha-hydroxy acid to the alpha-keto acid while the reduced half-reaction is written as proton reduction to H2.",
+        "reasoning": "ZnS photoelectrochemistry oxidizes lactate to pyruvate under UV irradiation, providing an experimentally grounded upstream C3 feedstock for the glutamate network (Guzman and Martin, 2009). The H2 coproduct is written explicitly to keep the two-electron oxidation mass-balanced; the cited work most directly establishes the pyruvate-forming oxidation half-reaction."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Integrated C5 buildup from pyruvate and glyoxylate to alpha-ketoglutarate",
+        "inputs": [
+          "mol_005",
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Fe2+",
+          "Ni/Fe mineral surfaces"
+        ],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm to mildly confined",
+          "catalyst": "Fe2+ and Ni/Fe mineral surfaces",
+          "aqueous": true,
+          "other": "Anoxic warm geothermal pool or pore; H2-rich; overallized one-pot carbon-skeleton growth"
+        },
+        "mechanism": "Net aldol coupling of C3 and C2 carbonyls followed by dehydration and H2-supported reduction.",
+        "reasoning": "Fe-promoted and H2/metal-assisted protometabolic networks show that pyruvate and glyoxylate can reach alpha-ketoglutarate under one-pot conditions (Muchowska et al., 2019; Kaur et al., 2024). This node is intentionally an overall mass-balanced summary of that integrated chemistry, while rxn_003-rxn_005 provide a more explicit stepwise rendering. Alpha-ketoglutarate availability remains a major bottleneck in the literature (Guzman and Martin, 2009)."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Aldol addition of pyruvate and glyoxylate",
+        "inputs": [
+          "mol_005",
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "Anoxic warm mineral-rich pool"
+        },
+        "mechanism": "Fe2+-assisted enolization of pyruvate followed by C-C bond formation with glyoxylate to give a C5 beta-hydroxy ketoacid.",
+        "reasoning": "Pyruvate-glyoxylate aldol coupling is central to alpha-ketoacid-network models and Fe2+-promoted protometabolism, and it is the most direct C3+C2 route toward the glutamate carbon skeleton (Muchowska et al., 2019; Stubbs et al., 2020)."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Dehydration of 4-hydroxy-2-oxoglutarate",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "340-360K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Thermal dehydration during heating or partial drying"
+        },
+        "mechanism": "The beta-hydroxy ketoacid eliminates water to give an alpha,beta-unsaturated oxodicarboxylate.",
+        "reasoning": "Dehydration of the beta-hydroxy C5 adduct to an unsaturated oxodicarboxylate is chemically standard under warm drying conditions and is included explicitly so oxygen balance is not hidden. The exact isolated intermediate is less directly documented than the overall network, so this node is partly speculative but mechanistically justified by the alpha-ketoacid-network literature (Stubbs et al., 2020; Muchowska et al., 2019)."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Reduction of 2-oxopent-4-enedioate to alpha-ketoglutarate",
+        "inputs": [
+          "mol_008",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni/Fe mineral surfaces"
+        ],
+        "conditions": {
+          "temperature": "300-340K",
+          "pressure": "1 atm to mildly confined",
+          "catalyst": "Ni/Fe mineral surfaces",
+          "aqueous": true,
+          "other": "Anoxic H2-rich pore or mineral interface"
+        },
+        "mechanism": "Metal-assisted hydrogenation of the C=C bond furnishes alpha-ketoglutarate.",
+        "reasoning": "Reduction of the unsaturated C5 dicarbonyl completes the conversion to alpha-ketoglutarate. This isolated step is more speculative than the integrated one-pot chemistry, but it is a chemically reasonable decomposition of the Fe/H2-driven networks that produce alpha-ketoglutarate from simpler ketoacids (Muchowska et al., 2019; Kaur et al., 2024)."
+      },
+      {
+        "id": "rxn_006",
+        "name": "H2-driven reductive amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_009",
+          "mol_003",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ni-rich metal",
+          "meteoritic Fe/Ni"
+        ],
+        "conditions": {
+          "temperature": "295-310K",
+          "pressure": "1-5 bar local H2",
+          "catalyst": "Ni-rich metal or meteoritic Fe/Ni",
+          "aqueous": true,
+          "other": "pH around 8; NH4+/NH3-rich; hydroxyacid side reaction competes"
+        },
+        "mechanism": "Ammonia adds to the keto group to form an imine or iminium that is reduced by metal-activated H2.",
+        "reasoning": "Direct H2-driven reductive amination of alpha-ketoglutarate to glutamate is experimentally supported on Ni, Pd/C, and ground meteoritic Fe/Ni, with hydroxyacid formation as an important competitor on some surfaces (Kaur et al., 2024). I use this implementation rather than FeS-only shorthand because it keeps the reductant explicit and mass-balanced; alpha-ketoglutarate is intrinsically a relatively sluggish substrate for reductive amination, so catalyst identity and reducing power matter (Mayer and Moran, 2022)."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Al(III)-assisted transamination of alpha-ketoglutarate by glycine",
+        "inputs": [
+          "mol_009",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Al(III)"
+        ],
+        "conditions": {
+          "temperature": "350-360K",
+          "pressure": "1 atm",
+          "catalyst": "Al(III)",
+          "aqueous": true,
+          "other": "Acidic concentrated solution; hot evaporitic or geothermal pool"
+        },
+        "mechanism": "Lewis-acid-assisted imine exchange transfers the amino group from glycine to alpha-ketoglutarate, yielding glutamate and glyoxylate.",
+        "reasoning": "Al(III)-assisted transamination transfers a reduced amino group from glycine to alpha-ketoglutarate while regenerating glyoxylate, making this route unusually network-compatible (Stubbs et al., 2020). Related alpha-ketoglutarate amine-donor chemistry was also observed by Pulletikurti et al. (2022). The main limitation is the need for hot, acidic, concentrated solutions."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Bucherer-Bergs formation of 5-carboxyethylhydantoin",
+        "inputs": [
+          "mol_009",
+          "mol_012",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "295-300K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Concentrated NaCN, diamidophosphate, and bicarbonate; pH about 8.5; weeks-long residence in evaporitic pool"
+        },
+        "mechanism": "Cyanide addition and carbamoyl cyclization convert the ketoacid into the corresponding hydantoin.",
+        "reasoning": "Bucherer-Bergs chemistry from alpha-ketoglutarate gives 5-carboxyethylhydantoin in very high yield and is one of the clearest non-redox routes to the glutamate skeleton (Pulletikurti et al., 2022). NH3 is written here as a generic ammonia equivalent; experimentally diamidophosphate served as an ammonia source and promoter, and the route requires strongly concentrated cyanide and bicarbonate mixtures."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Hydrolysis of 5-carboxyethylhydantoin to glutamate",
+        "inputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_014",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "350-355K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Prolonged hot aqueous treatment; hydrolysis-limited step"
+        },
+        "mechanism": "Hydantoin ring opening and carbamoyl hydrolysis release glutamate, CO2, and NH3.",
+        "reasoning": "Hydantoin hydrolysis is separated explicitly because it is the documented bottleneck: free glutamate appeared only after prolonged hot hydrolysis, with most hydantoin still remaining under the reported conditions (Pulletikurti et al., 2022). This step is plausible but kinetically slow."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct alpha-ketoglutarate buildup and reductive amination from pyruvate",
+        "description": "Pyruvate and glyoxylate are merged in one integrated C5-building step, then alpha-ketoglutarate is reductively aminated with H2 on metal surfaces.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Stepwise alpha-ketoglutarate buildup and reductive amination from pyruvate",
+        "description": "Pyruvate and glyoxylate first form a beta-hydroxy C5 adduct, then an unsaturated dicarbonyl, then alpha-ketoglutarate, which undergoes reductive amination.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Lactate-fed direct alpha-ketoglutarate buildup plus reductive amination",
+        "description": "Lactate is first photooxidized to pyruvate, after which the integrated C5-building step and H2-driven reductive amination yield glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Lactate-fed stepwise alpha-ketoglutarate buildup plus reductive amination",
+        "description": "A photochemical lactate-to-pyruvate step feeds the explicit aldol-dehydration-reduction route to alpha-ketoglutarate, followed by reductive amination.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Direct alpha-ketoglutarate buildup plus transamination from pyruvate",
+        "description": "The integrated pyruvate-glyoxylate route gives alpha-ketoglutarate, which receives an amino group from glycine under Al(III)-assisted transamination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Stepwise alpha-ketoglutarate buildup plus transamination from pyruvate",
+        "description": "The explicit C5-building sequence from pyruvate and glyoxylate is followed by transamination with glycine to make glutamate.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Lactate-fed direct alpha-ketoglutarate buildup plus transamination",
+        "description": "Lactate supplies pyruvate photochemically, then the integrated C5-building step and Al(III)-assisted transamination produce glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_009"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct alpha-ketoglutarate buildup plus Bucherer-Bergs hydantoin route",
+        "description": "Alpha-ketoglutarate is formed in one integrated step, captured as the hydantoin in concentrated cyanide chemistry, then hydrolyzed to free glutamate.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Stepwise alpha-ketoglutarate buildup plus Bucherer-Bergs hydantoin route",
+        "description": "The explicit aldol-dehydration-reduction sequence makes alpha-ketoglutarate, which is then converted to hydantoin and slowly hydrolyzed to glutamate.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_013"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Lactate-fed stepwise alpha-ketoglutarate buildup plus Bucherer-Bergs hydantoin route",
+        "description": "Lactate first feeds pyruvate, the explicit C5-building sequence then forms alpha-ketoglutarate, and the hydantoin branch finally releases glutamate by hot hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_008",
+          "mol_009",
+          "mol_013"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_003",
+      "mol_005",
+      "mol_006",
+      "mol_009"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_005",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_002",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_006"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_002": 0.84,
+          "rxn_006": 0.86
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.91,
+        "environmental_progression": 0.85,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.87,
+        "feedback": "Strongest branch. It matches the literature logic of pyruvate plus glyoxylate C5 construction followed by alpha-ketoglutarate reductive amination, and it is the easiest branch to place in one H2-rich mineral-surface setting, consistent with Kaur-type chemistry. Main caveat: rxn_002 is a compressed net transformation, and rxn_006 needs an explicit catalytic surface such as Ni, FeS, or meteoritic metal rather than H2 alone.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify the reducing surface and conditions for rxn_006, such as Ni, FeS, or meteoritic metal under mildly alkaline H2-rich conditions.",
+          "Either annotate rxn_002 as a literature-supported one-pot net step or replace it with rxn_003-rxn_005 for mechanistic transparency."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.88,
+          "rxn_005": 0.82,
+          "rxn_006": 0.86
+        },
+        "chemical_feasibility": 0.87,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.83,
+        "target_achievement": 0.9,
+        "overall_confidence": 0.86,
+        "feedback": "Mechanistically clearer than P1 because the aldol, dehydration, and reduction substeps are explicit and well aligned with Muchowska, Stubbs, and Kaur style alpha-ketoglutarate chemistry. The weaker points are rxn_005 and rxn_006, which both need explicit metal or mineral mediation and may compete with hydroxyacid formation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "State the catalyst or mineral and redox conditions for rxn_005 and rxn_006 explicitly.",
+          "Note expected hydroxyacid competition during the reductive steps and how the chosen surface chemistry favors glutamate formation."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_002": 0.84,
+          "rxn_006": 0.86
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.89,
+        "overall_confidence": 0.81,
+        "feedback": "Chemically plausible and literature aligned because Guzman and Martin support lactate to pyruvate on illuminated ZnS, while Kaur and related work support downstream alpha-ketoglutarate to glutamate chemistry. Confidence is lower than P1 because the pathway implicitly combines UV ZnS photochemistry with separate H2-driven reductive steps in one generic Surface setting without explaining the shared mineral assemblage or handoff.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Explain how illuminated ZnS chemistry hands off material to the H2-active mineral module, or split the surface into justified subinterfaces.",
+          "Add illumination, pH, and catalyst constraints for rxn_001 and rxn_006."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_003": 0.9,
+          "rxn_004": 0.88,
+          "rxn_005": 0.82,
+          "rxn_006": 0.86
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.73,
+        "target_achievement": 0.89,
+        "overall_confidence": 0.82,
+        "feedback": "Chemically sound and transparent, with an explicit lactate feeder and stepwise alpha-ketoglutarate formation. Environmental consistency is weaker than in P2 because ZnS photochemistry, aldol and dehydration chemistry, hydrogenation, and reductive amination are all compressed into a single Surface label without explicit subconditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_005",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Define a physical cycle linking illuminated ZnS oxidation to later H2-driven reduction steps.",
+          "Specify catalysts for rxn_005 and rxn_006 and the likely temperature regime for rxn_003-rxn_004."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.84,
+          "rxn_007": 0.84
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.81,
+        "feedback": "The transamination finish is literature grounded and coherent because glyoxylate is regenerated, matching Stubbs-type chemistry. The main limitation is environmental: rxn_007 is best supported under hot, concentrated, Al(III)-rich, often acidic conditions, whereas rxn_002 is written as an H2-dependent alpha-ketoglutarate-building step.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Specify the concentration mechanism and Al(III) source needed for rxn_007.",
+          "Clarify whether rxn_002 occurs in the same evaporitic or geothermal interface or whether alpha-ketoglutarate is transferred into an acidic aluminous microenvironment."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.88,
+          "rxn_005": 0.82,
+          "rxn_007": 0.84
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.73,
+        "target_achievement": 0.88,
+        "overall_confidence": 0.81,
+        "feedback": "A coherent route with explicit alpha-ketoglutarate buildup and a valid transamination finish. As in P5, the chemistry is good but the environment is underspecified because rxn_005 needs a reducing surface and rxn_007 needs hot concentrated Al(III)-assisted conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Add explicit reducing-surface conditions for rxn_005.",
+          "Define the hot concentrated Al(III)-rich conditions needed for rxn_007 and how they coexist with the earlier alpha-ketoglutarate-building steps."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_002": 0.84,
+          "rxn_007": 0.84
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.76,
+        "feedback": "All individual reaction classes have literature precedents, but this branch combines the most condition-specific modules short of the hydantoin routes: UV ZnS photochemistry, H2-dependent C5 assembly, and hot Al(III)-assisted transamination. Without a more explicit physical scenario, the pathway remains only moderately convincing.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Use explicit illuminated and evaporitic or geothermal subinterfaces, or justify transport between them.",
+          "Specify ZnS, an H2-active mineral, Al(III), and concentration conditions rather than a single generic Surface label."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.84,
+          "rxn_008": 0.81,
+          "rxn_009": 0.69
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.69,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.77,
+        "feedback": "This branch correctly captures the Pulletikurti-style insight that hydantoin formation is comparatively easy and free glutamate release is the bottleneck. The weak point is rxn_009: the hydrolysis is slow and incomplete in the literature, and the reaction should be written with 2 H2O rather than 1. rxn_008 also simplifies the documented need for concentrated cyanide, ammonia-source, and bicarbonate-like conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 to mol_013 + 2 mol_001 -> mol_010 + mol_014 + mol_003.",
+          "Annotate rxn_008-rxn_009 with concentrated cyanide, ammonia-source, and bicarbonate conditions plus long hot hydrolysis times."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_003": 0.9,
+          "rxn_004": 0.88,
+          "rxn_005": 0.82,
+          "rxn_008": 0.81,
+          "rxn_009": 0.69
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.78,
+        "feedback": "Mechanistically coherent and literature aligned, with explicit alpha-ketoglutarate formation before Bucherer-Bergs chemistry. As in P8, the hydantoin hydrolysis step is the limiting point, and rxn_009 needs the extra water equivalent for correct stoichiometry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct the hydrolysis stoichiometry in rxn_009 by adding the second water equivalent.",
+          "State the concentration and heating regime for the Bucherer-Bergs and hydrolysis stages explicitly."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_003": 0.9,
+          "rxn_004": 0.88,
+          "rxn_005": 0.82,
+          "rxn_008": 0.81,
+          "rxn_009": 0.69
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.77,
+        "overall_confidence": 0.73,
+        "feedback": "Most ambitious but least environmentally resolved branch. It asks one surface setting to support UV ZnS lactate oxidation, stepwise alpha-ketoglutarate assembly, and concentrated Bucherer-Bergs chemistry followed by slow hot hydrolysis. The chemistry is not impossible, but the environmental handoff is not adequately spelled out, and rxn_009 needs 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_008",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Correct rxn_009 to consume 2 H2O.",
+          "Provide a concrete physical scenario linking UV ZnS chemistry to concentrated Bucherer-Bergs chemistry and prolonged hydrolysis on the same surface system."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.84,
+    "network_feedback": "Network validity is strong: 14 molecules and 9 reactions form one connected graph, IDs are consistent, and the RDKit check reports no unbalanceable reactions. Literature alignment is also strong: the network correctly centers on alpha-ketoglutarate, uses pyruvate plus glyoxylate for C5 buildup, and includes three experimentally documented glutamate-forming branches matching reductive amination, Al(III)-assisted transamination, and Bucherer-Bergs hydantoin chemistry. The main reasons confidence stays below 0.9 are environmental and conditional. A single generic Surface label is carrying UV ZnS photochemistry, H2 and metal reduction, hot acidic Al(III) transamination, and concentrated cyanide hydantoin chemistry, which likely require more explicit subsettings or cycling. In addition, rxn_002, rxn_005, and rxn_006 need clearer catalyst or mineral annotations, and rxn_009 should be corrected to mol_013 + 2 mol_001 -> mol_010 + mol_014 + mol_003. Overall, this is a good, chemically informed network; the reductive amination branches are the strongest, transamination is credible but concentration and pH sensitive, and the hydantoin branch is valid but hydrolysis-limited.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 9,
+      "n_balanced_as_written": 8,
+      "n_balanceable": 1,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_005": 1,
+            "mol_002": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_002": 1,
+            "mol_009": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_006": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_008": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_003": 1,
+            "mol_002": 1,
+            "mol_010": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_011": 1,
+            "mol_010": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_012": 1,
+            "mol_003": 1,
+            "mol_013": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_013": 1,
+            "mol_001": 2,
+            "mol_010": 1,
+            "mol_014": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

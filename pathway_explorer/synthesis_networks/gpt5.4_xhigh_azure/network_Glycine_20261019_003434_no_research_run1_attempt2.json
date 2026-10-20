@@ -1,0 +1,1008 @@
+{
+  "target_molecule": "Glycine",
+  "network": {
+    "target_molecule": "Glycine",
+    "overall_strategy": "The network prioritizes the most chemically defensible prebiotic access to glycine: three surface manifolds converge on aminoacetonitrile (direct Strecker, imine-resolved Strecker, and glycolonitrile/ammonia conversion), and that hub intermediate then reaches glycine either by explicit aqueous hydrolysis through glycinamide or by overall hydrothermal hydrolysis. Hydantoin chemistry is included only as a weaker, condition-restricted set of alternatives under carbonate-rich drying followed by strong hot-water hydrolysis, so the network keeps plausible protected-precursor routes without overstating them.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrocyanic acid",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "CH2O",
+        "iupac_name": "methanal",
+        "common_name": "formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "CH3N",
+        "iupac_name": "methanimine",
+        "common_name": "methylene imine",
+        "inchi": "InChI=1S/CH3N/c1-2/h2H,1H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C2H3NO",
+        "iupac_name": "2-hydroxyethanenitrile",
+        "common_name": "glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H4N2",
+        "iupac_name": "2-aminoethanenitrile",
+        "common_name": "aminoacetonitrile",
+        "inchi": "InChI=1S/C2H4N2/c3-1-2-4/h1,3H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H6N2O",
+        "iupac_name": "2-aminoethanamide",
+        "common_name": "glycinamide",
+        "inchi": "InChI=1S/C2H6N2O/c3-1-2(4)5/h1,3H2,(H2,4,5)",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-aminoethanoic acid",
+        "common_name": "glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C3H4N2O2",
+        "iupac_name": "imidazolidine-2,4-dione",
+        "common_name": "hydantoin",
+        "inchi": "InChI=1S/C3H4N2O2/c6-2-1-4-3(7)5-2/h1H2,(H2,4,5,6,7)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Direct Strecker synthesis of aminoacetonitrile from formaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-330 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Mildly basic ammonium cyanide solution in evaporitic pools or pond margins; evaporative concentration and partial UV shielding by water/mineral films."
+        },
+        "mechanism": "Formaldehyde reacts with ammonia to an iminium or methanimine equivalent, then cyanide adds to give the aminonitrile.",
+        "reasoning": "This is the strongest route in the network. Strecker-type aminonitrile formation from aldehydes, cyanide, and ammonia is chemically direct, uses simple feedstocks, and is favored by surface concentration of HCN and NH3 in anoxic waters."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Methanimine formation from formaldehyde and ammonia",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-340 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Wet-dry cycling or adsorption on silica-rich mineral surfaces helps dehydrate the carbinolamine intermediate."
+        },
+        "mechanism": "Condensation of ammonia with formaldehyde followed by dehydration forms the imine.",
+        "reasoning": "An explicit imine node is chemically justified because methanimine is the key electrophile in Strecker chemistry. Drying and mineral adsorption make its transient formation more plausible in surface settings."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Cyanide addition to methanimine",
+        "inputs": [
+          "mol_005",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-330 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Cyanide-rich water or concentrated thin films at near-neutral to mildly basic pH."
+        },
+        "mechanism": "Nucleophilic addition of cyanide to the C=N bond forms aminoacetonitrile.",
+        "reasoning": "This step is the mechanistically resolved version of Strecker chemistry. It provides an alternative pathway to aminoacetonitrile without assuming a single undifferentiated one-pot step."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Cyanohydrin formation: glycolonitrile from formaldehyde and hydrogen cyanide",
+        "inputs": [
+          "mol_004",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "280-320 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Cyanide-rich surface water or concentrated brine; lower to moderate temperature stabilizes the cyanohydrin."
+        },
+        "mechanism": "Cyanide adds to formaldehyde, followed by proton transfer to give the cyanohydrin glycolonitrile.",
+        "reasoning": "Formaldehyde readily forms the cyanohydrin glycolonitrile, which can act as a reservoir for HCN-derived carbon and later feed aminonitrile chemistry."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Ammonia-driven conversion of glycolonitrile to aminoacetonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "300-340 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Ammoniacal cyanide solution or damp mineral films; likely proceeds through reversible cyanohydrin-iminium chemistry under concentration."
+        },
+        "mechanism": "Ammonia-promoted conversion of the cyanohydrin to the aminonitrile with net loss of water.",
+        "reasoning": "This route is less direct than the one-pot Strecker step but is chemically reasonable in ammoniacal cyanide systems because glycolonitrile can be funneled through the same equilibrium manifold toward aminoacetonitrile. It is included as a secondary route rather than a preferred one."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Aminoacetonitrile hydration to glycinamide",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "320-355 K",
+          "pressure": "1 atm",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "Non-enzymatic prebiotic pools or mineral interfaces; neutral to mildly basic pH; geothermal heating and cooling cycles."
+        },
+        "mechanism": "Lewis-acid-assisted hydration of the nitrile gives the corresponding amide.",
+        "reasoning": "Aminonitrile hydrolysis normally passes through the amide. Warm aqueous mineral interfaces and Fe2+-assisted activation make this intermediate explicit rather than hiding it inside a single net hydrolysis."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Glycinamide hydrolysis to glycine",
+        "inputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Fe2+"
+        ],
+        "conditions": {
+          "temperature": "330-365 K",
+          "pressure": "1 atm",
+          "catalyst": "Fe2+",
+          "aqueous": true,
+          "other": "Non-enzymatic prebiotic pools undergoing repeated heating; near-neutral to mildly basic water; slower than nitrile hydration."
+        },
+        "mechanism": "Amide hydrolysis yields the amino acid and releases ammonia.",
+        "reasoning": "This is a plausible but slower, potentially rate-limiting step. Prolonged geothermal cycling provides the harsher aqueous exposure needed for glycinamide to reach glycine without enzymes."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Overall hydrothermal hydrolysis of aminoacetonitrile to glycine",
+        "inputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+",
+          "iron sulfide surfaces"
+        ],
+        "conditions": {
+          "temperature": "370-430 K",
+          "pressure": "high",
+          "catalyst": "Fe2+ and iron sulfide surfaces",
+          "aqueous": true,
+          "other": "Subseafloor hot water, neutral to mildly alkaline pH, prolonged residence in hot compressed water."
+        },
+        "mechanism": "Overall nitrile hydration followed by amide hydrolysis under hot aqueous conditions.",
+        "reasoning": "Direct overall conversion of aminoacetonitrile to glycine is chemically reasonable only under explicitly harsher aqueous conditions. Assigning this step to hydrothermal water with mineral Lewis acids provides the temperature, pH, and catalytic justification that direct hydrolysis requires."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Bucherer-Bergs-like hydantoin formation from formaldehyde",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_003",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "320-355 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Carbonate or bicarbonate-rich ammonium cyanide brines in evaporitic pools or hot-spring margins; repeated wet-dry cycles drive concentration and ring closure."
+        },
+        "mechanism": "Bucherer-Bergs-like sequence: aldehyde cyanohydrin or iminium chemistry is followed by carbamylation with CO2-derived carbonate species and cyclization to hydantoin.",
+        "reasoning": "Hydantoin formation is more condition-sensitive and less robust than the Strecker branch, so it is restricted here to explicit carbonate-rich drying environments rather than generic surface water. Under concentrated ammoniacal cyanide conditions, hydantoin is a plausible protected precursor to glycine."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Carboxylative cyclization of glycinamide to hydantoin",
+        "inputs": [
+          "mol_008",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [],
+        "conditions": {
+          "temperature": "320-355 K",
+          "pressure": "1 atm",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "CO2-rich thin films or damp evaporitic residues on mineral surfaces; reduced water activity favors cyclization and dehydration."
+        },
+        "mechanism": "Carbamylation of glycinamide by CO2 or bicarbonate followed by intramolecular cyclization and dehydration to the hydantoin ring.",
+        "reasoning": "This step is more speculative than direct Strecker chemistry, but once glycinamide is present, CO2-rich dry-down chemistry can plausibly sequester it as hydantoin. It is included only as a minor, condition-restricted alternative branch."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Hydrothermal hydrolysis of hydantoin to glycine",
+        "inputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003",
+          "mol_010"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Fe2+",
+          "iron sulfide surfaces"
+        ],
+        "conditions": {
+          "temperature": "390-450 K",
+          "pressure": "high",
+          "catalyst": "Fe2+ and iron sulfide surfaces",
+          "aqueous": true,
+          "other": "Mildly basic hydrothermal water or long-lived hot-spring runoff; prolonged exposure to hot compressed water."
+        },
+        "mechanism": "Ring opening followed by sequential hydrolysis of the cyclic urea to glycine, with release of ammonia and carbon dioxide.",
+        "reasoning": "Hydantoin hydrolysis is significantly harsher than aminonitrile hydrolysis. Explicitly assigning it to strong hot-water conditions addresses the known weakness of this branch and avoids treating hydantoin as a generic easy precursor."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Direct Strecker then hydrothermal hydrolysis",
+        "description": "Formaldehyde, HCN, and NH3 give aminoacetonitrile in a surface pool, followed by overall hydrothermal conversion to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Direct Strecker then stepwise amide hydrolysis",
+        "description": "The direct Strecker product aminoacetonitrile first hydrates to glycinamide in a prebiotic pool and then hydrolyzes to glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Imine-resolved Strecker then hydrothermal hydrolysis",
+        "description": "Formaldehyde and ammonia first form methanimine, which is trapped by cyanide to aminoacetonitrile and then hydrolyzed in hot water to glycine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Imine-resolved Strecker then stepwise amide hydrolysis",
+        "description": "A mechanistically explicit Strecker route proceeds through methanimine and aminoacetonitrile, then through glycinamide to glycine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Cyanohydrin-ammonia route then hydrothermal hydrolysis",
+        "description": "Formaldehyde first forms glycolonitrile with HCN; ammoniacal conversion gives aminoacetonitrile, which then hydrolyzes hydrothermally to glycine.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Cyanohydrin-ammonia route then stepwise amide hydrolysis",
+        "description": "The glycolonitrile branch feeds aminoacetonitrile, then glycinamide, and finally glycine in warm aqueous prebiotic pools.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Direct Bucherer-Bergs-like hydantoin route",
+        "description": "A carbonate-rich drying surface converts formaldehyde, HCN, NH3, and CO2 directly to hydantoin, which later hydrolyzes in hot water to glycine.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Direct Strecker to glycinamide then hydantoin detour",
+        "description": "The one-pot Strecker route first forms aminoacetonitrile and glycinamide, then CO2-rich drying converts glycinamide to hydantoin before strong hydrolysis yields glycine.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Imine-resolved Strecker to glycinamide then hydantoin detour",
+        "description": "A mechanistically explicit Strecker path through methanimine and aminoacetonitrile feeds glycinamide, which is trapped as hydantoin before hydrolysis to glycine.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_005",
+          "mol_007",
+          "mol_008",
+          "mol_011"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Cyanohydrin-ammonia to glycinamide then hydantoin detour",
+        "description": "The glycolonitrile branch supplies aminoacetonitrile and glycinamide, which under CO2-rich dry-down gives hydantoin and then glycine upon hot-water hydrolysis.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008",
+          "mol_011"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_007",
+      "mol_008",
+      "mol_011"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_007",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_011",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_011"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glycine",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_008": 0.84
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.82,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.88,
+        "feedback": "Strongest route in the network. Direct Strecker formation of aminoacetonitrile from formaldehyde, HCN, and NH3 is chemically well grounded, and hydrothermal conversion of aminoacetonitrile to glycine is plausible. The main fixes are explicit stoichiometry for rxn_008, which should consume 2 H2O, and a clearer physical rationale for moving the aminonitrile from the surface setting into hot aqueous conditions.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Rewrite rxn_008 as mol_007 + 2 mol_001 -> mol_009 + mol_003",
+          "Specify hydrothermal temperature, pH, or mineral assistance for aminonitrile hydrolysis",
+          "Add a transport step or explanation linking the surface synthesis site to the hydrothermal aqueous environment"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.72,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.46,
+        "target_achievement": 0.91,
+        "overall_confidence": 0.74,
+        "feedback": "The chemistry is mechanistically sensible because nitrile hydrolysis commonly proceeds through an amide, but the stated environment is the major weakness. rxn_006 and rxn_007 are not convincingly supported as prebiotic 'Biochemical' steps unless they are reinterpreted as hot aqueous or mineral-catalyzed hydrolysis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Relabel rxn_006 and rxn_007 as hydrothermal or mineral-catalyzed aqueous reactions",
+          "State catalysts or pH and temperature conditions that make nitrile-to-amide and amide-to-acid hydrolysis plausible",
+          "If no such conditions are available, favor the more defensible overall hydrolysis branch in P1"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.82,
+          "rxn_003": 0.88,
+          "rxn_008": 0.84
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.8,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.86,
+        "feedback": "A strong alternative to P1. The imine-resolved Strecker sequence is chemically plausible and makes the mechanism explicit, but methanimine is likely transient and should not be treated as a long-lived isolated pool. rxn_008 again needs explicit 2 H2O stoichiometry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Clarify that mol_005 is a transient intermediate formed and consumed in the same setting",
+          "Rewrite rxn_008 with 2 H2O",
+          "Specify the surface conditions that favor imine formation over rapid rehydration"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.82,
+          "rxn_003": 0.88,
+          "rxn_006": 0.72,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.83,
+        "environmental_progression": 0.45,
+        "target_achievement": 0.91,
+        "overall_confidence": 0.74,
+        "feedback": "This pathway is coherent on paper, but its confidence is limited by the same environment problem as P2. The Strecker segment is reasonable, yet rxn_006 and rxn_007 need prebiotic hydrolysis conditions rather than an undefined biochemical setting.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Replace the 'Biochemical' label with hydrothermal or mineral-assisted aqueous conditions",
+          "State whether acid, base, or metal-ion catalysis is assumed for the hydrolysis steps",
+          "Consider collapsing the last two steps into the better supported overall hydrothermal hydrolysis used in P3"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.93,
+          "rxn_005": 0.6,
+          "rxn_008": 0.84
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.74,
+        "environmental_progression": 0.78,
+        "target_achievement": 0.93,
+        "overall_confidence": 0.78,
+        "feedback": "Glycolonitrile formation is strong, but the weakest point here is rxn_005. Direct conversion of glycolonitrile to aminoacetonitrile by NH3 is much less secure than the Strecker branches and likely needs specific activation, catalysis, or drying chemistry. Hydrothermal hydrolysis to glycine is still plausible once aminoacetonitrile is available, with rxn_008 needing 2 H2O stoichiometry.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Provide stronger justification or literature support for rxn_005 under the stated surface conditions",
+          "If the intent is an indirect route, represent the activating or dehydration chemistry explicitly rather than as a single substitution step",
+          "Rewrite rxn_008 as consuming 2 H2O"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.93,
+          "rxn_005": 0.6,
+          "rxn_006": 0.72,
+          "rxn_007": 0.7
+        },
+        "chemical_feasibility": 0.69,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 0.44,
+        "target_achievement": 0.89,
+        "overall_confidence": 0.68,
+        "feedback": "This branch inherits two distinct weaknesses: rxn_005 is only moderately convincing, and the glycinamide hydrolysis sequence is placed in an inadequately defined biochemical environment. The pathway can reach glycine conceptually, but the environmental specification is not yet prebiotically coherent.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Strengthen or replace rxn_005 with a better supported aminonitrile-forming step",
+          "Move rxn_006 and rxn_007 into explicit hydrothermal or mineral-catalyzed aqueous conditions",
+          "Reduce the number of unmotivated environment changes or explain material transfer between them"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_009": 0.6,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.62,
+        "pathway_coherence": 0.68,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.86,
+        "overall_confidence": 0.71,
+        "feedback": "Hydantoin chemistry can in principle furnish glycine, but this branch is appropriately weaker than the aminonitrile routes. rxn_009 likely requires concentrated ammonium carbonate or carbamate chemistry and possibly drying phases beyond what the simple 'Surface' label conveys, and rxn_011 is plausible only under fairly strong hydrothermal hydrolysis. rxn_011 should also be written with 2 H2O.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Represent carbonate or carbamate speciation more explicitly instead of CO2 alone",
+          "Specify concentrated drying or evaporitic conditions for rxn_009",
+          "Rewrite rxn_011 as mol_011 + 2 mol_001 -> mol_009 + mol_003 + mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.9,
+          "rxn_006": 0.72,
+          "rxn_010": 0.42,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.58,
+        "pathway_coherence": 0.56,
+        "environmental_progression": 0.38,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.59,
+        "feedback": "The detour through hydantoin is the main problem. rxn_010, carboxylative cyclization of glycinamide to hydantoin from CO2 alone, is under-justified and likely needs a more activated carbamylating chemistry or much tighter condition control. The pathway also depends on the poorly specified biochemical environment used in rxn_006 and on stoichiometric correction of rxn_011.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Do not use rxn_010 without an explicit activating agent or stronger mechanistic justification",
+          "Relabel rxn_006 to a prebiotically plausible aqueous or hydrothermal setting",
+          "Rewrite rxn_011 with 2 H2O and specify harsh hydrolysis conditions if this detour is retained"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_002": 0.82,
+          "rxn_003": 0.88,
+          "rxn_006": 0.72,
+          "rxn_010": 0.42,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.6,
+        "pathway_coherence": 0.58,
+        "environmental_progression": 0.37,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.6,
+        "feedback": "Although the early Strecker chemistry is reasonable, the pathway becomes weak once it diverts to hydantoin through rxn_010. The network does not adequately justify glycinamide carboxylative cyclization from CO2 alone, and the environment sequence from surface to biochemical to surface to hydrothermal is not physically explained.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Keep the Strecker branch but terminate it by direct hydrolysis rather than the hydantoin detour",
+          "If hydantoin formation is intended, include activated carbamylating chemistry or better condition constraints",
+          "Rewrite rxn_011 with 2 H2O and define the hydrolysis regime"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_004": 0.93,
+          "rxn_005": 0.6,
+          "rxn_006": 0.72,
+          "rxn_010": 0.42,
+          "rxn_011": 0.7
+        },
+        "chemical_feasibility": 0.56,
+        "pathway_coherence": 0.54,
+        "environmental_progression": 0.36,
+        "target_achievement": 0.83,
+        "overall_confidence": 0.57,
+        "feedback": "This is the weakest route in the network because it combines the uncertain glycolonitrile-to-aminoacetonitrile conversion with the poorly justified glycinamide-to-hydantoin cyclization. The pathway is also environmentally diffuse, with multiple unsupported transitions and only a harshly plausible final hydantoin hydrolysis.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_010",
+          "rxn_011"
+        ],
+        "suggestions": [
+          "Replace rxn_005 with a better supported aminonitrile-forming step or drop this branch",
+          "Avoid rxn_010 unless an activated carbamylation mechanism is introduced",
+          "Rewrite rxn_011 with 2 H2O and specify hydrothermal severity if this pathway is retained"
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.82,
+    "network_feedback": "Network validity is high: the graph is connected, molecule IDs are consistent, and the deterministic balance check reports no conservation-violating reactions. The chemically strongest core is the aminoacetonitrile hub reached by direct or imine-resolved Strecker chemistry, with P1 best and P3 close behind. Confidence drops because rxn_008 and rxn_011 should explicitly consume 2 H2O, rxn_006 and rxn_007 are chemically plausible but environmentally misassigned as 'Biochemical', rxn_005 is only moderately justified, and rxn_010 is the least defensible step in the network. Hydantoin chemistry is appropriately treated as a secondary, condition-restricted branch rather than the main route. Overall, this is a good but not approval-grade network; clearer condition specification, explicit material-transfer justifications, and stronger support or pruning of the weaker branches, especially rxn_005 and rxn_010, would improve confidence.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 11,
+      "n_balanced_as_written": 9,
+      "n_balanceable": 2,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_007": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_003": 1,
+            "mol_005": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_002": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_003": 1,
+            "mol_007": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_001": 1,
+            "mol_008": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_001": 1,
+            "mol_009": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_001": 2,
+            "mol_009": 1,
+            "mol_003": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_001": 2,
+            "mol_009": 1,
+            "mol_003": 1,
+            "mol_010": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 2,
+  "notes": null
+}

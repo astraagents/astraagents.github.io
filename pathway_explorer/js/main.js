@@ -74,6 +74,7 @@
 
   var MODEL_LABELS = {
     'gpt41_direct_azure': 'GPT 4.1',
+    'gpt5.4_xhigh_azure': 'GPT 5.4 xHigh Reasoning',
     'gpt6_xhigh_azure': 'GPT 6 xHigh Reasoning'
   };
 
@@ -81,7 +82,8 @@
     'deep_research_claudeopus5.5': 'Deep Research (Claude Opus 5.5)',
     'deep_research_gpt6': 'Deep Research (GPT 6)',
     'perfect_rag': 'Perfect RAG',
-    'no_research': 'No Research'
+    'no_research': 'No Research',
+    'Naive': 'Single-Prompt'
   };
 
   function populateMoleculeDropdownAll() {
