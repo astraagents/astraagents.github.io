@@ -502,7 +502,7 @@ function reactionView(i, dir = 0) {
   });
 
   const done = doneCount();
-  const swap = el("button", { className: "linkbtn", type: "button", textContent: "Swap molecule" });
+  const swap = el("button", { className: "btn ghost small", type: "button" }, [icon("shuffle"), " Swap molecule"]);
   swap.addEventListener("click", swapMolecule);
 
   const head = el("div", { className: "rxn-head" }, [
@@ -607,7 +607,13 @@ function floatPlusOne(anchor) {
 /** The reaction itself: equation, setting, conditions, mechanism, reasoning. */
 function reactionCard(rxn) {
   const card = el("section", { className: "card rxn" });
-  card.append(el("h2", { className: "rxn-name", textContent: rxn.name }));
+  const view = el("button", { className: "btn ghost small netbtn", type: "button" },
+    [icon("diagram-project"), " View in network"]);
+  view.addEventListener("click", () => openSheet(rxn));
+  card.append(el("div", { className: "rxn-title-row" }, [
+    el("h2", { className: "rxn-name", textContent: rxn.name }),
+    view,
+  ]));
 
   const side = (mols) => el("div", { className: "eq-side" },
     (mols || []).flatMap((m, k) => [k ? el("span", { className: "eq-plus", ariaHidden: "true", textContent: "+" }) : null, molCard(m)]));
@@ -617,9 +623,20 @@ function reactionCard(rxn) {
     side(rxn.outputs),
   ]));
 
-  const tags = el("div", { className: "tags" });
+  // Short conditions as key/value chips; anything longer goes to the list below.
+  const tags = el("div", { className: "tags", ariaLabel: "Reaction conditions" });
+  tags.setAttribute("role", "list");
+  const tag = (cls, iconName, k, v) => {
+    const t = el("span", { className: `chip ${cls}` }, [
+      iconName ? icon(iconName) : null,
+      el("span", { className: "k", textContent: k }),
+      el("span", { className: "v", textContent: v }),
+    ]);
+    t.setAttribute("role", "listitem");
+    return t;
+  };
   if (rxn.environment) {
-    const env = el("span", { className: "chip env" }, [icon("location-dot"), ` ${rxn.environment}`]);
+    const env = tag("env", "location-dot", "Setting", String(rxn.environment));
     env.style.setProperty("--h", String(hue(String(rxn.environment))));
     tags.append(env);
   }
@@ -628,17 +645,11 @@ function reactionCard(rxn) {
   if (cond && typeof cond === "object" && !Array.isArray(cond)) {
     for (const [k, v] of Object.entries(cond)) {
       if (isEmpty(v)) continue;
-      const text = k === "aqueous" && typeof v === "boolean" ? (v ? "aqueous" : "dry / gas phase") : scalar(v);
-      if (text.length <= 34 && k !== "other") {
-        tags.append(el("span", { className: "chip cond" }, [
-          CONDITION_ICON[k]
-            ? Object.assign(icon(CONDITION_ICON[k], "k"), { title: label(k) })
-            : el("span", { className: "k", textContent: /^ph$/i.test(k) ? "pH" : label(k) }),
-          ` ${text}`,
-        ]));
-      } else {
-        long.push([label(k), text]);
-      }
+      const phase = k === "aqueous" && typeof v === "boolean";
+      const text = phase ? (v ? "aqueous" : "dry / gas phase") : scalar(v);
+      const name = phase ? "Phase" : /^ph$/i.test(k) ? "pH" : k === "other" ? "Notes" : label(k);
+      if (text.length <= 34 && k !== "other") tags.append(tag("cond", CONDITION_ICON[k], name, text));
+      else long.push([name, text]);
     }
   } else if (!isEmpty(cond)) {
     long.push(["Conditions", scalar(cond)]);
@@ -667,11 +678,6 @@ function reactionCard(rxn) {
     if (KNOWN_FIELDS.has(k) || isEmpty(v)) continue;
     card.append(fold(label(k), scalar(v), false));
   }
-
-  const view = el("button", { className: "btn ghost small netbtn", type: "button" },
-    [icon("diagram-project"), " View in network"]);
-  view.addEventListener("click", () => openSheet(rxn));
-  card.append(view);
   return card;
 }
 
