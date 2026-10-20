@@ -1,0 +1,1412 @@
+{
+  "target_molecule": "Valine",
+  "network": {
+    "target_molecule": "Valine (racemic; no stereoselective synthesis assumed)",
+    "overall_strategy": "Construct a connected, conditional synthesis network with 24 molecule nodes, 19 reaction nodes and 10 distinct reaction-sequence variants. The variants represent different precursor entry points, reagent staging, hydrolysis regimes or experimentally tested hydrogenation catalysts; they are not ten independently demonstrated origins of valine. The principal routes are isobutyraldehyde Strecker chemistry, the staged acetone-derived cyanosulfidic route, alpha-ketoisovalerate reductive amination, and experimentally observed discharge synthesis represented as a composite reaction. Acetone, isobutyraldehyde and alpha-ketoisovalerate are explicitly scoped boundary supplies. Their local availability is not established by declaring them starting materials; especially, no demonstrated abiotic alpha-ketoisovalerate synthesis is assumed. The unsupported nonenzymatic acetolactate pathway is excluded. Competing hydroxy-acid and pantolactone formation are included, and discharge-derived norvaline and isovaline require analytical separation from valine. All environments are anoxic. Surface chemistry and metal hydrogenation are separate implementations: cyanide- and sulfide-rich photochemical effluent is not assumed compatible with hydrogenation catalysts. Kaur et al. (2024) conditions are experimental benchmarks; other numerical windows are explicitly proposed implementation or screening conditions unless stated otherwise. Hot nitrile hydrolysis, volatile retention, precursor concentration and branched-skeleton supply remain important bottlenecks. Equations use neutral-parent molecular bookkeeping, with acid-base speciation and subsequent neutralization implicit. Stoichiometric coefficients are stated in mechanism fields, never encoded by repeating molecule IDs. Composite equations are atom-balanced projections, not measured product ratios. Because the role vocabulary lacks 'byproduct', non-target terminal products are labeled 'intermediate'. The environment_formed field identifies a principal formation setting; reaction nodes specify alternative settings.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "NH3",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "H2",
+        "iupac_name": "Dihydrogen",
+        "common_name": "Hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "H2S",
+        "iupac_name": "Sulfane",
+        "common_name": "Hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C3H6O",
+        "iupac_name": "Propan-2-one",
+        "common_name": "Acetone",
+        "inchi": "InChI=1S/C3H6O/c1-3(2)4/h1-2H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C4H8O",
+        "iupac_name": "2-Methylpropanal",
+        "common_name": "Isobutyraldehyde",
+        "inchi": "InChI=1S/C4H8O/c1-4(2)3-5/h3-4H,1-2H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H8O3",
+        "iupac_name": "3-Methyl-2-oxobutanoic acid",
+        "common_name": "Alpha-ketoisovaleric acid",
+        "inchi": "InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_009",
+        "formula": "CH4",
+        "iupac_name": "Methane",
+        "common_name": "Methane",
+        "inchi": "InChI=1S/CH4/h1H4",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_011",
+        "formula": "C4H9N",
+        "iupac_name": "2-Methylpropan-1-imine",
+        "common_name": "Isobutyraldehyde imine",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C5H10N2",
+        "iupac_name": "2-Amino-3-methylbutanenitrile",
+        "common_name": "Valine aminonitrile",
+        "inchi": "InChI=1S/C5H10N2/c1-4(2)5(7)3-6/h4-5H,7H2,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-Amino-3-methylbutanoic acid",
+        "common_name": "Valine",
+        "inchi": "InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C5H9NO",
+        "iupac_name": "2-Hydroxy-3-methylbutanenitrile",
+        "common_name": "Isobutyraldehyde cyanohydrin",
+        "inchi": "InChI=1S/C5H9NO/c1-4(2)5(7)3-6/h4-5,7H,1-2H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C4H7NO",
+        "iupac_name": "2-Hydroxy-2-methylpropanenitrile",
+        "common_name": "Acetone cyanohydrin",
+        "inchi": "InChI=1S/C4H7NO/c1-4(2,6)3-5/h6H,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_016",
+        "formula": "C4H9NOS",
+        "iupac_name": "2-Hydroxy-2-methylpropanethioamide",
+        "common_name": "Acetone-cyanohydrin-derived hydroxythioamide",
+        "inchi": "InChI=1S/C4H9NOS/c1-4(2,6)3(5)7/h6H,1-2H3,(H2,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_017",
+        "formula": "S8",
+        "iupac_name": "Cyclooctasulfur",
+        "common_name": "Elemental sulfur",
+        "inchi": "InChI=1S/S8/c1-2-4-6-8-7-5-3-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_018",
+        "formula": "C5H10O3",
+        "iupac_name": "2-Hydroxy-3-methylbutanoic acid",
+        "common_name": "Alpha-hydroxyisovaleric acid",
+        "inchi": "InChI=1S/C5H10O3/c1-3(2)4(6)5(7)8/h3-4,6H,1-2H3,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_019",
+        "formula": "C5H10O2",
+        "iupac_name": "3-Hydroxy-2,2-dimethylpropanal",
+        "common_name": "Hydroxypivaldehyde",
+        "inchi": "InChI=1S/C5H10O2/c1-5(2,3-6)4-7/h3,7H,4H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_020",
+        "formula": "C6H11NO2",
+        "iupac_name": "2,4-Dihydroxy-3,3-dimethylbutanenitrile",
+        "common_name": "Pantoic acid nitrile",
+        "inchi": "InChI=1S/C6H11NO2/c1-6(2,4-8)5(9)3-7/h5,8-9H,4H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_021",
+        "formula": "C6H12O4",
+        "iupac_name": "2,4-Dihydroxy-3,3-dimethylbutanoic acid",
+        "common_name": "Pantoic acid",
+        "inchi": "InChI=1S/C6H12O4/c1-6(2,3-7)4(8)5(9)10/h4,7-8H,3H2,1-2H3,(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_022",
+        "formula": "C6H10O3",
+        "iupac_name": "3-Hydroxy-4,4-dimethyloxolan-2-one",
+        "common_name": "Pantolactone",
+        "inchi": "InChI=1S/C6H10O3/c1-6(2)3-9-5(8)4(6)7/h4,7H,3H2,1-2H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_023",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-Aminopentanoic acid",
+        "common_name": "Norvaline",
+        "inchi": "InChI=1S/C5H11NO2/c1-2-3-4(6)5(7)8/h4H,2-3,6H2,1H3,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_024",
+        "formula": "C5H11NO2",
+        "iupac_name": "2-Amino-2-methylbutanoic acid",
+        "common_name": "Isovaline",
+        "inchi": "InChI=1S/C5H11NO2/c1-3-5(2,6)4(7)8/h3,6H2,1-2H3,(H,7,8)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Ammonia-first formation of the transient isobutyraldehyde imine",
+        "inputs": [
+          "mol_007",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed window: pH 8-9.5, 10-100 mM aldehyde and 50-500 mM total ammonia/ammonium, with hours-to-days residence. Use a sheltered, concentrating pool or gas-retaining pore; avoid sustained UV during aldehyde accumulation. Couple immediately to rxn_002 rather than isolating the imine."
+        },
+        "mechanism": "Net equation: isobutyraldehyde + NH3 -> isobutyraldehyde imine + H2O. Reversible ammonia addition and dehydration establish a small, continuously trapped imine/iminium population.",
+        "reasoning": "Strecker synthesis of valine is supported by Ruiz-Bermejo et al. (2013). The explicit imine node is a mechanistic resolution of that reaction, not a claim that the supplied study isolated this intermediate. Water favors reversal, so imine accumulation is not assumed. The concentrations and residence window are proposed implementation conditions, not a quoted experimental recipe. Aldehyde supply and ammonia retention remain boundary assumptions."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Cyanide capture of the imine to form valine aminonitrile",
+        "inputs": [
+          "mol_011",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Operate together with rxn_001 at pH 8-9.5. Proposed total cyanide concentration: 10-100 mM; residence: 1-7 days, assessed analytically rather than assumed sufficient. Retain volatile HCN in sheltered pores and distinguish aminonitrile from the competing cyanohydrin."
+        },
+        "mechanism": "Net equation: isobutyraldehyde imine + HCN -> valine aminonitrile. Cyanide attacks the imine/iminium carbon; an achiral medium gives both configurations at the future alpha carbon.",
+        "reasoning": "This is the established carbon-carbon bond-forming step of the valine Strecker route, consistent with Ruiz-Bermejo et al. (2013). Proposed millimolar cyanide requires local concentration or storage and release, not a homogeneous primitive ocean; the dilution problem is quantified by Stribling and Miller (1987). No mineral catalyst is required."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Acid-promoted hydrolysis of valine aminonitrile",
+        "inputs": [
+          "mol_012",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium in an acidic geothermal solution"
+        ],
+        "conditions": {
+          "temperature": "353-370 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Acid catalysis by hydronium",
+          "aqueous": true,
+          "other": "Separate hydrolysis stage: proposed pH 0-1 maintained after accounting for ammonia neutralization, 1-100 mM aminonitrile, and days-to-weeks residence. Protect from UV and monitor the intervening amide, remaining nitrile and decomposition products. This is an unoptimized surface window, not a measured valine-specific rate. Neutralization after hydrolysis gives the neutral-parent product represented here."
+        },
+        "mechanism": "Net equation: valine aminonitrile + 2 H2O -> valine + NH3. Acid-catalyzed nitrile hydration proceeds through an amide, followed by amide hydrolysis; ammonia is predominantly ammonium under reaction conditions.",
+        "reasoning": "Aminonitrile hydrolysis completes conventional Strecker synthesis, including the valine chemistry discussed by Ruiz-Bermejo et al. (2013). Patel et al. (2015) supports access to the aminonitrile, not a cumulative acetone-to-valine yield under this proposed hydrolysis window. The supplied report does not establish a rate at these conditions. Strong acidity, buffering capacity and adequate residence are implementation requirements; neutral, cool water cannot be assumed to accomplish rapid conversion."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Base-promoted hydrolysis of valine aminonitrile",
+        "inputs": [
+          "mol_012",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydroxide in a concentrated alkaline solution; base promoter, not a conserved catalyst"
+        ],
+        "conditions": {
+          "temperature": "353-370 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Alternative proposed stage: pH 11-12 at reaction temperature, 1-100 mM aminonitrile and days-to-weeks residence in an evaporatively concentrated alkaline compartment. Maintain alkalinity as carboxylate accumulates. Monitor incomplete amide hydrolysis and degradation. Subsequent neutralization is implicit in neutral-parent bookkeeping; this is not a claim that hydroxide is catalytic."
+        },
+        "mechanism": "Neutral-parent net equation: valine aminonitrile + 2 H2O -> valine + NH3. Hydroxide-promoted hydration and amide cleavage initially produce valinate; protonation during later equilibration yields the represented parent acid.",
+        "reasoning": "The underlying nitrile-to-amino-acid conversion is standard Strecker chemistry, supported at the route level by Ruiz-Bermejo et al. (2013). This particular alkaline geothermal implementation is an extrapolation, not a valine-specific demonstration in the supplied research. It is included as an alternative hydrolysis regime where strong acid is unavailable, with completion and useful yield explicitly unresolved. P1/P2 and analogous pairs are operational variants, not independent reaction families."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Ammonia-delayed capture of isobutyraldehyde as its cyanohydrin",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-315 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed window: pH 7.5-9, 10-100 mM aldehyde and total cyanide, low ammonia during initial capture, and 1-24 hours before testing ammonia addition. Avoid prolonged heating because aldehyde and HCN are volatile and cyanohydrin formation is reversible."
+        },
+        "mechanism": "Net equation: isobutyraldehyde + HCN -> isobutyraldehyde cyanohydrin. Cyanide addition to the carbonyl followed by protonation establishes a reversible carbonyl-cyanohydrin equilibrium.",
+        "reasoning": "Cyanohydrin intermediates and subsequent ammonia capture are consistent with the valine branch in Patel et al. (2015) and the Strecker chemistry reviewed by Ruiz-Bermejo et al. (2013). This separates an ammonia-delayed implementation from ammonia-first mixing; it does not assert fundamentally unrelated mechanisms. The proposed timing and concentrations require validation."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Conversion of isobutyraldehyde cyanohydrin to valine aminonitrile",
+        "inputs": [
+          "mol_014",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed window: pH 8-9.5, 10-100 mM cyanohydrin and 50-500 mM total ammonia/ammonium, with 1-7 days monitored residence. For photochemical material, stop irradiation and separate settled sulfur/copper-containing solids before testing this stage. Do not assume quantitative intermediate recovery."
+        },
+        "mechanism": "Net equation: isobutyraldehyde cyanohydrin + NH3 -> valine aminonitrile + H2O. Reversible cyanohydrin dissociation, imine formation and cyanide recapture provide a credible pathway; direct displacement of hydroxide is not assumed.",
+        "reasoning": "Patel et al. (2015) demonstrated ammonia-dependent access to the valine aminonitrile in the staged cyanosulfidic network. The supplied report gives no cumulative valine yield. Natural delivery of concentrated ammonia, competing cyanohydrin hydrolysis, volatile losses and recovery from photochemical mixtures remain unresolved. The numerical window here is a proposed implementation rather than a reconstruction of the paper's protocol."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Acetone cyanohydrin formation",
+        "inputs": [
+          "mol_006",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-315 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed window: pH 7.5-9, 10-100 mM acetone and total cyanide, and 1-24 hours of equilibration. A sheltered pool or pore must limit acetone and HCN loss. Quantify the equilibrium mixture before sulfide addition."
+        },
+        "mechanism": "Net equation: acetone + HCN -> acetone cyanohydrin. Nucleophilic carbonyl addition extends the C3 ketone to a C4 cyanohydrin.",
+        "reasoning": "The acetone entry to the valine-precursor branch is supported by Patel et al. (2015). Acetone is an explicitly supplied small-organic feedstock here; its environmental concentration is not established. The reaction is reversible, and no isolated or cumulative yield is inferred from the literature summary."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Sulfide addition to acetone cyanohydrin",
+        "inputs": [
+          "mol_015",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_016"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screening window: pH 7.5-9, 10-100 mM cyanohydrin and 10-100 mM total dissolved sulfide, with hours-to-days residence before irradiation. Sulfide is a reactant, not a catalyst. Retain dissolved sulfide and quantify its removal by FeS precipitation."
+        },
+        "mechanism": "Net equation: acetone cyanohydrin + H2S -> hydroxythioamide. Sulfide addition to the nitrile followed by proton transfer yields the corresponding thioamide.",
+        "reasoning": "This intermediate class is part of the valine-relevant sequence described by Patel et al. (2015). The exact screening window is proposed, not reported in the supplied summary. Sulfide abundance is a major geochemical restriction: Ranjan et al. (2018) cautions that ordinary volcanic outgassing does not readily supply the required H2S-derived anions. Abundant Fe2+ also competes for sulfide, so a locally replenished sulfide source is necessary."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Cyanosulfidic photoreductive homologation and cyanohydrin trapping",
+        "inputs": [
+          "mol_016",
+          "mol_005",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_014",
+          "mol_002",
+          "mol_017"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Copper(I)/copper(II) cyanide-containing photoredox catalyst system"
+        ],
+        "conditions": {
+          "temperature": "300-315 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Copper(I)/copper(II) photoredox system",
+          "aqueous": true,
+          "other": "254 nm irradiation is the laboratory analogue. Proposed screening window: pH 7-9, 10-100 mM organic substrate and total cyanide, 10-100 mM sulfide, 0.1-1 mM total copper, and 1-24 hours of monitored exposure. These are design values, not reported optima. Use a shallow irradiated compartment; quantify optical attenuation, copper precipitation and sulfur accumulation. Subsequent ammonia addition and hydrolysis occur in separate stages."
+        },
+        "mechanism": "Formal net module: 4 hydroxythioamide + 4 H2S + 4 HCN -> 4 isobutyraldehyde cyanohydrin + 4 NH3 + S8. The module combines reductive deoxygenation, conversion to the aldehyde oxidation level and cyanide trapping; it is not an elementary step. S8 represents an idealized sulfur(0) endpoint, not an experimentally established exclusive sulfur product.",
+        "reasoning": "Patel et al. (2015) supports staged access from acetone-derived intermediates to the valine aminonitrile. The present node compresses its photochemical subnetwork and does not claim isolation of free isobutyraldehyde or an established sulfur-product distribution. Polysulfides and other sulfur species can replace the idealized S8 sink in a more detailed model. Ranjan et al. (2018) identifies sulfide supply as a serious limitation. Catalyst speciation, staged delivery and spectral differences between 254 nm irradiation and sunlight prevent treating this as a demonstrated natural one-pot synthesis."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Nickel-catalyzed reductive amination of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Nickel metal supported on silica-alumina"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni/SiO2-Al2O3, 10 mol% Ni relative to ketoacid",
+          "aqueous": true,
+          "other": "Experimental benchmark: 30 mM ketoacid, 150 mM NH4HCO3, pH 8 and 72 hours. Biochemical denotes enzyme-free molecular assembly at a mineral interface, not an enzyme requirement. A natural analogue would require an H2-retaining, cooled pore with accessible native nickel; the manufactured support is not claimed to be a natural mineral assemblage. Keep cyanide- and sulfide-rich feeds separate."
+        },
+        "mechanism": "Net equation: alpha-ketoisovaleric acid + NH3 + H2 -> valine + H2O. Carbonyl-ammonia condensation is followed by metal-catalyzed hydrogenation of the imine/iminium intermediate.",
+        "reasoning": "Valine formation from supplied alpha-ketoisovalerate under these benchmark conditions is directly supported by Kaur et al. (2024); no reduction occurred without a metal catalyst. Native Ni or Fe-Ni surfaces are geochemical analogues, not demonstrated replacements for this particular supported catalyst. Precursor supply remains unresolved, and direct carbonyl reduction competes through rxn_013."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Palladium-catalyzed reductive amination of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Palladium supported on carbon"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Pd/C, 1 mol% Pd relative to ketoacid",
+          "aqueous": true,
+          "other": "Experimental benchmark: 30 mM ketoacid, 150 mM NH4HCO3, pH 8 and 72 hours. Use an independent, sulfide- and cyanide-poor reaction compartment. Pd/C is retained as an experimentally supported comparison, not assumed to have been widely available on early Earth."
+        },
+        "mechanism": "Net equation: alpha-ketoisovaleric acid + NH3 + H2 -> valine + H2O. Palladium activates H2 and reduces the imine/iminium formed from the ketoacid and ammonia.",
+        "reasoning": "Kaur et al. (2024) directly supports the palladium-catalyzed end-game and generally higher amino-acid selectivity than nickel across the tested substrates. The reported substrate-wide yield and selectivity ranges are not assigned here as valine-specific values. Palladium rarity and the unestablished origin of an effective carbon-supported catalyst make this a chemically strong but geochemically conditional variant; it does not solve alpha-ketoisovalerate supply."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Iron-meteorite-catalyzed reductive amination of alpha-ketoisovalerate",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Ground Aletai iron meteorite with exposed Fe-Ni metal"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ground Aletai meteorite; reported loading approximately 18 mol% Ni relative to ketoacid",
+          "aqueous": true,
+          "other": "Experimental benchmark: 30 mM ketoacid, 150 mM NH4HCO3, pH 8 and 72 hours. The cited experiment used 3 mg meteorite at its published reactor scale; scale catalyst and substrate together rather than treating 3 mg as volume-independent. A natural implementation requires comminuted, freshly exposed metal, retained H2 and limited surface passivation."
+        },
+        "mechanism": "Net equation: alpha-ketoisovaleric acid + NH3 + H2 -> valine + H2O. Accessible metal sites activate hydrogen and catalyze reduction of the ketoacid-derived imine/iminium.",
+        "reasoning": "Kaur et al. (2024) directly demonstrated the meteorite-catalyzed reaction, giving this branch stronger substrate-specific support than extrapolations from green-rust alanine chemistry. Meteorite delivery alone does not establish adequate surface area, metal exposure, H2 activity or catalyst lifetime. Alpha-ketoisovalerate remains a supplied boundary substrate, and hydroxy-acid competition is represented by rxn_013."
+      },
+      {
+        "id": "rxn_013",
+        "name": "Competing hydrogenation of alpha-ketoisovalerate to its hydroxy acid",
+        "inputs": [
+          "mol_008",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_018"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Ni/SiO2-Al2O3 or exposed Fe-Ni in ground Aletai meteorite"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Same nickel or meteorite catalyst used in rxn_010 or rxn_012",
+          "aqueous": true,
+          "other": "Competing branch under the benchmark 30 mM ketoacid, 150 mM NH4HCO3, pH 8 and 72-hour conditions. Ammonia can be present without appearing in the net equation. Quantify amino acid and hydroxy acid together; do not assign a fixed branching ratio."
+        },
+        "mechanism": "Net equation: alpha-ketoisovaleric acid + H2 -> alpha-hydroxyisovaleric acid. Direct reduction of the ketone competes with imine formation and hydrogenation.",
+        "reasoning": "Kaur et al. (2024) reports hydroxy acids as competing products, particularly with nickel and meteorite catalysts. The approximately comparable amino-acid and hydroxy-acid production reported across those experiments is not imposed as a valine-specific ratio. This experimentally motivated sink prevents assuming quantitative conversion of supplied ketoacid to valine."
+      },
+      {
+        "id": "rxn_014",
+        "name": "Competing hydrolysis of isobutyraldehyde cyanohydrin",
+        "inputs": [
+          "mol_014",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_018",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium in an acidic geothermal solution"
+        ],
+        "conditions": {
+          "temperature": "353-370 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Acid catalysis by hydronium",
+          "aqueous": true,
+          "other": "Proposed pH 0-1 and days-to-weeks residence if cyanohydrin-containing material enters the hydrolysis compartment before effective amination. Compare hydrolysis against cyanohydrin dissociation and volatile loss. Ammonia released is protonated under these conditions."
+        },
+        "mechanism": "Net equation: isobutyraldehyde cyanohydrin + 2 H2O -> alpha-hydroxyisovaleric acid + NH3. Nitrile hydrolysis retains the alpha hydroxyl group instead of installing an amino group.",
+        "reasoning": "This is a chemically expected cyanohydrin-hydrolysis sink rather than a demonstrated valine-specific kinetic result in the supplied research. It is an explicit mechanistic extrapolation from the cyanohydrin/Strecker chemistry discussed by Ruiz-Bermejo et al. (2013) and Patel et al. (2015). Its purpose is to expose the cost of incomplete ammonia conversion before hot hydrolysis; no yield is asserted."
+      },
+      {
+        "id": "rxn_015",
+        "name": "Phosphate-assisted diversion of isobutyraldehyde by formaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_019"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved inorganic phosphate buffer"
+        ],
+        "conditions": {
+          "temperature": "300-330 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Phosphate general acid-base catalysis",
+          "aqueous": true,
+          "other": "Proposed implementation: pH 7-8, 10-100 mM carbonyl substrates and phosphate, with hours-to-days residence. A phosphate-rich compartment requires local concentration and limited removal by iron or calcium precipitation. Formaldehyde availability controls competition with valine precursor capture."
+        },
+        "mechanism": "Net equation: isobutyraldehyde + formaldehyde -> hydroxypivaldehyde. Enolization of isobutyraldehyde followed by aldol addition installs a hydroxymethyl group and consumes the aldehyde's only alpha hydrogen.",
+        "reasoning": "Fairchild et al. (2024) supports phosphate-catalyzed, neutral-pH aldol diversion of these carbonyl precursors toward pantolactone/pantetheine chemistry. Miller and Schlesinger (1993) supports prebiotic pantoic-acid formation from the same aldehyde/formaldehyde/cyanide combination. The specified concentration and residence ranges are proposed, not extracted yields or optimized conditions. Phosphate is justified by its demonstrated catalytic function, not added as a generic mineral."
+      },
+      {
+        "id": "rxn_016",
+        "name": "Cyanohydrin formation on the pantoate branch",
+        "inputs": [
+          "mol_019",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_020"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed pH 7.5-9, 10-100 mM hydroxypivaldehyde and total cyanide, with hours-to-days equilibration. Limit HCN loss. This branch competes for the same cyanide pool as valine aminonitrile formation."
+        },
+        "mechanism": "Net equation: hydroxypivaldehyde + HCN -> pantoic acid nitrile. Cyanide addition to the aldehyde generates the alpha-hydroxynitrile corresponding to pantoic acid.",
+        "reasoning": "Miller and Schlesinger (1993) supports the overall isobutyraldehyde/formaldehyde/HCN route to pantoic acid. This node resolves its chemically plausible cyanohydrin step without claiming an independently measured rate or yield. Fairchild et al. (2024) provides additional support for diversion of the same carbonyl feedstocks, not for every condition specified here."
+      },
+      {
+        "id": "rxn_017",
+        "name": "Hydrolysis of pantoic acid nitrile",
+        "inputs": [
+          "mol_020",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_021",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium in an acidic geothermal solution"
+        ],
+        "conditions": {
+          "temperature": "353-370 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Acid catalysis by hydronium",
+          "aqueous": true,
+          "other": "Separate proposed stage: pH 0-1 maintained against ammonia release, 1-100 mM nitrile and days-to-weeks residence. Monitor amide accumulation, pantoic acid and concurrent lactonization. The modeled hydrolysis window has no assigned completion time or yield."
+        },
+        "mechanism": "Net equation: pantoic acid nitrile + 2 H2O -> pantoic acid + NH3. Sequential nitrile and amide hydrolysis forms the hydroxy acid.",
+        "reasoning": "The overall pantoic-acid synthesis is supported by Miller and Schlesinger (1993). The explicit intermediate resolution and lower-temperature geothermal residence window are mechanistic and environmental extrapolations. This branch is not assumed to hydrolyze rapidly in neutral surface water, addressing an important implementation limitation."
+      },
+      {
+        "id": "rxn_018",
+        "name": "Pantoic acid lactonization during acidic concentration",
+        "inputs": [
+          "mol_021"
+        ],
+        "outputs": [
+          "mol_022",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Acidic solution providing proton catalysis"
+        ],
+        "conditions": {
+          "temperature": "330-370 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Acid catalysis",
+          "aqueous": true,
+          "other": "Proposed pH 1-3 with hours-to-days of evaporation or wet-dry cycling. The aqueous flag denotes the initial concentrated solution; later partial drying lowers water activity. Rewetting can reopen the lactone, so pantolactone is not an irreversible sink under all conditions."
+        },
+        "mechanism": "Net equation: pantoic acid -> pantolactone + H2O. Intramolecular esterification between the carboxyl group and terminal hydroxyl forms a five-membered lactone.",
+        "reasoning": "Pantolactone formation is consistent with the pantoate chemistry of Miller and Schlesinger (1993) and the carbonyl-diversion network of Fairchild et al. (2024). Five-membered lactone formation is chemically favorable, but partitioning depends on pH and water activity. The proposed cycling conditions are not a claim of a measured environmental yield."
+      },
+      {
+        "id": "rxn_019",
+        "name": "Composite reducing-atmosphere discharge synthesis and aqueous workup",
+        "inputs": [
+          "mol_009",
+          "mol_002",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_023",
+          "mol_024",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-370 K bulk gas-liquid apparatus; discharge channels are locally much hotter",
+          "pressure": "Approximately 1 bar initial gas pressure",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Methane-rich, ammonia-containing, oxygen-free gas over a circulating aqueous condensate trap, energized by electrical discharge. A proposed implementation uses 1-7 days of discharge followed by a separate acidic hydrolysis stage, screened at 353-370 K and pH 0-1 for days to weeks. These are design windows, not a reconstruction of the cited assays. Preserve the distinction between precursor production and free amino acids released during workup. Resolve valine, norvaline and isovaline chromatographically."
+        },
+        "mechanism": "Formal balanced projection: 15 CH4 + 3 NH3 + 6 H2O -> valine + norvaline + isovaline + 24 H2. This composite node covers radical gas chemistry, aqueous capture and hydrolysis, not a single elementary reaction. The coefficients merely balance the selected products; they do not imply equal amino-acid yields, measured hydrogen evolution or an exhaustive product inventory.",
+        "reasoning": "Valine and its constitutional isomers were identified in discharge products by Ring et al. (1972), with additional support from the archived-sample analyses described by Johnson et al. (2009). This observation supports the composite route without establishing every transient carbonyl or aminonitrile. Schlesinger and Miller (1983) shows strong dependence on reducing gas composition, so a globally CO2/N2-dominated atmosphere cannot be substituted without qualification. Natural relevance is conditional on locally reducing plumes or transient atmospheres, efficient collection and a credible hydrolysis environment; no selective valine yield is claimed."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Ammonia-first Strecker route with acidic hydrolysis",
+        "description": "Supplied isobutyraldehyde undergoes coupled imine formation and cyanide capture, followed by transfer to an acidic hydrolysis compartment. The end-game chemistry is established; aldehyde supply, concentration and the proposed hydrolysis residence remain conditional.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Ammonia-first Strecker route with alkaline hydrolysis",
+        "description": "Uses the same carbon-skeleton assembly as P1 but a separate alkaline hydrolysis and neutralization stage. This is an operationally distinct pH variant, not another independently demonstrated primordial reaction family; the proposed alkaline implementation requires validation.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Cyanohydrin-first Strecker route with acidic hydrolysis",
+        "description": "Supplied isobutyraldehyde is initially captured with cyanide before ammonia delivery. The resulting aminonitrile is hydrolyzed in a separate acidic compartment. Delayed ammonia is a feed-staging variant of Strecker chemistry.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Cyanohydrin-first Strecker route with alkaline hydrolysis",
+        "description": "Combines delayed ammonia capture with the alternative alkaline hydrolysis regime. Cyanohydrin hydrolysis before amination competes through rxn_014, and the final alkaline conversion has no demonstrated rate under the proposed surface conditions.",
+        "reaction_sequence": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Acetone-derived cyanosulfidic route with acidic hydrolysis",
+        "description": "Builds the required branched precursor from supplied acetone through cyanohydrin and hydroxythioamide chemistry, photoreductive homologation, ammonia capture and acidic nitrile hydrolysis. The staged aminonitrile route is literature-supported; natural staging, sulfur balance, cumulative recovery and the final valine yield are not established.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_006",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_015",
+          "mol_016",
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Acetone-derived cyanosulfidic route with alkaline hydrolysis",
+        "description": "Shares the demonstrated staged aminonitrile-access chemistry of P5 but tests alkaline rather than acidic release of valine. It inherits the sulfide, irradiation and transfer limitations and adds an unvalidated alkaline hydrolysis implementation.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_006",
+          "rxn_004"
+        ],
+        "key_intermediates": [
+          "mol_015",
+          "mol_016",
+          "mol_014",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Supplied alpha-ketoisovalerate with supported nickel",
+        "description": "An experimentally supported, enzyme-free end-game using the quantified nickel benchmark. It starts from supplied alpha-ketoisovalerate rather than inventing an abiotic skeleton-building step. Hydroxy-acid production competes, and equivalence between supported laboratory nickel and natural surfaces is not assumed.",
+        "reaction_sequence": [
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Supplied alpha-ketoisovalerate with palladium on carbon",
+        "description": "An experimentally supported catalytic variant with generally improved amino-acid selectivity. It remains conditional on precursor supply and a locally available palladium catalyst and is retained as a laboratory-supported comparison rather than a preferred geochemical scenario.",
+        "reaction_sequence": [
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Supplied alpha-ketoisovalerate with exposed meteoritic Fe-Ni",
+        "description": "Uses the demonstrated ground-meteorite catalyst implementation. Natural comminution, exposed metal, hydrogen retention and resistance to passivation must be established independently; meteoritic occurrence does not by itself supply these conditions or the ketoacid.",
+        "reaction_sequence": [
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_008"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Reducing-atmosphere discharge and aqueous hydrolysis",
+        "description": "A complete experimentally motivated feedstock-to-product entry represented by one explicitly composite node. Methane, ammonia and water yield a complex precursor mixture from which valine is detected after aqueous processing, accompanied by norvaline and isovaline. The pathway is nonselective, and the proposed lower-temperature geological hydrolysis window is not identical to a demonstrated analytical workup.",
+        "reaction_sequence": [
+          "rxn_019"
+        ],
+        "key_intermediates": []
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_003",
+      "mol_004",
+      "mol_005",
+      "mol_007",
+      "mol_008",
+      "mol_012",
+      "mol_013",
+      "mol_014",
+      "mol_018"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_012",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_006"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_014",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_009"
+        ],
+        "outgoing_reactions": [
+          "rxn_006",
+          "rxn_014"
+        ]
+      },
+      {
+        "molecule_id": "mol_018",
+        "incoming_reactions": [
+          "rxn_013",
+          "rxn_014"
+        ],
+        "outgoing_reactions": []
+      },
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_019"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Valine (racemic; no stereoselective synthesis assumed)",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.92,
+          "rxn_002": 0.96,
+          "rxn_003": 0.89
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.96,
+        "environmental_progression": 0.76,
+        "target_achievement": 0.94,
+        "overall_confidence": 0.9,
+        "feedback": "This is a chemically established, conditional Strecker route to racemic valine, consistent with the valine syntheses reviewed under Ruiz-Bermejo et al. (2013). The imine should be understood as a transient equilibrium species captured by cyanide, not an independently accumulated intermediate. Acidic aminonitrile hydrolysis is sound, but its temperature, acidity, duration and implementation are not specified in the submitted reaction nodes. Supplied isobutyraldehyde is an explicit boundary condition, not an invalid reaction assumption.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Specify concentrations, pH and reagent-addition timing for imine formation and cyanide capture, including retention of volatile isobutyraldehyde, HCN and ammonia.",
+          "Provide a substrate-specific acidic hydrolysis protocol and demonstrate valine recovery after the required change in conditions."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.92,
+          "rxn_002": 0.96,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.91,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.91,
+        "overall_confidence": 0.87,
+        "feedback": "The Strecker skeleton construction is well supported. Alkaline aminonitrile hydrolysis is chemically plausible, and neutral-parent bookkeeping appropriately suppresses carboxylate formation and subsequent neutralization. However, the supplied evidence does not establish a valine-aminonitrile-specific alkaline hydrolysis regime or its compatibility with the preceding mixture. This is a valid hydrolysis variant, not an independently demonstrated origin of valine.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Measure aminonitrile-to-valine conversion versus pH, temperature and residence time, including residual amide and decomposition products.",
+          "Specify the physical transition to alkaline hydrolysis and any subsequent neutralization without assuming identical performance to acidic hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.92,
+          "rxn_003": 0.89
+        },
+        "chemical_feasibility": 0.92,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.94,
+        "overall_confidence": 0.89,
+        "feedback": "Cyanohydrin formation followed by ammonia-mediated aminonitrile formation is coherent and consistent with the chemistry summarized for Patel et al. (2015). Reaction rxn_006 should represent coupled cyanohydrin dissociation, carbonyl/imine equilibria and cyanide capture, rather than an assumed direct displacement of hydroxide by ammonia. Acidic hydrolysis can complete the route, but the staged conditions and recovered valine yield remain unspecified.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Document the ammonia concentration and pH needed to shift the cyanohydrin/aminonitrile partition toward mol_012.",
+          "Quantify competing cyanohydrin hydrolysis through rxn_014 and verify valine production after the acidic workup."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_005": 0.95,
+          "rxn_006": 0.92,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.91,
+        "pathway_coherence": 0.94,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.91,
+        "overall_confidence": 0.87,
+        "feedback": "The cyanohydrin-first entry is chemically supported, while alkaline completion requires additional substrate-specific validation. Residual cyanohydrin can feed the hydroxy-acid sink instead of valine, making conversion to aminonitrile before hydrolysis important. The equations conserve mass and charge under the supplied check; the uncertainty concerns reaction partitioning and implementation, not stoichiometry.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Measure the aminonitrile/cyanohydrin ratio before initiating alkaline hydrolysis.",
+          "Establish a complete alkaline hydrolysis and neutralization protocol with separate measurements of valine and alpha-hydroxyisovalerate."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_007": 0.94,
+          "rxn_008": 0.91,
+          "rxn_009": 0.83,
+          "rxn_006": 0.92,
+          "rxn_003": 0.89
+        },
+        "chemical_feasibility": 0.89,
+        "pathway_coherence": 0.93,
+        "environmental_progression": 0.7,
+        "target_achievement": 0.89,
+        "overall_confidence": 0.85,
+        "feedback": "Patel et al. (2015) support the staged acetone-derived chemistry through the valine aminonitrile, making this a substantive precursor-building route. Reaction rxn_009 is acceptable as a balanced composite, but its equation does not independently establish the redox sequence, sulfur-product distribution or yield. Completion to valine requires an additional validated hydrolysis stage. Sulfide availability, copper speciation, UV delivery and reagent staging remain material implementation uncertainties, consistent with the critique summarized from Ranjan et al. (2018).",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_003"
+        ],
+        "suggestions": [
+          "Attach the demonstrated photochemical staging, copper catalyst specification, sulfide concentrations and irradiation conditions directly to rxn_009.",
+          "Treat S8 as formal sulfur bookkeeping unless sulfur-product measurements establish that assignment.",
+          "Measure the complete acetone-to-valine sequence, including intermediate survival during concentration, ammonia addition and acidic hydrolysis."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_007": 0.94,
+          "rxn_008": 0.91,
+          "rxn_009": 0.83,
+          "rxn_006": 0.92,
+          "rxn_004": 0.85
+        },
+        "chemical_feasibility": 0.88,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.68,
+        "target_achievement": 0.87,
+        "overall_confidence": 0.84,
+        "feedback": "The aminonitrile-forming portion has the same literature basis as P5. The additional uncertainty is whether the actual photochemical product mixture can undergo productive alkaline hydrolysis under a physically specified regime. Neither the balanced composite equation nor demonstrated aminonitrile formation establishes the complete acetone-to-valine yield. Separating this implementation from metal hydrogenation appropriately avoids assuming cyanide- and sulfide-tolerant hydrogenation catalysts.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_009",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Validate alkaline hydrolysis using the actual staged photochemical mixture rather than only purified aminonitrile.",
+          "Specify sulfide supply, irradiation, ammonia addition and the transition to hydrolysis, including any separation that is genuinely required.",
+          "Measure valine formation alongside hydroxy-acid production and loss of carbon-containing intermediates."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_010": 0.97
+        },
+        "chemical_feasibility": 0.97,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.96,
+        "overall_confidence": 0.9,
+        "feedback": "Kaur et al. (2024) directly support nickel-catalyzed conversion of supplied alpha-ketoisovalerate to valine. The competing hydroxy-acid branch rxn_013 is appropriately included. The remaining concern is environmental specification: a supported nickel experimental catalyst and a 'Biochemical' label do not establish a naturally available catalyst or an H2-retaining aqueous setting. No unsupported upstream alpha-ketoisovalerate synthesis is claimed.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Attach the reported benchmark conditions: 30 mM ketoacid, 150 mM NH4HCO3, pH 8, 22 degrees C, 5 bar H2, 72 hours and 10 mol% supported Ni.",
+          "Distinguish the demonstrated supported catalyst from any proposed native-metal analogue and test activity, passivation and amino-acid/hydroxy-acid partitioning in the proposed medium."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_011": 0.97
+        },
+        "chemical_feasibility": 0.97,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.72,
+        "target_achievement": 0.98,
+        "overall_confidence": 0.91,
+        "feedback": "This is the strongest conditional experimental implementation: Kaur et al. (2024) directly demonstrate valine formation over Pd/C and report generally improved amino-acid selectivity relative to nickel and meteorite catalysts. Those substrate-wide ranges should not be presented as a valine-specific yield. Environmental confidence remains lower because manufactured Pd/C, accessible catalyst loading and sustained H2 pressure are benchmarks rather than an established natural setting.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_011"
+        ],
+        "suggestions": [
+          "State the reported pH 8, 22 degrees C, 5 bar H2, 72-hour conditions and 1 mol% Pd/C loading explicitly at rxn_011.",
+          "Keep the experimental benchmark distinct from a geological implementation unless the palladium-bearing material, accessible surface and sustained activity are demonstrated.",
+          "Report valine-specific yield and competing hydroxy-acid formation rather than transferring aggregate substrate ranges."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_012": 0.94
+        },
+        "chemical_feasibility": 0.94,
+        "pathway_coherence": 0.95,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.9,
+        "feedback": "Kaur et al. (2024) provide direct support for valine formation using ground Aletai iron meteorite. Extending this result to unspecified exposed meteoritic Fe-Ni requires evidence about accessible surface area, weathering and passivation. The supplied alpha-ketoisovalerate boundary is explicit and chemically legitimate. Competition with hydroxy-acid formation is represented correctly, although its magnitude under the proposed implementation is unknown.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Specify whether the implementation uses ground meteorite matching the experiment or intact exposed material; measure activity for the actual particle size and surface condition.",
+          "Document the aqueous H2 supply, pressure retention, ammonium concentration and catalyst lifetime.",
+          "Quantify valine versus alpha-hydroxyisovalerate instead of assuming the selectivity of supported palladium."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_019": 0.89
+        },
+        "chemical_feasibility": 0.89,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.94,
+        "overall_confidence": 0.87,
+        "feedback": "Ring et al. (1972) and the Miller-sample reanalyses support actual valine production in reducing-atmosphere discharge experiments. The balanced composite is a defensible summary of discharge chemistry plus aqueous workup, not an elementary reaction or evidence for equal isomer yields and quantitative carbon conversion. The three C5 isomers are properly distinguished. The main uncertainties are the exact gas composition, reducing atmospheric setting, energy delivery and hydrolysis protocol.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_019"
+        ],
+        "suggestions": [
+          "Specify gas composition, pressure, discharge energy, reaction duration, aqueous trapping and subsequent hydrolysis conditions.",
+          "Use chromatography with authentic standards to distinguish valine, norvaline and isovaline, together with procedural blanks.",
+          "Report measured product yields separately from the formal composite stoichiometry; do not infer an H2 yield from its balancing coefficient."
+        ]
+      }
+    ],
+    "best_pathway_id": "P8",
+    "overall_confidence": 0.88,
+    "network_feedback": "This is a chemically credible, connected conditional synthesis network, but it falls short of the 0.90 network-approval threshold. All 24 molecule nodes participate in the reaction graph, identifiers are consistent, and the supplied deterministic check establishes that all 19 reactions are balanced or balanceable. There are no conservation violations. The coefficients required for S8 formation and the three-isomer discharge projection are not intrinsically problematic. Terminal side products do not constitute isolated subgraphs. Literature alignment is strong: the network distinguishes established Strecker and reductive-amination chemistry from uncertain precursor availability, limits the demonstrated cyanosulfidic endpoint to aminonitrile, and excludes the unsupported acetolactate route. The ten pathways are correctly presented as alternatives and staging variants, not ten independent experimental demonstrations. The competing reactions also make chemical sense: rxn_013 is supported by the hydrogenation experiments; rxn_014 is a plausible cyanohydrin-hydrolysis sink; and rxn_015 through rxn_018 form a credible phosphate-assisted pantoate/pantolactone branch consistent with Miller and Schlesinger (1993) and Fairchild et al. (2024). Actual competition in rxn_014 and rxn_017 requires hydrolysis kinetics, while rxn_015 requires an explicitly available phosphate environment. The principal limitation is incomplete environmental specification in the submitted reaction nodes. Broad environment labels and anoxia do not establish concentrations, pH, residence times, catalyst availability, volatile retention or the physical transitions required within each route. The supplied research provides benchmarks, but these need to be attached to individual implementations and distinguished from proposed conditions. No transfer between the alternative photochemical and hydrogenation implementations is required or assumed. Boundary supplies are not chemical errors, although their local availability remains conditional. P8 ranks highest as an experimentally supported conditional route, not as a demonstrated natural Pd/C setting. Listed problematic reactions identify implementation gaps or extrapolations, not proven chemical impossibilities. Several branches can genuinely produce racemic valine; the unresolved issue is their specified environmental execution and demonstrated complete-route performance.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 19,
+      "n_balanced_as_written": 13,
+      "n_balanceable": 6,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_002": 1,
+            "mol_011": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_003": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_001": 2,
+            "mol_013": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_001": 2,
+            "mol_013": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_003": 1,
+            "mol_014": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_014": 1,
+            "mol_002": 1,
+            "mol_012": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_003": 1,
+            "mol_015": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_015": 1,
+            "mol_005": 1,
+            "mol_016": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_016": 4,
+            "mol_005": 4,
+            "mol_003": 4,
+            "mol_014": 4,
+            "mol_002": 4,
+            "mol_017": 1
+          },
+          "element_delta": {
+            "S": -6
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_013": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_013": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_004": 1,
+            "mol_013": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_013",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_004": 1,
+            "mol_018": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_014",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_014": 1,
+            "mol_001": 2,
+            "mol_018": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_015",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_010": 1,
+            "mol_019": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_016",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_019": 1,
+            "mol_003": 1,
+            "mol_020": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_017",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_020": 1,
+            "mol_001": 2,
+            "mol_021": 1,
+            "mol_002": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_018",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_021": 1,
+            "mol_022": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_019",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 15,
+            "mol_002": 3,
+            "mol_001": 6,
+            "mol_013": 1,
+            "mol_023": 1,
+            "mol_024": 1,
+            "mol_004": 24
+          },
+          "element_delta": {
+            "C": -14,
+            "H": -26,
+            "N": -2,
+            "O": -5
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.880"
+}

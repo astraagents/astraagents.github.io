@@ -31,13 +31,13 @@
       }
       onMoleculeChange(false);
       var modelSelect = document.getElementById('select-model');
-      if (modelSelect.querySelector('option[value="claude_opus4.6"]')) {
-        modelSelect.value = 'claude_opus4.6';
+      if (modelSelect.querySelector('option[value="gpt6_xhigh_azure"]')) {
+        modelSelect.value = 'gpt6_xhigh_azure';
       }
       onModelChange(false);
       var cfgSelect = document.getElementById('select-config');
-      if (cfgSelect.querySelector('option[value="deep_research_claude"]')) {
-        cfgSelect.value = 'deep_research_claude';
+      if (cfgSelect.querySelector('option[value="deep_research_claudeopus5.5"]')) {
+        cfgSelect.value = 'deep_research_claudeopus5.5';
       }
       onConfigChange(false);
       var lastAtt = getLastAttempt(modelSelect.value, molSelect.value, cfgSelect.value);
@@ -73,15 +73,13 @@
   // ===== Dataset Selectors =====
 
   var MODEL_LABELS = {
-    'claude_opus4.6': 'Claude Opus 4.6 Extended Thinking',
-    'gpt41': 'GPT 4.1',
-    'gpt5.4': 'GPT 5.4 High Reasoning'
+    'gpt41_direct_azure': 'GPT 4.1',
+    'gpt6_xhigh_azure': 'GPT 6 xHigh Reasoning'
   };
 
   var CONFIG_LABELS = {
-    'deep_research_claude': 'Deep Research (Claude)',
-    'deep_research_gemini': 'Deep Research (Gemini)',
-    'deep_research_gpt5.4': 'Deep Research (GPT 5.4)',
+    'deep_research_claudeopus5.5': 'Deep Research (Claude Opus 5.5)',
+    'deep_research_gpt6': 'Deep Research (GPT 6)',
     'perfect_rag': 'Perfect RAG',
     'no_research': 'No Research'
   };
@@ -740,17 +738,14 @@
       var report = btn.getAttribute('data-report');
       var title, url;
       if (report === 'deep-research-claude') {
-        title = 'Deep Research (Claude) — ' + molecule.replace(/_/g, ' ');
-        url = 'deep_research_claude/' + molecule.replace(/_/g, '-') + '-Run1.txt';
-      } else if (report === 'deep-research-gemini') {
-        title = 'Deep Research (Gemini) — ' + molecule.replace(/_/g, ' ');
-        url = 'deep_research_gemini/' + molecule.replace(/_/g, '-') + '-Run1.txt';
+        title = 'Deep Research (Claude Opus 5.5) — ' + molecule.replace(/_/g, ' ');
+        url = 'reports/deep_research_ClaudeOpus5.5/' + molecule.replace(/_/g, '-') + '-Run1.txt';
       } else if (report === 'deep-research-gpt') {
-        title = 'Deep Research (GPT 5.4) — ' + molecule.replace(/_/g, ' ');
-        url = 'deep_research_gpt5.4/' + molecule.replace(/_/g, '-') + '-Run1.txt';
+        title = 'Deep Research (GPT 6) — ' + molecule.replace(/_/g, ' ');
+        url = 'reports/deep_research_GPT6/' + molecule.replace(/_/g, '-') + '-Run1.txt';
       } else if (report === 'perfect-rag') {
         title = 'Perfect RAG — ' + molecule.replace(/_/g, ' ');
-        url = 'perfect_rag/' + molecule + '.md';
+        url = 'reports/perfect_rag/' + molecule + '.md';
       }
       if (title && url) loadMarkdownReport(title, url, 'raw');
       document.getElementById('reports-dropdown').classList.remove('open');
@@ -1191,6 +1186,8 @@
     html += buildSimScoreBar('Product Similarity', prodSim);
     html += buildSimScoreBar('Reactant Similarity', reactSim);
     html += buildSimScoreBar('Coverage Score', coverage);
+    // Newer validation reports score matches by DRFP Tanimoto similarity
+    html += buildSimScoreBar('DRFP Similarity', match.drfp_similarity);
     html += '</div>';
 
     // Source citation from chemorigins

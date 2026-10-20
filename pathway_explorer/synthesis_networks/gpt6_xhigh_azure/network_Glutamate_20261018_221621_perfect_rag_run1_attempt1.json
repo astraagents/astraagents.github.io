@@ -1,0 +1,1274 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate",
+    "overall_strategy": "Construct an evidence-guided candidate network using C2-C4 organic feedstocks, with an additional CO2/H2 entry. Pyruvate and glyoxylate build the C5 skeleton; oxaloacetate provides alternative carbon-entry routes. Reductive amination of 2-oxoglutarate uses either hydroxylamine with sacrificial iron or a conditional ammonia/H2 mineral-mediated route. A separate acrolein/HCN branch reaches glutamate through an aminodinitrile. The ten pathways are distinct reaction sequences, including alternative feedstock entries and shared downstream chemistry; they are not ten independently demonstrated synthesis families. Speculative implementations and missing experimental validation are identified reaction by reaction. All chemistry is anoxic, and achiral conditions produce racemic glutamate, not selectively L-glutamate. Carboxylic acids are represented by neutral reference structures; actual protonation depends on pH. Explicit iron and proton nodes balance sacrificial reductions. Surface thermal reactions may occur in UV-attenuated porewater despite strong ambient UV. Conditions are staged rather than asserted to work in one pot. Completeness is relative to the declared feedstock boundary, not a demonstrated synthesis of every feedstock from inorganic carbon. The unbalanced C6 degradation shortcut in the supplied review is excluded. The 21 molecule nodes and 14 reaction nodes exceed the requested minimum ranges to retain explicit redox accounting. A null environment_formed denotes an external feedstock or formation in multiple modeled environments.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CO2",
+        "iupac_name": "carbon dioxide",
+        "common_name": "carbon dioxide",
+        "inchi": "InChI=1S/CO2/c2-1-3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2",
+        "iupac_name": "dihydrogen",
+        "common_name": "hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "oxidane",
+        "common_name": "water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C3H4O3",
+        "iupac_name": "2-oxopropanoic acid",
+        "common_name": "pyruvic acid; pyruvate reference form",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C2H2O3",
+        "iupac_name": "2-oxoacetic acid",
+        "common_name": "glyoxylic acid; glyoxylate reference form",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H4O5",
+        "iupac_name": "2-oxobutanedioic acid",
+        "common_name": "oxaloacetic acid; oxaloacetate reference form",
+        "inchi": "InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H6O6",
+        "iupac_name": "2-hydroxy-4-oxopentanedioic acid",
+        "common_name": "4-hydroxy-2-oxoglutaric acid",
+        "inchi": "InChI=1S/C5H6O6/c6-2(4(8)9)1-3(7)5(10)11/h2,6H,1H2,(H,8,9)(H,10,11)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C6H6O8",
+        "iupac_name": "1-hydroxy-3-oxopropane-1,2,3-tricarboxylic acid",
+        "common_name": "3-oxalomalic acid",
+        "inchi": "InChI=1S/C6H6O8/c7-2(5(11)12)1(4(9)10)3(8)6(13)14/h1-2,7H,(H,9,10)(H,11,12)(H,13,14)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C5H4O5",
+        "iupac_name": "4-oxopent-2-enedioic acid",
+        "common_name": "unsaturated oxoglutaric acid",
+        "inchi": "InChI=1S/C5H4O5/c6-3(5(9)10)1-2-4(7)8/h1-2H,(H,7,8)(H,9,10)/b2-1+",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H6O5",
+        "iupac_name": "2-oxopentanedioic acid",
+        "common_name": "2-oxoglutaric acid; alpha-ketoglutarate reference form",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "H3NO",
+        "iupac_name": "hydroxylamine",
+        "common_name": "hydroxylamine",
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_012",
+        "formula": "NH3",
+        "iupac_name": "azane",
+        "common_name": "ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-aminopentanedioic acid",
+        "common_name": "racemic glutamic acid; glutamate reference form",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "target",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "Fe",
+        "iupac_name": "iron",
+        "common_name": "native iron; Fe(0)",
+        "inchi": "InChI=1S/Fe",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_015",
+        "formula": "Fe2+",
+        "iupac_name": "iron(2+)",
+        "common_name": "ferrous ion",
+        "inchi": "InChI=1S/Fe/q+2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_016",
+        "formula": "H+",
+        "iupac_name": "hydron",
+        "common_name": "proton",
+        "inchi": "InChI=1S/p+1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_017",
+        "formula": "C3H4O",
+        "iupac_name": "prop-2-enal",
+        "common_name": "acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_018",
+        "formula": "HCN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_019",
+        "formula": "C4H5NO",
+        "iupac_name": "4-oxobutanenitrile",
+        "common_name": "3-cyanopropanal",
+        "inchi": "InChI=1S/C4H5NO/c5-3-1-2-4-6/h4H,1-2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_020",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-hydroxypentanedinitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H6N2O/c6-3-1-2-5(8)4-7/h5,8H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_021",
+        "formula": "C5H7N3",
+        "iupac_name": "2-aminopentanedinitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H7N3/c6-3-1-2-5(8)4-7/h5H,1-2,8H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Mineral-mediated CO2 hydrogenation to pyruvate, aggregate transformation",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "Awaruite, Ni3Fe, as an H2-activating mineral catalyst"
+        ],
+        "conditions": {
+          "temperature": "Approximately 373 K",
+          "pressure": "Pressurized H2/CO2; sufficient to maintain liquid water",
+          "catalyst": "Awaruite",
+          "aqueous": true,
+          "other": "Anoxic rock-water interface; initially alkaline conditions are plausible. Products require cooling and concentration before downstream surface chemistry."
+        },
+        "mechanism": "Aggregate CO2 reduction and carbon-carbon bond formation on an H2-activating alloy surface. Neutral-reference balance: 3 CO2 + 5 H2 -> pyruvic acid + 3 H2O. This node does not imply a single elementary reaction.",
+        "reasoning": "Preiner et al. (2020), as summarized in the supplied research, support mineral-mediated formation of pyruvate from CO2/H2. Pyruvate can be a minor product in a broader mixture; selective production and direct coupling to the downstream network are not established. Awaruite is chemically justified by its ability to activate hydrogen, rather than included merely as a generic mineral."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Oxaloacetate decarboxylation to pyruvate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_004",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved Fe(II) as a coordination promoter"
+        ],
+        "conditions": {
+          "temperature": "343 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Fe(II)",
+          "aqueous": true,
+          "other": "Anoxic geothermal pool; residence time must account for rapid oxaloacetate consumption. This branch competes with oxaloacetate aldol addition in rxn_004."
+        },
+        "mechanism": "Beta-ketoacid decarboxylation gives a pyruvate enol, which tautomerizes to pyruvate, releasing CO2 without requiring an oxidant.",
+        "reasoning": "The supplied account of Muchowska et al. (2019) identifies iron-promoted oxaloacetate-to-pyruvate conversion. This provides a chemically distinct feedstock entry but depends on an external oxaloacetate supply. The laboratory temperature is assigned to a surface geothermal setting rather than incorrectly requiring a hot black-smoker environment."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Iron-promoted pyruvate-glyoxylate aldol addition",
+        "inputs": [
+          "mol_004",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved Fe(II) as a Lewis-acid and enolization promoter"
+        ],
+        "conditions": {
+          "temperature": "343 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Fe(II)",
+          "aqueous": true,
+          "other": "Anoxic, concentrated precursor solution in geothermal porewater; pH must retain useful iron availability and permit enolization. Strong sulfide precipitation would reduce dissolved Fe(II)."
+        },
+        "mechanism": "The pyruvate enol or enolate attacks the glyoxylate aldehyde carbonyl, forming the new carbon-carbon bond of 4-hydroxy-2-oxoglutarate. This is aldol addition, with no net water loss at this node.",
+        "reasoning": "Muchowska et al. (2019) support the iron-promoted precursor network, and Springsteen et al. (2018) provide related glyoxylate aldol chemistry. Bimolecular concentration requirements, competing condensations and product decomposition limit potential flux; quantitative accumulation in a natural pool is not demonstrated."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Oxaloacetate-glyoxylate aldol entry through oxalomalate",
+        "inputs": [
+          "mol_006",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "296-313 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Neutral to mildly alkaline concentrated water; no added mineral catalyst is assumed. Oxaloacetate decarboxylation and retro-aldol cleavage compete."
+        },
+        "mechanism": "Enolization of the oxaloacetate methylene followed by attack on glyoxylate forms the C6 aldol adduct oxalomalate. The transformation is atom-balanced without an oxidant or reductant.",
+        "reasoning": "Speculative preparative implementation consistent with the glyoxylate-cycle chemistry discussed by Springsteen et al. (2018). The supplied summary documents the downstream oxalomalate conversion but does not establish an isolated yield for this upstream step. Including its chemically plausible formation avoids treating the C6 intermediate as an unexplained starting material."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nonoxidative oxalomalate decarboxylation",
+        "inputs": [
+          "mol_008"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "Approximately 296 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Ambient-temperature aqueous stage; the supplied review reports observation over approximately 3 hours. Subsequent dehydration requires a warmer stage."
+        },
+        "mechanism": "Beta-ketoacid decarboxylation removes the carboxyl substituent on the central carbon of oxalomalate. Proton transfer and tautomerization produce 4-hydroxy-2-oxoglutarate and CO2.",
+        "reasoning": "Springsteen et al. (2018) are the supplied source for this conversion. The stated formulas balance as a nonoxidative decarboxylation, so the review's description of this particular step as oxidative is not adopted. No oxygen or peroxide is introduced, and successful coupling to the warmer iron-promoted sequence remains unproven."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Hydroxy-oxoglutarate dehydration",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_009",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved Fe(II) as a coordination promoter"
+        ],
+        "conditions": {
+          "temperature": "343 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Fe(II)",
+          "aqueous": true,
+          "other": "Warm anoxic geothermal water; downstream consumption can favor net progression. Neither complete dehydration nor a single alkene stereoisomer is assumed."
+        },
+        "mechanism": "Elimination of the beta-hydroxyl group and an adjacent hydrogen yields the conjugated unsaturated keto-diacid plus water.",
+        "reasoning": "The supplied mechanistic account of Muchowska et al. (2019) motivates this step. Its representation as a separate node is a mechanistic decomposition of the reported network, not evidence that the intermediate was isolated at high yield. Hydration, retro-aldol cleavage and other decomposition reactions can compete."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Sacrificial-iron reduction of the unsaturated C5 keto-diacid",
+        "inputs": [
+          "mol_009",
+          "mol_014",
+          "mol_016"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Native iron, Fe(0), consumed as the electron donor",
+          "Dissolved Fe(II) as a possible coordination promoter"
+        ],
+        "conditions": {
+          "temperature": "343 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Fe(II) coordination promoter; Fe(0) is sacrificial rather than catalytic",
+          "aqueous": true,
+          "other": "Fresh metallic iron contact in mildly acidic anoxic water; proton availability is controlled by the surrounding solution. Iron corrosion and carbonyl reduction compete."
+        },
+        "mechanism": "Two-electron, two-proton reduction saturates the alkene while retaining the keto group. Reference balance: C5H4O5 + Fe + 2 H+ -> C5H6O5 + Fe2+.",
+        "reasoning": "Muchowska et al. (2019) support the broader iron-promoted precursor chemistry. This explicit Fe(0)-driven implementation is speculative: the supplied review's Fe(II)-only description does not close the electron balance. Metallic iron supplies the missing reducing equivalents, but selective alkene reduction over keto-group reduction and decomposition requires experimental validation."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Hydroxylamine-derived oxime formation and iron reduction to glutamate",
+        "inputs": [
+          "mol_010",
+          "mol_011",
+          "mol_014",
+          "mol_016"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_015",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Native iron, Fe(0), consumed as reductant",
+          "Dissolved Fe(II) as a coordination promoter"
+        ],
+        "conditions": {
+          "temperature": "343 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "Fe(II) coordination promoter; Fe(0) supplies reducing equivalents",
+          "aqueous": true,
+          "other": "Anoxic, mildly acidic solution with hydroxylamine supplied after C5 skeleton formation. Metallic iron availability and competing corrosion constrain throughput."
+        },
+        "mechanism": "Hydroxylamine condenses with the keto group to form an oxime. Reduction of the C=N functionality and cleavage of the N-O bond yield glutamate. Reference balance: 2-oxoglutaric acid + NH2OH + 2 Fe + 4 H+ -> glutamic acid + 2 Fe2+ + 2 H2O.",
+        "reasoning": "Muchowska et al. (2019) support hydroxylamine/iron conversion of keto-acid precursors to amino acids. This is reductive amination through an oxime, not transamination. Explicit four-electron accounting corrects the incomplete review equation. Hydroxylamine abundance is unresolved, and no chiral reagent or catalyst justifies selective L-glutamate production."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Conditional H2-driven ammonia reductive amination at an FeS interface",
+        "inputs": [
+          "mol_010",
+          "mol_012",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "environment": "Hydrothermal",
+        "agents": [
+          "FeS-bearing mineral interface as a candidate imine-binding and reduction surface"
+        ],
+        "conditions": {
+          "temperature": "350-400 K, proposed evaluation window",
+          "pressure": "Elevated hydrothermal pressure with an H2-rich fluid",
+          "catalyst": "FeS-bearing interface; catalytic competence for this exact implementation is unverified",
+          "aqueous": true,
+          "other": "Proposed mildly alkaline conditions, approximately pH 8-10; NH3/NH4+ speciation, H2 activation and competing keto-acid reduction require measurement. Avoid prolonged exposure to hotter vent interiors."
+        },
+        "mechanism": "Ammonia adds to the keto group, followed by dehydration to an imine and hydrogenation to glutamate. Net reference balance: 2-oxoglutaric acid + NH3 + H2 -> glutamic acid + H2O.",
+        "reasoning": "Speculative FeS/H2 implementation. The supplied review associates mineral-mediated ammonia amination with Kitadai et al. (2019), but does not establish that FeS plus H2 alone performs this exact reaction under the proposed conditions. H2 explicitly supplies reducing equivalents; FeS is not treated as an inexhaustible electron donor. This branch is retained as a testable alternative that avoids hydroxylamine, not as an independently verified final step."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Candidate conjugate cyanation of acrolein",
+        "inputs": [
+          "mol_017",
+          "mol_018"
+        ],
+        "outputs": [
+          "mol_019"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K, proposed",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed mildly alkaline water with some cyanide present; shallow-pore retention must limit HCN volatilization. Acrolein polymerization and carbonyl cyanohydrin formation compete."
+        },
+        "mechanism": "Conjugate cyanide addition to the beta carbon of acrolein, followed by protonation, gives NC-CH2-CH2-CHO. The net transformation adds HCN without changing the aldehyde oxidation state.",
+        "reasoning": "Speculative feedstock extension. Patel et al. (2015) provide the broader cyanide-derived amino-acid-precursor context, but the supplied report does not demonstrate this acrolein conjugate-cyanation step. It is included as a chemically plausible C3+C1 construction rather than assuming a preformed C5 dinitrile. Competition with 1,2-addition is a major selectivity bottleneck."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Cyanohydrin formation from 3-cyanopropanal",
+        "inputs": [
+          "mol_019",
+          "mol_018"
+        ],
+        "outputs": [
+          "mol_020"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN/CN- availability controlled by pH; product formation is reversible. UV attenuation and limited residence time may reduce precursor degradation."
+        },
+        "mechanism": "Cyanide adds to the aldehyde carbonyl of 3-cyanopropanal; protonation of the alkoxide produces 2-hydroxypentanedinitrile.",
+        "reasoning": "Speculative preparative reconstruction of the precursor chemistry associated with Patel et al. (2015). Cyanohydrin formation is chemically well established, but the supplied summary does not independently document this particular aldehyde-to-C5-cyanohydrin preparation. Equilibrium, HCN loss and precursor stability must be measured."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Cyanohydrin-mediated Strecker entry to the aminodinitrile",
+        "inputs": [
+          "mol_020",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_021",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330 K",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Ammonia-rich concentrated solution with pH-dependent cyanohydrin/aldehyde/imine equilibria; no direct displacement of an unactivated hydroxyl group is assumed."
+        },
+        "mechanism": "Reversible cyanohydrin cleavage exposes the aldehyde and cyanide. Ammonia forms an imine or iminium species, which is trapped by cyanide. The aggregate balance is hydroxydinitrile + NH3 -> aminodinitrile + H2O.",
+        "reasoning": "Patel et al. (2015), as summarized in the supplied review, motivate the hydroxydinitrile-to-aminodinitrile connection. The review's simple hydroxyl-displacement mechanism is replaced by the chemically more plausible equilibrium-mediated Strecker mechanism. The C5-specific rate, yield and robustness under natural pool conditions remain uncertain."
+      },
+      {
+        "id": "rxn_013",
+        "name": "Direct Strecker entry from 3-cyanopropanal",
+        "inputs": [
+          "mol_019",
+          "mol_012",
+          "mol_018"
+        ],
+        "outputs": [
+          "mol_021",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-330 K, proposed",
+          "pressure": "Approximately 1 bar",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Ammonia and HCN supplied together or sequentially; sufficiently concentrated solution is needed for imine formation. Cyanohydrin formation is a competing equilibrium."
+        },
+        "mechanism": "Aldehyde-ammonia condensation gives an imine or iminium species, followed by cyanide addition to yield 2-aminopentanedinitrile and water without requiring prior cyanohydrin accumulation.",
+        "reasoning": "Speculative C5-specific application of conventional Strecker chemistry, consistent with the framework of Patel et al. (2015). The supplied summary does not establish this direct entry experimentally. It is a distinct graph route from the isolated-cyanohydrin entry, but not an independent amino-acid synthesis family."
+      },
+      {
+        "id": "rxn_014",
+        "name": "Sequential double-nitrile hydrolysis to glutamate",
+        "inputs": [
+          "mol_021",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Aqueous acid for nitrile and amide hydrolysis"
+        ],
+        "conditions": {
+          "temperature": "330-370 K, proposed accelerated-hydrolysis window",
+          "pressure": "Approximately 1 bar",
+          "catalyst": "H+ through acid-catalyzed proton transfers",
+          "aqueous": true,
+          "other": "A separate acidic, water-rich geothermal stage is required after aminonitrile formation. Residence time and acidity must be established experimentally; ordinary ambient neutral water is not assumed to give rapid complete hydrolysis."
+        },
+        "mechanism": "Both nitrile groups hydrate through amide-containing intermediates and ultimately become carboxylic acids. This is a lumped multistep node; the ordering of the two hydrolyses is unspecified. Reference balance: C5H7N3 + 4 H2O -> C5H9NO4 + 2 NH3.",
+        "reasoning": "Patel et al. (2015) provide the supplied aminonitrile-precursor context. Nitrogen balance requires two ammonia equivalents, correcting the review's one-ammonia equation. The proposed warm acidic implementation is not established by that summary and is a key kinetic bottleneck. Incomplete amide hydrolysis, decomposition and glutamate cyclization can limit recovery; acidic solutions contain much of the released nitrogen as NH4+."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Supplied pyruvate/glyoxylate with hydroxylamine completion",
+        "description": "Begin at supplied C3 and C2 keto-acid feedstocks, construct the C5 skeleton, then use hydroxylamine and sacrificial iron. This is the direct organic-feedstock entry; the selective reduction in rxn_007 remains conditional.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Supplied pyruvate/glyoxylate with ammonia completion",
+        "description": "Use the same C5 carbon construction but replace hydroxylamine with ammonia and H2. Transfer to the proposed FeS-bearing reducing interface is required; its catalytic competence is unverified.",
+        "reaction_sequence": [
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_009",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "CO2-derived pyruvate with hydroxylamine completion",
+        "description": "Generate the C3 component from CO2/H2, cool and concentrate it, and combine it with externally supplied glyoxylate before hydroxylamine-dependent completion. Only the pyruvate-derived three carbons are explicitly supplied by inorganic carbon in this route.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "CO2-derived pyruvate with ammonia completion",
+        "description": "Combine mineral-generated pyruvate with supplied glyoxylate and finish by the conditional ammonia/H2 reaction. Coupling carbon fixation, concentration and final mineral-mediated amination has not been demonstrated.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Oxaloacetate decarboxylation before aldol addition, hydroxylamine completion",
+        "description": "Decarboxylate the supplied C4 keto acid to pyruvate before adding glyoxylate. The resulting C5 intermediate follows dehydration, reduction and hydroxylamine-dependent amination.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Oxaloacetate decarboxylation before aldol addition, ammonia completion",
+        "description": "Use oxaloacetate-derived pyruvate for C5 construction and ammonia/H2 for nitrogen incorporation. This route avoids hydroxylamine but inherits the unresolved FeS/H2 reduction bottleneck.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Aldol addition before oxaloacetate decarboxylation, hydroxylamine completion",
+        "description": "First combine oxaloacetate with glyoxylate to form a C6 aldol adduct, then lose CO2 to enter the C5 sequence. This differs from P5 in carbon-carbon bond formation preceding decarboxylation; the preparative oxalomalate step remains conditional.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Aldol addition before oxaloacetate decarboxylation, ammonia completion",
+        "description": "Pass through oxalomalate and the shared C5 keto-acid sequence, then use ammonia/H2. Both the oxalomalate preparative implementation and the final FeS/H2 step require validation.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_007",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Acrolein/HCN route through an accumulated cyanohydrin",
+        "description": "Construct the nitrile-bearing aldehyde from acrolein and HCN, add a second cyanide to form the cyanohydrin, convert it through Strecker equilibria to the aminodinitrile, and hydrolyze both nitriles. The initial conjugate-cyanation selectivity and final hydrolysis are major unresolved bottlenecks.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_014"
+        ],
+        "key_intermediates": [
+          "mol_019",
+          "mol_020",
+          "mol_021"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Acrolein/HCN route with direct Strecker capture",
+        "description": "Construct the same nitrile-bearing aldehyde but expose it directly to ammonia and HCN rather than requiring prior cyanohydrin accumulation. Hydrolysis of the shared aminodinitrile yields racemic glutamate. This is an alternative entry within the Strecker family, not a tenth independently established family.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_013",
+          "rxn_014"
+        ],
+        "key_intermediates": [
+          "mol_019",
+          "mol_021"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_003",
+      "mol_004",
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_010",
+      "mol_012",
+      "mol_013",
+      "mol_014",
+      "mol_015",
+      "mol_016",
+      "mol_018",
+      "mol_019",
+      "mol_021"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_006"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_019",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_011",
+          "rxn_013"
+        ]
+      },
+      {
+        "molecule_id": "mol_021",
+        "incoming_reactions": [
+          "rxn_012",
+          "rxn_013"
+        ],
+        "outgoing_reactions": [
+          "rxn_014"
+        ]
+      },
+      {
+        "molecule_id": "mol_013",
+        "incoming_reactions": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_014"
+        ],
+        "outgoing_reactions": []
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.76,
+        "target_achievement": 0.85,
+        "overall_confidence": 0.81,
+        "feedback": "This is the best-supported candidate pathway. The supplied Muchowska et al. review supports the iron-promoted C5 chemistry and hydroxylamine/iron completion. Explicit sacrificial-iron accounting makes the reductions conservation-valid. However, selective reduction of the alkene in rxn_007 while retaining the alpha-keto group needs direct evidence for the proposed implementation. Heated, UV-shielded surface porewater is plausible, but numerical conditions and end-to-end yields are not supplied.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Specify mol_009 as the intended HOOC-C(=O)-CH=CH-COOH structure, including any relevant alkene geometry, and verify selective conversion to 2-oxoglutarate.",
+          "Provide reaction-specific temperature, pH, iron loading, residence time, and yields for rxn_003 through rxn_008; quantify competing carbonyl reduction and decomposition.",
+          "Document staged oxime formation and reduction, including iron passivation and competing hydroxylamine consumption."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.59,
+        "overall_confidence": 0.66,
+        "feedback": "The carbon-skeleton route is coherent, but target formation depends on the explicitly conditional rxn_009. Adding H2 correctly supplies the net reducing equivalents; it does not establish that the specified FeS interface activates H2 and reduces the imine at a useful rate. The supplied Kitadai summary is insufficient to validate this exact implementation. Delivery and survival of surface-produced 2-oxoglutarate at the hydrothermal interface are also unspecified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Demonstrate rxn_009 with an identified FeS phase, H2 pressure, ammonia concentration, pH, temperature, and controls establishing the source of reducing equivalents.",
+          "Specify a physical transfer mechanism and show that 2-oxoglutarate survives transport and mineral exposure at productive concentrations.",
+          "Measure competition between glutamate formation, carbonyl reduction, and keto-acid decarboxylation."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.78,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.78,
+        "overall_confidence": 0.75,
+        "feedback": "The aggregate CO2/H2 entry is balanced and has literature precedent at the transformation-family level through the Preiner work cited in the review. It is acceptable as a declared aggregate transformation, but an unspecified mineral and hydrothermal label do not establish pyruvate production under the proposed conditions. The downstream hydroxylamine completion is credible, while pyruvate recovery, transfer, and the selectivity of rxn_007 remain unresolved.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Identify the mineral used in rxn_001 and provide measured pyruvate yield at specified gas pressures, temperature, and pH, rather than evidence for CO2 reduction products generally.",
+          "Describe cooling, transport, and concentration of pyruvate before aldol chemistry, including losses to decomposition and competing reactions.",
+          "Validate the downstream sequence using the actual product mixture from rxn_001."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.7,
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.66,
+        "pathway_coherence": 0.77,
+        "environmental_progression": 0.57,
+        "target_achievement": 0.55,
+        "overall_confidence": 0.62,
+        "feedback": "The sequence conserves atoms and charge and connects the declared feedstocks to glutamate, but both its inorganic-carbon entry and terminal H2/FeS amination lack implementation-specific validation. The environmental concern is not the order or number of environments; it is the absence of demonstrated transport, retention, and chemical compatibility for the intermediates. The shared selective-reduction uncertainty in rxn_007 remains.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Independently validate pyruvate formation and H2-driven glutamate formation using the proposed minerals before claiming an integrated route.",
+          "Provide a material-flow scenario with intermediate concentrations, residence times, transfer mechanisms, and survival measurements.",
+          "Test whether salts, metals, and byproducts carried between stages inhibit downstream transformations."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_002": 0.93,
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.75,
+        "target_achievement": 0.83,
+        "overall_confidence": 0.8,
+        "feedback": "Oxaloacetate decarboxylation is a chemically strong entry to pyruvate, and the subsequent sequence is coherent. Supplied oxaloacetate and hydroxylamine are legitimate inputs within the declared feedstock boundary. The principal unresolved chemical issue is still selective rxn_007 reduction. Surface staging is plausible, but the submission does not establish a quantitative operating window or recovery of glutamate from the complete reaction mixture.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Measure pyruvate recovery from rxn_002 and its subsequent capture by glyoxylate under the selected conditions.",
+          "Specify the thermal and pH schedule and demonstrate that oxaloacetate-derived mixtures remain compatible with the downstream iron chemistry.",
+          "Report an end-to-end carbon balance and glutamate yield, including competing reduction and decomposition products."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_002": 0.93,
+          "rxn_003": 0.89,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 0.78,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.58,
+        "overall_confidence": 0.65,
+        "feedback": "The oxaloacetate-to-pyruvate entry is sound, but it does not resolve the downstream uncertainties in selective iron reduction and H2/FeS reductive amination. The final step is stoichiometrically correct but remains conditional rather than demonstrated by the submitted evidence. Hydrothermal processing also requires a suitable residence time to avoid losing 2-oxoglutarate before productive amination.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Establish a productive rxn_009 operating window and directly compare glutamate formation with keto-acid degradation.",
+          "Document transfer and retention of the surface-generated 2-oxoglutarate at the proposed FeS interface.",
+          "Validate amination using the upstream reaction mixture rather than only purified 2-oxoglutarate."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_004": 0.83,
+          "rxn_005": 0.9,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_008": 0.9
+        },
+        "chemical_feasibility": 0.79,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.74,
+        "target_achievement": 0.81,
+        "overall_confidence": 0.78,
+        "feedback": "Oxaloacetate-glyoxylate aldol addition followed by beta-keto-acid decarboxylation provides a chemically coherent C5 entry. Describing rxn_005 as nonoxidative is appropriate and avoids the review's misleading oxidative label. The Springsteen review supports the entry chemistry, but productive aldol capture must compete with oxaloacetate decarboxylation and other reactions. Downstream selective reduction and complete-sequence yield remain unverified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Identify the oxalomalate product structurally and measure aldol capture relative to direct oxaloacetate decarboxylation.",
+          "Map rxn_004 and rxn_005 to the primary experimental procedures, distinguishing nonoxidative decarboxylation from oxidative reactions elsewhere in the cited cycles.",
+          "Demonstrate that the resulting hydroxy-oxoglutarate mixture feeds productively into dehydration, selective reduction, and oxime reduction."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_004": 0.83,
+          "rxn_005": 0.9,
+          "rxn_006": 0.82,
+          "rxn_007": 0.7,
+          "rxn_009": 0.5
+        },
+        "chemical_feasibility": 0.68,
+        "pathway_coherence": 0.76,
+        "environmental_progression": 0.59,
+        "target_achievement": 0.57,
+        "overall_confidence": 0.63,
+        "feedback": "The carbon-skeleton sequence is plausible and conservation-valid, including nonoxidative rxn_005. Nevertheless, selective oxalomalate formation, selective alkene reduction, and terminal H2/FeS amination each need implementation-specific evidence. Explicitly calling the final step conditional is scientifically appropriate, but does not demonstrate target production. Transfer to a compatible hydrothermal reaction zone is also not physically specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_007",
+          "rxn_009"
+        ],
+        "suggestions": [
+          "Quantify oxalomalate formation and the downstream yield of structurally authenticated 2-oxoglutarate.",
+          "Demonstrate H2-dependent glutamate production with the selected FeS material and appropriate mineral and gas controls.",
+          "Specify transport, dilution, mineral compatibility, and intermediate lifetimes across the proposed stages."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_010": 0.55,
+          "rxn_011": 0.9,
+          "rxn_012": 0.8,
+          "rxn_014": 0.7
+        },
+        "chemical_feasibility": 0.71,
+        "pathway_coherence": 0.79,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.67,
+        "feedback": "The dinitrile skeleton would hydrolyze to glutamate, and rxn_012 is reasonably interpreted as cyanohydrin-mediated Strecker equilibration rather than simple displacement of an unactivated hydroxyl group. The weak entry is selective conjugate cyanation of acrolein: carbonyl cyanohydrin formation and polymerization compete. The Patel review supports related precursor chemistry, but does not by itself validate this acrolein implementation or rapid double-nitrile hydrolysis under unspecified surface conditions.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Authenticate mol_019 connectivity and measure 1,4- versus 1,2-addition selectivity; the competing acrolein cyanohydrin has the same molecular formula.",
+          "Demonstrate accumulation of mol_020 and its productive conversion to mol_021 under specified ammonia, cyanide, and pH conditions.",
+          "Provide a staged acid- or base-catalyzed hydrolysis protocol with temperature and residence time, monitoring amides and cyclic products such as pyroglutamate."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.55,
+          "rxn_013": 0.85,
+          "rxn_014": 0.7
+        },
+        "chemical_feasibility": 0.72,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.69,
+        "overall_confidence": 0.69,
+        "feedback": "Direct Strecker capture of authenticated 3-cyanopropanal is chemically reasonable and does not require an accumulated cyanohydrin pool. However, production of that aldehyde by selective acrolein conjugate cyanation is still unvalidated in the supplied implementation. Double-nitrile hydrolysis has the correct target connectivity and stoichiometry, but needs an explicit catalytic and thermal regime; a surface-environment label alone does not establish a useful hydrolysis rate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_010",
+          "rxn_014"
+        ],
+        "suggestions": [
+          "Demonstrate regioselective rxn_010 followed by Strecker capture before aldehyde loss, polymerization, or competing reactions.",
+          "Separate the cyanation/Strecker conditions from the hydrolysis stage and specify how volatile HCN and ammonia are retained where required.",
+          "Measure isolated or analytically authenticated glutamate yield and distinguish it from residual aminonitrile, amides, and cyclic products."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.76,
+    "network_feedback": "This is a connected, sufficiently populated, chemically plausible candidate network, but not an experimentally established complete synthesis network. All 21 molecule nodes and 14 reaction nodes participate in the connected graph. Under the required deterministic ground truth, every reaction is balanced or balanceable with small coefficients; none is a conservation violation. Store the inferred coefficients explicitly, especially the two Fe and four protons in rxn_008 and the four waters and two ammonia products in rxn_014. The reported mol_015 formula/InChI discrepancy is a metadata issue requiring correction to one Fe atom with formal charge +2, for example SMILES [Fe+2]; it does not overturn the supplied reaction-balance results. The declared feedstock boundary is acceptable, and racemic glutamate satisfies the stated target. The network appropriately distinguishes sequence variants from independently demonstrated synthesis families, accounts for sacrificial reductions, and corrects misleading review descriptions of oxime reduction, nonoxidative decarboxylation, and nitrile-hydrolysis stoichiometry. Literature alignment is meaningful but incomplete: the supplied review supports several reaction families, while the network itself supplies no reaction-specific citations, numerical protocols, or yields establishing the exact implementations. Critical uncertainties are selective rxn_007 reduction, H2 activation and reductive amination on the proposed FeS interface in rxn_009, acrolein regioselectivity in rxn_010, and productive hydrolysis conditions for rxn_014. These uncertainties must be assessed across the complete routes rather than averaged away by additional entry sequences. Surface heating, anoxia, UV shielding, and staged processing are physically plausible, but catalyst speciation, passivation, pH, temperature, residence times, transport, dilution, and intermediate survival remain insufficiently specified. End-to-end evidence is needed that intermediates accumulate and remain compatible with subsequent stages. P1 is the strongest candidate, but the complete network does not reach the 0.90 approval threshold.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 14,
+      "n_balanced_as_written": 10,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [
+        "mol_015 (ferrous ion): stated formula Fe2+ disagrees with its InChI structure (stated minus InChI: Fe+1, charge 1 vs 2)"
+      ],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 3,
+            "mol_002": 5,
+            "mol_004": 1,
+            "mol_003": 3
+          },
+          "element_delta": {
+            "C": -2,
+            "O": -2,
+            "H": -4
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_004": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_005": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_005": 1,
+            "mol_008": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_007": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_009": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_009": 1,
+            "mol_014": 1,
+            "mol_016": 2,
+            "mol_010": 1,
+            "mol_015": 1
+          },
+          "element_delta": {
+            "H": -1
+          },
+          "charge_delta": -1,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_014": 2,
+            "mol_016": 4,
+            "mol_013": 1,
+            "mol_015": 2,
+            "mol_003": 2
+          },
+          "element_delta": {
+            "O": 1,
+            "H": -1
+          },
+          "charge_delta": -1,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_012": 1,
+            "mol_002": 1,
+            "mol_013": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_017": 1,
+            "mol_018": 1,
+            "mol_019": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_019": 1,
+            "mol_018": 1,
+            "mol_020": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_020": 1,
+            "mol_012": 1,
+            "mol_021": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_013",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_019": 1,
+            "mol_012": 1,
+            "mol_018": 1,
+            "mol_021": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_014",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_021": 1,
+            "mol_003": 4,
+            "mol_013": 1,
+            "mol_012": 2
+          },
+          "element_delta": {
+            "N": 1,
+            "H": -3,
+            "O": -3
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 1,
+  "notes": null
+}

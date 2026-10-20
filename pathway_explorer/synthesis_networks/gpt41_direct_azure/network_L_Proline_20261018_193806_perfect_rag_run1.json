@@ -1,0 +1,1080 @@
+{
+  "target_molecule": "L-Proline",
+  "network": {
+    "target_molecule": "L-Proline",
+    "overall_strategy": "The network employs cyanosulfidic protometabolism under surface evaporitic pool conditions to construct the pyrrolidine ring of proline, following the experimentally validated 5-step Patel et al. (2015) pathway as the primary hub. Multiple alternative and branched sequences are indicated where reaction permutations, intermediate exchanges, or environmental variation are plausible on chemical or mechanistic grounds. Feedstocks include 3-aminopropanal, HCN, H2S, elemental copper, water, and NH3\u2014all geochemically justified for prebiotic surface settings. All routes converge through key intermediates such as 4-amino-2-hydroxybutanenitrile, pyrrolidine-2-thione, and pyrrolidine-2-carbonitrile. The design explicitly considers documented challenges of intermediate availability and cycling, sulfur and copper turnover, plausible hydrolysis rates, and incorporates redundancy in cycling and access points to highlight both robustness and chemical selectivity under anoxic, sulfur/nitrogen-rich Earth surface conditions.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "C3H7NO",
+        "iupac_name": "3-aminopropanal",
+        "common_name": "3-aminopropanal",
+        "inchi": "InChI=1S/C3H7NO/c4-2-1-3-5/h3H,1-2,4H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_002",
+        "formula": "CHN",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "HCN",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2S",
+        "iupac_name": "dihydrogen sulfide",
+        "common_name": "hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_004",
+        "formula": "C4H8N2O",
+        "iupac_name": "4-amino-2-hydroxybutanenitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H8N2O/c5-2-1-4(7)3-6/h4,7H,1-2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "C4H7NOS",
+        "iupac_name": "3-hydroxypyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NOS/c6-3-1-2-5-4(3)7/h3,6H,1-2H2,(H,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "C4H7NS",
+        "iupac_name": "pyrrolidine-2-thione",
+        "common_name": null,
+        "inchi": "InChI=1S/C4H7NS/c6-4-2-1-3-5-4/h1-3H2,(H,5,6)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H8N2",
+        "iupac_name": "pyrrolidine-2-carbonitrile",
+        "common_name": null,
+        "inchi": "InChI=1S/C5H8N2/c6-4-5-2-1-3-7-5/h5,7H,1-3H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H9NO2",
+        "iupac_name": "(S)-pyrrolidine-2-carboxylic acid",
+        "common_name": "L-Proline",
+        "inchi": "InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "H3N",
+        "iupac_name": "azanium; ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "H2O",
+        "iupac_name": "water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "[Cu]",
+        "iupac_name": "copper",
+        "common_name": "Elemental copper",
+        "inchi": "InChI=1S/Cu",
+        "role": "starting",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Cyanohydrin formation (Strecker-type)",
+        "inputs": [
+          "mol_001",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "evaporitic pool; cyanosulfidic conditions"
+        },
+        "mechanism": "Nucleophilic addition of cyanide to the aldehyde carbonyl of 3-aminopropanal, forming an \u03b1-hydroxynitrile.",
+        "reasoning": "Demonstrated by Patel et al. (2015, Nature Chemistry), this is the entry step to all proline cyanosulfidic routes. Chemically justified as a key initial carbon\u2013carbon bond forming process for \u03b1-amino acid construction under surface conditions."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Thiolation-cyclization",
+        "inputs": [
+          "mol_004",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_005",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "cyanosulfidic; H\u2082S atmosphere"
+        },
+        "mechanism": "H\u2082S attacks nitrile carbon; formation of thioamide, followed by intramolecular cyclization to 5-membered ring and ammonia release.",
+        "reasoning": "Patel et al. (2015) performed this one-pot thiolation and ring closure in aqueous solution. H\u2082S is both sulfur source and cyclization activator; reaction is key step for cyclic proline architecture."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Reductive deoxygenation",
+        "inputs": [
+          "mol_005",
+          "mol_003",
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "hydrogen sulfide",
+          "elemental copper"
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": "Cu\u2070/H\u2082S",
+          "aqueous": true,
+          "other": "evaporitic pool"
+        },
+        "mechanism": "Reductive elimination of C3 hydroxyl; electrons supplied by Cu/H\u2082S system yield the fully reduced pyrrolidine-2-thione.",
+        "reasoning": "Cu/H\u2082S as plausible prebiotic reducing system documented by Patel et al. (2015). This unique step is essential for C\u2013OH removal required for subsequent nitrile formation."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Thione-to-nitrile exchange",
+        "inputs": [
+          "mol_006",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "HCN-rich, cyanosulfidic"
+        },
+        "mechanism": "Cyanide attacks thioamide carbon, displaces sulfur as H\u2082S and forms a new C\u2013CN bond.",
+        "reasoning": "Patel et al. (2015) characterized this step as a core sulfur/nitrogen interconversion. Sulfur recycling is a salient aspect of cyanosulfidic chemistry, supporting catalytic turnover."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nitrile hydrolysis to L-Proline",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "longer timescale, likely hydrolytic cycling"
+        },
+        "mechanism": "Nucleophilic addition of water to the nitrile, forming primary amide; hydrolyzed again to carboxylic acid (L-Proline) and NH\u2083.",
+        "reasoning": "The hydrolysis was successfully demonstrated in cyanosulfidic pools (Patel et al., 2015), though with possible rate limitations. Mechanistically robust, produces L-Proline directly."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Ammonia liberation/cycling (recycling NH\u2083 hub)",
+        "inputs": [],
+        "outputs": [
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "variable",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "produced as byproduct in R2, R5"
+        },
+        "mechanism": "Byproduct formation and pool-wide liberation of ammonia from cyclization (R2) and hydrolysis (R5).",
+        "reasoning": "Explicit listing of ammonia pool recycling for completeness\u2014Patel et al. (2015), plus general prebiotic nitrogen cycling."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Sulfur/copper incorporation into environment",
+        "inputs": [],
+        "outputs": [
+          "mol_003",
+          "mol_011"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "variable",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "delivered by outgassing/hydrothermal/mineral weathering"
+        },
+        "mechanism": "Environmental provisioning and recycling of H\u2082S and Cu\u2070 over time via redox, volcanic, and geochemical cycling.",
+        "reasoning": "Supported by documented sources in Patel et al. (2015) and literature for surface delivery of both H\u2082S and native copper."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Alternative 3-aminopropanal supply from ammonia pool",
+        "inputs": [
+          "mol_009"
+        ],
+        "outputs": [
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "320-340K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Speculative sequence (ammonia + carbonyl compounds, e.g. acrolein)"
+        },
+        "mechanism": "Reductive amination of C3 carbonyl species (e.g., acrolein) by NH\u2083, forming 3-aminopropanal.",
+        "reasoning": "Not directly demonstrated for this network; speculative but plausible based on cyanosulfidic primary amine chemistry cited in Patel et al. (2015), supporting a closed N-cycling network."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Alternative hydrolysis: pyrrolidine-2-carbonitrile \u2192 intermediate amide",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "slow at neutral pH"
+        },
+        "mechanism": "Partial hydrolysis of the nitrile to the amide (pyrrolidine-2-carboxamide).",
+        "reasoning": "Mechanistically required one-protonation path (cited in Patel et al., 2015) but not isolated in that study; included here for pathway diversity."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Intermediate amide hydrolysis to L-Proline",
+        "inputs": [
+          "mol_012",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "300-320K",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "hydrolysis; likely very slow"
+        },
+        "mechanism": "Amide is hydrolyzed to carboxylic acid with release of NH\u2083.",
+        "reasoning": "Completes the two-step hydrolysis sequence per classical mechanisms, compatible with observed route kinetics (Patel et al., 2015; open question highlighted therein)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Speculative mineral-mediated hydrolysis of nitrile",
+        "inputs": [
+          "mol_007",
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "montmorillonite"
+        ],
+        "conditions": {
+          "temperature": "310-340K",
+          "pressure": "ambient",
+          "catalyst": "montmorillonite clay",
+          "aqueous": true,
+          "other": "Speculative: clay-catalyzed hydrolysis"
+        },
+        "mechanism": "Montmorillonite catalyzes nucleophilic attack of H\u2082O on nitrile.",
+        "reasoning": "Speculative but plausible based on known clay-catalyzed hydrolyses of nitriles and amidines, though not specifically demonstrated for proline precursors (see Ferris, Hill, 1999, Origins Life Evol. Biosph.)."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Speculative wet-dry cycle hydrolysis",
+        "inputs": [
+          "mol_007"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          null
+        ],
+        "conditions": {
+          "temperature": "diurnal (cyclic 300-340K)",
+          "pressure": "ambient",
+          "catalyst": null,
+          "aqueous": false,
+          "other": "repeated evaporation/re-wetting"
+        },
+        "mechanism": "Wet-dry concentration cycles facilitate hydrolysis by concentrating reactants and providing repeated access to water.",
+        "reasoning": "Wet-dry cycling is a recognized driver for difficult hydrolyses and peptide ligations in prebiotic chemistry. Not specifically reported for proline but referenced as a mechanism in Lane et al., 2010, Chem. Soc. Rev."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Canonical cyanosulfidic surface pathway",
+        "description": "Five-step proline synthesis validated by Patel et al. (2015), all in surface evaporitic pools: Strecker-type cyanohydrin formation, thiolation\u2013cyclization, reductive deoxygenation, thione-to-nitrile exchange, and sequential nitrile hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Alternative amide hydrolysis route",
+        "description": "Proline formed via two-step hydrolysis: pyrrolidine-2-carbonitrile partially hydrolyzed to amide followed by amide hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007",
+          "mol_012"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Clay-catalyzed hydrolysis pathway",
+        "description": "Clay minerals (montmorillonite) catalyze hydrolysis of pyrrolidine-2-carbonitrile to L-Proline, bypassing slow uncatalyzed neutral hydrolysis.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_011"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Wet-dry cycling enabled hydrolysis",
+        "description": "Pyrrolidine-2-carbonitrile is converted to L-Proline via repeated drying/wetting cycles in evaporitic pools, accelerating hydrolysis in the absence of mineral catalysts.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_012"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "Ammonia-pool recycled route",
+        "description": "Ammonia released in cyclization and hydrolysis is recycled to reform 3-aminopropanal, thus closing the nitrogen cycle and supplying new feedstock.",
+        "reaction_sequence": [
+          "rxn_006",
+          "rxn_008",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_009",
+          "mol_001",
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "Sulfur and copper recycling loop",
+        "description": "Environmental transfer and recycling of H\u2082S and elemental copper compounds maintain redox capacity for sustained proline synthesis.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_011",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Reductive amination feed-in",
+        "description": "3-aminopropanal is supplied via reductive amination of ammonia and C3 aldehyde (acrolein or similar), feeding into the proline synthesis pathway.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_001",
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "HCN-excess facilitated ring closure",
+        "description": "Alternative, hypothetical route wherein HCN excess shifts equilibrium during both cyanohydrin formation and thione-to-nitrile exchange, enhancing yields.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_004",
+          "rxn_005"
+        ],
+        "key_intermediates": [
+          "mol_004",
+          "mol_005",
+          "mol_006",
+          "mol_007"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Thione-to-nitrile sulfur-cycle return",
+        "description": "Sulfur released as H2S in thione-to-nitrile exchange is directly fed back for new rounds of cyclization/ring closure.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_002"
+        ],
+        "key_intermediates": [
+          "mol_003",
+          "mol_004",
+          "mol_005"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Elemental copper pool exchange pathway",
+        "description": "Native copper from abiotic mineral precipitation is used in parallel for reductive deoxygenation in alternative seasonal/geochemical cycles.",
+        "reaction_sequence": [
+          "rxn_007",
+          "rxn_003"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_005",
+          "mol_006"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_006",
+      "mol_009",
+      "mol_003",
+      "mol_007"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_001"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      },
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_003"
+        ],
+        "outgoing_reactions": [
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_009",
+        "incoming_reactions": [
+          "rxn_002",
+          "rxn_005",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012"
+        ],
+        "outgoing_reactions": [
+          "rxn_008"
+        ]
+      },
+      {
+        "molecule_id": "mol_003",
+        "incoming_reactions": [
+          "rxn_004",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_002",
+          "rxn_003"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_009",
+          "rxn_011",
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "L-Proline",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "The 5-step canonical cyanosulfidic proline synthesis pathway follows Patel et al. (2015) and is well-supported by experimental evidence. However, chemical feasibility is compromised by an unbalanced (mass/charge violating) rxn_003 (reductive deoxygenation) that cannot be balanced with plausible species, reducing confidence in this specific network implementation. Rxn_004 is also slightly imbalanced but salvageable with adjusted hydrogen sources. All environments are consistent with the literature. Target achievement, intermediates, and general flow are strongly validated.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Review rxn_003 to explicitly include all species involved in the reduction; mass and charge must balance.",
+          "Consider possible missing hydrogen sources/atmospheric H2 in rxn_004, or clarify ammonia involvement.",
+          "If possible, provide explicit coefficients and confirm all molecular identities."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_009": 0.0,
+          "rxn_010": 0.0
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.7,
+        "feedback": "The alternative amide hydrolysis route (P2) features a branched path for L-Proline synthesis. However, rxn_003 remains unbalanced, and both rxn_009 and rxn_010 reference mol_012, an undefined species. This makes key pathway steps nonviable. The literature sets no precedent for this alternative sequence, and the missing intermediates further reduce chemical feasibility.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_009",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Define and provide the composition of mol_012 (amide intermediate).",
+          "Balance all reactions and clarify missing species.",
+          "Focus on literature-supported steps unless experimental evidence for alternatives is provided."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_011": 1.0
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "This clay-catalyzed variant borrows the canonical sequence with alternative mineral-mediated hydrolysis (rxn_011, which is mass-balanceable), but inherits the critical feasibility limitation from rxn_003. Otherwise well-aligned with plausible cyanosulfidic surface conditions and literature precedent.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Correct rxn_003 by explicitly specifying all transfer/redox species.",
+          "Explicitly mention and justify the clay/metal ion catalyst role in rxn_011 if proposed."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_012": 0.7
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.95,
+        "overall_confidence": 0.8,
+        "feedback": "The wet-dry cycle hydrolysis path is creative but speculative. Rxn_003 (unbalanced) and rxn_012 (hydrolysis missing explicit water input unless coefficients are corrected) diminish feasibility. Similar to the canonical and clay variants otherwise.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_012"
+        ],
+        "suggestions": [
+          "Balance rxn_012 by explicitly including water as a reactant.",
+          "Clarify mechanism for wet-dry cycling and relate to experimental studies if available.",
+          "Rectify rxn_003's redox mass/charge issues."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_006": 0.7,
+          "rxn_008": 0.0,
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "The ammonia-pool recycled route depends on rxn_008 (conversion of ammonia to 3-aminopropanal), which is mass/charge unbalanced and mechanistically unjustified in this form. Rxn_006's details are lacking and may be a stub for ammonia release/uptake, but this should be more explicit and chemically viable. All downstream reactions inherit the rxn_003 and rxn_004 imbalances.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Replace rxn_008 with a two-step Michael addition and tautomerization starting from acrolein if aiming to prebiotically generate 3-aminopropanal from ammonia.",
+          "Remove placeholder reactions lacking clear mechanisms.",
+          "Balance all reactions; ensure novelty does not come at the expense of conservation."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_007": 0.7,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_002": 1.0
+        },
+        "chemical_feasibility": 0.65,
+        "pathway_coherence": 0.85,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.75,
+        "feedback": "The sulfur and copper recycling loop is conceptually sound but relies on undefined, unchecked, or unbalanced species (esp. rxn_007 for environmental cycling and rxn_003's persistent mass/charge error). Effective only if all participating reactions are fully identified and balanced.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Define reactants/products in rxn_007 and align with feasible geochemical cycles.",
+          "Correct balance and provide mechanistic details for Cu and S handling.",
+          "Fix mass conservation in all steps."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_008": 0.0,
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.5,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.7,
+        "feedback": "Reductive amination feed-in via rxn_008 is not chemically valid as specified and breaks mass/charge conservation. All downstream reactions inherit the previously stated imbalances.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_008",
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Provide a mechanistically justified path for the amination of acrolein or an alternative realistic feed-in.",
+          "Review rxn_008 to ensure all atoms are accounted for.",
+          "Prioritize conservation and literature precedent when proposing feed-in steps."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 1.0,
+          "rxn_002": 1.0,
+          "rxn_003": 0.0,
+          "rxn_004": 0.8,
+          "rxn_005": 1.0
+        },
+        "chemical_feasibility": 0.7,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 1.0,
+        "overall_confidence": 0.85,
+        "feedback": "This variant highlights HCN-excess as a process variable but otherwise mirrors the canonical 5-step pathway, inheriting its mechanistic soundness and rxn_003's conservation failure.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Explicitly clarify the mechanistic impact of HCN excess if proposing meaningful divergence.",
+          "Correct mass/charge conservation for full approval."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_004": 0.8,
+          "rxn_002": 1.0
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 1.0,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.8,
+        "feedback": "This short sulfur cycle return is correct as a partial network but does not reach the target nor stand alone as a complete synthesis route. Rxn_004's required hydrogen adjustment still applies.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_004"
+        ],
+        "suggestions": [
+          "Either embed this shunt within a full pathway or extend it to lead to L-Proline.",
+          "Correct conservation as above."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_007": 0.7,
+          "rxn_003": 0.0
+        },
+        "chemical_feasibility": 0.45,
+        "pathway_coherence": 0.7,
+        "environmental_progression": 1.0,
+        "target_achievement": 0.0,
+        "overall_confidence": 0.5,
+        "feedback": "The copper pool exchange is not sufficiently specified to function as a pathway to L-Proline, and rxn_007 and rxn_003 are problematic. Provide full reaction details and connect to the synthetic goal.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "suggestions": [
+          "Ensure full description and balancing for all pool/cycle steps.",
+          "Tie this exchange pathway back to actual synthetic production of L-Proline."
+        ]
+      }
+    ],
+    "best_pathway_id": "P1",
+    "overall_confidence": 0.85,
+    "network_feedback": "This network is comprehensive, mapping the canonical and alternative cyanosulfidic pathways for L-Proline as supported by Patel et al. (2015), with thoughtful attention to hub intermediates, sulfur/nitrogen/copper cycling, and plausible geochemical surface environments. All major route steps correspond to literature precedent, and the network identifies and attempts to address experimental concerns like feedstock sourcing and environmental interconnectivity. However, several reactions (notably rxn_003 across all relevant pathways) commit mass and charge conservation errors that must be rectified for full approval. Ancillary/alternative routes sometimes introduce undefined intermediates or mechanistically weak transformations (e.g., rxn_008/009/010/012). Once all mass-conservation and undefined species are resolved, this could be an exemplary prebiotic synthesis network.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 12,
+      "n_balanced_as_written": 2,
+      "n_balanceable": 2,
+      "n_unbalanced": 4,
+      "n_unchecked": 4,
+      "fraction_balanceable": 0.5,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_002": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_003": 1,
+            "mol_005": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "S": 1,
+            "Cu": 1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2 as reactant; NH3 as reactant",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_010": 2,
+            "mol_008": 1,
+            "mol_009": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "unchecked",
+          "inferred_coefficients": null,
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": [
+            "reaction has no reactants or no products"
+          ]
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "unchecked",
+          "inferred_coefficients": null,
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": [
+            "reaction has no reactants or no products"
+          ]
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -4,
+            "C": -3,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": "no single common small species (H2O, H2, NH3, CO2, ...) fixes it",
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "unchecked",
+          "inferred_coefficients": null,
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": [
+            "mol_012: unknown molecule ID"
+          ]
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "unchecked",
+          "inferred_coefficients": null,
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": [
+            "mol_012: unknown molecule ID"
+          ]
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_010": 2,
+            "mol_008": 1,
+            "mol_009": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "O": -1
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "unbalanced",
+          "inferred_coefficients": null,
+          "element_delta": {
+            "H": -4,
+            "O": -2
+          },
+          "charge_delta": 0,
+          "hint": "balanceable if adding: H2O as reactant",
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.850"
+}

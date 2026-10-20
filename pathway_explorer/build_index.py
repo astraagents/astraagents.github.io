@@ -10,12 +10,12 @@ VALID_DIR = BASE / "validation_reports"
 OUTPUT = BASE / "file_index.csv"
 
 # Only index these models; others are kept on disk but excluded from the app.
-KEEP_MODELS = {"claude_opus4.6", "gpt41", "gpt5.4"}
+KEEP_MODELS = {"gpt41_direct_azure", "gpt6_xhigh_azure"}
 
-# Matches: network_{molecule}_{config}_run{N}[_attempt{N}].json
-# config is e.g. deep_research_claude, deep_research_gemini, perfect_rag, no_research
+# Matches: network_{molecule}[_{YYYYMMDD_HHMMSS}]_{config}_run{N}[_attempt{N}].json
+# config is e.g. deep_research_claudeopus5.5, deep_research_gpt6, perfect_rag, no_research
 SYNTH_RE = re.compile(
-    r"^network_(.+?)_((?:deep_research_[\w.]+|perfect_rag|no_research))_run(\d+)(?:_attempt(\d+))?\.json$"
+    r"^network_(.+?)(?:_\d{8}_\d{6})?_((?:deep_research_[\w.]+|perfect_rag|no_research))_run(\d+)(?:_attempt(\d+))?\.json$"
 )
 
 rows = []

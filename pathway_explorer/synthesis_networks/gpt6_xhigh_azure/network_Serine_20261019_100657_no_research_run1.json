@@ -1,0 +1,1251 @@
+{
+  "target_molecule": "Serine",
+  "network": {
+    "target_molecule": "Serine (DL-serine; no enantioenrichment assumed)",
+    "overall_strategy": "Construct glycolaldehyde by experimentally motivated cyanide photoreduction and homologation, then install the amino and carboxyl groups through Strecker chemistry and explicitly resolved nitrile-to-amide-to-acid hydrolysis. Ten distinct graph routes combine five feedstock/photochemical entries with two Strecker order-of-addition branches. These are overlapping alternatives, not ten independently demonstrated syntheses; the cyanohydrin-fed branch ultimately accesses the same imine chemistry. Formaldehyde and glycolaldehyde may enter as externally supplied simple feedstocks despite also being internally formed hub intermediates. Sulfide/copper and sulfite/ferrocyanide modules are kept separate: no pathway switches between them. Sulfite-bound aldehydes are represented explicitly rather than assumed fully available. Hydantoin chemistry is excluded because it adds unresolved ring-opening and decarbamoylation bottlenecks. All modeled transformations are anoxic and use surface settings; hydrothermal labels are not used to imply successful hydrolysis. The graph contains 17 molecule nodes and 13 reaction nodes to retain chemically important adducts and the amide intermediate. It is complete for the intended transformations, not an exhaustive side-reaction network or a validated natural synthesis. In particular, a sufficiently acidic, serine-preserving natural hydrolysis window remains unverified. Numerical operating ranges below are proposed screening conditions unless identified as analytical benchmarks, not reported reaction-specific yields or rate constants. Neutral organic formulas represent equilibrating protonation pools; acid-base counterions are omitted, while the explicitly ionic sulfur equations conserve charge.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "Hydrogen cyanide",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H2S",
+        "iupac_name": "Hydrogen sulfide",
+        "common_name": "Hydrogen sulfide",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2O",
+        "iupac_name": "Water",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "S8",
+        "iupac_name": "Octasulfur",
+        "common_name": "Elemental sulfur; terminal coproduct",
+        "inchi": "InChI=1S/S8/c1-2-4-6-8-7-5-3-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_005",
+        "formula": "H3N",
+        "iupac_name": "Ammonia",
+        "common_name": "Ammonia",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_006",
+        "formula": "CH2O",
+        "iupac_name": "Methanal",
+        "common_name": "Formaldehyde",
+        "inchi": "InChI=1S/CH2O/c1-2/h1H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C2H3NO",
+        "iupac_name": "2-Hydroxyacetonitrile",
+        "common_name": "Glycolonitrile",
+        "inchi": "InChI=1S/C2H3NO/c3-1-2-4/h4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C2H4O2",
+        "iupac_name": "2-Hydroxyethanal",
+        "common_name": "Glycolaldehyde",
+        "inchi": "InChI=1S/C2H4O2/c3-1-2-4/h1,4H,2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "HSO3^-",
+        "iupac_name": "Hydrogen sulfite",
+        "common_name": "Bisulfite; protonation-state representative of dissolved sulfur(IV)",
+        "inchi": "InChI=1S/H2O3S/c1-4(2)3/h(H2,1,2,3)/p-1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_010",
+        "formula": "S2O6^2-",
+        "iupac_name": "Dithionate",
+        "common_name": "Dithionate; modeled sulfur oxidation coproduct",
+        "inchi": "InChI=1S/H2O6S2/c1-7(2,3)8(4,5)6/h(H,1,2,3)(H,4,5,6)/p-2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_011",
+        "formula": "CH3O4S^-",
+        "iupac_name": "Hydroxymethanesulfonate",
+        "common_name": "Formaldehyde-bisulfite adduct",
+        "inchi": "InChI=1S/CH4O4S/c2-1-6(3,4)5/h2H,1H2,(H,3,4,5)/p-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "C2H5O5S^-",
+        "iupac_name": "1,2-Dihydroxyethane-1-sulfonate",
+        "common_name": "Glycolaldehyde-bisulfite adduct",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_013",
+        "formula": "C2H5NO",
+        "iupac_name": "2-Iminoethan-1-ol",
+        "common_name": "Glycolaldehyde imine",
+        "inchi": "InChI=1S/C2H5NO/c3-1-2-4/h1,3-4H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_014",
+        "formula": "C3H5NO2",
+        "iupac_name": "2,3-Dihydroxypropanenitrile",
+        "common_name": "Glyceronitrile",
+        "inchi": "InChI=1S/C3H5NO2/c4-1-3(6)2-5/h3,5-6H,2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_015",
+        "formula": "C3H6N2O",
+        "iupac_name": "2-Amino-3-hydroxypropanenitrile",
+        "common_name": "Serine aminonitrile",
+        "inchi": "InChI=1S/C3H6N2O/c4-1-3(5)2-6/h3,6H,2,5H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_016",
+        "formula": "C3H8N2O2",
+        "iupac_name": "2-Amino-3-hydroxypropanamide",
+        "common_name": "Serinamide",
+        "inchi": "InChI=1S/C3H8N2O2/c4-2(1-6)3(5)7/h2,6H,1,4H2,(H2,5,7)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_017",
+        "formula": "C3H7NO3",
+        "iupac_name": "2-Amino-3-hydroxypropanoic acid",
+        "common_name": "DL-Serine",
+        "inchi": "InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)",
+        "role": "target",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Sulfide-supported photoreduction of hydrogen cyanide to formaldehyde",
+        "inputs": [
+          "mol_001",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Photoactive copper(I)-cyanide complexes; dissolved speciation must be verified"
+        ],
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Copper(I)-cyanide complexes",
+          "aqueous": true,
+          "other": "Proposed screen: pH 6.8-7.5; total cyanide 10-50 mM; total dissolved sulfide 10-50 mM; total Cu(I) 0.05-0.2 mM; cyanide-to-copper ratio at least 50. Use a 0.5-2 mm illuminated water layer and 240-280 nm radiation, with 254 nm as a laboratory proxy. Screen incident photon fluxes of 10^14-10^15 photons cm^-2 s^-1 and sample over 0.5-12 h rather than prescribing complete conversion. Exclude O2. Measure dissolved copper complexes, CuCN/Cu2S precipitation, sulfur turbidity, cyanide loss and aldehyde formation."
+        },
+        "mechanism": "Photochemical electron transfer reduces the nitrile carbon, followed by hydrolysis of the reduced nitrogen-containing intermediate. Sulfide supplies reducing equivalents. Formal net equation: 8 HCN + 8 H2S + 8 H2O -> 8 CH2O + 8 NH3 + S8. S8 represents the eventual zero-valent sulfur pool, not necessarily the initially formed sulfur species.",
+        "reasoning": "Copper/cyanide photoredox chemistry and sulfide-supported precursor synthesis are motivated by Ritson and Sutherland (2013) and Patel et al. (2015). The stated numerical screen is not asserted to reproduce a published yield. Total added copper does not establish active catalyst concentration: cyanide complexation competes with copper-sulfide precipitation. Polysulfides, thiocyanate formation, HCN volatilization and optical attenuation can reduce productive flux. A usable stream requires measured carbon and sulfur balances; generic addition of a sulfide mineral would not establish this chemistry."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Capture of formaldehyde as glycolonitrile",
+        "inputs": [
+          "mol_006",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_007"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screen: pH 7.0-8.5; formaldehyde equivalents 1-20 mM; available total cyanide 5-50 mM; residence 0.5-24 h. Conduct capture in a shaded compartment to separate cyanohydrin equilibration from photochemistry. Formaldehyde hydration and, in the sulfite branch, hydroxymethanesulfonate dissociation must be included in substrate accounting. No selective removal of dissolved metal complexes by settling is assumed."
+        },
+        "mechanism": "Cyanide adds to the accessible formaldehyde carbonyl and proton transfer gives HOCH2CN. Net equation: CH2O + HCN -> HOCH2CN. The reaction draws from equilibrating hydrated formaldehyde rather than requiring all formaldehyde to be unhydrated.",
+        "reasoning": "Glycolonitrile formation is the established carbon-chain-extension entry used in cyanide photoredox networks (Ritson and Sutherland, 2012; Patel et al., 2015). Its plausibility does not imply quantitative capture in dilute natural waters. For sulfite-derived formaldehyde, rxn_005 must supply sufficient dissociation flux; the adduct cannot simply be counted as free aldehyde."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Sulfide-supported photoreduction of glycolonitrile to glycolaldehyde",
+        "inputs": [
+          "mol_007",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_005",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Photoactive copper(I)-cyanide complexes"
+        ],
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Copper(I)-cyanide complexes",
+          "aqueous": true,
+          "other": "Proposed screen: glycolonitrile 1-20 mM; total sulfide 10-50 mM; Cu(I) 0.05-0.2 mM; pH 6.8-7.5. Maintain and measure the cyanide ligand pool rather than assuming the catalyst survives cyanide depletion. Use 240-280 nm light, a 0.5-2 mm optical path and incident flux 10^14-10^15 photons cm^-2 s^-1. Sample over 0.5-12 h and withdraw at the measured glycolaldehyde maximum. Transfer to a shaded, cooler Strecker compartment; do not introduce ferrocyanide/sulfite chemistry."
+        },
+        "mechanism": "Two-electron reduction of the nitrile followed by imine hydrolysis converts the nitrile carbon to an aldehyde while retaining the hydroxymethyl group. Formal net equation: 8 HOCH2CN + 8 H2S + 8 H2O -> 8 HOCH2CHO + 8 NH3 + S8.",
+        "reasoning": "This homologation is central to experimentally motivated cyanosulfidic precursor chemistry (Ritson and Sutherland, 2013; Patel et al., 2015). Glycolaldehyde accumulation competes with further cyanohydrin formation, reduction, sulfur chemistry and photochemical loss. A measured irradiation endpoint is therefore necessary. Transport must preserve the product and characterize residual copper and sulfide; shading stops irradiation but does not remove dissolved reagents."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Sulfite/ferrocyanide photoreduction of HCN with formaldehyde-bisulfite capture",
+        "inputs": [
+          "mol_001",
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_005",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ferrocyanide, [Fe(CN)6]^4-, as a photoredox mediator"
+        ],
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Ferrocyanide photoredox system",
+          "aqueous": true,
+          "other": "Proposed screen: HCN equivalents 5-20 mM; total dissolved sulfur(IV) 50-150 mM; ferrocyanide 0.1-1 mM; pH 7.0-8.0. Determine the HSO3-/SO3^2- distribution at the actual ionic strength. Use an anoxic 0.5-2 mm illuminated layer, 240-280 nm light and incident flux 10^14-10^15 photons cm^-2 s^-1; sample over 0.5-12 h. This is a separate copper-free catchment or experimental stream, not a downstream switch from rxn_001."
+        },
+        "mechanism": "Photogenerated reducing equivalents reduce HCN, and the resulting formaldehyde is reversibly trapped by hydrogen sulfite. Sulfur-centered radical coupling provides a possible anoxic donor-oxidation closure. Modeled net equation: HCN + 3 HSO3^- + H2O -> HOCH2SO3^- + NH3 + S2O6^2-. Two sulfur(IV) equivalents supply electrons; the third forms the carbonyl adduct.",
+        "reasoning": "Sulfite/ferrocyanide-mediated HCN homologation is supported as a reaction family by Xu et al. (2018). Explicit adduct capture prevents overestimating free formaldehyde. Dithionate is a chemically plausible anoxic sulfite-radical termination product, but its exclusive formation is not established here; this sulfur closure is a model assumption requiring product analysis. Sulfate or other measured sulfur products would require corresponding additional balanced branches. The abundance and photochemical persistence of natural ferrocyanide also remain environmental constraints."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Release of formaldehyde from hydroxymethanesulfonate",
+        "inputs": [
+          "mol_011"
+        ],
+        "outputs": [
+          "mol_006",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed release screen: pH 8.0-9.0, with dilution or continued cyanohydrin trapping used to shift the equilibrium. Measure total sulfur(IV), its protonation distribution, free-plus-hydrated formaldehyde, adduct concentration and dissociation kinetics over 0.5-48 h. Define K_app = [adduct]/([unbound formaldehyde pool][HSO3-]) at the actual temperature and ionic strength. The unbound fraction is 1/(1 + K_app[HSO3-]) under this two-pool approximation. Evaporation is not treated as sulfite removal."
+        },
+        "mechanism": "Reverse bisulfite addition releases an equilibrating formaldehyde/hydrate pool. Net equation: HOCH2SO3^- -> CH2O + HSO3^-. This node shows the productive direction of a reversible equilibrium, coupled to formaldehyde consumption in rxn_002.",
+        "reasoning": "Reversible carbonyl trapping is relevant to sulfite-based homologation chemistry (Xu et al., 2018), but that reaction-family citation does not supply a release constant for this proposed matrix. Productive connection requires the measured adduct-release flux to sustain glycolonitrile formation within the residence time. Dilution lowers both inhibitor and substrate concentrations and is not a free concentration mechanism. The proposed environmental release operation is conditional, not demonstrated."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Sulfite/ferrocyanide photoreduction of glycolonitrile with glycolaldehyde-bisulfite capture",
+        "inputs": [
+          "mol_007",
+          "mol_009",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_012",
+          "mol_005",
+          "mol_010"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Ferrocyanide, [Fe(CN)6]^4-, as a photoredox mediator"
+        ],
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Ferrocyanide photoredox system",
+          "aqueous": true,
+          "other": "Proposed screen: glycolonitrile 1-20 mM; total sulfur(IV) 50-150 mM; ferrocyanide 0.1-1 mM; pH 7.0-8.0. Use the irradiation geometry and flux range of rxn_004, with a separately measured absorption profile after the first stage. Sample over 0.5-12 h. Account for accumulated dithionate, ferro/ferricyanide speciation and aldehyde adducts. No copper/sulfide stream is introduced."
+        },
+        "mechanism": "Photoreduction and hydrolysis of the nitrile generate glycolaldehyde, followed by reversible bisulfite capture. Modeled net equation: HOCH2CN + 3 HSO3^- + H2O -> HOCH2CH(OH)SO3^- + NH3 + S2O6^2-.",
+        "reasoning": "Sulfite/ferrocyanide photochemical homologation supplies a supported alternative to the copper/sulfide module (Xu et al., 2018). The adduct is a reservoir, not automatically either a dead-end sink or freely available substrate. As in rxn_004, the dithionate-only electron-donor closure is provisional and must be checked experimentally. Productive selectivity, catalyst persistence and natural actinic flux cannot be inferred solely from the balanced equation."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Release of glycolaldehyde from its bisulfite adduct",
+        "inputs": [
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed release screen: pH 8.3-9.2, shaded conditions, 0.5-48 h observation. Quantify adduct, unbound glycolaldehyde including its hydrate pool, and dissolved sulfur(IV). Measure K_app and the adduct dissociation rate in the actual salt matrix. Under a two-pool equilibrium, K_app[HSO3-] <= 1 gives at least 50% sulfite-unbound glycolaldehyde; if this criterion is not met, independently demonstrate adequate release flux into the consuming Strecker reaction. Hydration and oligomerization require additional corrections."
+        },
+        "mechanism": "Reversible carbon-sulfur bond cleavage regenerates glycolaldehyde and hydrogen sulfite. Net equation: HOCH2CH(OH)SO3^- -> HOCH2CHO + HSO3^-. Subsequent imine or cyanohydrin formation can pull the equilibrium without requiring instantaneous complete dissociation.",
+        "reasoning": "This explicit gate addresses the substrate-availability limitation of sulfite photochemistry (Xu et al., 2018). No numerical equilibrium constant or rate is invented. The natural connection remains speculative until those measurements establish adequate flux. Raising pH may facilitate release but also accelerates competing glycolaldehyde chemistry; dilution can improve the unbound fraction while making downstream encounters slower. Sulfite and ferrocyanide carryover must be tested rather than assumed compatible."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Reversible formation of glycolaldehyde imine",
+        "inputs": [
+          "mol_008",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_013",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screen: pH 8.3-9.2; unbound glycolaldehyde equivalents 1-20 mM; total ammonia/ammonium 50-200 mM. Calculate free NH3 using temperature- and ionic-strength-corrected acid-base equilibria. Use shaded water and couple promptly to rxn_009; do not require isolation of an imine from bulk water. Screen 0.5-24 h while measuring carbonyl depletion, aminonitrile accumulation and oligomeric losses. Analyze residual copper, sulfur(IV), sulfide and iron-cyanide species in the appropriate upstream matrix."
+        },
+        "mechanism": "Ammonia addition forms a carbinolamine, followed by reversible dehydration to HOCH2CH=NH. Net equation: HOCH2CHO + NH3 -> HOCH2CH=NH + H2O. The imine may remain at low steady-state abundance and be consumed through its protonated iminium form.",
+        "reasoning": "Imine formation followed by cyanide addition is the classical Strecker mechanism (Strecker, 1850; Miller, 1957), applied to the glycolaldehyde precursor pool considered in cyanosulfidic chemistry (Patel et al., 2015). The proposed concentrations are screening values, not a claimed natural inventory. Hydration, ammonia protonation and competing carbonyl reactions prevent assuming quantitative imine formation."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Cyanide addition to glycolaldehyde imine",
+        "inputs": [
+          "mol_013",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-320 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screen: pH 8.3-9.2; available total cyanide 5-50 mM; ammonia-rich conditions inherited from rxn_008. Correct cyanide availability for metal complexation, volatilization and sulfur reactions. Use shaded conditions and follow aminonitrile formation over 0.5-24 h. Transfer the aminonitrile-containing stream promptly to a separately evaluated hydrolysis setting; do not assume storage stability or quantitative recovery during transport."
+        },
+        "mechanism": "Cyanide attacks the imine/iminium carbon, and proton transfer gives HOCH2CH(NH2)CN. Net equation: HOCH2CH=NH + HCN -> HOCH2CH(NH2)CN. Attack on either face produces a racemic aminonitrile.",
+        "reasoning": "This is the chemically direct Strecker route to the correctly connected serine aminonitrile (Strecker, 1850; Miller, 1957; Patel et al., 2015). It installs the future carboxyl carbon without requiring selective oxidation of a polyfunctional precursor. Retro-Strecker chemistry, oligomerization and cyanide sequestration still require measurement. Formation of this precursor alone is not evidence that the serine endpoint has been achieved."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Cyanohydrin-first capture of glycolaldehyde",
+        "inputs": [
+          "mol_008",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_014"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screen: pH 6.8-8.0; unbound glycolaldehyde equivalents 1-20 mM; total available cyanide 5-50 mM; initially low free ammonia. Screen 0.5-24 h in shaded water. In sulfite-derived mixtures, quantify simultaneous bisulfite-adduct and cyanohydrin populations instead of treating all total glycolaldehyde as reactive carbonyl."
+        },
+        "mechanism": "Cyanide addition to glycolaldehyde produces HOCH2CH(OH)CN. Net equation: HOCH2CHO + HCN -> HOCH2CH(OH)CN. Addition to either carbonyl face gives racemic glyceronitrile.",
+        "reasoning": "Aldehyde cyanohydrin formation is established chemistry and is integral to the homologation systems discussed by Ritson and Sutherland (2012) and Patel et al. (2015). This branch represents a chemically meaningful cyanide-first reservoir when ammonia arrives later. It is not asserted to outperform imine-first Strecker chemistry, and direct hydrolysis of this hydroxynitrile would give glyceric acid rather than serine."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Ammonia-driven conversion of glyceronitrile to serine aminonitrile",
+        "inputs": [
+          "mol_014",
+          "mol_005"
+        ],
+        "outputs": [
+          "mol_015",
+          "mol_003"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-325 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Proposed screen: glyceronitrile 1-20 mM; total ammonia/ammonium 50-200 mM; pH 8.3-9.2; shaded, anoxic conditions. Follow cyanohydrin, aldehyde and aminonitrile concentrations over 1-48 h. Retain a measurable cyanide pool, including HCN released by cyanohydrin dissociation. Reject the route if hydrolysis, polymerization or carbonyl loss dominates before aminonitrile accumulation."
+        },
+        "mechanism": "This is a net reservoir-exchange reaction, not direct displacement of an unactivated hydroxyl group by ammonia. Glyceronitrile dissociates reversibly to glycolaldehyde and HCN; ammonia forms the imine, which is captured by cyanide through the chemistry of rxn_008 and rxn_009. Net equation: HOCH2CH(OH)CN + NH3 -> HOCH2CH(NH2)CN + H2O.",
+        "reasoning": "The net conversion follows reversible cyanohydrin and Strecker chemistry (Strecker, 1850; Miller, 1957). Its operation with this substrate under the stated dilute, saline conditions is a conditional extrapolation, not a reaction-specific demonstrated natural synthesis. This branch is included because cyanide-first delivery can populate a real reservoir, but it is not mechanistically independent of the imine-first branch. Reservoir exchange and serine-aminonitrile yield must be measured."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Acid-catalyzed hydration of serine aminonitrile to serinamide",
+        "inputs": [
+          "mol_015",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_016"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium supplied by an acidic volcanogenic chloride brine"
+        ],
+        "conditions": {
+          "temperature": "363-370 K; proposed natural-window screen",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Br\u00f8nsted acid",
+          "aqueous": true,
+          "other": "Proposed, unvalidated screen: 1-3 M analytical HCl in a concentrated volcanogenic brine; measure proton activity rather than equating it to concentration. Sample at 1, 3, 6, 12, 24 and 48 h. Determine aminonitrile disappearance, serinamide formation, serine formation and identified degradation products independently. Use anoxic, shaded conditions. Measure upstream carryover and run matrix-matched controls; neither settling nor dilution is assumed to selectively remove dissolved copper or iron-cyanide complexes. The occurrence and persistence of such concentrated natural acid are unresolved."
+        },
+        "mechanism": "Nitrile protonation activates the nitrile carbon toward water addition. Proton transfers and tautomerization give the primary amide. Net equation: HOCH2CH(NH2)CN + H2O -> HOCH2CH(NH2)CONH2. The amino group is predominantly protonated in the reaction medium.",
+        "reasoning": "Acidic conversion of aminonitriles to amino acids is established at the reaction-family level (Miller, 1957), but this does not establish a serine-preserving environmental window for this substrate. This particular operating window is explicitly speculative and is a key completion bottleneck. Resolving the amide prevents a fast hydration step from being mistaken for complete carboxyl formation. A coupled kinetic model must fit aminonitrile-to-amide, amide-to-serine and loss reactions; precursor disappearance alone is insufficient."
+      },
+      {
+        "id": "rxn_013",
+        "name": "Hydrolysis of serinamide to serine with explicit survival assessment",
+        "inputs": [
+          "mol_016",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_017",
+          "mol_005"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium supplied by an acidic volcanogenic chloride brine"
+        ],
+        "conditions": {
+          "temperature": "363-370 K; proposed natural-window screen",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Br\u00f8nsted acid",
+          "aqueous": true,
+          "other": "Proposed screen: 1-6 M analytical HCl, with separate 6, 12, 24, 48 and 96 h samples rather than an assumed residence time. Quantify serine directly against an authentic standard and expose authentic serine to the same brine to measure loss. Cool withdrawn product streams to 300-310 K. The familiar 6 M HCl, 383 K, approximately 24 h analytical hydrolysis condition is a laboratory comparison only, not this surface node's validated natural condition. No sufficiently selective natural window is claimed without conversion and survival data."
+        },
+        "mechanism": "Acid-catalyzed water addition to the amide carbonyl produces a tetrahedral intermediate, followed by carbon-nitrogen bond cleavage. Net neutral-species equation: HOCH2CH(NH2)CONH2 + H2O -> HOCH2CH(NH2)COOH + NH3. Ammonia is present mainly as ammonium during acid hydrolysis; serine becomes predominantly zwitterionic after neutralization.",
+        "reasoning": "Amide hydrolysis is established chemistry, but standard amino-acid analysis also documents that serine recovery is sensitive to hydrolysis severity (Fountoulakis and Lahm, 1998). That analytical literature does not validate serinamide hydrolysis in an early-Earth brine. This proposed natural completion step therefore remains speculative. Under a single-rate-limiting-step, first-order approximation, obtaining at least 95% hydrolysis while limiting independently measured serine loss to 10% requires a hydrolysis-to-loss rate ratio of about 28.4 or greater; the full two-step network requires direct kinetic fitting. If no suitable window is found, all ten pathways remain precursor networks rather than successful serine syntheses."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "HCN-fed copper/sulfide route with imine-first Strecker assembly",
+        "description": "HCN supplies both the initial carbonyl carbon and chain-extension carbons. Copper/sulfide photochemistry supplies glycolaldehyde, followed by imine capture and the shared, conditional acid-hydrolysis endpoint.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008",
+          "mol_013",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "HCN-fed copper/sulfide route with cyanohydrin-first Strecker assembly",
+        "description": "The same sulfide-supported carbon supply first accumulates glyceronitrile. Later ammonia delivery redirects this reservoir into serine aminonitrile through reversible carbonyl/imine chemistry. Hydrolysis remains the shared completion bottleneck.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_014",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Formaldehyde-fed copper/sulfide route with imine-first assembly",
+        "description": "Externally supplied formaldehyde bypasses initial HCN reduction. Cyanohydrin formation and copper/sulfide photoreduction generate glycolaldehyde for imine-first Strecker chemistry. External formaldehyde supply is an explicit assumption, not an additional reaction.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_008",
+          "rxn_009",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_013",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Formaldehyde-fed copper/sulfide route with cyanohydrin-first assembly",
+        "description": "Imported formaldehyde is homologated using only the copper/sulfide module. Cyanide-first delivery gives glyceronitrile before ammonia-dependent reservoir exchange. This is an order-of-addition alternative, not an independent aminonitrile-forming mechanism.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_014",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "HCN-fed sulfite/ferrocyanide route with imine-first assembly",
+        "description": "Both photoreductions use the sulfite/ferrocyanide module. Formaldehyde and glycolaldehyde adduct-release gates are explicit. No copper/sulfide stream is introduced. Success requires measured aldehyde-release flux and the shared serine-preserving hydrolysis window.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_007",
+          "mol_012",
+          "mol_008",
+          "mol_013",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "HCN-fed sulfite/ferrocyanide route with cyanohydrin-first assembly",
+        "description": "Sulfite photochemistry supplies glycolaldehyde through two explicitly represented aldehyde reservoirs. Released glycolaldehyde is captured as glyceronitrile before ammonia delivery. Sulfite-adduct exchange, cyanohydrin exchange and final hydrolysis are separate kinetic requirements.",
+        "reaction_sequence": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_011",
+          "mol_007",
+          "mol_012",
+          "mol_014",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "Formaldehyde-fed sulfite/ferrocyanide route with imine-first assembly",
+        "description": "External formaldehyde is captured as glycolonitrile before introduction into the sulfite photochemical module. Glycolaldehyde-adduct release supplies imine-first Strecker chemistry. This bypasses the first photoreduction but does not resolve downstream substrate-availability or hydrolysis limitations.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_008",
+          "rxn_009",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012",
+          "mol_008",
+          "mol_013",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "Formaldehyde-fed sulfite/ferrocyanide route with cyanohydrin-first assembly",
+        "description": "Formaldehyde-derived glycolonitrile undergoes sulfite-mediated photoreduction. After measured adduct release, cyanide-first capture and later ammonia delivery produce serine aminonitrile. No compatibility with copper/sulfide carryover is assumed.",
+        "reaction_sequence": [
+          "rxn_002",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_012",
+          "mol_008",
+          "mol_014",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Glycolaldehyde-fed imine-first Strecker route",
+        "description": "Externally supplied glycolaldehyde enters the shortest imine-first route. This is a valid conditional feedstock route, not a claim that natural glycolaldehyde delivery has been established. It removes photochemical dependencies but retains aminonitrile formation and both hydrolysis bottlenecks.",
+        "reaction_sequence": [
+          "rxn_008",
+          "rxn_009",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_013",
+          "mol_015",
+          "mol_016"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Glycolaldehyde-fed cyanohydrin-first Strecker route",
+        "description": "Externally supplied glycolaldehyde encounters cyanide before ammonia, populating glyceronitrile. Subsequent reservoir exchange gives the same serine aminonitrile. This route tests reagent-order effects without requiring a photochemical module, but it is not mechanistically independent of P9.",
+        "reaction_sequence": [
+          "rxn_010",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "key_intermediates": [
+          "mol_014",
+          "mol_015",
+          "mol_016"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_001",
+      "mol_002",
+      "mol_003",
+      "mol_005",
+      "mol_006",
+      "mol_007",
+      "mol_008",
+      "mol_009",
+      "mol_015"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_006",
+        "incoming_reactions": [
+          "rxn_001",
+          "rxn_005"
+        ],
+        "outgoing_reactions": [
+          "rxn_002"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_007"
+        ],
+        "outgoing_reactions": [
+          "rxn_008",
+          "rxn_010"
+        ]
+      },
+      {
+        "molecule_id": "mol_015",
+        "incoming_reactions": [
+          "rxn_009",
+          "rxn_011"
+        ],
+        "outgoing_reactions": [
+          "rxn_012"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Serine (DL-serine; no enantioenrichment assumed)",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_002": 0.94,
+          "rxn_003": 0.84,
+          "rxn_008": 0.87,
+          "rxn_009": 0.93,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.62,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.76,
+        "feedback": "The route is connected, balanceable, and chemically plausible at the reaction-family level. Glycolonitrile provides a sensible homologation intermediate, and transient imine formation followed by cyanide trapping is legitimate Strecker chemistry. However, copper/sulfide speciation, irradiation conditions, and compatibility of the photochemical mixture with downstream assembly are unspecified. The final hydrolyses are chemically credible but lack a demonstrated surface-compatible rate and serine-survival window.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Provide reaction-specific evidence and operating conditions for both photoreductions, including UV exposure, pH, copper speciation, sulfide loading, and product distributions.",
+          "Demonstrate Strecker conversion using the actual photochemical product mixture, or justify any separation and transfer operations.",
+          "Measure aminonitrile hydration, serinamide hydrolysis, and serine recovery together under a physically justified acidic surface scenario."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.82,
+          "rxn_002": 0.94,
+          "rxn_003": 0.84,
+          "rxn_010": 0.93,
+          "rxn_011": 0.79,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.61,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.74,
+        "feedback": "Cyanohydrin formation is plausible, and the submission correctly treats rxn_011 as an imine-dependent net conversion rather than direct displacement of an unactivated hydroxyl group. Nevertheless, glyceronitrile accumulation does not itself establish useful aminonitrile production: dissociation, imine formation, and cyanide trapping must provide sufficient net flux. Copper/sulfide operating conditions and the shared hydrolysis-survival bottleneck remain unresolved.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Measure glyceronitrile-to-aminonitrile conversion versus ammonia activity, cyanide concentration, pH, and time.",
+          "Represent rxn_011 explicitly as a coarse-grained reversible sequence and distinguish equilibrium storage from productive conversion.",
+          "Validate photochemical carryover compatibility and the complete acidic hydrolysis sequence with quantified serine recovery."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_002": 0.94,
+          "rxn_003": 0.84,
+          "rxn_008": 0.87,
+          "rxn_009": 0.93,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.9,
+        "environmental_progression": 0.64,
+        "target_achievement": 0.69,
+        "overall_confidence": 0.77,
+        "feedback": "The explicitly permitted formaldehyde feed gives a valid entry through glycolonitrile; no additional formaldehyde-production step is required. Glycolonitrile photoreduction and imine-first Strecker assembly form a coherent route. Remaining uncertainty concerns the specified implementation of copper/sulfide photochemistry, downstream mixture compatibility, and whether acid hydrolysis produces recoverable serine on a realistic surface timescale.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Specify feed concentrations and demonstrate glycolonitrile photoreduction under the proposed copper/sulfide conditions.",
+          "Quantify aminonitrile formation in the resulting mixture rather than assuming all glycolaldehyde is available for Strecker chemistry.",
+          "Identify a plausible acid source and establish hydrolysis rates, residence times, and serine survival."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_002": 0.94,
+          "rxn_003": 0.84,
+          "rxn_010": 0.93,
+          "rxn_011": 0.79,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.88,
+        "environmental_progression": 0.63,
+        "target_achievement": 0.67,
+        "overall_confidence": 0.76,
+        "feedback": "The formaldehyde-fed homologation sequence is chemically coherent, and all listed transformations conserve atoms and charge under the supplied check. The cyanohydrin-first branch is a plausible order-of-addition alternative, not an independently established mechanism. Productive equilibration from glyceronitrile to the aminonitrile requires verification, followed by demonstration that both hydrolysis steps operate before substantial substrate or serine loss.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Determine glyceronitrile, free glycolaldehyde, and aminonitrile concentrations during ammonia addition.",
+          "Test whether copper/sulfur carryover changes cyanohydrin equilibration or Strecker selectivity.",
+          "Provide an experimentally supported temperature-pH-time window for the complete hydrolysis sequence and a corresponding surface-environment justification."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_004": 0.78,
+          "rxn_005": 0.7,
+          "rxn_002": 0.94,
+          "rxn_006": 0.8,
+          "rxn_007": 0.74,
+          "rxn_008": 0.87,
+          "rxn_009": 0.93,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.82,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.56,
+        "target_achievement": 0.61,
+        "overall_confidence": 0.71,
+        "feedback": "Explicit bisulfite-adduct nodes appropriately avoid assuming unrestricted aldehyde availability. Their dissociation reactions are chemically legitimate, but useful carbonyl flux is not established while dissolved sulfur(IV) remains abundant. Both adduct-release stages therefore require quantitative coupling to downstream trapping. Ferrocyanide photochemical conditions and sulfur product distributions are also unverified in the supplied description. The same unresolved hydrolysis window limits final serine achievement.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Measure or model both adduct equilibria and dissociation rates at the proposed pH, temperature, and sulfur(IV) concentration, including cyanide and ammonia trapping.",
+          "Specify ferrocyanide availability and irradiation conditions, and compare the modeled dithionate coproduct with measured sulfur product distributions.",
+          "Demonstrate a physically justified transition to productive Strecker and hydrolysis conditions without assuming quantitative aldehyde release."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_004": 0.78,
+          "rxn_005": 0.7,
+          "rxn_002": 0.94,
+          "rxn_006": 0.8,
+          "rxn_007": 0.74,
+          "rxn_010": 0.93,
+          "rxn_011": 0.79,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.82,
+        "environmental_progression": 0.55,
+        "target_achievement": 0.59,
+        "overall_confidence": 0.69,
+        "feedback": "This route combines legitimate but insufficiently quantified equilibria: bisulfite-adduct release, cyanohydrin formation and dissociation, and imine-mediated aminonitrile assembly. The network acknowledges these distinctions, but representing the reservoirs does not establish productive transfer between them. No conservation violation is present. The principal concerns are carbonyl availability, aminonitrile flux, photochemical operating conditions, and the common acid-hydrolysis requirement.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Obtain a time-resolved carbon balance across bisulfite adducts, free aldehydes, cyanohydrins, and aminonitrile.",
+          "Test rxn_011 in the sulfur(IV)-containing mixture rather than extrapolating from a clean cyanohydrin/ammonia system.",
+          "Establish photochemical catalyst performance and a subsequent serine-preserving hydrolysis protocol under justified surface conditions."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_002": 0.94,
+          "rxn_006": 0.8,
+          "rxn_007": 0.74,
+          "rxn_008": 0.87,
+          "rxn_009": 0.93,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.65,
+        "overall_confidence": 0.74,
+        "feedback": "The permitted formaldehyde entry avoids the hydroxymethanesulfonate-release stage while retaining a valid glycolonitrile homologation route. The remaining glycolaldehyde-bisulfite equilibrium must supply enough aldehyde for ammonia condensation and cyanide trapping. This is plausible but not quantified. Sulfite/ferrocyanide operation and transfer into sufficiently acidic, serine-preserving hydrolysis conditions remain inadequately specified.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Demonstrate glycolaldehyde-adduct production and quantify productive release under the intended downstream trapping conditions.",
+          "Specify sulfur(IV) management without assuming that dilution, heating, or acidification preserves all carbonyl and cyanide inventory.",
+          "Measure complete aminonitrile-to-serine conversion and recovery in a realistic carried-over mixture."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_002": 0.94,
+          "rxn_006": 0.8,
+          "rxn_007": 0.74,
+          "rxn_010": 0.93,
+          "rxn_011": 0.79,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.84,
+        "environmental_progression": 0.59,
+        "target_achievement": 0.63,
+        "overall_confidence": 0.72,
+        "feedback": "The carbon skeleton and intermediate identities are consistent. However, release from the glycolaldehyde-bisulfite pool followed by cyanohydrin capture can redistribute carbon without necessarily delivering substantial aminonitrile. The acknowledged imine-mediated interpretation of rxn_011 is sound, but its performance in a sulfur(IV)-containing mixture is not established. Final hydrolysis remains chemically plausible but environmentally unvalidated.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_006",
+          "rxn_007",
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Quantify competition among bisulfite binding, cyanohydrin formation, and ammonia-dependent aminonitrile formation.",
+          "Compare both order-of-addition branches experimentally using the same photochemical mixture and material balance.",
+          "Justify any sulfur(IV) depletion or compartment transfer, then establish hydrolysis kinetics and serine survival."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_008": 0.87,
+          "rxn_009": 0.93,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.92,
+        "environmental_progression": 0.67,
+        "target_achievement": 0.71,
+        "overall_confidence": 0.79,
+        "feedback": "Given the explicitly permitted glycolaldehyde feed and available ammonia and cyanide, this is the best-supported route in the submitted network. A transient aqueous imine can be trapped without requiring its isolation, and sequential nitrile and amide hydrolysis gives the correct DL-serine structure. Approval is withheld because actual Strecker operating conditions and a naturally justified hydrolysis window with quantified serine recovery are not supplied.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Specify concentrations and pH supporting productive imine formation and cyanide trapping while measuring competing glycolaldehyde chemistry.",
+          "Determine separate rate profiles for aminonitrile disappearance, serinamide accumulation, serine formation, and serine degradation.",
+          "Identify a plausible acidic surface setting and show that its temperature, acidity, and residence time reproduce the required conversion and recovery."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_010": 0.93,
+          "rxn_011": 0.79,
+          "rxn_012": 0.82,
+          "rxn_013": 0.76
+        },
+        "chemical_feasibility": 0.83,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.69,
+        "overall_confidence": 0.77,
+        "feedback": "Glycolaldehyde cyanohydrin formation is credible, and the net ammonia-dependent route to serine aminonitrile is mechanistically acceptable through the stated imine chemistry. It is not an independent shortcut around imine formation, however, and useful conversion from the cyanohydrin pool remains unquantified. The final structure is correct, but natural production of recoverable serine still depends on the unresolved shared hydrolysis window.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_011",
+          "rxn_012",
+          "rxn_013"
+        ],
+        "suggestions": [
+          "Demonstrate net aminonitrile production from glyceronitrile with measured equilibrium composition and conversion times.",
+          "Use matched experiments to distinguish an order-of-addition benefit from merely observing different intermediate pools.",
+          "Establish complete hydrolysis and serine recovery under a physically supported acidification and heating scenario."
+        ]
+      }
+    ],
+    "best_pathway_id": "P9",
+    "overall_confidence": 0.75,
+    "network_feedback": "The complete network is structurally valid: its 17 molecule nodes and 13 reaction nodes are connected, identifiers are consistent, and all ten listed routes can be reconstructed. The deterministic check establishes conservation for every reaction; there are no unbalanced reactions. Coefficients of eight associated with S8 are ordinary stoichiometric bookkeeping, not evidence of mis-specification. Explicit bisulfite adducts, serinamide, and the imine-dependent interpretation of the cyanohydrin branch improve mechanistic clarity. The terminal hydrolysis produces the correct DL-serine structure in principle. However, the supplied entries contain no quantitative operating ranges despite referring to proposed screening conditions. Surface and anoxic labels alone do not establish irradiation, catalyst availability and speciation, pH, residence time, or physically justified acidification. Bisulfite-release flux and cyanohydrin-to-aminonitrile conversion need quantitative validation. Most importantly, rxn_012 and rxn_013 remain a shared bottleneck: laboratory plausibility does not establish sufficiently rapid natural hydrolysis with acceptable serine survival. No detailed research findings or reaction-level citations are supplied, so literature alignment remains unverified rather than contradicted. The flagged reactions identify evidence, kinetic, or environmental gaps, not conservation failures. Alternative routes and shared intermediates receive no independent evidentiary bonus, and permitted external feedstocks receive no penalty. P9 ranks highest because it avoids specific unresolved photochemical and adduct-release operations, not because its feedstock is intrinsically preferred. The network is a plausible synthesis proposal, but it is not approved at the required overall confidence threshold of 0.9.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 13,
+      "n_balanced_as_written": 9,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 8,
+            "mol_002": 8,
+            "mol_003": 8,
+            "mol_006": 8,
+            "mol_005": 8,
+            "mol_004": 1
+          },
+          "element_delta": {
+            "S": -7
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_001": 1,
+            "mol_007": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 8,
+            "mol_002": 8,
+            "mol_003": 8,
+            "mol_008": 8,
+            "mol_005": 8,
+            "mol_004": 1
+          },
+          "element_delta": {
+            "S": -7
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_001": 1,
+            "mol_009": 3,
+            "mol_003": 1,
+            "mol_011": 1,
+            "mol_005": 1,
+            "mol_010": 1
+          },
+          "element_delta": {
+            "H": -2,
+            "S": -2,
+            "O": -6
+          },
+          "charge_delta": 2,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_011": 1,
+            "mol_006": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_009": 3,
+            "mol_003": 1,
+            "mol_012": 1,
+            "mol_005": 1,
+            "mol_010": 1
+          },
+          "element_delta": {
+            "O": -6,
+            "H": -2,
+            "S": -2
+          },
+          "charge_delta": 2,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_012": 1,
+            "mol_008": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_005": 1,
+            "mol_013": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_013": 1,
+            "mol_001": 1,
+            "mol_015": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_001": 1,
+            "mol_014": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_014": 1,
+            "mol_005": 1,
+            "mol_015": 1,
+            "mol_003": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_015": 1,
+            "mol_003": 1,
+            "mol_016": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_013",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_016": 1,
+            "mol_003": 1,
+            "mol_017": 1,
+            "mol_005": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": "Max retries reached. Best confidence: 0.750"
+}

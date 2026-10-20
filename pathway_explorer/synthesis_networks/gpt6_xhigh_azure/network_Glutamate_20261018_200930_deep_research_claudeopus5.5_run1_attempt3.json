@@ -1,0 +1,1638 @@
+{
+  "target_molecule": "Glutamate",
+  "network": {
+    "target_molecule": "Glutamate, racemic monoanion",
+    "overall_strategy": "Construct a connected, conditional network with 31 molecular-species nodes, 21 reaction nodes and exactly 10 target-reaching pathways. Eight pathways combine two chemically different reductions of fumaroyl formate to alpha-ketoglutarate with four nitrogen-installation strategies: nickel/H2 reductive amination, pyrite-coupled FeS reductive amination, hydroxylamine/iron reduction, and glycine-mediated transamination. A ninth pathway constructs the carbon skeleton through cyanosulfidic nitrile chemistry; the tenth uses the explicitly speculative acrolein entry into that nitrile pathway. These are distinct reaction schedules, not ten independent experimental demonstrations. Starting feedstocks are stipulated supplies; their continuous geochemical production is not established here. Reaction nodes describe balanced net transformations rather than elementary events. Non-unit coefficients are recorded in mechanism text, while each molecule ID appears only once per input or output array. Weak acids and bases generally use neutral reference formulas for bookkeeping; their actual protonation follows the stated pH. The final target explicitly represents the glutamate monoanion, predominantly the ammonium/dicarboxylate form at pH 6-8. Where a species forms in multiple settings, environment_formed identifies a reference setting rather than an exclusive origin. The schema's intermediate role also covers coproducts and reservoirs. All compartments are anoxic. Mineral cover shields nonphotochemical stages from surface UV. Biochemical denotes specified enzyme-free aqueous compartments, not biological catalysis. Numerical windows identified as proposed are experimental design conditions, not reported optimized protocols. Settling, pore filtration, dilution and gas exchange provide possible physical staging, but dissolved contaminant removal, substrate recovery and catalyst survival must be measured; no efficient natural purification is assumed. Major unresolved requirements are useful alpha-ketoglutarate or C4-aldehyde flux, productive nitrogen incorporation, exhaustive nitrile hydrolysis and glutamate survival. Hydroxyglutarate diversion and reversible pyroglutamate storage are explicit, but recycling loops are not counted as additional synthesis pathways. No end-to-end yield or enantiomeric enrichment is claimed.",
+    "molecules": [
+      {
+        "id": "mol_001",
+        "formula": "H2O",
+        "iupac_name": "Oxidane",
+        "common_name": "Water",
+        "inchi": "InChI=1S/H2O/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_002",
+        "formula": "H3N",
+        "iupac_name": "Azane",
+        "common_name": "Ammonia; NH3/NH4+ reservoir represented as NH3 equivalents",
+        "inchi": "InChI=1S/H3N/h1H3",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_003",
+        "formula": "H2",
+        "iupac_name": "Dihydrogen",
+        "common_name": "Hydrogen",
+        "inchi": "InChI=1S/H2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_004",
+        "formula": "C2H2O3",
+        "iupac_name": "2-Oxoacetic acid",
+        "common_name": "Glyoxylic acid; glyoxylate at working pH",
+        "inchi": "InChI=1S/C2H2O3/c3-1-2(4)5/h1H,(H,4,5)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_005",
+        "formula": "C3H4O3",
+        "iupac_name": "2-Oxopropanoic acid",
+        "common_name": "Pyruvic acid; pyruvate at working pH",
+        "inchi": "InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_006",
+        "formula": "C5H6O6",
+        "iupac_name": "4-Hydroxy-2-oxopentanedioic acid",
+        "common_name": "Hydroxyketoglutaric acid; maloyl formate",
+        "inchi": null,
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_007",
+        "formula": "C5H4O5",
+        "iupac_name": "(2E)-4-Oxopent-2-enedioic acid",
+        "common_name": "Fumaroyl formate; oxopentenedioate",
+        "inchi": null,
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_008",
+        "formula": "C5H6O5",
+        "iupac_name": "2-Oxopentanedioic acid",
+        "common_name": "Alpha-ketoglutaric acid; alpha-ketoglutarate at working pH",
+        "inchi": "InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_009",
+        "formula": "C2H2O4",
+        "iupac_name": "Ethanedioic acid",
+        "common_name": "Oxalic acid; formal oxidized glyoxylate coproduct",
+        "inchi": "InChI=1S/C2H2O4/c3-1(4)2(5)6/h(H,3,4)(H,5,6)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_010",
+        "formula": "C5H9NO4",
+        "iupac_name": "2-Aminopentanedioic acid",
+        "common_name": "D,L-Glutamic acid; neutral reference formula",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1",
+        "role": "hub_intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_011",
+        "formula": "C5H8NO4-",
+        "iupac_name": "2-Azaniumylpentanedioate",
+        "common_name": "D,L-Glutamate monoanion",
+        "inchi": "InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/p-1",
+        "role": "target",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_012",
+        "formula": "H+",
+        "iupac_name": "Hydron",
+        "common_name": "Proton equivalent exchanged with aqueous buffers",
+        "inchi": "InChI=1S/p+1",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_013",
+        "formula": "FeS",
+        "iupac_name": "Iron(II) sulfide",
+        "common_name": "Fresh mackinawite-like iron sulfide",
+        "inchi": "InChI=1S/Fe.S",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_014",
+        "formula": "H2S",
+        "iupac_name": "Sulfane",
+        "common_name": "Hydrogen sulfide; H2S/HS- reservoir",
+        "inchi": "InChI=1S/H2S/h1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_015",
+        "formula": "FeS2",
+        "iupac_name": "Iron disulfide",
+        "common_name": "Pyrite",
+        "inchi": "InChI=1S/Fe.2S",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_016",
+        "formula": "H3NO",
+        "iupac_name": "Hydroxylamine",
+        "common_name": "Hydroxylamine",
+        "inchi": "InChI=1S/H3NO/c1-2/h2H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_017",
+        "formula": "C5H7NO5",
+        "iupac_name": "2-(Hydroxyimino)pentanedioic acid",
+        "common_name": "Alpha-ketoglutarate oxime; E/Z configuration unspecified",
+        "inchi": "InChI=1S/C5H7NO5/c7-4(8)2-1-3(6-11)5(9)10/h11H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_018",
+        "formula": "Fe",
+        "iupac_name": "Iron",
+        "common_name": "Zero-valent iron",
+        "inchi": "InChI=1S/Fe",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_019",
+        "formula": "Fe+2",
+        "iupac_name": "Iron(2+)",
+        "common_name": "Ferrous ion",
+        "inchi": "InChI=1S/Fe/q+2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_020",
+        "formula": "C2H5NO2",
+        "iupac_name": "2-Aminoacetic acid",
+        "common_name": "Glycine",
+        "inchi": "InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_021",
+        "formula": "CHN",
+        "iupac_name": "Hydrogen cyanide",
+        "common_name": "HCN; HCN/CN- reservoir",
+        "inchi": "InChI=1S/CHN/c1-2/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_022",
+        "formula": "C3HN",
+        "iupac_name": "Prop-2-ynenitrile",
+        "common_name": "Cyanoacetylene",
+        "inchi": "InChI=1S/C3HN/c1-2-3-4/h1H",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_023",
+        "formula": "C4H2N2",
+        "iupac_name": "(2Z)-But-2-enedinitrile",
+        "common_name": "Maleonitrile",
+        "inchi": "InChI=1S/C4H2N2/c5-3-1-2-4-6/h1-2H/b2-1-",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_024",
+        "formula": "C4H4N2",
+        "iupac_name": "Butanedinitrile",
+        "common_name": "Succinonitrile",
+        "inchi": "InChI=1S/C4H4N2/c5-3-1-2-4-6/h1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_025",
+        "formula": "C4H5NO",
+        "iupac_name": "4-Oxobutanenitrile",
+        "common_name": "3-Cyanopropanal; beta-cyanopropionaldehyde",
+        "inchi": "InChI=1S/C4H5NO/c5-3-1-2-4-6/h4H,1-2H2",
+        "role": "hub_intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_026",
+        "formula": "C5H6N2O",
+        "iupac_name": "2-Hydroxypentanedinitrile",
+        "common_name": "3-Cyanopropanal cyanohydrin",
+        "inchi": "InChI=1S/C5H6N2O/c6-3-1-2-5(8)4-7/h5,8H,1-2H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_027",
+        "formula": "C5H7N3",
+        "iupac_name": "2-Aminopentanedinitrile",
+        "common_name": "Glutamate/glutamine aminonitrile precursor",
+        "inchi": "InChI=1S/C5H7N3/c6-3-1-2-5(8)4-7/h5H,1-2,8H2",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_028",
+        "formula": "S8",
+        "iupac_name": "Cyclooctasulfur",
+        "common_name": "Elemental sulfur; formal terminal sulfide-oxidation product",
+        "inchi": "InChI=1S/S8/c1-2-4-6-8-7-5-3-1",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      },
+      {
+        "id": "mol_029",
+        "formula": "C3H4O",
+        "iupac_name": "Prop-2-enal",
+        "common_name": "Acrolein",
+        "inchi": "InChI=1S/C3H4O/c1-2-3-4/h2-3H,1H2",
+        "role": "starting",
+        "environment_formed": null
+      },
+      {
+        "id": "mol_030",
+        "formula": "C5H8O5",
+        "iupac_name": "2-Hydroxypentanedioic acid",
+        "common_name": "2-Hydroxyglutaric acid; competing reduction product",
+        "inchi": "InChI=1S/C5H8O5/c6-3(5(9)10)1-2-4(7)8/h3,6H,1-2H2,(H,7,8)(H,9,10)",
+        "role": "intermediate",
+        "environment_formed": "Biochemical"
+      },
+      {
+        "id": "mol_031",
+        "formula": "C5H7NO3",
+        "iupac_name": "5-Oxopyrrolidine-2-carboxylic acid",
+        "common_name": "D,L-Pyroglutamic acid; 5-oxoproline",
+        "inchi": "InChI=1S/C5H7NO3/c7-4-2-1-3(6-4)5(8)9/h3H,1-2H2,(H,6,7)(H,8,9)",
+        "role": "intermediate",
+        "environment_formed": "Surface"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "rxn_001",
+        "name": "Pyruvate-glyoxylate aldol carbon-skeleton construction",
+        "inputs": [
+          "mol_005",
+          "mol_004"
+        ],
+        "outputs": [
+          "mol_006"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved orthophosphate general acid/base catalyst"
+        ],
+        "conditions": {
+          "temperature": "323 K reference temperature",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Orthophosphate; 0.5 M phosphate is the reported metal-free network benchmark",
+          "aqueous": true,
+          "other": "Anoxic, UV-shielded evaporitic side pool; pH 7. Proposed feed screening range: 10-100 mM each pyruvate and glyoxylate. The reported 21 h duration applies to the overall reacting network, not an isolated aldol rate. Retain the aqueous phase rather than imposing unnecessary drying."
+        },
+        "mechanism": "Pyruvate enol/enolate adds to the aldehyde group of glyoxylate, producing the C5 beta-hydroxy alpha-ketoacid. Net: pyruvic acid + glyoxylic acid -> hydroxyketoglutaric acid. All coefficients are one.",
+        "reasoning": "The carbon-construction sequence is supported by Stubbs et al. (2020), with an independently demonstrated Fe2+-promoted network in Muchowska et al. (2019). Phosphate is selected here because the downstream metal-free reduction was studied in phosphate, not because phosphate is universally available. A 0.5 M phosphate pool is a demanding local concentration condition. Abundant dissolved Fe2+ can remove phosphate by precipitation, so coexistence of high free phosphate and high free iron must not be assumed. Glyoxylate and pyruvate supply remain stipulated bottlenecks."
+      },
+      {
+        "id": "rxn_002",
+        "name": "Hydroxyketoglutarate dehydration to fumaroyl formate",
+        "inputs": [
+          "mol_006"
+        ],
+        "outputs": [
+          "mol_007",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved orthophosphate general acid/base catalyst"
+        ],
+        "conditions": {
+          "temperature": "323 K reference temperature",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Orthophosphate in the pH 7 reaction medium",
+          "aqueous": true,
+          "other": "Continue the anoxic aqueous carbon-construction stage. Use the 21 h network experiment as a reference observation period, not as a measured isolated-step residence time. Measure hydroxyketoglutarate, fumaroyl formate and competing condensation products before routing the mixture onward."
+        },
+        "mechanism": "Elimination of water from the beta-hydroxy ketoacid forms the conjugated C=C bond. Net: hydroxyketoglutaric acid -> fumaroyl formate + water. The node tracks the fumaroyl configuration; complete geometric selectivity is not assumed.",
+        "reasoning": "Hydroxyketoglutarate and oxopentenedioate are reported intermediates connecting pyruvate/glyoxylate chemistry to alpha-ketoglutarate (Muchowska et al., 2019; Stubbs et al., 2020). This dehydration is represented separately because fumaroyl formate is the chemically necessary branch point for two different reduction mechanisms. Neither isolated quantitative conversion nor a self-sustaining metabolic cycle is inferred."
+      },
+      {
+        "id": "rxn_003",
+        "name": "Glyoxylate-driven reduction of fumaroyl formate",
+        "inputs": [
+          "mol_007",
+          "mol_004",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_008",
+          "mol_009"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Dissolved orthophosphate general acid/base catalyst"
+        ],
+        "conditions": {
+          "temperature": "323 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Orthophosphate; 0.5 M reference buffer",
+          "aqueous": true,
+          "other": "Anoxic, pH 7. The reported complete-mixture benchmark is 21 h and approximately 5% alpha-ketoglutarate, not a 5% isolated reduction yield. For staged tests, meter additional glyoxylate into the measured fumaroyl-formate inventory rather than assuming its residual concentration. Determine alpha-ketoglutarate, residual glyoxylate and oxidized carbon coproducts before transfer."
+        },
+        "mechanism": "Net two-electron transfer reduces the activated C=C bond while retaining the keto group. Formal balanced closure: fumaroyl formate + glyoxylic acid + water -> alpha-ketoglutaric acid + oxalic acid. All coefficients are one. Oxalate is an explicit formal oxidation coproduct, not an asserted uniquely measured endpoint.",
+        "reasoning": "Stubbs et al. (2020) support metal-free alpha-ketoglutarate formation in a glyoxylate-driven phosphate network. The supplied evidence does not establish an exclusive electron-donor coproduct balance for this isolated edge; the glyoxylate-to-oxalate closure is therefore a chemically consistent but experimentally unverified bookkeeping assumption. Oxalate and alternative oxidized-carbon products must be assayed. The low reported alpha-ketoglutarate fraction is a central flux limitation and must not be replaced by a theoretical quantitative conversion."
+      },
+      {
+        "id": "rxn_004",
+        "name": "Nickel-catalysed H2 reduction of fumaroyl formate",
+        "inputs": [
+          "mol_007",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_008"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Metallic nickel supported on silica-alumina"
+        ],
+        "conditions": {
+          "temperature": "295 K reference temperature",
+          "pressure": "5 bar H2 in a confined aqueous rock-pore analogue",
+          "catalyst": "Ni/SiO2-Al2O3; 10 mol% Ni relative to organic substrate as an experimental starting benchmark",
+          "aqueous": true,
+          "other": "Enzyme-free, anoxic, pH approximately 8; do not add ammonia during this carbon-reduction stage. Proposed substrate screening range: 1-30 mM fumaroyl formate. Sample during a maximum 72 h reference interval and terminate at the measured alpha-ketoglutarate maximum. Retain immobilized catalyst by pore filtration, remove the H2 atmosphere and cool the effluent. Filtration does not remove dissolved nickel or phosphate; both carryover and substrate recovery require measurement."
+        },
+        "mechanism": "Nickel activates H2 and transfers two hydrogen atoms across the conjugated C=C bond. Net: fumaroyl formate + H2 -> alpha-ketoglutaric acid. Continued hydrogenation can instead consume the ketoacid through rxn_018.",
+        "reasoning": "Kaur et al. (2024) demonstrated H2/metal-dependent formation of downstream ketoacid-network products and found that those products were absent without a hydrogenation catalyst. Their results support this reduction class, but do not establish the isolated-edge selectivity or the specified transferred-mixture yield. The 295 K, 5 bar and nickel-loading values are reference experimental conditions, not a claim of successful natural implementation. Natural Ni-bearing material cannot automatically be assigned the activity of the engineered supported catalyst."
+      },
+      {
+        "id": "rxn_005",
+        "name": "Nickel/H2 reductive amination of alpha-ketoglutarate",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Metallic nickel supported on silica-alumina"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni/SiO2-Al2O3; 10 mol% Ni in the reported reference system",
+          "aqueous": true,
+          "other": "Enzyme-free confined aqueous compartment, pH 8, 72 h reference duration. Reported reference feed: 30 mM ketoacid and 150 mM NH4HCO3. A staged carbon-construction effluent will generally be more dilute; its actual alpha-ketoglutarate concentration must be measured and is not assumed to reach 30 mM. Use a separate sulfide-free receiving compartment, remove the solid catalyst after reaction, cool, and route to rxn_021. Record recovery and dissolved-catalyst carryover."
+        },
+        "mechanism": "Ammonia reversibly forms a ketoacid imine/iminium species, followed by metal-catalysed hydrogenation. Net: alpha-ketoglutaric acid + ammonia + H2 -> glutamic acid + water. All coefficients are one. Direct carbonyl hydrogenation competes through rxn_018.",
+        "reasoning": "Alpha-ketoglutarate reductive amination with Ni/H2 is directly supported by Kaur et al. (2024). Their combined amino-acid/hydroxy-acid yields must not be reported as glutamate yields, and nickel often gave substantial hydroxy-acid diversion. The same paper did not detect glutamate in its integrated one-pot ketoacid-forming network. That result makes this a staged proposal requiring transfer validation, not an established end-to-end route. Mayer and Moran (2022) additionally identify alpha-ketoglutarate as intrinsically slow to aminate."
+      },
+      {
+        "id": "rxn_006",
+        "name": "Conditional pyrite-coupled FeS reductive amination",
+        "inputs": [
+          "mol_008",
+          "mol_002",
+          "mol_013",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001",
+          "mol_015"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Fresh mackinawite-like FeS reactive surface"
+        ],
+        "conditions": {
+          "temperature": "323-348 K",
+          "pressure": "Approximately 1 atm in an anoxic covered sediment pool",
+          "catalyst": "Fresh FeS provides a reaction surface and is stoichiometrically transformed; it is not treated as a conserved catalyst",
+          "aqueous": true,
+          "other": "Proposed receiving window: pH 8.5-9.5, 0.1-1 mM alpha-ketoglutarate, 0.375-1.5 M total ammonia, and 3-10 equivalents each of reactive FeS and available sulfide. Screen 24-72 h rather than assigning a verified optimum. Keep separate from nickel beds because sulfide can poison nickel. After settling upstream solids, test the actual phosphate-bearing effluent; settling alone does not remove dissolved phosphate. Require simultaneous glutamate and pyrite measurements."
+        },
+        "mechanism": "Imine formation is coupled to reducing equivalents released when FeS and sulfide form pyrite. Balanced net: alpha-ketoglutaric acid + ammonia + FeS + H2S -> glutamic acid + water + FeS2. All coefficients are one. The equation specifies the proposed redox coupling, not a proven elementary mechanism.",
+        "reasoning": "Hafenbradl et al. (1995) support pyrite-coupled reductive amination, and Huber and W\u00e4chtersh\u00e4user (2003) support amino-acid formation with fresh iron minerals. However, fresh-FeS activity varies strongly with preparation, pH and substrate. The supplied report does not verify a glutamate-specific approximately 50% yield under this proposed window. Kitadai et al. (2019) used electrochemically reduced FeS; those results cannot validate untreated mackinawite here. This exact transferred-mixture coupling remains conditional until both mineral conversion and nitrogen incorporation are demonstrated."
+      },
+      {
+        "id": "rxn_007",
+        "name": "Alpha-ketoglutarate oxime formation",
+        "inputs": [
+          "mol_008",
+          "mol_016"
+        ],
+        "outputs": [
+          "mol_017",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "323-343 K proposed staging window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic, mineral-shaded receiving pool; proposed pH 5.5-7 and 1-5 equivalents hydroxylamine relative to measured alpha-ketoglutarate. Screen 0.5-2 h for oxime accumulation before adding Fe0. Do not assume that unreacted hydroxylamine survives the subsequent iron stage. This isolated oxime-staging protocol is a proposed adaptation, not a reported optimized procedure."
+        },
+        "mechanism": "Hydroxylamine condenses with the keto group to form an oxime and water. Net: alpha-ketoglutaric acid + hydroxylamine -> alpha-ketoglutarate oxime + water. All coefficients are one; E/Z oxime mixtures may form.",
+        "reasoning": "Muchowska et al. (2019) reported glutamate formation after adding hydroxylamine and Fe0 to a ketoacid-producing system. Oxime formation provides a chemically conventional interpretation of the nitrogen-installation stage, but accumulation of the isolated oxime under the present transfer conditions is not established by the supplied report. Separating condensation from iron addition is proposed to reduce competition from direct hydroxylamine reduction. A sufficient natural hydroxylamine supply is a substantial reagent-plausibility limitation."
+      },
+      {
+        "id": "rxn_008",
+        "name": "Stoichiometric iron reduction of the alpha-ketoglutarate oxime",
+        "inputs": [
+          "mol_017",
+          "mol_018",
+          "mol_012"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_001",
+          "mol_019"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Reactive zero-valent iron surface"
+        ],
+        "conditions": {
+          "temperature": "343 K reference temperature",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Fe0 is the sacrificial reductant and reaction surface, not a conserved catalyst",
+          "aqueous": true,
+          "other": "Anoxic; proposed pH 5.5-7 maintained by the receiving buffer. Use at least 2 mol Fe0 per mol oxime by stoichiometry; 5-20 equivalents is a proposed screening range allowing for corrosion and passivation. Use approximately 2 h as a combined-stage literature reference, not a verified isolated reduction time. Monitor oxime, glutamate, ammonia, dissolved Fe2+ and residual metal; settle/filter iron before cooling and neutralization."
+        },
+        "mechanism": "Four-electron reduction converts the oxime to the amino acid with N-O bond cleavage. Balanced net: alpha-ketoglutarate oxime + 2 Fe + 4 H+ -> glutamic acid + water + 2 Fe2+. Coefficients for mol_018, mol_012 and mol_019 are respectively 2, 4 and 2; all other coefficients are one. Proton equivalents come from the buffered medium.",
+        "reasoning": "The hydroxylamine/Fe0 glutamate-producing chemistry is supported by Muchowska et al. (2019), although the isolated oxime reduction and its coupling to the particular upstream phosphate route are staged adaptations. Competing hydroxylamine reduction, hydrogen evolution and iron passivation can consume reductant. Native or meteoritic Fe0 is a localized resource and cannot be inferred merely from abundant Fe2+. The Fe2+ node explicitly has formula Fe+2 and InChI charge +2; it is not neutral iron."
+      },
+      {
+        "id": "rxn_009",
+        "name": "Independent nickel/H2 preparation of the glycine nitrogen donor",
+        "inputs": [
+          "mol_004",
+          "mol_002",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_020",
+          "mol_001"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Metallic nickel supported on silica-alumina"
+        ],
+        "conditions": {
+          "temperature": "295 K",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni/SiO2-Al2O3; 10 mol% Ni as a reference loading",
+          "aqueous": true,
+          "other": "Separate anoxic, enzyme-free donor-preparation compartment; pH 8 and up to 72 h reference duration. Use 30 mM glyoxylate and 150 mM total ammonium as a reference test. Retain the solid nickel by filtration and remove H2 before transferring donor solution. If higher glycine concentration is needed, proposed shaded evaporation below 323 K must be accompanied by glycine recovery and residual glyoxylate measurements."
+        },
+        "mechanism": "Glyoxylate forms an imine with ammonia and is hydrogenated to glycine. Net: glyoxylic acid + ammonia + H2 -> glycine + water. All coefficients are one. The node represents the glycine-producing branch, not quantitative conversion of all glyoxylate.",
+        "reasoning": "Kaur et al. (2024) included glyoxylate among substrates converted to amino acids with H2 and metal catalysts. Mayer and Moran (2022) found glyoxylate much more reactive in reductive amination than alpha-ketoglutarate. This step makes the transamination donor internally producible rather than unexplained. Its separate compartment avoids deliberately exposing newly formed alpha-ketoglutarate to a donor-preparation hydrogenation stage. Glycolate formation and incomplete glyoxylate conversion can still reduce donor purity."
+      },
+      {
+        "id": "rxn_010",
+        "name": "Glycine-mediated nitrogen transfer to alpha-ketoglutarate",
+        "inputs": [
+          "mol_008",
+          "mol_020"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_004"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "323-353 K proposed screening window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic, UV-shielded pool; pH approximately 7 with phosphate retained as buffer rather than invoking Al3+ catalysis. Proposed receiving concentrations: 0.1-1 mM alpha-ketoglutarate and 10-100 mM glycine, screened over 21-72 h. Forward flux is conditional on the measured glycine/glyoxylate ratio. Remove upstream nickel solids and H2; residual glyoxylate is not assumed removed by filtration. If the actual mixture gives no net glutamate accumulation, this pathway is blocked under those conditions."
+        },
+        "mechanism": "Nonenzymatic imine chemistry transfers the amino group from glycine to alpha-ketoglutarate. Net: alpha-ketoglutaric acid + glycine -> glutamic acid + glyoxylic acid. All coefficients are one. Combined with rxn_009, this is an H2-driven nitrogen relay, not a source of unaccounted reducing power.",
+        "reasoning": "Stubbs et al. (2020) support glycine-mediated transamination within alpha-ketoacid chemistry. The supplied report does not establish alpha-ketoglutarate-specific rates, equilibrium constants or yields under this proposed receiving window. Glyoxylate is both an upstream reagent and the coproduct here, so its accumulation can oppose forward transfer; excess glycine is a testable mass-action intervention, not a guarantee. Al3+ is not added because its incompatibility with phosphate is noted by Kaur et al. (2024)."
+      },
+      {
+        "id": "rxn_011",
+        "name": "Cyanoacetylene hydrocyanation to maleonitrile",
+        "inputs": [
+          "mol_022",
+          "mol_021"
+        ],
+        "outputs": [
+          "mol_023"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K proposed surface window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic concentrated pool; proposed pH 8-9, 1-10 mM cyanoacetylene and 1-5 equivalents available HCN/CN-. Begin in shade, then route the assayed nitrile-containing solution to the photochemical stage. These concentrations are proposed screening values; the supplied report does not provide a verified step-specific yield or residence time."
+        },
+        "mechanism": "Cyanide adds across the activated alkyne and protonation produces the dinitrile alkene. Net: cyanoacetylene + HCN -> maleonitrile. All coefficients are one. Competing oligomerization and alkene-isomer formation are not assumed absent.",
+        "reasoning": "Patel et al. (2015) identify maleonitrile derived from cyanoacetylene as the precursor of the glutamate-relevant succinonitrile branch. The route is included for its experimentally motivated carbon construction, not because cyanide chemistry is assumed universal. Concentrated cyanoacetylene and cyanide inventories, volatile-feed retention and selective product accumulation remain local geochemical requirements."
+      },
+      {
+        "id": "rxn_012",
+        "name": "Sulfide photoreduction of maleonitrile to succinonitrile",
+        "inputs": [
+          "mol_023",
+          "mol_014"
+        ],
+        "outputs": [
+          "mol_024",
+          "mol_028"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K proposed window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic, optically shallow pool; proposed pH 7-8.5 and 1-10 mM nitrile with metered sulfide supply. UV at 254 nm is the laboratory reference, not a claim that natural sunlight is monochromatic. Use a 0.5-6 h initial irradiation screen with measured fluence and product sampling. This branch does not require added copper in the model; rates without copper must be established rather than borrowed from copper-accelerated experiments."
+        },
+        "mechanism": "UV-driven sulfide oxidation supplies reducing equivalents that saturate the C=C bond. Integer net bookkeeping: 8 maleonitrile + 8 H2S -> 8 succinonitrile + S8. Coefficients for mol_023, mol_014 and mol_024 are 8; the coefficient for mol_028 is 1. Eightfold coefficients express sulfur allotrope bookkeeping, not an eight-substrate elementary collision.",
+        "reasoning": "Patel et al. (2015) explicitly report photoreduction of maleonitrile to succinonitrile. H2S photochemistry is selected without asserting universal copper availability; copper acceleration is not silently transferred to the catalyst-free design. Sulfide concentrations and UV exposure require a favorable local setting (Ranjan et al., 2018). S8 represents a formal terminal oxidized-sulfur pool; actual radical and polysulfide products and their conversion to elemental sulfur require sulfur-balance measurements."
+      },
+      {
+        "id": "rxn_013",
+        "name": "Selective photoreduction and hydrolysis of one succinonitrile group",
+        "inputs": [
+          "mol_024",
+          "mol_014",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_025",
+          "mol_002",
+          "mol_028"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K proposed window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Continue anoxic UV exposure with replenished sulfide only after measuring succinonitrile accumulation. Use the same proposed near-neutral pH range and initially screen irradiation in 0.5-6 h increments. Stop at the measured semialdehyde maximum to limit over-reduction. Transfer to a shaded receiving pool; allow sulfur settling and anoxic sulfide stripping, while explicitly measuring aldehyde loss during these operations."
+        },
+        "mechanism": "Reduction of one nitrile to an imine is followed by hydrolysis to the aldehyde, releasing ammonia. Integer net: 8 succinonitrile + 8 H2S + 8 water -> 8 3-cyanopropanal + 8 ammonia + S8. Every coefficient is 8 except S8, whose coefficient is 1. Elemental sulfur is a formal terminal oxidation product, not an asserted exclusive immediate photoproduct.",
+        "reasoning": "Patel et al. (2015) explicitly identify selective reduction of one succinonitrile group to semialdehyde 52. This is the key experimentally motivated C4-aldehyde supply edge. The supplied report does not verify its step yield, photon requirement or transferred-product recovery. Continued irradiation can destroy the desired functional-group pattern, and the proposed sulfide-removal stage may also lose aldehyde. Those quantities must be measured before assigning downstream Strecker flux."
+      },
+      {
+        "id": "rxn_014",
+        "name": "Cyanohydrin capture of 3-cyanopropanal",
+        "inputs": [
+          "mol_025",
+          "mol_021"
+        ],
+        "outputs": [
+          "mol_026"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K proposed window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic shaded receiving pool; proposed pH 7.5-8.5 and 1-5 equivalents HCN relative to measured aldehyde. Screen 0.5-24 h rather than assigning an unverified completion time. Add cyanide after the photoreduction stage; monitor aldehyde, cyanohydrin, sulfide and polymeric losses."
+        },
+        "mechanism": "Cyanide attacks the aldehyde carbonyl and protonation gives the cyanohydrin. Net: 3-cyanopropanal + HCN -> 2-hydroxypentanedinitrile. All coefficients are one. Formation of the new stereocenter is nonenantioselective.",
+        "reasoning": "Patel et al. (2015) explicitly report conversion of semialdehyde 52 to cyanohydrin 53 by HCN addition. No mineral catalyst is required for the net addition. Sequential reagent delivery is retained because simultaneous exposure to UV, sulfide, ammonia and cyanide is not established as equivalent to the reported sequence. The proposed operating window is not a claimed reproduction of unavailable supplementary conditions."
+      },
+      {
+        "id": "rxn_015",
+        "name": "Ammonia-mediated conversion of cyanohydrin to aminodinitrile",
+        "inputs": [
+          "mol_026",
+          "mol_002"
+        ],
+        "outputs": [
+          "mol_027",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-323 K proposed window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic, shaded, proposed pH 8-9.5. Screen total ammonia concentrations of 0.1-0.5 M and residence times of 1-48 h; these are proposed tests, not verified Patel-protocol values. Introduce ammonia after cyanohydrin formation and after checking residual sulfide. Preserve an aliquot for direct aminonitrile analysis before hydrolysis."
+        },
+        "mechanism": "Reversible cyanohydrin dissociation permits aldehyde-imine chemistry and cyanide recapture, giving the alpha-aminonitrile. The net is not assumed to be direct displacement of an unactivated hydroxyl group. Balanced net: 2-hydroxypentanedinitrile + ammonia -> 2-aminopentanedinitrile + water.",
+        "reasoning": "Patel et al. (2015) identify compound 54 as the alpha-aminonitrile precursor of glutamine and glutamate following ammonia addition to cyanohydrin 53. This supports the functional transformation, but the supplied report does not establish a quantitative glutamate yield after hydrolysis. Concentrated ammonia and sequential delivery remain explicit geochemical requirements."
+      },
+      {
+        "id": "rxn_016",
+        "name": "Exhaustive hydrolysis of the glutamate aminodinitrile",
+        "inputs": [
+          "mol_027",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010",
+          "mol_002"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Hydronium from a locally acidic volcanic aqueous reservoir"
+        ],
+        "conditions": {
+          "temperature": "363-370 K proposed surface-hydrolysis window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Acid catalysis; proposed pH 1-2",
+          "aqueous": true,
+          "other": "Anoxic chloride-rich acidic hot-spring side pool, shaded from UV. Screen 1-14 days with serial measurements of both nitriles, partial amides, glutamine, glutamate and pyroglutamate. These conditions are a proposed geochemical test, not an established exhaustive-hydrolysis protocol. Cool and neutralize at the measured free-glutamate maximum. Under these acidic conditions the released ammonia is actually predominantly ammonium; NH3 in the equation denotes neutral-reference nitrogen balance."
+        },
+        "mechanism": "Successive nitrile hydration and amide hydrolysis convert both nitrile carbons to carboxyl groups while retaining the alpha-amino nitrogen. Balanced net: 2-aminopentanedinitrile + 4 water -> glutamic acid + 2 ammonia. The coefficients of mol_001 and mol_002 are 4 and 2 respectively; other coefficients are one. Partial hydrolysis can stop at glutamine or other amides.",
+        "reasoning": "Patel et al. (2015) establish the aminonitrile precursor, not a verified exhaustive glutamate-recovery yield under this proposed natural window. Hydrolysis is chemically conventional, but productive closure here is explicitly speculative until the nitrile/amide inventory and recovered free glutamate are measured. Strong laboratory acid workup cannot simply be equated with a natural pool. Warm acid also promotes cyclization, so rxn_019 competes during the very operation needed to release glutamate."
+      },
+      {
+        "id": "rxn_017",
+        "name": "Speculative conjugate cyanide addition to acrolein",
+        "inputs": [
+          "mol_029",
+          "mol_021"
+        ],
+        "outputs": [
+          "mol_025"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K proposed screening window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic shaded pool; proposed pH 8-9, 1-10 mM acrolein and 10-100 mM total HCN/CN-. Screen minutes to 24 h and quantify conjugate-addition product against carbonyl cyanohydrin formation and polymerization. Proceed to rxn_014 only if 3-cyanopropanal is directly identified and recovered."
+        },
+        "mechanism": "Proposed 1,4-addition of cyanide to the enal followed by protonation creates the required nitrile-substituted aldehyde. Net: acrolein + HCN -> 3-cyanopropanal. All coefficients are one. Competing 1,2-addition gives a different carbon connectivity and does not establish this edge.",
+        "reasoning": "Van Trump and Miller (1972) proposed acrolein as a glutamate precursor, but the supplied evidence does not demonstrate selective prebiotic acrolein-to-3-cyanopropanal conversion. This edge and pathway P10 therefore remain explicitly speculative. The industrial acrylonitrile-to-semialdehyde synthesis is a different transformation and is not used as validation. The route is retained as a chemically distinct, testable alternative, not as an experimentally completed tenth synthesis."
+      },
+      {
+        "id": "rxn_018",
+        "name": "Competing nickel/H2 reduction to hydroxyglutarate",
+        "inputs": [
+          "mol_008",
+          "mol_003"
+        ],
+        "outputs": [
+          "mol_030"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Metallic nickel supported on silica-alumina"
+        ],
+        "conditions": {
+          "temperature": "295 K reference temperature",
+          "pressure": "5 bar H2",
+          "catalyst": "Ni/SiO2-Al2O3; the same active catalyst specified for rxn_004 and rxn_005",
+          "aqueous": true,
+          "other": "Anoxic, pH approximately 8. This branch can operate during continued carbon-skeleton hydrogenation or during the 72 h reductive-amination experiment, including in the presence of ammonium. Quantify it concurrently with glutamate rather than assuming ammonia suppresses it completely."
+        },
+        "mechanism": "Hydrogenation of the keto group produces a secondary alcohol. Net: alpha-ketoglutaric acid + H2 -> 2-hydroxyglutaric acid. All coefficients are one; the product is not counted as glutamate or as an additional productive pathway.",
+        "reasoning": "Kaur et al. (2024) directly report amino-acid/hydroxy-acid mixtures under H2/metal conditions. This is therefore a supported competing transformation rather than a decorative sink. It explains why combined conversion figures cannot be interpreted as glutamate yields and why the catalyst must be removed or deactivated at the carbon-reduction endpoint. No unsupported hydroxyglutarate-to-glutamate rescue is included."
+      },
+      {
+        "id": "rxn_019",
+        "name": "Glutamic-acid cyclization to the pyroglutamate reservoir",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_031",
+          "mol_001"
+        ],
+        "environment": "Surface",
+        "agents": [
+          "Acidic aqueous medium"
+        ],
+        "conditions": {
+          "temperature": "333-370 K for the warm aqueous risk window",
+          "pressure": "Approximately 1 atm",
+          "catalyst": "Acid-promoted lactamization, particularly around pH 2-3.5",
+          "aqueous": true,
+          "other": "Anoxic warm acidic pools and concentrating aqueous films. Residence for hours to days can create a competing reservoir; no universal rate is assigned. Drying further changes the kinetics and equilibrium. Cool promptly and avoid prolonged acidic storage when free glutamate is the desired product."
+        },
+        "mechanism": "The alpha-amino group attacks the distal carboxyl group, forming a five-membered lactam and eliminating water. Net: glutamic acid -> pyroglutamic acid + water. All coefficients are one.",
+        "reasoning": "Pyroglutamate formation during glutamic-acid heating is supported by Wu et al. (2010) and Weiss et al. (2018), while Lee et al. (2014) demonstrate cyclization and additional decomposition at higher hydrothermal temperatures. The supplied report also describes warm acidic aqueous cyclization, but its quoted lower-temperature rate is not independently verified here. The peptide-bound upper-bound rate constant from Seifert et al. (2009) is not applied to free glutamate. Oxygen is not required for the lactamization mechanism."
+      },
+      {
+        "id": "rxn_020",
+        "name": "Conditional harsh hydrolysis of pyroglutamate",
+        "inputs": [
+          "mol_031",
+          "mol_001"
+        ],
+        "outputs": [
+          "mol_010"
+        ],
+        "environment": "Biochemical",
+        "agents": [
+          "Strongly acidic aqueous medium"
+        ],
+        "conditions": {
+          "temperature": "373-383 K proposed hydrolytic recovery window",
+          "pressure": "2-3 bar in a confined aqueous acidic fracture analogue",
+          "catalyst": "Hydronium; proposed pH at or below 1",
+          "aqueous": true,
+          "other": "Enzyme-free, anoxic reservoir-recovery compartment. Screen 24-72 h with direct pyroglutamate/glutamate mass balance, then cool and neutralize immediately. This is a harsh-treatment analogue, not rapid ambient recycling. The natural occurrence, residence time and recovery efficiency of such an acidic confined compartment are unestablished."
+        },
+        "mechanism": "Acid-catalysed lactam hydrolysis opens the ring. Net: pyroglutamic acid + water -> glutamic acid. All coefficients are one. Reverse cyclization and further loss can occur in the same treatment.",
+        "reasoning": "Acid-labile meteoritic amino-acid precursors support pyroglutamate as a recoverable reservoir rather than an irreversible sink (Pizzarello and Cooper, 2001). However, analytical recovery does not establish efficient natural recycling. The numerical window is a proposed test and requires measured net glutamate recovery; neither complete conversion nor fast ambient release is claimed. This loop is excluded from the ten synthesis-pathway count."
+      },
+      {
+        "id": "rxn_021",
+        "name": "Buffered conversion of recovered glutamic acid to glutamate monoanion",
+        "inputs": [
+          "mol_010"
+        ],
+        "outputs": [
+          "mol_011",
+          "mol_012"
+        ],
+        "environment": "Surface",
+        "agents": null,
+        "conditions": {
+          "temperature": "300-310 K",
+          "pressure": "Approximately 1 atm",
+          "catalyst": null,
+          "aqueous": true,
+          "other": "Anoxic, mineral-shaded receiving pool buffered at pH 6-8 by independently sufficient rock-water alkalinity. Cool hydrolysates before or during mixing and verify the final pH and recovered glutamate concentration. The proton output denotes transfer to the buffer reservoir, not accumulation of free acid without neutralization capacity. Avoid prolonged warm, acidic or dry storage."
+        },
+        "mechanism": "Acid-base equilibration changes the neutral-reference formula to the monoanion. Net: glutamic acid -> glutamate(-1) + H+. All coefficients are one and total charge is conserved. Around pH 6-8, both carboxyl groups are predominantly deprotonated and the amino group predominantly protonated.",
+        "reasoning": "This is ordinary acid-base speciation, not an additional carbon-skeleton synthesis or a claimed literature-specific production yield. Standard glutamic-acid pKa values of approximately 2.2, 4.3 and 9.7 place the monoanion as the dominant form at pH 6-8. The need to cool and control storage follows the glutamate stability constraints discussed by Lee et al. (2014) and Weiss et al. (2018). No selective L-glutamate formation is implied; racemic abiotic inventories are consistent with Glavin et al. (2025)."
+      }
+    ],
+    "pathways": [
+      {
+        "pathway_id": "P1",
+        "name": "Glyoxylate-driven carbon reduction followed by nickel/H2 amination",
+        "description": "Build the C5 ketoacid in phosphate, then test the recovered effluent in a separate sulfide-free nickel/H2 amination compartment and finish at pH 6-8. The terminal amination is experimentally supported; the isolated carbon-reduction coproduct balance and productive transfer of the low-yield ketoacid mixture remain conditional. Measure hydroxyglutarate rather than reporting combined conversion as glutamate yield.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_005",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_006",
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "name": "Glyoxylate-driven carbon reduction followed by pyrite-coupled amination",
+        "description": "Route the phosphate-derived alpha-ketoglutarate mixture to a fresh-FeS/sulfide compartment with a separately maintained ammonia inventory. This path requires demonstrated pyrite formation and glutamate accumulation together. Phosphate carryover and mineral passivation are unresolved; electrochemically reduced FeS results are not substituted for fresh-FeS performance.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_006",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "name": "Glyoxylate-driven carbon reduction followed by oxime/iron nitrogen installation",
+        "description": "After C5 ketoacid construction, form the oxime before introducing sacrificial Fe0. This uses the experimentally motivated hydroxylamine/iron chemistry without assuming that hydroxylamine and metallic iron are compatible with ongoing upstream synthesis. Verify oxime accumulation, at least four-electron reducing capacity per oxime, iron consumption and recovered glutamate.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_007",
+          "rxn_008",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_008",
+          "mol_017",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "name": "Glyoxylate-driven carbon reduction with an independently prepared glycine relay",
+        "description": "Prepare glycine from a separate glyoxylate aliquot, retain its nickel catalyst, and combine the donor solution with independently formed alpha-ketoglutarate. The listed order is an executable schedule for two preparative compartments, not a single-vessel instruction. Forward transamination remains conditional on the actual glycine/glyoxylate ratio and alpha-ketoglutarate-specific kinetics.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_001",
+          "rxn_002",
+          "rxn_003",
+          "rxn_010",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_020",
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "name": "H2-dependent carbon reduction followed by nickel/H2 amination",
+        "description": "Form fumaroyl formate by aldol chemistry, hydrogenate its C=C bond without ammonia, and then begin a separately controlled ammonium-containing hydrogenation stage. Quantify alpha-ketoglutarate before changing conditions. This is not a claim that the one-pot Kaur network produced glutamate; continued keto-group hydrogenation is an explicit competing branch.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_005",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "name": "H2-dependent carbon reduction followed by pyrite-coupled amination",
+        "description": "Produce alpha-ketoglutarate in the nickel/H2 compartment, retain the nickel-bearing solid and transfer the assayed aqueous inventory into the fresh-FeS compartment. Physical separation prevents intentional nickel/sulfide co-exposure, but dissolved carryover and substrate recovery must still be measured. The fresh-FeS redox coupling remains condition-dependent.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_006",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "name": "H2-dependent carbon reduction followed by oxime/iron nitrogen installation",
+        "description": "Stop nickel hydrogenation at the measured alpha-ketoglutarate maximum, remove the solid catalyst and H2, then carry out hydroxylamine condensation followed by Fe0 reduction. This combines supported reaction classes but does not have an established transferred-mixture yield. Residual nickel, phosphate, hydroxylamine consumption and iron passivation require explicit tests.",
+        "reaction_sequence": [
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_007",
+          "rxn_008",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_007",
+          "mol_008",
+          "mol_017",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "name": "H2-dependent carbon reduction with an independently prepared glycine relay",
+        "description": "Prepare glycine in one hydrogenation compartment and alpha-ketoglutarate in another; retain both nickel catalyst inventories before combining the recovered solutions for transamination. Nitrogen and reducing-power requirements are materially closed through glycine preparation. Productive nitrogen transfer is not guaranteed when residual glyoxylate remains high.",
+        "reaction_sequence": [
+          "rxn_009",
+          "rxn_001",
+          "rxn_002",
+          "rxn_004",
+          "rxn_010",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_020",
+          "mol_007",
+          "mol_008",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "name": "Cyanosulfidic construction of the glutamate aminodinitrile",
+        "description": "Construct maleonitrile from cyanoacetylene and HCN, perform sequential sulfide photoreductions to the C4 semialdehyde, and install the fifth carbon and amino group through cyanohydrin/Strecker chemistry. The precursor sequence is directly motivated by Patel et al. (2015). Exhaustive hydrolysis and net glutamate recovery under the proposed natural acidic window remain unverified, with pyroglutamate formation explicitly competing.",
+        "reaction_sequence": [
+          "rxn_011",
+          "rxn_012",
+          "rxn_013",
+          "rxn_014",
+          "rxn_015",
+          "rxn_016",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_023",
+          "mol_024",
+          "mol_025",
+          "mol_026",
+          "mol_027",
+          "mol_010"
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "name": "Speculative acrolein entry into glutamate Strecker chemistry",
+        "description": "Test conjugate HCN addition to acrolein as an alternative source of 3-cyanopropanal, then use the shared cyanohydrin, aminodinitrile and hydrolysis sequence. This route is explicitly speculative at its entry step: the correct aldehyde must be distinguished from acrolein cyanohydrin and polymerization products. It is not an independently demonstrated complete synthesis and is not validated by industrial acrylonitrile chemistry.",
+        "reaction_sequence": [
+          "rxn_017",
+          "rxn_014",
+          "rxn_015",
+          "rxn_016",
+          "rxn_021"
+        ],
+        "key_intermediates": [
+          "mol_025",
+          "mol_026",
+          "mol_027",
+          "mol_010"
+        ]
+      }
+    ],
+    "hub_molecules": [
+      "mol_004",
+      "mol_007",
+      "mol_008",
+      "mol_010",
+      "mol_025"
+    ],
+    "convergence_points": [
+      {
+        "molecule_id": "mol_004",
+        "incoming_reactions": [
+          "rxn_010"
+        ],
+        "outgoing_reactions": [
+          "rxn_001",
+          "rxn_003",
+          "rxn_009"
+        ]
+      },
+      {
+        "molecule_id": "mol_007",
+        "incoming_reactions": [
+          "rxn_002"
+        ],
+        "outgoing_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ]
+      },
+      {
+        "molecule_id": "mol_008",
+        "incoming_reactions": [
+          "rxn_003",
+          "rxn_004"
+        ],
+        "outgoing_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_007",
+          "rxn_010",
+          "rxn_018"
+        ]
+      },
+      {
+        "molecule_id": "mol_010",
+        "incoming_reactions": [
+          "rxn_005",
+          "rxn_006",
+          "rxn_008",
+          "rxn_010",
+          "rxn_016",
+          "rxn_020"
+        ],
+        "outgoing_reactions": [
+          "rxn_019",
+          "rxn_021"
+        ]
+      },
+      {
+        "molecule_id": "mol_025",
+        "incoming_reactions": [
+          "rxn_013",
+          "rxn_017"
+        ],
+        "outgoing_reactions": [
+          "rxn_014"
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "target_molecule": "Glutamate, racemic monoanion",
+    "pathway_evaluations": [
+      {
+        "pathway_id": "P1",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_003": 0.82,
+          "rxn_005": 0.85,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.84,
+        "pathway_coherence": 0.87,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.8,
+        "overall_confidence": 0.79,
+        "feedback": "The carbon-building sequence aligns with Stubbs et al. (2020), and reductive amination of supplied alpha-ketoglutarate is supported by Kaur et al. (2024). However, the supplied literature summary does not establish the specific oxalate coproduct assignment in rxn_003. Product recovery and successful nickel amination of the actual upstream mixture remain unverified. Competing hydroxyglutarate formation is correctly represented by rxn_018. The terminal glutamate monoanion assignment is chemically sound.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Specify carbon-module conditions and quantify alpha-ketoglutarate, residual glyoxylate and the proposed oxalate coproduct.",
+          "Benchmark amination against the reported nickel/H2 conditions, then test actual upstream broth while measuring glutamate versus hydroxyglutarate formation."
+        ]
+      },
+      {
+        "pathway_id": "P2",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_003": 0.82,
+          "rxn_006": 0.62,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.73,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.66,
+        "overall_confidence": 0.7,
+        "feedback": "This is a connected, atom-balanced route, but rxn_006 is a substantial evidentiary bottleneck. Fresh-FeS reductive amination literature supports the reaction family without establishing efficient pyrite-coupled glutamate production under the unspecified conditions here. The supplied review acknowledges uncertainty in reported fresh-FeS glutamate yields. Results using electrochemically activated FeS cannot establish performance of an unactivated FeS/H2S system.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Specify FeS preparation, mineral phase, aging, ammonia concentration, pH, temperature and residence time.",
+          "Measure glutamate formation alongside pyrite formation and competing sulfide chemistry; establish the proposed redox coupling rather than inferring it from balance."
+        ]
+      },
+      {
+        "pathway_id": "P3",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_003": 0.82,
+          "rxn_007": 0.92,
+          "rxn_008": 0.86,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.86,
+        "pathway_coherence": 0.89,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.84,
+        "overall_confidence": 0.81,
+        "feedback": "This is the best-supported conditional schedule. Muchowska et al. (2019) supports hydroxylamine/Fe0 amino-acid production, including glutamate, in an alpha-ketoacid-network context. Oxime formation and reduction are chemically credible, and the inferred iron/proton stoichiometry conserves atoms and charge. Nevertheless, that evidence does not establish this exact glyoxylate-reduction effluent feeding the iron stage. Buffer carryover, iron passivation and substrate recovery remain unresolved. Approval here applies only to the requested pathway threshold, not to demonstrated end-to-end operation.",
+        "approved": true,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Record the rxn_008 stoichiometry explicitly: two Fe and four proton equivalents per oxime; specify the operating pH and iron phase.",
+          "Test oxime formation and reduction in actual carbon-module broth, measuring iron consumption, competing hydrogen evolution and recovered free glutamate."
+        ]
+      },
+      {
+        "pathway_id": "P4",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_003": 0.82,
+          "rxn_009": 0.87,
+          "rxn_010": 0.7,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.75,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.72,
+        "feedback": "Independent glycine preparation avoids a circular requirement for an unavailable nitrogen donor. Glycine-mediated transamination has relevant support in Stubbs et al. (2020), but glutamate-specific kinetics and yield under this schedule are not established by the supplied entries. Transamination is reversible, and residual glyoxylate can oppose the desired nitrogen transfer because it is also a product of rxn_010. The donor supply is logically complete, but its preparation does not resolve the transfer equilibrium.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_003",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Measure glutamate-specific transamination time courses over defined glycine, alpha-ketoglutarate and glyoxylate concentrations.",
+          "Specify the required pH, temperature and any catalyst, and demonstrate donor recovery and nitrogen transfer using realistic upstream mixtures."
+        ]
+      },
+      {
+        "pathway_id": "P5",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_004": 0.87,
+          "rxn_005": 0.85,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.79,
+        "overall_confidence": 0.79,
+        "feedback": "The two nickel/H2 transformations have relevant experimental support in Kaur et al. (2024), but sharing a reductant and catalyst does not establish integrated selectivity. Alpha-ketoglutarate can undergo competing carbonyl reduction before productive nitrogen installation. Kaur et al.'s glutamate nondetection in an oxaloacetate/glyoxylate one-pot network cautions against extrapolating isolated-step results; it does not disprove this different, staged pyruvate-based schedule. Nickel phase, hydrogen pressure and reaction timing are not specified in the submitted reaction entries.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_005"
+        ],
+        "suggestions": [
+          "Measure time-resolved fumaroyl formate, alpha-ketoglutarate, hydroxyglutarate and glutamate concentrations.",
+          "Define catalyst loading, H2 pressure, ammonia addition and residence times, then demonstrate the complete staged sequence using actual reaction mixtures."
+        ]
+      },
+      {
+        "pathway_id": "P6",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_004": 0.87,
+          "rxn_006": 0.62,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.74,
+        "pathway_coherence": 0.81,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.66,
+        "overall_confidence": 0.7,
+        "feedback": "The carbon route is plausible, and switching from hydrogenation to a sulfide compartment is not intrinsically inconsistent. However, rxn_006 remains conditionally supported rather than established as an effective pyrite-coupled glutamate synthesis. The amount of alpha-ketoglutarate surviving nickel hydrogenation, the transferred mixture composition and the activity of freshly prepared FeS must all be demonstrated. No conservation violation is present.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_006"
+        ],
+        "suggestions": [
+          "Quantify alpha-ketoglutarate recovery from the nickel stage and identify which solids and dissolved species enter the FeS compartment.",
+          "Demonstrate glutamate formation and pyrite-associated electron transfer under explicitly defined FeS/H2S conditions without borrowing activated-FeS yields."
+        ]
+      },
+      {
+        "pathway_id": "P7",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_004": 0.87,
+          "rxn_007": 0.92,
+          "rxn_008": 0.86,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.85,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.81,
+        "overall_confidence": 0.79,
+        "feedback": "The individual transformations are chemically credible: nickel/H2 carbon reduction is supported by Kaur et al. (2024), and hydroxylamine/iron nitrogen installation has support from Muchowska et al. (2019). The exact connection between those experimental modules is not demonstrated. Selective alpha-ketoglutarate accumulation, oxime formation in the nickel-stage effluent and productive iron reduction require validation. Physical staging is acceptable in principle, but does not itself establish substrate recovery or compatible solution composition.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_008"
+        ],
+        "suggestions": [
+          "Establish a hydrogenation endpoint that preserves alpha-ketoglutarate rather than converting it predominantly to hydroxyglutarate.",
+          "Measure oxime yield and iron-reduction recovery in the actual transferred mixture, with defined pH and metal speciation."
+        ]
+      },
+      {
+        "pathway_id": "P8",
+        "reaction_scores": {
+          "rxn_001": 0.91,
+          "rxn_002": 0.88,
+          "rxn_004": 0.87,
+          "rxn_009": 0.87,
+          "rxn_010": 0.7,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.76,
+        "pathway_coherence": 0.8,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.7,
+        "overall_confidence": 0.72,
+        "feedback": "Both the carbon precursor and glycine donor have explicit preparation routes, so the pathway is structurally coherent. Its principal uncertainty is productive glycine-to-alpha-ketoglutarate nitrogen transfer under specified enzyme-free conditions. Nickel-stage hydroxy-acid formation can reduce recovery of both required substrates, while glyoxylate accumulation can limit rxn_010. Related transamination literature supports plausibility but does not establish operation of this complete schedule.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_004",
+          "rxn_010"
+        ],
+        "suggestions": [
+          "Quantify alpha-ketoglutarate and glycine recovery from their respective nickel reactions, including competing hydroxy-acid products.",
+          "Determine the transamination equilibrium and rate in the combined feed mixture rather than assuming excess glycine ensures useful glutamate production."
+        ]
+      },
+      {
+        "pathway_id": "P9",
+        "reaction_scores": {
+          "rxn_011": 0.86,
+          "rxn_012": 0.85,
+          "rxn_013": 0.79,
+          "rxn_014": 0.93,
+          "rxn_015": 0.86,
+          "rxn_016": 0.73,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.81,
+        "pathway_coherence": 0.86,
+        "environmental_progression": 0.65,
+        "target_achievement": 0.73,
+        "overall_confidence": 0.76,
+        "feedback": "The sequence through aminodinitrile formation closely follows Patel et al. (2015). That evidence supports a glutamate precursor, not necessarily recovered free glutamate under the present network conditions. Selective nitrile photoreduction in rxn_013 requires controlled exposure and aldehyde capture. Exhaustive hydrolysis in rxn_016 is chemically reasonable, but conversion of both nitriles and survival of glutamate need specified conditions and measurements distinguishing glutamate from partial amides, glutamine and pyroglutamate.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_012",
+          "rxn_013",
+          "rxn_016"
+        ],
+        "suggestions": [
+          "Specify UV spectrum and dose, sulfide loading, exposure termination and whether copper photoredox catalysis is used; characterize sulfur and organic products.",
+          "Define hydrolysis pH, temperature and duration, and measure recovered free glutamate alongside partially hydrolyzed and cyclized products."
+        ]
+      },
+      {
+        "pathway_id": "P10",
+        "reaction_scores": {
+          "rxn_017": 0.4,
+          "rxn_014": 0.93,
+          "rxn_015": 0.86,
+          "rxn_016": 0.73,
+          "rxn_021": 0.99
+        },
+        "chemical_feasibility": 0.59,
+        "pathway_coherence": 0.69,
+        "environmental_progression": 0.6,
+        "target_achievement": 0.45,
+        "overall_confidence": 0.58,
+        "feedback": "The downstream Strecker chemistry is plausible if rxn_017 supplies 3-cyanopropanal. However, the supplied Van Trump and Miller evidence establishes a proposed acrolein entry, not an experimentally validated glutamate-producing sequence. Cyanide addition to the aldehyde carbonyl and acrolein polymerization compete with the required conjugate addition. Explicitly labeling this route speculative is appropriate, but does not resolve its central selectivity uncertainty. Exhaustive nitrile hydrolysis remains an additional conditional step.",
+        "approved": false,
+        "problematic_reactions": [
+          "rxn_017",
+          "rxn_016"
+        ],
+        "suggestions": [
+          "Establish the identity, yield and stability of 3-cyanopropanal from acrolein/HCN, with a material balance covering carbonyl-addition and polymerization products.",
+          "Demonstrate conversion of the resulting mixture through aminodinitrile formation and complete hydrolysis to analytically identified glutamate."
+        ]
+      }
+    ],
+    "best_pathway_id": "P3",
+    "overall_confidence": 0.78,
+    "network_feedback": "The complete network is not approved at the 0.90 threshold. Structural validity is high: the 31 species and 21 reactions form a connected graph, molecule IDs are consistent, and all declared schedules reach the correctly identified target from stipulated starting supplies. The deterministic balance result is accepted in full: 17 reactions balance with unit coefficients and four require the reported coefficients; none violates conservation. The factors of eight in rxn_012 and rxn_013 appropriately accommodate formal S8 bookkeeping and do not imply implausible elementary collisions. Listed problematic reactions concern evidence, selectivity or operating conditions, not atom balance. Literature alignment is good at the module level, and the network appropriately acknowledges speculative chemistry, competitive reduction and uncertain recovery. However, the submitted reaction entries contain neither the detailed numerical conditions nor the mechanism and reaction-specific citation text referenced in the strategy. Literature conditions cannot automatically be assumed to describe these compartments. Anoxia, UV shielding of nonphotochemical stages and enzyme-free aqueous compartments are conceptually consistent. Settling, filtration, dilution and gas exchange are possible staging mechanisms, but their substrate recovery and contaminant removal must be established for the actual transferred streams; settling and filtration alone do not remove dissolved solutes. Among auxiliary reactions, rxn_018 is a supported competitive reduction, rxn_019 is a credible glutamate sink, and rxn_020 requires defined harsh hydrolysis conditions and demonstrated recovery before efficient recycling can be credited. Irreversible thermal or sulfide-associated losses may also matter under the eventual operating conditions. Reaction rxn_021 correctly represents buffered formation of predominantly ammonium/dicarboxylate glutamate at pH 6\u20138, and racemic production is consistent with the proposed chemistry. The overall score reflects shared uncertainties in precursor flux, nitrogen incorporation, hydrolysis and product survival\u2014not the number of pathways, hubs or environments. Stipulated feedstocks are accepted without a separate requirement to establish their geochemical production. The decisive improvement would be a fully specified, mass-accounted staged experiment carrying actual upstream mixtures to recovered free glutamate; a one-pot demonstration is not required.",
+    "approved": false,
+    "hub_quality": 0.0,
+    "convergence_quality": 0.0,
+    "balance_check": {
+      "n_reactions": 21,
+      "n_balanced_as_written": 17,
+      "n_balanceable": 4,
+      "n_unbalanced": 0,
+      "n_unchecked": 0,
+      "fraction_balanceable": 1.0,
+      "formula_mismatches": [],
+      "reactions": [
+        {
+          "reaction_id": "rxn_001",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_005": 1,
+            "mol_004": 1,
+            "mol_006": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_002",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_006": 1,
+            "mol_007": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_003",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_004": 1,
+            "mol_001": 1,
+            "mol_008": 1,
+            "mol_009": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_004",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_007": 1,
+            "mol_003": 1,
+            "mol_008": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_005",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_010": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_006",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_002": 1,
+            "mol_013": 1,
+            "mol_014": 1,
+            "mol_010": 1,
+            "mol_001": 1,
+            "mol_015": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_007",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_016": 1,
+            "mol_017": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_008",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_017": 1,
+            "mol_018": 2,
+            "mol_012": 4,
+            "mol_010": 1,
+            "mol_001": 1,
+            "mol_019": 2
+          },
+          "element_delta": {
+            "H": -3
+          },
+          "charge_delta": -1,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_009",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_004": 1,
+            "mol_002": 1,
+            "mol_003": 1,
+            "mol_020": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_010",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_020": 1,
+            "mol_010": 1,
+            "mol_004": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_011",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_022": 1,
+            "mol_021": 1,
+            "mol_023": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_012",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_023": 8,
+            "mol_014": 8,
+            "mol_024": 8,
+            "mol_028": 1
+          },
+          "element_delta": {
+            "S": -7
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_013",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_024": 8,
+            "mol_014": 8,
+            "mol_001": 8,
+            "mol_025": 8,
+            "mol_002": 8,
+            "mol_028": 1
+          },
+          "element_delta": {
+            "S": -7
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_014",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_025": 1,
+            "mol_021": 1,
+            "mol_026": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_015",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_026": 1,
+            "mol_002": 1,
+            "mol_027": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_016",
+          "status": "balanceable",
+          "inferred_coefficients": {
+            "mol_027": 1,
+            "mol_001": 4,
+            "mol_010": 1,
+            "mol_002": 2
+          },
+          "element_delta": {
+            "H": -3,
+            "N": 1,
+            "O": -3
+          },
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_017",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_029": 1,
+            "mol_021": 1,
+            "mol_025": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_018",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_008": 1,
+            "mol_003": 1,
+            "mol_030": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_019",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_031": 1,
+            "mol_001": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_020",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_031": 1,
+            "mol_001": 1,
+            "mol_010": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        },
+        {
+          "reaction_id": "rxn_021",
+          "status": "balanced_as_written",
+          "inferred_coefficients": {
+            "mol_010": 1,
+            "mol_011": 1,
+            "mol_012": 1
+          },
+          "element_delta": {},
+          "charge_delta": 0,
+          "hint": null,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "success": false,
+  "attempts": 3,
+  "notes": null
+}
