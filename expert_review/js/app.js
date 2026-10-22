@@ -180,8 +180,11 @@ async function signIn({ auto = false } = {}) {
   const password = $("in-pass").value;
   if (!auto && password.length < 6) return showMsg(msg, "Enter a password of at least 6 characters.");
 
-  const typedUser = $("in-db-user").value.trim();
-  const typedPass = $("in-db-pass").value;
+  // Typed credentials win only while their section is open, so a stale prefill
+  // (js/local-creds.js) can't override the ones an invite link just stored.
+  const typed = $("db-details").open;
+  const typedUser = typed ? $("in-db-user").value.trim() : "";
+  const typedPass = typed ? $("in-db-pass").value : "";
   const creds = typedUser && typedPass ? { user: typedUser, password: typedPass } : storedCreds();
   if (!creds) {
     $("db-details").open = true;
