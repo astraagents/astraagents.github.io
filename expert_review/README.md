@@ -1,7 +1,7 @@
 # ASTRA Expert Review Platform
 
 A static, mobile-first review platform where domain experts score ASTRA's prebiotic
-synthesis networks **one reaction at a time**: four criteria, each 0–10, plus an
+synthesis networks **one reaction at a time**: three questions, each scored 0–5, plus an
 optional note. Each reviewer is assigned a molecule, works through its reactions as
 cards, and climbs a shared leaderboard. It runs as plain JavaScript on GitHub Pages
 with no backend. The reactions live in PlanetScale Postgres and submissions go
@@ -15,35 +15,48 @@ straight there.
 | Molecules | Arginine, Glutamate, Glycine, Histidine, L-Alanine, L-Proline, Serine, Threonine, Valine |
 | Queue | **9 networks, 166 reactions**, stored in `expert_reactions` |
 
-Criteria per reaction (4): Chemical Feasibility, Reaction Justification,
-Geochemical Condition Realism, Novelty of Reaction. These are the reaction-level
-subset of the LLM-judge criteria in `GeminiJudgePrompt.md` (Pathway Coherence,
-Environmental Consistency and Network Completeness stay network-level), so expert
-scores sit alongside the judge scores on a near-identical scale. Each criterion shows
-a one-line description, and its **(?)** button expands the judge prompt's scoring
-anchors, reworded for a single reaction (`CRITERION_GUIDE` in `js/app.js`).
-Scores saved under the earlier v3 criteria (Environmental Consistency, Mechanistic
-Detail, Prebiotic Plausibility, Novelty of Reactions) stay in the database and are ignored. The judges score 1–10; humans score
-0–10, because 0 gives a reviewer an explicit "not plausible at all".
+Criteria per reaction (3), each asked as a question:
 
-Scores are entered with **11 tap pills (0–10)**. Tapping the selected pill again
+| Criterion (stored as) | Question shown |
+|---|---|
+| Reaction Detail Validity | Are the reaction details chemically valid and justified? |
+| Geochemical Realism | Are the conditions realistic for the stated early-Earth environment? |
+| Reaction Novelty | How novel is this reaction? |
+
+They are adapted from the reaction-level LLM-judge criteria in `GeminiJudgePrompt.md`,
+with Chemical Feasibility and Reaction Justification merged into Reaction Detail
+Validity (Pathway Coherence, Environmental Consistency and Network Completeness stay
+network-level). Each question shows a one-line description, and its **(?)** button
+expands an anchor for every score 0–5 (`CRITERION_GUIDE` in `js/app.js`). The judges
+score 1–10; humans score 0–5, so compare them after rescaling.
+
+Scores saved under earlier criteria stay in the database and are ignored: the v3
+set (Environmental Consistency, Mechanistic Detail, Prebiotic Plausibility, Novelty of
+Reactions) and the 0–10 set that preceded this one (Chemical Feasibility, Reaction
+Justification, Geochemical Condition Realism, Novelty of Reaction). The new names are
+deliberately different so no 0–10 score is read on the 0–5 scale.
+
+Scores are entered with **6 tap pills (0–5)**. Tapping the selected pill again
 clears it, which *deletes* the row rather than storing a 0. Changing the scale means
-changing `SCORE_MAX` in both `js/app.js` and `js/db.js`, and the CHECK in `schema.sql`.
+changing `SCORE_MAX` in both `js/app.js` and `js/db.js`, and the CHECK in `schema.sql`
+(which still allows 0–10 for the older rows).
 
 Network-level scoring and the Naive network (formerly "Network B") were removed in v3.
 Their rows (`scope = 'network'`) stay in the database and are ignored.
 
 ## How reviewers experience it
 
-1. **Invite link → username.** The link carries the database credentials (see below),
-   so a reviewer only chooses a username. On the same device they go straight back in.
+1. **Invite link → username + password.** The link carries the database credentials
+   (see below), which the device keeps, so the link is only needed once per device.
+   The reviewer picks a username and password; on the same device they go straight
+   back in until they sign out, and after that only need their password.
 2. **Assignment.** They are given one molecule (see *Assignment* below), with an intro
    card showing its size and the time it will take. *"Not my area? Swap molecule"* draws another.
 3. **Reaction cards.** Each card shows the equation as 2D structures from PubChem
    (with names and formulae; see *Molecular structures*), then the setting,
    conditions, agents, mechanism and reasoning, and a *View in network* button that opens
    the Pathway Explorer focused on that reaction. Scores autosave ~0.6 s after a tap.
-   *Save & next* unlocks once all four are set and moves to the next unscored reaction.
+   *Save & next* unlocks once all three are set and moves to the next unscored reaction.
    *Skip for now* moves on without saving. The progress segments jump to any reaction.
 4. **Finishing a molecule** marks it done, celebrates, and shows the reviewer's mean
    per criterion **next to the other reviewers' mean**. That comparison only appears
@@ -116,7 +129,7 @@ select molecule, status, count(*) from expert_assignments group by 1, 2 order by
 
 ## Admin dashboard
 
-Sign in with the username **`admin_123`** (constant `ADMIN_USERNAME` in `js/app.js`) to open
+Sign in with the username **`admin_123`** and its password (the first sign-in sets it; constant `ADMIN_USERNAME` in `js/app.js`) to open
 the admin view (`js/admin.js`) instead of the review flow. The admin is never assigned a molecule,
 never scores, and doesn't appear on the leaderboard. The view refreshes every 30 s and has a
 Refresh button. It shows:
@@ -129,7 +142,7 @@ Refresh button. It shows:
   and last activity.
 - **Recent activity:** the last 15 reactions saved.
 - **Export:** *Download all (.zip)* builds `astra_expert_review_<date>_<time>.zip` in the browser,
-  containing every `expert_*` table as CSV, `expert_reaction_scores_wide.csv` (one row per reviewer ×
+  containing every `expert_*` table as CSV (except `expert_accounts`, which holds password hashes), `expert_reaction_scores_wide.csv` (one row per reviewer ×
   reaction, one column per criterion, plus the note) and a `README.txt` with row counts. There are
   also per-table buttons for single CSVs. Tables are discovered from `information_schema`, so new
   `expert_*` tables are exported automatically. The CSVs are RFC 4180 with a UTF-8 BOM (Excel-safe);
@@ -188,7 +201,8 @@ This prints `…/expert_review/#k=<base64url(user:password)>`. The credentials s
 URL **fragment**, which browsers never send to a server, so they never reach GitHub
 Pages' logs or this repo. The page moves them into `localStorage` and strips the
 fragment from the address bar. **Send the link privately; it is a password.**
-*Sign out* clears both the username and the stored credentials.
+*Sign out* forgets the reviewer's password on that device but keeps the database
+credentials, so signing back in needs no invite link.
 
 Without a link, the login form has an *"I have database credentials"* fallback. For
 local testing, `js/local-creds.js` (gitignored) prefills those two fields.
@@ -210,6 +224,19 @@ the leaderboard. It is normalised with `trim().toLowerCase()`, so `Jane_Doe` and
 `jane_doe` are the same reviewer. Scores are keyed on this string. It lives in the
 `reviewer_name` column; the column was not renamed because the API role cannot `ALTER TABLE`.
 
+Each username is protected by a **password** (at least 6 characters), stored in
+`expert_accounts`. The first sign-in under a username sets it, including for reviewers
+who scored before passwords existed. The browser hashes it with PBKDF2-SHA256 (200,000
+iterations, random 16-byte salt) and only the salt and hash reach the database. The
+device remembers the hash so a returning reviewer signs in on their own; *Sign out*
+forgets it. To reset a forgotten password, delete the row
+(`delete from expert_accounts where reviewer_name = 'jane_doe'`); the next sign-in sets
+a new one.
+
+This stops reviewers signing in as each other through the page. It is not real access
+control: everyone holds the same database credentials, so anyone determined could read
+or change rows directly (see *Hardening further*).
+
 ## Architecture
 
 ```
@@ -227,7 +254,7 @@ js/explorer-sidebar.js reaction sidebar from raw JSON; ?focus= / postMessage foc
 js/local-creds.js      local testing only, gitignored
 js/vendor/
   neon-serverless.js   @neondatabase/serverless 1.2.0, vendored ESM bundle
-data/review_index.json the 9 networks + the 4 criteria
+data/review_index.json the 9 networks + the 3 criteria
 data/pubchem.json      molecule (InChI or names) -> PubChem CID, formula check
 tools/
   build_review_index.py  manifest
@@ -247,16 +274,17 @@ schema.sql, schema_reset.sql
 | `expert_scores` | reviewer × reaction × criterion (`scope='reaction'`) | the page |
 | `expert_comments` | reviewer × reaction note | the page |
 | `expert_assignments` | reviewer × network, `active`/`skipped`/`done` | the page |
+| `expert_accounts` | reviewer username: password salt + hash | the page |
 | `expert_submissions` | *(v2 network submissions, unused since v3)* | n/a |
 
-The leaderboard counts, per reviewer, the reactions with **all four** criteria scored:
+The leaderboard counts, per reviewer, the reactions with **all three** criteria scored:
 
 ```sql
 select reviewer_name, count(*) from (
   select reviewer_name, molecule, reaction_id from expert_scores
-   where scope = 'reaction' and criterion = any(array['Chemical Feasibility', 'Reaction Justification',
-                                'Geochemical Condition Realism', 'Novelty of Reaction'])
-   group by 1, 2, 3 having count(distinct criterion) = 4) t
+   where scope = 'reaction' and criterion = any(array['Reaction Detail Validity',
+                                'Geochemical Realism', 'Reaction Novelty'])
+   group by 1, 2, 3 having count(distinct criterion) = 3) t
  group by 1 order by 2 desc;
 ```
 
@@ -305,8 +333,8 @@ with `explorer.html?f=<network>&v=<validation>&m=<molecule>&focus=<reaction id>`
    ```
 2. `planetscale.txt` and `js/local-creds.js` are in `.gitignore`. Confirm with
    `git check-ignore -v expert_review/planetscale.txt expert_review/js/local-creds.js`.
-3. Credentials from an invite link are kept in the reviewer's `localStorage` until they
-   sign out.
+3. Credentials from an invite link are kept in the reviewer's `localStorage`, also after
+   they sign out. Clearing the site's data removes them.
 
 ### Hardening further
 

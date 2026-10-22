@@ -26,14 +26,14 @@ MODEL = "gpt6_xhigh_azure"
 CONFIG = "deep_research_gpt6"
 
 # Scored per reaction: the criteria from GeminiJudgePrompt.md that make sense for
-# a single step. (Pathway Coherence, Environmental Consistency and Network
+# a single step, with Chemical Feasibility and Reaction Justification merged and
+# each scored 0-5. (Pathway Coherence, Environmental Consistency and Network
 # Completeness judge how steps fit together, so they stay network-level.)
 # Their scoring anchors are shown to reviewers via CRITERION_GUIDE in js/app.js.
 REACTION_CRITERIA = [
-    "Chemical Feasibility",
-    "Reaction Justification",
-    "Geochemical Condition Realism",
-    "Novelty of Reaction",
+    "Reaction Detail Validity",
+    "Geochemical Realism",
+    "Reaction Novelty",
 ]
 
 

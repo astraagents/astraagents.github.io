@@ -14,7 +14,7 @@ import { $, el, icon, setLabel, pretty } from "./dom.js";
 import { startAdmin } from "./admin.js";
 
 const SAVE_DEBOUNCE_MS = 600;
-const SCORE_MAX = 10;               // scores are 0-10; keep in step with js/db.js
+const SCORE_MAX = 5;                // scores are 0-5; keep in step with js/db.js
 const TARGET_REVIEWERS = 3;         // independent reviews wanted per reaction
 const SECONDS_PER_REACTION = 45;    // for the "~N min" estimate only
 const BOARD_REFRESH_MS = 60_000;
@@ -27,52 +27,56 @@ const ADMIN_USERNAME = "admin_123";
 
 const CREDS_KEY = "astra_review_db";
 const USER_KEY = "astra_review_user";
+const PASS_KEY = "astra_review_pass";   // the reviewer's password hash, for auto sign-in
+const PBKDF2_ITERATIONS = 200_000;
 
 /**
- * What each criterion asks, so every reviewer reads it the same way. `help` is the
- * line under the criterion; `anchors` and `note` open behind its (?) button. Taken
- * from GeminiJudgePrompt.md, reworded for a single reaction, with the bottom band
- * widened to 0 because humans score 0-10.
+ * What each criterion asks, so every reviewer reads it the same way. `question` is
+ * the row's heading and `help` the line under it; `anchors` (one per score) and
+ * `note` open behind its (?) button. Adapted from GeminiJudgePrompt.md for a single
+ * reaction; Chemical Feasibility and Reaction Justification are merged into
+ * Reaction Detail Validity. The keys are what the database stores, and differ from
+ * the earlier 0-10 criteria so old scores are never read on the 0-5 scale.
  */
 const CRITERION_GUIDE = {
-  "Chemical Feasibility": {
-    help: "Is this step thermodynamically and kinetically plausible under the stated conditions, and is the claimed product the expected one?",
+  "Reaction Detail Validity": {
+    question: "Are the reaction details chemically valid and justified?",
+    help: "Is the step thermodynamically and kinetically plausible as written, balanced, giving the expected product, with a stated reaction type and a rationale backed by literature or flagged as speculative?",
     anchors: [
-      ["0–3", "Thermodynamically forbidden, gives the wrong product, or unbalanced in a way that changes the chemistry."],
-      ["4–6", "Reasonable overall, but a key aspect is doubtful: implausible kinetics at the stated temperature, wrong regio/stereochemical outcome, or a missing reagent."],
-      ["7–8", "Chemically reasonable; minor issues only (e.g. an optimistic rate, unstated by-products)."],
-      ["9–10", "Chemically sound, balanced, and consistent with known reactivity under the stated conditions."],
+      ["0", "Thermodynamically forbidden, gives the wrong product, or no coherent reaction is described."],
+      ["1", "A major error: unbalanced in a way that changes the chemistry, a missing key reagent, or a rationale that contradicts the reaction."],
+      ["2", "Plausible in principle, but a key aspect is doubtful (kinetics at the stated temperature, regio/stereochemical outcome) and the rationale is generic."],
+      ["3", "Chemically reasonable, but the rationale is generic and literature support or speculative status is unstated."],
+      ["4", "Sound and balanced, with a specific reaction type and rationale and a citation or explicit speculative flag; minor issues only (an optimistic rate, unstated by-products)."],
+      ["5", "Sound, balanced and consistent with known reactivity; a specific, internally consistent rationale, with side reactions or selectivity discussed where relevant."],
     ],
+    note: "Judges whether the written step and its justification hold up. It is not an arrow-pushing mechanism review; the networks don't contain full mechanisms.",
   },
-  "Reaction Justification": {
-    help: "Does the step give a reaction type, a correct stoichiometric description, and a rationale backed by literature or flagged as speculative?",
+  "Geochemical Realism": {
+    question: "Are the conditions realistic for the stated early-Earth environment?",
+    help: "Are the concentrations, catalysts, energy source and reagents consistent with published constraints for that environment?",
     anchors: [
-      ["0–3", "No reaction type or rationale, or the stated rationale contradicts the reaction."],
-      ["4–6", "A rationale is present but generic; literature support or speculative status is unstated."],
-      ["7–8", "A specific reaction type and rationale, with a supporting citation or an explicit speculative flag."],
-      ["9–10", "A specific, internally consistent reaction type and rationale; side reactions or selectivity discussed where relevant."],
-    ],
-    note: "Judges how consistent and complete the written justification is. It is not an arrow-pushing mechanism review; the networks don't contain full mechanisms.",
-  },
-  "Geochemical Condition Realism": {
-    help: "Are the concentrations, catalysts, energy source and reagents consistent with published constraints for the stated early-Earth environment?",
-    anchors: [
-      ["0–3", "Relies on reagents or conditions inconsistent with early Earth: O₂, purified modern reagents, enzymes, or implausibly high concentrations with no concentration mechanism."],
-      ["4–6", "Generally consistent, but some conditions or concentrations are unsupported or only weakly argued."],
-      ["7–8", "Conditions and reagents are consistent with published geochemical constraints; minor assumptions are stated."],
-      ["9–10", "All conditions, catalysts and concentrations are explicitly tied to published constraints for the stated environment."],
+      ["0", "Needs modern lab or biological inputs: O₂, enzymes, or purified modern reagents."],
+      ["1", "Key reagents or concentrations are inconsistent with early Earth, e.g. implausibly high concentrations with no concentration mechanism."],
+      ["2", "Some conditions are plausible, but key reagents or concentrations are unsupported."],
+      ["3", "Generally consistent, but some conditions or concentrations are only weakly argued."],
+      ["4", "Consistent with published geochemical constraints; minor assumptions are stated."],
+      ["5", "All conditions, catalysts and concentrations are explicitly tied to published constraints for the stated environment."],
     ],
     note: "Not whether this is the origin-of-life scenario. No framework (cyanosulfidic, iron–sulfur, formamide…) or feedstock is privileged; competing scenarios are scored on the same basis.",
   },
-  "Novelty of Reaction": {
-    help: "Does this step go beyond a standard textbook reaction while remaining chemically defensible?",
+  "Reaction Novelty": {
+    question: "How novel is this reaction?",
+    help: "Does the step go beyond a standard textbook reaction while remaining chemically defensible?",
     anchors: [
-      ["0–3", "A standard textbook reaction."],
-      ["4–6", "Mostly standard, with one non-obvious element (reagent, intermediate or condition)."],
-      ["7–8", "A non-obvious but defensible transformation, intermediate or catalytic strategy."],
-      ["9–10", "A substantially novel yet chemically defensible step."],
+      ["0", "A standard textbook reaction."],
+      ["1", "A textbook reaction with a minor variation."],
+      ["2", "Mostly standard, with one non-obvious element (reagent, intermediate or condition)."],
+      ["3", "Several non-obvious elements, each defensible."],
+      ["4", "A non-obvious but defensible transformation, intermediate or catalytic strategy."],
+      ["5", "A substantially novel yet chemically defensible step."],
     ],
-    note: "Novelty that is chemically unsound should not score above 6.",
+    note: "Novelty that is chemically unsound should not score above 3.",
   },
 };
 /** Criteria whose scoring guide is expanded; kept open from card to card. */
@@ -150,6 +154,8 @@ function initLogin() {
 
   const remembered = store.get(USER_KEY);
   if (remembered) $("in-user").value = remembered;
+  if (remembered) $("in-pass").focus();
+  else $("in-user").focus();
 
   $("login-form").addEventListener("submit", (ev) => {
     ev.preventDefault();
@@ -157,10 +163,10 @@ function initLogin() {
   });
 
   // Returning reviewer on the same device: straight back in.
-  if (remembered && creds) signIn();
+  if (remembered && creds && store.get(PASS_KEY)) signIn({ auto: true });
 }
 
-async function signIn() {
+async function signIn({ auto = false } = {}) {
   const msg = $("login-msg");
   const btn = $("btn-login");
 
@@ -171,6 +177,8 @@ async function signIn() {
   if (!/^[a-z0-9_.-]{2,32}$/.test(name)) {
     return showMsg(msg, "Use 2–32 letters, digits, dots, dashes or underscores. No spaces.");
   }
+  const password = $("in-pass").value;
+  if (!auto && password.length < 6) return showMsg(msg, "Enter a password of at least 6 characters.");
 
   const typedUser = $("in-db-user").value.trim();
   const typedPass = $("in-db-pass").value;
@@ -186,9 +194,11 @@ async function signIn() {
 
   try {
     await db.connect(creds);
+    store.set(CREDS_KEY, JSON.stringify(creds));   // kept even if the password is wrong
+    store.set(PASS_KEY, await checkPassword(name, auto ? null : password));
     username = name;
     store.set(USER_KEY, name);
-    store.set(CREDS_KEY, JSON.stringify(creds));
+    $("in-pass").value = "";
 
     if (!manifest) manifest = await fetchJSON("data/review_index.json");
     criteria = manifest.criteria.reaction;
@@ -207,14 +217,48 @@ async function signIn() {
     progress = await db.loadProgress(username);
     await startApp();
   } catch (err) {
+    if (auto) store.del(PASS_KEY);
     $("login").hidden = false;
     $("app").hidden = true;
-    showMsg(msg, err.message);
+    showMsg(msg, auto ? "Please enter your password to sign in again." : err.message);
   } finally {
     btn.disabled = false;
     setLabel(btn, "Start reviewing", "arrow-right");
   }
 }
+
+/**
+ * Check `password` against the username's account, creating the account if it has
+ * none yet, and return the hash to remember on this device. With no password
+ * (auto sign-in), the hash remembered from last time is checked instead.
+ */
+async function checkPassword(name, password) {
+  let account = await db.getAccount(name);
+  if (!account && password != null) {
+    const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
+    const hash = await hashPassword(password, salt);
+    if (await db.createAccount(name, salt, hash)) return hash;
+    account = await db.getAccount(name);   // claimed by someone else a moment ago
+  }
+  const hash = password == null ? store.get(PASS_KEY) : await hashPassword(password, account?.salt);
+  if (!account || hash !== account.hash) {
+    await db.disconnect();
+    throw new Error("Wrong password for this username. If it isn't yours, choose another one.");
+  }
+  return hash;
+}
+
+/** PBKDF2-SHA256 of the password, as hex. Only the salt and this hash are stored. */
+async function hashPassword(password, salt) {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]);
+  const bits = await crypto.subtle.deriveBits(
+    { name: "PBKDF2", hash: "SHA-256", salt: new TextEncoder().encode(salt), iterations: PBKDF2_ITERATIONS },
+    key, 256
+  );
+  return toHex(new Uint8Array(bits));
+}
+
+const toHex = (bytes) => Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -869,7 +913,7 @@ function formulaNode(formula) {
 /* -------------------------------------------------------------- scoring -- */
 
 /**
- * One row of 0-10 tap pills per criterion, plus an optional note. Every tap autosaves after a
+ * One row of 0-5 tap pills per criterion, plus an optional note. Every tap autosaves after a
  * short debounce; tapping the selected pill again clears that score (the row is
  * deleted, never stored as a zero). Returns the card and its saver, whose
  * flush() resolves once everything pending is in the database.
@@ -883,13 +927,13 @@ function scoreForm(rxn, key) {
   const card = el("section", { className: "card scorecard" });
   card.append(el("div", { className: "score-h" }, [
     el("h3", { textContent: "Your scores" }),
-    el("span", { className: "scale tiny dim", innerHTML: "<b>0</b> implausible · <b>5</b> unsure · <b>10</b> excellent" }),
+    el("span", { className: "scale tiny dim", innerHTML: "<b>0</b> poor · <b>5</b> excellent" }),
   ]));
 
   for (const criterion of criteria) {
     const row = el("div", { className: "crit" });
     const value = el("span", { className: "crit-val" });
-    const pills = el("div", { className: "pills", role: "radiogroup", ariaLabel: criterion });
+    const pills = el("div", { className: "pills", role: "radiogroup", ariaLabel: CRITERION_GUIDE[criterion]?.question || criterion });
 
     const paint = () => {
       const v = saver.sel[criterion];
@@ -899,7 +943,7 @@ function scoreForm(rxn, key) {
       for (const p of pills.children) {
         const on = Number(p.dataset.v) === v;
         p.setAttribute("aria-checked", String(on));
-        p.tabIndex = on || (v == null && p.dataset.v === "5") ? 0 : -1;
+        p.tabIndex = on || (v == null && p.dataset.v === "0") ? 0 : -1;
       }
     };
 
@@ -953,7 +997,7 @@ function scoreForm(rxn, key) {
 
     row.append(
       el("div", { className: "crit-h" }, [
-        el("span", { className: "crit-name" }, [criterion, tip]),
+        el("span", { className: "crit-name" }, [guide?.question || criterion, tip]),
         value,
       ]),
       el("p", { className: "crit-help", textContent: guide?.help || "" }),
@@ -1075,7 +1119,7 @@ function repaintSegments() {
   if (d) d.textContent = `${doneCount()} done · ${current.reactions.length - doneCount()} to go`;
 }
 
-/** 0 = red through amber to 10 = green. */
+/** 0 = red through amber to SCORE_MAX = green. */
 function scoreColor(v) {
   return `hsl(${Math.round((v / SCORE_MAX) * 125)} 72% 44%)`;
 }
@@ -1364,8 +1408,8 @@ async function logout() {
   clearInterval(boardTimer);
   try { await activeSaver?.flush(); } catch { /* signing out regardless */ }
   await db.disconnect();
-  store.del(USER_KEY);
-  store.del(CREDS_KEY);
+  // The database credentials stay, so signing back in needs no invite link.
+  store.del(PASS_KEY);
   location.replace(location.pathname);
 }
 

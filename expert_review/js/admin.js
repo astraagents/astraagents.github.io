@@ -309,7 +309,7 @@ async function exportAll(button) {
       "ASTRA expert review -- database export",
       `Exported: ${new Date().toISOString()} by @${ctx.username}`,
       `Networks: ${ctx.model} + ${ctx.config}, ${ctx.manifest.networks.length} molecules, ${ctx.totalReactions} reactions`,
-      `Criteria (0-10): ${ctx.criteria.join(", ")}`,
+      `Criteria (0-5): ${ctx.criteria.join(", ")}`,
       "",
       ...counts,
       "",

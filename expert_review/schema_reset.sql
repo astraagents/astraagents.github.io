@@ -1,6 +1,6 @@
 -- ASTRA expert review -- DESTRUCTIVE RESET
 --
--- Drops the five review tables and everything in them. There is no undo.
+-- Drops the six review tables and everything in them. There is no undo.
 -- Export anything you care about first:
 --     python3 expert_review/tools/export_reviews.py
 --
@@ -17,3 +17,4 @@ drop table if exists expert_comments;
 drop table if exists expert_submissions;
 drop table if exists expert_reactions;
 drop table if exists expert_assignments;
+drop table if exists expert_accounts;

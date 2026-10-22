@@ -18,8 +18,8 @@ const HOST = "aws-us-east-1-5.pg.psdb.cloud";
 const PORT = 5432;
 const DATABASE = "postgres";
 
-// Scores are 0-10, matching the table's CHECK. Keep in step with js/app.js.
-const SCORE_MAX = 10;
+// Scores are 0-5 (the table's CHECK allows 0-10 for older rows). Keep in step with js/app.js.
+const SCORE_MAX = 5;
 
 neonConfig.wsProxy = (host, port) => `${host}/v2?address=${host}:${port}`;
 // Mandatory for PlanetScale: it authenticates with SCRAM-SHA-256, which cannot be
@@ -103,6 +103,9 @@ function describe(err) {
       "Has schema.sql been run, including its GRANT statements?"
     );
   }
+  if (/relation "?expert_accounts"? does not exist/i.test(msg)) {
+    return "The expert_accounts table does not exist yet. Run its section of expert_review/schema.sql.";
+  }
   if (/relation .* does not exist/i.test(msg)) {
     return "The review tables do not exist yet. Run expert_review/schema.sql first.";
   }
@@ -113,8 +116,35 @@ function describe(err) {
 }
 
 /**
+ * A reviewer's stored password hash: { salt, hash } (hex), or null if the
+ * username has never set a password. Hashing happens in the browser (js/app.js).
+ */
+export async function getAccount(reviewerName) {
+  const { rows } = await run(
+    `select salt, password_hash from expert_accounts where reviewer_name = $1`,
+    [reviewerName]
+  );
+  return rows.length ? { salt: rows[0].salt, hash: rows[0].password_hash } : null;
+}
+
+/**
+ * Claim a username with a password. Returns false if someone else claimed it
+ * first (the insert lost a race), so the caller can re-check against theirs.
+ */
+export async function createAccount(reviewerName, salt, hash) {
+  const { rows } = await run(
+    `insert into expert_accounts (reviewer_name, salt, password_hash)
+     values ($1, $2, $3)
+     on conflict (reviewer_name) do nothing
+     returning reviewer_name`,
+    [reviewerName, salt, hash]
+  );
+  return rows.length > 0;
+}
+
+/**
  * Upsert a batch of criterion scores for one network or one reaction.
- * `scores` maps criterion name -> integer 0-10. Criteria mapped to null or
+ * `scores` maps criterion name -> integer 0-5. Criteria mapped to null or
  * undefined are deleted, so clearing a slider removes the row rather than
  * recording a zero.
  */
@@ -488,6 +518,7 @@ export async function listTables() {
     `select table_name from information_schema.tables
       where table_schema = 'public' and table_type = 'BASE TABLE'
         and table_name like 'expert\\_%'
+        and table_name <> 'expert_accounts'   -- password hashes stay out of exports
       order by table_name`
   );
   return rows.map((r) => r.table_name);

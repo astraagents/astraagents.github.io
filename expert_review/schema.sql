@@ -103,6 +103,18 @@ create table if not exists expert_assignments (
         (reviewer_name, model, molecule, config, run, attempt)
 );
 
+-- One row per reviewer username: the password that protects it. The first
+-- sign-in under a username sets it. The browser hashes the password with
+-- PBKDF2-SHA256 (js/app.js#hashPassword) and only the salt and hash land here.
+-- To reset a forgotten password, delete the row; the next sign-in sets a new one.
+-- Kept out of the admin dashboard's exports (js/db.js#listTables).
+create table if not exists expert_accounts (
+    reviewer_name   text        primary key,
+    salt            text        not null,
+    password_hash   text        not null,
+    created_at      timestamptz not null default now()
+);
+
 create index if not exists expert_scores_lookup   on expert_scores   (reviewer_name, molecule);
 create index if not exists expert_comments_lookup on expert_comments (reviewer_name, molecule);
 create index if not exists expert_reactions_lookup on expert_reactions (molecule, position);
@@ -113,6 +125,7 @@ create index if not exists expert_assignments_lookup on expert_assignments (mole
 grant select, insert, update, delete
     on expert_scores, expert_comments, expert_submissions, expert_reactions, expert_assignments
     to pscale_api_y1qbjsmef33x;
+grant select, insert, update, delete on expert_accounts to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_scores_id_seq       to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_comments_id_seq     to pscale_api_y1qbjsmef33x;
 grant usage, select on sequence expert_submissions_id_seq  to pscale_api_y1qbjsmef33x;
