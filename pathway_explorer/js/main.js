@@ -30,18 +30,6 @@
         molSelect.value = 'L_Alanine';
       }
       onMoleculeChange(false);
-      var modelSelect = document.getElementById('select-model');
-      if (modelSelect.querySelector('option[value="gpt6_xhigh_azure"]')) {
-        modelSelect.value = 'gpt6_xhigh_azure';
-      }
-      onModelChange(false);
-      var cfgSelect = document.getElementById('select-config');
-      if (cfgSelect.querySelector('option[value="deep_research_claudeopus5.5"]')) {
-        cfgSelect.value = 'deep_research_claudeopus5.5';
-      }
-      onConfigChange(false);
-      var lastAtt = getLastAttempt(modelSelect.value, molSelect.value, cfgSelect.value);
-      document.getElementById('select-attempt').value = lastAtt;
       loadSelectedDataset();
     }).catch(function(err) {
       console.error('Failed to load file_index.csv:', err);
@@ -71,6 +59,10 @@
   }
 
   // ===== Dataset Selectors =====
+
+  var DEFAULT_MODEL = 'gpt6_xhigh_azure';
+  var DEFAULT_CONFIG = 'deep_research_gpt6';
+  var DEFAULT_ATTEMPT = '3';
 
   var MODEL_LABELS = {
     'gpt41_direct_azure': 'GPT 4.1',
@@ -114,6 +106,7 @@
         select.appendChild(opt);
       }
     });
+    if (seen[DEFAULT_MODEL]) select.value = DEFAULT_MODEL;
   }
 
   function populateConfigDropdown(model, molecule) {
@@ -129,6 +122,7 @@
         select.appendChild(opt);
       }
     });
+    if (seen[DEFAULT_CONFIG]) select.value = DEFAULT_CONFIG;
   }
 
   function populateAttemptDropdown(model, molecule, config) {
@@ -148,16 +142,18 @@
     });
   }
 
-  function getLastAttempt(model, molecule, config) {
+  function getDefaultAttempt(model, molecule, config) {
     var last = '1';
+    var hasDefault = false;
     fileIndex.forEach(function(row) {
       if (row.model === model && row.molecule === molecule && row.config === config && row.attempt !== '') {
-        if (row.attempt > last) {
+        if (row.attempt === DEFAULT_ATTEMPT) hasDefault = true;
+        if (Number(row.attempt) > Number(last)) {
           last = row.attempt;
         }
       }
     });
-    return last;
+    return hasDefault ? DEFAULT_ATTEMPT : last;
   }
 
   function onMoleculeChange(autoLoad) {
@@ -173,8 +169,7 @@
     populateConfigDropdown(model, molecule);
     var config = document.getElementById('select-config').value;
     populateAttemptDropdown(model, molecule, config);
-    var lastAtt = getLastAttempt(model, molecule, config);
-    document.getElementById('select-attempt').value = lastAtt;
+    document.getElementById('select-attempt').value = getDefaultAttempt(model, molecule, config);
     if (autoLoad !== false) loadSelectedDataset();
   }
 
@@ -183,8 +178,7 @@
     var molecule = document.getElementById('select-molecule').value;
     var config = document.getElementById('select-config').value;
     populateAttemptDropdown(model, molecule, config);
-    var lastAtt = getLastAttempt(model, molecule, config);
-    document.getElementById('select-attempt').value = lastAtt;
+    document.getElementById('select-attempt').value = getDefaultAttempt(model, molecule, config);
     if (autoLoad !== false) loadSelectedDataset();
   }
 
