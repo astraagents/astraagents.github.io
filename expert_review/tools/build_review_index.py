@@ -3,7 +3,7 @@
 
 One network per molecule, scored reaction by reaction:
 
-    A = gpt6_xhigh_azure + deep_research_gpt6   (final network, from file_index.csv)
+    A = gpt6_xhigh_azure + deep_research_gpt6   (run 1, attempt 3, from file_index.csv)
 
 Networks are not copied: the manifest stores paths relative to pathway_explorer/,
 which is where explorer.html resolves them (it sets <base href="../pathway_explorer/">).
@@ -24,6 +24,13 @@ EXPLORER = ROOT.parent / "pathway_explorer"
 
 MODEL = "gpt6_xhigh_azure"
 CONFIG = "deep_research_gpt6"
+RUN = "1"
+ATTEMPT = "3"
+# Keep the expert panel's ten amino acids fixed as the explorer gains networks.
+MOLECULES = (
+    "Arginine", "Glutamate", "Glycine", "Histidine", "L_Alanine", "L_Proline",
+    "Serine", "Threonine", "Tryptophan", "Valine",
+)
 
 # Scored per reaction: the criteria from GeminiJudgePrompt.md that make sense for
 # a single step, with Chemical Feasibility and Reaction Justification merged and
@@ -42,13 +49,23 @@ def net_key(model, molecule, config, run, attempt):
 
 
 def network_rows():
-    """The final MODEL + CONFIG networks from file_index.csv."""
+    """Exactly one run-1, attempt-3 network for each amino acid under review."""
     with (EXPLORER / "file_index.csv").open(newline="") as fh:
         rows = list(csv.DictReader(fh))
-    return {
-        r["molecule"]: r for r in rows
-        if r["model"] == MODEL and r["config"] == CONFIG and not r["attempt"]
-    }
+    selected = {}
+    for row in rows:
+        if (row["model"] != MODEL or row["config"] != CONFIG
+                or row["run"] != RUN or row["attempt"] != ATTEMPT
+                or row["molecule"] not in MOLECULES):
+            continue
+        molecule = row["molecule"]
+        if molecule in selected:
+            raise ValueError(f"Duplicate attempt-{ATTEMPT} network for {molecule}")
+        selected[molecule] = row
+    missing = sorted(set(MOLECULES) - selected.keys())
+    if missing:
+        raise ValueError(f"Missing attempt-{ATTEMPT} networks: {', '.join(missing)}")
+    return selected
 
 
 def entry(row, label):
@@ -91,7 +108,7 @@ def main():
         fh.write("\n")
 
     print(f"molecules      : {len(molecules)}  {molecules}")
-    print(f"networks       : {len(networks)}  ({MODEL} + {CONFIG})")
+    print(f"networks       : {len(networks)}  ({MODEL} + {CONFIG}, run {RUN}, attempt {ATTEMPT})")
     print(f"reactions      : {sum(n['n_reactions'] for n in networks)}")
     print(f"manifest       : {out.relative_to(ROOT.parent)}")
 

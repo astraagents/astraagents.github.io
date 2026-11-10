@@ -34,7 +34,7 @@ def wide_reaction_scores():
         for c in CRITERIA
     )
     return f"""
-        select s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+        select s.reviewer_name, s.model, s.molecule, s.run, s.config, s.attempt, s.reaction_id,
                r.name as reaction_name, {cols},
                c.body as note, max(s.updated_at) as updated_at
           from expert_scores s
@@ -46,28 +46,28 @@ def wide_reaction_scores():
            and c.molecule = s.molecule and c.config = s.config and c.run = s.run
            and c.attempt = s.attempt and c.scope = 'reaction' and c.reaction_id = s.reaction_id
          where s.scope = 'reaction'
-         group by s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+         group by s.reviewer_name, s.model, s.molecule, s.run, s.config, s.attempt, s.reaction_id,
                   r.name, r.position, c.body
-         order by s.reviewer_name, s.molecule, r.position
+         order by s.reviewer_name, s.molecule, s.run, s.attempt, r.position
     """
 
 
 QUERIES = {
     "expert_scores.csv": """
-        select reviewer_name, model, molecule, run, config, scope,
+        select reviewer_name, model, molecule, run, config, attempt, scope,
                reaction_id, criterion, score, updated_at
           from expert_scores
-         order by reviewer_name, molecule, config, scope, reaction_id, criterion
+         order by reviewer_name, molecule, config, run, attempt, scope, reaction_id, criterion
     """,
     "expert_reaction_scores.csv": wide_reaction_scores(),
     "expert_comments.csv": """
-        select reviewer_name, model, molecule, run, config, scope,
+        select reviewer_name, model, molecule, run, config, attempt, scope,
                reaction_id, body, updated_at
           from expert_comments
-         order by reviewer_name, molecule, config, scope, reaction_id
+         order by reviewer_name, molecule, config, run, attempt, scope, reaction_id
     """,
     "expert_assignments.csv": """
-        select reviewer_name, model, molecule, run, config, status, assigned_at, updated_at
+        select reviewer_name, model, molecule, run, config, attempt, status, assigned_at, updated_at
           from expert_assignments
          order by molecule, assigned_at
     """,

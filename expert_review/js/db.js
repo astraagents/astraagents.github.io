@@ -40,6 +40,21 @@ function metaValues(meta) {
   return [meta.model, meta.molecule, meta.config, meta.run, meta.attempt ?? ""];
 }
 
+// Every dashboard query uses the exact manifest keys. Historical attempts remain
+// in the database, but must not contribute to the current queue's progress.
+const REVIEW_NETWORKS = `review_networks as (
+  select distinct model, molecule, config, run, attempt
+    from jsonb_to_recordset($1::jsonb)
+      as n(model text, molecule text, config text, run integer, attempt text)
+)`;
+const REVIEW_JOIN = `join review_networks using (${META_COLS.join(", ")})`;
+
+function networkParams(networks) {
+  return JSON.stringify(networks.map((n) => Object.fromEntries(
+    META_COLS.map((col, i) => [col, metaValues(n)[i]])
+  )));
+}
+
 /**
  * Open the pool and prove the credentials work before the UI leaves the login
  * screen. Throws with a human-readable message if it cannot connect.
@@ -359,29 +374,29 @@ export async function setAssignmentStatus(reviewerName, meta, status) {
 
 /**
  * Reviewers ranked by reactions fully scored (every criterion in `criteria`),
- * for the networks of `model` + `config`. Ties go to whoever got there first.
+ * for the exact networks in the manifest. Ties go to whoever got there first.
  *   [{ reviewer, reactions, molecules, notes }]
  */
-export async function leaderboard(model, config, criteria) {
+export async function leaderboard(networks, criteria) {
   const { rows } = await run(
-    `with full_rxn as (
-       select reviewer_name, molecule, reaction_id, max(updated_at) as last
-         from expert_scores
-        where scope = 'reaction' and model = $1 and config = $2 and criterion = any($3)
-        group by reviewer_name, molecule, reaction_id
-       having count(distinct criterion) = $4
+    `with ${REVIEW_NETWORKS}, full_rxn as (
+       select reviewer_name, ${META_COLS.join(", ")}, reaction_id, max(updated_at) as last
+         from expert_scores ${REVIEW_JOIN}
+        where scope = 'reaction' and criterion = any($2)
+        group by reviewer_name, ${META_COLS.join(", ")}, reaction_id
+       having count(distinct criterion) = $3
      )
      select f.reviewer_name as reviewer,
             count(*)::int   as reactions,
             max(f.last)     as last,
-            (select count(*)::int from expert_assignments a
+            (select count(*)::int from expert_assignments a ${REVIEW_JOIN}
               where a.reviewer_name = f.reviewer_name and a.status = 'done') as molecules,
-            (select count(*)::int from expert_comments c
+            (select count(*)::int from expert_comments c ${REVIEW_JOIN}
               where c.reviewer_name = f.reviewer_name and c.scope = 'reaction') as notes
        from full_rxn f
       group by f.reviewer_name
       order by reactions desc, last asc`,
-    [model, config, criteria, criteria.length]
+    [networkParams(networks), criteria, criteria.length]
   );
   return rows;
 }
@@ -406,7 +421,7 @@ export async function panelAverages(meta, reviewerName) {
 /* ---------------------------------------------------------------- admin -- */
 
 /**
- * Everything the admin dashboard shows, for the networks of `model` + `config`.
+ * Everything the admin dashboard shows, scoped to the exact manifest networks.
  * A "complete review" is one reviewer x one reaction with every criterion scored,
  * the same definition the leaderboard uses.
  *   { molecules: [{ molecule, reactions, reviews, covered, at_target, active, done, skipped }],
@@ -414,35 +429,36 @@ export async function panelAverages(meta, reviewerName) {
  *     recent:    [{ reviewer, molecule, reaction_id, name, criteria, at }] }
  * `exclude` (the admin's own username) is left out of the reviewer list.
  */
-export async function adminOverview(model, config, criteria, targetReviewers, exclude) {
-  const base = [model, config, criteria, criteria.length];
+export async function adminOverview(networks, criteria, targetReviewers, exclude) {
+  const base = [networkParams(networks), criteria, criteria.length];
   const [molecules, reviewers, recent] = await Promise.all([
     run(
-      `with full_rxn as (
-         select reviewer_name, molecule, reaction_id
-           from expert_scores
-          where scope = 'reaction' and model = $1 and config = $2 and criterion = any($3)
-          group by reviewer_name, molecule, reaction_id
-         having count(distinct criterion) = $4
+      `with ${REVIEW_NETWORKS}, full_rxn as (
+         select reviewer_name, ${META_COLS.join(", ")}, reaction_id
+           from expert_scores ${REVIEW_JOIN}
+          where scope = 'reaction' and criterion = any($2)
+          group by reviewer_name, ${META_COLS.join(", ")}, reaction_id
+         having count(distinct criterion) = $3
        ),
        per_rxn as (
-         select molecule, reaction_id, count(*)::int as k from full_rxn group by molecule, reaction_id
+         select ${META_COLS.join(", ")}, reaction_id, count(*)::int as k
+           from full_rxn group by ${META_COLS.join(", ")}, reaction_id
        ),
        rx as (
-         select molecule, count(*)::int as n from expert_reactions
-          where model = $1 and config = $2 group by molecule
+         select molecule, count(*)::int as n
+           from expert_reactions ${REVIEW_JOIN} group by molecule
        ),
        asg as (
          select molecule,
                 count(*) filter (where status = 'active')::int  as active,
                 count(*) filter (where status = 'done')::int    as done,
                 count(*) filter (where status = 'skipped')::int as skipped
-           from expert_assignments where model = $1 and config = $2 group by molecule
+           from expert_assignments ${REVIEW_JOIN} group by molecule
        )
        select rx.molecule, rx.n as reactions,
               coalesce(sum(p.k), 0)::int                          as reviews,
               count(p.reaction_id)::int                           as covered,
-              count(p.reaction_id) filter (where p.k >= $5)::int  as at_target,
+              count(p.reaction_id) filter (where p.k >= $4)::int  as at_target,
               coalesce(a.active, 0) as active, coalesce(a.done, 0) as done,
               coalesce(a.skipped, 0) as skipped
          from rx
@@ -453,31 +469,31 @@ export async function adminOverview(model, config, criteria, targetReviewers, ex
       [...base, targetReviewers]
     ),
     run(
-      `with s as (
-         select reviewer_name, molecule, reaction_id,
+      `with ${REVIEW_NETWORKS}, s as (
+         select reviewer_name, ${META_COLS.join(", ")}, reaction_id,
                 count(distinct criterion) as c, max(updated_at) as last
-           from expert_scores
-          where scope = 'reaction' and model = $1 and config = $2 and criterion = any($3)
-          group by reviewer_name, molecule, reaction_id
+           from expert_scores ${REVIEW_JOIN}
+          where scope = 'reaction' and criterion = any($2)
+          group by reviewer_name, ${META_COLS.join(", ")}, reaction_id
        ),
        r as (
          select reviewer_name,
-                count(*) filter (where c = $4)::int as complete,
-                count(*) filter (where c < $4)::int as partial,
+                count(*) filter (where c = $3)::int as complete,
+                count(*) filter (where c < $3)::int as partial,
                 max(last) as last
            from s group by reviewer_name
        ),
        n as (
          select reviewer_name, count(*)::int as notes, max(updated_at) as last
-           from expert_comments
-          where scope = 'reaction' and model = $1 and config = $2 group by reviewer_name
+           from expert_comments ${REVIEW_JOIN}
+          where scope = 'reaction' group by reviewer_name
        ),
        a as (
          select reviewer_name,
                 count(*) filter (where status = 'done')::int  as done,
                 max(molecule) filter (where status = 'active') as active,
                 max(updated_at) as last
-           from expert_assignments where model = $1 and config = $2 group by reviewer_name
+           from expert_assignments ${REVIEW_JOIN} group by reviewer_name
        ),
        names as (
          select reviewer_name from r union select reviewer_name from n
@@ -491,22 +507,24 @@ export async function adminOverview(model, config, criteria, targetReviewers, ex
          left join r using (reviewer_name)
          left join n using (reviewer_name)
          left join a using (reviewer_name)
-        where x.reviewer_name <> $5
+        where x.reviewer_name <> $4
         order by complete desc, last desc nulls last`,
       [...base, exclude ?? ""]
     ),
     run(
-      `select s.reviewer_name as reviewer, s.molecule, s.reaction_id, r.name,
+      `with ${REVIEW_NETWORKS}
+       select s.reviewer_name as reviewer, s.molecule, s.reaction_id, r.name,
               count(distinct s.criterion)::int as criteria, max(s.updated_at) as at
-         from expert_scores s
+         from expert_scores s ${REVIEW_JOIN}
          left join expert_reactions r
            on r.model = s.model and r.molecule = s.molecule and r.config = s.config
           and r.run = s.run and r.attempt = s.attempt and r.reaction_id = s.reaction_id
-        where s.scope = 'reaction' and s.model = $1 and s.config = $2
-        group by s.reviewer_name, s.molecule, s.reaction_id, r.name
+        where s.scope = 'reaction'
+        group by s.reviewer_name, s.model, s.molecule, s.config, s.run, s.attempt,
+                 s.reaction_id, r.name
         order by at desc
         limit 15`,
-      [model, config]
+      [base[0]]
     ),
   ]);
   return { molecules: molecules.rows, reviewers: reviewers.rows, recent: recent.rows };
@@ -559,7 +577,7 @@ export async function reactionScoresWide(criteria) {
     return `max(s.score) filter (where s.criterion = $${params.length}) as "${c.replace(/"/g, '""')}"`;
   }).join(", ");
   const res = await run(
-    `select s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+    `select s.reviewer_name, s.model, s.molecule, s.run, s.config, s.attempt, s.reaction_id,
             r.name as reaction_name, ${cols},
             c.body as note, max(s.updated_at) as updated_at
        from expert_scores s
@@ -571,9 +589,9 @@ export async function reactionScoresWide(criteria) {
         and c.molecule = s.molecule and c.config = s.config and c.run = s.run
         and c.attempt = s.attempt and c.scope = 'reaction' and c.reaction_id = s.reaction_id
       where s.scope = 'reaction'
-      group by s.reviewer_name, s.model, s.molecule, s.run, s.config, s.reaction_id,
+      group by s.reviewer_name, s.model, s.molecule, s.run, s.config, s.attempt, s.reaction_id,
                r.name, r.position, c.body
-      order by s.reviewer_name, s.molecule, r.position`,
+      order by s.reviewer_name, s.molecule, s.run, s.attempt, r.position`,
     params
   );
   return { columns: res.fields.map((f) => f.name), rows: res.rows };

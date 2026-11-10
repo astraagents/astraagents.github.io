@@ -104,7 +104,7 @@ async function refresh({ manual = false } = {}) {
   btn?.classList.add("spinning");
   try {
     const [overview, sizes] = await Promise.all([
-      db.adminOverview(ctx.model, ctx.config, ctx.criteria, ctx.targetReviewers, ctx.username),
+      db.adminOverview(ctx.manifest.networks, ctx.criteria, ctx.targetReviewers, ctx.username),
       db.tableSizes(),
     ]);
     renderKpis(overview);
@@ -313,6 +313,7 @@ async function exportAll(button) {
       "",
       ...counts,
       "",
+      "Exports include historical networks; use model, molecule, config, run and attempt to distinguish them.",
       "expert_scores rows with scope = 'network' are from the earlier network-level version.",
       "expert_reactions.payload is the reaction JSON as shown to reviewers.",
       "",

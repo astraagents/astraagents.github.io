@@ -1224,8 +1224,7 @@ function allDoneView() {
 /* ---------------------------------------------------------- leaderboard -- */
 
 async function refreshBoard({ announce = false } = {}) {
-  const { model, config } = manifest.networks[0];
-  const rows = await db.leaderboard(model, config, criteria);
+  const rows = await db.leaderboard(manifest.networks, criteria);
   const before = myRank;
   board = rows;
   const i = rows.findIndex((r) => r.reviewer === username);

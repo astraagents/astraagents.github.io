@@ -11,9 +11,21 @@ straight there.
 
 | | |
 |---|---|
-| Network | `gpt6_xhigh_azure` + `deep_research_gpt6` (`network_<Mol>_<timestamp>_deep_research_gpt6_run1.json`) |
-| Molecules | Arginine, Glutamate, Glycine, Histidine, L-Alanine, L-Proline, Serine, Threonine, Valine |
-| Queue | **9 networks, 166 reactions**, stored in `expert_reactions` |
+| Network | `gpt6_xhigh_azure` + `deep_research_gpt6`, run 1, **attempt 3** (`network_<Mol>_<timestamp>_deep_research_gpt6_run1_attempt3.json`) |
+| Molecules | Arginine, Glutamate, Glycine, Histidine, L-Alanine, L-Proline, Serine, Threonine, Tryptophan, Valine |
+| Queue | **10 networks, 180 reactions**, stored in `expert_reactions` |
+
+The queue includes every reaction in these ten attempt-3 networks. The molecule list
+is explicit in `tools/build_review_index.py`, so adding other amino acids to the
+Pathway Explorer does not expand this review panel. The builder rejects missing or
+duplicate selections. Histidine and Tryptophan have no validation file in the source
+index; their full reaction networks are still included.
+
+Earlier final-network reactions and reviews remain in the database under their
+original attempt keys. They are not reused as attempt-3 scores: reaction identities
+and payloads can change between attempts. Assignments, progress, the leaderboard,
+and admin coverage use the exact networks in the current manifest. Exports retain
+the historical rows and include `attempt` so they can be distinguished.
 
 Criteria per reaction (3), each asked as a question:
 
@@ -78,7 +90,7 @@ The page is built to keep busy experts coming back without rewarding speed over 
 | "You passed @bob" / "You're on the board" moments | toast after a save |
 | Badges at 1, 5, 10, 25, 50, 100 reactions, 1/3/9 molecules, 5 notes | rail |
 | Session streak (flame + n) | top bar |
-| Shared mission: panel progress toward 3 reviews × 166 reactions | rail |
+| Shared mission: panel progress toward 3 reviews × 180 reactions | rail |
 | Curiosity reward: your scores vs the panel's, unlocked on finishing | finish card |
 
 Sound is synthesised with WebAudio (no audio files) and can be muted with the speaker button (saved
@@ -96,8 +108,8 @@ Each molecule in a reaction card is drawn from PubChem's 2D depiction. Two parts
   so protonation and charge differences (formate vs formic acid) don't count. Results go to
   `data/pubchem.json` and reach the page through `expert_reactions.payload`. The page
   never looks molecules up by name: those lookups are rate-limited and often 404 on the
-  networks' descriptive names. Current state: **96 of 115 resolved**. The other 19 are
-  intermediates and adducts that PubChem does not have (e.g. *Arginine alpha-aminonitrile*,
+  networks' descriptive names. Current queue: **104 of 128 resolved**. The other 24
+  could not be resolved by the lookup (e.g. *Arginine alpha-aminonitrile*,
   *Glycolaldehyde bisulfite adduct*), and they show a formula tile instead.
 - **Cropped in the browser.** PubChem pads every drawing to the full canvas on a grey
   background with 1px bonds, which leaves small molecules as a faint speck. The page fetches
@@ -134,7 +146,7 @@ the admin view (`js/admin.js`) instead of the review flow. The admin is never as
 never scores, and doesn't appear on the leaderboard. The view refreshes every 30 s and has a
 Refresh button. It shows:
 
-- **KPIs:** complete reviews out of the goal (166 × 3), reactions with ≥ 1 complete review,
+- **KPIs:** complete reviews out of the goal (180 × 3), reactions with ≥ 1 complete review,
   reactions at the goal, active reviewers, partly scored reactions, and notes.
 - **Molecules:** reactions, complete reviews, a coverage bar, reactions at goal, and assignments
   active/done/skipped. This shows whether the assignment is spreading work evenly.
@@ -182,7 +194,7 @@ select has_table_privilege('pscale_api_y1qbjsmef33x','expert_reactions','INSERT'
 ```bash
 python3 expert_review/tools/build_review_index.py   # writes data/review_index.json
 python3 expert_review/tools/resolve_pubchem.py      # writes data/pubchem.json (cached; --refresh to redo)
-python3 expert_review/tools/seed_reactions.py       # upserts 166 rows into expert_reactions
+python3 expert_review/tools/seed_reactions.py       # upserts 180 attempt-3 rows into expert_reactions
 ```
 
 `seed_reactions.py` stores each reaction's raw JSON as `payload`, with `inputs` and
@@ -254,7 +266,7 @@ js/explorer-sidebar.js reaction sidebar from raw JSON; ?focus= / postMessage foc
 js/local-creds.js      local testing only, gitignored
 js/vendor/
   neon-serverless.js   @neondatabase/serverless 1.2.0, vendored ESM bundle
-data/review_index.json the 9 networks + the 3 criteria
+data/review_index.json the 10 attempt-3 networks + the 3 criteria
 data/pubchem.json      molecule (InChI or names) -> PubChem CID, formula check
 tools/
   build_review_index.py  manifest
@@ -281,10 +293,14 @@ The leaderboard counts, per reviewer, the reactions with **all three** criteria 
 
 ```sql
 select reviewer_name, count(*) from (
-  select reviewer_name, molecule, reaction_id from expert_scores
-   where scope = 'reaction' and criterion = any(array['Reaction Detail Validity',
+  select reviewer_name, model, molecule, config, run, attempt, reaction_id from expert_scores
+   where scope = 'reaction' and model = 'gpt6_xhigh_azure'
+     and config = 'deep_research_gpt6' and run = 1 and attempt = '3'
+     and molecule = any(array['Arginine', 'Glutamate', 'Glycine', 'Histidine',
+                             'L_Alanine', 'L_Proline', 'Serine', 'Threonine', 'Tryptophan', 'Valine'])
+     and criterion = any(array['Reaction Detail Validity',
                                 'Geochemical Realism', 'Reaction Novelty'])
-   group by 1, 2, 3 having count(distinct criterion) = 3) t
+   group by 1, 2, 3, 4, 5, 6, 7 having count(distinct criterion) = 3) t
  group by 1 order by 2 desc;
 ```
 
