@@ -66,8 +66,11 @@ Their rows (`scope = 'network'`) stay in the database and are ignored.
    card showing its size and the time it will take. *"Not my area? Swap molecule"* draws another.
 3. **Reaction cards.** Each card shows the equation as 2D structures from PubChem
    (with names and formulae; see *Molecular structures*), then the setting,
-   conditions, agents, mechanism and reasoning, and a *View in network* button that opens
-   the Pathway Explorer focused on that reaction. Scores autosave ~0.6 s after a tap.
+   conditions, agents, mechanism and reasoning, plus two network actions:
+   *Open molecule in explorer* opens the full Pathway Explorer in a new tab with the
+   reviewed molecule, model, research configuration, run and attempt selected.
+   *Highlight this reaction* opens the embedded network focused on the current reaction.
+   Scores autosave ~0.6 s after a tap.
    *Save & next* unlocks once all three are set and moves to the next unscored reaction.
    *Skip for now* moves on without saving. The progress segments jump to any reaction.
 4. **Finishing a molecule** marks it done, celebrates, and shows the reviewer's mean
@@ -324,9 +327,14 @@ neonConfig.pipelineConnect = false;   // mandatory: PlanetScale uses SCRAM-SHA-2
 Writes are `INSERT … ON CONFLICT ON CONSTRAINT … DO UPDATE`, so a reviewer can revise
 any score without creating duplicate rows.
 
-## The embedded explorer
+## Explorer links and the embedded network
 
-Nothing in `pathway_explorer/` is modified or copied. *View in network* opens a sheet
+*Open molecule in explorer* links to
+`https://astraagents.github.io/pathway_explorer/?molecule=<molecule>&model=<model>&config=<config>&run=<run>&attempt=<attempt>`.
+The full explorer uses these parameters to select an indexed dataset on startup;
+without them, it keeps its usual defaults.
+
+*Highlight this reaction* opens a sheet
 with `explorer.html?f=<network>&v=<validation>&m=<molecule>&focus=<reaction id>`:
 
 - `explorer.html` is the explorer's own markup with `<base href="../pathway_explorer/">`,

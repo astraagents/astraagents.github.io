@@ -12,6 +12,7 @@
 
   // Parsed file index rows from file_index.csv
   var fileIndex = [];
+  var selectedRun = null;    // set by an indexed deep link; cleared by selector changes
 
   function init() {
     var cyContainer = document.getElementById('cy');
@@ -30,6 +31,7 @@
         molSelect.value = 'L_Alanine';
       }
       onMoleculeChange(false);
+      applyInitialDatasetLink();
       loadSelectedDataset();
     }).catch(function(err) {
       console.error('Failed to load file_index.csv:', err);
@@ -156,7 +158,53 @@
     return hasDefault ? DEFAULT_ATTEMPT : last;
   }
 
+  // Accept dataset identifiers only: paths always come from file_index.csv.
+  // The embedded review explorer uses f/v/m instead, so its one-row index keeps
+  // the existing startup behavior.
+  function applyInitialDatasetLink() {
+    var params = new URLSearchParams(window.location.search);
+    var fields = ['molecule', 'model', 'config', 'attempt', 'run'];
+    if (!fields.some(function(field) { return params.has(field); })) return;
+
+    var candidates = fileIndex.filter(function(row) {
+      return fields.every(function(field) {
+        return !params.has(field) || row[field] === params.get(field);
+      });
+    });
+    if (!candidates.length) return;  // invalid links leave the default selection intact
+
+    var defaults = {
+      molecule: document.getElementById('select-molecule').value,
+      model: DEFAULT_MODEL,
+      config: DEFAULT_CONFIG
+    };
+    ['molecule', 'model', 'config'].forEach(function(field) {
+      if (params.has(field)) return;
+      var preferred = candidates.filter(function(row) { return row[field] === defaults[field]; });
+      if (preferred.length) candidates = preferred;
+    });
+    if (!params.has('attempt')) {
+      var preferredAttempt = candidates.some(function(row) { return row.attempt === DEFAULT_ATTEMPT; })
+        ? DEFAULT_ATTEMPT
+        : candidates.reduce(function(last, row) {
+          return Number(row.attempt) > Number(last) ? row.attempt : last;
+        }, candidates[0].attempt);
+      candidates = candidates.filter(function(row) { return row.attempt === preferredAttempt; });
+    }
+
+    var row = candidates[0];
+    document.getElementById('select-molecule').value = row.molecule;
+    onMoleculeChange(false);
+    document.getElementById('select-model').value = row.model;
+    onModelChange(false);
+    document.getElementById('select-config').value = row.config;
+    onConfigChange(false);
+    document.getElementById('select-attempt').value = row.attempt;
+    selectedRun = params.has('run') ? row.run : null;
+  }
+
   function onMoleculeChange(autoLoad) {
+    selectedRun = null;
     var molecule = document.getElementById('select-molecule').value;
     populateModelDropdown(molecule);
     onModelChange(false);
@@ -164,6 +212,7 @@
   }
 
   function onModelChange(autoLoad) {
+    selectedRun = null;
     var molecule = document.getElementById('select-molecule').value;
     var model = document.getElementById('select-model').value;
     populateConfigDropdown(model, molecule);
@@ -174,6 +223,7 @@
   }
 
   function onConfigChange(autoLoad) {
+    selectedRun = null;
     var model = document.getElementById('select-model').value;
     var molecule = document.getElementById('select-molecule').value;
     var config = document.getElementById('select-config').value;
@@ -183,6 +233,7 @@
   }
 
   function onAttemptChange() {
+    selectedRun = null;
     loadSelectedDataset();
   }
 
@@ -193,7 +244,8 @@
     var attempt = document.getElementById('select-attempt').value;
     for (var i = 0; i < fileIndex.length; i++) {
       var row = fileIndex[i];
-      if (row.model === model && row.molecule === molecule && row.config === config && row.attempt === attempt) {
+      if (row.model === model && row.molecule === molecule && row.config === config && row.attempt === attempt
+          && (selectedRun === null || row.run === selectedRun)) {
         return row;
       }
     }

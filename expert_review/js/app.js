@@ -654,12 +654,28 @@ function floatPlusOne(anchor) {
 /** The reaction itself: equation, setting, conditions, mechanism, reasoning. */
 function reactionCard(rxn) {
   const card = el("section", { className: "card rxn" });
+  const { entry } = current;
+  const explorerUrl = new URL("https://astraagents.github.io/pathway_explorer/");
+  explorerUrl.search = new URLSearchParams({
+    molecule: entry.molecule,
+    model: entry.model,
+    config: entry.config,
+    run: String(entry.run),
+    attempt: entry.attempt ?? "",
+  }).toString();
+  const explore = el("a", {
+    className: "btn ghost small netbtn",
+    href: explorerUrl.href,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    ariaLabel: `Open ${pretty(entry.molecule)} in Pathway Explorer (opens in a new tab)`,
+  }, [icon("arrow-up-right-from-square"), " Open molecule in explorer"]);
   const view = el("button", { className: "btn ghost small netbtn", type: "button" },
-    [icon("diagram-project"), " View in network"]);
+    [icon("diagram-project"), " Highlight this reaction"]);
   view.addEventListener("click", () => openSheet(rxn));
   card.append(el("div", { className: "rxn-title-row" }, [
     el("h2", { className: "rxn-name", textContent: rxn.name }),
-    view,
+    el("div", { className: "rxn-network-actions", role: "group", ariaLabel: "Network views" }, [explore, view]),
   ]));
 
   const side = (mols) => el("div", { className: "eq-side" },
